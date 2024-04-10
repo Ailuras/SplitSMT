@@ -1,0 +1,212 @@
+Invoking: (set-logic QF_LIRA)
+Invoking: (declare-fun x () Int)
+Invoking: (declare-fun y () Real)
+Invoking: (assert (and (>= x (* 3 y)) (<= x y) (< (- 2) x)))
+new var 0 with assertion level 0
+new var 1 with assertion level 0
+unchecked enqueue of  0 (-1) trail size is 0 cap is 2, assertion level is 0, reason is 4294967295, CRef_Undef
+unchecked enqueue of ~1 (-1) trail size is 1 cap is 2, assertion level is 0, reason is 4294967295, CRef_Undef
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+convertAtom(true)
+prop::newLiteral(true, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  newLiteral(true) => 0
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+convertAndAssert((not false), negated = false, removable = false)
+convertAndAssert((not false), negated = false)
+convertAndAssert(false, negated = true)
+toCNF(false, negated = true)
+convertAtom(false)
+prop::newLiteral(false, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  newLiteral(false) => 1
+CnfStream::getLiteral(false) => 1
+toCNF(): resulting literal: ~1
+Inserting into stream clause: ~1; node = (not false)
+Invoking: (push 1)
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false, removable = false)
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+CnfStream::convertAndAssertAnd((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+toCNF((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+convertAtom((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+prop::newLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 2 with assertion level 0
+  newLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+toCNF(): resulting literal: 2
+Inserting into stream clause: 2; node = (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+unchecked enqueue of  2 (-1) trail size is 2 cap is 4, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(2)
+getNode(2) => (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+convertAndAssert((>= (+ y (* (- 1) x)) 0), negated = false)
+toCNF((>= (+ y (* (- 1) x)) 0), negated = false)
+convertAtom((>= (+ y (* (- 1) x)) 0))
+prop::newLiteral((>= (+ y (* (- 1) x)) 0), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 3 with assertion level 0
+  newLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+CnfStream::getLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+toCNF(): resulting literal: 3
+Inserting into stream clause: 3; node = (>= (+ y (* (- 1) x)) 0)
+unchecked enqueue of  3 (-1) trail size is 3 cap is 4, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(3)
+getNode(3) => (>= (+ y (* (- 1) x)) 0)
+convertAndAssert((>= x (- 1)), negated = false)
+toCNF((>= x (- 1)), negated = false)
+convertAtom((>= x (- 1)))
+prop::newLiteral((>= x (- 1)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 4 with assertion level 0
+  newLiteral((>= x (- 1))) => 4
+CnfStream::getLiteral((>= x (- 1))) => 4
+toCNF(): resulting literal: 4
+Inserting into stream clause: 4; node = (>= x (- 1))
+unchecked enqueue of  4 (-1) trail size is 4 cap is 8, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(4)
+getNode(4) => (>= x (- 1))
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false, removable = false)
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+CnfStream::convertAndAssertAnd((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+toCNF((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+toCNF(): resulting literal: 2
+Inserting into stream clause: 2; node = (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+convertAndAssert((>= (+ y (* (- 1) x)) 0), negated = false)
+toCNF((>= (+ y (* (- 1) x)) 0), negated = false)
+CnfStream::getLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+toCNF(): resulting literal: 3
+Inserting into stream clause: 3; node = (>= (+ y (* (- 1) x)) 0)
+convertAndAssert((>= x (- 1)), negated = false)
+toCNF((>= x (- 1)), negated = false)
+CnfStream::getLiteral((>= x (- 1))) => 4
+toCNF(): resulting literal: 4
+Inserting into stream clause: 4; node = (>= x (- 1))
+in user push, increasing assertion level to 1
+MINISAT PUSH assertionLevel is 1, trail.size is 5
+Invoking: (assert (not (<= (- y x) (/ 2 3))))
+Invoking: (check-sat)
+convertAndAssert((not (>= (+ (* (- 1) y) x) (/ (- 2) 3))), negated = false, removable = false)
+convertAndAssert((not (>= (+ (* (- 1) y) x) (/ (- 2) 3))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = true)
+toCNF((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = true)
+convertAtom((>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+prop::newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 5 with assertion level 1
+  newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+CnfStream::getLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+toCNF(): resulting literal: ~5
+Inserting into stream clause: ~5; node = (not (>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+unchecked enqueue of ~5 (-1) trail size is 5 cap is 8, assertion level is 1, reason is 4294967295, CRef_Undef
+getNode(~5)
+getNode(~5) => (not (>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+nvars = 6
+CnfStream::getLiteral((not (>= (+ (* (- 1) y) x) (/ (- 2) 3)))) => ~5
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+CnfStream::getLiteral((>= x (- 1))) => 4
+convertAndAssert((let ((_let_1 (* (- 1) y))) (and (not (>= (+ _let_1 x) (/ (- 2) 3))) (>= (+ _let_1 (* (/ 1 3) x)) 0) (>= x (- 1)))), negated = true, removable = true)
+convertAndAssert((let ((_let_1 (* (- 1) y))) (and (not (>= (+ _let_1 x) (/ (- 2) 3))) (>= (+ _let_1 (* (/ 1 3) x)) 0) (>= x (- 1)))), negated = true)
+CnfStream::convertAndAssertAnd((let ((_let_1 (* (- 1) y))) (and (not (>= (+ _let_1 x) (/ (- 2) 3))) (>= (+ _let_1 (* (/ 1 3) x)) 0) (>= x (- 1)))), negated = true)
+toCNF((not (>= (+ (* (- 1) y) x) (/ (- 2) 3))), negated = true)
+CnfStream::getLiteral((not (>= (+ (* (- 1) y) x) (/ (- 2) 3)))) => ~5
+toCNF(): resulting literal: 5
+toCNF((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = true)
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+toCNF(): resulting literal: ~2
+toCNF((>= x (- 1)), negated = true)
+CnfStream::getLiteral((>= x (- 1))) => 4
+toCNF(): resulting literal: ~4
+Inserting into stream clause: 5 ~2 ~4; node = (let ((_let_1 (* (- 1) y))) (not (and (not (>= (+ _let_1 x) (/ (- 2) 3))) (>= (+ _let_1 (* (/ 1 3) x)) 0) (>= x (- 1)))))
+old trail size is 6, propagating 0 lits...
+Solver::updateLemmas() begin
+found unit 1
+Solver::updateLemmas(): backtracking to 0 from 0
+minisat::cancelUntil(0)
+Solver::updateLemmas(): unit conflict or empty clause
+Solver::updateLemmas() end
+unsat
+Invoking: (pop 1)
+minisat::cancelUntil(0)
+in user pop, decreasing assertion level to 0
+  == unassigning ~5
+  == unassigning  4
+MINISAT POP assertionLevel is 0, trail.size is 5
+Invoking: (push 1)
+in user push, increasing assertion level to 1
+MINISAT PUSH assertionLevel is 1, trail.size is 5
+Invoking: (assert (not (> (- y x) (/ 2 3))))
+Invoking: (check-sat)
+convertAndAssert((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = false, removable = false)
+convertAndAssert((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = false)
+toCNF((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = false)
+convertAtom((>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+prop::newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 5 with assertion level 1
+  newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+CnfStream::getLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+toCNF(): resulting literal: 5
+Inserting into stream clause: 5; node = (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+unchecked enqueue of  5 (-1) trail size is 5 cap is 8, assertion level is 1, reason is 4294967295, CRef_Undef
+getNode(5)
+getNode(5) => (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+nvars = 6
+old trail size is 6, propagating 0 lits...
+Doing a full theory check...
+old trail size is 6, propagating 0 lits...
+0 = 1
+1 = 0
+2 = 1
+3 = 1
+4 = 1
+5 = 1
+sat
+Invoking: (get-model)
+(
+(define-fun x () Int (- 1))
+(define-fun y () Real (/ (- 1) 3))
+)
+Invoking: (pop 1)
+minisat::cancelUntil(0)
+in user pop, decreasing assertion level to 0
+  == unassigning  5
+  == unassigning  4
+MINISAT POP assertionLevel is 0, trail.size is 5

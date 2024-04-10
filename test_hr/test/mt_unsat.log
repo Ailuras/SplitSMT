@@ -1,0 +1,51 @@
+Begin TheoryEngine::finishInit
+End TheoryEngine::finishInit
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+convertAtom(true)
+prop::newLiteral(true, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  TheoryEngine::preRegister( true)
+  TheoryEngine::preRegister: true
+  SharedSolver::preRegister atom true
+  SharedSolver::preRegister atom finished
+  newLiteral(true) => 0
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+convertAndAssert((not false), negated = false, removable = false)
+convertAndAssert((not false), negated = false)
+convertAndAssert(false, negated = true)
+toCNF(false, negated = true)
+convertAtom(false)
+prop::newLiteral(false, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  TheoryEngine::preRegister( false)
+  TheoryEngine::preRegister: false
+  SharedSolver::preRegister atom false
+  SharedSolver::preRegister atom finished
+  newLiteral(false) => 1
+CnfStream::getLiteral(false) => 1
+toCNF(): resulting literal: ~1
+Inserting into stream clause: ~1; node = (not false)
+TheoryEngine::solve((>= (g x) 1)): solving with THEORY_ARITH
+TheoryEngine::solve((>= (g x) 1)) => SOLVE_STATUS_UNSOLVED
+TheoryEngine::solve((= (g y) 0)): solving with THEORY_UF
+TheoryEngine::solve((= (g y) 0)) => SOLVE_STATUS_UNSOLVED
+TheoryEngine::solve((= (g x) 0)): solving with THEORY_UF
+TheoryEngine::solve((= (g x) 0)) => SOLVE_STATUS_UNSOLVED
+TheoryEngine::solve((not (>= (+ x (* (- 1) y)) 0))): solving with THEORY_ARITH
+TheoryEngine::solve((not (>= (+ x (* (- 1) y)) 0))) => SOLVE_STATUS_UNSOLVED
+convertAndAssert(false, negated = false, removable = false)
+convertAndAssert(false, negated = false)
+toCNF(false, negated = false)
+CnfStream::getLiteral(false) => 1
+toCNF(): resulting literal: 1
+Inserting into stream clause: 1; node = false
+uf: begin presolve()
+uf: end presolve()
+unsat
+UFSYMM: clearing state due to pop

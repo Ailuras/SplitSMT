@@ -1,0 +1,1186 @@
+Invoking: (set-logic QF_LIRA)
+Invoking: (declare-fun x () Int)
+Invoking: (declare-fun y () Real)
+Invoking: (assert (and (>= x (* 3 y)) (<= x y) (< (- 2) x)))
+Constructing the PropEngine
+new var 0 with assertion level 0
+new var 1 with assertion level 0
+unchecked enqueue of  0 (-1) trail size is 0 cap is 2, assertion level is 0, reason is 4294967295, CRef_Undef
+unchecked enqueue of ~1 (-1) trail size is 1 cap is 2, assertion level is 0, reason is 4294967295, CRef_Undef
+Begin TheoryEngine::finishInit
+End TheoryEngine::finishInit
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+convertAtom(true)
+prop::newLiteral(true, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  preregister (eager): true
+  TheoryEngine::preRegister( true)
+  TheoryEngine::preRegister: true
+  SharedSolver::preRegister atom true
+  PreRegisterVisitor::alreadyVisited(true,true)
+  PreRegisterVisitor::alreadyVisited(true,true)
+  PreRegisterVisitor::visit(true,true)
+  
+  PreRegisterVisitor::visit(true,true): adding THEORY_BOOL
+  PreRegisterVisitor::visit(true,true): now registered with [THEORY_BOOL ]
+  PreRegisterVisitor::alreadyVisited(true,true)
+  SharedSolver::preRegister atom finished
+  newLiteral(true) => 0
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+convertAndAssert((not false), negated = false, removable = false)
+convertAndAssert((not false), negated = false)
+convertAndAssert(false, negated = true)
+toCNF(false, negated = true)
+convertAtom(false)
+prop::newLiteral(false, 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: boolean const
+  preregister (eager): false
+  TheoryEngine::preRegister( false)
+  TheoryEngine::preRegister: false
+  SharedSolver::preRegister atom false
+  PreRegisterVisitor::alreadyVisited(false,false)
+  PreRegisterVisitor::alreadyVisited(false,false)
+  PreRegisterVisitor::visit(false,false)
+  true: [THEORY_BOOL ]
+
+  PreRegisterVisitor::visit(false,false): adding THEORY_BOOL
+  PreRegisterVisitor::visit(false,false): now registered with [THEORY_BOOL ]
+  PreRegisterVisitor::alreadyVisited(false,false)
+  SharedSolver::preRegister atom finished
+  newLiteral(false) => 1
+CnfStream::getLiteral(false) => 1
+toCNF(): resulting literal: ~1
+Inserting into stream clause: ~1; node = (not false)
+Invoking: (push 1)
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= x (* 3 y)) (<= x y) (< (- 2) x)))
+Rewriter::rewriting: THEORY_BOOL,(and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+Pre-Rewrite: (and (>= x (* 3 y)) (<= x y) (< (- 2) x)) to (and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+setting pre-rewrite of (and (>= x (* 3 y)) (<= x y) (< (- 2) x)) to (and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+Rewriter::rewriting: THEORY_ARITH,(>= x (* 3 y))
+Pre-Rewrite: (>= x (* 3 y)) to (>= x (* 3 y))
+setting pre-rewrite of (>= x (* 3 y)) to (>= x (* 3 y))
+Rewriter::rewriting: THEORY_BUILTIN,x
+Pre-Rewrite: x to x
+setting pre-rewrite of x to x
+Post-Rewrite: x to x
+setting rewrite of x to x
+Rewriter::rewriting: THEORY_ARITH,(>= x (* 3 y))
+Rewriter::rewriting: THEORY_ARITH,(* 3 y)
+Pre-Rewrite: (* 3 y) to (* 3 y)
+setting pre-rewrite of (* 3 y) to (* 3 y)
+Rewriter::rewriting: THEORY_ARITH,3
+Pre-Rewrite: 3 to 3
+setting pre-rewrite of 3 to 3
+Post-Rewrite: 3 to 3
+setting rewrite of 3 to 3
+Rewriter::rewriting: THEORY_ARITH,(* 3 y)
+Rewriter::rewriting: THEORY_BUILTIN,y
+Pre-Rewrite: y to y
+setting pre-rewrite of y to y
+Post-Rewrite: y to y
+setting rewrite of y to y
+Rewriter::rewriting: THEORY_ARITH,(* 3 y)
+Post-Rewrite: (* 3 y) to (* 3 y)
+setting rewrite of (* 3 y) to (* 3 y)
+Rewriter::rewriting: THEORY_ARITH,(>= x (* 3 y))
+Post-Rewrite: (>= x (* 3 y)) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+setting rewrite of (>= x (* 3 y)) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Rewriter::rewriting: THEORY_BOOL,(and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+Rewriter::rewriting: THEORY_ARITH,(<= x y)
+Pre-Rewrite: (<= x y) to (<= x y)
+setting pre-rewrite of (<= x y) to (<= x y)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(<= x y)
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(<= x y)
+Post-Rewrite: (<= x y) to (>= (+ y (* (- 1) x)) 0)
+Post-Rewrite: (>= (+ y (* (- 1) x)) 0) to (>= (+ y (* (- 1) x)) 0)
+setting rewrite of (<= x y) to (>= (+ y (* (- 1) x)) 0)
+Rewriter::rewriting: THEORY_BOOL,(and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+Rewriter::rewriting: THEORY_ARITH,(< (- 2) x)
+Pre-Rewrite: (< (- 2) x) to (not (>= (- 2) x))
+Pre-Rewrite: (not (>= (- 2) x)) to (not (>= (- 2) x))
+setting pre-rewrite of (< (- 2) x) to (not (>= (- 2) x))
+Rewriter::rewriting: THEORY_ARITH,(>= (- 2) x)
+Pre-Rewrite: (>= (- 2) x) to (>= (- 2) x)
+setting pre-rewrite of (>= (- 2) x) to (>= (- 2) x)
+Rewriter::rewriting: THEORY_ARITH,(- 2)
+Pre-Rewrite: (- 2) to (- 2)
+setting pre-rewrite of (- 2) to (- 2)
+Post-Rewrite: (- 2) to (- 2)
+setting rewrite of (- 2) to (- 2)
+Rewriter::rewriting: THEORY_ARITH,(>= (- 2) x)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(>= (- 2) x)
+Post-Rewrite: (>= (- 2) x) to (not (>= x (- 1)))
+Rewriter::rewriteTo(THEORY_BOOL,(not (>= x (- 1))))
+Rewriter::rewriting: THEORY_BOOL,(not (>= x (- 1)))
+Pre-Rewrite: (not (>= x (- 1))) to (not (>= x (- 1)))
+setting pre-rewrite of (not (>= x (- 1))) to (not (>= x (- 1)))
+Rewriter::rewriting: THEORY_ARITH,(>= x (- 1))
+Pre-Rewrite: (>= x (- 1)) to (>= x (- 1))
+setting pre-rewrite of (>= x (- 1)) to (>= x (- 1))
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(>= x (- 1))
+Rewriter::rewriting: THEORY_ARITH,(- 1)
+Pre-Rewrite: (- 1) to (- 1)
+setting pre-rewrite of (- 1) to (- 1)
+Post-Rewrite: (- 1) to (- 1)
+setting rewrite of (- 1) to (- 1)
+Rewriter::rewriting: THEORY_ARITH,(>= x (- 1))
+Post-Rewrite: (>= x (- 1)) to (>= x (- 1))
+setting rewrite of (>= x (- 1)) to (>= x (- 1))
+Rewriter::rewriting: THEORY_BOOL,(not (>= x (- 1)))
+Post-Rewrite: (not (>= x (- 1))) to (not (>= x (- 1)))
+setting rewrite of (not (>= x (- 1))) to (not (>= x (- 1)))
+setting rewrite of (>= (- 2) x) to (not (>= x (- 1)))
+Rewriter::rewriting: THEORY_BOOL,(not (>= (- 2) x))
+Post-Rewrite: (not (not (>= x (- 1)))) to (>= x (- 1))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+setting rewrite of (not (>= (- 2) x)) to (>= x (- 1))
+Rewriter::rewriting: THEORY_BOOL,(and (>= x (* 3 y)) (<= x y) (< (- 2) x))
+Post-Rewrite: (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+setting rewrite of (and (>= x (* 3 y)) (<= x y) (< (- 2) x)) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Pre-Rewrite: (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+setting pre-rewrite of (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Pre-Rewrite: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+setting pre-rewrite of (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) (* (/ 1 3) x))
+Pre-Rewrite: (+ (* (- 1) y) (* (/ 1 3) x)) to (+ (* (- 1) y) (* (/ 1 3) x))
+setting pre-rewrite of (+ (* (- 1) y) (* (/ 1 3) x)) to (+ (* (- 1) y) (* (/ 1 3) x))
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) y)
+Pre-Rewrite: (* (- 1) y) to (* (- 1) y)
+setting pre-rewrite of (* (- 1) y) to (* (- 1) y)
+Rewriter::rewriting: THEORY_ARITH,(- 1)
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) y)
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) y)
+Post-Rewrite: (* (- 1) y) to (* (- 1) y)
+setting rewrite of (* (- 1) y) to (* (- 1) y)
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) (* (/ 1 3) x))
+Rewriter::rewriting: THEORY_ARITH,(* (/ 1 3) x)
+Pre-Rewrite: (* (/ 1 3) x) to (* (/ 1 3) x)
+setting pre-rewrite of (* (/ 1 3) x) to (* (/ 1 3) x)
+Rewriter::rewriting: THEORY_ARITH,(/ 1 3)
+Pre-Rewrite: (/ 1 3) to (/ 1 3)
+setting pre-rewrite of (/ 1 3) to (/ 1 3)
+Post-Rewrite: (/ 1 3) to (/ 1 3)
+setting rewrite of (/ 1 3) to (/ 1 3)
+Rewriter::rewriting: THEORY_ARITH,(* (/ 1 3) x)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(* (/ 1 3) x)
+Post-Rewrite: (* (/ 1 3) x) to (* (/ 1 3) x)
+setting rewrite of (* (/ 1 3) x) to (* (/ 1 3) x)
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) (* (/ 1 3) x))
+Post-Rewrite: (+ (* (- 1) y) (* (/ 1 3) x)) to (+ (* (- 1) y) (* (/ 1 3) x))
+setting rewrite of (+ (* (- 1) y) (* (/ 1 3) x)) to (+ (* (- 1) y) (* (/ 1 3) x))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Rewriter::rewriting: THEORY_ARITH,0
+Pre-Rewrite: 0 to 0
+setting pre-rewrite of 0 to 0
+Post-Rewrite: 0 to 0
+setting rewrite of 0 to 0
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Post-Rewrite: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+setting rewrite of (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) to (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) 0)
+Pre-Rewrite: (>= (+ y (* (- 1) x)) 0) to (>= (+ y (* (- 1) x)) 0)
+setting pre-rewrite of (>= (+ y (* (- 1) x)) 0) to (>= (+ y (* (- 1) x)) 0)
+Rewriter::rewriting: THEORY_ARITH,(+ y (* (- 1) x))
+Pre-Rewrite: (+ y (* (- 1) x)) to (+ y (* (- 1) x))
+setting pre-rewrite of (+ y (* (- 1) x)) to (+ y (* (- 1) x))
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(+ y (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) x)
+Pre-Rewrite: (* (- 1) x) to (* (- 1) x)
+setting pre-rewrite of (* (- 1) x) to (* (- 1) x)
+Rewriter::rewriting: THEORY_ARITH,(- 1)
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) x)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) x)
+Post-Rewrite: (* (- 1) x) to (* (- 1) x)
+setting rewrite of (* (- 1) x) to (* (- 1) x)
+Rewriter::rewriting: THEORY_ARITH,(+ y (* (- 1) x))
+Post-Rewrite: (+ y (* (- 1) x)) to (+ y (* (- 1) x))
+setting rewrite of (+ y (* (- 1) x)) to (+ y (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) 0)
+Rewriter::rewriting: THEORY_ARITH,0
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) 0)
+Post-Rewrite: (>= (+ y (* (- 1) x)) 0) to (>= (+ y (* (- 1) x)) 0)
+setting rewrite of (>= (+ y (* (- 1) x)) 0) to (>= (+ y (* (- 1) x)) 0)
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Rewriter::rewriting: THEORY_ARITH,(>= x (- 1))
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Post-Rewrite: (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+setting rewrite of (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))) to (and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1)))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+TheoryEngine::solve((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): solving with THEORY_ARITH
+TheoryEngine::solve((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => SOLVE_STATUS_UNSOLVED
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+TheoryEngine::solve((>= (+ y (* (- 1) x)) 0)): solving with THEORY_ARITH
+TheoryEngine::solve((>= (+ y (* (- 1) x)) 0)) => SOLVE_STATUS_UNSOLVED
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+TheoryEngine::solve((>= x (- 1))): solving with THEORY_ARITH
+TheoryEngine::solve((>= x (- 1))) => SOLVE_STATUS_UNSOLVED
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= x (- 1)))
+Rewriter::rewriteTo(THEORY_ARITH,(* (- 1) x))
+Rewriter::rewriteTo(THEORY_ARITH,(* (- 1) x))
+Rewriter::rewriteTo(THEORY_ARITH,(+ y (* (- 1) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(+ y (* (- 1) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(* (/ 1 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(* (/ 1 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(* (- 1) y))
+Rewriter::rewriteTo(THEORY_ARITH,(* (- 1) y))
+Rewriter::rewriteTo(THEORY_ARITH,(+ (* (- 1) y) (* (/ 1 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(+ (* (- 1) y) (* (/ 1 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+assertFormula((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false, removable = false)
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+CnfStream::convertAndAssertAnd((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+toCNF((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+convertAtom((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+prop::newLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 2 with assertion level 0
+  preregister (eager): (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+  TheoryEngine::preRegister( (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  TheoryEngine::preRegister: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+  SharedSolver::preRegister atom (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::visit(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+
+  PreRegisterVisitor::visit(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): adding THEORY_ARITH
+  PreRegisterVisitor::visit(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited(0,(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((/ 1 3),(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited(x,(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited(x,(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited(x,(* (/ 1 3) x))
+  PreRegisterVisitor::visit(x,(* (/ 1 3) x))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit(x,(* (/ 1 3) x)): adding THEORY_ARITH
+  PreRegisterVisitor::visit(x,(* (/ 1 3) x)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited(x,(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited((/ 1 3),(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited((/ 1 3),(* (/ 1 3) x))
+  PreRegisterVisitor::visit((/ 1 3),(* (/ 1 3) x))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((/ 1 3),(* (/ 1 3) x)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((/ 1 3),(* (/ 1 3) x)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((/ 1 3),(* (/ 1 3) x))
+  PreRegisterVisitor::alreadyVisited((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::visit((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((* (/ 1 3) x),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((- 1),(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited(y,(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited(y,(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited(y,(* (- 1) y))
+  PreRegisterVisitor::visit(y,(* (- 1) y))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit(y,(* (- 1) y)): adding THEORY_ARITH
+  PreRegisterVisitor::visit(y,(* (- 1) y)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited(y,(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited((- 1),(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited((- 1),(* (- 1) y))
+  PreRegisterVisitor::visit((- 1),(* (- 1) y))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((- 1),(* (- 1) y)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((- 1),(* (- 1) y)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((- 1),(* (- 1) y))
+  PreRegisterVisitor::alreadyVisited((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::visit((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((* (- 1) y),(+ (* (- 1) y) (* (/ 1 3) x)))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::visit((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) (* (/ 1 3) x)),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+  SharedSolver::preRegister atom finished
+  newLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+toCNF(): resulting literal: 2
+Inserting into stream clause: 2; node = (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+unchecked enqueue of  2 (-1) trail size is 2 cap is 4, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(2)
+getNode(2) => (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+enqueueing theory literal 2 (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+Registering a unit clause  2, maybe input, with assigned var value true, user_level(0)
+:BOOL-PROP: getNode(0)
+getNode(0) => true
+true
+:BOOL-PROP: getNode(~1)
+getNode(~1) => (not false)
+(not false)
+:BOOL-PROP: getNode(2)
+getNode(2) => (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+convertAndAssert((>= (+ y (* (- 1) x)) 0), negated = false)
+toCNF((>= (+ y (* (- 1) x)) 0), negated = false)
+convertAtom((>= (+ y (* (- 1) x)) 0))
+prop::newLiteral((>= (+ y (* (- 1) x)) 0), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 3 with assertion level 0
+  preregister (eager): (>= (+ y (* (- 1) x)) 0)
+  TheoryEngine::preRegister( (>= (+ y (* (- 1) x)) 0))
+  TheoryEngine::preRegister: (>= (+ y (* (- 1) x)) 0)
+  SharedSolver::preRegister atom (>= (+ y (* (- 1) x)) 0)
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::alreadyVisited((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::alreadyVisited(0,(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::alreadyVisited((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::alreadyVisited(y,(+ y (* (- 1) x)))
+  PreRegisterVisitor::alreadyVisited((* (- 1) x),(+ y (* (- 1) x)))
+  PreRegisterVisitor::alreadyVisited((* (- 1) x),(+ y (* (- 1) x)))
+  PreRegisterVisitor::alreadyVisited((- 1),(* (- 1) x))
+  PreRegisterVisitor::alreadyVisited(x,(* (- 1) x))
+  PreRegisterVisitor::alreadyVisited((* (- 1) x),(+ y (* (- 1) x)))
+  PreRegisterVisitor::visit((* (- 1) x),(+ y (* (- 1) x)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((* (- 1) x),(+ y (* (- 1) x))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((* (- 1) x),(+ y (* (- 1) x))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((* (- 1) x),(+ y (* (- 1) x)))
+  PreRegisterVisitor::alreadyVisited((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::visit((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0))
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0)): adding THEORY_ARITH
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0)): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) 0),(>= (+ y (* (- 1) x)) 0))
+  SharedSolver::preRegister atom finished
+  newLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+CnfStream::getLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+toCNF(): resulting literal: 3
+Inserting into stream clause: 3; node = (>= (+ y (* (- 1) x)) 0)
+unchecked enqueue of  3 (-1) trail size is 3 cap is 4, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(3)
+getNode(3) => (>= (+ y (* (- 1) x)) 0)
+enqueueing theory literal 3 (>= (+ y (* (- 1) x)) 0)
+Registering a unit clause  3, maybe input, with assigned var value true, user_level(0)
+:BOOL-PROP: getNode(3)
+getNode(3) => (>= (+ y (* (- 1) x)) 0)
+(>= (+ y (* (- 1) x)) 0)
+convertAndAssert((>= x (- 1)), negated = false)
+toCNF((>= x (- 1)), negated = false)
+convertAtom((>= x (- 1)))
+prop::newLiteral((>= x (- 1)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 4 with assertion level 0
+  preregister (eager): (>= x (- 1))
+  TheoryEngine::preRegister( (>= x (- 1)))
+  TheoryEngine::preRegister: (>= x (- 1))
+  SharedSolver::preRegister atom (>= x (- 1))
+  PreRegisterVisitor::alreadyVisited((>= x (- 1)),(>= x (- 1)))
+  PreRegisterVisitor::alreadyVisited(x,(>= x (- 1)))
+  PreRegisterVisitor::alreadyVisited((- 1),(>= x (- 1)))
+  PreRegisterVisitor::alreadyVisited((>= x (- 1)),(>= x (- 1)))
+  PreRegisterVisitor::visit((>= x (- 1)),(>= x (- 1)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((>= x (- 1)),(>= x (- 1))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((>= x (- 1)),(>= x (- 1))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((>= x (- 1)),(>= x (- 1)))
+  SharedSolver::preRegister atom finished
+  newLiteral((>= x (- 1))) => 4
+CnfStream::getLiteral((>= x (- 1))) => 4
+toCNF(): resulting literal: 4
+Inserting into stream clause: 4; node = (>= x (- 1))
+unchecked enqueue of  4 (-1) trail size is 4 cap is 8, assertion level is 0, reason is 4294967295, CRef_Undef
+getNode(4)
+getNode(4) => (>= x (- 1))
+enqueueing theory literal 4 (>= x (- 1))
+Registering a unit clause  4, maybe input, with assigned var value true, user_level(0)
+:BOOL-PROP: getNode(4)
+getNode(4) => (>= x (- 1))
+(>= x (- 1))
+assertFormula((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))))
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false, removable = false)
+convertAndAssert((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+CnfStream::convertAndAssertAnd((and (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (>= (+ y (* (- 1) x)) 0) (>= x (- 1))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+toCNF((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), negated = false)
+CnfStream::getLiteral((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) => 2
+toCNF(): resulting literal: 2
+Inserting into stream clause: 2; node = (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+convertAndAssert((>= (+ y (* (- 1) x)) 0), negated = false)
+toCNF((>= (+ y (* (- 1) x)) 0), negated = false)
+CnfStream::getLiteral((>= (+ y (* (- 1) x)) 0)) => 3
+toCNF(): resulting literal: 3
+Inserting into stream clause: 3; node = (>= (+ y (* (- 1) x)) 0)
+convertAndAssert((>= x (- 1)), negated = false)
+toCNF((>= x (- 1)), negated = false)
+CnfStream::getLiteral((>= x (- 1))) => 4
+toCNF(): resulting literal: 4
+Inserting into stream clause: 4; node = (>= x (- 1))
+in user push, increasing assertion level to 1
+MINISAT PUSH assertionLevel is 1, trail.size is 5
+push()
+Invoking: (assert (= (- y x) (/ 2 3)))
+Invoking: (push 1)
+Rewriter::rewriteTo(THEORY_ARITH,(= (- y x) (/ 2 3)))
+Rewriter::rewriting: THEORY_ARITH,(= (- y x) (/ 2 3))
+Pre-Rewrite: (= (- y x) (/ 2 3)) to (= (- y x) (/ 2 3))
+setting pre-rewrite of (= (- y x) (/ 2 3)) to (= (- y x) (/ 2 3))
+Rewriter::rewriting: THEORY_ARITH,(- y x)
+Pre-Rewrite: (- y x) to (+ y (* (- 1) x))
+Pre-Rewrite: (+ y (* (- 1) x)) to (+ y (* (- 1) x))
+setting pre-rewrite of (- y x) to (+ y (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(= (- y x) (/ 2 3))
+Rewriter::rewriting: THEORY_ARITH,(/ 2 3)
+Pre-Rewrite: (/ 2 3) to (/ 2 3)
+setting pre-rewrite of (/ 2 3) to (/ 2 3)
+Post-Rewrite: (/ 2 3) to (/ 2 3)
+setting rewrite of (/ 2 3) to (/ 2 3)
+Rewriter::rewriting: THEORY_ARITH,(= (- y x) (/ 2 3))
+Post-Rewrite: (= (+ y (* (- 1) x)) (/ 2 3)) to (= y (+ (/ 2 3) x))
+setting rewrite of (= (- y x) (/ 2 3)) to (= y (+ (/ 2 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriting: THEORY_ARITH,(= y (+ (/ 2 3) x))
+Pre-Rewrite: (= y (+ (/ 2 3) x)) to (= y (+ (/ 2 3) x))
+setting pre-rewrite of (= y (+ (/ 2 3) x)) to (= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x)
+Pre-Rewrite: (+ (/ 2 3) x) to (+ (/ 2 3) x)
+setting pre-rewrite of (+ (/ 2 3) x) to (+ (/ 2 3) x)
+Rewriter::rewriting: THEORY_ARITH,(/ 2 3)
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x)
+Post-Rewrite: (+ (/ 2 3) x) to (+ (/ 2 3) x)
+setting rewrite of (+ (/ 2 3) x) to (+ (/ 2 3) x)
+Rewriter::rewriting: THEORY_ARITH,(= y (+ (/ 2 3) x))
+Post-Rewrite: (= y (+ (/ 2 3) x)) to (= y (+ (/ 2 3) x))
+setting rewrite of (= y (+ (/ 2 3) x)) to (= y (+ (/ 2 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+TheoryEngine::solve((= y (+ (/ 2 3) x))): solving with THEORY_ARITH
+Rewriter::rewriteTo(THEORY_ARITH,(+ (/ 2 3) x))
+TheoryEngine::solve((= y (+ (/ 2 3) x))) => SOLVE_STATUS_SOLVED
+Rewriter::rewriteTo(THEORY_ARITH,(let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1)))
+Rewriter::rewriting: THEORY_ARITH,(let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1))
+Pre-Rewrite: (let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1)) to true
+setting pre-rewrite of (let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1)) to true
+Post-Rewrite: true to true
+setting rewrite of true to true
+Rewriter::rewriteTo(THEORY_ARITH,(let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1)))
+Rewriter::rewriting: THEORY_ARITH,(let ((_let_1 (+ (/ 2 3) x))) (= _let_1 _let_1))
+Post-Rewrite: true to true
+setting rewrite of true to true
+Rewriter::rewriteTo(THEORY_ARITH,(+ (/ 2 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(+ (/ 2 3) x))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_ARITH,(= y (+ (/ 2 3) x)))
+Rewriter::rewriteTo(THEORY_BOOL,(let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1))))
+Rewriter::rewriting: THEORY_BOOL,(let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1)))
+Pre-Rewrite: (let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1))) to (let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1)))
+setting pre-rewrite of (let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1))) to (let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1)))
+Rewriter::rewriting: THEORY_ARITH,(<= y (+ (/ 2 3) x))
+Pre-Rewrite: (<= y (+ (/ 2 3) x)) to (<= y (+ (/ 2 3) x))
+setting pre-rewrite of (<= y (+ (/ 2 3) x)) to (<= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(<= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x)
+Rewriter::rewriting: THEORY_ARITH,(<= y (+ (/ 2 3) x))
+Post-Rewrite: (<= y (+ (/ 2 3) x)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Post-Rewrite: (>= (+ (* (- 1) y) x) (/ (- 2) 3)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+setting rewrite of (<= y (+ (/ 2 3) x)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Rewriter::rewriting: THEORY_BOOL,(let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1)))
+Rewriter::rewriting: THEORY_ARITH,(>= y (+ (/ 2 3) x))
+Pre-Rewrite: (>= y (+ (/ 2 3) x)) to (>= y (+ (/ 2 3) x))
+setting pre-rewrite of (>= y (+ (/ 2 3) x)) to (>= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_BUILTIN,y
+Rewriter::rewriting: THEORY_ARITH,(>= y (+ (/ 2 3) x))
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x)
+Rewriter::rewriting: THEORY_ARITH,(>= y (+ (/ 2 3) x))
+Post-Rewrite: (>= y (+ (/ 2 3) x)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+setting rewrite of (>= y (+ (/ 2 3) x)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+Rewriter::rewriting: THEORY_BOOL,(let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1)))
+Post-Rewrite: (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+setting rewrite of (let ((_let_1 (+ (/ 2 3) x))) (and (<= y _let_1) (>= y _let_1))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))))
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Pre-Rewrite: (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+setting pre-rewrite of (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Pre-Rewrite: (>= (+ (* (- 1) y) x) (/ (- 2) 3)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+setting pre-rewrite of (>= (+ (* (- 1) y) x) (/ (- 2) 3)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) x)
+Pre-Rewrite: (+ (* (- 1) y) x) to (+ (* (- 1) y) x)
+setting pre-rewrite of (+ (* (- 1) y) x) to (+ (* (- 1) y) x)
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) y)
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) x)
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(+ (* (- 1) y) x)
+Post-Rewrite: (+ (* (- 1) y) x) to (+ (* (- 1) y) x)
+setting rewrite of (+ (* (- 1) y) x) to (+ (* (- 1) y) x)
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Rewriter::rewriting: THEORY_ARITH,(/ (- 2) 3)
+Pre-Rewrite: (/ (- 2) 3) to (/ (- 2) 3)
+setting pre-rewrite of (/ (- 2) 3) to (/ (- 2) 3)
+Post-Rewrite: (/ (- 2) 3) to (/ (- 2) 3)
+setting rewrite of (/ (- 2) 3) to (/ (- 2) 3)
+Rewriter::rewriting: THEORY_ARITH,(>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Post-Rewrite: (>= (+ (* (- 1) y) x) (/ (- 2) 3)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+setting rewrite of (>= (+ (* (- 1) y) x) (/ (- 2) 3)) to (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) (/ 2 3))
+Pre-Rewrite: (>= (+ y (* (- 1) x)) (/ 2 3)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+setting pre-rewrite of (>= (+ y (* (- 1) x)) (/ 2 3)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+Rewriter::rewriting: THEORY_ARITH,(+ y (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) (/ 2 3))
+Rewriter::rewriting: THEORY_ARITH,(/ 2 3)
+Rewriter::rewriting: THEORY_ARITH,(>= (+ y (* (- 1) x)) (/ 2 3))
+Post-Rewrite: (>= (+ y (* (- 1) x)) (/ 2 3)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+setting rewrite of (>= (+ y (* (- 1) x)) (/ 2 3)) to (>= (+ y (* (- 1) x)) (/ 2 3))
+Rewriter::rewriting: THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Post-Rewrite: (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+setting rewrite of (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))) to (and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ y (* (- 1) x)) (/ 2 3)))
+Rewriter::rewriteTo(THEORY_ARITH,(+ (* (- 1) y) x))
+Rewriter::rewriteTo(THEORY_ARITH,(+ (* (- 1) y) x))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+Rewriter::rewriteTo(THEORY_ARITH,(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))))
+Rewriter::rewriteTo(THEORY_BOOL,(and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))))
+assertFormula(true)
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+assertFormula((and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))))
+convertAndAssert((and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))), negated = false, removable = false)
+convertAndAssert((and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))), negated = false)
+CnfStream::convertAndAssertAnd((and (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (>= (+ y (* (- 1) x)) (/ 2 3))), negated = false)
+convertAndAssert((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = false)
+toCNF((>= (+ (* (- 1) y) x) (/ (- 2) 3)), negated = false)
+convertAtom((>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+prop::newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 5 with assertion level 1
+  preregister (eager): (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+  TheoryEngine::preRegister( (>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  TheoryEngine::preRegister: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+  SharedSolver::preRegister atom (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::visit((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+(>= x (- 1)): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((/ (- 2) 3),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((* (- 1) y),(+ (* (- 1) y) x))
+  PreRegisterVisitor::alreadyVisited(x,(+ (* (- 1) y) x))
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::visit((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+(>= x (- 1)): [THEORY_ARITH ]
+(/ (- 2) 3): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((+ (* (- 1) y) x),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+(>= x (- 1)): [THEORY_ARITH ]
+(/ (- 2) 3): [THEORY_ARITH ]
+(+ (* (- 1) y) x): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((>= (+ (* (- 1) y) x) (/ (- 2) 3)),(>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+  SharedSolver::preRegister atom finished
+  newLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+CnfStream::getLiteral((>= (+ (* (- 1) y) x) (/ (- 2) 3))) => 5
+toCNF(): resulting literal: 5
+Inserting into stream clause: 5; node = (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+unchecked enqueue of  5 (-1) trail size is 5 cap is 8, assertion level is 1, reason is 4294967295, CRef_Undef
+getNode(5)
+getNode(5) => (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+enqueueing theory literal 5 (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+Registering a unit clause  5, maybe input, with assigned var value true, user_level(1)
+:BOOL-PROP: getNode(5)
+getNode(5) => (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+(>= (+ (* (- 1) y) x) (/ (- 2) 3))
+convertAndAssert((>= (+ y (* (- 1) x)) (/ 2 3)), negated = false)
+toCNF((>= (+ y (* (- 1) x)) (/ 2 3)), negated = false)
+convertAtom((>= (+ y (* (- 1) x)) (/ 2 3)))
+prop::newLiteral((>= (+ y (* (- 1) x)) (/ 2 3)), 1)
+  prop::newLiteral: node already registered
+  prop::newLiteral: new var
+  new var 6 with assertion level 1
+  preregister (eager): (>= (+ y (* (- 1) x)) (/ 2 3))
+  TheoryEngine::preRegister( (>= (+ y (* (- 1) x)) (/ 2 3)))
+  TheoryEngine::preRegister: (>= (+ y (* (- 1) x)) (/ 2 3))
+  SharedSolver::preRegister atom (>= (+ y (* (- 1) x)) (/ 2 3))
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::alreadyVisited((+ y (* (- 1) x)),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::alreadyVisited((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::alreadyVisited((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::alreadyVisited((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::visit((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+(>= x (- 1)): [THEORY_ARITH ]
+(/ (- 2) 3): [THEORY_ARITH ]
+(+ (* (- 1) y) x): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) x) (/ (- 2) 3)): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((/ 2 3),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  true: [THEORY_BOOL ]
+false: [THEORY_BOOL ]
+0: [THEORY_ARITH ]
+x: [THEORY_ARITH ]
+(/ 1 3): [THEORY_ARITH ]
+(* (/ 1 3) x): [THEORY_ARITH ]
+y: [THEORY_ARITH ]
+(- 1): [THEORY_ARITH ]
+(* (- 1) y): [THEORY_ARITH ]
+(+ (* (- 1) y) (* (/ 1 3) x)): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) (* (/ 1 3) x)) 0): [THEORY_ARITH ]
+(* (- 1) x): [THEORY_ARITH ]
+(+ y (* (- 1) x)): [THEORY_ARITH ]
+(>= (+ y (* (- 1) x)) 0): [THEORY_ARITH ]
+(>= x (- 1)): [THEORY_ARITH ]
+(/ (- 2) 3): [THEORY_ARITH ]
+(+ (* (- 1) y) x): [THEORY_ARITH ]
+(>= (+ (* (- 1) y) x) (/ (- 2) 3)): [THEORY_ARITH ]
+(/ 2 3): [THEORY_ARITH ]
+
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3))): adding THEORY_ARITH
+  PreRegisterVisitor::visit((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3))): now registered with [THEORY_ARITH ]
+  PreRegisterVisitor::alreadyVisited((>= (+ y (* (- 1) x)) (/ 2 3)),(>= (+ y (* (- 1) x)) (/ 2 3)))
+  SharedSolver::preRegister atom finished
+  newLiteral((>= (+ y (* (- 1) x)) (/ 2 3))) => 6
+CnfStream::getLiteral((>= (+ y (* (- 1) x)) (/ 2 3))) => 6
+toCNF(): resulting literal: 6
+Inserting into stream clause: 6; node = (>= (+ y (* (- 1) x)) (/ 2 3))
+unchecked enqueue of  6 (-1) trail size is 6 cap is 8, assertion level is 1, reason is 4294967295, CRef_Undef
+getNode(6)
+getNode(6) => (>= (+ y (* (- 1) x)) (/ 2 3))
+enqueueing theory literal 6 (>= (+ y (* (- 1) x)) (/ 2 3))
+Registering a unit clause  6, maybe input, with assigned var value true, user_level(1)
+:BOOL-PROP: getNode(6)
+getNode(6) => (>= (+ y (* (- 1) x)) (/ 2 3))
+(>= (+ y (* (- 1) x)) (/ 2 3))
+assertFormula(true)
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+in user push, increasing assertion level to 2
+MINISAT PUSH assertionLevel is 2, trail.size is 7
+push()
+Invoking: (assert (not (<= (- y x) (/ 1 3))))
+Invoking: (check-sat)
+* ~COMMAND: check-sat~
+Rewriter::rewriteTo(THEORY_BOOL,(not (<= (- (+ (/ 2 3) x) x) (/ 1 3))))
+Rewriter::rewriting: THEORY_BOOL,(not (<= (- (+ (/ 2 3) x) x) (/ 1 3)))
+Pre-Rewrite: (not (<= (- (+ (/ 2 3) x) x) (/ 1 3))) to (not (<= (- (+ (/ 2 3) x) x) (/ 1 3)))
+setting pre-rewrite of (not (<= (- (+ (/ 2 3) x) x) (/ 1 3))) to (not (<= (- (+ (/ 2 3) x) x) (/ 1 3)))
+Rewriter::rewriting: THEORY_ARITH,(<= (- (+ (/ 2 3) x) x) (/ 1 3))
+Pre-Rewrite: (<= (- (+ (/ 2 3) x) x) (/ 1 3)) to (<= (- (+ (/ 2 3) x) x) (/ 1 3))
+setting pre-rewrite of (<= (- (+ (/ 2 3) x) x) (/ 1 3)) to (<= (- (+ (/ 2 3) x) x) (/ 1 3))
+Rewriter::rewriting: THEORY_ARITH,(- (+ (/ 2 3) x) x)
+Pre-Rewrite: (- (+ (/ 2 3) x) x) to (+ (+ (/ 2 3) x) (* (- 1) x))
+Pre-Rewrite: (+ (+ (/ 2 3) x) (* (- 1) x)) to (+ (/ 2 3) x (* (- 1) x))
+setting pre-rewrite of (- (+ (/ 2 3) x) x) to (+ (/ 2 3) x (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(/ 2 3)
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x (* (- 1) x))
+Rewriter::rewriting: THEORY_BUILTIN,x
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x (* (- 1) x))
+Rewriter::rewriting: THEORY_ARITH,(* (- 1) x)
+Rewriter::rewriting: THEORY_ARITH,(+ (/ 2 3) x (* (- 1) x))
+Post-Rewrite: (+ (/ 2 3) x (* (- 1) x)) to (/ 2 3)
+setting rewrite of (+ (/ 2 3) x (* (- 1) x)) to (/ 2 3)
+Rewriter::rewriting: THEORY_ARITH,(<= (- (+ (/ 2 3) x) x) (/ 1 3))
+Rewriter::rewriting: THEORY_ARITH,(/ 1 3)
+Rewriter::rewriting: THEORY_ARITH,(<= (- (+ (/ 2 3) x) x) (/ 1 3))
+Post-Rewrite: (<= (/ 2 3) (/ 1 3)) to false
+Rewriter::rewriteTo(THEORY_BOOL,false)
+Rewriter::rewriting: THEORY_BOOL,false
+Pre-Rewrite: false to false
+setting pre-rewrite of false to false
+Post-Rewrite: false to false
+setting rewrite of false to false
+setting rewrite of (<= (- (+ (/ 2 3) x) x) (/ 1 3)) to false
+Rewriter::rewriting: THEORY_BOOL,(not (<= (- (+ (/ 2 3) x) x) (/ 1 3)))
+Post-Rewrite: (not false) to true
+setting rewrite of (not (<= (- (+ (/ 2 3) x) x) (/ 1 3))) to true
+assertFormula(true)
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+assertFormula(true)
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+assertFormula(true)
+convertAndAssert(true, negated = false, removable = false)
+convertAndAssert(true, negated = false)
+toCNF(true, negated = false)
+CnfStream::getLiteral(true) => 0
+toCNF(): resulting literal: 0
+Inserting into stream clause: 0; node = true
+PropEngine::checkSat()
+DecisionManager: presolve.
+DecisionManager: Register strategy : th_arrays_dec, id = 12
+TheoryStrings::Presolving : get fmf options false
+Finished presolve
+nvars = 7
+TheoryProxy: check EFFORT_STANDARD
+assert: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+TheoryEngine::assertFact((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0))
+TheoryEngine::assertToTheory((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0),THEORY_ARITH, THEORY_SAT_SOLVER)
+Theory<THEORY_ARITH>::assertFact[3]((>= (+ (* (- 1) y) (* (/ 1 3) x)) 0), true)
+assert: (>= (+ y (* (- 1) x)) 0)
+TheoryEngine::assertFact((>= (+ y (* (- 1) x)) 0))
+TheoryEngine::assertToTheory((>= (+ y (* (- 1) x)) 0), (>= (+ y (* (- 1) x)) 0),THEORY_ARITH, THEORY_SAT_SOLVER)
+Theory<THEORY_ARITH>::assertFact[3]((>= (+ y (* (- 1) x)) 0), true)
+assert: (>= x (- 1))
+TheoryEngine::assertFact((>= x (- 1)))
+TheoryEngine::assertToTheory((>= x (- 1)), (>= x (- 1)),THEORY_ARITH, THEORY_SAT_SOLVER)
+Theory<THEORY_ARITH>::assertFact[3]((>= x (- 1)), true)
+assert: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+TheoryEngine::assertFact((>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+TheoryEngine::assertToTheory((>= (+ (* (- 1) y) x) (/ (- 2) 3)), (>= (+ (* (- 1) y) x) (/ (- 2) 3)),THEORY_ARITH, THEORY_SAT_SOLVER)
+Theory<THEORY_ARITH>::assertFact[3]((>= (+ (* (- 1) y) x) (/ (- 2) 3)), true)
+assert: (>= (+ y (* (- 1) x)) (/ 2 3))
+TheoryEngine::assertFact((>= (+ y (* (- 1) x)) (/ 2 3)))
+TheoryEngine::assertToTheory((>= (+ y (* (- 1) x)) (/ 2 3)), (>= (+ y (* (- 1) x)) (/ 2 3)),THEORY_ARITH, THEORY_SAT_SOLVER)
+Theory<THEORY_ARITH>::assertFact[3]((>= (+ y (* (- 1) x)) (/ 2 3)), true)
+TheoryEngine::check(EFFORT_STANDARD): d_factsAsserted = true
+TheoryEngine::check(EFFORT_STANDARD): running check
+
+--------------------------------------------
+Assertions of THEORY_BUILTIN: 
+--------------------------------------------
+Assertions of THEORY_BOOL: 
+--------------------------------------------
+Assertions of THEORY_ARITH: 
+[0]: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+[1]: (>= (+ y (* (- 1) x)) 0)
+[2]: (>= x (- 1))
+[3]: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+[4]: (>= (+ y (* (- 1) x)) (/ 2 3))
+Theory::preCheck EFFORT_STANDARD THEORY_ARITH
+Theory::process fact queue THEORY_ARITH
+Theory::get() => (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) (4 left)
+Theory::preNotifyFact (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0) THEORY_ARITH
+setAssumption(2 <= (0,0)(node (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)))
+before
+model2: (+ y (* (/ (- 1) 3) x)) (0,0) no lb (0,0) 2 <= (0,0)(node (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) 
+2 is basic.
+after
+model2: (+ y (* (/ (- 1) 3) x)) (0,0) no lb (0,0) 2 <= (0,0)(node (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)) 
+2 is basic.
+Theory::get() => (>= (+ y (* (- 1) x)) 0) (3 left)
+Theory::preNotifyFact (>= (+ y (* (- 1) x)) 0) THEORY_ARITH
+setAssumption(3 >= (0,0)(node (>= (+ y (* (- 1) x)) 0)))
+before
+model3: (+ y (* (- 1) x)) (0,0) (0,0) 3 >= (0,0)(node (>= (+ y (* (- 1) x)) 0)) no ub 
+3 is basic.
+after
+model3: (+ y (* (- 1) x)) (0,0) (0,0) 3 >= (0,0)(node (>= (+ y (* (- 1) x)) 0)) no ub 
+3 is basic.
+Theory::get() => (>= x (- 1)) (2 left)
+Theory::preNotifyFact (>= x (- 1)) THEORY_ARITH
+setAssumption(1 >= (-1,0)(node (>= x (- 1))))
+before
+model1: x (0,0) (-1,0) 1 >= (-1,0)(node (>= x (- 1))) no ub 
+1 is non-basic.
+after
+model1: x (0,0) (-1,0) 1 >= (-1,0)(node (>= x (- 1))) no ub 
+1 is non-basic.
+Theory::get() => (>= (+ (* (- 1) y) x) (/ (- 2) 3)) (1 left)
+Theory::preNotifyFact (>= (+ (* (- 1) y) x) (/ (- 2) 3)) THEORY_ARITH
+setAssumption(3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))))
+before
+model3: (+ y (* (- 1) x)) (0,0) (0,0) 3 >= (0,0)(node (>= (+ y (* (- 1) x)) 0)) (2/3,0) 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))) 
+3 is basic.
+after
+model3: (+ y (* (- 1) x)) (0,0) (0,0) 3 >= (0,0)(node (>= (+ y (* (- 1) x)) 0)) (2/3,0) 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))) 
+3 is basic.
+Theory::get() => (>= (+ y (* (- 1) x)) (/ 2 3)) (0 left)
+Theory::preNotifyFact (>= (+ y (* (- 1) x)) (/ 2 3)) THEORY_ARITH
+setAssumption(3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3))))
+equals constant 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3)))
+3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+Explaining: 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3))) with rule {ConstraintRule, 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3)))
+d_proofType= AssumeAP, 
+d_antecedentEnd= 18446744073709551615
+}
+  already asserted
+Explaining: 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))) with rule {ConstraintRule, 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3)))
+d_proofType= AssumeAP, 
+d_antecedentEnd= 18446744073709551615
+}
+  already asserted
+Explaining: 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3))) with rule {ConstraintRule, 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3)))
+d_proofType= AssumeAP, 
+d_antecedentEnd= 18446744073709551615
+}
+  already asserted
+before
+model3: (+ y (* (- 1) x)) (0,0) (2/3,0) 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3))) (2/3,0) 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))) 
+3 is basic.
+after
+model3: (+ y (* (- 1) x)) (0,0) (2/3,0) 3 >= (2/3,0)(node (>= (+ y (* (- 1) x)) (/ 2 3))) (2/3,0) 3 <= (2/3,0)(node (>= (+ (* (- 1) y) x) (/ (- 2) 3))) 
+3 is basic.
+Theory::postCheck THEORY_ARITH
+Theory::finish check THEORY_ARITH
+TheoryEngine::check(EFFORT_STANDARD): running propagation after the initial check
+TheoryEngine::check(EFFORT_STANDARD): done, we are sat with no new lemmas, need check = NO
+old trail size is 7, propagating 0 lits...
+TheoryProxy: getNextDecisionRequest
+DecisionManager: Get next decision...
+DecisionManager:  th_arrays_dec has no decisions.
+DecisionManager:  -> no decisions.
+...return next decision
+Doing a full theory check...
+TheoryProxy: check EFFORT_FULL
+TheoryEngine::check(EFFORT_FULL): d_factsAsserted = false
+TheoryEngine::check(EFFORT_FULL): running check
+
+--------------------------------------------
+Assertions of THEORY_BUILTIN: 
+--------------------------------------------
+Assertions of THEORY_BOOL: 
+--------------------------------------------
+Assertions of THEORY_ARITH: 
+[0]: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+[1]: (>= (+ y (* (- 1) x)) 0)
+[2]: (>= x (- 1))
+[3]: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+[4]: (>= (+ y (* (- 1) x)) (/ 2 3))
+
+--------------------------------------------
+Assertions of THEORY_BUILTIN: 
+--------------------------------------------
+Assertions of THEORY_BOOL: 
+--------------------------------------------
+Assertions of THEORY_ARITH: 
+[0]: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+[1]: (>= (+ y (* (- 1) x)) 0)
+[2]: (>= x (- 1))
+[3]: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+[4]: (>= (+ y (* (- 1) x)) (/ 2 3))
+Theory::preCheck EFFORT_FULL THEORY_ARITH
+Theory::process fact queue THEORY_ARITH
+Theory::postCheck THEORY_ARITH
+Theory::finish check THEORY_ARITH
+TheoryEngine::check(EFFORT_FULL): running propagation after the initial check
+
+--------------------------------------------
+Assertions of THEORY_BUILTIN: 
+--------------------------------------------
+Assertions of THEORY_BOOL: 
+--------------------------------------------
+Assertions of THEORY_ARITH: 
+[0]: (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+[1]: (>= (+ y (* (- 1) x)) 0)
+[2]: (>= x (- 1))
+[3]: (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+[4]: (>= (+ y (* (- 1) x)) (/ 2 3))
+TheoryEngine::check(EFFORT_FULL): done, we are sat with no new lemmas, need check = NO
+old trail size is 7, propagating 0 lits...
+TheoryProxy: theoryNeedCheck returns 0
+0 = 1
+1 = 0
+2 = 1
+3 = 1
+4 = 1
+5 = 1
+6 = 1
+Literal | Value | Expr
+---------------------------------------------------------
+'0' 1 true
+'5' 1 (>= (+ (* (- 1) y) x) (/ (- 2) 3))
+'3' 1 (>= (+ y (* (- 1) x)) 0)
+'1' 0 false
+'2' 1 (>= (+ (* (- 1) y) (* (/ 1 3) x)) 0)
+'4' 1 (>= x (- 1))
+'6' 1 (>= (+ y (* (- 1) x)) (/ 2 3))
+PropEngine::checkSat() => 1
+sat
+Invoking: (pop 1)
+minisat::cancelUntil(0)
+resetTrail()
+in user pop, decreasing assertion level to 1
+  == unassigning  6
+MINISAT POP assertionLevel is 1, trail.size is 7
+pop()
+Invoking: (pop 1)
+in user pop, decreasing assertion level to 0
+  == unassigning  6
+  == unassigning  5
+  == unassigning  4
+MINISAT POP assertionLevel is 0, trail.size is 5
+pop()
+Destructing the PropEngine
