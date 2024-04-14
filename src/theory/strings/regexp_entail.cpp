@@ -801,6 +801,31 @@ Node RegExpEntail::getConstantBoundLengthForRegexp(TNode n, bool isLower) const
   return ret;
 }
 
+bool RegExpEntail::canConstructed(TNode r1, TNode r2) {
+  if (r1 == r2) {
+    return true;
+  }
+  bool ret = false;
+  Kind k2 = r2.getKind();
+  if (k2 == Kind::STRING_TO_REGEXP) {
+    if (r2[0].isConst() && isConstRegExp(r1)) {
+      String s = r2[0].getConst<String>();
+      return testConstStringInRegExp(s, r1);
+    }
+    return false;
+  } else if (k2 == Kind::REGEXP_UNION) {
+    ret = true;
+    for (const Node& r : r2) {
+      if (!canConstructed(r1, r)) {
+        ret = false;
+        break;
+      }
+    }
+    return ret;
+  }
+  return false;
+}
+
 bool RegExpEntail::regExpIncludes(Node r1,
                                   Node r2,
                                   std::map<std::pair<Node, Node>, bool>& cache)
@@ -825,6 +850,7 @@ bool RegExpEntail::regExpIncludes(Node r1,
     // only check if r1 is a constant regular expression
     if (r2[0].isConst() && isConstRegExp(r1))
     {
+      Trace("test_Member") << "r1 is ConstRegExp and r2 is String" << std::endl;
       String s = r2[0].getConst<String>();
       ret = testConstStringInRegExp(s, r1);
     }
@@ -868,9 +894,22 @@ bool RegExpEntail::regExpIncludes(Node r1,
     {
       ret = true;
     }
+    else if (k2 == Kind::REGEXP_STAR)
+    {
+      // first we should check if r2[0] can be constructed by (r1[0])*
+      if (canConstructed(r1, r2[0]))
+      {
+        ret = true;
+      }
+      else
+      {
+        // if not, we check if the body of r1 includes the body of r2
+        ret = regExpIncludes(r1[0], r2[0], cache);
+      }
+    }
     else
     {
-      ret = regExpIncludes(r1[0], k2 == Kind::REGEXP_STAR ? r2[0] : r2, cache);
+      ret = regExpIncludes(r1[0], r2, cache);
     }
   }
   else if (k1 == Kind::STRING_TO_REGEXP)

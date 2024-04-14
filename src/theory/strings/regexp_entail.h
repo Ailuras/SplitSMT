@@ -94,6 +94,12 @@ class RegExpEntail
   static Node simpleRegexpConsume(std::vector<Node>& mchildren,
                                   std::vector<Node>& children,
                                   int dir = -1);
+
+  /**
+   * If r2 can be constructed by r1, then return true, otherwise false.
+   */
+  static bool canConstructed(TNode r1, TNode r2);
+
   /**
    * Is t a constant regular expression? A constant regular expression
    * is one with no non-constant (RE or string subterms) and does not contain

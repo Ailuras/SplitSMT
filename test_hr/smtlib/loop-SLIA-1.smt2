@@ -12,3 +12,5 @@
 ; (assert (not (str.in_re x (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b"))))))
 (check-sat)
 (exit)
+
+; Done
