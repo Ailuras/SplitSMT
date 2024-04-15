@@ -236,7 +236,8 @@ We have regular expression assertion : (str.in_re var_4 (re.++ (re.* (str.to_re 
 checkPDerivative: 
 	atom: (str.in_re var_4 (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))); 
 	rnfexp: [](re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))
-Node var_4 equal to emptyString.
+Node var_4 not equal to emptyString.
+x: var_4, r: (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))
 We have regular expression assertion : (not (str.in_re (str.++ "a" var_4) (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))))
 checkPDerivative: 
 	atom: (str.in_re (str.++ "a" var_4) (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))); 
@@ -246,8 +247,9 @@ x: (str.++ "a" var_4), r: (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))
 x: (str.++ "a" var_4), s: "a"
 left: var_4, dc: (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))
 Get new lemma : (not (str.in_re var_4 (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))))
-Need inactivate atom: (not (str.in_re (str.++ "a" var_4) (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))))
-Fatal failure within void cvc5::internal::theory::ExtTheory::markInactive(Node, ExtReducedId, bool) at /Users/macbookpro/Code/StrCvc5/src/theory/ext_theory.cpp:395
+Atom need inactivate : (not (str.in_re (str.++ "a" var_4) (re.++ (re.* (str.to_re "a")) (re.* (str.to_re "b")))))
+False.
+Fatal failure within void cvc5::internal::theory::ExtTheory::markInactive(cvc5::internal::Node, cvc5::internal::theory::ExtReducedId, bool) at /home/hanrui/StrCvc5/src/theory/ext_theory.cpp:397
 Check failure
 
  d_ext_func_terms.find(n) != d_ext_func_terms.end()

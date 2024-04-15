@@ -574,7 +574,7 @@ bool RegExpSolver::checkPDerivative(Node x,
                                     std::vector<Node>& nf_exp,
                                     bool pol)
 {
-  if (pol || d_state.areEqual(x, d_emptyString))
+  if (pol && d_state.areEqual(x, d_emptyString))
   {
     Trace("test_Member") << "Node " << x << " equal to emptyString." << std::endl;
     Node exp;
@@ -615,12 +615,12 @@ bool RegExpSolver::checkPDerivative(Node x,
         break;
     }
   }
-  else
+  else if (!d_state.areEqual(x, d_emptyString))
   {
     Trace("test_Member") << "Node " << x << " not equal to emptyString." << std::endl;
     if (deriveRegExp(x, r, atom, nf_exp, pol))
     {
-      Trace("test_Member") << "Need inactivate atom: " << (pol ? atom : atom.negate()) << std::endl;
+      Trace("test_Member") << "Atom need inactivate : " << (pol ? atom : atom.negate()) << std::endl;
       d_im.markInactive(pol ? atom : atom.negate(), ExtReducedId::STRINGS_REGEXP_PDERIVATIVE);
       return false;
     }

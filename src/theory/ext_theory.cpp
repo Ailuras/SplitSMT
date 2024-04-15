@@ -392,6 +392,8 @@ void ExtTheory::markInactive(Node n, ExtReducedId rid, bool satDep)
 {
   Trace("extt-debug") << "Mark reduced " << n << std::endl;
   registerTerm(n);
+  if (d_ext_func_terms.find(n) == d_ext_func_terms.end())
+    Trace("test_Member") << "False." << std::endl;
   Assert(d_ext_func_terms.find(n) != d_ext_func_terms.end());
   d_ext_func_terms[n] = false;
   d_extfExtReducedIdMap[n] = rid;
