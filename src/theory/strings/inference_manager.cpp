@@ -355,8 +355,7 @@ void InferenceManager::processConflict(const InferInfo& ii)
   // make the trust node
   TrustNode tconf = mkConflictExp(ii.d_premises, d_ipcl.get());
   Assert(tconf.getKind() == TrustNodeKind::CONFLICT);
-  Trace("strings-assert") << "(assert (not " << tconf.getNode()
-                          << ")) ; conflict " << ii.getId() << std::endl;
+  Trace("strings-assert") << "(assert (not " << tconf.getNode() << ")) ; conflict " << ii.getId() << std::endl;
   // send the trusted conflict
   trustedConflict(tconf, ii.getId());
 }
