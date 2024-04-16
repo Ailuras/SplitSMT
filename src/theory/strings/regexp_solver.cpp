@@ -646,19 +646,20 @@ cvc5::internal::String RegExpSolver::getHeadConst(Node x)
 
 cvc5::internal::String RegExpSolver::getEndConst(Node x)
 {
+  return d_emptyString.getConst<String>();
+
   if (x.isConst())
   {
     return x.getConst<String>();
   }
   else if (x.getKind() == Kind::STRING_CONCAT)
   {
-    int len = x.getNumChildren();
+    unsigned int len = x.getNumChildren();
     if (x[len].isConst())
     {
       return x[len].getConst<String>();
     }
   }
-  return d_emptyString.getConst<String>();
 }
 
 bool RegExpSolver::deriveRegExp(Node x,
@@ -679,34 +680,41 @@ bool RegExpSolver::deriveRegExp(Node x,
     Node dc = r;
     bool flag = true;
     Trace("test_Member") << "x: " << x << ", s: " << s << ", t: " << t << std::endl;
+    
     // start
-    for (unsigned i = 0; i < s.size(); ++i)
-    {
-      cvc5::internal::String c = s.substr(i, 1);
-      Node dc2;
-      int rt = d_regexp_opr.derivativeS(dc, c, dc2);
-      dc = dc2;
-      if (rt == 2)
+    if (!s.empty()) {
+      for (unsigned i = 0; i < s.size(); ++i)
       {
-        // CONFLICT
-        flag = false;
-        break;
+        cvc5::internal::String c = s.substr(i, 1);
+        Node dc2;
+        int rt = d_regexp_opr.derivativeS(dc, c, dc2);
+        dc = dc2;
+        if (rt == 2)
+        {
+          // CONFLICT
+          flag = false;
+          break;
+        }
       }
     }
+
     // end
-    // for (unsigned i = t.size()-1; i >= 0; --i)
-    // {
-    //   cvc5::internal::String c = t.substr(i, 1);
-    //   Node dc2;
-    //   int rt = d_regexp_opr.derivativeS(dc, c, dc2);
-    //   dc = dc2;
-    //   if (rt == 2)
-    //   {
-    //     // CONFLICT
-    //     flag = false;
-    //     break;
-    //   }
-    // }
+    if (!t.empty()) {
+      for (unsigned i = t.size()-1; i >= 0; --i)
+      {
+        cvc5::internal::String c = t.substr(i, 1);
+        Node dc2;
+        int rt = d_regexp_opr.derivativeS(dc, c, dc2);
+        dc = dc2;
+        if (rt == 2)
+        {
+          // CONFLICT
+          flag = false;
+          break;
+        }
+      }
+    }
+
     // send lemma
     if (flag)
     {
@@ -719,7 +727,7 @@ bool RegExpSolver::deriveRegExp(Node x,
       {
         Assert(x.getKind() == Kind::STRING_CONCAT);
         std::vector<Node> vec_nodes;
-        int len = x.getNumChildren();
+        unsigned int len = x.getNumChildren();
         if (s.empty()) vec_nodes.push_back(x[0]);
         for (unsigned int i = 1; i < len-1; ++i)
         {

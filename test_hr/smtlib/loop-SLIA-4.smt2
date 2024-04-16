@@ -6,11 +6,11 @@
 
 ; a+r4+ab not in a*bb* cannot deduce r4 not in a*, should change reason rules
 
-; (assert (str.in_re 
+; (assert (str.in_re
 ;     var_4
 ;     (re.++ (re.* (str.to_re "a")) (str.to_re "b"))
 ; ))
-; (assert (not (str.in_re 
+; (assert (not (str.in_re
 ;     var_4
 ;     (re.++ (re.* (str.to_re "a")) (str.to_re "b") (re.* (str.to_re "b")))
 ; )))
@@ -23,7 +23,7 @@
 ))
 
 (assert (not (str.in_re 
-    (re.++ var_4 "ab")
+    (str.++ var_4 "ab")
     (re.++ (re.* (str.to_re "a")) (str.to_re "b") (re.* (str.to_re "b")))
 )))
 
