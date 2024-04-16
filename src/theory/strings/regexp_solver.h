@@ -168,6 +168,7 @@ class RegExpSolver : protected EnvObj
    */
   bool checkPDerivative(Node x, Node r, Node atom, std::vector<Node>& nf_exp, bool pol);
   cvc5::internal::String getHeadConst(Node x);
+  cvc5::internal::String getEndConst(Node x);
   bool deriveRegExp(Node x, Node r, Node atom, std::vector<Node>& ant, bool pol);
   Node getNormalSymRegExp(Node r, std::vector<Node>& nf_exp);
   /** regular expression operation module */

@@ -644,6 +644,23 @@ cvc5::internal::String RegExpSolver::getHeadConst(Node x)
   return d_emptyString.getConst<String>();
 }
 
+cvc5::internal::String RegExpSolver::getEndConst(Node x)
+{
+  if (x.isConst())
+  {
+    return x.getConst<String>();
+  }
+  else if (x.getKind() == Kind::STRING_CONCAT)
+  {
+    int len = x.getNumChildren();
+    if (x[len].isConst())
+    {
+      return x[len].getConst<String>();
+    }
+  }
+  return d_emptyString.getConst<String>();
+}
+
 bool RegExpSolver::deriveRegExp(Node x,
                                 Node r,
                                 Node atom,
@@ -654,13 +671,15 @@ bool RegExpSolver::deriveRegExp(Node x,
   Trace("regexp-derive") << "RegExpSolver::deriveRegExp: x= " << x << ", r= " << r << std::endl;
   Trace("test_Member") << "x: " << x << ", r: " << r << std::endl;
   cvc5::internal::String s = getHeadConst(x);
+  cvc5::internal::String t = getEndConst(x);
   // only allow RE_DERIVE for concrete constant regular expressions
-  if (!s.empty() && d_regexp_opr.getRegExpConstType(r) == RE_C_CONCRETE_CONSTANT)
+  if ((!s.empty() || !t.empty()) && d_regexp_opr.getRegExpConstType(r) == RE_C_CONCRETE_CONSTANT)
   {
     Node conc = Node::null();
     Node dc = r;
     bool flag = true;
-    Trace("test_Member") << "x: " << x << ", s: " << s << std::endl;
+    Trace("test_Member") << "x: " << x << ", s: " << s << ", t: " << t << std::endl;
+    // start
     for (unsigned i = 0; i < s.size(); ++i)
     {
       cvc5::internal::String c = s.substr(i, 1);
@@ -674,6 +693,20 @@ bool RegExpSolver::deriveRegExp(Node x,
         break;
       }
     }
+    // end
+    // for (unsigned i = t.size()-1; i >= 0; --i)
+    // {
+    //   cvc5::internal::String c = t.substr(i, 1);
+    //   Node dc2;
+    //   int rt = d_regexp_opr.derivativeS(dc, c, dc2);
+    //   dc = dc2;
+    //   if (rt == 2)
+    //   {
+    //     // CONFLICT
+    //     flag = false;
+    //     break;
+    //   }
+    // }
     // send lemma
     if (flag)
     {
@@ -686,10 +719,13 @@ bool RegExpSolver::deriveRegExp(Node x,
       {
         Assert(x.getKind() == Kind::STRING_CONCAT);
         std::vector<Node> vec_nodes;
-        for (unsigned int i = 1; i < x.getNumChildren(); ++i)
+        int len = x.getNumChildren();
+        if (s.empty()) vec_nodes.push_back(x[0]);
+        for (unsigned int i = 1; i < len-1; ++i)
         {
           vec_nodes.push_back(x[i]);
         }
+        if (len > 1 && t.empty()) vec_nodes.push_back(x[x.getNumChildren()-1]);
         Node left = utils::mkConcat(vec_nodes, x.getType());
         left = rewrite(left);
         Trace("test_Member") << "left: " << left << ", dc: " << dc << std::endl;
