@@ -711,8 +711,7 @@ Node CoreSolver::getNormalString(Node x, std::vector<Node>& nf_exp)
       Node ret = d_termReg.mkNConcat(nf.d_nf, stype);
       nf_exp.insert(nf_exp.end(), nf.d_exp.begin(), nf.d_exp.end());
       d_im.addToExplanation(x, nf.d_base, nf_exp);
-      Trace("strings-debug")
-          << "Term: " << x << " has a normal form " << ret << std::endl;
+      Trace("strings-debug") << "Term: " << x << " has a normal form " << ret << std::endl;
       return ret;
     }
     // if x does not have a normal form, then it should not occur in the

@@ -850,7 +850,6 @@ bool RegExpEntail::regExpIncludes(Node r1,
     // only check if r1 is a constant regular expression
     if (r2[0].isConst() && isConstRegExp(r1))
     {
-      Trace("test_Member") << "r1 is ConstRegExp and r2 is String" << std::endl;
       String s = r2[0].getConst<String>();
       ret = testConstStringInRegExp(s, r1);
     }

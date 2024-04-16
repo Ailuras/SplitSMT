@@ -73,6 +73,7 @@ ExtfSolver::ExtfSolver(Env& env,
   d_extt.addFunctionKind(Kind::STRING_UNIT);
   d_extt.addFunctionKind(Kind::SEQ_UNIT);
   d_extt.addFunctionKind(Kind::SEQ_NTH);
+  d_extt.addFunctionKind(Kind::NOT);
 
   d_true = NodeManager::currentNM()->mkConst(true);
   d_false = NodeManager::currentNM()->mkConst(false);

@@ -210,8 +210,7 @@ Node Rewriter::rewriteTo(theory::TheoryId theoryId,
 
           // Put the rewritten node to the top of the stack
           TNode newNode = response.d_node;
-          Trace("rewriter-debug") << "Pre-Rewrite: " << rewriteStackTop.d_node
-                                  << " to " << newNode << std::endl;
+          Trace("rewriter-debug") << "Pre-Rewrite: " << rewriteStackTop.d_node << " to " << newNode << std::endl;
           TheoryId newTheory = theoryOf(newNode);
           rewriteStackTop.d_node = newNode;
           rewriteStackTop.d_theoryId = newTheory;

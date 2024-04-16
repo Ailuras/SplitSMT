@@ -700,10 +700,15 @@ bool RegExpSolver::deriveRegExp(Node x,
         }
       }
     }
+    if (!pol)
+    {
+      atom = atom.negate();
+    }
     std::vector<Node> iexp = ant;
     std::vector<Node> noExplain;
     noExplain.push_back(atom);
     iexp.push_back(atom);
+
     d_im.sendInference(iexp, noExplain, conc, InferenceId::STRINGS_RE_DERIVE);
     return true;
   }
@@ -794,6 +799,7 @@ void RegExpSolver::checkEvaluations()
       {
         nx = d_csolver.getNormalString(x, nfexp);
       }
+      Trace("test_Member") << "The NormalString of nx : " << nx << std::endl;
       // If r is not a constant regular expression, we update it based on
       // normal forms, which may concretize its variables.
       if (!d_regexp_opr.checkConstRegExp(r))
