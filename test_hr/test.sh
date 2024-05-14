@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# cd ../build/;make -j4;cd ../test_hr
+
 mode=$1
 file=$2
 

@@ -414,14 +414,14 @@ bool RegExpSolver::checkEqcInclusion(std::vector<Node>& mems)
             }
           }
         }
-		    // TODO: get lemmas from inclusion regexps
-        if (!m1Neg) {
-          // m1 and m2 is not re.not
+		    // // TODO: get lemmas from inclusion regexps, change to function checkEqcIntersect
+        // if (!m1Neg) {
+        //   // m1 and m2 is not re.not
 
-        } else {
-          // m1 and m2 is re.not
+        // } else {
+        //   // m1 and m2 is re.not
         
-        }
+        // }
       }
       else
       {
@@ -465,6 +465,7 @@ bool RegExpSolver::checkEqcIntersect(const std::vector<Node>& mems)
   // do not compute intersections if the re intersection mode is none
   if (options().strings.stringRegExpInterMode == options::RegExpInterMode::NONE)
   {
+    Trace("test_Member") << "options().strings.stringRegExpInterMode == options::RegExpInterMode::NONE" << std::endl;
     return true;
   }
   if (mems.empty())
@@ -482,13 +483,11 @@ bool RegExpSolver::checkEqcIntersect(const std::vector<Node>& mems)
     {
       // do not do negative
       Assert(m.getKind() == Kind::NOT && m[0].getKind() == Kind::STRING_IN_REGEXP);
+      // todo: may do some negative reasoning
       continue;
     }
     RegExpConstType rct = d_regexp_opr.getRegExpConstType(m[1]);
-    if (rct == RE_C_VARIABLE
-        || (options().strings.stringRegExpInterMode
-                == options::RegExpInterMode::CONSTANT
-            && rct != RE_C_CONCRETE_CONSTANT))
+    if (rct == RE_C_VARIABLE  ||  (options().strings.stringRegExpInterMode == options::RegExpInterMode::CONSTANT && rct != RE_C_CONCRETE_CONSTANT))
     {
       // cannot do intersection on RE with variables, or with re.allchar based on option.
       continue;
@@ -510,6 +509,7 @@ bool RegExpSolver::checkEqcIntersect(const std::vector<Node>& mems)
       continue;
     }
     Node resR = d_regexp_opr.intersect(mi[1], m[1]);
+    Trace("test_Member") << "checkEqcIntersect of [" << mi[1] << "] and [" << m[1] << "], get intersection: [" << resR << "]" << std::endl;
     if (resR.isNull())
     {
       // failed to compute intersection, e.g. if there was a complement
@@ -547,6 +547,7 @@ bool RegExpSolver::checkEqcIntersect(const std::vector<Node>& mems)
     }
     else
     {
+      // todo: new conclusion about norn-18
       // new conclusion
       // (x in R1 ^ y in R2 ^ x = y) => (x in intersect(R1,R2))
       std::vector<Node> vec_nodes;

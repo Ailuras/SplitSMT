@@ -5,35 +5,35 @@
 
 ; a+var_4 in a*b* should be simplified to var_4 in a*b*, membership check is used for it but only for re, not for re.not
 
-; (assert (str.in_re
-;     var_4
-;     (re.++
-;         (re.* (str.to_re "a"))
-;         (re.* (str.to_re "b"))
-;     )
-; ))
-; (assert (not (str.in_re
-;     (str.++ "a" var_4 )
-;     (re.++
-;         (re.* (str.to_re "a"))
-;         (re.* (str.to_re "b"))
-;     )
-; )))
-
-(assert (not (str.in_re
+(assert (str.in_re
     var_4
     (re.++
         (re.* (str.to_re "a"))
         (re.* (str.to_re "b"))
     )
-)))
-(assert (str.in_re
+))
+(assert (not (str.in_re
     (str.++ "a" var_4 )
     (re.++
         (re.* (str.to_re "a"))
         (re.* (str.to_re "b"))
     )
-))
+)))
+
+; (assert (not (str.in_re
+;     var_4
+;     (re.++
+;         (re.* (str.to_re "a"))
+;         (re.* (str.to_re "b"))
+;     )
+; )))
+; (assert (str.in_re
+;     (str.++ "a" var_4 )
+;     (re.++
+;         (re.* (str.to_re "a"))
+;         (re.* (str.to_re "b"))
+;     )
+; ))
 
 (check-sat)
 (exit)
