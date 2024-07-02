@@ -1183,6 +1183,8 @@ libcvc5_add_sources(
   theory/strings/type_enumerator.h
   theory/strings/word.cpp
   theory/strings/word.h
+  theory/strings/regexp_hr.h
+  theory/strings/regexp_hr.cpp
   theory/subs_minimize.cpp
   theory/subs_minimize.h
   theory/substitutions.cpp

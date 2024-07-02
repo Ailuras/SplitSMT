@@ -63,6 +63,7 @@ void InferenceManager::doPending()
     clearPendingPhaseRequirements();
     return;
   }
+  
   doPendingLemmas();
   doPendingPhaseRequirements();
 }

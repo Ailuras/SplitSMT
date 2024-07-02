@@ -1,0 +1,84 @@
+(let (
+        (_let_1 (str.to_re "c"
+            )
+        )
+    )
+    ( let (
+            (_let_2 (str.to_re "b"
+                )
+            )
+        )
+        ( let (
+                (_let_3 (str.to_re "a"
+                    )
+                )
+            )
+            ( let (
+                    (_let_4 (re.* (re.union _let_3 _let_2 _let_1
+                            )
+                        )
+                    )
+                )
+                ( let (
+                        (_let_5 (str.to_re "z"
+                            )
+                        )
+                    )
+                    ( not 
+                        (str.in_re 
+                            (str.++ "z" var_4
+                            )
+                            ( re.++ (re.* (re.++ (re.union _let_5 _let_3 _let_1
+                                        ) _let_4 _let_5
+                                    )
+                                )
+                                ( re.union _let_5 _let_3 _let_2
+                                ) _let_4
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)
+
+========================================
+
+(let (
+        (_let_1 (re.union (str.to_re "a"
+                )
+                ( str.to_re "b"
+                )
+                ( str.to_re "c"
+                )
+            )
+        )
+    )
+    ( or (= var_4 ""
+        )
+        ( str.in_re var_4 _let_1
+        )
+        ( and (and (= var_4 
+                    (str.++ @RE_UNFOLD_POS_COMPONENT_7 @RE_UNFOLD_POS_COMPONENT_8 @RE_UNFOLD_POS_COMPONENT_9
+                    )
+                )
+                ( str.in_re @RE_UNFOLD_POS_COMPONENT_7 _let_1
+                )
+                ( str.in_re @RE_UNFOLD_POS_COMPONENT_8 
+                    (re.* _let_1
+                    )
+                )
+                ( str.in_re @RE_UNFOLD_POS_COMPONENT_9 _let_1
+                )
+            )
+            ( not 
+                (= @RE_UNFOLD_POS_COMPONENT_7 ""
+                )
+            )
+            ( not 
+                (= @RE_UNFOLD_POS_COMPONENT_9 ""
+                )
+            )
+        )
+    )

@@ -17,7 +17,8 @@ if [ ! -d "$input_dir" ]; then
     exit 1
 fi
 
-for file_path in "${input_dir}"/*; do
+for file in $(ls -v "${input_dir}"); do
+    file_path="${input_dir}/${file}"
     # 在这里执行你需要的文件处理操作
     echo --------------------------------------------------
     start=$(date +%s)
@@ -32,5 +33,5 @@ for file_path in "${input_dir}"/*; do
     echo "$(basename "$file_path") : ${take} s."
 done
 
-# nohup ./run.sh QF_SLIA/2015-Norn strcvc5 100 > results/results_all.log 2>&1 &
+# nohup ./run.sh QF_SLIA/2015-Norn strcvc5 10 > results/results_all.log 2>&1 &
 # nohup ./run.sh smtlib strcvc5 100 > results/results_all.log 2>&1 &

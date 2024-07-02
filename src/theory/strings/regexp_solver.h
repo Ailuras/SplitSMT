@@ -20,6 +20,7 @@
 
 #include <map>
 
+#include "theory/strings/regexp_hr.h"
 #include "context/cdhashset.h"
 #include "context/cdlist.h"
 #include "context/context.h"
@@ -173,6 +174,8 @@ class RegExpSolver : protected EnvObj
   Node getNormalSymRegExp(Node r, std::vector<Node>& nf_exp);
   /** regular expression operation module */
   RegExpOpr d_regexp_opr;
+  // 24-6-30
+  RegExpHR d_regexp_hr;
   /** Asserted memberships, cached during a full effort check */
   std::map<Node, std::vector<Node>> d_assertedMems;
 }; /* class TheoryStrings */

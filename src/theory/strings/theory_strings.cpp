@@ -223,8 +223,7 @@ void TheoryStrings::presolve() {
 // MODEL GENERATION
 /////////////////////////////////////////////////////////////////////////////
 
-bool TheoryStrings::collectModelValues(TheoryModel* m,
-                                       const std::set<Node>& termSet)
+bool TheoryStrings::collectModelValues(TheoryModel* m, const std::set<Node>& termSet)
 {
   d_absModelCounter = 0;
   d_strGapModelCounter = 0;
@@ -1290,6 +1289,7 @@ void TheoryStrings::runInferStep(InferStep s, Theory::Effort e, int effort)
     case InferStep::CHECK_EXTF_EVAL: 
       Trace("test_Extf") << "------------------[checkExtfEval Begin]------------------" << std::endl;
       d_esolver.checkExtfEval(effort);
+      // d_rsolver.checkMemberships(e); 
       Trace("test_Extf") << "-------------------[checkExtfEval End]-------------------" << std::endl;
       break;
     case InferStep::CHECK_CYCLES: 
@@ -1345,8 +1345,7 @@ void TheoryStrings::runInferStep(InferStep s, Theory::Effort e, int effort)
 void TheoryStrings::runStrategy(Theory::Effort e)
 {
   std::vector<std::pair<InferStep, int> >::iterator it = d_strat.stepBegin(e);
-  std::vector<std::pair<InferStep, int> >::iterator stepEnd =
-      d_strat.stepEnd(e);
+  std::vector<std::pair<InferStep, int> >::iterator stepEnd = d_strat.stepEnd(e);
 
   Trace("strings-process") << "----check, next round---" << std::endl;
   while (it != stepEnd)

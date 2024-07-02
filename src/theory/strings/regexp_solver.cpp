@@ -17,6 +17,7 @@
 
 #include <cmath>
 
+#include "theory/strings/regexp_hr.h"
 #include "options/strings_options.h"
 #include "smt/logic_exception.h"
 #include "theory/ext_theory.h"
@@ -43,7 +44,8 @@ RegExpSolver::RegExpSolver(Env& env,
       d_csolver(cs),
       d_esolver(es),
       d_statistics(stats),
-      d_regexp_opr(env, tr.getSkolemCache())
+      d_regexp_opr(env, tr.getSkolemCache()),
+      d_regexp_hr()
 {
   d_emptyString = NodeManager::currentNM()->mkConst(cvc5::internal::String(""));
   d_emptyRegexp = NodeManager::currentNM()->mkNode(Kind::REGEXP_NONE);
@@ -148,6 +150,11 @@ void RegExpSolver::checkInclusions()
     Trace("test_Member") << "Begin check " << mr.first << "'s Eqc." << std::endl;
     Trace("regexp-process") << "Memberships(" << mr.first << ") = " << mr.second << std::endl;
     Trace("test_Member") << "Check Eqc Inclusion" << std::endl;
+    if (!d_regexp_hr.checkReInclusion(mr))
+    {
+      // conflict discovered, return
+      return;
+    }
     if (options().strings.stringRegexpInclusion && !checkEqcInclusion(mems2))
     {
       // conflict discovered, return
@@ -159,7 +166,7 @@ void RegExpSolver::checkInclusions()
       // conflict discovered, return
       return;
     }
-    Trace("test_Member") << "End check " << mr.first << " Eqc." << std::endl;
+    Trace("test_Member") << "End check " << mr.first << "'s Eqc." << std::endl;
   }
   Trace("regexp-debug") << "... No Intersect Conflict in Memberships" << std::endl;
 }

@@ -488,8 +488,8 @@ void ExtfSolver::checkExtfEval(int effort)
           bool flag = d_im.sendInternalInference(einfo.d_exp, nrcAssert, infer);
           if (!flag) {
             Trace("test_Extf") << "could not send internal inference nrc." << std::endl;
-            d_im.sendInference(einfo.d_exp, nrcAssert, infer, false, true);
-            Trace("test_Extf") << "send inference." << std::endl;
+            // d_im.sendInference(einfo.d_exp, nrcAssert, infer, false, true);
+            // Trace("test_Extf") << "send inference." << std::endl;
           } else {
             Trace("test_Extf") << "Send internal inference nrc." << std::endl;
           }

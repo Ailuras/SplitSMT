@@ -99,6 +99,7 @@ void InferenceManagerBuffered::addPendingPhaseRequirement(Node lit, bool pol)
 
 void InferenceManagerBuffered::doPendingFacts()
 {
+  Trace("test_lemma") << "Pending facts, size " << d_pendingFact.size() << std::endl;
   size_t i = 0;
   while (!d_theoryState.isInConflict() && i < d_pendingFact.size())
   {
@@ -112,9 +113,11 @@ void InferenceManagerBuffered::doPendingFacts()
 
 void InferenceManagerBuffered::doPendingLemmas()
 {
+  Trace("test_lemma") << "Pending lemma, size " << d_pendingLem.size() << std::endl;
   if (d_processingPendingLemmas)
   {
     // already processing
+    Trace("test_lemma") << "already processing" << std::endl;
     return;
   }
   d_processingPendingLemmas = true;
@@ -123,6 +126,7 @@ void InferenceManagerBuffered::doPendingLemmas()
   {
     // process this lemma, which notice may enqueue more pending lemmas in this
     // loop, or clear the lemmas.
+    Trace("test_lemma") << "lemma:" << d_pendingLem[i].get() << std::endl;
     lemmaTheoryInference(d_pendingLem[i].get());
     i++;
   }

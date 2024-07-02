@@ -20,7 +20,7 @@ elif [ $mode -eq 4 ]; then
     ../build/bin/cvc5 --produce-models $file -t test_sat > results/out.log 2>&1
 elif [ $mode -eq 5 ]; then
     # cd ../build;make;cd ../test_hr
-    ../build/bin/cvc5 --produce-models $file -t test_Extf -t test_Member -t test_sat -t test_cnf > results/test.log 2>&1
+    ../build/bin/cvc5 --produce-models $file -t test_Extf -t test_Member -t test_sat -t test_cnf -t test_lemma > results/test.log 2>&1
 elif [ $mode -eq 6 ]; then # test_inc
     # cd ../build;make;cd ../test_hr
     ../build/bin/cvc5 --produce-models --incremental $file -t cmd* -t minisat* -t cnf* > results/inc.log 2>&1
