@@ -1,0 +1,17 @@
+(let ((_let_1 (str.to_re "a")) (_let_2 (str.to_re "z")))
+    (str.in_re
+        (str.++
+            var_9
+            "z"
+            var_10
+        )
+        (re.* (re.++
+            (re.union
+                _let_2
+                _let_1
+            )
+            (re.* _let_2)
+            _let_1
+        ))
+    )
+)

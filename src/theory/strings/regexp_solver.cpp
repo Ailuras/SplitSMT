@@ -150,7 +150,7 @@ void RegExpSolver::checkInclusions()
     Trace("test_Member") << "Begin check " << mr.first << "'s Eqc." << std::endl;
     Trace("regexp-process") << "Memberships(" << mr.first << ") = " << mr.second << std::endl;
     Trace("test_Member") << "Check Eqc Inclusion" << std::endl;
-    if (!d_regexp_hr.checkReInclusion(mr))
+    if (d_regexp_hr.checkReInclusion(mr))
     {
       // conflict discovered, return
       return;

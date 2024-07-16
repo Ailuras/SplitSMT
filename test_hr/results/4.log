@@ -1,0 +1,2255 @@
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check var_10's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: var_10
+allowed size is 1
+allowed size is 1
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (str.to_re "a")
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check var_10's Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : var_10
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : var_10
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* re.allchar))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (str.to_re "a")
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* re.allchar))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (str.to_re "a")
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check @RE_UNFOLD_POS_COMPONENT_4's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_4
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_4's Eqc.
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+allowed size is 0
+allowed size is 0
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_4
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_6's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_6
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_6's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_6
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_8's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_8
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_8's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaa" @RE_UNFOLD_POS_COMPONENT_8 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaa" @RE_UNFOLD_POS_COMPONENT_8 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_8 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_8
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_10's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_10
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_10's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaa" @RE_UNFOLD_POS_COMPONENT_10 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaa" @RE_UNFOLD_POS_COMPONENT_10 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_10 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_10 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_10
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_12's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_12
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_12's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_12 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_12 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_12 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_12 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_12 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_12
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_14's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_14
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_14's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_14 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_14
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_16's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_16
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_16's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_16 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_16
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_18's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_18
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_18's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_18 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_18
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_20's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_20
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_20's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_20 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_20
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_22's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_22
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_22's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_22 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_22
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_24's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_24
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_24's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_24 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_24
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_24 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_24, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_26's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_26
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_26's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_26 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_26
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_26 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_26, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_24 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_24, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_28's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_28
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_28's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_28 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_24 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_24, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_28
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_28 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_28, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_26 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_26, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_30's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_30
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_30's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_24 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_24, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_30 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_26 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_26, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_30 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_30
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_30 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_30 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_30, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_28 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_28, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(re.* (str.to_re "aa")) and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+regExpIncludes: ~(str.to_re "aa") and (let ((_let_1 (str.to_re "a"))) (re.++ _let_1 (re.* re.allchar) _let_1))
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)
+============================End checkReInclusion============================
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.++ (re.* (str.to_re "aa")) (str.to_re "a")) and (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Check Eqc Intersect
+End check (str.++ "a" @RE_UNFOLD_POS_COMPONENT_4)'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_6 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_8 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_10 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_12 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_14 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_16 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_18 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_20 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_22 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_24 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_26 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_28 "aa")'s Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_30 "aa")'s Eqc.
+Begin check @RE_UNFOLD_POS_COMPONENT_32's Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 0, variable: @RE_UNFOLD_POS_COMPONENT_32
+allowed size is 1
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check @RE_UNFOLD_POS_COMPONENT_32's Eqc.
+Begin check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_32 "aa")'s Eqc.
+Check Eqc Inclusion
+============================Begin checkReInclusion============================
+isConcat: 1, variable: (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_32 "aa")
+allowed size is 0
+============================End checkReInclusion============================
+Check Eqc Intersect
+End check (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_32 "aa")'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))); 
+	rnfexp: [](re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (str.to_re "a") (re.* (str.to_re "aa")))
+We have regular expression assertion : (not (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re var_10 (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))); 
+	rnfexp: [](re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+Node var_10 not equal to emptyString.
+x: var_10, r: (re.++ (re.* (str.to_re "aa")) (str.to_re "a"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_4 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_4 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_4, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_6 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_6 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_6, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_8 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_8 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_8, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_10 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_10 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_10, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_12 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_12 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_12, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_14 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_14 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_14, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_16 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_16 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_16, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_18 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_18 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_18, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_20 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_20 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_20, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_22 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_22 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_22, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_24 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_24 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_24, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_26 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_26 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_26, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aaaa" @RE_UNFOLD_POS_COMPONENT_32 "aaaa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_28 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_28 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_28, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_32 (re.* (str.to_re "aa")))
+The NormalString of nx : @RE_UNFOLD_POS_COMPONENT_32
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_32 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_32 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_32, r: (re.* (str.to_re "aa"))
+We have regular expression assertion : (str.in_re @RE_UNFOLD_POS_COMPONENT_30 (re.* (str.to_re "aa")))
+The NormalString of nx : (str.++ "aa" @RE_UNFOLD_POS_COMPONENT_32 "aa")
+checkPDerivative: 
+	atom: (str.in_re @RE_UNFOLD_POS_COMPONENT_30 (re.* (str.to_re "aa"))); 
+	rnfexp: [](re.* (str.to_re "aa"))
+Node @RE_UNFOLD_POS_COMPONENT_30 not equal to emptyString.
+x: @RE_UNFOLD_POS_COMPONENT_30, r: (re.* (str.to_re "aa"))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+cvc5 interrupted by user.

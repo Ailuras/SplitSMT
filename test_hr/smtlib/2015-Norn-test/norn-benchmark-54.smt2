@@ -26,37 +26,117 @@ Publication: "String constraints for verification" by P.A. Abdulla, M.F. Atig, Y
 (declare-fun var_11 () String)
 (declare-fun var_12 () String)
 
-(assert (str.in_re 
+; (assert (str.in_re
+;     var_10
+;     (re.++
+;         (str.to_re "a")
+;         (re.* (str.to_re "aa"))
+;     )
+; ))
+; (assert (str.in_re var_10 (re.* (str.to_re "a"))))
+; (assert (str.in_re var_9 (re.* (re.range "a" "u"))))
+; (assert (not (str.in_re
+;     (str.++ "a" var_9 "z" "b" var_10 )
+;     (re.*
+;         (re.union
+;             (str.to_re "z")
+;             (str.to_re "b")
+;             (re.++
+;                 (str.to_re "a")
+;                 (re.union (str.to_re "z") (str.to_re "a"))
+;             )
+;         )
+;     )
+; )))
+; (assert (not (str.in_re
+;     var_10
+;     (re.++
+;         (re.* (str.to_re "aa"))
+;         (str.to_re "a")
+;     )
+; )))
+
+; (assert (str.in_re
+;     (str.++
+;         var_9
+;         "z"
+;         var_10
+;     )
+;     (re.* (re.++
+;         (re.union
+;             (str.to_re "z")
+;             (str.to_re "a")
+;         )
+;         (re.* (str.to_re "z"))
+;         (str.to_re "a")
+;     ))
+; ))
+
+; (assert (not (str.in_re
+;     (str.++
+;         "a"
+;         var_9
+;         "zb"
+;         var_10
+;     )
+;     (re.++
+;         (re.* (re.union
+;             (str.to_re "z")
+;             (str.to_re "b")
+;             (re.++
+;                 (str.to_re "a")
+;                 (re.union
+;                     (str.to_re "z")
+;                     (str.to_re "a")
+;                 )
+;             )
+;         ))
+;         (str.to_re "a")
+;     )
+; )))
+
+(assert (str.in_re
+    var_9
+    (re.union
+        (re.* (str.to_re "aa"))
+        (re.++
+            (re.* (str.to_re "aa"))
+            (str.to_re "a")
+        )
+    )
+))
+
+(assert (str.in_re
     var_10
-    (re.++ 
+    (re.++
         (str.to_re "a")
         (re.* (str.to_re "aa"))
     )
 ))
-; (assert (str.in_re var_10 (re.* (str.to_re "a"))))
-; (assert (str.in_re var_9 (re.* (re.range "a" "u"))))
-; (assert (not (str.in_re 
-;     (str.++ "a" var_9 "z" "b" var_10 ) 
-;     (re.* 
-;         (re.union 
-;             (str.to_re "z") 
-;             (str.to_re "b") 
-;             (re.++ 
-;                 (str.to_re "a") 
-;                 (re.union (str.to_re "z") (str.to_re "a"))
-;             )
-;         )
-;     ) 
-; )))
-(assert (not (str.in_re 
-    var_10 
-    (re.++ 
-        (re.* (str.to_re "aa")) 
-        (str.to_re "a")
-    )
-)))
+
+(assert (or
+    (not (str.in_re
+        var_9
+        (re.union
+            (str.to_re "")
+            (re.++
+                (str.to_re "a")
+                (re.* (str.to_re "aa"))
+            )
+        )
+    ))
+    (not (str.in_re
+        var_10
+        (re.++
+            (re.* (str.to_re "aa"))
+            (str.to_re "a")
+        )
+    ))
+))
+
 ; (assert (= var_9 "a"))
 ; (assert (= var_10 "a"))
 (check-sat)
 (get-model)
 (exit)
+

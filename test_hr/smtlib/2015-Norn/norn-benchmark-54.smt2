@@ -29,8 +29,6 @@ Publication: "String constraints for verification" by P.A. Abdulla, M.F. Atig, Y
 (assert (str.in_re (str.++ var_9 "z" var_10 ) (re.* (re.++ (re.union (str.to_re "z") (str.to_re "a")) (re.++ (re.* (str.to_re "z")) (str.to_re "a"))))))
 (assert (str.in_re var_10 (re.* (re.range "a" "u"))))
 (assert (str.in_re var_9 (re.* (re.range "a" "u"))))
-(assert (str.in_re (str.++ "b" var_10 ) (re.* (re.range "a" "u"))))
-(assert (str.in_re (str.++ "a" var_9 ) (re.* (re.range "a" "u"))))
 (assert (not (str.in_re (str.++ "a" var_9 "z" "b" var_10 ) (re.++ (re.* (re.union (re.union (str.to_re "z") (str.to_re "b")) (re.++ (str.to_re "a") (re.union (str.to_re "z") (str.to_re "a"))))) (str.to_re "a")))))
 (check-sat)
 (exit)
