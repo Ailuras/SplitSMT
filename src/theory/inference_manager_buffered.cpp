@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Gereon Kremer, Andres Noetzli
+ *   Andrew Reynolds, Gereon Kremer, Aina Niemetz
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -127,6 +127,7 @@ void InferenceManagerBuffered::doPendingLemmas()
     // process this lemma, which notice may enqueue more pending lemmas in this
     // loop, or clear the lemmas.
     Trace("test_lemma") << "lemma:" << d_pendingLem[i].get() << std::endl;
+    Trace("t_reg") << "lemma:" << d_pendingLem[i].get() << std::endl;
     lemmaTheoryInference(d_pendingLem[i].get());
     i++;
   }

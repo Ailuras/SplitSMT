@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Mathias Preiner, Aina Niemetz
+ *   Andrew Reynolds, Aina Niemetz, Hans-Joerg Schurr
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -19,9 +19,11 @@
 
 #include "expr/term_context.h"
 #include "expr/term_context_stack.h"
+#include "printer/let_binding.h"
 #include "proof/proof_checker.h"
 #include "proof/proof_node.h"
 #include "proof/proof_node_algorithm.h"
+#include "rewriter/rewrites.h"
 
 using namespace cvc5::internal::kind;
 
@@ -109,6 +111,15 @@ void TConvProofGenerator::addRewriteStep(Node t,
   {
     d_proof.addStep(eq, id, children, args);
   }
+}
+
+void TConvProofGenerator::addTheoryRewriteStep(
+    Node t, Node s, ProofRewriteRule id, bool isPre, uint32_t tctx)
+{
+  std::vector<Node> sargs;
+  sargs.push_back(rewriter::mkRewriteRuleNode(id));
+  sargs.push_back(t.eqNode(s));
+  addRewriteStep(t, s, ProofRule::THEORY_REWRITE, {}, sargs, isPre, tctx);
 }
 
 bool TConvProofGenerator::hasRewriteStep(Node t,
@@ -258,7 +269,7 @@ Node TConvProofGenerator::getProofForRewriting(Node t,
                                                LazyCDProof& pf,
                                                TermContext* tctx)
 {
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   // Invariant: if visited[hash(t)] = s or rewritten[hash(t)] = s and t,s are
   // distinct, then pf is able to generate a proof of t=s. We must
   // Node in the domains of the maps below due to hashing creating new (SEXPR)
@@ -486,24 +497,26 @@ Node TConvProofGenerator::getProofForRewriting(Node t,
           ret = nm->mkNode(ck, children);
           rewritten[curHash] = ret;
           // congruence to show (cur = ret)
-          ProofRule congRule = ProofRule::CONG;
           std::vector<Node> pfChildren;
           std::vector<Node> pfArgs;
-          if (ck == Kind::APPLY_UF && children[0] != cur.getOperator())
+          ProofRule congRule = expr::getCongRule(cur, pfArgs);
+          size_t startIndex = 0;
+          if (cur.isClosure())
           {
-            // use HO_CONG if the operator changed
+            // Closures always provide the bound variable list as an argument.
+            // We skip the bound variable list and add it as an argument.
+            startIndex = 1;
+            // The variable list should never change.
+            Assert(cur[0] == ret[0]);
+          }
+          else if (ck == Kind::APPLY_UF && children[0] != cur.getOperator())
+          {
             congRule = ProofRule::HO_CONG;
+            pfArgs.pop_back();
             pfChildren.push_back(cur.getOperator().eqNode(children[0]));
           }
-          else
-          {
-            pfArgs.push_back(ProofRuleChecker::mkKindNode(ck));
-            if (kind::metaKindOf(ck) == kind::metakind::PARAMETERIZED)
-            {
-              pfArgs.push_back(cur.getOperator());
-            }
-          }
-          for (size_t i = 0, size = cur.getNumChildren(); i < size; i++)
+          for (size_t i = startIndex, size = cur.getNumChildren(); i < size;
+               i++)
           {
             if (cur[i] == ret[i])
             {

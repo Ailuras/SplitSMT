@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Haniel Barbosa, Mathias Preiner
+ *   Andrew Reynolds, Haniel Barbosa, Hans-Joerg Schurr
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -38,7 +38,7 @@ bool TheoryProofStepBuffer::applyEqIntro(Node src,
 {
   std::vector<Node> args;
   args.push_back(src);
-  addMethodIds(args, ids, ida, idr);
+  addMethodIds(NodeManager::currentNM(), args, ids, ida, idr);
   bool added;
   Node expected = src.eqNode(tgt);
   Node res = tryStep(added,
@@ -84,7 +84,7 @@ bool TheoryProofStepBuffer::applyPredTransform(Node src,
   // try to prove that tgt rewrites to src
   children.insert(children.end(), exp.begin(), exp.end());
   args.push_back(tgt);
-  addMethodIds(args, ids, ida, idr);
+  addMethodIds(NodeManager::currentNM(), args, ids, ida, idr);
   Node res = tryStep(ProofRule::MACRO_SR_PRED_TRANSFORM,
                      children,
                      args,
@@ -108,7 +108,7 @@ bool TheoryProofStepBuffer::applyPredIntro(Node tgt,
 {
   std::vector<Node> args;
   args.push_back(tgt);
-  addMethodIds(args, ids, ida, idr);
+  addMethodIds(NodeManager::currentNM(), args, ids, ida, idr);
   Node res = tryStep(ProofRule::MACRO_SR_PRED_INTRO,
                      exp,
                      args,
@@ -131,7 +131,7 @@ Node TheoryProofStepBuffer::applyPredElim(Node src,
   children.push_back(src);
   children.insert(children.end(), exp.begin(), exp.end());
   std::vector<Node> args;
-  addMethodIds(args, ids, ida, idr);
+  addMethodIds(NodeManager::currentNM(), args, ids, ida, idr);
   bool added;
   Node srcRew = tryStep(added, ProofRule::MACRO_SR_PRED_ELIM, children, args);
   if (d_autoSym && added && CDProof::isSame(src, srcRew))
@@ -196,9 +196,9 @@ Node TheoryProofStepBuffer::factorReorderElimDoubleNeg(Node n)
     // pre-rewrite in the Boolean rewriter, will always hold under the
     // standard rewriter.
     Node congEq = oldn.eqNode(n);
-    addStep(ProofRule::CONG,
+    addStep(ProofRule::NARY_CONG,
             childrenEqs,
-            {ProofRuleChecker::mkKindNode(Kind::OR)},
+            {ProofRuleChecker::mkKindNode(nm, Kind::OR)},
             congEq);
     // add an equality resolution step to derive normalize clause
     addStep(ProofRule::EQ_RESOLVE, {oldn, congEq}, {}, n);

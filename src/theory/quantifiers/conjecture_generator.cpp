@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Mathias Preiner, Gereon Kremer
+ *   Andrew Reynolds, Aina Niemetz, Mathias Preiner
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -102,8 +102,8 @@ ConjectureGenerator::ConjectureGenerator(Env& env,
       d_fullEffortCount(0),
       d_hasAddedLemma(false)
 {
-  d_true = NodeManager::currentNM()->mkConst(true);
-  d_false = NodeManager::currentNM()->mkConst(false);
+  d_true = nodeManager()->mkConst(true);
+  d_false = nodeManager()->mkConst(false);
   d_uequalityEngine.addFunctionKind(Kind::APPLY_UF);
   d_uequalityEngine.addFunctionKind(Kind::APPLY_CONSTRUCTOR);
 }
@@ -373,11 +373,7 @@ void ConjectureGenerator::check(Theory::Effort e, QEffort quant_e)
     if( d_fullEffortCount%optFullCheckFrequency()==0 ){
       d_hasAddedLemma = false;
       d_tge.d_cg = this;
-      double clSet = 0;
-      if( TraceIsOn("sg-engine") ){
-        clSet = double(clock())/double(CLOCKS_PER_SEC);
-        Trace("sg-engine") << "---Conjecture Engine Round, effort = " << e << "---" << std::endl;
-      }
+      beginCallDebug();
       eq::EqualityEngine * ee = getEqualityEngine();
       d_conj_count = 0;
 
@@ -886,13 +882,12 @@ void ConjectureGenerator::check(Theory::Effort e, QEffort quant_e)
         }
         Trace("thm-ee") << std::endl;
       }
-      if( TraceIsOn("sg-engine") ){
-        double clSet2 = double(clock())/double(CLOCKS_PER_SEC);
-        Trace("sg-engine") << "Finished conjecture generator, time = " << (clSet2-clSet) << std::endl;
-      }
+      endCallDebug();
     }
   }
 }
+
+std::string ConjectureGenerator::identify() const { return "induction-cg"; }
 
 unsigned ConjectureGenerator::flushWaitingConjectures( unsigned& addedLemmas, int ldepth, int rdepth ) {
   if( !d_waiting_conjectures_lhs.empty() ){
@@ -943,9 +938,8 @@ unsigned ConjectureGenerator::flushWaitingConjectures( unsigned& addedLemmas, in
               Node rsg;
               if( !bvs.empty() ){
                 Node bvl =
-                    NodeManager::currentNM()->mkNode(Kind::BOUND_VAR_LIST, bvs);
-                rsg = NodeManager::currentNM()->mkNode(
-                    Kind::FORALL, bvl, lhs.eqNode(rhs));
+                    nodeManager()->mkNode(Kind::BOUND_VAR_LIST, bvs);
+                rsg = NodeManager::mkNode(Kind::FORALL, bvl, lhs.eqNode(rhs));
               }else{
                 rsg = lhs.eqNode( rhs );
               }
@@ -954,8 +948,7 @@ unsigned ConjectureGenerator::flushWaitingConjectures( unsigned& addedLemmas, in
               d_eq_conjectures[lhs].push_back( rhs );
               d_eq_conjectures[rhs].push_back( lhs );
 
-              Node lem =
-                  NodeManager::currentNM()->mkNode(Kind::OR, rsg.negate(), rsg);
+              Node lem = NodeManager::mkNode(Kind::OR, rsg.negate(), rsg);
               d_qim.addPendingLemma(lem,
                                     InferenceId::QUANTIFIERS_CONJ_GEN_SPLIT);
               d_qim.addPendingPhaseRequirement(rsg, false);
@@ -1122,10 +1115,9 @@ int ConjectureGenerator::calculateGeneralizationDepth( TNode n, std::vector< TNo
 Node ConjectureGenerator::getPredicateForType( TypeNode tn ) {
   std::map< TypeNode, Node >::iterator it = d_typ_pred.find( tn );
   if( it==d_typ_pred.end() ){
-    NodeManager* nm = NodeManager::currentNM();
-    SkolemManager* sm = nm->getSkolemManager();
+    NodeManager* nm = nodeManager();
     TypeNode op_tn = nm->mkFunctionType(tn, nm->booleanType());
-    Node op = sm->mkDummySkolem(
+    Node op = NodeManager::mkDummySkolem(
         "PE", op_tn, "was created by conjecture ground term enumerator.");
     d_typ_pred[tn] = op;
     return op;
@@ -1213,7 +1205,7 @@ void ConjectureGenerator::getEnumerateUfTerm( Node n, unsigned num, std::vector<
             }
             children.push_back( lc );
             Node nenum =
-                NodeManager::currentNM()->mkNode(Kind::APPLY_UF, children);
+                nodeManager()->mkNode(Kind::APPLY_UF, children);
             Trace("sg-gt-enum")
                 << "Ground term enumerate : " << nenum << std::endl;
             terms.push_back(nenum);
@@ -1248,8 +1240,7 @@ void ConjectureGenerator::getEnumeratePredUfTerm( Node n, unsigned num, std::vec
   getEnumerateUfTerm( n, num, uf_terms );
   Node p = getPredicateForType( n.getType() );
   for( unsigned i=0; i<uf_terms.size(); i++ ){
-    terms.push_back(
-        NodeManager::currentNM()->mkNode(Kind::APPLY_UF, p, uf_terms[i]));
+    terms.push_back(NodeManager::mkNode(Kind::APPLY_UF, p, uf_terms[i]));
   }
 }
 
@@ -1411,7 +1402,7 @@ int ConjectureGenerator::considerCandidateConjecture( TNode lhs, TNode rhs ) {
 
 bool ConjectureGenerator::notifySubstitution( TNode glhs, std::map< TNode, TNode >& subs, TNode rhs ) {
   if( TraceIsOn("sg-cconj-debug") ){
-    Trace("sg-cconj-debug") << "Ground eqc for LHS : " << glhs << ", based on substituion: " << std::endl;
+    Trace("sg-cconj-debug") << "Ground eqc for LHS : " << glhs << ", based on substitution: " << std::endl;
     for( std::map< TNode, TNode >::iterator it = subs.begin(); it != subs.end(); ++it ){
       Assert(getRepresentative(it->second) == it->second);
       Trace("sg-cconj-debug") << "  " << it->first << " -> " << it->second << std::endl;

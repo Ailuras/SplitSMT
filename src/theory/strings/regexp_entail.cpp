@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Andres Noetzli, Mathias Preiner
+ *   Andrew Reynolds, Aina Niemetz, Andres Noetzli
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -41,9 +41,6 @@ Node RegExpEntail::simpleRegexpConsume(std::vector<Node>& mchildren,
 {
   Trace("regexp-ext-rewrite-debug")
       << "Simple reg exp consume, dir=" << dir << ":" << std::endl;
-  Trace("regexp-ext-rewrite-debug")
-      << "  mchildren : " << mchildren << std::endl;
-  Trace("regexp-ext-rewrite-debug") << "  children : " << children << std::endl;
   NodeManager* nm = NodeManager::currentNM();
   unsigned tmin = dir < 0 ? 0 : dir;
   unsigned tmax = dir < 0 ? 1 : dir;
@@ -52,6 +49,12 @@ Node RegExpEntail::simpleRegexpConsume(std::vector<Node>& mchildren,
   {
     if (tmin <= t && t <= tmax)
     {
+      Trace("regexp-ext-rewrite-debug")
+          << "Run consume, direction is " << t << " with:" << std::endl;
+      Trace("regexp-ext-rewrite-debug")
+          << "  mchildren : " << mchildren << std::endl;
+      Trace("regexp-ext-rewrite-debug")
+          << "  children : " << children << std::endl;
       bool do_next = true;
       while (!children.empty() && !mchildren.empty() && do_next)
       {
@@ -64,30 +67,33 @@ Node RegExpEntail::simpleRegexpConsume(std::vector<Node>& mchildren,
         Assert(xc.getKind() != Kind::STRING_CONCAT);
         if (rc.getKind() == Kind::STRING_TO_REGEXP)
         {
-          if (xc == rc[0])
+          std::vector<Node> childrenc;
+          utils::getConcat(rc[0], childrenc);
+          size_t cindex = t == 1 ? 0 : childrenc.size() - 1;
+          Node rcc = childrenc[cindex];
+          Node remStr;
+          if (xc == rcc)
           {
-            children.pop_back();
             mchildren.pop_back();
             do_next = true;
             Trace("regexp-ext-rewrite-debug") << "- strip equal" << std::endl;
           }
-          else if (rc[0].isConst() && Word::isEmpty(rc[0]))
+          else if (rcc.isConst() && Word::isEmpty(rcc))
           {
             Trace("regexp-ext-rewrite-debug")
                 << "- ignore empty RE" << std::endl;
             // ignore and continue
-            children.pop_back();
             do_next = true;
           }
-          else if (xc.isConst() && rc[0].isConst())
+          else if (xc.isConst() && rcc.isConst())
           {
             // split the constant
             size_t index;
-            Node s = Word::splitConstant(xc, rc[0], index, t == 0);
+            remStr = Word::splitConstant(xc, rcc, index, t == 0);
             Trace("regexp-ext-rewrite-debug")
-                << "- CRE: Regexp const split : " << xc << " " << rc[0]
-                << " -> " << s << " " << index << " " << t << std::endl;
-            if (s.isNull())
+                << "- CRE: Regexp const split : " << xc << " " << rcc << " -> "
+                << remStr << " " << index << " " << t << std::endl;
+            if (remStr.isNull())
             {
               Trace("regexp-ext-rewrite-debug")
                   << "...return false" << std::endl;
@@ -97,19 +103,43 @@ Node RegExpEntail::simpleRegexpConsume(std::vector<Node>& mchildren,
             {
               Trace("regexp-ext-rewrite-debug")
                   << "- strip equal const" << std::endl;
-              children.pop_back();
               mchildren.pop_back();
               if (index == 0)
               {
-                mchildren.push_back(s);
+                mchildren.push_back(remStr);
+                // we've processed the remainder as leftover for the LHS
+                // string, clear it now
+                remStr = Node::null();
               }
-              else
-              {
-                children.push_back(nm->mkNode(Kind::STRING_TO_REGEXP, s));
-              }
+              // otherwise remStr is processed below
             }
             Trace("regexp-ext-rewrite-debug") << "- split const" << std::endl;
             do_next = true;
+          }
+          if (do_next)
+          {
+            if (remStr.isNull())
+            {
+              // we have fully processed the component
+              childrenc.erase(childrenc.begin() + cindex);
+            }
+            else
+            {
+              // we have a remainder
+              childrenc[cindex] = remStr;
+            }
+            if (childrenc.empty())
+            {
+              // if childrenc is empty, we are done with the current str.to_re
+              children.pop_back();
+            }
+            else
+            {
+              // otherwise we reconstruct it
+              TypeNode stype = nm->stringType();
+              children[children.size() - 1] = nm->mkNode(
+                  Kind::STRING_TO_REGEXP, utils::mkConcat(childrenc, stype));
+            }
           }
         }
         else if (xc.isConst())
@@ -129,7 +159,7 @@ Node RegExpEntail::simpleRegexpConsume(std::vector<Node>& mchildren,
             if (!isConstRegExp(rc))
             {
               // if a non-standard re.range term, abort
-              return Node::null();
+              break;
             }
             std::vector<unsigned> ssVec;
             ssVec.push_back(t == 0 ? s.back() : s.front());
@@ -801,36 +831,12 @@ Node RegExpEntail::getConstantBoundLengthForRegexp(TNode n, bool isLower) const
   return ret;
 }
 
-bool RegExpEntail::canConstructed(TNode r1, TNode r2) {
-  if (r1 == r2) {
-    return true;
-  }
-  bool ret = false;
-  Kind k2 = r2.getKind();
-  if (k2 == Kind::STRING_TO_REGEXP) {
-    if (r2[0].isConst() && isConstRegExp(r1)) {
-      String s = r2[0].getConst<String>();
-      return testConstStringInRegExp(s, r1);
-    }
-    return false;
-  } else if (k2 == Kind::REGEXP_UNION) {
-    ret = true;
-    for (const Node& r : r2) {
-      if (!canConstructed(r1, r)) {
-        ret = false;
-        break;
-      }
-    }
-    return ret;
-  }
-  return false;
-}
-
 bool RegExpEntail::regExpIncludes(Node r1,
                                   Node r2,
                                   std::map<std::pair<Node, Node>, bool>& cache)
-{
+{ 
   Trace("test_Member") << "regExpIncludes: ~" << r1 << " and " << r2 << std::endl;
+  // Trace("t_reg") << "check if" << r1 << "Includes of" << r2 << std::endl;
   if (r1 == r2)
   {
     return true;
@@ -893,22 +899,9 @@ bool RegExpEntail::regExpIncludes(Node r1,
     {
       ret = true;
     }
-    else if (k2 == Kind::REGEXP_STAR)
-    {
-      // first we should check if r2[0] can be constructed by (r1[0])*
-      if (canConstructed(r1, r2[0]))
-      {
-        ret = true;
-      }
-      else
-      {
-        // if not, we check if the body of r1 includes the body of r2
-        ret = regExpIncludes(r1[0], r2[0], cache);
-      }
-    }
     else
     {
-      ret = regExpIncludes(r1[0], r2, cache);
+      ret = regExpIncludes(r1[0], k2 == Kind::REGEXP_STAR ? r2[0] : r2, cache);
     }
   }
   else if (k1 == Kind::STRING_TO_REGEXP)

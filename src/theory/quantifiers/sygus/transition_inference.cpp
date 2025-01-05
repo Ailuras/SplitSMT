@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Andres Noetzli, Mathias Preiner
+ *   Andrew Reynolds, Aina Niemetz, Andres Noetzli
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -198,8 +198,7 @@ void TransitionInference::process(Node n, Node f)
 
 void TransitionInference::process(Node n)
 {
-  NodeManager* nm = NodeManager::currentNM();
-  SkolemManager* sm = nm->getSkolemManager();
+  NodeManager* nm = nodeManager();
   d_complete = true;
   d_trivial = true;
   std::vector<Node> n_check;
@@ -279,7 +278,7 @@ void TransitionInference::process(Node n)
       {
         for (unsigned j = 0, nchild = next.getNumChildren(); j < nchild; j++)
         {
-          Node v = sm->mkDummySkolem(
+          Node v = NodeManager::mkDummySkolem(
               "ir", next[j].getType(), "template inference rev argument");
           d_prime_vars.push_back(v);
         }
@@ -428,12 +427,10 @@ bool TransitionInference::processDisjunct(
       d_trivial = false;
       d_func = op;
       Trace("cegqi-inv-debug") << "Use " << op << " with args ";
-      NodeManager* nm = NodeManager::currentNM();
-      SkolemManager* sm = nm->getSkolemManager();
       for (const Node& l : lit)
       {
-        Node v =
-            sm->mkDummySkolem("i", l.getType(), "template inference argument");
+        Node v = NodeManager::mkDummySkolem(
+            "i", l.getType(), "template inference argument");
         d_vars.push_back(v);
         Trace("cegqi-inv-debug") << v << " ";
       }

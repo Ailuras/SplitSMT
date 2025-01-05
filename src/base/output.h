@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -72,9 +72,9 @@ class Cvc5ostream
   std::ostream& (*const d_endl)(std::ostream&);
 
   // do not allow use
+  Cvc5ostream& operator=(const Cvc5ostream&);
 
  public:
-  Cvc5ostream& operator=(const Cvc5ostream&);
   Cvc5ostream() : d_os(NULL), d_firstColumn(false), d_endl(&std::endl) {}
   explicit Cvc5ostream(std::ostream* os)
       : d_os(os), d_firstColumn(true), d_endl(&std::endl)

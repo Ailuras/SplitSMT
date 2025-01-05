@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -20,7 +20,6 @@
 
 #include <map>
 
-#include "theory/strings/regexp_hr.h"
 #include "context/cdhashset.h"
 #include "context/cdlist.h"
 #include "context/context.h"
@@ -58,10 +57,6 @@ class RegExpSolver : protected EnvObj
                SequencesStatistics& stats);
   ~RegExpSolver() {}
 
-
-  void checkCharsContain();
-  void checkConstraintsLoop();
-  void checkLoops(Theory::Effort e);
   /** check regular expression memberships
    *
    * This checks the satisfiability of all regular expression memberships
@@ -167,15 +162,12 @@ class RegExpSolver : protected EnvObj
    * normalized form of atom that may be modified using a substitution whose
    * explanation is nf_exp.
    */
-  bool checkPDerivative(Node x, Node r, Node atom, std::vector<Node>& nf_exp, bool pol);
+  bool checkPDerivative(Node x, Node r, Node atom, std::vector<Node>& nf_exp);
   cvc5::internal::String getHeadConst(Node x);
-  cvc5::internal::String getEndConst(Node x);
-  bool deriveRegExp(Node x, Node r, Node atom, std::vector<Node>& ant, bool pol);
+  bool deriveRegExp(Node x, Node r, Node atom, std::vector<Node>& ant);
   Node getNormalSymRegExp(Node r, std::vector<Node>& nf_exp);
   /** regular expression operation module */
   RegExpOpr d_regexp_opr;
-  // 24-6-30
-  RegExpHR d_regexp_hr;
   /** Asserted memberships, cached during a full effort check */
   std::map<Node, std::vector<Node>> d_assertedMems;
 }; /* class TheoryStrings */

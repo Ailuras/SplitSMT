@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -83,15 +83,10 @@ Node ExpandDefs::expandDefinitions(TNode n,
       theory::TheoryRewriter* tr = rr->getTheoryRewriter(tid);
 
       Assert(tr != NULL);
-      TrustNode trn = tr->expandDefinition(n);
-      if (!trn.isNull())
-      {
-        node = trn.getNode();
-      }
-      else
-      {
-        node = n;
-      }
+      // ensure rewritten
+      Node nr = rewrite(n);
+      Node nre = tr->expandDefinition(nr);
+      node = nre.isNull() ? nr : nre;
       // the partial functions can fall through, in which case we still
       // consider their children
       worklist.push(std::make_tuple(
@@ -112,7 +107,7 @@ Node ExpandDefs::expandDefinitions(TNode n,
       if (node.getNumChildren() > 0)
       {
         // cout << "cons : " << node << std::endl;
-        NodeBuilder nb(node.getKind());
+        NodeBuilder nb(nodeManager(), node.getKind());
         if (node.getMetaKind() == metakind::PARAMETERIZED)
         {
           Trace("expand") << "op   : " << node.getOperator() << std::endl;

@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -34,7 +34,8 @@ TheoryQuantifiers::TheoryQuantifiers(Env& env,
                                      OutputChannel& out,
                                      Valuation valuation)
     : Theory(THEORY_QUANTIFIERS, env, out, valuation),
-      d_rewriter(env.getRewriter(), options()),
+      d_rewriter(nodeManager(), env.getRewriter(), options()),
+      d_checker(nodeManager()),
       d_qstate(env, valuation, logicInfo()),
       d_qreg(env),
       d_treg(env, d_qstate, d_qreg),
@@ -117,7 +118,7 @@ Theory::PPAssertStatus TheoryQuantifiers::ppAssert(
     if (!eq.isNull())
     {
       // must be legal
-      if (isLegalElimination(eq[0], eq[1]))
+      if (d_valuation.isLegalElimination(eq[0], eq[1]))
       {
         // add substitution solved, which ensures we track that eq depends on
         // tin, which can impact unsat cores.

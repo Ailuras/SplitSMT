@@ -1,0 +1,16 @@
+{"index": 1, "constraint": "(assert (str.in_re x (re.* (re.union (str.to_re \"z\") (re.union (re.union (str.to_re \"a\") (str.to_re \"b\")) (str.to_re \"c\"))))))", "answer": "hello"}
+{"index": 2, "constraint": "(assert (str.in_re x (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 3, "constraint": "(assert (not (str.in_re x (re.* (re.union (re.union (str.to_re \"a\") (str.to_re \"b\")) (str.to_re \"c\"))))))", "answer": "hello"}
+{"index": 4, "constraint": "(assert (str.in_re var_4 (re.* (re.union (str.to_re \"a\") (str.to_re \"b\")))))", "answer": "hello"}
+{"index": 5, "constraint": "(assert (not (str.in_re (str.++ var_4 \"z\" ) (re.* (re.union (str.to_re \"z\") (re.union (re.union (str.to_re \"a\") (str.to_re \"b\")) (str.to_re \"c\")))))))", "answer": "hello"}
+{"index": 6, "constraint": "(assert (str.in_re var_4 (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 7, "constraint": "(assert (str.in_re var_4 (re.* (re.union (re.union (str.to_re \"a\") (str.to_re \"b\")) (str.to_re \"c\")))))", "answer": "hello"}
+{"index": 8, "constraint": "(assert (str.in_re \"\" (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 9, "constraint": "(assert (not (str.in_re (str.++ \"z\" var_4 ) (re.++ (re.* (re.++ (re.union (str.to_re \"z\") (re.union (str.to_re \"a\") (str.to_re \"c\"))) (re.++ (re.* (re.union (str.to_re \"b\") (re.union (str.to_re \"a\") (str.to_re \"c\")))) (str.to_re \"z\")))) (re.++ (re.union (str.to_re \"z\") (re.union (str.to_re \"a\") (str.to_re \"c\"))) (re.* (re.union (str.to_re \"b\") (re.union (str.to_re \"a\") (str.to_re \"c\")))))))))", "answer": "hello"}
+{"index": 8, "constraint": "(assert (str.in_re \"\" (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 6, "constraint": "(assert (str.in_re var_4 (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 4, "constraint": "(assert (str.in_re var_4 (re.* (re.union (str.to_re \"a\") (str.to_re \"b\")))))", "answer": "hello"}
+{"index": 5, "constraint": "(assert (not (str.in_re (str.++ var_4 \"z\" ) (re.* (re.union (str.to_re \"z\") (re.union (re.union (str.to_re \"a\") (str.to_re \"b\")) (str.to_re \"c\")))))))", "answer": "hello"}
+{"index": 8, "constraint": "(assert (str.in_re \"\" (re.* (re.range \"a\" \"u\"))))", "answer": "hello"}
+{"index": 10, "constraint": "(assert (str.in_re var_1 (re.* (re.union (str.to_re \"a\") (str.to_re \"b\")))))", "answer": "hello"}
+{"index": 11, "constraint": "(assert (not (str.in_re var_1 (re.* (re.range \"a\" \"u\")))))", "answer": "hello"}

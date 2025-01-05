@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Andres Noetzli, Gereon Kremer
+ *   Andrew Reynolds, Aina Niemetz, Andres Noetzli
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -73,10 +73,9 @@ ExtfSolver::ExtfSolver(Env& env,
   d_extt.addFunctionKind(Kind::STRING_UNIT);
   d_extt.addFunctionKind(Kind::SEQ_UNIT);
   d_extt.addFunctionKind(Kind::SEQ_NTH);
-  d_extt.addFunctionKind(Kind::NOT);
 
-  d_true = NodeManager::currentNM()->mkConst(true);
-  d_false = NodeManager::currentNM()->mkConst(false);
+  d_true = nodeManager()->mkConst(true);
+  d_false = nodeManager()->mkConst(false);
 }
 
 ExtfSolver::~ExtfSolver() {}
@@ -203,7 +202,7 @@ void ExtfSolver::doReduction(Node n, int pol)
   }
   else
   {
-    NodeManager* nm = NodeManager::currentNM();
+    NodeManager* nm = nodeManager();
     Assert(k == Kind::STRING_SUBSTR || k == Kind::STRING_UPDATE
            || k == Kind::STRING_CONTAINS || k == Kind::STRING_INDEXOF
            || k == Kind::STRING_INDEXOF_RE || k == Kind::STRING_ITOS
@@ -230,11 +229,13 @@ void ExtfSolver::doReduction(Node n, int pol)
     else
     {
       InferInfo ii(InferenceId::STRINGS_REDUCTION);
+      // ensure that we are called to process the side effects
+      ii.d_sim = this;
       ii.d_conc = nnlem;
       d_im.sendInference(ii, true);
       Trace("strings-extf-debug")
           << "  resolve extf : " << n << " based on reduction." << std::endl;
-      d_reduced.insert(nn);
+      d_reductionWaitingMap[nnlem] = nn;
     }
   }
 }
@@ -293,9 +294,10 @@ bool ExtfSolver::checkExtfReductionsInternal(int effort, bool doSend)
 
 void ExtfSolver::checkExtfEval(int effort)
 {
-  Trace("strings-extf-list") << "Active extended functions, effort=" << effort << " : " << std::endl;
+  Trace("strings-extf-list")
+      << "Active extended functions, effort=" << effort << " : " << std::endl;
   d_extfInfoTmp.clear();
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   bool has_nreduce = false;
   std::vector<Node> terms = d_extt.getActive();
   // the set of terms we have done extf inferences for
@@ -329,13 +331,11 @@ void ExtfSolver::checkExtfEval(int effort)
     {
       schildren.push_back(n.getOperator());
     }
-    // true if some of nc differs from sc
     bool schanged = false;
     for (const Node& nc : n)
     {
       Node sc = getCurrentSubstitutionFor(effort, nc, exp);
       schildren.push_back(sc);
-      // if the substitution changed, we will need to do an inference
       schanged = schanged || sc != nc;
     }
     // If there is information involving the children, attempt to do an
@@ -364,7 +364,8 @@ void ExtfSolver::checkExtfEval(int effort)
         if (effort < 3)
         {
           d_extt.markInactive(n, ExtReducedId::STRINGS_SR_CONST);
-          Trace("strings-extf-debug") << "  resolvable by evaluation..." << std::endl;
+          Trace("strings-extf-debug")
+              << "  resolvable by evaluation..." << std::endl;
           std::vector<Node> exps;
           // The following optimization gets the "symbolic definition" of
           // an extended term. The symbolic definition of a term t is a term
@@ -379,7 +380,8 @@ void ExtfSolver::checkExtfEval(int effort)
           // instead of making this inference multiple times:
           //    x = "" => str.replace( x, x, x ) == ""
           //    y = "" => str.replace( y, y, y ) == ""
-          Trace("strings-extf-debug") << "  get symbolic definition..." << std::endl;
+          Trace("strings-extf-debug")
+              << "  get symbolic definition..." << std::endl;
           Node nrs;
           // only use symbolic definitions if option is set
           if (options().strings.stringInferSym)
@@ -389,7 +391,8 @@ void ExtfSolver::checkExtfEval(int effort)
           // Trace("test_Extf") << "nrs->" << nrs << std::endl;
           if (!nrs.isNull())
           {
-            Trace("strings-extf-debug") << "  rewrite " << nrs << "..." << std::endl;
+            Trace("strings-extf-debug")
+                << "  rewrite " << nrs << "..." << std::endl;
             Node nrsr = rewrite(nrs);
             // ensure the symbolic form is not rewritable
             if (nrsr != nrs)
@@ -403,7 +406,8 @@ void ExtfSolver::checkExtfEval(int effort)
           }
           else
           {
-            Trace("strings-extf-debug") << "  could not infer symbolic definition." << std::endl;
+            Trace("strings-extf-debug")
+                << "  could not infer symbolic definition." << std::endl;
           }
           Node conc;
           if (!nrs.isNull())
@@ -438,10 +442,11 @@ void ExtfSolver::checkExtfEval(int effort)
               }
             }
           }
-          // Trace("test_Extf") << "conc->" << conc << std::endl;
           if (!conc.isNull())
+          // Trace("test_Extf") << "conc->" << conc << std::endl;
           {
-            Trace("strings-extf") << "  resolve extf : " << sn << " -> " << nrc << std::endl;
+            Trace("strings-extf")
+                << "  resolve extf : " << sn << " -> " << nrc << std::endl;
             InferenceId inf = effort == 0 ? InferenceId::STRINGS_EXTF : InferenceId::STRINGS_EXTF_N;
             Trace("test_Extf") << "Send inference conc: " << conc << std::endl;
             d_im.sendInference(einfo.d_exp, conc, inf, false, true);
@@ -484,7 +489,9 @@ void ExtfSolver::checkExtfEval(int effort)
           // Trace("test_Extf") << "nrcAssert->" << nrcAssert << std::endl;
           // Trace("test_Extf") << "nAssert->" << nAssert << std::endl;
           Trace("test_Extf") << "n: " << nAssert << " => nrc: " << nrcAssert << std::endl;
-          InferenceId infer = effort == 0 ? InferenceId::STRINGS_EXTF_D : InferenceId::STRINGS_EXTF_D_N;
+          InferenceId infer =
+              effort == 0 ? InferenceId::STRINGS_EXTF_D : InferenceId::STRINGS_EXTF_D_N;
+          d_im.sendInternalInference(einfo.d_exp, nrcAssert, infer);
           bool flag = d_im.sendInternalInference(einfo.d_exp, nrcAssert, infer);
           if (!flag) {
             Trace("test_Extf") << "could not send internal inference nrc." << std::endl;
@@ -508,7 +515,8 @@ void ExtfSolver::checkExtfEval(int effort)
       inferProcessed.insert(n);
       if (effort == 1)
       {
-        Trace("strings-extf") << "  cannot rewrite extf : " << to_reduce << std::endl;
+        Trace("strings-extf")
+            << "  cannot rewrite extf : " << to_reduce << std::endl;
       }
       // we take to_reduce to be the (partially) reduced version of n, which
       // is justified by the explanation in einfo. We only do this if we are
@@ -530,7 +538,7 @@ void ExtfSolver::checkExtfEval(int effort)
         }
         Trace("strings-extf-list") << std::endl;
       }
-  
+
       Trace("test_Extf") << to_reduce;
       if (!einfo.d_const.isNull()) Trace("test_Extf") << ", const = " << einfo.d_const;
       if (n != to_reduce) Trace("test_Extf") << ", from " << n;
@@ -561,7 +569,7 @@ void ExtfSolver::checkExtfInference(Node n,
   {
     return;
   }
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   Trace("strings-extf-infer")
       << "checkExtfInference: " << n << " : " << nr << " == " << in.d_const
       << " with exp " << in.d_exp << std::endl;
@@ -839,6 +847,25 @@ bool StringsExtfCallback::getCurrentSubstitution(
     subs.push_back(s);
   }
   return true;
+}
+
+void ExtfSolver::processFact(InferInfo& ii, ProofGenerator*& pg)
+{
+  // process it with the inference manager
+  d_im.processFact(ii, pg);
+}
+
+TrustNode ExtfSolver::processLemma(InferInfo& ii, LemmaProperty& p)
+{
+  // if this was the reduction lemma for a term, mark it reduced now
+  std::map<Node, Node>::iterator it = d_reductionWaitingMap.find(ii.d_conc);
+  if (it != d_reductionWaitingMap.end())
+  {
+    d_reduced.insert(it->second);
+    d_reductionWaitingMap.erase(it);
+  }
+  // now process it with the inference manager
+  return d_im.processLemma(ii, p);
 }
 
 std::string ExtfSolver::debugPrintModel()

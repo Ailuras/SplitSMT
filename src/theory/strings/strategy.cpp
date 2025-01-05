@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -87,7 +87,8 @@ bool Strategy::hasStrategyEffort(Theory::Effort e) const
 std::vector<std::pair<InferStep, int> >::iterator Strategy::stepBegin(
     Theory::Effort e)
 {
-  std::map<Theory::Effort, std::pair<unsigned, unsigned> >::const_iterator it = d_strat_steps.find(e);
+  std::map<Theory::Effort, std::pair<unsigned, unsigned> >::const_iterator it =
+      d_strat_steps.find(e);
   Assert(it != d_strat_steps.end());
   return d_infer_steps.begin() + it->second.first;
 }
@@ -170,14 +171,14 @@ void Strategy::initializeStrategy()
       addStrategyStep(InferStep::CHECK_MEMBERSHIP);
       step_end[Theory::EFFORT_LAST_CALL] = d_infer_steps.size() - 1;
     }
-    addStrategyStep(InferStep::CHECK_MEMBERSHIP);
     // set the beginning/ending ranges
     for (const std::pair<const Theory::Effort, unsigned>& it_begin : step_begin)
     {
       Theory::Effort e = it_begin.first;
       std::map<Theory::Effort, unsigned>::iterator it_end = step_end.find(e);
       Assert(it_end != step_end.end());
-      d_strat_steps[e] = std::pair<unsigned, unsigned>(it_begin.second, it_end->second);
+      d_strat_steps[e] =
+          std::pair<unsigned, unsigned>(it_begin.second, it_end->second);
     }
   }
 }

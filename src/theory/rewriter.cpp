@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -56,7 +56,8 @@ struct RewriteStackElement {
         d_original(node),
         d_theoryId(theoryId),
         d_originalTheoryId(theoryId),
-        d_nextChild(0)
+        d_nextChild(0),
+        d_builder(NodeManager::currentNM())
   {
   }
 
@@ -95,7 +96,7 @@ Node Rewriter::rewrite(TNode node) {
 
 Node Rewriter::extendedRewrite(TNode node, bool aggr)
 {
-  quantifiers::ExtendedRewriter er(*this, aggr);
+  quantifiers::ExtendedRewriter er(d_nm, *this, aggr);
   return er.extendedRewrite(node);
 }
 
@@ -147,6 +148,32 @@ void Rewriter::registerTheoryRewriter(theory::TheoryId tid,
 TheoryRewriter* Rewriter::getTheoryRewriter(theory::TheoryId theoryId)
 {
   return d_theoryRewriters[theoryId];
+}
+
+Node Rewriter::rewriteViaRule(ProofRewriteRule id, const Node& n)
+{
+  // dispatches to the appropriate theory
+  TheoryId tid = theoryOf(n);
+  TheoryRewriter* tr = getTheoryRewriter(tid);
+  if (tr != nullptr)
+  {
+    return tr->rewriteViaRule(id, n);
+  }
+  return Node::null();
+}
+
+ProofRewriteRule Rewriter::findRule(const Node& a,
+                                    const Node& b,
+                                    TheoryRewriteCtx ctx)
+{
+  // dispatches to the appropriate theory
+  TheoryId tid = theoryOf(a);
+  TheoryRewriter* tr = getTheoryRewriter(tid);
+  if (tr != nullptr)
+  {
+    return tr->findRule(a, b, ctx);
+  }
+  return ProofRewriteRule::NONE;
 }
 
 Node Rewriter::rewriteTo(theory::TheoryId theoryId,
@@ -210,7 +237,8 @@ Node Rewriter::rewriteTo(theory::TheoryId theoryId,
 
           // Put the rewritten node to the top of the stack
           TNode newNode = response.d_node;
-          Trace("rewriter-debug") << "Pre-Rewrite: " << rewriteStackTop.d_node << " to " << newNode << std::endl;
+          Trace("rewriter-debug") << "Pre-Rewrite: " << rewriteStackTop.d_node
+                                  << " to " << newNode << std::endl;
           TheoryId newTheory = theoryOf(newNode);
           rewriteStackTop.d_node = newNode;
           rewriteStackTop.d_theoryId = newTheory;
@@ -374,7 +402,7 @@ Node Rewriter::rewriteTo(theory::TheoryId theoryId,
             Node eq = rewriteStackTop.d_node.eqNode(cached);
             // we make this a post-rewrite, since we are processing a node that
             // has finished post-rewriting above
-            Node trrid = mkTrustId(TrustId::REWRITE_NO_ELABORATE);
+            Node trrid = mkTrustId(d_nm, TrustId::REWRITE_NO_ELABORATE);
             tcpg->addRewriteStep(rewriteStackTop.d_node,
                                  cached,
                                  ProofRule::TRUST,
@@ -462,7 +490,8 @@ RewriteResponse Rewriter::processTrustRewriteResponse(
     {
       Node tidn = builtin::BuiltinProofRuleChecker::mkTheoryIdNode(theoryId);
       // add small step trusted rewrite
-      Node rid = mkMethodId(isPre ? MethodId::RW_REWRITE_THEORY_PRE
+      Node rid = mkMethodId(d_nm,
+                            isPre ? MethodId::RW_REWRITE_THEORY_PRE
                                   : MethodId::RW_REWRITE_THEORY_POST);
       tcpg->addRewriteStep(proven[0],
                            proven[1],

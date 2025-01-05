@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Gereon Kremer, Mudathir Mohamed
+ *   Andrew Reynolds, Gereon Kremer, Aina Niemetz
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -46,7 +46,7 @@ InferenceManager::InferenceManager(Env& env,
       d_ipcl(isProofEnabled() ? new InferProofCons(env, context(), d_statistics)
                               : nullptr)
 {
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   d_zero = nm->mkConstInt(Rational(0));
   d_one = nm->mkConstInt(Rational(1));
   d_true = nm->mkConst(true);
@@ -63,7 +63,6 @@ void InferenceManager::doPending()
     clearPendingPhaseRequirements();
     return;
   }
-  
   doPendingLemmas();
   doPendingPhaseRequirements();
 }
@@ -166,8 +165,12 @@ bool InferenceManager::sendInference(const std::vector<Node>& exp,
 void InferenceManager::sendInference(InferInfo& ii, bool asLemma)
 {
   Assert(!ii.isTrivial());
-  // set that this inference manager will be processing this inference
-  ii.d_sim = this;
+  // This inference manager will be processing the side effects of this
+  // inferences if the inference manager has not been marked already.
+  if (ii.d_sim == nullptr)
+  {
+    ii.d_sim = this;
+  }
   Trace("strings-infer-debug")
       << "sendInference: " << ii << ", asLemma = " << asLemma << std::endl;
   // check if we should send a conflict, lemma or a fact
@@ -186,6 +189,7 @@ void InferenceManager::sendInference(InferInfo& ii, bool asLemma)
   {
     Trace("strings-infer-debug") << "...as lemma" << std::endl;
     Trace("test_cnf") << "Get new lemma : " << ii.d_conc << std::endl;
+    Trace("t_reg") << "New lemma: " << ii.d_conc << std::endl;
     addPendingLemma(std::unique_ptr<InferInfo>(new InferInfo(ii)));
     return;
   }
@@ -213,6 +217,7 @@ void InferenceManager::sendInference(InferInfo& ii, bool asLemma)
       }
       Trace("strings-infer-debug") << "...as symbolic lemma" << std::endl;
       Trace("test_cnf") << "Get new symbolic lemma : " << iiSubsLem.d_conc << std::endl;
+      Trace("t_reg") << "New lemma: " << iiSubsLem.d_conc << std::endl;
       addPendingLemma(std::unique_ptr<InferInfo>(new InferInfo(iiSubsLem)));
       return;
     }
@@ -239,12 +244,13 @@ bool InferenceManager::sendSplit(Node a, Node b, InferenceId infer, bool preq)
   {
     return false;
   }
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   InferInfo iiSplit(infer);
   iiSplit.d_sim = this;
   iiSplit.d_conc = nm->mkNode(Kind::OR, eq, nm->mkNode(Kind::NOT, eq));
   addPendingPhaseRequirement(eq, preq);
   Trace("test_cnf") << "Get new symbolic lemma : " << iiSplit.d_conc << std::endl;
+  Trace("t_reg") << "New lemma: " << iiSplit.d_conc << std::endl;
   addPendingLemma(std::unique_ptr<InferInfo>(new InferInfo(iiSplit)));
   return true;
 }
@@ -255,6 +261,13 @@ void InferenceManager::addToExplanation(Node a,
 {
   if (a != b)
   {
+    // prefer having constants on the RHS, which helps proof reconstruction
+    if (a.isConst() && !b.isConst())
+    {
+      Node tmp = a;
+      a = b;
+      b = tmp;
+    }
     Trace("strings-explain")
         << "Add to explanation : " << a << " == " << b << std::endl;
     Assert(d_state.areEqual(a, b));
@@ -356,7 +369,8 @@ void InferenceManager::processConflict(const InferInfo& ii)
   // make the trust node
   TrustNode tconf = mkConflictExp(ii.d_premises, d_ipcl.get());
   Assert(tconf.getKind() == TrustNodeKind::CONFLICT);
-  Trace("strings-assert") << "(assert (not " << tconf.getNode() << ")) ; conflict " << ii.getId() << std::endl;
+  Trace("strings-assert") << "(assert (not " << tconf.getNode()
+                          << ")) ; conflict " << ii.getId() << std::endl;
   // send the trusted conflict
   trustedConflict(tconf, ii.getId());
 }
@@ -564,7 +578,7 @@ Node InferenceManager::mkPrefixExplainMin(Node x,
     Trace("strings-exp-min-stats")
         << "Min-explain (prefix) " << minAssumptions.size() << " / "
         << assumptions.size() << std::endl;
-    return NodeManager::currentNM()->mkAnd(minAssumptions);
+    return nodeManager()->mkAnd(minAssumptions);
   }
   return Node::null();
 }

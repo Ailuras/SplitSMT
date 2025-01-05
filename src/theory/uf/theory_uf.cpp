@@ -1,10 +1,10 @@
 /******************************************************************************
  * Top contributors (to current version):
- *   Andrew Reynolds, Morgan Deters, Dejan Jovanovic
+ *   Andrew Reynolds, Morgan Deters, Aina Niemetz
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -50,15 +50,17 @@ TheoryUF::TheoryUF(Env& env,
       d_thss(nullptr),
       d_lambdaLift(new LambdaLift(env)),
       d_ho(nullptr),
+      d_dpfgen(env),
       d_functionsTerms(context()),
       d_symb(env, instanceName),
-      d_rewriter(),
+      d_rewriter(nodeManager(), env.getRewriter()),
+      d_checker(nodeManager()),
       d_state(env, valuation),
       d_im(env, *this, d_state, "theory::uf::" + instanceName, false),
       d_notify(d_im, *this),
       d_cpacb(*this)
 {
-  d_true = NodeManager::currentNM()->mkConst( true );
+  d_true = nodeManager()->mkConst(true);
   // indicate we are using the default theory state and inference managers
   d_theoryState = &d_state;
   d_inferManager = &d_im;
@@ -90,6 +92,16 @@ void TheoryUF::finishInit() {
   Assert(d_equalityEngine != nullptr);
   // combined cardinality constraints are not evaluated in getModelValue
   d_valuation.setUnevaluatedKind(Kind::COMBINED_CARDINALITY_CONSTRAINT);
+  if (logicInfo().hasCardinalityConstraints())
+  {
+    if (!options().uf.ufCardExp)
+    {
+      std::stringstream ss;
+      ss << "Logic with cardinality constraints not available in this "
+            "configuration, try --uf-card-exp.";
+      throw LogicException(ss.str());
+    }
+  }
   // Initialize the cardinality constraints solver if the logic includes UF,
   // finite model finding is enabled, and it is not disabled by
   // the ufssMode option.
@@ -103,6 +115,13 @@ void TheoryUF::finishInit() {
   d_equalityEngine->addFunctionKind(Kind::APPLY_UF, false, isHo);
   if (isHo)
   {
+    if (!options().uf.ufHoExp)
+    {
+      std::stringstream ss;
+      ss << "Higher-order logic not available in this configuration, try "
+            "--uf-ho-exp.";
+      throw LogicException(ss.str());
+    }
     d_equalityEngine->addFunctionKind(Kind::HO_APPLY);
     d_ho.reset(new HoExtension(d_env, d_state, d_im, *d_lambdaLift.get()));
   }
@@ -204,6 +223,12 @@ TrustNode TheoryUF::ppRewrite(TNode node, std::vector<SkolemLemma>& lems)
                       << std::endl;
   Kind k = node.getKind();
   bool isHol = logicInfo().isHigherOrder();
+  if (node.getType().isAbstract())
+  {
+    std::stringstream ss;
+    ss << "Cannot process term of abstract type " << node;
+    throw LogicException(ss.str());
+  }
   if (k == Kind::HO_APPLY || node.getType().isFunction())
   {
     if (!isHol)
@@ -362,7 +387,7 @@ void TheoryUF::explain(TNode literal, Node& exp)
   {
     d_equalityEngine->explainPredicate(atom, polarity, assumptions, nullptr);
   }
-  exp = NodeManager::currentNM()->mkAnd(assumptions);
+  exp = nodeManager()->mkAnd(assumptions);
 }
 
 TrustNode TheoryUF::explain(TNode literal) { return d_im.explainLit(literal); }
@@ -406,123 +431,12 @@ void TheoryUF::presolve() {
   Trace("uf") << "uf: end presolve()" << endl;
 }
 
-void TheoryUF::ppStaticLearn(TNode n, NodeBuilder& learned)
+void TheoryUF::ppStaticLearn(TNode n, std::vector<TrustNode>& learned)
 {
   //TimerStat::CodeTimer codeTimer(d_staticLearningTimer);
 
-  vector<TNode> workList;
-  workList.push_back(n);
-  std::unordered_set<TNode> processed;
-
-  while(!workList.empty()) {
-    n = workList.back();
-
-    if (n.isClosure())
-    {
-      // unsafe to go under quantifiers; we might pull bound vars out of scope!
-      processed.insert(n);
-      workList.pop_back();
-      continue;
-    }
-
-    bool unprocessedChildren = false;
-    for(TNode::iterator i = n.begin(), iend = n.end(); i != iend; ++i) {
-      if(processed.find(*i) == processed.end()) {
-        // unprocessed child
-        workList.push_back(*i);
-        unprocessedChildren = true;
-      }
-    }
-
-    if(unprocessedChildren) {
-      continue;
-    }
-
-    workList.pop_back();
-    // has node n been processed in the meantime ?
-    if(processed.find(n) != processed.end()) {
-      continue;
-    }
-    processed.insert(n);
-
-    // == DIAMONDS ==
-
-    Trace("diamonds") << "===================== looking at" << endl
-                      << n << endl;
-
-    // binary OR of binary ANDs of EQUALities
-    if (n.getKind() == Kind::OR && n.getNumChildren() == 2
-        && n[0].getKind() == Kind::AND && n[0].getNumChildren() == 2
-        && n[1].getKind() == Kind::AND && n[1].getNumChildren() == 2
-        && (n[0][0].getKind() == Kind::EQUAL)
-        && (n[0][1].getKind() == Kind::EQUAL)
-        && (n[1][0].getKind() == Kind::EQUAL)
-        && (n[1][1].getKind() == Kind::EQUAL))
-    {
-      // now we have (a = b && c = d) || (e = f && g = h)
-
-      Trace("diamonds") << "has form of a diamond!" << endl;
-
-      TNode
-        a = n[0][0][0], b = n[0][0][1],
-        c = n[0][1][0], d = n[0][1][1],
-        e = n[1][0][0], f = n[1][0][1],
-        g = n[1][1][0], h = n[1][1][1];
-
-      // test that one of {a, b} = one of {c, d}, and make "b" the
-      // shared node (i.e. put in the form (a = b && b = d))
-      // note we don't actually care about the shared ones, so the
-      // "swaps" below are one-sided, ignoring b and c
-      if(a == c) {
-        a = b;
-      } else if(a == d) {
-        a = b;
-        d = c;
-      } else if(b == c) {
-        // nothing to do
-      } else if(b == d) {
-        d = c;
-      } else {
-        // condition not satisfied
-        Trace("diamonds") << "+ A fails" << endl;
-        continue;
-      }
-
-      Trace("diamonds") << "+ A holds" << endl;
-
-      // same: one of {e, f} = one of {g, h}, and make "f" the
-      // shared node (i.e. put in the form (e = f && f = h))
-      if(e == g) {
-        e = f;
-      } else if(e == h) {
-        e = f;
-        h = g;
-      } else if(f == g) {
-        // nothing to do
-      } else if(f == h) {
-        h = g;
-      } else {
-        // condition not satisfied
-        Trace("diamonds") << "+ B fails" << endl;
-        continue;
-      }
-
-      Trace("diamonds") << "+ B holds" << endl;
-
-      // now we have (a = b && b = d) || (e = f && f = h)
-      // test that {a, d} == {e, h}
-      if( (a == e && d == h) ||
-          (a == h && d == e) ) {
-        // learn: n implies a == d
-        Trace("diamonds") << "+ C holds" << endl;
-        Node newEquality = a.eqNode(d);
-        Trace("diamonds") << "  ==> " << newEquality << endl;
-        learned << n.impNode(newEquality);
-      } else {
-        Trace("diamonds") << "+ C fails" << endl;
-      }
-    }
-  }
+  // Use the diamonds utility
+  d_dpfgen.ppStaticLearn(n, learned);
 
   if (options().uf.ufSymmetryBreaker)
   {
@@ -599,7 +513,7 @@ void TheoryUF::processCarePairArgs(TNode a, TNode b)
   // also split on functions
   if (logicInfo().isHigherOrder())
   {
-    NodeManager* nm = NodeManager::currentNM();
+    NodeManager* nm = nodeManager();
     for (size_t k = 0, nchild = a.getNumChildren(); k < nchild; ++k)
     {
       TNode x = a[k];
@@ -626,11 +540,11 @@ void TheoryUF::processCarePairArgs(TNode a, TNode b)
 }
 
 void TheoryUF::computeCareGraph() {
-  if (d_sharedTerms.empty())
+  if (d_state.getSharedTerms().empty())
   {
     return;
   }
-  NodeManager* nm = NodeManager::currentNM();
+  NodeManager* nm = nodeManager();
   // Use term indexing. We build separate indices for APPLY_UF and HO_APPLY.
   // We maintain indices per operator for the former, and indices per
   // function type for the latter.

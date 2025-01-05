@@ -4,7 +4,7 @@
  *
  * This file is part of the cvc5 project.
  *
- * Copyright (c) 2009-2023 by the authors listed in the file AUTHORS
+ * Copyright (c) 2009-2024 by the authors listed in the file AUTHORS
  * in the top-level source directory and their institutional affiliations.
  * All rights reserved.  See the file COPYING in the top-level source
  * directory for licensing information.
@@ -75,6 +75,7 @@ const char* toString(Rewrite r)
     case Rewrite::INDEXOF_RE_EVAL: return "INDEXOF_RE_EVAL";
     case Rewrite::INDEXOF_RE_INVALID_INDEX: return "INDEXOF_RE_INVALID_INDEX";
     case Rewrite::INDEXOF_RE_MAX_INDEX: return "INDEXOF_RE_MAX_INDEX";
+    case Rewrite::INDEXOF_RE_NONE: return "INDEXOF_RE_NONE";
     case Rewrite::ITOS_EVAL: return "ITOS_EVAL";
     case Rewrite::RE_ALL_ELIM: return "RE_ALL_ELIM";
     case Rewrite::RE_AND_EMPTY: return "RE_AND_EMPTY";
@@ -130,7 +131,9 @@ const char* toString(Rewrite r)
     case Rewrite::RPL_RPL_LEN_ID: return "RPL_RPL_LEN_ID";
     case Rewrite::RPL_X_Y_X_SIMP: return "RPL_X_Y_X_SIMP";
     case Rewrite::REPLACE_RE_EVAL: return "REPLACE_RE_EVAL";
+    case Rewrite::REPLACE_RE_NONE: return "REPLACE_RE_NONE";
     case Rewrite::REPLACE_RE_ALL_EVAL: return "REPLACE_RE_ALL_EVAL";
+    case Rewrite::REPLACE_RE_ALL_NONE: return "REPLACE_RE_ALL_NONE";
     case Rewrite::REPLACE_RE_EMP_RE: return "REPLACE_RE_EMP_RE";
     case Rewrite::SPLIT_EQ: return "SPLIT_EQ";
     case Rewrite::SPLIT_EQ_STRIP_L: return "SPLIT_EQ_STRIP_L";
@@ -207,10 +210,6 @@ const char* toString(Rewrite r)
     case Rewrite::CONCAT_NORM: return "CONCAT_NORM";
     case Rewrite::IS_DIGIT_ELIM: return "IS_DIGIT_ELIM";
     case Rewrite::RE_CONCAT_EMPTY: return "RE_CONCAT_EMPTY";
-    case Rewrite::RE_CONSUME_CCONF: return "RE_CONSUME_CCONF";
-    case Rewrite::RE_CONSUME_S: return "RE_CONSUME_S";
-    case Rewrite::RE_CONSUME_S_CCONF: return "RE_CONSUME_S_CCONF";
-    case Rewrite::RE_CONSUME_S_FULL: return "RE_CONSUME_S_FULL";
     case Rewrite::RE_IN_EMPTY: return "RE_IN_EMPTY";
     case Rewrite::RE_IN_SIGMA: return "RE_IN_SIGMA";
     case Rewrite::RE_IN_EVAL: return "RE_IN_EVAL";
