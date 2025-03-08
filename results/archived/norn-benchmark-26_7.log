@@ -1,0 +1,297 @@
+New lit: 0 => true
+New lit: 1 => false
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (let ((_let_1 (re.* re.allchar))) (re.++ _let_1 (str.to_re "zb") _let_1))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (re.* re.allchar)
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1)))) and re.allchar
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "c")) and re.allchar
+regExpIncludes: ~(str.to_re "z") and re.allchar
+regExpIncludes: ~(str.to_re "a") and re.allchar
+regExpIncludes: ~(str.to_re "c") and re.allchar
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (let ((_let_1 (re.* re.allchar))) (re.++ _let_1 (str.to_re "zb") _let_1))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (re.* re.allchar)
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1)))) and re.allchar
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "c")) and re.allchar
+regExpIncludes: ~(str.to_re "z") and re.allchar
+regExpIncludes: ~(str.to_re "a") and re.allchar
+regExpIncludes: ~(str.to_re "c") and re.allchar
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (let ((_let_1 (re.* re.allchar))) (re.++ _let_1 (str.to_re "zb") _let_1))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (re.* re.allchar)
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1)))) and re.allchar
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "c")) and re.allchar
+regExpIncludes: ~(str.to_re "z") and re.allchar
+regExpIncludes: ~(str.to_re "a") and re.allchar
+regExpIncludes: ~(str.to_re "c") and re.allchar
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (let ((_let_1 (re.* re.allchar))) (re.++ _let_1 (str.to_re "zb") _let_1))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (re.* re.allchar)
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1)))) and re.allchar
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "c")) and re.allchar
+regExpIncludes: ~(str.to_re "z") and re.allchar
+regExpIncludes: ~(str.to_re "a") and re.allchar
+regExpIncludes: ~(str.to_re "c") and re.allchar
+New lit: 3 => (= "c" @purify_1)
+New lit: 4 => (= (str.len @purify_1) 1)
+New lit: 5 => (= "" @purify_2)
+New lit: 6 => (= (str.len @purify_2) 0)
+New lit: 7 => (= "a" @purify_3)
+New lit: 8 => (= (str.len @purify_3) 1)
+New lit: 9 => (= "b" @purify_4)
+New lit: 10 => (= (str.len @purify_4) 1)
+New lit: 11 => (= "z" @purify_5)
+New lit: 12 => (= (str.len @purify_5) 1)
+New lit: 13 => (= (str.len x10) 0)
+New lit: 14 => (= x10 "")
+New lit: 15 => (and (= (str.len x10) 0) (= x10 ""))
+New lit: 16 => (>= (str.len x10) 1)
+New lit: 17 => (= "zb" @purify_6)
+New lit: 18 => (= (str.len @purify_6) 2)
+New lit: 19 => (= (str.len x9) 0)
+New lit: 20 => (= x9 "")
+New lit: 21 => (and (= (str.len x9) 0) (= x9 ""))
+New lit: 22 => (>= (str.len x9) 1)
+New lit: 23 => (= (str.++ x9 "zb" x10) @purify_7)
+New lit: 24 => (= (str.len x10) (+ (- 2) (* (- 1) (str.len x9)) (str.len @purify_7)))
+New lit: 2 => (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+New lit: 25 => (str.in_re x10 (re.* (re.range "a" "c")))
+New lit: 26 => (str.in_re x9 (re.* (re.range "a" "c")))
+New lit: 27 => (str.in_re x9 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+New lit: 28 => (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Representative: true, ConstantEqc: true
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (re.++ (str.to_re "zb") (re.* re.allchar))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (str.to_re "z")
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))) and (re.++ (str.to_re "zb") (re.* re.allchar))
+regExpIncludes: ~(let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))) and (str.to_re "z")
+n has equivalent sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Rewirte format of sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), isNotConst
+n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))) => nrc: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+could not send internal inference nrc.
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), const = true, from (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+------------------------------------------------------
+Current active node n: (str.in_re x10 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+(str.in_re x10 (re.* (re.range "a" "c"))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re x9 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "c")))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_2 (re.* (re.range "a" "c")))
+------------------------------------------------------
+Current active node n: (str.in_re x9 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+------------------------------------------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+Representative: false, ConstantEqc: false
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))), const = false
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55d115754970
+New lit: 29 => (str.in_re @purify_2 (re.* (re.range "a" "c")))
+lemma:0x55d115755d20
+New lit: 30 => (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Rewirte format of sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), isNotConst
+n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))) => nrc: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+could not send internal inference nrc.
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), const = true, from (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+------------------------------------------------------
+Current active node n: (str.in_re x10 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+(str.in_re x10 (re.* (re.range "a" "c"))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re x9 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "c")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re x9 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+Representative: false, ConstantEqc: false
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))), const = false
+------------------------------------------------------
+Current active node n: (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_2 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "c")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+------------------[checkExtfEval Begin]------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Rewirte format of sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), isNotConst
+n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))) => nrc: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+could not send internal inference nrc.
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), const = true, from (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+------------------------------------------------------
+Current active node n: (str.in_re x10 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+(str.in_re x10 (re.* (re.range "a" "c"))), const = true
+------------------------------------------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+Representative: false, ConstantEqc: false
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))), const = false
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55d115755d20
+New lit: 31 => (and (= x9 "") (= (str.++ x9 "zb" x10) @purify_7))
+New lit: 32 => (= (str.len x10) (+ (- 2) (str.len @purify_7)))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Rewirte format of sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), isNotConst
+n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))) => nrc: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+could not send internal inference nrc.
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), const = true, from (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+------------------------------------------------------
+Current active node n: (str.in_re x10 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+(str.in_re x10 (re.* (re.range "a" "c"))), const = true
+------------------------------------------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+Representative: false, ConstantEqc: false
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))), const = false
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+------------------[checkExtfEval Begin]------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+Rewirte format of sn: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), isNotConst
+n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))) => nrc: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+could not send internal inference nrc.
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))), const = true, from (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+------------------------------------------------------
+Current active node n: (str.in_re x10 (re.* (re.range "a" "c")))
+Representative: true, ConstantEqc: true
+(str.in_re x10 (re.* (re.range "a" "c"))), const = true
+------------------------------------------------------
+Current active node n: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))))
+Representative: false, ConstantEqc: false
+(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))), const = false
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check x10's Eqc.
+Check Eqc Inclusion
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))) and (re.* (re.range "a" "c"))
+regExpIncludes: ~(re.* (re.union (str.to_re "a") (str.to_re "c"))) and (re.* (re.range "a" "c"))
+regExpIncludes: ~(re.union (str.to_re "a") (str.to_re "c")) and (re.range "a" "c")
+regExpIncludes: ~(str.to_re "a") and (re.range "a" "c")
+regExpIncludes: ~(str.to_re "c") and (re.range "a" "c")
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1)))))) and (re.* (re.range "a" "c"))
+Check Eqc Intersect
+End check x10's Eqc.
+Begin check (str.++ x9 "zb" x10)'s Eqc.
+Check Eqc Inclusion
+Check Eqc Intersect
+End check (str.++ x9 "zb" x10)'s Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re x10 (re.* (re.range "a" "c")))
+The NormalString of nx : x10
+checkPDerivative: 
+	atom: (str.in_re x10 (re.* (re.range "a" "c"))); 
+	rnfexp: [](re.* (re.range "a" "c"))
+Node x10 not equal to emptyString.
+x: x10, r: (re.* (re.range "a" "c"))
+We have regular expression assertion : (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (str.to_re "b"))) (not (str.in_re x10 (re.++ (re.* (re.union _let_2 _let_1)) _let_3 (re.* (re.union _let_3 _let_2 _let_1))))))))
+The NormalString of nx : x10
+We have regular expression assertion : (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3)))))))
+The NormalString of nx : (str.++ "zb" x10)
+checkPDerivative: 
+	atom: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (str.in_re (str.++ x9 "zb" x10) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))); 
+	rnfexp: [](let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))
+Node (str.++ x9 "zb" x10) not equal to emptyString.
+x: (str.++ x9 "zb" x10), r: (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (let ((_let_5 (re.union _let_4 _let_2 _let_1))) (re.++ (re.* (re.++ _let_5 _let_3 _let_4)) _let_5 _let_3))))))
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+lemma:0x55d115754970
+New lit: 34 => (= (str.len @re_unfold_pos_component_10) 0)
+New lit: 35 => (= "" @re_unfold_pos_component_10)
+New lit: 36 => (and (= (str.len @re_unfold_pos_component_10) 0) (= "" @re_unfold_pos_component_10))
+New lit: 37 => (>= (str.len @re_unfold_pos_component_10) 1)
+New lit: 38 => (= (str.len @re_unfold_pos_component_9) 0)
+New lit: 39 => (= "" @re_unfold_pos_component_9)
+New lit: 40 => (and (= (str.len @re_unfold_pos_component_9) 0) (= "" @re_unfold_pos_component_9))
+New lit: 41 => (>= (str.len @re_unfold_pos_component_9) 1)
+New lit: 42 => (= (str.len @re_unfold_pos_component_8) 0)
+New lit: 43 => (= "" @re_unfold_pos_component_8)
+New lit: 44 => (and (= (str.len @re_unfold_pos_component_8) 0) (= "" @re_unfold_pos_component_8))
+New lit: 45 => (>= (str.len @re_unfold_pos_component_8) 1)
+New lit: 46 => (= (str.++ @re_unfold_pos_component_8 @re_unfold_pos_component_9 @re_unfold_pos_component_10) @purify_14)
+New lit: 47 => (= (str.len @re_unfold_pos_component_10) (+ (* (- 1) (str.len @re_unfold_pos_component_9)) (* (- 1) (str.len @re_unfold_pos_component_8)) (str.len @purify_14)))
+New lit: 33 => (= (str.++ x9 "zb" x10) (str.++ @re_unfold_pos_component_8 @re_unfold_pos_component_9 @re_unfold_pos_component_10))
+New lit: 48 => (let ((_let_1 (str.to_re "z"))) (let ((_let_2 (str.to_re "c"))) (let ((_let_3 (str.to_re "a"))) (str.in_re @re_unfold_pos_component_8 (re.* (re.++ (re.union _let_1 _let_3 _let_2) (re.* (re.union (str.to_re "b") _let_3 _let_2)) _let_1))))))
+New lit: 49 => (= "z" @re_unfold_pos_component_9)
+New lit: 50 => (= "a" @re_unfold_pos_component_9)
+New lit: 51 => (= "c" @re_unfold_pos_component_9)
+New lit: 52 => (or (= "z" @re_unfold_pos_component_9) (= "a" @re_unfold_pos_component_9) (= "c" @re_unfold_pos_component_9))
+New lit: 53 => (str.in_re @re_unfold_pos_component_10 (re.* (re.union (str.to_re "b") (str.to_re "a") (str.to_re "c"))))
+New lit: 54 => (let ((_let_1 (str.to_re "c"))) (let ((_let_2 (str.to_re "a"))) (let ((_let_3 (re.* (re.union (str.to_re "b") _let_2 _let_1)))) (let ((_let_4 (str.to_re "z"))) (and (= (str.++ x9 "zb" x10) (str.++ @re_unfold_pos_component_8 @re_unfold_pos_component_9 @re_unfold_pos_component_10)) (str.in_re @re_unfold_pos_component_8 (re.* (re.++ (re.union _let_4 _let_2 _let_1) _let_3 _let_4))) (or (= "z" @re_unfold_pos_component_9) (= "a" @re_unfold_pos_component_9) (= "c" @re_unfold_pos_component_9)) (str.in_re @re_unfold_pos_component_10 _let_3))))))
+lemma:0x55d115786bf0
+New lit: 56 => (= (str.len x10) 1)
+New lit: 57 => (>= (str.to_code x10) 0)
+New lit: 58 => (>= (str.to_code x10) 196608)
+New lit: 59 => (let ((_let_1 (str.to_code x10))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 60 => (= (str.to_code x10) (- 1))
+New lit: 55 => (>= (str.to_code x10) 97)
+New lit: 61 => (>= (str.to_code x10) 100)
+New lit: 62 => (let ((_let_1 (str.to_code x10))) (and (>= _let_1 97) (not (>= _let_1 100))))
+New lit: 64 => (= (str.len @re_unfold_pos_component_11) 0)
+New lit: 65 => (and (= (str.len @re_unfold_pos_component_11) 0) (= "" @re_unfold_pos_component_11))
+New lit: 66 => (>= (str.len @re_unfold_pos_component_11) 1)
+New lit: 63 => (= "" @re_unfold_pos_component_11)
+New lit: 68 => (= (str.len @re_unfold_pos_component_13) 0)
+New lit: 69 => (and (= (str.len @re_unfold_pos_component_13) 0) (= "" @re_unfold_pos_component_13))
+New lit: 70 => (>= (str.len @re_unfold_pos_component_13) 1)
+New lit: 67 => (= "" @re_unfold_pos_component_13)
+New lit: 72 => (= (str.len @re_unfold_pos_component_12) 0)
+New lit: 73 => (= "" @re_unfold_pos_component_12)
+New lit: 74 => (and (= (str.len @re_unfold_pos_component_12) 0) (= "" @re_unfold_pos_component_12))
+New lit: 75 => (>= (str.len @re_unfold_pos_component_12) 1)
+New lit: 76 => (= (str.++ @re_unfold_pos_component_11 @re_unfold_pos_component_12 @re_unfold_pos_component_13) @purify_15)
+New lit: 77 => (= (str.len @re_unfold_pos_component_11) (+ (* (- 1) (str.len @re_unfold_pos_component_13)) (* (- 1) (str.len @re_unfold_pos_component_12)) (str.len @purify_15)))
+New lit: 71 => (= x10 (str.++ @re_unfold_pos_component_11 @re_unfold_pos_component_12 @re_unfold_pos_component_13))
+New lit: 78 => (str.in_re @re_unfold_pos_component_12 (re.* (re.range "a" "c")))
+New lit: 80 => (= (str.len @re_unfold_pos_component_11) 1)
+New lit: 81 => (>= (str.to_code @re_unfold_pos_component_11) 0)
+New lit: 82 => (>= (str.to_code @re_unfold_pos_component_11) 196608)
+New lit: 83 => (let ((_let_1 (str.to_code @re_unfold_pos_component_11))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 84 => (= (str.to_code @re_unfold_pos_component_11) (- 1))
+New lit: 79 => (>= (str.to_code @re_unfold_pos_component_11) 97)
+New lit: 85 => (>= (str.to_code @re_unfold_pos_component_11) 100)
+New lit: 87 => (= (str.len @re_unfold_pos_component_13) 1)
+New lit: 88 => (>= (str.to_code @re_unfold_pos_component_13) 0)
+New lit: 89 => (>= (str.to_code @re_unfold_pos_component_13) 196608)
+New lit: 90 => (let ((_let_1 (str.to_code @re_unfold_pos_component_13))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 91 => (= (str.to_code @re_unfold_pos_component_13) (- 1))
+New lit: 86 => (>= (str.to_code @re_unfold_pos_component_13) 97)
+New lit: 92 => (>= (str.to_code @re_unfold_pos_component_13) 100)
+New lit: 93 => (let ((_let_1 (str.to_code @re_unfold_pos_component_13))) (let ((_let_2 (str.to_code @re_unfold_pos_component_11))) (and (not (= "" @re_unfold_pos_component_11)) (not (= "" @re_unfold_pos_component_13)) (= x10 (str.++ @re_unfold_pos_component_11 @re_unfold_pos_component_12 @re_unfold_pos_component_13)) (str.in_re @re_unfold_pos_component_12 (re.* (re.range "a" "c"))) (>= _let_2 97) (not (>= _let_2 100)) (>= _let_1 97) (not (>= _let_1 100)))))
+New lit: 94 => (let ((_let_1 (str.to_code @re_unfold_pos_component_13))) (let ((_let_2 (str.to_code @re_unfold_pos_component_11))) (let ((_let_3 (str.to_code x10))) (or (= x10 "") (and (>= _let_3 97) (not (>= _let_3 100))) (and (not (= "" @re_unfold_pos_component_11)) (not (= "" @re_unfold_pos_component_13)) (= x10 (str.++ @re_unfold_pos_component_11 @re_unfold_pos_component_12 @re_unfold_pos_component_13)) (str.in_re @re_unfold_pos_component_12 (re.* (re.range "a" "c"))) (>= _let_2 97) (not (>= _let_2 100)) (>= _let_1 97) (not (>= _let_1 100)))))))
+New lit: 95 => (= (str.len @purify_7) (str.len @purify_14))
+Fatal failure within void cvc5::internal::Minisat::Solver::uncheckedEnqueue(cvc5::internal::Minisat::Lit, cvc5::internal::Minisat::CRef) at /home/hanrui/StrCvc5/src/prop/minisat/core/Solver.cc:1144
+Check failure
+
+ value(p) == (lbool((uint8_t)2))
+

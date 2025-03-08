@@ -1,0 +1,479 @@
+New lit: 0 => true
+New lit: 1 => false
+New lit: 3 => (= "u" @purify_1)
+New lit: 4 => (= (str.len @purify_1) 1)
+New lit: 5 => (= "" @purify_2)
+New lit: 6 => (= (str.len @purify_2) 0)
+New lit: 7 => (= "a" @purify_3)
+New lit: 8 => (= (str.len @purify_3) 1)
+New lit: 9 => (= (str.len var_4) 0)
+New lit: 10 => (= var_4 "")
+New lit: 11 => (and (= (str.len var_4) 0) (= var_4 ""))
+New lit: 12 => (>= (str.len var_4) 1)
+New lit: 2 => (str.in_re var_4 (re.* (re.range "a" "u")))
+New lit: 14 => (= "b" @purify_4)
+New lit: 15 => (= (str.len @purify_4) 1)
+New lit: 13 => (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+New lit: 17 => (= "c" @purify_5)
+New lit: 18 => (= (str.len @purify_5) 1)
+New lit: 19 => (= "z" @purify_6)
+New lit: 20 => (= (str.len @purify_6) 1)
+New lit: 16 => (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_2 (re.* (re.range "a" "u")))
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_2 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55ad9d633d70
+New lit: 21 => (str.in_re @purify_2 (re.* (re.range "a" "u")))
+lemma:0x55ad9d6577a0
+New lit: 22 => (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+lemma:0x55ad9d657990
+New lit: 23 => (str.in_re @purify_2 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+(str.in_re var_4 (re.* (re.range "a" "u"))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+(str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b")))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+(str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c")))), const = false
+------------------------------------------------------
+Current active node n: (str.in_re @purify_2 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_2 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_2 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+(str.in_re var_4 (re.* (re.range "a" "u"))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+(str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b")))), const = true
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+(str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c")))), const = false
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+------------------[checkMemberships Begin]------------------
+Step 1: checkInclusions
+Begin check var_4's Eqc.
+Check Eqc Inclusion
+Check if m1 or m2 can be reduced
+regExpIncludes: ~(re.* (re.range "a" "u")) and (re.* (re.union (str.to_re "a") (str.to_re "b")))
+regExpIncludes: ~(re.range "a" "u") and (re.union (str.to_re "a") (str.to_re "b"))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))) and (re.* (re.range "a" "u"))
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c")) and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "z") and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "a") and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "b") and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "c") and (re.range "a" "u")
+Check if m1 or m2 can be reduced
+regExpIncludes: ~(re.* (re.union (str.to_re "a") (str.to_re "b"))) and (re.* (re.range "a" "u"))
+regExpIncludes: ~(re.union (str.to_re "a") (str.to_re "b")) and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "a") and (re.range "a" "u")
+regExpIncludes: ~(str.to_re "b") and (re.range "a" "u")
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))) and (re.* (re.union (str.to_re "a") (str.to_re "b")))
+regExpIncludes: ~(re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c")) and (re.union (str.to_re "a") (str.to_re "b"))
+regExpIncludes: ~(str.to_re "z") and (re.union (str.to_re "a") (str.to_re "b"))
+regExpIncludes: ~(str.to_re "a") and (re.union (str.to_re "a") (str.to_re "b"))
+regExpIncludes: ~(str.to_re "b") and (re.union (str.to_re "a") (str.to_re "b"))
+regExpIncludes: ~(str.to_re "c") and (re.union (str.to_re "a") (str.to_re "b"))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))) and (re.* (re.range "a" "u"))
+Check if m1 and m2 lead to conflict
+regExpIncludes: ~(re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))) and (re.* (re.union (str.to_re "a") (str.to_re "b")))
+Check Eqc Intersect
+checkEqcIntersect of [(re.* (re.range "a" "u"))] and [(re.* (re.union (str.to_re "a") (str.to_re "b")))], get intersection: [(re.* (re.union (str.to_re "a") (str.to_re "b")))]
+End check var_4's Eqc.
+Step 2: checkEvaluations
+We have regular expression assertion : (str.in_re var_4 (re.* (re.range "a" "u")))
+The NormalString of nx : var_4
+checkPDerivative: 
+	atom: (str.in_re var_4 (re.* (re.range "a" "u"))); 
+	rnfexp: [](re.* (re.range "a" "u"))
+Node var_4 not equal to emptyString.
+x: var_4, r: (re.* (re.range "a" "u"))
+We have regular expression assertion : (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+The NormalString of nx : var_4
+checkPDerivative: 
+	atom: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b")))); 
+	rnfexp: [](re.* (re.union (str.to_re "a") (str.to_re "b")))
+Node var_4 not equal to emptyString.
+x: var_4, r: (re.* (re.union (str.to_re "a") (str.to_re "b")))
+We have regular expression assertion : (not (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c")))))
+The NormalString of nx : var_4
+Step 3: checkUnfold
+-------------------[checkMemberships End]-------------------
+lemma:0x55ad9d657990
+New lit: 25 => (= (str.len var_4) 1)
+New lit: 26 => (>= (str.to_code var_4) 0)
+New lit: 27 => (>= (str.to_code var_4) 196608)
+New lit: 28 => (let ((_let_1 (str.to_code var_4))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 29 => (= (str.to_code var_4) (- 1))
+New lit: 24 => (>= (str.to_code var_4) 97)
+New lit: 30 => (>= (str.to_code var_4) 118)
+New lit: 31 => (let ((_let_1 (str.to_code var_4))) (and (>= _let_1 97) (not (>= _let_1 118))))
+New lit: 33 => (= (str.len @re_unfold_pos_component_7) 0)
+New lit: 34 => (and (= (str.len @re_unfold_pos_component_7) 0) (= "" @re_unfold_pos_component_7))
+New lit: 35 => (>= (str.len @re_unfold_pos_component_7) 1)
+New lit: 32 => (= "" @re_unfold_pos_component_7)
+New lit: 37 => (= (str.len @re_unfold_pos_component_9) 0)
+New lit: 38 => (and (= (str.len @re_unfold_pos_component_9) 0) (= "" @re_unfold_pos_component_9))
+New lit: 39 => (>= (str.len @re_unfold_pos_component_9) 1)
+New lit: 36 => (= "" @re_unfold_pos_component_9)
+New lit: 41 => (= (str.len @re_unfold_pos_component_8) 0)
+New lit: 42 => (= "" @re_unfold_pos_component_8)
+New lit: 43 => (and (= (str.len @re_unfold_pos_component_8) 0) (= "" @re_unfold_pos_component_8))
+New lit: 44 => (>= (str.len @re_unfold_pos_component_8) 1)
+New lit: 45 => (= (str.++ @re_unfold_pos_component_7 @re_unfold_pos_component_8 @re_unfold_pos_component_9) @purify_13)
+New lit: 46 => (= (str.len @re_unfold_pos_component_7) (+ (* (- 1) (str.len @re_unfold_pos_component_9)) (* (- 1) (str.len @re_unfold_pos_component_8)) (str.len @purify_13)))
+New lit: 40 => (= var_4 (str.++ @re_unfold_pos_component_7 @re_unfold_pos_component_8 @re_unfold_pos_component_9))
+New lit: 47 => (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u")))
+New lit: 49 => (= (str.len @re_unfold_pos_component_7) 1)
+New lit: 50 => (>= (str.to_code @re_unfold_pos_component_7) 0)
+New lit: 51 => (>= (str.to_code @re_unfold_pos_component_7) 196608)
+New lit: 52 => (let ((_let_1 (str.to_code @re_unfold_pos_component_7))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 53 => (= (str.to_code @re_unfold_pos_component_7) (- 1))
+New lit: 48 => (>= (str.to_code @re_unfold_pos_component_7) 97)
+New lit: 54 => (>= (str.to_code @re_unfold_pos_component_7) 118)
+New lit: 56 => (= (str.len @re_unfold_pos_component_9) 1)
+New lit: 57 => (>= (str.to_code @re_unfold_pos_component_9) 0)
+New lit: 58 => (>= (str.to_code @re_unfold_pos_component_9) 196608)
+New lit: 59 => (let ((_let_1 (str.to_code @re_unfold_pos_component_9))) (and (>= _let_1 0) (not (>= _let_1 196608))))
+New lit: 60 => (= (str.to_code @re_unfold_pos_component_9) (- 1))
+New lit: 55 => (>= (str.to_code @re_unfold_pos_component_9) 97)
+New lit: 61 => (>= (str.to_code @re_unfold_pos_component_9) 118)
+New lit: 62 => (let ((_let_1 (str.to_code @re_unfold_pos_component_9))) (let ((_let_2 (str.to_code @re_unfold_pos_component_7))) (and (not (= "" @re_unfold_pos_component_7)) (not (= "" @re_unfold_pos_component_9)) (= var_4 (str.++ @re_unfold_pos_component_7 @re_unfold_pos_component_8 @re_unfold_pos_component_9)) (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u"))) (>= _let_2 97) (not (>= _let_2 118)) (>= _let_1 97) (not (>= _let_1 118)))))
+New lit: 63 => (let ((_let_1 (str.to_code @re_unfold_pos_component_9))) (let ((_let_2 (str.to_code @re_unfold_pos_component_7))) (let ((_let_3 (str.to_code var_4))) (or (= var_4 "") (and (>= _let_3 97) (not (>= _let_3 118))) (and (not (= "" @re_unfold_pos_component_7)) (not (= "" @re_unfold_pos_component_9)) (= var_4 (str.++ @re_unfold_pos_component_7 @re_unfold_pos_component_8 @re_unfold_pos_component_9)) (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u"))) (>= _let_2 97) (not (>= _let_2 118)) (>= _let_1 97) (not (>= _let_1 118)))))))
+lemma:0x55ad9d6577a0
+New lit: 65 => (= (str.len @re_unfold_pos_component_10) 0)
+New lit: 66 => (and (= (str.len @re_unfold_pos_component_10) 0) (= "" @re_unfold_pos_component_10))
+New lit: 67 => (>= (str.len @re_unfold_pos_component_10) 1)
+New lit: 64 => (= "" @re_unfold_pos_component_10)
+New lit: 69 => (= (str.len @re_unfold_pos_component_12) 0)
+New lit: 70 => (and (= (str.len @re_unfold_pos_component_12) 0) (= "" @re_unfold_pos_component_12))
+New lit: 71 => (>= (str.len @re_unfold_pos_component_12) 1)
+New lit: 68 => (= "" @re_unfold_pos_component_12)
+New lit: 73 => (= (str.len @re_unfold_pos_component_11) 0)
+New lit: 74 => (= "" @re_unfold_pos_component_11)
+New lit: 75 => (and (= (str.len @re_unfold_pos_component_11) 0) (= "" @re_unfold_pos_component_11))
+New lit: 76 => (>= (str.len @re_unfold_pos_component_11) 1)
+New lit: 77 => (= (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12) @purify_14)
+New lit: 78 => (= (str.len @re_unfold_pos_component_10) (+ (* (- 1) (str.len @re_unfold_pos_component_12)) (* (- 1) (str.len @re_unfold_pos_component_11)) (str.len @purify_14)))
+New lit: 72 => (= var_4 (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12))
+New lit: 79 => (= "a" @re_unfold_pos_component_10)
+New lit: 80 => (= "b" @re_unfold_pos_component_10)
+New lit: 81 => (or (= "a" @re_unfold_pos_component_10) (= "b" @re_unfold_pos_component_10))
+New lit: 82 => (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+New lit: 83 => (= "a" @re_unfold_pos_component_12)
+New lit: 84 => (= "b" @re_unfold_pos_component_12)
+New lit: 85 => (or (= "a" @re_unfold_pos_component_12) (= "b" @re_unfold_pos_component_12))
+New lit: 86 => (and (not (= "" @re_unfold_pos_component_10)) (not (= "" @re_unfold_pos_component_12)) (= var_4 (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12)) (or (= "a" @re_unfold_pos_component_10) (= "b" @re_unfold_pos_component_10)) (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b")))) (or (= "a" @re_unfold_pos_component_12) (= "b" @re_unfold_pos_component_12)))
+New lit: 87 => (= var_4 "a")
+New lit: 88 => (= var_4 "b")
+New lit: 89 => (or (= var_4 "") (and (not (= "" @re_unfold_pos_component_10)) (not (= "" @re_unfold_pos_component_12)) (= var_4 (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12)) (or (= "a" @re_unfold_pos_component_10) (= "b" @re_unfold_pos_component_10)) (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b")))) (or (= "a" @re_unfold_pos_component_12) (= "b" @re_unfold_pos_component_12))) (= var_4 "a") (= var_4 "b"))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_3 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_3 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------------------------------------------
+Current active node n: (str.to_code var_4)
+Representative: 97, ConstantEqc: 97
+n has equivalent sn: (str.to_code "a")
+Rewirte format of sn: 97, isConst
+Send inference conc: (= (str.to_code @purify_3) 97)
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u")))
+Representative: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u"))), ConstantEqc: null
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_7)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+Send inference conc: (= (str.to_code @purify_2) (- 1))
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_9)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+Send inference conc: (= (str.to_code @purify_2) (- 1))
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b")))), ConstantEqc: null
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55ad9d62b930
+New lit: 90 => (str.in_re @purify_3 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+lemma:0x55ad9d6577a0
+New lit: 91 => (str.in_re @purify_3 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+lemma:0x55ad9d657990
+New lit: 92 => (= (str.to_code @purify_3) 97)
+lemma:0x55ad9d633d70
+New lit: 93 => (= (str.to_code @purify_2) (- 1))
+lemma:0x55ad9d62b250
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re @purify_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------------------------------------------
+Current active node n: (str.to_code var_4)
+Representative: 98, ConstantEqc: 98
+n has equivalent sn: (str.to_code "b")
+Rewirte format of sn: 98, isConst
+Send inference conc: (= (str.to_code @purify_4) 98)
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u")))
+Representative: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u"))), ConstantEqc: null
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_7)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_9)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b")))), ConstantEqc: null
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_2)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_3)
+Representative: 97, ConstantEqc: 97
+n has equivalent sn: (str.to_code "a")
+Rewirte format of sn: 97, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55ad9d62b250
+New lit: 94 => (str.in_re @purify_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+lemma:0x55ad9d633d70
+New lit: 95 => (str.in_re @purify_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+lemma:0x55ad9d657990
+New lit: 96 => (= (str.to_code @purify_4) 98)
+New lit: 97 => (>= (str.len var_4) 2)
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "aa" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+n has equivalent sn: (str.in_re "aa" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------------------------------------------
+Current active node n: (str.to_code var_4)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "aa")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_7)
+Representative: (str.to_code @re_unfold_pos_component_7), ConstantEqc: null
+(str.to_code @re_unfold_pos_component_7)
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_9)
+Representative: (str.to_code @re_unfold_pos_component_9), ConstantEqc: null
+(str.to_code @re_unfold_pos_component_9)
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_2)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_3)
+Representative: 97, ConstantEqc: 97
+n has equivalent sn: (str.to_code "a")
+Rewirte format of sn: 97, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_4)
+Representative: 98, ConstantEqc: 98
+n has equivalent sn: (str.to_code "b")
+Rewirte format of sn: 98, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55ad9d657990
+New lit: 98 => (and (= "a" @re_unfold_pos_component_10) (= "" @re_unfold_pos_component_11) (= "a" @re_unfold_pos_component_12) (= var_4 (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12)))
+------------------[checkExtfEval Begin]------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "ab" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: false, ConstantEqc: false
+n has equivalent sn: (str.in_re "ab" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+Send inference conc: (str.in_re var_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+------------------------------------------------------
+Current active node n: (str.to_code var_4)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "ab")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_8 (re.* (re.range "a" "u")))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.range "a" "u")))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_7)
+Representative: (str.to_code @re_unfold_pos_component_7), ConstantEqc: null
+(str.to_code @re_unfold_pos_component_7)
+------------------------------------------------------
+Current active node n: (str.to_code @re_unfold_pos_component_9)
+Representative: (str.to_code @re_unfold_pos_component_9), ConstantEqc: null
+(str.to_code @re_unfold_pos_component_9)
+------------------------------------------------------
+Current active node n: (str.in_re @re_unfold_pos_component_11 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_2)
+Representative: (- 1), ConstantEqc: (- 1)
+n has equivalent sn: (str.to_code "")
+Rewirte format of sn: (- 1), isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_3)
+Representative: 97, ConstantEqc: 97
+n has equivalent sn: (str.to_code "a")
+Rewirte format of sn: 97, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_3 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "a" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.to_code @purify_4)
+Representative: 98, ConstantEqc: 98
+n has equivalent sn: (str.to_code "b")
+Rewirte format of sn: 98, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_4 (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "z") (str.to_re "a") (str.to_re "b") (str.to_re "c"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+Current active node n: (str.in_re @purify_4 (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Representative: true, ConstantEqc: true
+n has equivalent sn: (str.in_re "b" (re.* (re.union (str.to_re "a") (str.to_re "b"))))
+Rewirte format of sn: true, isConst
+------------------------------------------------------
+-------------------[checkExtfEval End]-------------------
+lemma:0x55ad9d657990
+New lit: 99 => (and (= "a" @re_unfold_pos_component_10) (= "" @re_unfold_pos_component_11) (= "b" @re_unfold_pos_component_12) (= var_4 (str.++ @re_unfold_pos_component_10 @re_unfold_pos_component_11 @re_unfold_pos_component_12)))
+Fatal failure within void cvc5::internal::Minisat::Solver::uncheckedEnqueue(cvc5::internal::Minisat::Lit, cvc5::internal::Minisat::CRef) at /home/hanrui/StrCvc5/src/prop/minisat/core/Solver.cc:1144
+Check failure
+
+ value(p) == (lbool((uint8_t)2))
+

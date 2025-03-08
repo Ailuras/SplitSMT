@@ -1,0 +1,42 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "cvc5-test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/bin/cvc5",
+            "args": [
+                "--produce-models",
+                "test/0105.smt2",
+                "-t",
+                "test_Extf",
+                "-t",
+                "test_Member",
+                "-t",
+                "test_sat",
+                "-t",
+                "test_cnf",
+                "-t",
+                "test_lemma",
+                ">",
+                "results/0105.log"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/wzh",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}
