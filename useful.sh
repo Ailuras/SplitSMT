@@ -45,3 +45,5 @@ python experiments/analysis_solve.py \
     --output-file charts/Norn_updated.xlsx
 
 python scripts/preprocess_0321.py test/test.smt2 test/after.smt2
+
+./trace.sh 1 0 test/after.smt2

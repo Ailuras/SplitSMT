@@ -12,61 +12,85 @@ Publication: "String constraints for verification" by P.A. Abdulla, M.F. Atig, Y
 (set-info :category "industrial")
 (set-info :status unknown)
 
+(declare-fun x9 () String)
+(declare-fun x10 () String)
+(declare-fun x9_l0 () String)
+(declare-fun x9_r0 () String)
+(declare-fun x10_l0 () String)
+(declare-fun x10_r0 () String)
+(declare-fun x10_l1 () String)
+(declare-fun x10_r1 () String)
 
-(declare-fun x7 () String)
-(declare-fun x8 () String)
-(declare-fun len_tmp0 () Int)
-(declare-fun len_tmp1 () Int)
-(declare-fun len_tmp2 () Int)
-(declare-fun len_tmp3 () Int)
-(declare-fun len_tmp4 () Int)
-(assert (str.in_re (str.++ x7 "z" x8) (re.* (re.++ (re.union (str.to_re "z") (str.to_re "a")) (re.* (str.to_re "z")) (str.to_re "a")))))
-(assert (str.in_re x8 (re.* (re.range "a" "u"))))
-(assert (str.in_re (str.++ x8 "a") (re.* (re.range "a" "u"))))
-(assert (str.in_re x7 (re.* (re.range "a" "u"))))
-(assert (not (str.in_re (str.++ x7 "z" x8 "a") (re.++ (re.* (re.union (str.to_re "z") (re.++ (str.to_re "a") (re.* (str.to_re "a")) (str.to_re "z")))) (str.to_re "a") (re.* (str.to_re "a"))))))
+(assert (str.in_re (str.++ x9 "z" x10) (re.* (re.union (re.++ (str.to_re "z") (re.* (str.to_re "z")) (str.to_re "a")) (re.++ (str.to_re "a") (re.* (str.to_re "z")) (str.to_re "a"))))))
+(assert (str.in_re x10 (re.* (re.range "a" "u"))))
+(assert (str.in_re x9 (re.* (re.range "a" "u"))))
+(assert (not (str.in_re (str.++ "a" x9 "z" "b" x10) (re.++ (re.* (re.union (str.to_re "z") (str.to_re "b") (re.++ (str.to_re "a") (str.to_re "z")) (re.++ (str.to_re "a") (str.to_re "a")))) (str.to_re "a")))))
 
-(assert (str.in_re x7 (re.* (str.to_re "a"))))
-(assert (str.in_re x7 (re.* (str.to_re "aa"))))
-(assert (str.in_re (str.++ x8 "a") (re.* (str.to_re "a"))))
-(assert (str.in_re x8 (re.* (str.to_re "a"))))
-(assert (str.in_re x8 (re.++ (str.to_re "a") (re.* (str.to_re "aa")))))
-(assert (or (not (str.in_re x7 (re.++ (str.to_re "a") (re.* (str.to_re "a"))))) (not (str.in_re (str.++ x8 "a") (re.++ (str.to_re "a") (re.* (str.to_re "a")))))))
-(assert (or (not (str.in_re (str.++ x8 "a") (re.++ (str.to_re "a") (re.* (str.to_re "a"))))) (not (str.in_re x7 (str.to_re "")))))
-(assert (>= len_tmp0 0))
-(assert (>= len_tmp1 0))
-(assert (>= len_tmp2 0))
-(assert (>= len_tmp3 0))
-(assert (>= len_tmp4 0))
-(assert (= (str.len x7) len_tmp4))
-(assert (= (str.len x7) (* 2 len_tmp0)))
-(assert (= (+ (str.len x8) 1) (* 1 len_tmp3)))
-(assert (= (str.len x8) len_tmp2))
-(assert (= (str.len x8) (+ 1 (* 2 len_tmp1))))
+(assert (>= (+ (str.len x9) 0) 0))
+(assert (str.in_re x10 (re.++ (str.to_re "a") (re.* (str.to_re "a")))))
+(assert (str.in_re x9 (re.++ (str.to_re "a") (re.* (str.to_re "a")))))
+(assert (or (not (= x10 (str.++ x10_l0 "a" x10_r0))) (str.in_re x10_r0 (re.* (str.to_re "a")))))
+(assert (or (not (= x10 (str.++ x10_l1 "a" x10_r1))) (str.in_re x10_l1 (str.to_re ""))))
+(assert (or (not (= x10 (str.++ x10_l0 "a" x10_r0))) (str.in_re x10_r0 (re.* (re.++ (str.to_re "a") (str.to_re "a"))))))
+(assert (or (not (= x10 (str.++ x10_l1 "a" x10_r1))) (str.in_re x10_r1 (re.* (str.to_re "a")))))
+(assert (not (= (+ (str.len x9) 0) 0)))
+(assert (not (str.in_re x9 (re.++ (str.to_re "a") (re.* (re.++ (str.to_re "a") (str.to_re "a")))))))
+(assert (not (str.in_re x9 (str.to_re ""))))
+(assert (str.in_re x10 (re.++ (str.to_re "a") (re.* (re.++ (str.to_re "a") (str.to_re "a"))))))
+(assert (str.in_re x9 (re.* (str.to_re "a"))))
+(assert (>= (- (str.len x10) 1) 0))
+(assert (or (not (= (mod (- (str.len x9) 2) 2) 0)) (not (>= (- (str.len x9) 2) 0))))
+(assert (or (not (>= (- (str.len x9) 2) 0)) (str.in_re x9 (re.++ (re.++ (str.to_re "a") (str.to_re "a")) (re.* (str.to_re "a"))))))
+(assert (or (not (str.in_re x10_r0 (re.* (re.++ (str.to_re "a") (str.to_re "a"))))) (str.in_re x10_r0 (re.* (str.to_re "a")))))
+(assert (or (not (= x10 (str.++ x10_l0 "a" x10_r0))) (str.in_re x10_l0 (str.to_re ""))))
+(assert (>= (+ (str.len x10) 0) 0))
+(assert (or (not (str.in_re x9_r0 (re.* (re.++ (str.to_re "a") (str.to_re "a"))))) (str.in_re x9_r0 (re.* (str.to_re "a")))))
+(assert (or (not (= (mod (- (str.len x9) 1) 2) 0)) (not (>= (- (str.len x9) 1) 0))))
+(assert (not (str.in_re x9 (re.++ (str.to_re "a") (str.to_re "a") (re.* (re.++ (str.to_re "a") (str.to_re "a")))))))
+(assert (not (str.in_re (str.++ x9 "z" "b" x10) (str.to_re ""))))
+(assert (str.in_re x10 (re.* (str.to_re "a"))))
+(assert (str.in_re x9 (re.* (re.++ (str.to_re "a") (str.to_re "a")))))
+(assert (= (mod (- (str.len x10) 1) 2) 0))
+(assert (= (mod (+ (str.len x9) 0) 2) 0))
+(assert (or (not (= x10 (str.++ x10_l1 "a" x10_r1))) (str.in_re x10_r1 (re.* (re.++ (str.to_re "a") (str.to_re "a"))))))
+(assert (not (= x9 (str.++ x9_l0 "a" x9_r0))))
+(assert (or (not (str.in_re x10_r1 (re.* (re.++ (str.to_re "a") (str.to_re "a"))))) (str.in_re x10_r1 (re.* (str.to_re "a")))))
 (check-sat)
 (exit)
+
 ; ========================== [comments] ==========================
 ; Clause comments
-; x7 + "z" + x8 in [["z" | "a"] + ["z"]* + "a"]*
-; x8 in [a-u]*
-; x8 + "a" in [a-u]*
-; x7 in [a-u]*
-; x7 + "z" + x8 + "a" not in ["z" | ["a" + ["a"]* + "z"]]* + "a" + ["a"]*
+; x9 + "z" + x10 in [["z" + ["z"]* + "a"] | ["a" + ["z"]* + "a"]]*
+; x10 in [a-u]*
+; x9 in [a-u]*
+; "a" + x9 + "z" + "b" + x10 not in ["z" | "b" | ["a" + "z"] | ["a" + "a"]]* + "a"
 ; Lemma comments
-; x7 in ["a"]*
-; x7 in ["aa"]*
-; x8 + "a" in ["a"]*
-; x8 in ["a"]*
-; x8 in "a" + ["aa"]*
-; x7 not in "a" + ["a"]* or x8 + "a" not in "a" + ["a"]*
-; x8 + "a" not in "a" + ["a"]* or x7 not in ""
-; len_tmp0 >= 0
-; len_tmp1 >= 0
-; len_tmp2 >= 0
-; len_tmp3 >= 0
-; len_tmp4 >= 0
-; len(x7) = len_tmp4
-; len(x7) = 2 * len_tmp0
-; len(x8) + 1 = 1 * len_tmp3
-; len(x8) = len_tmp2
-; len(x8) = 1 + 2 * len_tmp1
+; len(x9) + 0 >= 0
+; x10 in "a" + ["a"]*
+; x9 in "a" + ["a"]*
+; not x10 = x10_l0 + "a" + x10_r0 or x10_r0 in ["a"]*
+; not x10 = x10_l1 + "a" + x10_r1 or x10_l1 in ""
+; not x10 = x10_l0 + "a" + x10_r0 or x10_r0 in ["a" + "a"]*
+; not x10 = x10_l1 + "a" + x10_r1 or x10_r1 in ["a"]*
+; not len(x9) + 0 = 0
+; x9 not in "a" + ["a" + "a"]*
+; x9 not in ""
+; x10 in "a" + ["a" + "a"]*
+; x9 in ["a"]*
+; len(x10) - 1 >= 0
+; not (len(x9) - 2) mod 2 = 0 or not len(x9) - 2 >= 0
+; not len(x9) - 2 >= 0 or x9 in "a" + "a" + ["a"]*
+; x10_r0 not in ["a" + "a"]* or x10_r0 in ["a"]*
+; not x10 = x10_l0 + "a" + x10_r0 or x10_l0 in ""
+; len(x10) + 0 >= 0
+; x9_r0 not in ["a" + "a"]* or x9_r0 in ["a"]*
+; not (len(x9) - 1) mod 2 = 0 or not len(x9) - 1 >= 0
+; x9 not in "a" + "a" + ["a" + "a"]*
+; x9 + "z" + "b" + x10 not in ""
+; x10 in ["a"]*
+; x9 in ["a" + "a"]*
+; (len(x10) - 1) mod 2 = 0
+; (len(x9) + 0) mod 2 = 0
+; not x10 = x10_l1 + "a" + x10_r1 or x10_r1 in ["a" + "a"]*
+; not x9 = x9_l0 + "a" + x9_r0
+; x10_r1 not in ["a" + "a"]* or x10_r1 in ["a"]*

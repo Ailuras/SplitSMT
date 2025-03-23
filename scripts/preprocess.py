@@ -1,9 +1,11 @@
 import re
-import sys
+import math
 import logging
 import argparse
+import itertools
 from colorama import Fore, Back, Style, init
 from collections import deque
+from functools import reduce
 
 def setup_logger(level=20):
     logging.basicConfig(
@@ -11,36 +13,44 @@ def setup_logger(level=20):
         format='%(asctime)s - %(levelname)s - %(message)s',
         force=True
     )
-    logging.addLevelName(11, "debug1")
-    logging.addLevelName(12, "debug2")
-    logging.addLevelName(13, "debug3")
-    logging.addLevelName(14, "debug4")
-    logging.addLevelName(15, "debug5")
+    logging.addLevelName(11, "DEBUG1")
+    logging.addLevelName(12, "DEBUG2")
+    logging.addLevelName(13, "DEBUG3")
+    logging.addLevelName(14, "DEBUG4")
+    logging.addLevelName(15, "DEBUG5")
     def debug1(self, message, *args, **kwargs):
         if self.isEnabledFor(11):
-            self._log(11, message, args, **kwargs)
+            colored_message = f"{Back.RED}{message}{Style.RESET_ALL}"
+            self._log(11, colored_message, args, **kwargs)
     def debug2(self, message, *args, **kwargs):
         if self.isEnabledFor(12):
-            self._log(12, message, args, **kwargs)
+            colored_message = f"{Back.BLUE}{message}{Style.RESET_ALL}"
+            self._log(12, colored_message, args, **kwargs)
     def debug3(self, message, *args, **kwargs):
         if self.isEnabledFor(13):
-            self._log(13, message, args, **kwargs)
+            colored_message = f"{Back.CYAN}{message}{Style.RESET_ALL}"
+            self._log(13, colored_message, args, **kwargs)
     def debug4(self, message, *args, **kwargs):
         if self.isEnabledFor(14):
-            self._log(14, message, args, **kwargs)
+            colored_message = f"{Back.GREEN}{message}{Style.RESET_ALL}"
+            self._log(14, colored_message, args, **kwargs)
     def debug5(self, message, *args, **kwargs):
         if self.isEnabledFor(15):
-            self._log(15, message, args, **kwargs)
+            colored_message = f"{Back.YELLOW}{message}{Style.RESET_ALL}"
+            self._log(15, colored_message, args, **kwargs)
     logging.Logger.debug1 = debug1
     logging.Logger.debug2 = debug2
     logging.Logger.debug3 = debug3
     logging.Logger.debug4 = debug4
     logging.Logger.debug5 = debug5
-    setattr(logging, 'debug1', lambda msg, *args, **kwargs: logging.log(11, msg, *args, **kwargs))
-    setattr(logging, 'debug2', lambda msg, *args, **kwargs: logging.log(12, msg, *args, **kwargs))
-    setattr(logging, 'debug3', lambda msg, *args, **kwargs: logging.log(13, msg, *args, **kwargs))
-    setattr(logging, 'debug4', lambda msg, *args, **kwargs: logging.log(14, msg, *args, **kwargs))
-    setattr(logging, 'debug5', lambda msg, *args, **kwargs: logging.log(15, msg, *args, **kwargs))
+    def colored_log(level, color, msg, *args, **kwargs):
+        colored_msg = f"{color}{msg}{Style.RESET_ALL}"
+        logging.log(level, colored_msg, *args, **kwargs)
+    setattr(logging, 'debug1', lambda msg, *args, **kwargs: colored_log(11, Back.RED, msg, *args, **kwargs))
+    setattr(logging, 'debug2', lambda msg, *args, **kwargs: colored_log(12, Back.BLUE, msg, *args, **kwargs))
+    setattr(logging, 'debug3', lambda msg, *args, **kwargs: colored_log(13, Back.CYAN, msg, *args, **kwargs))
+    setattr(logging, 'debug4', lambda msg, *args, **kwargs: colored_log(14, Back.GREEN, msg, *args, **kwargs))
+    setattr(logging, 'debug5', lambda msg, *args, **kwargs: colored_log(15, Back.YELLOW, msg, *args, **kwargs))
     init()
 
 class Parser:
@@ -87,7 +97,7 @@ class Parser:
             return 'check_sat'
         if line.startswith('(exit'):
             return 'exit'
-        if line.startswith(('(declare-fun', '(define-fun')):
+        if line.startswith(('(declare-fun', '(define-fun', '(declare-const')):
             return 'declare'
         if line.startswith('(assert'):
             return 'assert'
@@ -123,6 +133,20 @@ class Parser:
                 return 're_plus'
             if head == 're.in':
                 return 're_in'
+            if head == 'and' and len(expr) > 1:
+                return 'and'
+            if head == 'or' and len(expr) > 1:
+                return 'or'
+            if head == '=' and len(expr) == 3:
+                return 'eq'
+            if head == '<' and len(expr) == 3:
+                return 'lt'
+            if head == '>' and len(expr) == 3:
+                return 'gt'
+            if head == '<=' and len(expr) == 3:
+                return 'le'
+            if head == '>=' and len(expr) == 3:
+                return 'ge'
             return 'default'
         if isinstance(expr, str):
             if expr == "":
@@ -361,6 +385,13 @@ class Parser:
             if op == '/':
                 parts = [process_expr(e, op) for e in expr[1:]]
                 return ' / '.join(parts)
+            if op == 'mod':
+                if len(expr) >= 3:
+                    left = process_expr(expr[1], op)
+                    right = process_expr(expr[2], op)
+                    if isinstance(expr[1], list):
+                        return f"({left}) mod {right}"
+                    return f"{left} mod {right}"
             if op == 'str.len':
                 if len(expr) > 1:
                     return f"len({process_expr(expr[1], op)})"
@@ -397,7 +428,8 @@ class Parser:
                 if part is None:
                     return None
                 parts.append(part)
-            return ''.join(parts)
+            result = ''.join(parts)
+            return result
         elif op == 're.union':
             parts = []
             for e in expr[1:]:
@@ -407,7 +439,8 @@ class Parser:
                 parts.append(part)
             if not parts:
                 return ''
-            return '|'.join(['(?:' + p + ')' for p in parts])
+            result = '|'.join(['(?:' + p + ')' for p in parts])
+            return result
         elif op == 're.*':
             if len(expr) < 2:
                 return None
@@ -463,14 +496,32 @@ class Parser:
         return None
 
 class SMTVar:
-    def __init__(self, index, var, var_type, name = None):
-        self.index = index
-        self.name = f"x{index}" if name is None else name
+    def __init__(self, var, var_type, name=None):
+        self.index = None
         self.var = var
         self.type = var_type
+        self._custom_name = name
         self.used = False
         self.allow = set(chr(c) for c in range(32, 127))
         self.original_line = None
+        self.lit_indices = []
+    
+    @property
+    def name(self):
+        if self._custom_name is not None:
+            return self._custom_name
+            
+        if self.type == "String":
+            return f"x{self.index}"
+        elif self.type == "Int":
+            return f"i{self.index}"
+        elif self.type == "Bool":
+            return f"b{self.index}"
+        return f"v{self.index}"
+
+    def add_lit(self, lit_index):
+        if lit_index not in self.lit_indices:
+            self.lit_indices.append(lit_index)
 
     def __eq__(self, other):
         if not isinstance(other, SMTVar):
@@ -495,47 +546,19 @@ class SMTVar:
 class SMTClause:
     def __init__(self, index, expr, expr_type):
         self.index = index
-        self.expr = expr
+        self.expr_tree = expr
         self.type = expr_type
-        self.vars = self._extract_vars(self.expr)
-        self.chars = self._extract_chars(self.expr)
         self.original_line = None
     
-    def _extract_vars(self, exp):
-        vars_found = set()
-        if isinstance(exp, str) and exp.startswith('x'):
-            vars_found.add(exp)
-        elif isinstance(exp, list):
-            for e in exp:
-                vars_found.update(self._extract_vars(e))
-        return vars_found
-    
-    def _extract_chars(self, exp):
-        chars = set()
-        if isinstance(exp, str) and exp.startswith('"'):
-            chars.update(exp[1:-1])
-        elif isinstance(exp, list) and exp:
-            op = exp[0]
-            if op == 'not':
-                return self._extract_chars(exp[1])
-            elif len(exp) >= 3 and op == 're.range':
-                start, end = exp[1][1:-1], exp[2][1:-1]
-                chars.update(chr(c) for c in range(ord(start), ord(end) + 1))
-            elif op in ['re.++', 're.union', 're.*', 're.+']:
-                for e in exp[1:]:
-                    chars.update(self._extract_chars(e))
-            elif op == 'str.in_re' and len(exp) >= 3:
-                chars.update(self._extract_chars(exp[2]))
-            else:
-                for e in exp:
-                    chars.update(self._extract_chars(e))
-        return chars
-    
     def get_smt2(self):
-        return Parser.to_smt2(['assert', self.expr])
+        if self.expr_tree:
+            expr = self.expr_tree.get_expr()
+            if expr:
+                return Parser.to_smt2(['assert', expr])
+        return None
     
     def get_comment(self):
-        return f"Clause({self.index})"
+        return f"{self.expr_tree.get_comment() if self.expr_tree else 'None'}"
 
     def __eq__(self, other):
         if not isinstance(other, SMTClause):
@@ -546,13 +569,32 @@ class SMTClause:
         return hash(self.index)
     
     def __str__(self):
-        return f"; {Parser.to_str(self.expr)}"
+        if self.expr_tree:
+            expr = self.expr_tree.get_expr()
+            if expr:
+                return f"; {Parser.to_str(expr)}"
+        return f"; Empty clause({self.index})"
 
 class ExpressionTree:
     def __init__(self, op, elements):
         self.op = op
         self.elements = elements
         self.info_manager = None
+
+    def is_unit(self):
+        if self.op == 'not':
+            return self.elements[0].is_unit()
+        elif self.op == 'leaf':
+            return True
+        return False
+
+    def get_unit_lit(self):
+        if self.is_unit():
+            if self.op == 'not':
+                return self.elements[0].get_unit_lit()
+            else:
+                return self.elements[0]
+        return None
     
     def get_comment(self):
         if self.op == 'not':
@@ -605,6 +647,14 @@ class ExpressionTree:
             for element in self.elements:
                 leaf_indices.update(element.get_all_leaf_indices())
         return leaf_indices
+    
+    def update_literal_indices(self, before_index, after_index):
+        if self.op == 'leaf':
+            if self.elements and self.elements[0] == before_index:
+                self.elements[0] = after_index
+        elif self.op in ['and', 'or', 'not']:
+            for element in self.elements:
+                element.update_literal_indices(before_index, after_index)
     
     @staticmethod
     def OR(elements):
@@ -668,6 +718,16 @@ class SMTLemma:
         if isinstance(expr, ExpressionTree):
             self.expr_tree = expr
     
+    def is_unit(self):
+        if self.expr_tree:
+            return self.expr_tree.is_unit()
+        return False
+
+    def get_unit_lit(self):
+        if self.is_unit():
+            return self.expr_tree.get_unit_lit()
+        return None
+    
     def get_smt2(self):
         if self.expr_tree:
             expr = self.expr_tree.get_expr()
@@ -715,8 +775,12 @@ class SMTLit:
         self.expr = expr
         self.type = self._determine_type()
         self.index = None
+        self.clause_indices = []
         self.lemma_indices = []
-    
+        self.unit = None
+        self.pure = None
+        self.origin = False
+
     def _determine_type(self):
         if isinstance(self.expr, str):
             if self.expr == 'true' or self.expr == 'false':
@@ -728,6 +792,10 @@ class SMTLit:
                 elif self.expr[0] in ['=', '>=', '<=', '>', '<']:
                     return 'arith'
         return 'unknown'
+    
+    def add_clause(self, clause_index):
+        if clause_index not in self.clause_indices:
+            self.clause_indices.append(clause_index)
     
     def add_lemma(self, lemma_index):
         if lemma_index not in self.lemma_indices:
@@ -771,87 +839,22 @@ class InfoManager:
         self.clauses = []
         self.tmp_var_counter = 0
         self.tmp_vars = []
+        self.tmp_var_map = {}
         self.lemma_counter = 0
         self.lemmas = []
         self.literal_counter = 0
         self.literals = []
+        self.add_literal(SMTLit('false'))
+        self.add_literal(SMTLit('true'))
+        self.rewrite_processor = RewriteProcessor()
 
     def _process_declare(self, line):
         expr = Parser.parse_expression(Parser.tokenize(line))
         var = expr[1]
-        type_info = expr[3]
-        v = SMTVar(self.var_counter, var, type_info)
+        type_info = expr[3] if expr[0] == 'declare-fun' else expr[2]
+        v = SMTVar(var, type_info)
         v.original_line = line
         self.add_var(v)
-
-    def _simplify_expr(self, expr):
-        if not isinstance(expr, list) or not expr:
-            return expr
-        h = expr[0]
-        if h == 'let':
-            b = expr[1]
-            body = expr[2]
-            while isinstance(body, list) and body and body[0] == 'let':
-                b.extend(body[1])
-                body = body[2]
-            return ['let', b, self._simplify_expr(body)]
-        elif h in ['re.++', 're.union']:
-            merged = [h]
-            for sub in expr[1:]:
-                simplified = self._simplify_expr(sub)
-                if isinstance(simplified, list) and simplified and simplified[0] == h:
-                    merged.extend(simplified[1:])
-                else:
-                    merged.append(simplified)
-            if h == 're.union':
-                result = merged
-                for i in range(1, len(merged)):
-                    if isinstance(merged[i], list) and merged[i] and merged[i][0] == 're.++':
-                        re_cat = merged[i]
-                        for j in range(len(re_cat) - 1, 0, -1):
-                            if isinstance(re_cat[j], list) and re_cat[j] and re_cat[j][0] == 're.union':
-                                union_parts = re_cat[j][1:]
-                                new_cats = []
-                                for part in union_parts:
-                                    new_cat = re_cat[1:j] + [part] + re_cat[j+1:]
-                                    if len(new_cat) > 1:
-                                        new_cats.append(['re.++'] + new_cat)
-                                    else:
-                                        new_cats.append(new_cat[0])
-                                result = ['re.union']
-                                for item in merged[1:i]:
-                                    result.append(item)
-                                result.extend(new_cats)
-                                for item in merged[i+1:]:
-                                    result.append(item)
-                                return self._simplify_expr(result)
-                return result
-            return merged
-        elif h in ['re.*', 're.+']:
-            body = self._simplify_expr(expr[1])
-            if isinstance(body, list) and body and body[0] == 're.union':
-                for i in range(1, len(body)):
-                    if isinstance(body[i], list) and body[i] and body[i][0] == 're.++':
-                        re_cat = body[i]
-                        for j in range(len(re_cat) - 1, 0, -1):
-                            if isinstance(re_cat[j], list) and re_cat[j] and re_cat[j][0] == 're.union':
-                                union_parts = re_cat[j][1:]
-                                new_cats = []
-                                for part in union_parts:
-                                    new_cat = re_cat[1:j] + [part] + re_cat[j+1:]
-                                    if len(new_cat) > 1:
-                                        new_cats.append(['re.++'] + new_cat)
-                                    else:
-                                        new_cats.append(new_cat[0])
-                                new_union = ['re.union']
-                                for item in body[1:i]:
-                                    new_union.append(item)
-                                new_union.extend(new_cats)
-                                for item in body[i+1:]:
-                                    new_union.append(item)
-                                return [h, self._simplify_expr(new_union)]
-            return [h, body]
-        return [h] + [self._simplify_expr(e) for e in expr[1:]]
 
     def _rename_var(self, expr):
         if not isinstance(expr, list):
@@ -863,26 +866,72 @@ class InfoManager:
         return [self._rename_var(e) for e in expr]
 
     def get_var(self, var):
-        if var not in self.var_map:
-            raise KeyError(f"Variable {var} not found in var_map")
-        return self.vars[self.var_map[var]]
+        if var in self.var_map:
+            return self.vars[self.var_map[var]]
+        if var in self.tmp_var_map:
+            return self.tmp_vars[self.tmp_var_map[var]]
+        return None
+
+    def _get_expr_tree(self, expr):
+        if not expr:
+            return None
+        if isinstance(expr, str):
+            lit = SMTLit(expr)
+            lit_find = self.find_literal(lit)
+            if lit_find is None:
+                lit_index = self.add_literal(lit)
+                return ExpressionTree('leaf', [lit_index])
+            return ExpressionTree('leaf', [lit_find.index])
+        if not isinstance(expr, list):
+            return None
+        expr_type = Parser.classify_type(expr)
+        if expr_type == 'not':
+            inner_tree = self._get_expr_tree(expr[1])
+            if inner_tree:
+                return ExpressionTree('not', [inner_tree])
+            return None
+        if expr_type in ['and', 'or']:
+            elements = []
+            for e in expr[1:]:
+                subtree = self._get_expr_tree(e)
+                if subtree:
+                    elements.append(subtree)
+            if elements:
+                return ExpressionTree(expr_type, elements)
+            return None
+        lit = SMTLit(expr)
+        lit_find = self.find_literal(lit)
+        lit_index = lit_find.index if lit_find else self.add_literal(lit)
+        return ExpressionTree('leaf', [lit_index])
 
     def _process_assert(self, line):
         expr = Parser.parse_expression(Parser.tokenize(line))
-        expr = self._simplify_expr(expr)
+        expr = self.rewrite_processor.split_string_constants(expr)
+        expr = self.rewrite_processor.remove_re_nesting(expr)
+        expr = self.rewrite_processor.deploy_union_in_kleene(expr)
         expr = self._rename_var(expr)
         if isinstance(expr, list) and len(expr) > 1 and isinstance(expr[1], list):
             clu_type = Parser.classify_type(expr[1]) if expr[1] else 'default'
         else:
             clu_type = 'default'
-        clause = SMTClause(self.clause_counter, expr[1], clu_type)
+        expr_tree = self._get_expr_tree(expr[1])
+        if expr_tree:
+            expr_tree.set_info_manager(self)
+        clause = SMTClause(self.clause_counter, expr_tree, clu_type)
+        lits = expr_tree.get_all_leaf_indices()
+        for lit_index in lits:
+            self.literals[lit_index].add_clause(self.clause_counter)
         clause.original_line = line
         self.add_clause(clause)
+        if expr_tree.is_unit():
+            lit_index = expr_tree.get_unit_lit()
+            lit = self.literals[lit_index]
+            lit.unit = 'true' if expr_tree.op == 'leaf' else 'false'
 
     def process_line(self, line):
         line = line.strip()
         line_type = Parser.classify_line(line)
-        if line_type == 'empty' or line_type == 'comment':
+        if line_type == 'comment':
             self.preamble.append(line)
         elif line_type == 'logic' or line_type == 'info':
             self.preamble.append(line)
@@ -894,9 +943,10 @@ class InfoManager:
             self._process_assert(line)
     
     def add_var(self, var):
+        var.index = self.var_counter
         self.vars.append(var)
-        self.var_map[var.var] = var.index
         self.var_counter += 1
+        self.var_map[var.var] = var.index
     
     def add_clause(self, clause):
         self.clauses.append(clause)
@@ -907,10 +957,13 @@ class InfoManager:
         self.lemmas.append(lemma)
         self.lemma_counter += 1
         return lemma.index
-        
+
     def add_tmp_var(self, var):
+        var.index = self.tmp_var_counter
         self.tmp_vars.append(var)
         self.tmp_var_counter += 1
+        self.tmp_var_map[var.var] = var.index
+        return var.index
 
     def add_literal(self, lit):
         lit.index = self.literal_counter
@@ -920,507 +973,66 @@ class InfoManager:
 
     def find_literal(self, lit):
         for l in self.literals:
-            if str(lit) == str(l):
+            if (not l.origin) and str(lit) == str(l):
                 return l
         return None
 
     def reset_lemmas(self):
         self.lemma_counter = 0
         self.lemmas = []
+        for lit in self.literals:
+            lit.lemma_indices = []
 
     def update_info(self):
         self.var_map = {var.name: var.index for var in self.vars}
         for clause in self.clauses:
-            if clause.type == 'not':
+            if clause.type != 're_in' or not clause.expr_tree:
                 continue
-            variables = clause.vars
-            characters = clause.chars
-            for var_name in variables:
+            expr = clause.expr_tree.get_expr()
+            if not expr or len(expr) < 3 or expr[0] != 'str.in_re':
+                continue
+            vars_found = self.rewrite_processor.extract_vars(expr[1])
+            chars_found = self.rewrite_processor.extract_chars(expr[2])
+            for var_name in vars_found:
                 var = self.get_var(var_name)
-                var.allow = var.allow.intersection(characters)
+                var.allow = var.allow.intersection(chars_found)
+        for lit in self.literals:
+            if lit.type != 'bool':
+                lit.origin = True
 
-class RegexProcessor:
-    def __init__(self, info):
-        self.info_manager = info
-    
-    def get_re_elements(self, expr):
-        if not isinstance(expr, list):
-            return None, None
-        if expr[0] == 'not':
-            expr = expr[1]
-        if expr[0] == 'str.in_re':
-            left_expr = expr[1]
-            right_expr = expr[2]
-            left_expr = self._split_string_constants(left_expr)
-            if isinstance(right_expr, list) and right_expr[0] == 're.++':
-                right_expr = right_expr[1:]
-            else:
-                right_expr = [right_expr]
-            return left_expr, right_expr
-        return None, None
-    
-    def _split_string_constants(self, expr):
-        if isinstance(expr, str):
-            if expr.startswith('"'):
-                chars = []
-                for char in expr[1:-1]:
-                    chars.append(f'"{char}"')
-                return chars
-            return [expr]
-        if isinstance(expr, list) and expr and expr[0] == 'str.++':
-            result = []
-            for e in expr[1:]:
-                result.extend(self._split_string_constants(e))
-            return result
-        return [expr]
-    
-    def get_variables(self, expr):
+class RewriteProcessor:
+
+    def extract_vars(self, exp):
         vars_found = set()
-        if isinstance(expr, str) and expr.startswith('x'):
-            vars_found.add(expr)
-        elif isinstance(expr, list):
-            for e in expr:
-                vars_found.update(self.get_variables(e))
+        if isinstance(exp, str) and exp.startswith('x'):
+            vars_found.add(exp)
+        elif isinstance(exp, list):
+            for e in exp:
+                vars_found.update(self.extract_vars(e))
         return vars_found
-    
-    def get_parikh_image(self, expr):
-        if isinstance(expr, str):
-            if expr.startswith('"') and len(expr) > 2:
-                result = {}
-                for char in expr[1:-1]:
-                    result[char] = result.get(char, 0) + 1
-                return result
-            return {}
-        if not isinstance(expr, list):
-            return {}
-        if expr and expr[0] == 'str.to_re' and len(expr) > 1:
-            if isinstance(expr[1], str) and expr[1].startswith('"'):
-                result = {}
-                for char in expr[1][1:-1]:
-                    result[char] = result.get(char, 0) + 1
-                return result
-            return {}
-        constants = {}
-        for e in expr:
-            if isinstance(e, str) and e.startswith('"') and len(e) > 2:
-                for char in e[1:-1]:
-                    constants[char] = constants.get(char, 0) + 1
-            elif isinstance(e, list):
-                sub_constants = self.get_parikh_image(e)
-                for char, count in sub_constants.items():
-                    constants[char] = constants.get(char, 0) + count
-        return constants
 
-    def is_direct_match(self, expr, constant):
-        if isinstance(constant, str) and constant.startswith('"'):
-            constant_value = constant[1:-1]
-        else:
-            constant_value = constant
-        if not isinstance(expr, list):
-            if isinstance(expr, str) and expr.startswith('"'):
-                return expr[1:-1] == constant_value
-            return expr == constant
-        if expr and expr[0] == 'str.to_re' and len(expr) > 1:
-            if isinstance(expr[1], str) and expr[1].startswith('"'):
-                return expr[1][1:-1] == constant_value
-            return expr[1] == constant
-        return False
-    
-    def is_constant_contain(self, expr, constant):
-        if self.is_direct_match(expr, constant):
-            return True
-        constant_value = constant[1:-1] if isinstance(constant, str) and constant.startswith('"') else constant
-        if not isinstance(expr, list):
-            if isinstance(expr, str) and expr.startswith('"'):
-                return constant_value in expr[1:-1]
-            return False
-        if not expr:
-            return False
-        op = expr[0]
-        if op == 'str.to_re' and len(expr) > 1:
-            if isinstance(expr[1], str) and expr[1].startswith('"'):
-                return constant_value in expr[1][1:-1]
-            return False
-        if op in ['re.*', 're.+'] and len(expr) > 1:
-            return self.is_constant_contain(expr[1], '"'+constant_value+'"')
-        if op == 're.++':
-            for sub_expr in expr[1:]:
-                if self.is_constant_contain(sub_expr, '"'+constant_value+'"'):
-                    return True
-            return False
-        if op == 're.union':
-            for sub_expr in expr[1:]:
-                if self.is_constant_contain(sub_expr, '"'+constant_value+'"'):
-                    return True
-            return False
-        if self.is_complex_match(expr, '"'+constant_value+'"'):
-            return True
-        for sub_expr in expr[1:]:
-            if self.is_constant_contain(sub_expr, '"'+constant_value+'"'):
-                return True
-        return False
-    
-    def is_complex_match(self, expr, constant):
-        constant_value = constant[1:-1] if isinstance(constant, str) and constant.startswith('"') else constant
-        if not isinstance(expr, list):
-            return False
-        const_count = self.get_parikh_image(expr).get(constant_value, 0)
-        if const_count != 1:
-            return False
-        op = expr[0] if expr else ""
-        if op == 're.++':
-            for i in range(1, len(expr)):
-                if self.is_direct_match(expr[i], '"'+constant_value+'"'):
-                    return True
-                if isinstance(expr[i], list) and self.is_complex_match(expr[i], '"'+constant_value+'"'):
-                    return True
-        elif op == 're.union':
-            for i in range(1, len(expr)):
-                if self.is_complex_match(expr[i], '"'+constant_value+'"'):
-                    return True
-        elif op in ['re.*', 're.+']:
-            if len(expr) > 1:
-                return self.is_complex_match(expr[1], '"'+constant_value+'"')
-        return False
-    
-    def is_must_match(self, expr, constant):
-        constant = constant[1:-1]
-        if not isinstance(expr, list):
-            if isinstance(expr, str) and expr.startswith('"'):
-                return constant in expr
-            return False
-        if not expr:
-            return False
-        op = expr[0]
-        if op == 'str.to_re':
-            if len(expr) > 1 and isinstance(expr[1], str) and expr[1].startswith('"'):
-                return constant in expr[1]
-            return False
-        if op in ['re.*', 're.+']:
-            return False
-        if op == 're.union':
-            if len(expr) <= 1:
-                return False
-            return all(self.is_must_match(sub_expr, constant) for sub_expr in expr[1:])
-        if op == 're.++':
-            if len(expr) <= 1:
-                return False
-            return any(self.is_must_match(sub_expr, constant) for sub_expr in expr[1:])
-        return False
-    
-    def get_index_first_unique_constant(self, expr):
-        if not isinstance(expr, list):
-            if isinstance(expr, str) and expr.startswith('"'):
-                char = expr[1:-1]
-                for var_name in self.get_variables(expr):
-                    var = self.info_manager.get_var(var_name)
-                    if var.allow is not None and char in var.allow:
-                        return None
-                return 0
-            return None
-        for i, e in enumerate(expr):
-            if isinstance(e, str) and e.startswith('"'):
-                char = e[1:-1]
-                is_unique = True
-                for var_name in self.get_variables(expr):
-                    var = self.info_manager.get_var(var_name)
-                    if var.allow is not None and char in var.allow:
-                        is_unique = False
-                        break
-                if is_unique:
-                    return i
-        return None
-    
-    def get_index_constant_in_pattern(self, re_expr, constant):
-        if not isinstance(re_expr, list) or not re_expr:
-            return None
-        indices = []
-        for i, sub_expr in enumerate(re_expr):
-            logging.debug1(f"sub_expr: {Parser.to_str(sub_expr)}, constant: {constant}, result: {self.is_constant_contain(sub_expr, constant)}")
-            if self.is_constant_contain(sub_expr, constant):
-                indices.append(i)
-        if len(indices) == 1:
-            return indices[0]
-        must_contain_indices = []
-        for i in indices:
-            if self.is_must_match(re_expr[i], constant):
-                must_contain_indices.append(i)
-        if len(must_contain_indices) == 1:
-            return must_contain_indices[0]
-        return None
-
-    def get_deploy_pattern(self, pattern, constant):
-        if not isinstance(pattern, list) or len(pattern) < 2:
-            return None
-        if pattern[0] not in ['re.*', 're.+']:
-            return [['str.to_re', '""'], pattern, ['str.to_re', '""']]
-        body = pattern[1]
-        original_pattern = pattern.copy()
-        if isinstance(body, list) and body[0] == 're.++':
-            result = self.extract_constant_from_concat(body, constant, pattern[0])
-            if result:
-                return result
-        elif isinstance(body, list) and body[0] == 're.union':
-            direct_matches = []
-            complex_matches = []
-            for i, term in enumerate(body[1:], 1):
-                const_count = self.get_parikh_image(term).get(constant[1:-1], 0)
-                if const_count == 1:
-                    if self.is_direct_match(term, constant):
-                        direct_matches.append(term)
-                    elif self.is_complex_match(term, constant):
-                        complex_matches.append(term)
-            if direct_matches or complex_matches:
-                middle_part = ['re.union']
-                middle_part.extend(direct_matches)
-                middle_part.extend(complex_matches)
-                if len(middle_part) == 2:
-                    middle_part = middle_part[1]
-                return [original_pattern, middle_part, original_pattern]
-        else:
-            const_free_pattern = self.replace_constant_with_empty(body, constant)
-            if const_free_pattern is not None:
-                middle_part = self.create_one_occurrence_pattern(body, constant)
-                if middle_part:
-                    return [pattern, middle_part, pattern]
-        return None
-
-    def extract_constant_from_concat(self, concat_expr, constant, kleene_op):
-        if not isinstance(concat_expr, list) or concat_expr[0] != 're.++':
-            return None
-        for i, part in enumerate(concat_expr[1:], 1):
-            if self.is_direct_match(part, constant):
-                left_parts = concat_expr[1:i]
-                right_parts = concat_expr[i+1:]
-                left_concat = self.make_concat(left_parts)
-                right_concat = self.make_concat(right_parts)
-                const_free_pattern = self.make_concat([left_concat, right_concat])
-                const_free_pattern = self.simplify_pattern(const_free_pattern)
-                if kleene_op == 're.*':
-                    kleene_pattern = ['re.*', self.clone_pattern(concat_expr)]
-                else:
-                    kleene_pattern = ['re.+', self.clone_pattern(concat_expr)]
-                middle_part = self.make_concat([left_concat, part, right_concat])
-                middle_part = self.simplify_pattern(middle_part)
-                return [kleene_pattern, middle_part, kleene_pattern]
-            elif isinstance(part, list) and self.is_constant_contain(part, constant):
-                if part[0] in ['re.*', 're.+']:
-                    inner_deploy = self.get_deploy_pattern(part, constant)
-                    if inner_deploy:
-                        left_parts = concat_expr[1:i]
-                        right_parts = concat_expr[i+1:]
-                        left_concat = self.make_concat(left_parts)
-                        right_concat = self.make_concat(right_parts)
-                        left_pattern = self.make_concat([left_concat, inner_deploy[0]])
-                        right_pattern = self.make_concat([inner_deploy[2], right_concat])
-                        if kleene_op == 're.*':
-                            outer_left = ['re.*', self.clone_pattern(concat_expr)]
-                            outer_right = ['re.*', self.clone_pattern(concat_expr)]
-                        else:
-                            outer_left = ['re.+', self.clone_pattern(concat_expr)]
-                            outer_right = ['re.+', self.clone_pattern(concat_expr)]
-                        middle_part = self.make_concat([left_pattern, inner_deploy[1], right_pattern])
-                        middle_part = self.simplify_pattern(middle_part)
-                        return [outer_left, middle_part, outer_right]
-                elif part[0] == 're.++':
-                    inner_result = self.extract_constant_from_concat(part, constant, None)
-                    if inner_result:
-                        middle_part = inner_result[1]
-                        left_parts = concat_expr[1:i]
-                        right_parts = concat_expr[i+1:]
-                        left_concat = self.make_concat(left_parts)
-                        right_concat = self.make_concat(right_parts)
-                        new_middle = self.make_concat([left_concat, middle_part, right_concat])
-                        new_middle = self.simplify_pattern(new_middle)
-                        if kleene_op == 're.*':
-                            outer_pattern = ['re.*', self.clone_pattern(concat_expr)]
-                        else:
-                            outer_pattern = ['re.+', self.clone_pattern(concat_expr)]
-                        return [outer_pattern, new_middle, outer_pattern]
-                elif part[0] == 're.union':
-                    inner_parts = self.extract_constant_from_union(part, constant)
-                    if inner_parts:
-                        left_parts = concat_expr[1:i]
-                        right_parts = concat_expr[i+1:]
-                        left_concat = self.make_concat(left_parts)
-                        right_concat = self.make_concat(right_parts)
-                        middle_part = self.make_concat([left_concat, inner_parts, right_concat])
-                        middle_part = self.simplify_pattern(middle_part)
-                        if kleene_op == 're.*':
-                            outer_pattern = ['re.*', self.clone_pattern(concat_expr)]
-                        else:
-                            outer_pattern = ['re.+', self.clone_pattern(concat_expr)]
-                        return [outer_pattern, middle_part, outer_pattern]
-        return None
-
-    def extract_constant_from_union(self, union_expr, constant):
-        if not isinstance(union_expr, list) or union_expr[0] != 're.union':
-            return None
-        direct_matches = []
-        for i, term in enumerate(union_expr[1:], 1):
-            const_count = self.get_parikh_image(term).get(constant[1:-1], 0)
-            if const_count == 1:
-                if self.is_direct_match(term, constant) or self.is_complex_match(term, constant):
-                    direct_matches.append(term)
-        if direct_matches:
-            return direct_matches[0] if len(direct_matches) == 1 else ['re.union'] + direct_matches
-        return None
-
-    def replace_constant_with_empty(self, expr, constant):
-        if not isinstance(expr, list):
-            if expr == constant:
-                return ['str.to_re', '""']
-            return expr
-        if expr[0] == 'str.to_re' and len(expr) > 1 and expr[1] == constant:
-            return ['str.to_re', '""']
-        result = [expr[0]]
-        for sub_expr in expr[1:]:
-            replaced = self.replace_constant_with_empty(sub_expr, constant)
-            if replaced:
-                result.append(replaced)
-        if len(result) == 1:  # 只剩下操作符
-            return ['str.to_re', '""']
-        return result
-
-    def create_one_occurrence_pattern(self, expr, constant):
-        if not isinstance(expr, list):
-            if expr == constant:
-                return expr
-            return None
-        if expr[0] == 'str.to_re' and len(expr) > 1 and expr[1] == constant:
-            return expr
-        for i, sub_expr in enumerate(expr[1:], 1):
-            one_occurrence = self.create_one_occurrence_pattern(sub_expr, constant)
-            if one_occurrence:
-                if expr[0] == 're.++':
-                    result = [expr[0]]
-                    for j, part in enumerate(expr[1:], 1):
-                        if j == i:
-                            result.append(one_occurrence)
-                        else:
-                            result.append(self.replace_constant_with_empty(part, constant))
-                    return result
-                return one_occurrence
-        return None
-
-    def make_concat(self, parts):
-        parts = [p for p in parts if p is not None and p != ['str.to_re', '""']]
-        if not parts:
-            return ['str.to_re', '""']
-        if len(parts) == 1:
-            return parts[0]
-        return ['re.++'] + parts
-
-    def simplify_pattern(self, pattern):
-        if not isinstance(pattern, list):
-            return pattern
-        if not pattern:
-            return ['str.to_re', '""']
-        if pattern[0] == 're.++':
-            result = ['re.++']
-            for part in pattern[1:]:
-                if part == ['str.to_re', '""']:
-                    continue
-                if isinstance(part, list) and part and part[0] == 're.++':
-                    result.extend(part[1:])
-                else:
-                    result.append(part)
-            if len(result) == 1:
-                return ['str.to_re', '""']
-            if len(result) == 2:
-                return result[1]
-            return result
-        return pattern
-
-    def clone_pattern(self, pattern):
-        if not isinstance(pattern, list):
-            return pattern
-        return [pattern[0]] + [self.clone_pattern(p) for p in pattern[1:]]
-
-    def get_split_pattern(self, left_expr, right_expr, constant_index, constant_in_index):
-        left_left = left_expr[:constant_index]
-        left_mid = left_expr[constant_index]
-        left_right = left_expr[constant_index+1:]
-        right_left = right_expr[:constant_in_index]
-        right_mid = right_expr[constant_in_index]
-        right_right = right_expr[constant_in_index+1:]
-        deploy_pattern = self.get_deploy_pattern(right_mid, left_mid)
-        if not deploy_pattern:
-            return None
-        middle_pattern = deploy_pattern[1]
-        right_left_extended = right_left + [deploy_pattern[0]]
-        right_right_extended = [deploy_pattern[2]] + right_right
-        left_left = self.normalize_expr(left_left)
-        left_right = self.normalize_expr(left_right)
-        left_side, right_side = self.extract_sides_from_pattern(middle_pattern, left_mid)
-        left_left_list = []
-        left_right_list = []
-        for left_part in left_side:
-            right_left_norm = self.normalize_expr(right_left_extended + [left_part], is_regex=True)
-            left_left_list.append(['str.in_re', left_left, right_left_norm])
-        for right_part in right_side:
-            right_right_norm = self.normalize_expr([right_part] + right_right_extended, is_regex=True)
-            left_right_list.append(['str.in_re', left_right, right_right_norm])
-        paired_list = list(zip(left_left_list, left_right_list))
-        return paired_list
-
-    def extract_sides_from_pattern(self, pattern, constant):
-        if self.is_direct_match(pattern, constant):
-            return [['str.to_re', '""']], [['str.to_re', '""']]
-        if isinstance(pattern, list) and pattern and pattern[0] == 're.++':
-            left_parts = []
-            right_parts = []
-            for i, part in enumerate(pattern[1:], 1):
-                if self.is_direct_match(part, constant):
-                    left_segment = pattern[1:i]
-                    right_segment = pattern[i+1:] if i+1 < len(pattern) else []
-                    if not left_segment:
-                        left_parts.append(['str.to_re', '""'])
-                    elif len(left_segment) == 1:
-                        left_parts.append(left_segment[0])
-                    else:
-                        left_parts.append(['re.++'] + left_segment)
-                    if not right_segment:
-                        right_parts.append(['str.to_re', '""'])
-                    elif len(right_segment) == 1:
-                        right_parts.append(right_segment[0])
-                    else:
-                        right_parts.append(['re.++'] + right_segment)
-                    break
-            if left_parts and right_parts:
-                return left_parts, right_parts
-        if isinstance(pattern, list) and pattern and pattern[0] == 're.union':
-            left_parts = []
-            right_parts = []
-            for option in pattern[1:]:
-                if isinstance(option, list) and option and option[0] == 're.++':
-                    option_left, option_right = self.extract_sides_from_pattern(option, constant)
-                    left_parts.extend(option_left)
-                    right_parts.extend(option_right)
-                elif self.is_direct_match(option, constant):
-                    left_parts.append(['str.to_re', '""'])
-                    right_parts.append(['str.to_re', '""'])
-            if left_parts and right_parts:
-                return left_parts, right_parts
-        return [['str.to_re', '""']], [['str.to_re', '""']]
-    
-    def normalize_expr(self, expr, is_regex=False):
-        if not expr and not is_regex:
-            return "\"\""
-        if len(expr) == 1:
-            return expr[0]
-        concat_op = 're.++' if is_regex else 'str.++'
-        result = [concat_op]
-        for item in expr:
-            if isinstance(item, list) and item and item[0] == concat_op:
-                result.extend(item[1:])
+    def extract_chars(self, exp):
+        chars = set()
+        if isinstance(exp, str) and exp.startswith('"'):
+            chars.update(exp[1:-1])
+        elif isinstance(exp, list) and exp:
+            op = exp[0]
+            if op == 'not':
+                return self.extract_chars(exp[1])
+            elif len(exp) >= 3 and op == 're.range':
+                start, end = exp[1][1:-1], exp[2][1:-1]
+                chars.update(chr(c) for c in range(ord(start), ord(end) + 1))
+            elif op in ['re.++', 're.union', 're.*', 're.+']:
+                for e in exp[1:]:
+                    chars.update(self.extract_chars(e))
+            elif op == 'str.in_re' and len(exp) >= 3:
+                chars.update(self.extract_chars(exp[2]))
             else:
-                result.append(item)
-        return result
+                for e in exp:
+                    chars.update(self.extract_chars(e))
+        return chars
 
-    def filter_by_allowed_chars(self, expr, allowed_chars):
-        if not allowed_chars:
-            return expr
+    def remove_tabu_chars(self, expr, allowed_chars):
         def optimize_range(start, end, allowed):
             start_code = ord(start)
             end_code = ord(end)
@@ -1472,13 +1084,13 @@ class RegexProcessor:
                 chars_in_range = set(chr(c) for c in range(ord(start), ord(end) + 1))
                 intersection = chars_in_range.intersection(allowed_chars)
                 if not intersection:
-                    return ['str.to_re', '""'], False
+                    return None, False
                 if len(intersection) == len(chars_in_range):
                     return e, True
                 optimized = optimize_range(start, end, allowed_chars)
                 if optimized:
                     return optimized, True
-                return ['str.to_re', '""'], False
+                return None, False
             elif op == 're.++':
                 filtered = []
                 is_valid = True
@@ -1489,7 +1101,7 @@ class RegexProcessor:
                         break
                     filtered.append(sub_result)
                 if not is_valid:
-                    return ['str.to_re', '""'], False
+                    return None, False
                 if not filtered:
                     return ['str.to_re', '""'], True
                 if len(filtered) == 1:
@@ -1499,20 +1111,20 @@ class RegexProcessor:
                 filtered = []
                 for sub_e in e[1:]:
                     sub_result, sub_valid = process_expr(sub_e)
-                    if sub_valid and sub_result != ['str.to_re', '""']:
+                    if sub_valid and sub_result is not None:
                         filtered.append(sub_result)
                 if not filtered:
-                    return ['str.to_re', '""'], False
+                    return None, False
                 if len(filtered) == 1:
                     return filtered[0], True
                 return ['re.union'] + filtered, True
             elif op in ['re.*', 're.+']:
                 body_result, body_valid = process_expr(e[1])
-                if not body_valid or body_result == ['str.to_re', '""']:
+                if not body_valid or body_result is None:
                     if op == 're.*':
                         return ['str.to_re', '""'], True
-                    else:
-                        return ['str.to_re', '""'], False
+                    else:  # re.+
+                        return None, False
                 return [op, body_result], True
             processed_parts = []
             all_valid = True
@@ -1523,7 +1135,7 @@ class RegexProcessor:
                 processed_parts.append(part_result)
             return [op] + processed_parts, all_valid
         result, valid = process_expr(expr)
-        return result
+        return result if valid else None
 
     def remove_redundant_constants(self, expr):
         if not isinstance(expr, list):
@@ -1651,7 +1263,6 @@ class RegexProcessor:
                         str_to_re_seen.add(str_repr)
                         str_to_re_elements.append(processed_e)
                 elif isinstance(processed_e, list) and processed_e and processed_e[0] == 're.union':
-                    # Handle nested unions by extracting their elements
                     for sub_e in processed_e[1:]:
                         if isinstance(sub_e, list) and sub_e and sub_e[0] == 'str.to_re':
                             str_repr = str(sub_e)
@@ -1663,6 +1274,7 @@ class RegexProcessor:
                 else:
                     other_elements.append(processed_e)
             str_to_re_elements.sort(key=lambda x: (len(x[1]) - 2, x[1]))
+            other_elements.sort(key=lambda x: Parser.to_str(x))
             sorted_elements = str_to_re_elements + other_elements
             if not sorted_elements:
                 return ['str.to_re', '""']
@@ -1682,71 +1294,97 @@ class RegexProcessor:
                 processed_parts.append(processed_e)
             return [op] + processed_parts
 
-    def is_constant_in_regex(self, left_expr, right_expr):
-        constant_str = ""
-        if isinstance(left_expr, list) and left_expr[0] == 'str.++':
-            if all(isinstance(e, str) and e.startswith('"') for e in left_expr[1:]):
-                constant_str = ''.join(e[1:-1] for e in left_expr[1:])
-            else:
-                return None
-        elif isinstance(left_expr, str):
-            if left_expr.startswith('"'):
-                constant_str = left_expr[1:-1]
-            else:
-                return None
-        else:
-            return None
-        if isinstance(right_expr, list) and len(right_expr) == 1:
-            right_expr = right_expr[0]
-        regex_pattern = Parser.to_pyre(right_expr)
-        if regex_pattern is None:
-            return None
-        try:
-            if re.fullmatch(regex_pattern, constant_str):
-                return 'true'
-            else:
-                return 'false'
-        except Exception as e:
-            return None
-
-    def rebuild_expr(self, expr):
+    def merge_kleene_star(self, expr):
         if not isinstance(expr, list):
             return expr
         if not expr:
             return expr
         op = expr[0]
         if op == 're.++':
-            constant_parts = []
-            variable_parts = []
-            for part in expr[1:]:
-                if isinstance(part, str) and part.startswith('"'):
-                    constant_parts.append(part)
-                elif isinstance(part, list) and part and part[0] == 'str.to_re' and len(part) > 1 and isinstance(part[1], str) and part[1].startswith('"'):
-                    constant_parts.append(part[1])
+            parts = [self.merge_kleene_star(part) for part in expr[1:]]
+            groups = []
+            current_kleene_group = []
+            for part in parts:
+                if isinstance(part, list) and part and part[0] in ['re.*', 're.+']:
+                    current_kleene_group.append(part)
                 else:
-                    rebuilt_part = self.rebuild_expr(part)
-                    if rebuilt_part != ['str.to_re', '""']:
-                        variable_parts.append(rebuilt_part)
-            combined_constant = ""
-            for const in constant_parts:
-                if isinstance(const, str) and const.startswith('"'):
-                    combined_constant += const[1:-1]
-                else:
-                    combined_constant += const[1:-1]
+                    if current_kleene_group:
+                        groups.append(('kleene', current_kleene_group))
+                        current_kleene_group = []
+                    groups.append(('other', part))
+            if current_kleene_group:
+                groups.append(('kleene', current_kleene_group))
             result = []
-            if combined_constant:
-                result.append(['str.to_re', f'"{combined_constant}"'])
-            result.extend(variable_parts)
+            for group_type, group_content in groups:
+                if group_type == 'other':
+                    result.append(group_content)
+                else:
+                    if len(group_content) == 1:
+                        result.append(group_content[0])
+                    else:
+                        char_sets = []
+                        for i, kleene in enumerate(group_content):
+                            chars = self._get_chars_from_regex(kleene[1])
+                            char_sets.append((i, kleene, chars))
+                        all_chars = set()
+                        for _, _, chars in char_sets:
+                            all_chars.update(chars)
+                        found_superset = False
+                        char_sets.sort(key=lambda x: (-len(x[2]), x[0]))
+                        for i, kleene, chars in char_sets:
+                            if chars == all_chars:
+                                result.append(kleene)
+                                found_superset = True
+                                break
+                        if not found_superset:
+                            char_sets.sort(key=lambda x: x[0])
+                            for _, kleene, _ in char_sets:
+                                result.append(kleene)
             if not result:
                 return ['str.to_re', '""']
             if len(result) == 1:
                 return result[0]
             return ['re.++'] + result
         elif op == 're.union':
+            parts = [self.merge_kleene_star(part) for part in expr[1:]]
+            return ['re.union'] + parts
+        elif op in ['re.*', 're.+']:
+            inner = self.merge_kleene_star(expr[1])
+            return [op, inner]
+        return [op] + [self.merge_kleene_star(part) for part in expr[1:]]
+
+    def rebuild_single_char_expr(self, expr):
+        if not isinstance(expr, list):
+            return expr
+        if not expr:
+            return expr
+        op = expr[0]
+        if op == 're.++':
+            result = []
+            for part in expr[1:]:
+                rebuilt_part = self.rebuild_single_char_expr(part)
+                if rebuilt_part != ['str.to_re', '""']:
+                    result.append(rebuilt_part)
+            if not result:
+                return ['str.to_re', '""']
+            if len(result) == 1:
+                return result[0]
+            constant_parts = []
+            other_parts = []
+            for part in result:
+                if isinstance(part, list) and part and part[0] == 'str.to_re' and len(part) > 1 and isinstance(part[1], str) and part[1].startswith('"'):
+                    constant_parts.append(part)
+                else:
+                    other_parts.append(part)
+            constant_parts.sort(key=lambda x: (len(x[1]) - 2, x[1]))
+            other_parts.sort(key=lambda x: Parser.to_str(x))
+            sorted_result = constant_parts + other_parts
+            return ['re.++'] + sorted_result
+        elif op == 're.union':
             kleene_parts = {}
             parts = []
             for part in expr[1:]:
-                rebuilt_part = self.rebuild_expr(part)
+                rebuilt_part = self.rebuild_single_char_expr(part)
                 if rebuilt_part == ['str.to_re', '""']:
                     continue
                 if isinstance(rebuilt_part, list) and rebuilt_part and rebuilt_part[0] in ['re.*', 're.+']:
@@ -1763,7 +1401,7 @@ class RegexProcessor:
                 return parts[0]
             return ['re.union'] + parts
         elif op in ['re.*', 're.+']:
-            inner = self.rebuild_expr(expr[1])
+            inner = self.rebuild_single_char_expr(expr[1])
             if inner == ['str.to_re', '""']:
                 if op == 're.*':
                     return ['str.to_re', '""']
@@ -1781,7 +1419,888 @@ class RegexProcessor:
             if len(expr) > 1:
                 return expr
             return ['str.to_re', '""']
-        return [op] + [self.rebuild_expr(e) for e in expr[1:]]
+        return [op] + [self.rebuild_single_char_expr(e) for e in expr[1:]]
+
+    def split_string_constants(self,expr):
+        if not isinstance(expr, list) or not expr:
+            if isinstance(expr, str) and expr.startswith('"') and len(expr) > 2:
+                content = expr[1:-1]
+                if len(content) > 1:
+                    chars = [f'"{c}"' for c in content]
+                    return ['str.++'] + chars
+            return expr
+        h = expr[0]
+        if h == 'str.to_re':
+            if len(expr) == 2:
+                if isinstance(expr[1], str) and expr[1].startswith('"') and len(expr[1]) > 2:
+                    content = expr[1][1:-1]
+                    if len(content) > 1:
+                        char_to_re = [['str.to_re', f'"{c}"'] for c in content]
+                        return ['re.++'] + char_to_re
+                    return expr
+                inner = self.split_string_constants(expr[1])
+                if isinstance(inner, list) and inner and inner[0] == 'str.++':
+                    char_to_re = [['str.to_re', part] for part in inner[1:]]
+                    return ['re.++'] + char_to_re
+            return [h, self.split_string_constants(expr[1])]
+        return [h] + [self.split_string_constants(e) for e in expr[1:]]
+    
+    def remove_re_nesting(self, expr):
+        if not isinstance(expr, list) or not expr:
+            return expr
+        h = expr[0]
+        if h in ['re.++', 're.union', 'str.++']:
+            merged = [h]
+            for sub in expr[1:]:
+                simplified = self.remove_re_nesting(sub)
+                if isinstance(simplified, list) and simplified and simplified[0] == h:
+                    merged.extend(simplified[1:])
+                else:
+                    merged.append(simplified)
+            if h == 're.union':
+                result = merged
+                for i in range(1, len(merged)):
+                    if isinstance(merged[i], list) and merged[i] and merged[i][0] == 're.++':
+                        re_cat = merged[i]
+                        for j in range(len(re_cat) - 1, 0, -1):
+                            if isinstance(re_cat[j], list) and re_cat[j] and re_cat[j][0] == 're.union':
+                                union_parts = re_cat[j][1:]
+                                new_cats = []
+                                for part in union_parts:
+                                    new_cat = re_cat[1:j] + [part] + re_cat[j+1:]
+                                    if len(new_cat) > 1:
+                                        new_cats.append(['re.++'] + new_cat)
+                                    else:
+                                        new_cats.append(new_cat[0])
+                                result = ['re.union']
+                                for item in merged[1:i]:
+                                    result.append(item)
+                                result.extend(new_cats)
+                                for item in merged[i+1:]:
+                                    result.append(item)
+                                return self.remove_re_nesting(result)
+                return result
+            return merged
+        elif h in ['re.*', 're.+']:
+            body = self.remove_re_nesting(expr[1])
+            if isinstance(body, list) and body and body[0] == 're.union':
+                for i in range(1, len(body)):
+                    if isinstance(body[i], list) and body[i] and body[i][0] == 're.++':
+                        re_cat = body[i]
+                        for j in range(len(re_cat) - 1, 0, -1):
+                            if isinstance(re_cat[j], list) and re_cat[j] and re_cat[j][0] == 're.union':
+                                union_parts = re_cat[j][1:]
+                                new_cats = []
+                                for part in union_parts:
+                                    new_cat = re_cat[1:j] + [part] + re_cat[j+1:]
+                                    if len(new_cat) > 1:
+                                        new_cats.append(['re.++'] + new_cat)
+                                    else:
+                                        new_cats.append(new_cat[0])
+                                new_union = ['re.union']
+                                for item in body[1:i]:
+                                    new_union.append(item)
+                                new_union.extend(new_cats)
+                                for item in body[i+1:]:
+                                    new_union.append(item)
+                                return [h, self.remove_re_nesting(new_union)]
+            return [h, body]
+        return [h] + [self.remove_re_nesting(e) for e in expr[1:]]
+        
+    def deploy_union_in_kleene(self, expr):
+        if not isinstance(expr, list) or not expr:
+            return expr
+        if isinstance(expr, str):
+            return expr
+        op = expr[0]
+        if op == 'str.to_re':
+            return expr
+        elif op == 're.range':
+            return expr
+        elif op == 're.union':
+            result = []
+            for sub_expr in expr[1:]:
+                sub_result = self.deploy_union_in_kleene(sub_expr)
+                if isinstance(sub_result, list) and sub_result and sub_result[0] == 're.union':
+                    result.extend(sub_result[1:])
+                else:
+                    result.append(sub_result)
+            if not result:
+                return ['str.to_re', '""']
+            if len(result) == 1:
+                return result[0]
+            return ['re.union'] + result
+        elif op == 're.++':
+            parts = []
+            for part in expr[1:]:
+                sub_result = self.deploy_union_in_kleene(part)
+                if isinstance(sub_result, list) and sub_result and sub_result[0] == 're.union':
+                    parts.append(sub_result[1:])
+                else:
+                    parts.append([sub_result])
+            if not parts:
+                return ['str.to_re', '""']
+            result = self._cartesian_product_concat(parts)
+            if len(result) == 1:
+                return result[0]
+            return ['re.union'] + result
+        elif op in ['re.*', 're.+']:
+            inner = self.deploy_union_in_kleene(expr[1])
+            return [op, inner]
+        return [op] + [self.deploy_union_in_kleene(e) for e in expr[1:]]
+
+    def _cartesian_product_concat(self, parts_list):
+        if not parts_list:
+            return [['str.to_re', '""']]
+        def recursive_concat(index, current_concat):
+            if index == len(parts_list):
+                if len(current_concat) == 0:
+                    return [['str.to_re', '""']]
+                elif len(current_concat) == 1:
+                    return [current_concat[0]]
+                else:
+                    return [['re.++'] + current_concat]
+            result = []
+            for part in parts_list[index]:
+                new_concat = current_concat.copy()
+                if part != ['str.to_re', '""']:
+                    if isinstance(part, list) and part and part[0] == 're.++':
+                        new_concat.extend(part[1:])
+                    else:
+                        new_concat.append(part)
+                result.extend(recursive_concat(index + 1, new_concat))
+            return result
+        return recursive_concat(0, [])
+    
+    def _get_chars_from_regex(self, expr):
+        if not isinstance(expr, list):
+            return set()
+        if not expr:
+            return set()
+        op = expr[0]
+        if op == 'str.to_re':
+            if len(expr) > 1 and isinstance(expr[1], str) and expr[1].startswith('"') and expr[1].endswith('"'):
+                s = expr[1][1:-1]
+                return set(s)
+            return set()
+        elif op == 're.union':
+            result = set()
+            for part in expr[1:]:
+                result.update(self._get_chars_from_regex(part))
+            return result
+        elif op in ['re.*', 're.+']:
+            return self._get_chars_from_regex(expr[1])
+        elif op == 're.++':
+            result = set()
+            for part in expr[1:]:
+                result.update(self._get_chars_from_regex(part))
+            return result
+        return set()
+
+class RegexProcessor:
+    def __init__(self, info):
+        self.info_manager = info
+
+    def is_direct_match(self, re_expr, constant):
+        if isinstance(constant, str) and constant.startswith('"'):
+            constant_value = constant[1:-1]
+        else:
+            constant_value = constant
+        if not isinstance(re_expr, list):
+            if isinstance(re_expr, str) and re_expr.startswith('"'):
+                return re_expr[1:-1] == constant_value
+            return re_expr == constant
+        if re_expr and re_expr[0] == 'str.to_re' and len(re_expr) > 1:
+            if isinstance(re_expr[1], str) and re_expr[1].startswith('"'):
+                return re_expr[1][1:-1] == constant_value
+            return re_expr[1] == constant
+        return False
+
+    def is_must_match(self, re_expr, constant):
+        constant = constant[1:-1]
+        if not isinstance(re_expr, list):
+            if isinstance(re_expr, str) and re_expr.startswith('"'):
+                return constant in re_expr
+            return False
+        if not re_expr:
+            return False
+        op = re_expr[0]
+        if op == 'str.to_re':
+            if len(re_expr) > 1 and isinstance(re_expr[1], str) and re_expr[1].startswith('"'):
+                return constant in re_expr[1]
+            return False
+        if op in ['re.*', 're.+']:
+            return False
+        if op == 're.union':
+            if len(re_expr) <= 1:
+                return False
+            return all(self.is_must_match(sub_expr, constant) for sub_expr in re_expr[1:])
+        if op == 're.++':
+            if len(re_expr) <= 1:
+                return False
+            return any(self.is_must_match(sub_expr, constant) for sub_expr in re_expr[1:])
+        return False
+
+    def is_contain_constant(self, re_expr, constant):
+        if not re_expr:
+            return False
+        if self.is_direct_match(re_expr, constant):
+            return True
+        constant_value = constant[1:-1] if isinstance(constant, str) and constant.startswith('"') else constant
+        if isinstance(re_expr, str) and re_expr.startswith('"'):
+            return constant_value in re_expr[1:-1]
+        op = re_expr[0]
+        if op == 'str.to_re' and len(re_expr) > 1:
+            if isinstance(re_expr[1], str) and re_expr[1].startswith('"'):
+                return constant_value in re_expr[1][1:-1]
+        if op == 're.range' and len(re_expr) > 2:
+            if len(constant_value) == 1:
+                range_start = re_expr[1][1:-1] if isinstance(re_expr[1], str) and re_expr[1].startswith('"') else re_expr[1]
+                range_end = re_expr[2][1:-1] if isinstance(re_expr[2], str) and re_expr[2].startswith('"') else re_expr[2]
+                return range_start <= constant_value <= range_end
+            return False
+        if op in ['re.*', 're.+'] and len(re_expr) > 1:
+            return self.is_contain_constant(re_expr[1], constant)
+        if op in ['re.++', 're.union']:
+            for sub_expr in re_expr[1:]:
+                if self.is_contain_constant(sub_expr, constant):
+                    return True
+        return False
+
+    def is_str_in_regex(self, str_expr, re_expr):
+        constant_str = ""
+        if isinstance(str_expr, list) and str_expr[0] == 'str.++':
+            if all(isinstance(e, str) and e.startswith('"') for e in str_expr[1:]):
+                constant_str = ''.join(e[1:-1] for e in str_expr[1:])
+            else:
+                return None
+        elif isinstance(str_expr, str):
+            if str_expr.startswith('"'):
+                constant_str = str_expr[1:-1]
+            else:
+                return None
+        else:
+            return None
+        if constant_str == "":
+            if re_expr == '""' or re_expr == ['str.to_re', '""']:
+                return 'true'
+            if isinstance(re_expr, list) and re_expr[0] == 're.++':
+                if self.can_be_empty(re_expr):
+                    return 'true'
+                return 'false'
+            if isinstance(re_expr, list) and re_expr[0] == 'str.to_re' and len(re_expr) > 1:
+                if isinstance(re_expr[1], str) and re_expr[1] != '""':
+                    return 'false'
+                elif isinstance(re_expr[1], str) and re_expr[1] == '""':
+                    return 'true'
+            elif isinstance(re_expr, list) and re_expr[0] in ['re.range', 're.allchar']:
+                return 'false'
+            if isinstance(re_expr, str) and re_expr.startswith('"') and re_expr != '""':
+                return 'false'
+        if isinstance(re_expr, list) and len(re_expr) > 1:
+            if re_expr[0] == 're.++' and any(isinstance(e, str) and e.startswith('"') and 'z' in e for e in re_expr[1:]):
+                if constant_str == "" or 'z' not in constant_str:
+                    return 'false'
+            if re_expr[0] == 'str.to_re' and len(re_expr) == 2:
+                if isinstance(re_expr[1], str) and re_expr[1].startswith('"'):
+                    pattern_str = re_expr[1][1:-1]
+                    if constant_str != pattern_str:
+                        return 'false'
+                    else:
+                        return 'true'
+        if isinstance(re_expr, list) and len(re_expr) == 1:
+            re_expr = re_expr[0]
+        regex_pattern = Parser.to_pyre(re_expr)
+        if regex_pattern is None:
+            return None
+        try:
+            if re.fullmatch(regex_pattern, constant_str):
+                return 'true'
+            else:
+                return 'false'
+        except Exception as e:
+            logging.debug1(f"Exception in is_str_in_regex: {e}, for string '{constant_str}' and pattern '{regex_pattern}'")
+            return 'false'
+
+    def is_union_kleen_star(self, re_expr):
+        if not re_expr or not isinstance(re_expr, list):
+            return False
+        if re_expr[0] == 're.*' and len(re_expr) == 2:
+            inner_expr = re_expr[1]
+            if isinstance(inner_expr, list) and inner_expr[0] == 're.union' and len(inner_expr) > 1:
+                return True
+            if isinstance(inner_expr, list) and (inner_expr[0] == 'str.to_re' or inner_expr[0] == 're.++'):
+                return True
+        return False
+        
+    def is_union_kleen_star_contain(self, re_expr1, re_expr2):
+        if not self.is_union_kleen_star(re_expr1) or not self.is_union_kleen_star(re_expr2):
+            return False, False
+        strings1 = []
+        chars1 = set()
+        if re_expr1[1][0] == 're.union':
+            for elem in re_expr1[1][1:]:
+                if isinstance(elem, list):
+                    if elem[0] == 'str.to_re' and isinstance(elem[1], str):
+                        if elem[1].startswith('"') and elem[1].endswith('"'):
+                            s = elem[1][1:-1]
+                            strings1.append(s)
+                            for c in s:
+                                chars1.add(c)
+                        else:
+                            return False, False
+                    elif elem[0] == 're.++':
+                        concat_str = ""
+                        valid = True
+                        for sub_elem in elem[1:]:
+                            if isinstance(sub_elem, list) and sub_elem[0] == 'str.to_re' and isinstance(sub_elem[1], str):
+                                if sub_elem[1].startswith('"') and sub_elem[1].endswith('"'):
+                                    concat_str += sub_elem[1][1:-1]
+                                    for c in sub_elem[1][1:-1]:
+                                        chars1.add(c)
+                                else:
+                                    valid = False
+                                    break
+                            else:
+                                valid = False
+                                break
+                        if valid and concat_str:
+                            strings1.append(concat_str)
+                        else:
+                            return False, False
+                    else:
+                        return False, False
+                else:
+                    return False, False
+        else:
+            if re_expr1[1][0] == 'str.to_re' and isinstance(re_expr1[1][1], str):
+                if re_expr1[1][1].startswith('"') and re_expr1[1][1].endswith('"'):
+                    s = re_expr1[1][1][1:-1]
+                    strings1.append(s)
+                    for c in s:
+                        chars1.add(c)
+                else:
+                    return False, False
+            elif re_expr1[1][0] == 're.++':
+                concat_str = ""
+                valid = True
+                for sub_elem in re_expr1[1][1:]:
+                    if isinstance(sub_elem, list) and sub_elem[0] == 'str.to_re' and isinstance(sub_elem[1], str):
+                        if sub_elem[1].startswith('"') and sub_elem[1].endswith('"'):
+                            concat_str += sub_elem[1][1:-1]
+                            for c in sub_elem[1][1:-1]:
+                                chars1.add(c)
+                        else:
+                            valid = False
+                            break
+                    else:
+                        valid = False
+                        break
+                if valid and concat_str:
+                    strings1.append(concat_str)
+                else:
+                    return False, False
+            else:
+                return False, False
+                
+        strings2 = []
+        chars2 = set()
+        if re_expr2[1][0] == 're.union':
+            for elem in re_expr2[1][1:]:
+                if isinstance(elem, list):
+                    if elem[0] == 'str.to_re' and isinstance(elem[1], str):
+                        if elem[1].startswith('"') and elem[1].endswith('"'):
+                            s = elem[1][1:-1]
+                            strings2.append(s)
+                            for c in s:
+                                chars2.add(c)
+                        else:
+                            return False, False
+                    elif elem[0] == 're.++':
+                        concat_str = ""
+                        valid = True
+                        for sub_elem in elem[1:]:
+                            if isinstance(sub_elem, list) and sub_elem[0] == 'str.to_re' and isinstance(sub_elem[1], str):
+                                if sub_elem[1].startswith('"') and sub_elem[1].endswith('"'):
+                                    concat_str += sub_elem[1][1:-1]
+                                    for c in sub_elem[1][1:-1]:
+                                        chars2.add(c)
+                                else:
+                                    valid = False
+                                    break
+                            else:
+                                valid = False
+                                break
+                        if valid and concat_str:
+                            strings2.append(concat_str)
+                        else:
+                            return False, False
+                    else:
+                        return False, False
+                else:
+                    return False, False
+        else:
+            if re_expr2[1][0] == 'str.to_re' and isinstance(re_expr2[1][1], str):
+                if re_expr2[1][1].startswith('"') and re_expr2[1][1].endswith('"'):
+                    s = re_expr2[1][1][1:-1]
+                    strings2.append(s)
+                    for c in s:
+                        chars2.add(c)
+                else:
+                    return False, False
+            elif re_expr2[1][0] == 're.++':
+                concat_str = ""
+                valid = True
+                for sub_elem in re_expr2[1][1:]:
+                    if isinstance(sub_elem, list) and sub_elem[0] == 'str.to_re' and isinstance(sub_elem[1], str):
+                        if sub_elem[1].startswith('"') and sub_elem[1].endswith('"'):
+                            concat_str += sub_elem[1][1:-1]
+                            for c in sub_elem[1][1:-1]:
+                                chars2.add(c)
+                        else:
+                            valid = False
+                            break
+                    else:
+                        valid = False
+                        break
+                if valid and concat_str:
+                    strings2.append(concat_str)
+                else:
+                    return False, False
+            else:
+                return False, False
+                
+        def can_be_constructed(target, building_blocks, memo=None):
+            if memo is None:
+                memo = {}
+            if target in memo:
+                return memo[target]
+            if target == "":
+                return True
+            for block in building_blocks:
+                if target.startswith(block):
+                    if can_be_constructed(target[len(block):], building_blocks, memo):
+                        memo[target] = True
+                        return True
+            memo[target] = False
+            return False
+            
+        expr1_contains_expr2 = all(can_be_constructed(s2, strings1) for s2 in strings2)
+        expr2_contains_expr1 = all(can_be_constructed(s1, strings2) for s1 in strings1)
+        
+        res = expr1_contains_expr2 or expr2_contains_expr1
+        phase = expr2_contains_expr1
+        return res, phase
+
+    def can_be_empty(self, re_expr):
+        if not re_expr or len(re_expr) == 0:
+            return True
+        if re_expr[0] == 'str.to_re':
+            return re_expr[1] == '""'
+        elif re_expr[0] == 're.++':
+            return all(self.can_be_empty(elem) for elem in re_expr[1:])
+        elif re_expr[0] == 're.union':
+            return any(self.can_be_empty(elem) for elem in re_expr[1:])
+        elif re_expr[0] == 're.*':
+            return True
+        return False
+
+    def get_variables(self, str_expr):
+        vars_found = set()
+        if isinstance(str_expr, str) and str_expr.startswith('x'):
+            vars_found.add(str_expr)
+        elif isinstance(str_expr, list):
+            for e in str_expr:
+                vars_found.update(self.get_variables(e))
+        return vars_found
+    
+    def get_chars(self, expr):
+        if isinstance(expr, str):
+            if expr.startswith('"') and expr.endswith('"'):
+                return set(expr[1:-1])
+            elif expr.startswith('x'):
+                var = self.info_manager.get_var(expr)
+                if var and hasattr(var, 'allow') and var.allow is not None:
+                    return var.allow
+                return set()
+            return set()
+        if not isinstance(expr, list) or not expr:
+            return set()
+        op = expr[0]
+        if op == 'str.++':
+            result = set()
+            for part in expr[1:]:
+                result.update(self.get_chars(part))
+            return result
+        elif op == 'str.to_re':
+            if len(expr) > 1:
+                return self.get_chars(expr[1])
+            return set()
+        elif op == 're.union':
+            result = set()
+            for part in expr[1:]:
+                result.update(self.get_chars(part))
+            return result
+        elif op in ['re.*', 're.+']:
+            return self.get_chars(expr[1])
+        elif op == 're.++':
+            result = set()
+            for part in expr[1:]:
+                result.update(self.get_chars(part))
+            return result
+        elif op == 're.range' and len(expr) > 2:
+            start_char = expr[1]
+            end_char = expr[2]
+            if isinstance(start_char, str) and len(start_char) == 1 and isinstance(end_char, str) and len(end_char) == 1:
+                return set(chr(i) for i in range(ord(start_char), ord(end_char) + 1))
+        return set()
+
+    def get_parikh_image(self, expr, is_regex=False):
+        if isinstance(expr, str):
+            if expr.startswith('"') and len(expr) > 2:
+                result = {}
+                for char in expr[1:-1]:
+                    result[char] = result.get(char, 0) + 1
+                return result
+            return {}
+        if not isinstance(expr, list) or not expr:
+            return {}
+        if is_regex:
+            if len(expr) <= 0:
+                return {}
+            op = expr[0]
+            result = {}
+            if op == 'str.to_re' and len(expr) > 1:
+                return self.get_parikh_image(expr[1], False)
+            elif op == 're.++':
+                for sub_expr in expr[1:]:
+                    sub_result = self.get_parikh_image(sub_expr, True)
+                    for char, count in sub_result.items():
+                        result[char] = result.get(char, 0) + count
+            elif op == 're.union' and len(expr) > 1:
+                result = self.get_parikh_image(expr[1], True)
+                for sub_expr in expr[2:]:
+                    sub_result = self.get_parikh_image(sub_expr, True)
+                    chars_to_remove = []
+                    for char in result:
+                        if char in sub_result:
+                            result[char] = min(result[char], sub_result[char])
+                        else:
+                            chars_to_remove.append(char)
+                    for char in chars_to_remove:
+                        result.pop(char)
+            elif op == 're.+':
+                return self.get_parikh_image(expr[1], True)
+            return result
+        constants = {}
+        for e in expr:
+            sub_constants = self.get_parikh_image(e, is_regex)
+            for char, count in sub_constants.items():
+                constants[char] = constants.get(char, 0) + count
+        return constants
+
+    def get_arrange_chars(self, allowed_chars, length):
+        if not allowed_chars or length <= 0:
+            return []
+        results = []
+        def generate_arrangements(current, remain_len):
+            if remain_len == 0:
+                if len(current) == 0:
+                    results.append(['str.to_re', '""'])
+                elif len(current) == 1:
+                    results.append(['str.to_re', f'"{current}"'])
+                else:
+                    expr = ['re.++']
+                    for c in current:
+                        expr.append(['str.to_re', f'"{c}"'])
+                    results.append(expr)
+                return
+            for c in allowed_chars:
+                generate_arrangements(current + c, remain_len - 1)
+        generate_arrangements("", length)
+        return results
+
+    def get_index_constant_must_in_pattern(self, re_expr, constant):
+        indices = self.get_index_constant_in_pattern(re_expr, constant)
+        if not indices:
+            return []
+        if len(indices) == 1:
+            return indices
+        must_contain_indices = []
+        for i in indices:
+            if self.is_must_match(re_expr[i], constant):
+                must_contain_indices.append(i)
+        return must_contain_indices
+    
+    def get_index_constant_in_pattern(self, re_expr, constant):
+        if not isinstance(re_expr, list) or not re_expr:
+            return None
+        indices = []
+        for i, sub_expr in enumerate(re_expr):
+            if self.is_contain_constant(sub_expr, constant):
+                indices.append(i)
+        return indices
+    
+    def get_deploy_pattern(self, re_expr, constant, mode='once'):
+        if not isinstance(re_expr, list):
+            return None
+        if not re_expr:
+            return None
+        op = re_expr[0]
+        if op in ['str.to_re', 're.++']:
+            result = self.get_filted_pattern(re_expr, constant, mode)
+            if result:
+                return [[], result, []]
+            return None
+        elif op == 're.union':
+            filtered_elements = []
+            for element in re_expr[1:]:
+                result = self.get_filted_pattern(element, constant, mode)
+                if result:
+                    filtered_elements.append(result)
+            if not filtered_elements:
+                return None
+            filtered_pattern = ['re.union'] + filtered_elements
+            return [[], filtered_pattern, []]
+        elif op == 're.range':
+            if constant >= re_expr[1] and constant <= re_expr[2]:
+                return [[], constant, []]
+            return None
+        elif op == 're.*':
+            inner_result = self.get_deploy_pattern(re_expr[1], constant, mode)
+            if inner_result is None:
+                return None
+            return [re_expr, inner_result[1], re_expr]
+        return None
+
+    def get_filted_pattern(self, re_expr, constant, mode='once'):
+        def remove_kleene_and_union(re_expr, constant):
+            re_expr = re_expr[1] if re_expr[0] == 're.*' else re_expr
+            if re_expr[0] == 're.union':
+                filtered_elements = []
+                for sub_expr in re_expr[1:]:
+                    if isinstance(sub_expr, list) and self.is_contain_constant(sub_expr, constant):
+                        filtered_elements.append(sub_expr)
+                if len(filtered_elements) == 1:
+                    return filtered_elements[0]
+                if filtered_elements:
+                    return ['re.union'] + filtered_elements
+            return re_expr
+
+        if self.is_direct_match(re_expr, constant):
+            return re_expr
+        re_expr = re_expr[1:] if re_expr[0] == 're.++' else re_expr
+        new_pattern = []
+        if mode == 'once':
+            indices = self.get_index_constant_must_in_pattern(re_expr, constant)
+            if len(indices) != 1:
+                return None
+            index = indices[0]
+            indices = [i for i in self.get_index_constant_in_pattern(re_expr, constant) if i != index]
+            for i in range(len(re_expr)):
+                if i in indices:
+                    continue
+                elif i == index:
+                    new_pattern.append(remove_kleene_and_union(re_expr[i], constant))
+                else:
+                    new_pattern.append(re_expr[i])
+            return self.normalize_expr(new_pattern, is_regex=True)
+        elif mode == 'first':
+            indices = self.get_index_constant_in_pattern(re_expr, constant)
+            if indices is None:
+                return None
+            for index in indices:
+                new_sub_pattern = []
+                for i in range(len(re_expr)):
+                    if i < index and not self.can_be_empty(re_expr[i]):
+                        break
+                    elif i == index:
+                        new_sub_pattern.append(remove_kleene_and_union(re_expr[i], constant))
+                    else:
+                        new_sub_pattern.append(re_expr[i])
+                if new_sub_pattern:
+                    new_pattern.append(self.normalize_expr(new_sub_pattern, is_regex=True))
+            if not new_pattern:
+                return None
+            if len(new_pattern) == 1:
+                return new_pattern[0]
+            return ['re.union'] + new_pattern
+    
+    def get_split_pattern(self, str_expr, re_expr, constant_index, constant_in_index):
+        left_left = self.normalize_expr(str_expr[:constant_index])
+        left_mid = str_expr[constant_index]
+        left_right = self.normalize_expr(str_expr[constant_index+1:])
+        right_left = re_expr[:constant_in_index]
+        right_mid = re_expr[constant_in_index]
+        right_right = re_expr[constant_in_index+1:]
+        deploy_pattern = self.get_deploy_pattern(right_mid, left_mid, mode='once')
+        if not deploy_pattern:
+            return None
+        left_sides, right_sides = self.get_sides_pattern(deploy_pattern[1], left_mid)
+        left_left_list = []
+        left_right_list = []
+        for left_side in left_sides:
+            right_left_norm = self.normalize_expr(right_left + [deploy_pattern[0]] + [left_side], is_regex=True)
+            left_left_list.append(['str.in_re', left_left, right_left_norm])
+        for right_side in right_sides:
+            right_right_norm = self.normalize_expr([right_side] + [deploy_pattern[2]] + right_right, is_regex=True)
+            left_right_list.append(['str.in_re', left_right, right_right_norm])
+        paired_list = list(zip(left_left_list, left_right_list))
+        return paired_list
+
+    def get_sides_pattern(self, re_expr, constant):
+        if self.is_direct_match(re_expr, constant):
+            return [['str.to_re', '""']], [['str.to_re', '""']]
+        if isinstance(re_expr, list) and re_expr and re_expr[0] == 're.++':
+            left_parts = []
+            right_parts = []
+            for i, part in enumerate(re_expr[1:], 1):
+                if self.is_direct_match(part, constant):
+                    left_segment = re_expr[1:i]
+                    right_segment = re_expr[i+1:] if i+1 < len(re_expr) else []
+                    if not left_segment:
+                        left_parts.append(['str.to_re', '""'])
+                    elif len(left_segment) == 1:
+                        left_parts.append(left_segment[0])
+                    else:
+                        left_parts.append(['re.++'] + left_segment)
+                    if not right_segment:
+                        right_parts.append(['str.to_re', '""'])
+                    elif len(right_segment) == 1:
+                        right_parts.append(right_segment[0])
+                    else:
+                        right_parts.append(['re.++'] + right_segment)
+                    break
+            if left_parts and right_parts:
+                return left_parts, right_parts
+        if isinstance(re_expr, list) and re_expr and re_expr[0] == 're.union':
+            left_parts = []
+            right_parts = []
+            for option in re_expr[1:]:
+                if isinstance(option, list) and option and option[0] == 're.++':
+                    option_left, option_right = self.get_sides_pattern(option, constant)
+                    left_parts.extend(option_left)
+                    right_parts.extend(option_right)
+                elif self.is_direct_match(option, constant):
+                    left_parts.append(['str.to_re', '""'])
+                    right_parts.append(['str.to_re', '""'])
+            if left_parts and right_parts:
+                return left_parts, right_parts
+        return [['str.to_re', '""']], [['str.to_re', '""']]
+
+    def get_reverse_pattern(self, expr):
+        if not expr or len(expr) == 0:
+            return expr
+        if isinstance(expr, str):
+            if expr.startswith('"') and expr.endswith('"'):
+                inner_str = expr[1:-1]
+                reversed_str = inner_str[::-1]
+                return f'"{reversed_str}"'
+            return expr
+        if expr[0] == 'str.to_re':
+            if expr[1].startswith('"') and expr[1].endswith('"'):
+                inner_str = expr[1][1:-1]
+                reversed_str = inner_str[::-1]
+                return ['str.to_re', f'"{reversed_str}"']
+            return expr
+        elif expr[0] in ['re.++', 'str.++']:
+            reversed_elements = [self.get_reverse_pattern(elem) for elem in expr[1:]]
+            reversed_elements.reverse()
+            return [expr[0]] + reversed_elements
+        elif expr[0] == 're.union':
+            return ['re.union'] + [self.get_reverse_pattern(elem) for elem in expr[1:]]
+        elif expr[0] == 're.*':
+            return ['re.*', self.get_reverse_pattern(expr[1])]
+        elif expr[0] == 're.range':
+            return expr
+        elif isinstance(expr, list):
+            reversed_list = []
+            for item in expr:
+                if isinstance(item, str) and item.startswith('"') and item.endswith('"'):
+                    inner_str = item[1:-1]
+                    reversed_str = inner_str[::-1]
+                    reversed_list.append(f'"{reversed_str}"')
+                elif isinstance(item, list):
+                    reversed_list.append(self.get_reverse_pattern(item))
+                else:
+                    reversed_list.append(item)
+            reversed_list.reverse()
+            return reversed_list
+        return expr
+
+    def get_remove_pattern(self, str_expr, re_expr, constant_in_index):
+        constant = str_expr[0]
+        left_norm = self.normalize_expr(str_expr[1:])
+        right_left = self.normalize_expr(re_expr[:constant_in_index], is_regex=True)
+        right_mid = re_expr[constant_in_index]
+        right_right = re_expr[constant_in_index+1:]
+        if not self.can_be_empty(right_left):
+            logging.debug1(f"{Parser.to_str(right_left)} can't be empty")
+            return []
+        deploy_pattern = self.get_deploy_pattern(right_mid, constant, mode='first')
+        if not deploy_pattern:
+            return []
+        _, right_side = self.get_sides_pattern(deploy_pattern[1], constant)
+        result = []
+        for right_part in right_side:
+            right_norm = self.normalize_expr([right_part] + [deploy_pattern[2]] + right_right, is_regex=True)
+            result.append(['str.in_re', left_norm, right_norm])
+        return result
+
+    def get_index_unique_constant(self, expr, unique_char):
+        if not isinstance(expr, list):
+            return None
+        for i, e in enumerate(expr):
+            if isinstance(e, str) and e.startswith('"'):
+                char = e[1:-1]
+                if char == unique_char:
+                    return i
+        return None
+
+    def get_equal_expr(self, lit1, lit2):
+        if isinstance(lit2, int):
+            if 0 <= lit2 < len(self.info_manager.literals):
+                lit2 = self.info_manager.literals[lit2]
+            else:
+                return None
+        if lit1.type != 'string' or not isinstance(lit1.expr, list) or lit1.expr[0] != 'str.in_re':
+            return None
+        left_expr1, right_expr1 = lit1.expr[1], lit1.expr[2]
+        vars_found1 = self.get_variables(left_expr1)
+        if len(vars_found1) != 1:
+            return None
+        var_name1 = next(iter(vars_found1))
+        if isinstance(lit2.expr, list) and lit2.expr[0] == '=':
+            if len(lit2.expr) < 3:
+                return None
+            left_eq = lit2.expr[1]
+            right_eq = lit2.expr[2]
+            if left_eq == var_name1 and isinstance(right_eq, list) and right_eq[0] == 'str.++':
+                return ['str.in_re', right_eq, right_expr1]
+            else:
+                return None
+        if not isinstance(lit2.expr, list) or lit2.expr[0] != 'str.in_re':
+            return None
+        left_expr2 = lit2.expr[1]
+        if not isinstance(left_expr2, list) or left_expr2[0] != 'str.++':
+            return None
+        if isinstance(left_expr1, str) and left_expr1 == var_name1:
+            return ['str.in_re', left_expr2, right_expr1]
+        return None
+
+    def normalize_expr(self, expr, is_regex=False):
+        if not expr:
+            return ['str.to_re', '""'] if is_regex else '""'
+        if len(expr) == 1:
+            return expr[0]
+        concat_op = 're.++' if is_regex else 'str.++'
+        result = [concat_op]
+        for item in expr:
+            if isinstance(item, list) and item and item[0] == concat_op:
+                result.extend(item[1:])
+            else:
+                result.append(item)
+        return result
 
 class BoolProcessor:
     def __init__(self, info):
@@ -1789,17 +2308,82 @@ class BoolProcessor:
         self.var_map = {}
         self.unit_clauses = []
         self.cnf_clauses = [[1]]
+        self.original_clauses = []
         self.is_sat = 'UNKNOWN'
-    
+
+    def read_clause(self, clause):
+        if not clause.expr_tree:
+            return
+        bool_structure = self._extract_bool_structure(clause.expr_tree)
+        if bool_structure:
+            self._update_unit_clauses()
+            simplified_structure = self._simplify_with_units(bool_structure)
+            clause_clauses = self._formula_to_clauses(self._convert_to_cnf(simplified_structure))
+            for clu in clause_clauses:
+                self.cnf_clauses.append(clu)
+                self.original_clauses.append(clu)
+                if len(clu) == 1 and [clu[0]] not in self.unit_clauses:
+                    self.unit_clauses.append([clu[0]])
+
     def read_lemma(self, lemma):
         if not lemma.expr_tree:
             return
         bool_structure = self._extract_bool_structure(lemma.expr_tree)
         if bool_structure:
-            lemma_clauses = self._expr_to_cnf(bool_structure)
-            for clause in lemma_clauses:
-                self.cnf_clauses.append(clause)
-    
+            self._update_unit_clauses()
+            simplified_structure = self._simplify_with_units(bool_structure)
+            cnf_formula = self._convert_to_cnf(simplified_structure)
+            lemma_clauses = self._formula_to_clauses(cnf_formula)
+            for clu in lemma_clauses:
+                self.cnf_clauses.append(clu)
+                if len(clu) == 1 and [clu[0]] not in self.unit_clauses:
+                    self.unit_clauses.append([clu[0]])
+
+    def _update_unit_clauses(self):
+        for clause in self.cnf_clauses + self.original_clauses:
+            if len(clause) == 1 and [clause[0]] not in self.unit_clauses:
+                self.unit_clauses.append([clause[0]])
+
+    def _simplify_with_units(self, formula):
+        if not self.unit_clauses or formula is None:
+            return formula
+        if not isinstance(formula, list):
+            lit_val = self._map_var(formula)
+            for unit in self.unit_clauses:
+                if unit[0] == lit_val:
+                    return 'true'
+                if unit[0] == -lit_val:
+                    return 'false'
+            return formula
+        if len(formula) <= 1:
+            return formula
+        op = formula[0]
+        if op == 'not':
+            if len(formula) < 2:
+                return None
+            inner = self._simplify_with_units(formula[1])
+            if inner == 'true':
+                return 'false'
+            if inner == 'false':
+                return 'true'
+            return ['not', inner]
+        simplified_terms = [op]
+        for term in formula[1:]:
+            simplified = self._simplify_with_units(term)
+            if simplified == 'true' and op == 'or':
+                return 'true'
+            if simplified == 'false' and op == 'and':
+                return 'false'
+            if simplified != 'false' and op == 'or':
+                simplified_terms.append(simplified)
+            if simplified != 'true' and op == 'and':
+                simplified_terms.append(simplified)
+        if len(simplified_terms) == 1:
+            return 'false' if op == 'or' else 'true'
+        if len(simplified_terms) == 2:
+            return simplified_terms[1]
+        return simplified_terms
+
     def _extract_bool_structure(self, expr_tree):
         if not expr_tree:
             return None
@@ -1812,56 +2396,85 @@ class BoolProcessor:
             if not expr_tree.elements:
                 return None
             inner = self._extract_bool_structure(expr_tree.elements[0])
-            return ['not', inner] if inner is not None else None
-        else:  # 'and' or 'or'
-            result = [expr_tree.op]
+            if inner is None:
+                return None
+            if isinstance(inner, list) and len(inner) > 1 and inner[0] == 'not':
+                return inner[1]
+            return ['not', inner]
+        else:
+            op = expr_tree.op
+            result = [op]
             for element in expr_tree.elements:
                 inner = self._extract_bool_structure(element)
-                if inner is not None:
+                if inner is None:
+                    continue
+                if isinstance(inner, list) and len(inner) > 1 and inner[0] == op:
+                    result.extend(inner[1:])
+                else:
                     result.append(inner)
             return result if len(result) > 1 else None
-    
+
     def _expr_to_cnf(self, expr):
-        cnf_formula = self._convert_to_cnf(expr)
+        simplified_expr = self._simplify_with_units(expr)
+        cnf_formula = self._convert_to_cnf(simplified_expr)
         clauses = self._formula_to_clauses(cnf_formula)
         return clauses
-    
+
     def _convert_to_cnf(self, formula):
+        if not hasattr(self, '_cnf_cache'):
+            self._cnf_cache = {}
         if formula is None:
             return None
         if not isinstance(formula, list):
             return formula
         if len(formula) <= 1:
             return formula
+        formula_key = str(formula) if isinstance(formula, list) else formula
+        if formula_key in self._cnf_cache:
+            return self._cnf_cache[formula_key]
+        op = formula[0]
+        formula = self._pre_simplify_formula(formula)
+        formula_key = str(formula) if isinstance(formula, list) else formula
+        if formula_key in self._cnf_cache:
+            return self._cnf_cache[formula_key]
+        if not isinstance(formula, list):
+            self._cnf_cache[formula_key] = formula
+            return formula
         op = formula[0]
         if op == 'not':
             if len(formula) < 2:
-                return None
-            if not isinstance(formula[1], list):
-                return formula
-            inner_op = formula[1][0]
-            inner_args = formula[1][1:]
-            if inner_op == 'not':
-                if len(inner_args) == 1:
-                    return self._convert_to_cnf(inner_args[0])
-                return None
-            elif inner_op == 'and':
-                or_terms = ['or']
-                for term in inner_args:
-                    or_terms.append(['not', term])
-                return self._convert_to_cnf(or_terms)
-            elif inner_op == 'or':
-                and_terms = ['and']
-                for term in inner_args:
-                    and_terms.append(['not', term])
-                return self._convert_to_cnf(and_terms)
-            return formula
+                result = None
+            elif not isinstance(formula[1], list):
+                result = formula
+            else:
+                inner_op = formula[1][0]
+                inner_args = formula[1][1:]
+                if inner_op == 'not':
+                    if len(inner_args) == 1:
+                        result = self._convert_to_cnf(inner_args[0])
+                    else:
+                        result = None
+                elif inner_op == 'and':
+                    or_terms = ['or']
+                    for term in inner_args:
+                        or_terms.append(['not', term])
+                    result = self._convert_to_cnf(or_terms)
+                elif inner_op == 'or':
+                    and_terms = ['and']
+                    for term in inner_args:
+                        and_terms.append(['not', term])
+                    result = self._convert_to_cnf(and_terms)
+                else:
+                    result = formula
+            self._cnf_cache[formula_key] = result
+            return result
         processed_terms = [op]
         for term in formula[1:]:
             processed = self._convert_to_cnf(term)
             if processed is not None:
                 processed_terms.append(processed)
         if len(processed_terms) <= 1:
+            self._cnf_cache[formula_key] = None
             return None
         if op == 'or':
             and_indices = []
@@ -1881,7 +2494,9 @@ class BoolProcessor:
                             result.extend(cnf_or[1:])
                         else:
                             result.append(cnf_or)
-                return result if len(result) > 1 else (result[1] if len(result) == 2 else None)
+                result = result if len(result) > 1 else (result[1] if len(result) == 2 else None)
+                self._cnf_cache[formula_key] = result
+                return result
         if op in ['and', 'or']:
             flattened = [op]
             for term in processed_terms[1:]:
@@ -1889,9 +2504,51 @@ class BoolProcessor:
                     flattened.extend(term[1:])
                 else:
                     flattened.append(term)
+            self._cnf_cache[formula_key] = flattened
             return flattened
+        self._cnf_cache[formula_key] = processed_terms
         return processed_terms
-    
+
+    def _pre_simplify_formula(self, formula):
+        if not isinstance(formula, list) or len(formula) <= 1:
+            return formula
+        op = formula[0]
+        if op == 'not' and len(formula) > 1 and isinstance(formula[1], list) and len(formula[1]) > 1 and formula[1][0] == 'not':
+            return formula[1][1]
+        if op in ['and', 'or']:
+            result = [op]
+            seen = set()
+            for term in formula[1:]:
+                simplified = self._pre_simplify_formula(term)
+                if simplified == 'true' and op == 'and':
+                    continue
+                if simplified == 'false' and op == 'or':
+                    continue
+                if simplified == 'false' and op == 'and':
+                    return 'false'
+                if simplified == 'true' and op == 'or':
+                    return 'true'
+                if isinstance(simplified, list) and len(simplified) > 1 and simplified[0] == op:
+                    for subterm in simplified[1:]:
+                        term_key = str(subterm)
+                        if term_key not in seen:
+                            seen.add(term_key)
+                            result.append(subterm)
+                else:
+                    term_key = str(simplified)
+                    if term_key not in seen:
+                        seen.add(term_key)
+                        result.append(simplified)
+            if len(result) == 1:
+                return 'true' if op == 'and' else 'false'
+            if len(result) == 2:
+                return result[1]
+            return result
+        result = [op]
+        for term in formula[1:]:
+            result.append(self._pre_simplify_formula(term))
+        return result
+
     def _formula_to_clauses(self, formula):
         if formula is None:
             return []
@@ -1904,7 +2561,8 @@ class BoolProcessor:
         if op == 'and':
             result = []
             for sub_f in formula[1:]:
-                result.extend(self._formula_to_clauses(sub_f))
+                sub_clauses = self._formula_to_clauses(sub_f)
+                result.extend(sub_clauses)
             return result
         elif op == 'or':
             clause = []
@@ -1922,7 +2580,9 @@ class BoolProcessor:
                 else:
                     is_valid = False
                     break
-            return [clause] if is_valid and clause else []
+            if is_valid and clause:
+                return [clause]
+            return []
         elif op == 'not':
             if len(formula) < 2:
                 return []
@@ -1931,7 +2591,7 @@ class BoolProcessor:
                 return [[-var_id]]
             return []
         return []
-    
+
     def _map_var(self, var):
         if var is None:
             return 1
@@ -1958,16 +2618,17 @@ class BoolProcessor:
                 var_id = len(self.var_map) + 2
             self.var_map[inner_var] = var_id
         return multiplier * self.var_map[inner_var]
-    
-    def simplify_lemmas(self):
+
+    def unit_propagation(self):
         if not self.cnf_clauses:
-            return self.is_sat
-        self.cnf_clauses = list(set(tuple(sorted(set(clause))) for clause in self.cnf_clauses))
+            return False
         unit_stack = []
         unit_values = {}
         for clause in self.cnf_clauses:
             if len(clause) == 1:
                 unit_stack.append(clause[0])
+        if not unit_stack:
+            return False
         while unit_stack:
             lit = unit_stack.pop(0)
             self.unit_clauses.append([lit])
@@ -1977,7 +2638,7 @@ class BoolProcessor:
                 if unit_values[var] != value:
                     self.cnf_clauses = []
                     self.is_sat = 'UNSAT'
-                    return self.is_sat
+                    return True
                 continue
             unit_values[var] = value
             i = 0
@@ -1999,7 +2660,7 @@ class BoolProcessor:
                 if len(new_clause) == 0:
                     self.cnf_clauses = []
                     self.is_sat = 'UNSAT'
-                    return self.is_sat
+                    return True
                 if len(new_clause) == 1 and new_clause[0] not in unit_stack:
                     unit_lit = new_clause[0]
                     unit_var = abs(unit_lit)
@@ -2007,35 +2668,114 @@ class BoolProcessor:
                         unit_stack.append(unit_lit)
                 self.cnf_clauses[i] = new_clause
                 i += 1
+        return True
+
+    def remove_tautologies(self):
+        if not self.cnf_clauses:
+            return False
+        changed = False
+        i = 0
+        while i < len(self.cnf_clauses):
+            clause = self.cnf_clauses[i]
+            seen = set()
+            for lit in clause:
+                if -lit in seen:
+                    self.cnf_clauses.pop(i)
+                    changed = True
+                    break
+                seen.add(lit)
+            else:
+                i += 1
+        return changed
+
+    def remove_subsumed_clauses(self):
+        if not self.cnf_clauses:
+            return False
+        changed = False
+        i = 0
+        while i < len(self.cnf_clauses):
+            clause_i = set(self.cnf_clauses[i])
+            j = 0
+            changed_flag = False
+            while j < len(self.cnf_clauses):
+                if i != j:
+                    clause_j = set(self.cnf_clauses[j])
+                    if clause_j.issubset(clause_i):
+                        self.cnf_clauses.pop(i)
+                        changed = True
+                        changed_flag = True
+                        break
+                j += 1
+            if not changed_flag:
+                i += 1
+        return changed
+
+    def simplify_lemmas(self):
+        if not self.cnf_clauses:
+            return self.is_sat
+        self.cnf_clauses = list(set(tuple(sorted(set(clause))) for clause in self.cnf_clauses))
+        while True:
+            changed = False
+            if self.unit_propagation():
+                changed = True
+            if self.remove_tautologies():
+                changed = True
+            if self.remove_subsumed_clauses():
+                changed = True
+            if not changed:
+                break
         self.cnf_clauses = list(set(tuple(sorted(clause)) for clause in self.cnf_clauses))
         return self.is_sat
     
+    def get_pure_lits(self):
+        if not self.cnf_clauses and not self.unit_clauses:
+            return []
+        pos_lits = set()
+        neg_lits = set()
+        for clause in self.cnf_clauses:
+            for lit in clause:
+                if lit > 0:
+                    pos_lits.add(lit)
+                else:
+                    neg_lits.add(-lit)
+        for unit_clause in self.unit_clauses:
+            for lit in unit_clause:
+                if lit > 0:
+                    pos_lits.add(lit)
+                else:
+                    neg_lits.add(-lit)
+        pure_pos = [lit for lit in pos_lits if lit not in neg_lits]
+        pure_neg = [-lit for lit in neg_lits if lit not in pos_lits]
+        return sorted(pure_neg + pure_pos)
+
     def get_simplified_lemmas(self):
         if self.is_sat == 'UNSAT':
             return [(ExpressionTree.LEAF(0), "bool")]
         result = []
-        for clause in self.unit_clauses + self.cnf_clauses:
+        unit_set = set(tuple(clause) for clause in self.unit_clauses)
+        cnf_set = set(tuple(clause) for clause in self.cnf_clauses)
+        original_set = set(tuple(clause) for clause in self.original_clauses)
+        clauses = list(unit_set.union(cnf_set) - original_set)
+        for clause in clauses:
             if len(clause) == 1:
                 lit = clause[0]
                 if lit == 1:
                     continue
                 var = abs(lit)
                 if lit > 0:
-                    result.append((ExpressionTree.LEAF(var), "re_in"))
+                    result.append((ExpressionTree.LEAF(var), "rewrite"))
                 else:
-                    result.append((ExpressionTree.NOT(ExpressionTree.LEAF(var)), "not"))
+                    result.append((ExpressionTree.NOT(ExpressionTree.LEAF(var)), "rewrite"))
             else:
                 or_elements = []
-                lemma_type = "re_in"
                 for lit in clause:
                     var = abs(lit)
                     if lit > 0:
                         or_elements.append(ExpressionTree.LEAF(var))
                     else:
                         or_elements.append(ExpressionTree.NOT(ExpressionTree.LEAF(var)))
-                        lemma_type = "not"
                 if or_elements:
-                    result.append((ExpressionTree.OR(or_elements), lemma_type))
+                    result.append((ExpressionTree.OR(or_elements), 'rewrite'))
         return result
     
     def reset(self):
@@ -2046,390 +2786,305 @@ class BoolProcessor:
 class ArithmeticProcessor:
     def __init__(self, info):
         self.info_manager = info
-        self.tmp_var_counter = 0
     
-    def get_length_info_from_lit(self, lit):
+    def get_length_expr(self, lit):
         if lit.type != 'string' or lit.index is None:
-            return None, None, None
+            return None
         expr = lit.expr
         if not isinstance(expr, list) or expr[0] != 'str.in_re':
-            return None, None, None
-        left_expr, right_expr = expr[1], expr[2]
-        tmp_vars, tmp_vars_expr, str_length_expr = self._extract_arith_constraints(left_expr, right_expr, self.tmp_var_counter)
-        self.tmp_var_counter += len(tmp_vars) if tmp_vars else 0
-        return tmp_vars, tmp_vars_expr, str_length_expr
-    
-    def _calculate_pattern_length(self, pattern):
-        if isinstance(pattern, str) and pattern.startswith('"'):
-            return len(pattern[1:-1])
-        if isinstance(pattern, list):
-            op = pattern[0] if pattern else None
-            if op == 'str.to_re' and len(pattern) > 1:
-                if isinstance(pattern[1], str) and pattern[1].startswith('"'):
-                    return len(pattern[1][1:-1])
-            elif op == 're.range':
-                return 1
-            elif op == 're.++':
-                total_len = 0
-                for p in pattern[1:]:
-                    p_len = self._calculate_pattern_length(p)
-                    if p_len is None:
-                        return None
-                    total_len += p_len
-                return total_len
-            elif op == 're.union':
-                lengths = set()
-                for p in pattern[1:]:
-                    p_len = self._calculate_pattern_length(p)
-                    if p_len is not None:
-                        lengths.add(p_len)
-                if len(lengths) == 1:
-                    return next(iter(lengths))
+            return None
+        str_length_expr = self._get_str_length_expr(expr[1])
+        if isinstance(str_length_expr, int):
+            str_length_expr = str(str_length_expr)
+        bias_length_expr = self._get_bias_length_expr(expr[2])
+        if isinstance(bias_length_expr, int):
+            bias_length_expr = str(bias_length_expr)
+        base_length_expr = self._get_base_length_expr(expr[2])
+        if isinstance(base_length_expr, int):
+            base_length_expr = str(base_length_expr)
+        if str_length_expr and bias_length_expr and base_length_expr:
+            constraints = []
+            simplified = self._simplify_arithmetic(str_length_expr, bias_length_expr)
+            if simplified is None:
                 return None
+            if base_length_expr == '0' or base_length_expr == 0:
+                constraints.append(['=', simplified, '0'])
+                return constraints
+            constraints.append(['>=', simplified, '0'])
+            if base_length_expr != '1' and base_length_expr != 1:
+                constraints.append(['=', ['mod', simplified, base_length_expr], '0'])
+            return constraints
         return None
-    
-    def _extract_variables(self, expr):
-        vars_found = set()
-        if isinstance(expr, str) and expr.startswith('x'):
-            vars_found.add(expr)
-        elif isinstance(expr, list):
-            for e in expr:
-                vars_found.update(self._extract_variables(e))
-        return vars_found
-    
-    def _find_var_by_name(self, var_name):
-        for var in self.info_manager.vars:
-            if var.name == var_name:
-                return var
-        return None
-    
-    def _get_constant_length(self, expr):
+        
+    def _get_str_length_expr(self, expr):
         if isinstance(expr, str):
-            if expr.startswith('"'):
-                return len(expr[1:-1])
-            return None
-        if not isinstance(expr, list) or not expr:
-            return None
-        op = expr[0]
-        if op == 'str.++':
-            total_len = 0
-            for e in expr[1:]:
-                part_len = self._get_constant_length(e)
-                if part_len is None:
-                    return None
-                total_len += part_len
-            return total_len
-        return None
-    
-    def _get_constant_char_length(self, expr, allowed_char):
-        if isinstance(expr, str):
-            if expr.startswith('"'):
-                content = expr[1:-1]
-                return len(content) if all(c == allowed_char for c in content) else None
-            return None
-        if not isinstance(expr, list) or not expr:
-            return None
-        op = expr[0]
-        if op == 'str.to_re' and len(expr) > 1:
-            if isinstance(expr[1], str) and expr[1].startswith('"'):
-                content = expr[1][1:-1]
-                return len(content) if all(c == allowed_char for c in content) else None
-        elif op == 're.range' and len(expr) == 3:
-            start, end = expr[1][1:-1], expr[2][1:-1]
-            return 1 if start <= allowed_char <= end else None
-        return None
-    
-    def _extract_arith_constraints(self, left_expr, right_expr, tmp_index):
-        if (isinstance(right_expr, list) and 
-            ((right_expr[0] == 'str.to_re' and len(right_expr) > 1 and right_expr[1] == '""') or
-             right_expr == ['str.to_re', '""'])):
-            if isinstance(left_expr, str) and left_expr.startswith('x'):
-                var_len = ['str.len', left_expr]
-                return [], None, ['=', var_len, '0']
-            elif isinstance(left_expr, list) and left_expr[0] == 'str.++':
-                vars_terms = []
-                constants_len = 0
-                for item in left_expr[1:]:
-                    if isinstance(item, str) and item.startswith('x'):
-                        vars_terms.append(['str.len', item])
-                    elif isinstance(item, str) and item.startswith('"'):
-                        constants_len += len(item[1:-1])
-                if not vars_terms and constants_len == 0:
-                    return [], None, None
-                if constants_len == 0:
-                    if len(vars_terms) == 1:
-                        return [], None, ['=', vars_terms[0], '0']
-                    else:
-                        return [], None, ['=', ['+'] + vars_terms, '0']
-                elif not vars_terms:
-                    return [], None, ['=', str(constants_len), '0']
-                else:
-                    if len(vars_terms) == 1:
-                        return [], None, ['=', ['+', vars_terms[0], str(constants_len)], '0']
-                    else:
-                        return [], None, ['=', ['+'] + vars_terms + [str(constants_len)], '0']
-            return [], None, None
-        if isinstance(left_expr, str) and left_expr.startswith('x'):
-            var = self._find_var_by_name(left_expr)
-            if var:
-                var_len = ['str.len', var.name]
-                if len(var.allow) == 1:
-                    allowed_char = next(iter(var.allow))
-                    var_tmp_vars, constraint_expr, var_length_expr = self._process_regex_constraints(var, right_expr, tmp_index)
-                    if var_tmp_vars is not None and var_length_expr is not None:
-                        return var_tmp_vars, constraint_expr, var_length_expr
-                if isinstance(right_expr, list) and right_expr[0] in ['re.*', 're.+']:
-                    inner = right_expr[1]
-                    pattern_len = self._calculate_pattern_length(inner)
-                    if pattern_len is not None and pattern_len > 0:
-                        tmp_var_name = f"len_tmp{tmp_index}"
-                        tmp_var = SMTVar(tmp_index, tmp_var_name, "Int", name=tmp_var_name)
-                        tmp_var.used = True
-                        if right_expr[0] == 're.*':
-                            tmp_vars_expr = ['>=', tmp_var_name, '0']
-                        else:
-                            tmp_vars_expr = ['>=', tmp_var_name, '1']
-                        str_length_expr = ['=', var_len, ['*', str(pattern_len), tmp_var_name]]
-                        return [tmp_var], tmp_vars_expr, str_length_expr
-                return [], None, None
-        if isinstance(left_expr, list) and left_expr[0] == 'str.++':
-            vars_in_expr = []
-            constants_len = 0
-            for item in left_expr[1:]:
-                if isinstance(item, str):
-                    if item.startswith('x'):
-                        vars_in_expr.append(item)
-                    elif item.startswith('"'):
-                        constants_len += len(item[1:-1])
-            var_len_terms = [['str.len', var_name] for var_name in vars_in_expr]
-            if isinstance(right_expr, list) and right_expr[0] in ['re.*', 're.+']:
-                inner = right_expr[1]
-                if isinstance(inner, list) and inner[0] == 're.union':
-                    pattern_lengths = []
-                    for branch in inner[1:]:
-                        branch_len = self._calculate_pattern_length(branch)
-                        if branch_len is not None:
-                            pattern_lengths.append((branch, branch_len))
-                    if len(pattern_lengths) > 1 and len(set(length for _, length in pattern_lengths)) > 1:
-                        tmp_vars = []
-                        tmp_constraints = []
-                        right_terms = []
-                        for i, (branch, branch_len) in enumerate(pattern_lengths):
-                            if branch_len > 0:
-                                tmp_var_name = f"len_tmp{tmp_index+i}"
-                                tmp_var = SMTVar(tmp_index+i, tmp_var_name, "Int", name=tmp_var_name)
-                                tmp_var.used = True
-                                if right_expr[0] == 're.*':
-                                    tmp_constraints.append(['>=', tmp_var_name, '0'])
-                                else:
-                                    tmp_constraints.append(['>=', tmp_var_name, '1'])
-                                if branch_len == 1:
-                                    right_terms.append(tmp_var_name)
-                                else:
-                                    right_terms.append(['*', str(branch_len), tmp_var_name])
-                                tmp_vars.append(tmp_var)
-                        if right_terms:
-                            if len(var_len_terms) == 0 and constants_len == 0:
-                                left_side = '0'
-                            elif len(var_len_terms) == 0:
-                                left_side = str(constants_len)
-                            elif len(var_len_terms) == 1 and constants_len == 0:
-                                left_side = var_len_terms[0]
-                            elif len(var_len_terms) == 1:
-                                left_side = ['+', var_len_terms[0], str(constants_len)]
-                            elif constants_len == 0:
-                                left_side = ['+'] + var_len_terms
-                            else:
-                                left_side = ['+'] + var_len_terms + [str(constants_len)]
-                            if len(right_terms) == 1:
-                                right_side = right_terms[0]
-                            else:
-                                right_side = ['+'] + right_terms
-                            str_length_expr = ['=', left_side, right_side]
-                            tmp_vars_expr = tmp_constraints[0] if tmp_constraints else None
-                            return tmp_vars, tmp_vars_expr, str_length_expr
-                pattern_len = self._calculate_pattern_length(inner)
-                if pattern_len is not None and pattern_len > 0:
-                    tmp_var_name = f"len_tmp{tmp_index}"
-                    tmp_var = SMTVar(tmp_index, tmp_var_name, "Int", name=tmp_var_name)
-                    tmp_var.used = True
-                    if right_expr[0] == 're.*':
-                        tmp_vars_expr = ['>=', tmp_var_name, '0']
-                    else:
-                        tmp_vars_expr = ['>=', tmp_var_name, '1']
-                    if len(var_len_terms) == 0 and constants_len == 0:
-                        str_length_expr = ['=', '0', ['*', str(pattern_len), tmp_var_name]]
-                    elif len(var_len_terms) == 0:
-                        str_length_expr = ['=', str(constants_len), ['*', str(pattern_len), tmp_var_name]]
-                    elif len(var_len_terms) == 1 and constants_len == 0:
-                        str_length_expr = ['=', var_len_terms[0], ['*', str(pattern_len), tmp_var_name]]
-                    elif len(var_len_terms) == 1:
-                        str_length_expr = ['=', ['+', var_len_terms[0], str(constants_len)], ['*', str(pattern_len), tmp_var_name]]
-                    elif constants_len == 0:
-                        str_length_expr = ['=', ['+'] + var_len_terms, ['*', str(pattern_len), tmp_var_name]]
-                    else:
-                        str_length_expr = ['=', ['+'] + var_len_terms + [str(constants_len)], ['*', str(pattern_len), tmp_var_name]]
-                    return [tmp_var], tmp_vars_expr, str_length_expr
-            constant_pattern_len = self._calculate_pattern_length(right_expr)
-            if constant_pattern_len is not None:
-                if len(var_len_terms) == 0 and constants_len == 0:
-                    return [], None, ['=', '0', str(constant_pattern_len)]
-                elif len(var_len_terms) == 0:
-                    return [], None, ['=', str(constants_len), str(constant_pattern_len)]
-                elif len(var_len_terms) == 1 and constants_len == 0:
-                    return [], None, ['=', var_len_terms[0], str(constant_pattern_len)]
-                elif len(var_len_terms) == 1:
-                    return [], None, ['=', ['+', var_len_terms[0], str(constants_len)], str(constant_pattern_len)]
-                elif constants_len == 0:
-                    return [], None, ['=', ['+'] + var_len_terms, str(constant_pattern_len)]
-                else:
-                    return [], None, ['=', ['+'] + var_len_terms + [str(constants_len)], str(constant_pattern_len)]
-        return [], None, None
-    
-    def _process_regex_constraints(self, var, regex_expr, tmp_index):
-        if not var.allow or len(var.allow) != 1:
-            return None, None, None
-        allowed_char = next(iter(var.allow))
-        var_name = var.name
-        var_len = ['str.len', var_name]
-        if not isinstance(regex_expr, list):
-            if isinstance(regex_expr, str) and regex_expr.startswith('"'):
-                content = regex_expr[1:-1]
-                if all(c == allowed_char for c in content):
-                    return [], None, ['=', var_len, str(len(content))]
-            return None, None, None
-        op = regex_expr[0] if regex_expr else None
-        if op == 'str.to_re':
-            if len(regex_expr) > 1 and isinstance(regex_expr[1], str) and regex_expr[1].startswith('"'):
-                content = regex_expr[1][1:-1]
-                if content == '':
-                    return [], None, ['=', var_len, '0']
-                if all(c == allowed_char for c in content):
-                    return [], None, ['=', var_len, str(len(content))]
-            return None, None, None
-        elif op == 're.*':
-            inner = regex_expr[1]
-            inner_len = self._get_constant_char_length(inner, allowed_char)
-            if inner_len is not None:
-                if inner_len == 0:
-                    return [], None, ['=', var_len, '0']
-                tmp_var_name = f"len_tmp{tmp_index}"
-                tmp_var = SMTVar(tmp_index, tmp_var_name, "Int", name=tmp_var_name)
-                tmp_var.used = True
-                constraint_expr = ['>=', tmp_var_name, '0']
-                if inner_len == 1:
-                    length_expr = ['=', var_len, tmp_var_name]
-                else:
-                    length_expr = ['=', var_len, ['*', str(inner_len), tmp_var_name]]
-                return [tmp_var], constraint_expr, length_expr
-            return None, None, None
-        elif op == 're.+':
-            inner = regex_expr[1]
-            inner_len = self._get_constant_char_length(inner, allowed_char)
-            if inner_len is not None:
-                if inner_len == 0:
-                    return [], None, ['=', var_len, '0']
-                tmp_var_name = f"len_tmp{tmp_index}"
-                tmp_var = SMTVar(tmp_index, tmp_var_name, "Int", name=tmp_var_name)
-                tmp_var.used = True
-                constraint_expr = ['>=', tmp_var_name, '1']
-                if inner_len == 1:
-                    length_expr = ['=', var_len, tmp_var_name]
-                else:
-                    length_expr = ['=', var_len, ['*', str(inner_len), tmp_var_name]]
-                return [tmp_var], constraint_expr, length_expr
-            return None, None, None
-        elif op == 're.++':
-            total_len = 0
-            var_terms = []
-            current_tmp_index = tmp_index
-            tmp_vars = []
-            tmp_constraints = []
-            for p in regex_expr[1:]:
-                part_len = self._get_constant_char_length(p, allowed_char)
-                if part_len is not None:
-                    total_len += part_len
-                    continue
-                if isinstance(p, list) and p[0] in ['re.*', 're.+']:
-                    inner = p[1]
-                    inner_len = self._get_constant_char_length(inner, allowed_char)
-                    if inner_len is not None and inner_len > 0:
-                        tmp_var_name = f"len_tmp{current_tmp_index}"
-                        current_tmp_index += 1
-                        tmp_var = SMTVar(current_tmp_index, tmp_var_name, "Int", name=tmp_var_name)
-                        tmp_var.used = True
-                        if p[0] == 're.*':
-                            tmp_constraints.append(['>=', tmp_var_name, '0'])
-                        else:
-                            tmp_constraints.append(['>=', tmp_var_name, '1'])
-                        if inner_len == 1:
-                            var_terms.append(tmp_var_name)
-                        else:
-                            var_terms.append(['*', str(inner_len), tmp_var_name])
-                        tmp_vars.append(tmp_var)
-                    else:
-                        return None, None, None
-                else:
-                    return None, None, None
-            constraint_expr = tmp_constraints[0] if tmp_constraints else None
-            if not var_terms:
-                return [], constraint_expr, ['=', var_len, str(total_len)]
-            elif total_len == 0:
-                if len(var_terms) == 1:
-                    return tmp_vars, constraint_expr, ['=', var_len, var_terms[0]]
-                else:
-                    sum_expr = ['+'] + var_terms
-                    return tmp_vars, constraint_expr, ['=', var_len, sum_expr]
+            if expr.startswith('"') and expr.endswith('"'):
+                result = str(len(expr) - 2)
+                return result
             else:
-                if len(var_terms) == 1:
-                    return tmp_vars, constraint_expr, ['=', var_len, ['+', str(total_len), var_terms[0]]]
+                result = ['str.len', expr]
+                return result
+        elif isinstance(expr, list):
+            if expr[0] == 'str.++':
+                lengths = []
+                for sub_expr in expr[1:]:
+                    sub_length = self._get_str_length_expr(sub_expr)
+                    if sub_length is None:
+                        return None
+                    lengths.append(sub_length)
+                
+                result = ['+']
+                for length in lengths:
+                    if isinstance(length, int):
+                        result.append(str(length))
+                    else:
+                        result.append(length)
+                
+                if len(result) == 2:
+                    result = result[1]
+                
+                return result
+        return None
+    
+    def _get_bias_length_expr(self, expr):
+        if isinstance(expr, str):
+            if expr.startswith('"') and expr.endswith('"'):
+                result = str(len(expr) - 2)
+                return result
+            return None
+        if not isinstance(expr, list):
+            return None
+        if expr[0] == 're.++':
+            total_length = 0
+            for sub_expr in expr[1:]:
+                sub_length = self._get_bias_length_expr(sub_expr)
+                if sub_length is None:
+                    return None
+                if isinstance(sub_length, str):
+                    sub_length = int(sub_length)
+                total_length += sub_length
+            result = str(total_length)
+            return result
+        elif expr[0] == 're.union':
+            lengths = []
+            for sub_expr in expr[1:]:
+                sub_length = self._get_bias_length_expr(sub_expr)
+                if sub_length is None:
+                    return None
+                if isinstance(sub_length, str):
+                    sub_length = int(sub_length)
+                lengths.append(sub_length)
+            if all(length == lengths[0] for length in lengths):
+                result = str(lengths[0])
+                return result
+            return None
+        elif expr[0] == 're.*':
+            return "0"
+        elif expr[0] == 'str.to_re':
+            if len(expr) > 1 and isinstance(expr[1], str):
+                if expr[1].startswith('"') and expr[1].endswith('"'):
+                    result = str(len(expr[1]) - 2)
+                    return result
+            return None
+            
+        return None
+        
+    def _get_base_length_expr(self, expr):
+        base_set = self._get_base_set(expr)
+        if base_set is None:
+            return None
+        if len(base_set) == 0:
+            return "0"
+        result = self._calculate_base_from_set(base_set)
+        return result
+    
+    def _get_base_set(self, expr):
+        if not isinstance(expr, list):
+            return []
+        if expr[0] == 're.++':
+            result_set = []
+            for sub_expr in expr[1:]:
+                sub_set = self._get_base_set(sub_expr)
+                if sub_set is None:
+                    return None
+                result_set.extend(sub_set)
+            return result_set
+        elif expr[0] == 're.*':
+            if isinstance(expr[1], str) and expr[1].startswith('"') and expr[1].endswith('"'):
+                str_length = len(expr[1]) - 2
+                if str_length > 0:
+                    return [str_length]
+                return []
+            elif isinstance(expr[1], list):
+                if expr[1][0] == 're.union':
+                    union_set = []
+                    for sub_expr in expr[1][1:]:
+                        length = self._get_bias_length_expr(sub_expr)
+                        if length is None:
+                            return None
+                        if isinstance(length, str):
+                            length = int(length)
+                        if length > 0:
+                            union_set.append(length)
+                    return union_set
+                elif expr[1][0] == 'str.to_re':
+                    if len(expr[1]) > 1 and isinstance(expr[1][1], str) and expr[1][1].startswith('"') and expr[1][1].endswith('"'):
+                        str_length = len(expr[1][1]) - 2
+                        if str_length > 0:
+                            return [str_length]
+                    return []
+                elif expr[1][0] == 're.++':
+                    length = self._get_bias_length_expr(expr[1])
+                    if length is None:
+                        return None
+                    if isinstance(length, str):
+                        length = int(length)
+                    if length > 0:
+                        return [length]
+                    return []
+        elif expr[0] == 'str.to_re':
+            return []
+
+        return []
+    
+    def _calculate_base_from_set(self, base_set):
+        def gcd(a, b):
+            return math.gcd(a, b)
+        
+        if not base_set:
+            return "1"
+        base = reduce(gcd, base_set)
+        result = str(base)
+        return result
+
+    def get_chars_expr(self, var, char, count):
+        if not var or not var.allow:
+            return None
+        allowed_chars = set(var.allow)
+        if char not in allowed_chars:
+            allowed_chars.add(char)
+        allowed_except_char = allowed_chars - {char}
+        expr_list = []
+        for index in range(count):
+            if index == 0:
+                if allowed_except_char:
+                    allowed_minus_char_union = ['re.union']
+                    for c in allowed_except_char:
+                        allowed_minus_char_union.append(['str.to_re', f'"{c}"'])
+                    regex_expr = ['re.*', allowed_minus_char_union] if len(allowed_except_char) > 1 else ['re.*', ['str.to_re', f'"{next(iter(allowed_except_char))}"']]
+                    lit_expr = ['str.in_re', var.name, regex_expr]
+                    expr_list.append(lit_expr)
+            elif index == 1:
+                all_chars_union = ['re.union']
+                for c in allowed_chars:
+                    all_chars_union.append(['str.to_re', f'"{c}"'])
+                if len(allowed_chars) == 1:
+                    all_chars_expr = ['str.to_re', f'"{next(iter(allowed_chars))}"']
                 else:
-                    sum_expr = ['+', str(total_len)] + var_terms
-                    return tmp_vars, constraint_expr, ['=', var_len, sum_expr]
-        elif op == 're.range':
-            if len(regex_expr) == 3:
-                start, end = regex_expr[1][1:-1], regex_expr[2][1:-1]
-                if start <= allowed_char <= end:
-                    return [], None, ['=', var_len, '1']
-        elif op == 're.union':
-            for p in regex_expr[1:]:
-                part_result = self._process_regex_constraints(var, p, tmp_index)
-                if part_result and part_result[2]:
-                    return part_result
-        return None, None, None
+                    all_chars_expr = all_chars_union
+                regex_expr = ['re.++', 
+                              ['re.*', all_chars_expr], 
+                              ['str.to_re', f'"{char}"'], 
+                              ['re.*', all_chars_expr]]
+                lit_expr = ['str.in_re', var.name, regex_expr]
+                expr_list.append(lit_expr)
+            else:
+                all_chars_union = ['re.union']
+                for c in allowed_chars:
+                    all_chars_union.append(['str.to_re', f'"{c}"'])
+                regex_expr = ['re.*', all_chars_union if len(allowed_chars) > 1 else ['str.to_re', f'"{next(iter(allowed_chars))}"']]
+                lit_expr = ['str.in_re', var.name, regex_expr]
+                expr_list.append(lit_expr)
+                break
+        if not expr_list:
+            return None
+        return expr_list
+
+    def _simplify_arithmetic(self, expr, bias):
+        if bias == '0' or bias == 0:
+            if isinstance(expr, list) or (isinstance(expr, str) and not expr.isdigit()):
+                return ['+', expr, '0']
+            return expr
+        bias_val = int(bias) if isinstance(bias, str) and bias.isdigit() else bias
+        if not isinstance(bias_val, int):
+            return ['-', expr, bias]
+        if isinstance(expr, list) and expr[0] == '+':
+            constants = []
+            variables = []
+            for term in expr[1:]:
+                if isinstance(term, (str, int)) and (isinstance(term, int) or term.isdigit()):
+                    constants.append(int(term))
+                else:
+                    variables.append(term)
+            const_sum = sum(constants)
+            adjusted_const = const_sum - bias_val
+            if not variables:
+                return str(adjusted_const)
+            elif len(variables) == 1:
+                var_term = variables[0]
+                if adjusted_const > 0:
+                    return ['+', var_term, str(adjusted_const)]
+                elif adjusted_const < 0:
+                    return ['-', var_term, str(-adjusted_const)]
+                else:
+                    return var_term
+            else:
+                var_expr = ['+'] + variables
+                if adjusted_const > 0:
+                    return ['+', var_expr, str(adjusted_const)]
+                elif adjusted_const < 0:
+                    return ['-', var_expr, str(-adjusted_const)]
+                else:
+                    return var_expr
+        return ['-', expr, str(bias_val)]
 
 class LemmaGenerator:
-    def __init__(self, info, regex_processor, bool_processor, arith_processor):
+    def __init__(self, info):
         self.info_manager = info
-        self.regex_processor = regex_processor
-        self.bool_processor = bool_processor
-        self.arith_processor = arith_processor
-    
+        self.rewrite_processor = info.rewrite_processor
+        self.regex_processor = RegexProcessor(info)
+        self.bool_processor = BoolProcessor(info)
+        self.arith_processor = ArithmeticProcessor(info)
+
     def create_literal(self, expr):
         lit = SMTLit(expr)
+        logging.debug(f"Create literal: {Parser.to_str(expr)}")
         lit = self.rewrite_lit(lit)
+        logging.debug(f"Rewrite literal: {Parser.to_str(lit.expr)}")
         lit_find = self.info_manager.find_literal(lit)
-        if lit_find is None:
-            return self.info_manager.add_literal(lit)
-        return lit_find.index
-    
+        lit_index = lit_find.index if lit_find else self.info_manager.add_literal(lit)
+        is_new = lit_find is None
+        if lit.type == 'string':
+            vars_found = self.regex_processor.get_variables(expr[1])
+            for var_name in vars_found:
+                var = self.info_manager.get_var(var_name)
+                var.add_lit(lit_index)
+        return lit_index, is_new
+
     def create_lemma(self, expr_tree, lemma_type, comment=None):
-        lemma = SMTLemma(expr_tree, lemma_type, comment)
         if expr_tree:
             expr_tree.set_info_manager(self.info_manager)
+        lemma = SMTLemma(expr_tree, lemma_type, comment)
         lemma_index = self.info_manager.add_lemma(lemma)
         lits = expr_tree.get_all_leaf_indices()
         for lit_index in lits:
             self.info_manager.literals[lit_index].add_lemma(lemma_index)
         return lemma_index
-    
+
+    def create_tmp_var(self, var, var_type, allowed_chars):
+        tmp_var = SMTVar(var, var_type, name=var)
+        tmp_var.allow = allowed_chars
+        tmp_var.used = True
+        tmp_var_index = self.info_manager.add_tmp_var(tmp_var)
+        return tmp_var_index
+
     def rewrite_lit(self, lit):
         expr = lit.expr
         if lit.type == 'string':
             left_expr, right_expr = expr[1], expr[2]
             vars_found = self.regex_processor.get_variables(left_expr)
             if len(vars_found) == 0:
-                val = self.regex_processor.is_constant_in_regex(left_expr, right_expr)
+                val = self.regex_processor.is_str_in_regex(left_expr, right_expr)
                 if val is not None:
                     lit.expr = val
                     return lit
@@ -2440,170 +3095,421 @@ class LemmaGenerator:
                 allowed_chars.update(var.allow)
             for char, count in constants.items():
                 allowed_chars.add(char)
-            if not allowed_chars:
-                allowed_chars = set(chr(c) for c in range(32, 127))
-            right_expr_filtered = self.regex_processor.filter_by_allowed_chars(right_expr, allowed_chars)
-            right_expr_filtered = self.regex_processor.remove_redundant_constants(right_expr_filtered)
-            right_expr_filtered = self.regex_processor.remove_empty_strings(right_expr_filtered)
-            right_expr_filtered = self.regex_processor.reorder_union(right_expr_filtered)
+            right_expr_filtered = self.rewrite_processor.remove_tabu_chars(right_expr, allowed_chars)
+            right_expr_filtered = self.rewrite_processor.remove_empty_strings(right_expr_filtered)
+            right_expr_filtered = self.rewrite_processor.remove_redundant_constants(right_expr_filtered)
+            right_expr_filtered = self.rewrite_processor.reorder_union(right_expr_filtered)
+            right_expr_filtered = self.rewrite_processor.merge_kleene_star(right_expr_filtered)
             if len(allowed_chars) == 1:
-                right_expr_filtered = self.regex_processor.rebuild_expr(right_expr_filtered)
-            lit.expr = ['str.in_re', left_expr, right_expr_filtered]
+                right_expr_filtered = self.rewrite_processor.rebuild_single_char_expr(right_expr_filtered)
+            if right_expr_filtered:
+                lit.expr = ['str.in_re', left_expr, right_expr_filtered]
+            else:
+                lit.expr = 'false'
         elif lit.type == 'arith':
             pass
         return lit
-    
-    def rewrite_lemmas(self, lemmas):
+
+    def rewrite_lemmas(self, clauses, lemmas):
+        for clause in clauses:
+            self.bool_processor.read_clause(clause)
         for lemma in lemmas:
             self.bool_processor.read_lemma(lemma)
         is_sat = self.bool_processor.simplify_lemmas()
+        pure_lits = self.bool_processor.get_pure_lits()
+        for lit_index in pure_lits:
+            sign = 1 if lit_index > 0 else -1
+            lit_index = abs(lit_index)
+            lit = self.info_manager.literals[lit_index]
+            if lit.type == 'string':
+                lit.pure = 'true' if sign == 1 else 'false'
         simplified_lemmas = self.bool_processor.get_simplified_lemmas()
         self.info_manager.reset_lemmas()
         for lemma in simplified_lemmas:
             tree, lemma_type = lemma
-            if tree.op == 'not':
-                self.create_lemma(tree, lemma_type=lemma_type)
-            else:
-                self.create_lemma(tree, lemma_type=lemma_type)
+            self.create_lemma(tree, lemma_type=lemma_type)
+            if tree.is_unit():
+                lit_index = tree.get_unit_lit()
+                lit = self.info_manager.literals[lit_index]
+                lit.unit = 'true' if tree.op == 'leaf' else 'false'
         return is_sat
-    
-    def get_lemmas_length(self, lemmas):
-        lits_total = set()
-        lemmas_re = [lemma for lemma in lemmas if lemma.type == 're_in']
-        for lemma in lemmas_re:
-            lits_index = lemma.get_lits_indices()
-            lits_total.update(lits_index)
-        lit_lengthlit_map = {}
-        for lit_index in lits_total:
-            lit = self.info_manager.literals[lit_index]
-            tmp_vars, tmp_vars_expr, str_length_expr = self.arith_processor.get_length_info_from_lit(lit)
-            if tmp_vars:
-                for tmp_var in tmp_vars:
-                    self.info_manager.add_tmp_var(tmp_var)
-            if tmp_vars_expr:
-                lit_tmp_index = self.create_literal(tmp_vars_expr)
-                self.create_lemma(ExpressionTree.LEAF(lit_tmp_index), lemma_type='arith')
-            if str_length_expr:
-                lit_str_length_index = self.create_literal(str_length_expr)
-                lit_lengthlit_map[lit_index] = lit_str_length_index
-        for lemma in lemmas_re:
-            tree = self.get_exptree_length(lemma, lit_lengthlit_map)
-            if tree:
-                self.create_lemma(tree, lemma_type='arith')
 
-    def get_exptree_length(self, lemma, lit_lengthlit_map):
-        if not lemma.expr_tree:
+    def get_lemmas_length(self, lit):
+        if lit.type != 'string':
+            return
+        logging.debug4(f"Processing lit: {Parser.to_str(lit.expr)}")
+        length_exprs = self.arith_processor.get_length_expr(lit)
+        if length_exprs:
+            left_expr = lit.expr[1]
+            vars_found = self.regex_processor.get_variables(left_expr)
+            constants = self.regex_processor.get_parikh_image(left_expr)
+            allowed_chars = set()
+            for var_name in vars_found:
+                var = self.info_manager.get_var(var_name)
+                allowed_chars.update(var.allow)
+            for char, count in constants.items():
+                allowed_chars.add(char)
+            expr_trees = []
+            for index in range(len(length_exprs)):
+                lit_length_index, is_new = self.create_literal(length_exprs[index])
+                expr_trees.append(ExpressionTree.LEAF(lit_length_index))
+                if is_new and index == 0 and len(vars_found) == 1 and len(constants) == 0:
+                    expr_tree_length = self.get_exptree_length(length_exprs[index])
+                    if expr_tree_length:
+                        expr_tree_length = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit_length_index)), expr_tree_length])
+                        lemma_index = self.create_lemma(expr_tree_length, lemma_type='length')
+                        logging.debug3(f"Lemma({lemma_index}): {expr_tree_length.get_comment()}")
+            expr_trees = ExpressionTree.AND(expr_trees)
+            if len(allowed_chars) == 1:
+                expr_tree = ExpressionTree.OR([ExpressionTree.NOT(expr_trees), ExpressionTree.LEAF(lit.index)])
+                lemma_index = self.create_lemma(expr_tree, lemma_type='arith')
+                logging.debug3(f"Lemma({lemma_index}): {expr_tree.get_comment()}")
+            expr_tree = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit.index)), expr_trees])
+            lemma_index = self.create_lemma(expr_tree, lemma_type='arith')
+            logging.debug3(f"Lemma({lemma_index}): {expr_tree.get_comment()}")
+
+    def get_exptree_length(self, expr):
+        logging.debug1(f"Processing expr: {Parser.to_str(expr)}")
+        var_name = expr[1][1][1]
+        var = self.info_manager.get_var(var_name)
+        length = int(expr[1][2])
+        if length == 0:
             return None
-        if lemma.expr_tree.op == 'leaf':
-            lit_index = lemma.expr_tree.elements[0]
-            if lit_index in lit_lengthlit_map:
-                length_lit_index = lit_lengthlit_map[lit_index]
-                return ExpressionTree.LEAF(length_lit_index)
-            return None
-        elif lemma.expr_tree.op == 'not':
-            if not lemma.expr_tree.elements:
-                return None
-            inner_tree = self.get_exptree_length(SMTLemma(lemma.expr_tree.elements[0], 're_in'), lit_lengthlit_map)
-            if inner_tree:
-                return ExpressionTree.NOT(inner_tree)
-            return None
-        elif lemma.expr_tree.op == 'and':
-            length_trees = []
-            for element in lemma.expr_tree.elements:
-                inner_lemma = SMTLemma(element, 're_in')
-                inner_tree = self.get_exptree_length(inner_lemma, lit_lengthlit_map)
-                if inner_tree:
-                    length_trees.append(inner_tree)
-            if length_trees:
-                if len(length_trees) == 1:
-                    return length_trees[0]
-                return ExpressionTree.AND(length_trees)
-            return None
-        elif lemma.expr_tree.op == 'or':
-            length_trees = []
-            for element in lemma.expr_tree.elements:
-                inner_lemma = SMTLemma(element, 're_in')
-                inner_tree = self.get_exptree_length(inner_lemma, lit_lengthlit_map)
-                if inner_tree:
-                    length_trees.append(inner_tree)
-            if length_trees:
-                if len(length_trees) == 1:
-                    return length_trees[0]
-                return ExpressionTree.OR(length_trees)
-            return None
-        return None
-    
-    def get_lemmas_split(self, clause):
-        clause_type = clause.type
-        if clause_type == 'not':
-            expr_tree = self.get_exptree_split(clause.expr[1])
-            self.create_lemma(ExpressionTree.NOT(expr_tree), lemma_type='not')
-        else:
-            expr_tree = self.get_exptree_split(clause.expr)
-            self.create_lemma(expr_tree, lemma_type='re_in')
+        op = expr[0]
+        allow_expr = ['re.*', ['re.union'] + [['str.to_re', f'"{c}"'] for c in var.allow]]
+        char_expr_list = self.regex_processor.get_arrange_chars(var.allow, length)
+        expr_list = []
+        for char_expr in char_expr_list:
+            if op == '>=':
+                expr = ['str.in_re', var_name, ['re.++', char_expr, allow_expr]]
+                lit_index, is_new = self.create_literal(expr)
+                expr_list.append(ExpressionTree.LEAF(lit_index))
+            elif op == '=':
+                expr = ['str.in_re', var_name, char_expr]
+                lit_index, is_new = self.create_literal(expr)
+                expr_list.append(ExpressionTree.LEAF(lit_index))
+        expr_tree = ExpressionTree.OR(expr_list)
+        return expr_tree
+
+    def get_lemmas_split(self, lit):
+        if lit.type != 'string':
+            return
+        logging.debug4(f"Processing clause: {Parser.to_str(lit.expr)}")
+        expr_tree = self.get_exptree_split(lit.expr)
+        if expr_tree:
+            logging.debug4(f"Got expr_tree: {expr_tree.get_comment()}")
+            expr_tree_lemma_left = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit.index)), expr_tree])
+            expr_tree_lemma_right = ExpressionTree.OR([ExpressionTree.NOT(expr_tree), ExpressionTree.LEAF(lit.index)])
+            lemma_index_left = self.create_lemma(expr_tree_lemma_left, lemma_type='split')
+            lemma_index_right = self.create_lemma(expr_tree_lemma_right, lemma_type='split')
+            logging.debug3(f"Lemma({lemma_index_left}): {expr_tree_lemma_left.get_comment()}")
+            logging.debug3(f"Lemma({lemma_index_right}): {expr_tree_lemma_right.get_comment()}")
 
     def get_exptree_split(self, expr):
-        left_expr, right_expr = self.regex_processor.get_re_elements(expr)
-        vars_found = self.regex_processor.get_variables(left_expr)
+        logging.debug1(f"Processing exptree: {Parser.to_str(expr)}")
+        str_expr, re_expr = expr[1], expr[2]
+        str_expr = str_expr[1:] if str_expr[0] == 'str.++' else [str_expr]
+        re_expr = re_expr[1:] if re_expr[0] == 're.++' else [re_expr]
+        if len(re_expr) == 1 and isinstance(re_expr[0], list) and re_expr[0][0] == 're.union' and len(re_expr[0]) >= 3:
+            trees = []
+            str_expr = self.regex_processor.normalize_expr(str_expr)
+            for e in re_expr[0][1:]:
+                expr = ['str.in_re', str_expr, e]
+                trees.append(self.get_exptree_split(expr))
+            return ExpressionTree.OR(trees)
+        vars_found = self.regex_processor.get_variables(str_expr)
         if len(vars_found) == 0:
-            logging.debug1(f"Got expr: {Parser.to_str(expr)}, reason: no variables")
-            lit_index = self.create_literal(expr)
+            lit_index, _ = self.create_literal(expr)
+            logging.debug(f"Got literal({lit_index}): {self.info_manager.literals[lit_index]}, reason: no variables")
             return ExpressionTree.LEAF(lit_index)
-        allowed_chars = set()
-        for var_name in vars_found:
-            var = self.info_manager.get_var(var_name)
-            allowed_chars.update(var.allow)
-        domain_quota = self.regex_processor.get_parikh_image(left_expr)
+        if (isinstance(str_expr[0], str) and str_expr[0].startswith('"')) or (isinstance(str_expr[-1], str) and str_expr[-1].startswith('"')):
+            reversed = False
+            if not (isinstance(str_expr[0], str) and str_expr[0].startswith('"')) and (isinstance(str_expr[-1], str) and str_expr[-1].startswith('"')):
+                str_expr = self.regex_processor.get_reverse_pattern(str_expr)
+                re_expr = self.regex_processor.get_reverse_pattern(re_expr)
+                reversed = True
+            constant_in_indices = self.regex_processor.get_index_constant_in_pattern(re_expr, str_expr[0])
+            if not constant_in_indices:
+                lit_index, _ = self.create_literal('false')
+                logging.debug(f"Got literal({lit_index}): {self.info_manager.literals[lit_index]} which is false, reason: no constant in right_expr")
+                return ExpressionTree.LEAF(lit_index)
+            exptrees = []
+            for constant_in_index in constant_in_indices:
+                logging.debug(f"Processing constant_in_index: {constant_in_index}")
+                re_expr_list = self.regex_processor.get_remove_pattern(str_expr, re_expr, constant_in_index)
+                for new_expr in re_expr_list:
+                    if reversed and len(new_expr) == 3 and new_expr[0] == 'str.in_re':
+                        new_str_expr, new_re_expr = new_expr[1], new_expr[2]
+                        new_str_expr = self.regex_processor.get_reverse_pattern(new_str_expr)
+                        new_re_expr = self.regex_processor.get_reverse_pattern(new_re_expr)
+                        new_expr = ['str.in_re', new_str_expr, new_re_expr]
+                    exptrees.append(self.get_exptree_split(new_expr))
+            if len(exptrees) == 1:
+                return exptrees[0]
+            if exptrees:
+                return ExpressionTree.OR(exptrees)
+        constants = self.regex_processor.get_parikh_image(str_expr)
         unique_chars = set()
-        for key, value in domain_quota.items():
-            if value == 1 and key not in allowed_chars:
+        for key, value in constants.items():
+            if value == 1:
                 unique_chars.add(key)
-        if not unique_chars:
-            logging.debug1(f"Got expr: {Parser.to_str(expr)}, reason: no unique chars")
-            lit_index = self.create_literal(expr)
-            return ExpressionTree.LEAF(lit_index)
-        constant_index = self.regex_processor.get_index_first_unique_constant(left_expr)
-        logging.debug1(f"left_expr[{constant_index}]: {left_expr[constant_index]}")
-        logging.debug1(f"right_expr: {Parser.to_str(right_expr[0])}")
-        constant_in_index = self.regex_processor.get_index_constant_in_pattern(right_expr, left_expr[constant_index])
-        if constant_in_index is None:
-            logging.debug1(f"Got expr: {Parser.to_str(expr)}, reason: no constant in index")
-            lit_index = self.create_literal(expr)
-            return ExpressionTree.LEAF(lit_index)
-        paired_list = self.regex_processor.get_split_pattern(left_expr, right_expr, constant_index, constant_in_index)
-        if not paired_list:
-            logging.debug1(f"Got expr: {Parser.to_str(expr)}, reason: no paired list")
-            lit_index = self.create_literal(expr)
-            return ExpressionTree.LEAF(lit_index)
-        paired_trees = []
-        for left_expr, right_expr in paired_list:
-            left_tree = self.get_exptree_split(left_expr)
-            right_tree = self.get_exptree_split(right_expr)
-            paired_trees.append(ExpressionTree.AND([left_tree, right_tree]))
-        if len(paired_trees) == 1:
-            return paired_trees[0]
-        return ExpressionTree.OR(paired_trees)
+        for unique_char in unique_chars:
+            constant_index = self.regex_processor.get_index_unique_constant(str_expr, unique_char)
+            left_str_list = str_expr[:constant_index]
+            right_str_list = str_expr[constant_index + 1:]
+            allowed_chars_left = self.regex_processor.get_chars(self.regex_processor.normalize_expr(left_str_list))
+            allowed_chars_right = self.regex_processor.get_chars(self.regex_processor.normalize_expr(right_str_list))
+            if unique_char in allowed_chars_left and unique_char in allowed_chars_right:
+                continue
+            constant_in_indices = self.regex_processor.get_index_constant_must_in_pattern(re_expr, unique_char)
+            if len(constant_in_indices) != 1:
+                if unique_char in allowed_chars_left | allowed_chars_right:
+                    continue
+                constant_in_indices = self.regex_processor.get_index_constant_in_pattern(re_expr, unique_char)
+                if len(constant_in_indices) == 0:
+                    continue
+            expr_tree = []
+            for constant_in_index in constant_in_indices:
+                paired_list = self.regex_processor.get_split_pattern(str_expr, re_expr, constant_index, constant_in_index)
+                if paired_list == None:
+                    lit_index, _ = self.create_literal('false')
+                    logging.debug(f"Got literal({lit_index}): {self.info_manager.literals[lit_index]} which is false, reason: still can not split")
+                    expr_tree.append(ExpressionTree.LEAF(lit_index))
+                else:
+                    for left_re_expr, right_re_expr in paired_list:
+                        left_tree = self.get_exptree_split(left_re_expr)
+                        right_tree = self.get_exptree_split(right_re_expr)
+                        expr_tree.append(ExpressionTree.AND([left_tree, right_tree]))
+            if len(expr_tree) == 1:
+                return expr_tree[0]
+            return ExpressionTree.OR(expr_tree)
+        lit_index, _ = self.create_literal(expr)
+        logging.debug(f"Got literal({lit_index}): {self.info_manager.literals[lit_index]}, reason: no rules matched")
+        return ExpressionTree.LEAF(lit_index)
+
+    def get_lemmas_var(self, var):
+        if not var.lit_indices:
+            return
+        logging.debug3(f"Processing variable: {var.name} with {len(var.lit_indices)} literals")
+        pure_none_lits = []
+        pure_true_lits = []
+        pure_false_lits = []
+        for lit_index in var.lit_indices:
+            lit = self.info_manager.literals[lit_index]
+            if lit.expr[1] != var.name:
+                continue
+            logging.debug3(f"Got literal: {Parser.to_str(lit.expr)}, pure: {lit.pure if lit.pure else 'none'}, unit: {lit.unit if lit.unit else 'none'}")
+            if lit.pure is None:
+                pure_none_lits.append(lit_index)
+            if lit.pure == 'true':
+                pure_true_lits.append(lit_index)
+            if lit.pure == 'false':
+                pure_false_lits.append(lit_index)
+        
+        kleen_star_lit_indices = []
+        for lit_index in pure_true_lits + pure_false_lits + pure_none_lits:
+            lit = self.info_manager.literals[lit_index]
+            if self.regex_processor.is_union_kleen_star(lit.expr[2]):
+                kleen_star_lit_indices.append(lit_index)
+        logging.debug1(f"Processing {len(kleen_star_lit_indices)} kleen star literals")
+        for lit_index1, lit_index2 in itertools.combinations(kleen_star_lit_indices, 2):
+            lit1 = self.info_manager.literals[lit_index1]
+            lit2 = self.info_manager.literals[lit_index2]
+            res, phase = self.regex_processor.is_union_kleen_star_contain(lit1.expr[2], lit2.expr[2])
+            logging.debug1(f"Processing {Parser.to_str(lit1.expr[2])} and {Parser.to_str(lit2.expr[2])}, res: {res}, phase: {phase}")
+            if res:
+                if phase:
+                    expr_tree = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit1.index)), ExpressionTree.LEAF(lit2.index)])
+                else:
+                    expr_tree = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit2.index)), ExpressionTree.LEAF(lit1.index)])
+                lemma_index = self.create_lemma(expr_tree, lemma_type='kleen')
+                logging.debug3(f"Lemma({lemma_index}): {expr_tree.get_comment()}")
+        
+        var_tree_list = []
+        if pure_true_lits:
+            index = 0
+            for lit_index in pure_true_lits:
+                lit = self.info_manager.literals[lit_index]
+                logging.debug2(f"Processing true literal: {Parser.to_str(lit.expr)}")
+                var_tree = self.get_exptree_var(lit, index)
+                if var_tree:
+                    var_tree.set_info_manager(self.info_manager)
+                    expr_tree = ExpressionTree.OR([ExpressionTree.LEAF(lit_index), var_tree])
+                    lemma_index = self.create_lemma(expr_tree, lemma_type='equation')
+                    logging.debug3(f"Lemma({lemma_index}): {expr_tree.get_comment()}")
+                    var_tree_list.append(var_tree)
+                    index += 1
+                if lit.unit == 'true':
+                    chars_found = self.regex_processor.get_chars(lit.expr[2])
+                    if chars_found.issubset(var.allow) and len(chars_found) != len(var.allow):
+                        var.allow = var.allow.intersection(chars_found)
+                        for lit_index in var.lit_indices:
+                            lit = self.info_manager.literals[lit_index]
+                            self.info_manager.literals[lit_index] = self.rewrite_lit(lit)
+        for lit_index in pure_false_lits + pure_true_lits + pure_none_lits:
+            lit = self.info_manager.literals[lit_index]
+            for var_tree in var_tree_list:
+                var_lit_index = var_tree.get_unit_lit()
+                var_lit = self.info_manager.literals[var_lit_index]
+                logging.debug3(f"Creating equal expression for lit {Parser.to_str(lit.expr)} and var_lit {Parser.to_str(var_lit.expr)}")
+                expr = self.regex_processor.get_equal_expr(lit, var_lit)
+                if expr:
+                    logging.debug(f"Got equal expression: {Parser.to_str(expr)}")
+                    expr_tree = self.get_exptree_split(expr)
+                    if expr_tree:
+                        expr_tree_lemma_left = ExpressionTree.OR([ExpressionTree.NOT(ExpressionTree.LEAF(lit.index)), ExpressionTree.NOT(var_tree), expr_tree])
+                        expr_tree_lemma_right = ExpressionTree.OR([ExpressionTree.NOT(expr_tree), ExpressionTree.NOT(var_tree), ExpressionTree.LEAF(lit.index)])
+                        lemma_index_left = self.create_lemma(expr_tree_lemma_left, lemma_type='split')
+                        lemma_index_right = self.create_lemma(expr_tree_lemma_right, lemma_type='split')
+                        logging.debug3(f"Lemma({lemma_index_left}): {expr_tree_lemma_left.get_comment()}")
+                        logging.debug3(f"Lemma({lemma_index_right}): {expr_tree_lemma_right.get_comment()}")
+        
+        for lit_index in pure_none_lits + pure_false_lits:
+            lit = self.info_manager.literals[lit_index]
+            logging.debug2(f"Processing false literal {lit_index} for char lemmas")
+            expr_tree = self.get_exptree_char(lit)
+            if expr_tree:
+                logging.debug3(f"Got char expression tree for literal {lit_index}")
+                expr_tree_lemma_left = ExpressionTree.OR([ExpressionTree.LEAF(lit.index), expr_tree])
+                expr_tree_lemma_right = ExpressionTree.OR([ExpressionTree.NOT(expr_tree), ExpressionTree.LEAF(lit.index)])
+                lemma_index_left = self.create_lemma(expr_tree_lemma_left, lemma_type='char')
+                lemma_index_right = self.create_lemma(expr_tree_lemma_right, lemma_type='char')
+                logging.debug3(f"Lemma({lemma_index_left}): {expr_tree_lemma_left.get_comment()}")
+                logging.debug3(f"Lemma({lemma_index_right}): {expr_tree_lemma_right.get_comment()}")
+
+    def get_exptree_var(self, lit, index):
+        if lit.type != 'string' or not isinstance(lit.expr, list) or lit.expr[0] != 'str.in_re':
+            return None
+        left_expr, right_expr = lit.expr[1], lit.expr[2]
+        var = self.info_manager.get_var(left_expr)
+        if isinstance(right_expr, list) and right_expr[0] == 're.++':
+            const_indices = []
+            for i, part in enumerate(right_expr[1:]):
+                if (isinstance(part, list) and part[0] == 'str.to_re' and 
+                    isinstance(part[1], str) and part[1].startswith('"') and 
+                    len(part[1]) == 3):
+                    const_indices.append(i)
+            if const_indices:
+                constant_in_index = const_indices[0]
+                unique_char = right_expr[constant_in_index + 1][1][1:-1]
+                left_parts = right_expr[1:constant_in_index + 1]
+                right_parts = right_expr[constant_in_index + 2:]
+                left_expr = ['re.++'] + left_parts if len(left_parts) > 1 else left_parts[0] if left_parts else ['str.to_re', '""']
+                right_expr = ['re.++'] + right_parts if len(right_parts) > 1 else right_parts[0] if right_parts else ['str.to_re', '""']
+                allowed_chars_left = self.regex_processor.get_chars(left_expr)
+                allowed_chars_right = self.regex_processor.get_chars(right_expr)
+                if unique_char not in allowed_chars_left or unique_char not in allowed_chars_right:
+                    left_var_name = f"{var.name}_l{index}"
+                    right_var_name = f"{var.name}_r{index}"
+                    self.create_tmp_var(left_var_name, 'String', allowed_chars_left)
+                    self.create_tmp_var(right_var_name, 'String', allowed_chars_right)
+                    expr = ['=', var.name, ['str.++', left_var_name, f'"{unique_char}"', right_var_name]]
+                    lit_index, _ = self.create_literal(expr)
+                    return ExpressionTree.LEAF(lit_index)
+                else:
+                    return None
+            else:
+                right_expr_list = right_expr[1:] if right_expr[0] == 're.++' else [right_expr]
+                constants = self.regex_processor.get_parikh_image(right_expr_list, is_regex=True)
+                unique_chars = set()
+                for char, count in constants.items():
+                    if count == 1:
+                        unique_chars.add(char)
+                if unique_chars:
+                    unique_char = next(iter(unique_chars))
+                    constant_in_indices = self.regex_processor.get_index_constant_must_in_pattern(right_expr_list, unique_char)
+                    if len(constant_in_indices) != 1:
+                        return None
+                    constant_in_index = constant_in_indices[0]
+                    left_expr = right_expr_list[:constant_in_index]
+                    right_expr = right_expr_list[constant_in_index + 1:]
+                    allowed_chars_left = self.regex_processor.get_chars(left_expr)
+                    allowed_chars_right = self.regex_processor.get_chars(right_expr)
+                    if unique_char not in allowed_chars_left or unique_char not in allowed_chars_right:
+                        left_var_name = f"{var.name}_left_{index}"
+                        right_var_name = f"{var.name}_right_{index}"
+                        self.create_tmp_var(left_var_name, 'String', allowed_chars_left)
+                        self.create_tmp_var(right_var_name, 'String', allowed_chars_right)
+                        expr = ['=', var.name, ['str.++', left_var_name, f'"{unique_char}"', right_var_name]]
+                        lit_index, _ = self.create_literal(expr)
+                        return ExpressionTree.LEAF(lit_index)
+                    else:
+                        return None
+                else:
+                    return None
+        else:
+            return None
+
+    def get_exptree_char(self, lit):
+        if lit.type != 'string' or not isinstance(lit.expr, list) or lit.expr[0] != 'str.in_re':
+            return None
+        left_expr, right_expr = lit.expr[1], lit.expr[2]
+        vars_found = self.regex_processor.get_variables(left_expr)
+        if len(vars_found) != 1:
+            return None
+        var_name = next(iter(vars_found))
+        var = self.info_manager.get_var(var_name)
+        if not var.allow:
+            return None
+        if not isinstance(right_expr, list) or len(right_expr) < 2:
+            return None
+        if right_expr[0] == 're.*' and isinstance(right_expr[1], list) and right_expr[1][0] == 're.union':
+            re_chars = self.regex_processor.get_chars(right_expr)
+            allowed_chars = var.allow
+            missing_chars = set(allowed_chars) - set(re_chars)
+            if not missing_chars:
+                return None
+            missing_expr_trees = []
+            for missing_char in missing_chars:
+                missing_char_str = f'"{missing_char}"'
+                pattern1_left = ['re.*', right_expr[1]]
+                pattern1_middle = ['str.to_re', missing_char_str]
+                pattern1_right = ['re.*', ['re.union'] + [['str.to_re', f'"{c}"'] for c in allowed_chars]]
+                pattern1 = ['re.++', pattern1_left, pattern1_middle, pattern1_right]
+                expr1 = ['str.in_re', left_expr, pattern1]
+                lit_index1, _ = self.create_literal(expr1)
+                pattern2_left = ['re.*', ['re.union'] + [['str.to_re', f'"{c}"'] for c in allowed_chars]]
+                pattern2_middle = ['str.to_re', missing_char_str]
+                pattern2_right = ['re.*', right_expr[1]]
+                pattern2 = ['re.++', pattern2_left, pattern2_middle, pattern2_right]
+                expr2 = ['str.in_re', left_expr, pattern2]
+                lit_index2, _ = self.create_literal(expr2)
+                missing_expr_trees.append(ExpressionTree.OR([
+                    ExpressionTree.LEAF(lit_index1),
+                    ExpressionTree.LEAF(lit_index2)
+                ]))
+            if len(missing_expr_trees) == 1:
+                return missing_expr_trees[0]
+            return ExpressionTree.OR(missing_expr_trees)
+        return None
 
 class SMTProcessor:
     def __init__(self, tree=False):
         self.info_manager = InfoManager()
-        self.lemma_generator = LemmaGenerator(
-            self.info_manager, 
-            RegexProcessor(self.info_manager),
-            BoolProcessor(self.info_manager),
-            ArithmeticProcessor(self.info_manager))
+        self.lemma_generator = LemmaGenerator(self.info_manager)
         self.tree = tree
         Parser.set_tree_format(tree)
     
     def get_lemmas(self):
-        self.info_manager.add_literal(SMTLit('false'))
-        self.info_manager.add_literal(SMTLit('true'))
-        for clause in self.info_manager.clauses:
-            self.lemma_generator.get_lemmas_split(clause)
-        is_sat = self.lemma_generator.rewrite_lemmas(self.info_manager.lemmas)
-        self.lemma_generator.get_lemmas_length(self.info_manager.lemmas)
-        
-        logging.debug(f"Got {len(self.info_manager.lemmas)} lemmas")
+        # original_level = logging.getLogger().getEffectiveLevel()
+        # logging.getLogger().setLevel(logging.ERROR)
+        for index in range(len(self.info_manager.literals)):
+            lit = self.info_manager.literals[index]
+            self.lemma_generator.get_lemmas_split(lit)
+        for index in range(len(self.info_manager.literals)):
+            lit = self.info_manager.literals[index]
+            if not lit.origin:
+                self.lemma_generator.get_lemmas_length(lit)
+        is_sat = self.lemma_generator.rewrite_lemmas(self.info_manager.clauses, self.info_manager.lemmas)
+        if is_sat == 'UNSAT':
+            return is_sat
+        for index in range(len(self.info_manager.vars)):
+            var = self.info_manager.vars[index]
+            self.lemma_generator.get_lemmas_var(var)
+        for index in range(len(self.info_manager.tmp_vars)):
+            tmp_var = self.info_manager.tmp_vars[index]
+            self.lemma_generator.get_lemmas_var(tmp_var)
+        is_sat = self.lemma_generator.rewrite_lemmas(self.info_manager.clauses, self.info_manager.lemmas)
         return is_sat
     
     def process_file(self, input_file, output_file=None):
@@ -2616,6 +3522,7 @@ class SMTProcessor:
         print(is_sat)
         outputs = []
         outputs.extend(self.info_manager.preamble)
+        outputs.append("")
         for var in self.info_manager.vars:
             var_smt2 = var.get_smt2()
             if var_smt2:
@@ -2624,6 +3531,7 @@ class SMTProcessor:
             tmp_var_smt2 = tmp_var.get_smt2()
             if tmp_var_smt2:
                 outputs.append(tmp_var_smt2)
+        outputs.append("")
         for clause in self.info_manager.clauses:
             outputs.append(clause.get_smt2())
         outputs.append("")
@@ -2632,7 +3540,7 @@ class SMTProcessor:
             if lemma_smt2:
                 outputs.append(lemma_smt2)
         outputs.extend(self.info_manager.postamble)
-        outputs.append("; ========================== [comments] ==========================")
+        outputs.append("\n; ========================== [comments] ==========================")
         outputs.append("; Clause comments")
         for clause in self.info_manager.clauses:
             comment = str(clause)

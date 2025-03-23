@@ -5,9 +5,10 @@ TASK: cvc5-preprocess
 SOLVER: cvc5
 TIMEOUT: 10
 -----------------------------------------------------------
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 10.061355803
-RESULT: TIMEOUT
+SOLVING_TIME: .049651815
+RESULT: SUCCESS
 ===========================================================
 FILE: norn-benchmark-17.smt2
 PATH: /home/hanrui/StrCvc5/Norn-preprocessed/norn-benchmark-17.smt2
@@ -17,7 +18,7 @@ TIMEOUT: 10
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .012432460
+SOLVING_TIME: .039116860
 RESULT: SUCCESS
 ===========================================================
 FILE: norn-benchmark-6.smt2
@@ -28,7 +29,7 @@ TIMEOUT: 10
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .035698321
+SOLVING_TIME: .027649293
 RESULT: SUCCESS
 ===========================================================
 FILE: norn-benchmark-25.smt2
@@ -37,7 +38,7 @@ TASK: cvc5-preprocess
 SOLVER: cvc5
 TIMEOUT: 10
 -----------------------------------------------------------
-cvc5 interrupted by SIGTERM.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 10.005388010
-RESULT: TIMEOUT
+SOLVING_TIME: .023057035
+RESULT: SUCCESS

@@ -7,7 +7,7 @@ TIMEOUT: 10
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .538348502
+SOLVING_TIME: .023967047
 RESULT: SUCCESS
 ===========================================================
 FILE: norn-benchmark-15.smt2
@@ -16,10 +16,10 @@ TASK: cvc5-preprocess
 SOLVER: cvc5
 TIMEOUT: 10
 -----------------------------------------------------------
-cvc5 interrupted by SIGTERM.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 10.006765764
-RESULT: TIMEOUT
+SOLVING_TIME: .041138105
+RESULT: SUCCESS
 ===========================================================
 FILE: norn-benchmark-36.smt2
 PATH: /home/hanrui/StrCvc5/Norn-preprocessed/norn-benchmark-36.smt2
@@ -27,7 +27,7 @@ TASK: cvc5-preprocess
 SOLVER: cvc5
 TIMEOUT: 10
 -----------------------------------------------------------
-cvc5 interrupted by SIGTERM.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 10.029818072
-RESULT: TIMEOUT
+SOLVING_TIME: .062083131
+RESULT: SUCCESS
