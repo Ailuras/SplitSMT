@@ -40,7 +40,7 @@
         {
             "label": "Git Commit and Push force",
             "type": "shell",
-            "command": "git add . && git commit --no-edit --amend && git push origin version2025 --force",
+            "command": "git add . && git commit --no-edit --amend && git push origin main --force",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
