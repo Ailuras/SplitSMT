@@ -36,6 +36,9 @@ public:
     size_t getClauseCount() const;
     size_t getLemmaCount() const;
     
+    Parser& getParser() { return parser; }
+    const Parser& getParser() const { return parser; }
+    
 private:
     Context();
     ~Context() = default;

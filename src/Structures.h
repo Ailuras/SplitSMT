@@ -47,6 +47,22 @@ public:
     std::string getSource() const { return source; }
     std::string getComment() const { return comment; }
     
+    std::string toSMT() const {
+        std::string typeStr;
+        switch (type) {
+            case VarType::INTEGER: typeStr = "Int"; break;
+            case VarType::REAL: typeStr = "Real"; break;
+            case VarType::BOOLEAN: typeStr = "Bool"; break;
+            case VarType::STRING: typeStr = "String"; break;
+            case VarType::FUNCTION: typeStr = source; break;
+            default: typeStr = source; break;
+        }
+        if (type == VarType::FUNCTION) {
+            return source;
+        }
+        return "(declare-fun " + getName() + " () " + typeStr + ")";
+    }
+    
     bool operator==(const Var& other) const {
         return node == other.node;
     }
@@ -97,6 +113,10 @@ public:
     AtomType getType() const { return type; }
     std::string getSource() const { return source; }
     std::string getComment() const { return comment; }
+    
+    std::string toSMT() const {
+        return source;
+    }
     
     bool operator==(const Atom& other) const {
         return node == other.node;
@@ -164,6 +184,10 @@ public:
 
     bool isAtom() const { return node->isAtom(); }
     bool isOriginal() const { return is_original; }
+    
+    std::string toSMT() const {
+        return "(assert " + source + ")";
+    }
 
 private:
     SMTLIBParser::NodePtr node;
@@ -184,6 +208,15 @@ public:
 
     std::string getSource() const { return source; }
     std::string getComment() const { return comment; }
+    
+    std::string toSMT() const {
+        std::string result;
+        for (const auto& premise : premises) {
+            result += premise.toSMT() + "\n";
+        }
+        result += conclusion.toSMT();
+        return result;
+    }
 
 private:
     std::vector<Clause> premises;
