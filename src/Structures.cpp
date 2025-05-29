@@ -1,32 +1,32 @@
 #include "Structures.h"
-#include "Parser.h"
+#include "Context.h"
 
 namespace strp {
 
-Var::Var(const SMTLIBParser::NodePtr& node, Parser& parser) :
+Var::Var(const SMTLIBParser::NodePtr& node, Context& context) :
     node(node),
-    type(parser.getVarType(node)),
-    source(parser.getSource(node)),
-    comment(parser.getComment(node)) {}
+    type(context.getVarType(node)),
+    source(context.getSource(node)),
+    comment(context.getComment(node)) {}
 
-Atom::Atom(const SMTLIBParser::NodePtr& node, Parser& parser) :
+Atom::Atom(const SMTLIBParser::NodePtr& node, Context& context) :
     node(node),
-    type(parser.getAtomType(node)),
-    source(parser.getSource(node)),
-    comment(parser.getComment(node)) {}
+    type(context.getAtomType(node)),
+    source(context.getSource(node)),
+    comment(context.getComment(node)) {}
 
-Clause::Clause(const SMTLIBParser::NodePtr& node, Parser& parser, bool is_original) :
+Clause::Clause(const SMTLIBParser::NodePtr& node, Context& context, bool is_original) :
     node(node),
-    type(parser.getClauseType(node)),
-    source(parser.getSource(node)),
-    comment(parser.getComment(node)),
+    type(context.getClauseType(node)),
+    source(context.getSource(node)),
+    comment(context.getComment(node)),
     is_original(is_original) {
-    for (auto& atom_node : parser.getAtoms(node)) {
-        atoms.insert(Atom(atom_node, parser));
+    for (auto& atom_node : context.getAtoms(node)) {
+        atoms.insert(Atom(atom_node, context));
     }
 }
 
-Lemma::Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Parser& parser) :
+Lemma::Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Context& context) :
     premises(premises),
     conclusion(conclusion) {}
 

@@ -3,10 +3,8 @@
 #include <cstdlib>
 #include <fstream>
 #include "Logger.h"
-#include "Parser.h"
 #include "Context.h"
 #include "Solver.h"
-#include "IncrementalSolver.h"
 
 struct Args {
     std::string inputFile;
@@ -90,9 +88,7 @@ void setupLogging(const Args& args) {
 }
 
 bool parseInputFile(const std::string& inputFile, strp::Context& context) {
-    auto& parser = strp::Parser::getInstance();
-    if (parser.parseFile(inputFile)) {
-        context.addInfo();
+    if (context.parseFile(inputFile)) {
         INFO("Successfully parsed input file");
         return true;
     } else {
@@ -105,7 +101,6 @@ void runIncrementalDemo(strp::SolverType solverType) {
     INFO("Running incremental solver demo with real parsed data...");
     strp::IncrementalSolver solver(solverType);
     solver.setMaxIterations(10);
-    
     int clauseIndex = 0;
     auto clauseGenerator = [&clauseIndex](strp::Context& ctx, strp::SatResult lastResult) -> std::string {
         auto clauses = ctx.getClauses();
@@ -117,7 +112,6 @@ void runIncrementalDemo(strp::SolverType solverType) {
         }
         return "";
     };
-    
     auto analysisFunction = [&clauseIndex](strp::Context& ctx, strp::SatResult result, const std::string& model) -> bool {
         (void)model;
         auto clauses = ctx.getClauses();
@@ -135,12 +129,9 @@ void runIncrementalDemo(strp::SolverType solverType) {
         }
         return true;
     };
-    
     solver.setClauseGenerator(clauseGenerator);
     solver.setAnalysisFunction(analysisFunction);
-    
     strp::SatResult finalResult = solver.solve();
-    
     auto& context = solver.getContext();
     INFO("Demo completed. Final result: ", 
          finalResult == strp::SatResult::SAT ? "SAT" : 
@@ -158,20 +149,16 @@ void runIncrementalDemo(strp::SolverType solverType) {
 int main(int argc, char* argv[]) {
     Args args;
     parseArgs(argc, argv, args);
-    
     if (args.showHelp) {
         printUsage();
         return 0;
     }
-    
     setupLogging(args);
     
     try {
-        strp::Check checker(args.solverType);
         auto& context = strp::Context::getInstance();
-        
         if (parseInputFile(args.inputFile, context)) {
-            runIncrementalDemo(args.solverType);
+            // runIncrementalDemo(args.solverType);
         } else {
             return 1;
         }
@@ -179,5 +166,6 @@ int main(int argc, char* argv[]) {
         ERROR("Error processing file: ", e.what());
         return 1;
     }
+
     return 0;
 }

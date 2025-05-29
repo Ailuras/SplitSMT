@@ -10,8 +10,7 @@
 
 namespace strp {
 
-// Forward declaration of Parser class
-class Parser;
+class Context;
 
 enum class VarType {
     INTEGER,
@@ -37,7 +36,7 @@ inline std::ostream& operator<<(std::ostream& os, const VarType& type) {
 class Var {
 public:
     Var() = default;
-    Var(const SMTLIBParser::NodePtr& node, Parser& parser);
+    Var(const SMTLIBParser::NodePtr& node, Context& context);
     Var(const Var& other) = default;
     Var& operator=(const Var& other) = default;
     ~Var() = default;
@@ -104,7 +103,7 @@ inline std::ostream& operator<<(std::ostream& os, const AtomType& type) {
 class Atom {
 public:
     Atom() = default;
-    Atom(const SMTLIBParser::NodePtr& node, Parser& parser);
+    Atom(const SMTLIBParser::NodePtr& node, Context& context);
     Atom(const Atom& other) = default;
     Atom& operator=(const Atom& other) = default;
     ~Atom() = default;
@@ -171,7 +170,7 @@ inline std::ostream& operator<<(std::ostream& os, const ClauseType& type) {
 class Clause {
 public:
     Clause() = default;
-    Clause(const SMTLIBParser::NodePtr& node, Parser& parser, bool is_original = false);
+    Clause(const SMTLIBParser::NodePtr& node, Context& context, bool is_original = false);
     Clause(const Clause& other) = default;
     Clause& operator=(const Clause& other) = default;
     ~Clause() = default;
@@ -201,7 +200,7 @@ private:
 class Lemma {
 public:
     Lemma() = default;
-    Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Parser& parser);
+    Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Context& context);
     Lemma(const Lemma& other) = default;
     Lemma& operator=(const Lemma& other) = default;
     ~Lemma() = default;

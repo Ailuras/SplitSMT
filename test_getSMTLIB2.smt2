@@ -1,0 +1,6 @@
+(set-logic QF_S)
+(declare-fun x () String)
+(declare-fun y () String)
+(assert (= x "hello"))
+(assert (= y "world"))
+(check-sat) 

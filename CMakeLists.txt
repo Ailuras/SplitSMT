@@ -31,12 +31,10 @@ message(STATUS "SMTLIBParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/
 
 # Add our source files
 set(SOURCES
-    src/Parser.cpp
     src/main.cpp
     src/Context.cpp
     src/Structures.cpp
     src/Solver.cpp
-    src/IncrementalSolver.cpp
 )
 
 # Set RPATH for runtime library search
@@ -64,11 +62,9 @@ add_executable(strprocessor ${SOURCES})
 # Add debug executable
 add_executable(debug_strprocessor
     src/debug_main.cpp
-    src/Parser.cpp
     src/Context.cpp
     src/Structures.cpp
     src/Solver.cpp
-    src/IncrementalSolver.cpp
 )
 
 # Create compile_commands.json for IDE integration
