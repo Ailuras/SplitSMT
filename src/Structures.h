@@ -36,7 +36,7 @@ inline std::ostream& operator<<(std::ostream& os, const VarType& type) {
 class Var {
 public:
     Var() = default;
-    Var(const SMTLIBParser::NodePtr& node, Context& context);
+    Var(const SMTParser::NodePtr& node, Context& context);
     Var(const Var& other) = default;
     Var& operator=(const Var& other) = default;
     ~Var() = default;
@@ -71,11 +71,11 @@ public:
     }
     
     friend std::size_t hash_value(const Var& var) {
-        return boost::hash<SMTLIBParser::NodePtr>()(var.node);
+        return boost::hash<SMTParser::NodePtr>()(var.node);
     }
 
 private:
-    SMTLIBParser::NodePtr node;
+    SMTParser::NodePtr node;
     VarType type;
     std::string source;
     std::string comment;
@@ -103,7 +103,7 @@ inline std::ostream& operator<<(std::ostream& os, const AtomType& type) {
 class Atom {
 public:
     Atom() = default;
-    Atom(const SMTLIBParser::NodePtr& node, Context& context);
+    Atom(const SMTParser::NodePtr& node, Context& context);
     Atom(const Atom& other) = default;
     Atom& operator=(const Atom& other) = default;
     ~Atom() = default;
@@ -126,11 +126,11 @@ public:
     }
     
     friend std::size_t hash_value(const Atom& atom) {
-        return boost::hash<SMTLIBParser::NodePtr>()(atom.node);
+        return boost::hash<SMTParser::NodePtr>()(atom.node);
     }
 
 private:
-    SMTLIBParser::NodePtr node;
+    SMTParser::NodePtr node;
     AtomType type;
     std::string source;
     std::string comment;
@@ -170,7 +170,7 @@ inline std::ostream& operator<<(std::ostream& os, const ClauseType& type) {
 class Clause {
 public:
     Clause() = default;
-    Clause(const SMTLIBParser::NodePtr& node, Context& context, bool is_original = false);
+    Clause(const SMTParser::NodePtr& node, Context& context, bool is_original = false);
     Clause(const Clause& other) = default;
     Clause& operator=(const Clause& other) = default;
     ~Clause() = default;
@@ -189,7 +189,7 @@ public:
     }
 
 private:
-    SMTLIBParser::NodePtr node;
+    SMTParser::NodePtr node;
     ClauseType type;
     std::string source;
     std::string comment;

@@ -76,69 +76,51 @@ public:
     std::string getUnsatCore() override;
 };
 
-class Check {
-private:
-    std::unique_ptr<SolverInterface> solver;
-    SolverType currentSolverType;
-    bool initialized;
+void dumpSMTLIB2(const SMTParser::NodePtr& node, std::stringstream& ss);
 
-    Check() : currentSolverType(SolverType::Z3), initialized(false) {}
-
-public:
-    Check(SolverType type);
-    ~Check() = default;
-
-    void setSolver(SolverType type);
-    SatResult checkFormula(const std::string& formula);
-    SatResult checkFormulaIncremental(const std::string& assertion);
-    void addAssertion(const std::string& assertion);
-    SatResult checkSat();
-    
-    void pushContext();
-    void popContext();
-    void resetSolver();
-    
-    std::string getModel();
-    std::string getUnsatCore();
-    
-    static Check& getInstance();
-
-private:
-    void initializeSolver();
-};
-
-void dumpSMTLIB2(const SMTLIBParser::NodePtr& node, std::stringstream& ss);
-
-class IncrementalSolver {
+class splitSolver {
 public:
     using ClauseGenerator = std::function<std::string(Context&, SatResult)>;
     using AnalysisFunction = std::function<bool(Context&, SatResult, const std::string&)>;
 
-    IncrementalSolver(SolverType solverType = SolverType::Z3);
-    ~IncrementalSolver() = default;
-
+    splitSolver(SolverType solverType = SolverType::Z3);
+    ~splitSolver() = default;
+    
+    void setSolver(SolverType type);
     void setMaxIterations(int max);
     void setClauseGenerator(ClauseGenerator generator);
     void setAnalysisFunction(AnalysisFunction analyzer);
-    SatResult solve();
-
     int getIterationCount() const { return iterationCount; }
-    std::vector<std::string> getAddedClauses() const { return addedClauses; }
-    Context& getContext() { return context; }
-    const Context& getContext() const { return context; }
+
+    SatResult checkSat();
+    std::string getModel();
+    std::string getUnsatCore();
+    SatResult solve();
+    void rewriteFormula(Context& ctx);
 
 private:
-    std::unique_ptr<Check> solver;
+    std::unique_ptr<SolverInterface> solver;
+    SolverType currentSolverType;
     Context& context;
     int maxIterations;
     int iterationCount;
-    std::vector<std::string> addedClauses;
-    ClauseGenerator clauseGenerator;
     AnalysisFunction analysisFunction;
+    ClauseGenerator clauseGenerator;
 
-    std::string generateInitialFormula();
+    void initializeSolver();
+    SatResult checkFormula(const std::string& formula);
+    SatResult checkFormulaIncremental(const std::string& assertion);
+    void addAssertion(const std::string& assertion);
+    void resetSolver();
+    void pushContext();
+    void popContext();
+    
+    void replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes);
+    void replaceNumSplitsConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitsConstNodes);
+    void updateAssertionsWithReplacement(Context& ctx, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap);
     bool shouldContinue(SatResult result);
-    void initializeFromParsedData();
+    void generateClause(Context& ctx, SatResult lastResult);
+    bool analyzeResult(Context& ctx, SatResult result, const std::string& model);
 };
 
 } 

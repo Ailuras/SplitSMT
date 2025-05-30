@@ -28,8 +28,16 @@ public:
     void addClause(const Clause& clause);
     void addLemma(const Lemma& lemma);
     
-    std::vector<SMTLIBParser::NodePtr> getVariables();
-    std::vector<SMTLIBParser::NodePtr> getAssertions();
+    std::vector<SMTParser::NodePtr> getSplitAtNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitsNodes();
+    std::vector<SMTParser::NodePtr> getSplitAtConstNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitsConstNodes();
+    std::vector<SMTParser::NodePtr> getSplitAtVarNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitsVarNodes();
+    std::vector<SMTParser::NodePtr> getSplitNodes();
+    
+    std::vector<SMTParser::NodePtr> getVariables();
+    std::vector<SMTParser::NodePtr> getAssertions();
     boost::unordered_set<Var> getVars() const;
     boost::unordered_set<Atom> getAtoms() const;
     std::vector<Clause> getClauses() const;
@@ -47,14 +55,21 @@ public:
     size_t getClauseCount() const;
     size_t getLemmaCount() const;
     
-    static int getType(const SMTLIBParser::NodePtr& node);
-    static VarType getVarType(const SMTLIBParser::NodePtr& node);
-    static AtomType getAtomType(const SMTLIBParser::NodePtr& node);
-    static ClauseType getClauseType(const SMTLIBParser::NodePtr& node);
-    static std::string getSource(const SMTLIBParser::NodePtr& node);
-    static std::string getComment(const SMTLIBParser::NodePtr& node);
-    static boost::unordered_set<SMTLIBParser::NodePtr> getAtoms(const SMTLIBParser::NodePtr& node);
-    
+    static int getType(const SMTParser::NodePtr& node);
+    static VarType getVarType(const SMTParser::NodePtr& node);
+    static AtomType getAtomType(const SMTParser::NodePtr& node);
+    static ClauseType getClauseType(const SMTParser::NodePtr& node);
+    static std::string getSource(const SMTParser::NodePtr& node);
+    static std::string getComment(const SMTParser::NodePtr& node);
+    static boost::unordered_set<SMTParser::NodePtr> getAtoms(const SMTParser::NodePtr& node);
+    static SMTParser::NodePtr replaceAtoms(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& atomMap);
+    static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
+    static SMTParser::NodePtr createStringConst(const std::string& value);
+    static SMTParser::NodePtr createIntConst(int value);
+    void updateAssertions(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap);
+    void updateAssertionsWithNodes(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap);
+    void refreshInfo();
+
 private:
     Context();
     ~Context() = default;
@@ -68,7 +83,7 @@ private:
     std::vector<Lemma> lemmas;
     
     utils::Logger& logger = utils::Logger::getInstance();
-    SMTLIBParser::Parser smtlibParser;
+    SMTParser::Parser SMTParser;
 };
 
 } // namespace strp

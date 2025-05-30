@@ -21,16 +21,14 @@ bool Context::parseFile(const std::string& filename) {
         ERROR("File does not exist: ", filename);
         return false;
     }
-    if (!smtlibParser.parse(filename)) {
+    if (!SMTParser.parse(filename)) {
         ERROR("Failed to parse file: ", filename);
         return false;
     }
-    DEBUG("Parser info updated with ", smtlibParser.assertions.size(), " assertions");
+    DEBUG("Parser info updated with ", SMTParser.assertions.size(), " assertions");
     updateInfo();
     std::string smtlib2 = getSMTLIB2(true);
-    DEBUG("SMTLIB2: ", smtlib2);
-    std::string smtlib2_from_context = getSMTLIB2(false);
-    DEBUG("SMTLIB2 from context: ", smtlib2_from_context);
+    DEBUG("SMTLIB2: \n", smtlib2);
     return true;
 }
 
@@ -46,20 +44,22 @@ bool Context::parseString(const std::string& input) {
     }
     tempFile << input;
     tempFile.close();
-    if (!smtlibParser.parse(tempFilename)) {
+    if (!SMTParser.parse(tempFilename)) {
         ERROR("Failed to parse string input");
         std::filesystem::remove(tempFilename);
         return false;
     }
     std::filesystem::remove(tempFilename);
-    DEBUG("Parser info updated with ", smtlibParser.assertions.size(), " assertions");
+    DEBUG("Parser info updated with ", SMTParser.assertions.size(), " assertions");
     updateInfo();
+    std::string smtlib2 = getSMTLIB2(true);
+    DEBUG("SMTLIB2: ", smtlib2);
     return true;
 }
 
 void Context::updateInfo() {
-    std::vector<SMTLIBParser::NodePtr> variables = getVariables();
-    std::vector<SMTLIBParser::NodePtr> assertions = getAssertions();
+    std::vector<SMTParser::NodePtr> variables = getVariables();
+    std::vector<SMTParser::NodePtr> assertions = getAssertions();
     for (auto& node : variables) {
         Var var = Var(node, *this);
         addVar(var);
@@ -78,46 +78,179 @@ void Context::updateInfo() {
     }
 }
 
-std::vector<SMTLIBParser::NodePtr> Context::getVariables() {
-    boost::unordered_set<SMTLIBParser::NodePtr> varSet;
-    smtlibParser.collectVars(smtlibParser.assertions, varSet);
-    return std::vector<SMTLIBParser::NodePtr>(varSet.begin(), varSet.end());
+std::vector<SMTParser::NodePtr> Context::getVariables() {
+    boost::unordered_set<SMTParser::NodePtr> varSet;
+    SMTParser.collectVars(SMTParser.assertions, varSet);
+    return std::vector<SMTParser::NodePtr>(varSet.begin(), varSet.end());
 }
 
-std::vector<SMTLIBParser::NodePtr> Context::getAssertions() {
-    return smtlibParser.assertions;
+std::vector<SMTParser::NodePtr> Context::getAssertions() {
+    return SMTParser.assertions;
+}
+
+std::vector<SMTParser::NodePtr> Context::getSplitAtNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    boost::unordered_set<SMTParser::NodePtr> allNodes;
+    
+    std::function<void(const SMTParser::NodePtr&)> collectAllNodes = [&](const SMTParser::NodePtr& node) {
+        if (!node) return;
+        allNodes.insert(node);
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            collectAllNodes(node->getChild(i));
+        }
+    };
+    
+    for (auto& assertion : SMTParser.assertions) {
+        collectAllNodes(assertion);
+    }
+    
+    for (auto& node : allNodes) {
+        if (node && node->isStrSplitAt()) {
+            result.push_back(node);
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitsNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    boost::unordered_set<SMTParser::NodePtr> allNodes;
+    
+    std::function<void(const SMTParser::NodePtr&)> collectAllNodes = [&](const SMTParser::NodePtr& node) {
+        if (!node) return;
+        allNodes.insert(node);
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            collectAllNodes(node->getChild(i));
+        }
+    };
+    
+    for (auto& assertion : SMTParser.assertions) {
+        collectAllNodes(assertion);
+    }
+    
+    for (auto& node : allNodes) {
+        if (node && node->isStrNumSplits()) {
+            result.push_back(node);
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getSplitAtConstNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    auto splitAtNodes = getSplitAtNodes();
+    
+    for (auto& node : splitAtNodes) {
+        if (node && node->getChildrenSize() > 0) {
+            auto firstChild = node->getChild(0);
+            if (firstChild && firstChild->isConst()) {
+                result.push_back(node);
+            }
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitsConstNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    auto numSplitsNodes = getNumSplitsNodes();
+    
+    for (auto& node : numSplitsNodes) {
+        if (node && node->getChildrenSize() > 0) {
+            auto firstChild = node->getChild(0);
+            if (firstChild && firstChild->isConst()) {
+                result.push_back(node);
+            }
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getSplitAtVarNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    auto splitAtNodes = getSplitAtNodes();
+    
+    for (auto& node : splitAtNodes) {
+        if (node && node->getChildrenSize() > 0) {
+            auto firstChild = node->getChild(0);
+            if (firstChild && firstChild->isVar()) {
+                result.push_back(node);
+            }
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitsVarNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    auto numSplitsNodes = getNumSplitsNodes();
+    
+    for (auto& node : numSplitsNodes) {
+        if (node && node->getChildrenSize() > 0) {
+            auto firstChild = node->getChild(0);
+            if (firstChild && firstChild->isVar()) {
+                result.push_back(node);
+            }
+        }
+    }
+    
+    return result;
+}
+
+std::vector<SMTParser::NodePtr> Context::getSplitNodes() {
+    std::vector<SMTParser::NodePtr> result;
+    boost::unordered_set<SMTParser::NodePtr> allNodes;
+    
+    std::function<void(const SMTParser::NodePtr&)> collectAllNodes = [&](const SMTParser::NodePtr& node) {
+        if (!node) return;
+        allNodes.insert(node);
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            collectAllNodes(node->getChild(i));
+        }
+    };
+    
+    for (auto& assertion : SMTParser.assertions) {
+        collectAllNodes(assertion);
+    }
+    
+    for (auto& node : allNodes) {
+        if (node && (node->isStrSplitAt() || node->isStrNumSplits())) {
+            result.push_back(node);
+        }
+    }
+    
+    return result;
 }
 
 std::string Context::getSMTLIB2(bool from_parser) const {
     if (from_parser) {
-        return const_cast<Context*>(this)->smtlibParser.dumpSMT2();
+        return const_cast<Context*>(this)->SMTParser.dumpSMT2();
     }
     std::stringstream ss;
-    
     ss << "(set-logic ALL)\n\n";
-    
     for (const auto& var : vars) {
         ss << var.toSMT() << "\n";
     }
-    
     if (!vars.empty()) {
         ss << "\n";
     }
-    
     for (const auto& clause : clauses) {
         ss << clause.toSMT() << "\n";
     }
-    
     for (const auto& lemma : lemmas) {
         ss << lemma.toSMT() << "\n";
     }
-    
     ss << "\n(check-sat)\n";
     
     return ss.str();
 }
 
-int Context::getType(const SMTLIBParser::NodePtr& node) {
+int Context::getType(const SMTParser::NodePtr& node) {
     if (!node) return -1;
     if (node->isVar()) {
         return 1;
@@ -129,7 +262,7 @@ int Context::getType(const SMTLIBParser::NodePtr& node) {
     return 0;
 }
 
-VarType Context::getVarType(const SMTLIBParser::NodePtr& node) {
+VarType Context::getVarType(const SMTParser::NodePtr& node) {
     if (!node) return VarType::UNKNOWN;
     
     std::string sortStr = node->getSort()->toString();
@@ -148,7 +281,7 @@ VarType Context::getVarType(const SMTLIBParser::NodePtr& node) {
     return VarType::UNKNOWN;
 }
 
-AtomType Context::getAtomType(const SMTLIBParser::NodePtr& node) {
+AtomType Context::getAtomType(const SMTParser::NodePtr& node) {
     if (!node) return AtomType::Unknown;
     
     if (node->isArithComp()) {
@@ -164,10 +297,10 @@ AtomType Context::getAtomType(const SMTLIBParser::NodePtr& node) {
     return AtomType::Unknown;
 }
 
-ClauseType Context::getClauseType(const SMTLIBParser::NodePtr& node) {
+ClauseType Context::getClauseType(const SMTParser::NodePtr& node) {
     if (!node) return ClauseType::Unknown;
     
-    std::string kindStr = getInstance().smtlibParser.toString(node->getKind());
+    std::string kindStr = getInstance().SMTParser.toString(node->getKind());
     if (kindStr == "implies") {
         return ClauseType::Implies;
     } else if (kindStr == "and") {
@@ -191,17 +324,17 @@ ClauseType Context::getClauseType(const SMTLIBParser::NodePtr& node) {
     }
 }
 
-boost::unordered_set<SMTLIBParser::NodePtr> Context::getAtoms(const SMTLIBParser::NodePtr& node) {
-    boost::unordered_set<SMTLIBParser::NodePtr> nodes;
-    getInstance().smtlibParser.collectAtoms(node, nodes);
+boost::unordered_set<SMTParser::NodePtr> Context::getAtoms(const SMTParser::NodePtr& node) {
+    boost::unordered_set<SMTParser::NodePtr> nodes;
+    getInstance().SMTParser.collectAtoms(node, nodes);
     return nodes;
 }
 
-std::string Context::getSource(const SMTLIBParser::NodePtr& node) {
-    return getInstance().smtlibParser.toString(node);
+std::string Context::getSource(const SMTParser::NodePtr& node) {
+    return getInstance().SMTParser.toString(node);
 }
 
-std::string Context::getComment(const SMTLIBParser::NodePtr& node) {
+std::string Context::getComment(const SMTParser::NodePtr& node) {
     if (!node) return "";
     if (node->getChildrenSize() == 0) {
         std::string value = node->toString();
@@ -211,9 +344,9 @@ std::string Context::getComment(const SMTLIBParser::NodePtr& node) {
         return value;
     }
     auto kind = node->getKind();
-    std::string kindStr = SMTLIBParser::kindToString(kind);
+    std::string kindStr = SMTParser::kindToString(kind);
     
-    if (kind == SMTLIBParser::NODE_KIND::NT_APPLY_UF) {
+    if (kind == SMTParser::NODE_KIND::NT_APPLY_UF) {
         std::string result = node->getName() + "(";
         for (size_t i = 0; i < node->getChildrenSize(); ++i) {
             if (i > 0) result += ", ";
@@ -245,7 +378,7 @@ std::string Context::getComment(const SMTLIBParser::NodePtr& node) {
     }
     if (kindStr == "not" && node->getChildrenSize() == 1) {
         auto child = node->getChildren()[0];
-        std::string childKind = SMTLIBParser::kindToString(child->getKind());
+        std::string childKind = SMTParser::kindToString(child->getKind());
         if (childKind == "str.in_re" && child->getChildrenSize() == 2) {
             std::string var = getComment(child->getChildren()[0]);
             std::string regex = getComment(child->getChildren()[1]);
@@ -446,6 +579,46 @@ size_t Context::getClauseCount() const {
 
 size_t Context::getLemmaCount() const {
     return lemmas.size();
+}
+
+SMTParser::NodePtr Context::replaceAtoms(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& atomMap) {
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = atomMap;
+    return getInstance().SMTParser.replaceAtoms(expr, convertedMap);
+}
+
+SMTParser::NodePtr Context::replaceNodes(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap) {
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = nodeMap;
+    return getInstance().SMTParser.replaceNodes(expr, convertedMap);
+}
+
+SMTParser::NodePtr Context::createStringConst(const std::string& value) {
+    return getInstance().SMTParser.mkConstStr(value);
+}
+
+SMTParser::NodePtr Context::createIntConst(int value) {
+    return getInstance().SMTParser.mkConstInt(value);
+}
+
+void Context::updateAssertions(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap) {
+    for (size_t i = 0; i < SMTParser.assertions.size(); ++i) {
+        boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = replacementMap;
+        SMTParser.assertions[i] = SMTParser.replaceAtoms(SMTParser.assertions[i], convertedMap);
+    }
+}
+
+void Context::updateAssertionsWithNodes(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap) {
+    for (size_t i = 0; i < SMTParser.assertions.size(); ++i) {
+        boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = replacementMap;
+        SMTParser.assertions[i] = SMTParser.replaceNodes(SMTParser.assertions[i], convertedMap);
+    }
+}
+
+void Context::refreshInfo() {
+    clearVars();
+    clearAtoms();
+    clearClauses();
+    clearLemmas();
+    updateInfo();
 }
 
 } // namespace strp

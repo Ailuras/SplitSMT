@@ -19,15 +19,15 @@ pkg_check_modules(MPFR REQUIRED mpfr)
 # Find Boost
 find_package(Boost REQUIRED COMPONENTS system)
 
-# Set variables for SMTLIBParser
+# Set variables for SMTParser
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
 set(BUILD_BOTH_LIBS OFF CACHE BOOL "Build both static and shared libraries" FORCE)
 
-# Add SMTLIBParser as a subdirectory
+# Add SMTParser as a subdirectory
 add_subdirectory(external/SMTLIBParser)
 
-# Print SMTLIBParser status
-message(STATUS "SMTLIBParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include")
+# Print SMTParser status
+message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include")
 
 # Add our source files
 set(SOURCES
@@ -81,7 +81,7 @@ target_include_directories(strprocessor PRIVATE
 
 # Link libraries
 target_link_libraries(strprocessor PRIVATE
-    smtlibparser
+    smtparser
     ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}
@@ -98,7 +98,7 @@ target_include_directories(debug_strprocessor PRIVATE
 
 # Link libraries for debug executable
 target_link_libraries(debug_strprocessor PRIVATE
-    smtlibparser
+    smtparser
     ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}
@@ -140,7 +140,7 @@ message(STATUS "Build configuration:")
 message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
-message(STATUS "  SMTLIBParser: Static Library")
+message(STATUS "  SMTParser: Static Library")
 message(STATUS "  Binary output: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/strprocessor")
 
 # Add example copy command for testing
@@ -296,4 +296,10 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 else()
     target_compile_options(strprocessor PRIVATE -O2)
     target_compile_options(debug_strprocessor PRIVATE -O2)
-endif() 
+endif()
+
+# Add simple clean target
+add_custom_target(clean-project
+    COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR} --target clean
+    COMMENT "Cleaning project build artifacts"
+) 

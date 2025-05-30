@@ -26,5 +26,39 @@ cmake --build . -- -j$(nproc)
 # Return to root directory
 cd ..
 
+# Set up environment variables
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export LD_LIBRARY_PATH="${SCRIPT_DIR}/external/cvc5/build/deps/lib:${SCRIPT_DIR}/external/z3/build:${LD_LIBRARY_PATH}"
+
 echo "Build completed successfully. Binary located at: build/bin/strprocessor"
-echo "You can run it with: ./build/bin/strprocessor <input_file>" 
+echo ""
+echo "Environment variables set for current session:"
+echo "export LD_LIBRARY_PATH=\"${SCRIPT_DIR}/external/cvc5/build/deps/lib:${SCRIPT_DIR}/external/z3/build:\${LD_LIBRARY_PATH}\""
+echo ""
+
+# Create a run script for convenience
+cat > run_strprocessor.sh << 'EOF'
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export LD_LIBRARY_PATH="${SCRIPT_DIR}/external/cvc5/build/deps/lib:${SCRIPT_DIR}/external/z3/build:${LD_LIBRARY_PATH}"
+exec "${SCRIPT_DIR}/build/bin/strprocessor" "$@"
+EOF
+
+chmod +x run_strprocessor.sh
+
+# Create a debug run script
+cat > run_debug.sh << 'EOF'
+#!/bin/bash
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+export LD_LIBRARY_PATH="${SCRIPT_DIR}/external/cvc5/build/deps/lib:${SCRIPT_DIR}/external/z3/build:${LD_LIBRARY_PATH}"
+exec "${SCRIPT_DIR}/build/bin/debug_strprocessor" "$@"
+EOF
+
+chmod +x run_debug.sh
+
+echo "Created convenience scripts:"
+echo "  ./run_strprocessor.sh <input_file> [options] - Run main program"
+echo "  ./run_debug.sh - Run debug program"
+echo ""
+echo "You can also run directly with:"
+echo "  LD_LIBRARY_PATH=\"${SCRIPT_DIR}/external/cvc5/build/deps/lib:${SCRIPT_DIR}/external/z3/build:\${LD_LIBRARY_PATH}\" ./build/bin/strprocessor <input_file>" 

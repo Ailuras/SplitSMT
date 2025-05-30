@@ -2,12 +2,14 @@
 #include "Logger.h"
 #include "Context.h"
 #include "parser.h"
+#include "kind.h"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
 #include <filesystem>
 #include <chrono>
 #include <unordered_map>
+#include <boost/unordered_map.hpp>
 
 #ifdef ENABLE_Z3
 #include <z3++.h>
@@ -17,6 +19,35 @@
 #include <cvc5/cvc5.h>
 #include <cvc5/cvc5_parser.h>
 #endif
+
+std::vector<std::string> splitString(const std::string& str, const std::string& delimiter) {
+    std::vector<std::string> result;
+    if (delimiter.empty()) {
+        for (char c : str) {
+            result.push_back(std::string(1, c));
+        }
+        return result;
+    }
+    
+    size_t start = 0;
+    size_t end = str.find(delimiter);
+    
+    while (end != std::string::npos) {
+        result.push_back(str.substr(start, end - start));
+        start = end + delimiter.length();
+        end = str.find(delimiter, start);
+    }
+    result.push_back(str.substr(start));
+    
+    return result;
+}
+
+std::string cleanQuotes(const std::string& str) {
+    if (str.length() >= 2 && str.front() == '"' && str.back() == '"') {
+        return str.substr(1, str.length() - 2);
+    }
+    return str;
+}
 
 namespace strp {
 
@@ -374,20 +405,52 @@ SatResult CVC5Solver::checkSat() { return SatResult::ERROR; }
 
 #endif
 
-Check::Check(SolverType type) 
-    : currentSolverType(type), initialized(false) {
+void dumpSMTLIB2(const SMTParser::NodePtr& node, std::stringstream& ss) {
+    if (node->isLeaf()) {
+        ss << node->getName();
+    } else {
+        ss << "(" << SMTParser::kindToString(node->getKind());
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            ss << " ";
+            dumpSMTLIB2(node->getChild(i), ss);
+        }
+        ss << ")";
+    }
+}
+
+splitSolver::splitSolver(SolverType solverType)
+    : currentSolverType(solverType), context(Context::getInstance()), 
+      maxIterations(10), iterationCount(0) {
     initializeSolver();
 }
 
-void Check::setSolver(SolverType type) {
+void splitSolver::setSolver(SolverType type) {
     currentSolverType = type;
     initializeSolver();
 }
 
-SatResult Check::checkFormula(const std::string& formula) {
-    if (!initialized) {
-        initializeSolver();
+void splitSolver::initializeSolver() {
+    try {
+        switch (currentSolverType) {
+            case SolverType::Z3:
+                solver = std::make_unique<Z3Solver>();
+                INFO("Initialized Z3 solver");
+                break;
+            case SolverType::CVC5:
+                solver = std::make_unique<CVC5Solver>();
+                INFO("Initialized CVC5 solver");
+                break;
+            default:
+                ERROR("Unknown solver type");
+                throw std::runtime_error("Unknown solver type");
+        }
+    } catch (const std::exception& e) {
+        ERROR("Failed to initialize solver: ", e.what());
+        throw;
     }
+}
+
+SatResult splitSolver::checkFormula(const std::string& formula) {
     if (!solver) {
         ERROR("Solver not initialized");
         return SatResult::ERROR;
@@ -419,10 +482,7 @@ SatResult Check::checkFormula(const std::string& formula) {
     return result;
 }
 
-SatResult Check::checkFormulaIncremental(const std::string& assertion) {
-    if (!initialized) {
-        initializeSolver();
-    }
+SatResult splitSolver::checkFormulaIncremental(const std::string& assertion) {
     if (!solver) {
         ERROR("Solver not initialized");
         return SatResult::ERROR;
@@ -449,72 +509,7 @@ SatResult Check::checkFormulaIncremental(const std::string& assertion) {
     return result;
 }
 
-void Check::pushContext() {
-    if (solver) {
-        solver->push();
-        DEBUG("Pushed solver context");
-    }
-}
-
-void Check::popContext() {
-    if (solver) {
-        solver->pop();
-        DEBUG("Popped solver context");
-    }
-}
-
-void Check::resetSolver() {
-    if (solver) {
-        solver->reset();
-        DEBUG("Reset solver");
-    }
-}
-
-std::string Check::getModel() {
-    if (solver) {
-        return solver->getModel();
-    }
-    return "";
-}
-
-std::string Check::getUnsatCore() {
-    if (solver) {
-        return solver->getUnsatCore();
-    }
-    return "";
-}
-
-Check& Check::getInstance() {
-    static Check instance;
-    return instance;
-}
-
-void Check::initializeSolver() {
-    try {
-        switch (currentSolverType) {
-            case SolverType::Z3:
-                solver = std::make_unique<Z3Solver>();
-                INFO("Initialized Z3 solver");
-                break;
-            case SolverType::CVC5:
-                solver = std::make_unique<CVC5Solver>();
-                INFO("Initialized CVC5 solver");
-                break;
-            default:
-                ERROR("Unknown solver type");
-                throw std::runtime_error("Unknown solver type");
-        }
-        initialized = true;
-    } catch (const std::exception& e) {
-        ERROR("Failed to initialize solver: ", e.what());
-        throw;
-    }
-}
-
-void Check::addAssertion(const std::string& assertion) {
-    if (!initialized) {
-        initializeSolver();
-    }
+void splitSolver::addAssertion(const std::string& assertion) {
     if (!solver) {
         ERROR("Solver not initialized");
         return;
@@ -524,10 +519,7 @@ void Check::addAssertion(const std::string& assertion) {
     solver->addAssertion(assertion);
 }
 
-SatResult Check::checkSat() {
-    if (!initialized) {
-        initializeSolver();
-    }
+SatResult splitSolver::checkSat() {
     if (!solver) {
         ERROR("Solver not initialized");
         return SatResult::ERROR;
@@ -559,72 +551,154 @@ SatResult Check::checkSat() {
     return result;
 }
 
-void dumpSMTLIB2(const SMTLIBParser::NodePtr& node, std::stringstream& ss) {
-    if (node->isLeaf()) {
-        ss << node->getName();
-    } else {
-        ss << "(" << node->getName();
-        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
-            ss << " ";
-            dumpSMTLIB2(node->getChild(i), ss);
-        }
-        ss << ")";
+void splitSolver::pushContext() {
+    if (solver) {
+        solver->push();
+        DEBUG("Pushed solver context");
     }
 }
 
-IncrementalSolver::IncrementalSolver(SolverType solverType)
-    : context(Context::getInstance()), maxIterations(10), iterationCount(0) {
-    solver = std::make_unique<Check>(solverType);
-    
-    INFO("IncrementalSolver initialized with solver type: ", 
-         solverType == SolverType::Z3 ? "Z3" : "CVC5");
+void splitSolver::popContext() {
+    if (solver) {
+        solver->pop();
+        DEBUG("Popped solver context");
+    }
 }
 
-void IncrementalSolver::setMaxIterations(int max) {
+void splitSolver::resetSolver() {
+    if (solver) {
+        solver->reset();
+        DEBUG("Reset solver");
+    }
+}
+
+std::string splitSolver::getModel() {
+    if (solver) {
+        return solver->getModel();
+    }
+    return "";
+}
+
+std::string splitSolver::getUnsatCore() {
+    if (solver) {
+        return solver->getUnsatCore();
+    }
+    return "";
+}
+
+void splitSolver::setMaxIterations(int max) {
     maxIterations = max;
     DEBUG("Max iterations set to: ", max);
 }
 
-void IncrementalSolver::setClauseGenerator(ClauseGenerator generator) {
+void splitSolver::setClauseGenerator(ClauseGenerator generator) {
     clauseGenerator = generator;
 }
 
-void IncrementalSolver::setAnalysisFunction(AnalysisFunction analyzer) {
+void splitSolver::setAnalysisFunction(AnalysisFunction analyzer) {
     analysisFunction = analyzer;
 }
 
-std::string IncrementalSolver::generateInitialFormula() {
-    std::stringstream ss;
-    auto variables = context.getVariables();
+void splitSolver::rewriteFormula(Context& ctx) {
+    resetSolver();
     
-    for (const auto& var : variables) {
-        auto sort = var->getSort();
-        ss << "(declare-fun " << var->getName() << " () ";
-        if (sort->isInt()) {
-            ss << "Int";
-        } else if (sort->isReal()) {
-            ss << "Real";
-        } else if (sort->isBool()) {
-            ss << "Bool";
-        } else if (sort->isStr()) {
-            ss << "String";
-        } else {
-            ss << sort->toString();
-        }
-        ss << ")\n";
-    }
-    
-    auto assertions = context.getAssertions();
-    for (const auto& assertion : assertions) {
-        ss << "(assert ";
-        dumpSMTLIB2(assertion, ss);
-        ss << ")\n";
-    }
-    ss << "(check-sat)\n";
-    return ss.str();
+    auto variables = ctx.getVariables();
+    auto assertions = ctx.getAssertions();
+    auto splitAtConstNodes = ctx.getSplitAtConstNodes();
+    auto numSplitsConstNodes = ctx.getNumSplitsConstNodes();
+    replaceSplitAtConstNodes(ctx, splitAtConstNodes);
+    replaceNumSplitsConstNodes(ctx, numSplitsConstNodes);
+    ctx.refreshInfo();
 }
 
-bool IncrementalSolver::shouldContinue(SatResult result) {
+void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
+    if (splitAtConstNodes.empty()) {
+        DEBUG("No SplitAt const nodes to replace");
+        return;
+    }
+    
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : splitAtConstNodes) {
+        try {
+            if (node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                
+                std::string str = cleanQuotes(arg1->toString());
+                std::string delimiter = cleanQuotes(arg2->toString());
+                int index = std::stoi(arg3->toString());
+                
+                DEBUG("Processing str.split_at: str='", str, "', delimiter='", delimiter, "', index=", index);
+                
+                std::vector<std::string> parts = splitString(str, delimiter);
+                
+                if (index >= 0 && index < static_cast<int>(parts.size())) {
+                    SMTParser::NodePtr replacement = Context::createStringConst(parts[index]);
+                    replacementMap[node] = replacement;
+                    
+                    DEBUG("Original node content: ", node->toString());
+                    DEBUG("Replacement node content: ", replacement->toString());
+                    DEBUG("Replaced (str.split_at \"", str, "\" \"", delimiter, "\" ", index, ") with \"", parts[index], "\"");
+                } else {
+                    DEBUG("Index out of bounds for str.split_at");
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("About to call updateAssertions with ", replacementMap.size(), " replacements");
+        updateAssertionsWithReplacement(ctx, replacementMap);
+        DEBUG("updateAssertions completed");
+    }
+}
+
+void splitSolver::replaceNumSplitsConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitsConstNodes) {
+    if (numSplitsConstNodes.empty()) {
+        DEBUG("No NumSplits const nodes to replace");
+        return;
+    }
+    
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : numSplitsConstNodes) {
+        try {
+            if (node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                
+                std::string str = cleanQuotes(arg1->toString());
+                std::string delimiter = cleanQuotes(arg2->toString());
+                
+                DEBUG("Processing str.num_splits: str='", str, "', delimiter='", delimiter, "'");
+                
+                std::vector<std::string> parts = splitString(str, delimiter);
+                int count = static_cast<int>(parts.size());
+                
+                SMTParser::NodePtr replacement = Context::createIntConst(count);
+                replacementMap[node] = replacement;
+                
+                DEBUG("Replaced (str.num_splits \"", str, "\" \"", delimiter, "\") with ", count);
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing num_splits node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        updateAssertionsWithReplacement(ctx, replacementMap);
+    }
+}
+
+void splitSolver::updateAssertionsWithReplacement(Context& ctx, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap) {
+    ctx.updateAssertionsWithNodes(replacementMap);
+}
+
+bool splitSolver::shouldContinue(SatResult result) {
     if (iterationCount >= maxIterations) {
         WARN("Reached maximum iterations: ", maxIterations);
         return false;
@@ -636,63 +710,63 @@ bool IncrementalSolver::shouldContinue(SatResult result) {
     return true;
 }
 
-SatResult IncrementalSolver::solve() {
-    INFO("Starting incremental solving process");
-    iterationCount = 0;
-    addedClauses.clear();
-    
-    solver->resetSolver();
-    
-    auto variables = context.getVariables();
-    
-    for (const auto& var : variables) {
-        auto sort = var->getSort();
-        std::stringstream decl;
-        decl << "(declare-fun " << var->getName() << " () ";
-        if (sort->isInt()) {
-            decl << "Int";
-        } else if (sort->isReal()) {
-            decl << "Real";
-        } else if (sort->isBool()) {
-            decl << "Bool";
-        } else if (sort->isStr()) {
-            decl << "String";
+void splitSolver::generateClause(Context& ctx, SatResult lastResult) {
+    static int clauseIndex = 0;
+    auto clauses = ctx.getClauses();
+    if (lastResult == SatResult::SAT && clauseIndex < static_cast<int>(clauses.size())) {
+        std::string clauseStr = clauses[clauseIndex].toSMT();
+        clauseIndex++;
+        INFO("Adding clause ", clauseIndex, ": ", clauseStr.substr(0, 100), "...");
+        
+        pushContext();
+        std::string assertion = "(assert " + clauseStr + ")";
+        addAssertion(assertion);
+    }
+}
+
+bool splitSolver::analyzeResult(Context& ctx, SatResult result, const std::string& model) {
+    (void)model;
+    static int clauseIndex = 0;
+    auto clauses = ctx.getClauses();
+    if (result == SatResult::SAT) {
+        if (clauseIndex < static_cast<int>(clauses.size())) {
+            INFO("Current result is SAT, continuing to add more clauses (", clauseIndex, "/", clauses.size(), ")");
+            return true;
         } else {
-            decl << sort->toString();
+            INFO("All clauses added and result is still SAT");
+            return false;
         }
-        decl << ")";
-        solver->addAssertion(decl.str());
+    } else if (result == SatResult::UNSAT) {
+        INFO("Result became UNSAT after adding clause ", clauseIndex, ", stopping iteration");
+        return false;
     }
+    return true;
+}
+
+SatResult splitSolver::solve() {
+    INFO("Starting split solving process");
+    iterationCount = 0;
     
-    auto assertions = context.getAssertions();
-    for (const auto& assertion : assertions) {
-        std::stringstream ss;
-        ss << "(assert ";
-        dumpSMTLIB2(assertion, ss);
-        ss << ")";
-        solver->addAssertion(ss.str());
-    }
+    rewriteFormula(context);
     
-    SatResult result = solver->checkSat();
+    SatResult result = checkSat();
     INFO("Initial result: ", static_cast<int>(result));
     
     while (shouldContinue(result)) {
+        break;
         iterationCount++;
         INFO("Iteration ", iterationCount, " - Previous result: ", 
              result == SatResult::SAT ? "SAT" : 
              result == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
-             
-        if (analysisFunction && !analysisFunction(context, result, solver->getModel())) {
+        if (analysisFunction && !analysisFunction(context, result, getModel())) {
             INFO("Analysis function indicates termination");
             break;
         }
-        
         if (clauseGenerator) {
             std::string newClause = clauseGenerator(context, result);
             if (!newClause.empty()) {
                 INFO("Adding new clause: ", newClause);
-                addedClauses.push_back(newClause);
-                solver->pushContext();
+                pushContext();
                 
                 std::string assertion;
                 if (newClause.find("(assert") == 0) {
@@ -700,15 +774,18 @@ SatResult IncrementalSolver::solve() {
                 } else {
                     assertion = "(assert " + newClause + ")";
                 }
-                solver->addAssertion(assertion);
-                result = solver->checkSat();
+                addAssertion(assertion);
+                result = checkSat();
             } else {
                 DEBUG("No new clause generated");
                 break;
             }
         } else {
-            WARN("No clause generator set");
-            break;
+            generateClause(context, result);
+            if (!analyzeResult(context, result, getModel())) {
+                break;
+            }
+            result = checkSat();
         }
     }
     
@@ -717,15 +794,15 @@ SatResult IncrementalSolver::solve() {
         return SatResult::UNKNOWN;
     }
     
-    INFO("Incremental solving completed after ", iterationCount, " iterations");
+    INFO("Split solving completed after ", iterationCount, " iterations");
     INFO("Final result: ", 
          result == SatResult::SAT ? "SAT" : 
          result == SatResult::UNSAT ? "UNSAT" : 
          result == SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
+    INFO("Final context contains: ", context.getVarCount(), " vars, ", context.getClauseCount(), " clauses");
+    DEBUG("Final SMT formula: \n", context.getSMTLIB2(true));
+    
     return result;
-}
-
-void IncrementalSolver::initializeFromParsedData() {
 }
 
 } 

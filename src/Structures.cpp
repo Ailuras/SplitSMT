@@ -3,19 +3,19 @@
 
 namespace strp {
 
-Var::Var(const SMTLIBParser::NodePtr& node, Context& context) :
+Var::Var(const SMTParser::NodePtr& node, Context& context) :
     node(node),
     type(context.getVarType(node)),
     source(context.getSource(node)),
     comment(context.getComment(node)) {}
 
-Atom::Atom(const SMTLIBParser::NodePtr& node, Context& context) :
+Atom::Atom(const SMTParser::NodePtr& node, Context& context) :
     node(node),
     type(context.getAtomType(node)),
     source(context.getSource(node)),
     comment(context.getComment(node)) {}
 
-Clause::Clause(const SMTLIBParser::NodePtr& node, Context& context, bool is_original) :
+Clause::Clause(const SMTParser::NodePtr& node, Context& context, bool is_original) :
     node(node),
     type(context.getClauseType(node)),
     source(context.getSource(node)),

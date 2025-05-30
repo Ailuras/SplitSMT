@@ -97,55 +97,6 @@ bool parseInputFile(const std::string& inputFile, strp::Context& context) {
     }
 }
 
-void runIncrementalDemo(strp::SolverType solverType) {
-    INFO("Running incremental solver demo with real parsed data...");
-    strp::IncrementalSolver solver(solverType);
-    solver.setMaxIterations(10);
-    int clauseIndex = 0;
-    auto clauseGenerator = [&clauseIndex](strp::Context& ctx, strp::SatResult lastResult) -> std::string {
-        auto clauses = ctx.getClauses();
-        if (lastResult == strp::SatResult::SAT && clauseIndex < static_cast<int>(clauses.size())) {
-            std::string clauseStr = clauses[clauseIndex].toSMT();
-            clauseIndex++;
-            INFO("Adding clause ", clauseIndex, ": ", clauseStr.substr(0, 100), "...");
-            return clauseStr;
-        }
-        return "";
-    };
-    auto analysisFunction = [&clauseIndex](strp::Context& ctx, strp::SatResult result, const std::string& model) -> bool {
-        (void)model;
-        auto clauses = ctx.getClauses();
-        if (result == strp::SatResult::SAT) {
-            if (clauseIndex < static_cast<int>(clauses.size())) {
-                INFO("Current result is SAT, continuing to add more clauses (", clauseIndex, "/", clauses.size(), ")");
-                return true;
-            } else {
-                INFO("All clauses added and result is still SAT");
-                return false;
-            }
-        } else if (result == strp::SatResult::UNSAT) {
-            INFO("Result became UNSAT after adding clause ", clauseIndex, ", stopping iteration");
-            return false;
-        }
-        return true;
-    };
-    solver.setClauseGenerator(clauseGenerator);
-    solver.setAnalysisFunction(analysisFunction);
-    strp::SatResult finalResult = solver.solve();
-    auto& context = solver.getContext();
-    INFO("Demo completed. Final result: ", 
-         finalResult == strp::SatResult::SAT ? "SAT" : 
-         finalResult == strp::SatResult::UNSAT ? "UNSAT" : 
-         finalResult == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
-    INFO("Total iterations: ", solver.getIterationCount());
-    auto addedClauses = solver.getAddedClauses();
-    INFO("Added ", addedClauses.size(), " clauses during solving");
-    for (size_t i = 0; i < addedClauses.size(); ++i) {
-        INFO("  Clause ", i+1, ": ", addedClauses[i].substr(0, 100), "...");
-    }
-    INFO("Final context contains: ", context.getVarCount(), " vars, ", context.getClauseCount(), " clauses");
-}
-
 int main(int argc, char* argv[]) {
     Args args;
     parseArgs(argc, argv, args);
@@ -158,7 +109,9 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
-            // runIncrementalDemo(args.solverType);
+            strp::splitSolver solver(args.solverType);
+            solver.setMaxIterations(10);
+            solver.solve();
         } else {
             return 1;
         }
