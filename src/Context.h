@@ -16,6 +16,18 @@ enum class VarType;
 enum class AtomType;
 enum class ClauseType;
 
+struct SplitInfo {
+    std::string variable;
+    std::string delimiter;
+    int minSplits;
+    int maxSplits;
+    bool hasExactCount;
+    int exactCount;
+    std::vector<int> requiredIndices;
+    
+    SplitInfo() : minSplits(1), maxSplits(-1), hasExactCount(false), exactCount(0) {}
+};
+
 class Context {
 public:
     static Context& getInstance();
@@ -49,6 +61,7 @@ public:
     void clearAtoms();
     void clearClauses();
     void clearLemmas();
+    void clearSplitCache();
     
     size_t getVarCount() const;
     size_t getAtomCount() const;
@@ -66,9 +79,33 @@ public:
     static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
     static SMTParser::NodePtr createStringConst(const std::string& value);
     static SMTParser::NodePtr createIntConst(int value);
+    static SMTParser::NodePtr createStringVar(const std::string& name);
     void updateAssertions(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap);
     void updateAssertionsWithNodes(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap);
-    void refreshInfo();
+
+    std::vector<std::string> getCachedSplit(const std::string& str, const std::string& delimiter);
+    void cacheSplit(const std::string& str, const std::string& delimiter, const std::vector<std::string>& result);
+    bool hasCachedSplit(const std::string& str, const std::string& delimiter) const;
+
+    void setInitSplitNums();
+    void addConcatNodes();
+    
+    void addSplitInfo(const std::string& variable, const std::string& delimiter);
+    void updateSplitInfo(const std::string& variable, const std::string& delimiter, int minSplits = -1, int maxSplits = -1, int exactCount = -1);
+    void addRequiredIndex(const std::string& variable, const std::string& delimiter, int index);
+    SplitInfo* getSplitInfo(const std::string& variable, const std::string& delimiter);
+    std::vector<SplitInfo>& getAllSplitInfos();
+    void clearSplitInfos();
+
+    bool incrementSplitNums();
+    void resetSplitNums();
+    bool hasMoreSplitCombinations() const;
+    void printCurrentSplitState() const;
+    
+    void addFalseConstraint();
+
+    void setNeedModel(bool need);
+    bool needModel() const;
 
 private:
     Context();
@@ -76,11 +113,19 @@ private:
     Context(const Context&) = delete;
     Context& operator=(const Context&) = delete;
     void updateInfo();
+    std::string generateCacheKey(const std::string& str, const std::string& delimiter) const;
+    std::string generateSplitKey(const std::string& variable, const std::string& delimiter) const;
 
     boost::unordered_set<Var> vars;
     boost::unordered_set<Atom> atoms;
     std::vector<Clause> clauses;
     std::vector<Lemma> lemmas;
+    
+    std::unordered_map<std::string, std::vector<std::string>> splitCache;
+    std::unordered_map<std::string, SplitInfo> splitInfoMap;
+    std::vector<SMTParser::NodePtr> tempAssertions;
+    std::vector<SMTParser::NodePtr> tempVariables;
+    bool needModelFlag;
     
     utils::Logger& logger = utils::Logger::getInstance();
     SMTParser::Parser SMTParser;

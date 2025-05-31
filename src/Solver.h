@@ -97,6 +97,12 @@ public:
     std::string getUnsatCore();
     SatResult solve();
     void rewriteFormula(Context& ctx);
+    
+    void getSplitNums(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes);
+    void replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes);
+    void replaceNumSplitsVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes);
+
+    std::string filterModel(const std::string& rawModel);
 
 private:
     std::unique_ptr<SolverInterface> solver;
@@ -121,6 +127,8 @@ private:
     bool shouldContinue(SatResult result);
     void generateClause(Context& ctx, SatResult lastResult);
     bool analyzeResult(Context& ctx, SatResult result, const std::string& model);
+    
+    bool shouldOutputModel();
 };
 
 } 

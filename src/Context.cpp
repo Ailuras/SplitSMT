@@ -11,7 +11,9 @@ Context& Context::getInstance() {
     return instance;
 }
 
-Context::Context() {}
+Context::Context() : logger(utils::Logger::getInstance()), SMTParser() {
+    needModelFlag = false;
+}
 
 bool Context::parseFile(const std::string& filename) {
     DEBUG("Parsing file: ", filename);
@@ -547,6 +549,8 @@ void Context::clear() {
     clearAtoms();
     clearClauses();
     clearLemmas();
+    clearSplitCache();
+    clearSplitInfos();
 }
 
 void Context::clearVars() {
@@ -563,6 +567,10 @@ void Context::clearClauses() {
 
 void Context::clearLemmas() {
     lemmas.clear();
+}
+
+void Context::clearSplitCache() {
+    splitCache.clear();
 }
 
 size_t Context::getVarCount() const {
@@ -591,12 +599,31 @@ SMTParser::NodePtr Context::replaceNodes(const SMTParser::NodePtr& expr, const b
     return getInstance().SMTParser.replaceNodes(expr, convertedMap);
 }
 
-SMTParser::NodePtr Context::createStringConst(const std::string& value) {
-    return getInstance().SMTParser.mkConstStr(value);
-}
-
 SMTParser::NodePtr Context::createIntConst(int value) {
     return getInstance().SMTParser.mkConstInt(value);
+}
+
+SMTParser::NodePtr Context::createStringVar(const std::string& name) {
+    auto var = getInstance().SMTParser.getVariable(name);
+    if (var) {
+        return var;
+    }
+    
+    std::string declareStmt = "(declare-fun " + name + " () String)";
+    if (getInstance().SMTParser.parseStr(declareStmt)) {
+        var = getInstance().SMTParser.getVariable(name);
+        if (var) {
+            DEBUG("Created new string variable: ", name);
+            return var;
+        }
+    }
+    
+    WARN("Failed to create string variable: ", name);
+    return nullptr;
+}
+
+SMTParser::NodePtr Context::createStringConst(const std::string& value) {
+    return getInstance().SMTParser.mkConstStr(value);
 }
 
 void Context::updateAssertions(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacementMap) {
@@ -613,12 +640,276 @@ void Context::updateAssertionsWithNodes(const boost::unordered_map<SMTParser::No
     }
 }
 
-void Context::refreshInfo() {
-    clearVars();
-    clearAtoms();
-    clearClauses();
-    clearLemmas();
-    updateInfo();
+std::string Context::generateCacheKey(const std::string& str, const std::string& delimiter) const {
+    return str + "|" + delimiter;
+}
+
+std::vector<std::string> Context::getCachedSplit(const std::string& str, const std::string& delimiter) {
+    std::string key = generateCacheKey(str, delimiter);
+    auto it = splitCache.find(key);
+    if (it != splitCache.end()) {
+        return it->second;
+    }
+    return std::vector<std::string>();
+}
+
+void Context::cacheSplit(const std::string& str, const std::string& delimiter, const std::vector<std::string>& result) {
+    std::string key = generateCacheKey(str, delimiter);
+    splitCache[key] = result;
+}
+
+bool Context::hasCachedSplit(const std::string& str, const std::string& delimiter) const {
+    std::string key = generateCacheKey(str, delimiter);
+    return splitCache.find(key) != splitCache.end();
+}
+
+std::string Context::generateSplitKey(const std::string& variable, const std::string& delimiter) const {
+    return variable + "##" + delimiter;
+}
+
+void Context::addSplitInfo(const std::string& variable, const std::string& delimiter) {
+    std::string key = generateSplitKey(variable, delimiter);
+    if (splitInfoMap.find(key) == splitInfoMap.end()) {
+        SplitInfo info;
+        info.variable = variable;
+        info.delimiter = delimiter;
+        splitInfoMap[key] = info;
+        DEBUG("Added split info for variable: ", variable, " with delimiter: ", delimiter);
+    }
+}
+
+void Context::updateSplitInfo(const std::string& variable, const std::string& delimiter, int minSplits, int maxSplits, int exactCount) {
+    std::string key = generateSplitKey(variable, delimiter);
+    auto it = splitInfoMap.find(key);
+    if (it == splitInfoMap.end()) {
+        addSplitInfo(variable, delimiter);
+        it = splitInfoMap.find(key);
+    }
+    
+    SplitInfo& info = it->second;
+    if (exactCount >= 0) {
+        info.hasExactCount = true;
+        info.exactCount = exactCount;
+        info.minSplits = exactCount;
+        info.maxSplits = exactCount;
+        DEBUG("Set exact count for ", variable, " with delimiter ", delimiter, ": ", exactCount);
+    } else {
+        if (minSplits >= 0) {
+            info.minSplits = std::max(info.minSplits, minSplits);
+            DEBUG("Updated min splits for ", variable, " with delimiter ", delimiter, ": ", info.minSplits);
+        }
+        if (maxSplits >= 0) {
+            if (info.maxSplits < 0) {
+                info.maxSplits = maxSplits;
+            } else {
+                info.maxSplits = std::min(info.maxSplits, maxSplits);
+            }
+            DEBUG("Updated max splits for ", variable, " with delimiter ", delimiter, ": ", info.maxSplits);
+        }
+    }
+}
+
+void Context::addRequiredIndex(const std::string& variable, const std::string& delimiter, int index) {
+    std::string key = generateSplitKey(variable, delimiter);
+    auto it = splitInfoMap.find(key);
+    if (it == splitInfoMap.end()) {
+        addSplitInfo(variable, delimiter);
+        it = splitInfoMap.find(key);
+    }
+    
+    SplitInfo& info = it->second;
+    if (std::find(info.requiredIndices.begin(), info.requiredIndices.end(), index) == info.requiredIndices.end()) {
+        info.requiredIndices.push_back(index);
+        std::sort(info.requiredIndices.begin(), info.requiredIndices.end());
+        
+        DEBUG("Added required index ", index, " for ", variable, " with delimiter ", delimiter, ", keeping conservative min splits: ", info.minSplits);
+    }
+}
+
+SplitInfo* Context::getSplitInfo(const std::string& variable, const std::string& delimiter) {
+    std::string key = generateSplitKey(variable, delimiter);
+    auto it = splitInfoMap.find(key);
+    if (it != splitInfoMap.end()) {
+        return &(it->second);
+    }
+    return nullptr;
+}
+
+std::vector<SplitInfo>& Context::getAllSplitInfos() {
+    static std::vector<SplitInfo> result;
+    result.clear();
+    for (auto& pair : splitInfoMap) {
+        result.push_back(pair.second);
+    }
+    return result;
+}
+
+void Context::clearSplitInfos() {
+    splitInfoMap.clear();
+    tempAssertions.clear();
+    tempVariables.clear();
+}
+
+void Context::setInitSplitNums() {
+    DEBUG("Setting initial split numbers for all split infos");
+    for (auto& pair : splitInfoMap) {
+        SplitInfo& info = pair.second;
+        if (!info.hasExactCount) {
+            if (info.maxSplits > 0 && info.minSplits > info.maxSplits) {
+                WARN("Inconsistent split constraints for ", info.variable, " with delimiter ", info.delimiter, 
+                     ": min=", info.minSplits, " > max=", info.maxSplits);
+                info.minSplits = info.maxSplits;
+            }
+        }
+        DEBUG("Split info for ", info.variable, " with delimiter ", info.delimiter, 
+              ": min=", info.minSplits, ", max=", info.maxSplits, 
+              ", exact=", info.hasExactCount ? std::to_string(info.exactCount) : "none",
+              ", required indices: [", 
+              [&]() {
+                  std::string indices;
+                  for (size_t i = 0; i < info.requiredIndices.size(); ++i) {
+                      if (i > 0) indices += ",";
+                      indices += std::to_string(info.requiredIndices[i]);
+                  }
+                  return indices;
+              }(), "]");
+    }
+}
+
+void Context::addConcatNodes() {
+    DEBUG("Adding concat nodes and auxiliary variables");
+    
+    for (auto& pair : splitInfoMap) {
+        const SplitInfo& info = pair.second;
+        int numParts = info.hasExactCount ? info.exactCount : info.minSplits;
+        
+        DEBUG("Creating ", numParts, " auxiliary variables for ", info.variable, " with delimiter ", info.delimiter);
+        
+        SMTParser::NodePtr originalVar = SMTParser.getVariable(info.variable);
+        if (!originalVar) {
+            WARN("Could not find original variable: ", info.variable);
+            continue;
+        }
+        
+        std::stringstream concatConstraints;
+        
+        for (int i = 0; i < numParts; ++i) {
+            std::string auxVarName = info.variable + "_split_" + std::to_string(i);
+            concatConstraints << "(declare-fun " << auxVarName << " () String)\n";
+        }
+        
+        concatConstraints << "(assert (= " << info.variable << " (str.++";
+        for (int i = 0; i < numParts; ++i) {
+            std::string auxVarName = info.variable + "_split_" + std::to_string(i);
+            concatConstraints << " " << auxVarName;
+            if (i < numParts - 1) {
+                concatConstraints << " \"" << info.delimiter << "\"";
+            }
+        }
+        concatConstraints << ")))\n";
+        
+        for (int i = 0; i < numParts; ++i) {
+            std::string auxVarName = info.variable + "_split_" + std::to_string(i);
+            concatConstraints << "(assert (not (str.contains " << auxVarName << " \"" << info.delimiter << "\")))\n";
+        }
+        
+        std::string constraintStr = concatConstraints.str();
+        DEBUG("Generated concat constraint with delimiter exclusions: \n", constraintStr);
+        
+        if (SMTParser.parseStr(constraintStr)) {
+            DEBUG("Successfully added concat constraint and delimiter exclusions for ", info.variable);
+        } else {
+            WARN("Failed to parse concat constraint for ", info.variable);
+        }
+    }
+    
+    DEBUG("Completed adding concat constraints with delimiter exclusions");
+}
+
+bool Context::incrementSplitNums() {
+    DEBUG("Attempting to increment split numbers");
+    
+    for (auto& pair : splitInfoMap) {
+        SplitInfo& info = pair.second;
+        
+        if (info.hasExactCount) {
+            continue;
+        }
+        
+        int currentSplits = info.minSplits;
+        int maxAllowed = (info.maxSplits > 0) ? info.maxSplits : currentSplits + 5;
+        
+        if (currentSplits < maxAllowed) {
+            info.minSplits = currentSplits + 1;
+            DEBUG("Incremented split count for ", info.variable, " with delimiter ", info.delimiter, 
+                  " from ", currentSplits, " to ", info.minSplits);
+            return true;
+        }
+    }
+    
+    DEBUG("No more split numbers can be incremented");
+    return false;
+}
+
+void Context::resetSplitNums() {
+    DEBUG("Resetting split numbers to initial values");
+    
+    for (auto& pair : splitInfoMap) {
+        SplitInfo& info = pair.second;
+        
+        if (!info.hasExactCount) {
+            int minRequired = 1;
+            for (int idx : info.requiredIndices) {
+                minRequired = std::max(minRequired, idx + 1);
+            }
+            info.minSplits = std::max(1, minRequired - 2);
+            DEBUG("Reset split count for ", info.variable, " with delimiter ", info.delimiter, " to ", info.minSplits, " (conservative start)");
+        }
+    }
+}
+
+bool Context::hasMoreSplitCombinations() const {
+    for (const auto& pair : splitInfoMap) {
+        const SplitInfo& info = pair.second;
+        
+        if (info.hasExactCount) {
+            continue;
+        }
+        
+        int currentSplits = info.minSplits;
+        int maxAllowed = (info.maxSplits > 0) ? info.maxSplits : currentSplits + 5;
+        
+        if (currentSplits < maxAllowed) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+void Context::printCurrentSplitState() const {
+    DEBUG("Current split state:");
+    for (const auto& pair : splitInfoMap) {
+        const SplitInfo& info = pair.second;
+        DEBUG("  ", info.variable, " with delimiter '", info.delimiter, "': current=", info.minSplits, 
+              ", max=", (info.maxSplits > 0 ? std::to_string(info.maxSplits) : "unlimited"),
+              ", exact=", (info.hasExactCount ? std::to_string(info.exactCount) : "no"));
+    }
+}
+
+void Context::addFalseConstraint() {
+    std::string assertion = "(assert false)";
+    SMTParser.parseStr(assertion);
+    DEBUG("Added false constraint to make formula UNSAT");
+}
+
+void Context::setNeedModel(bool need) {
+    needModelFlag = need;
+    DEBUG("Set needModel flag to: ", need);
+}
+
+bool Context::needModel() const {
+    return needModelFlag;
 }
 
 } // namespace strp

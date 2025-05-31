@@ -16,19 +16,20 @@ int main(int argc, char* argv[]) {
         
         std::string testInput = R"(
 (set-logic QF_S)
-(set-info :status sat)
 (declare-const x String)
 (declare-const y String)
-(declare-const z String)
-(assert (= x (str.split_at "hello,world" "," 0)))
-(assert (= y (str.split_at "apple,banana,cherry" "," 1)))
-(assert (= z (str.split_at "one;two;three;four" ";" 2)))
-(assert (= (str.num_splits "one;two;three;four" ";") 4))
-(assert (= (str.num_splits "a,b,c" ",") 3))
+(assert (= (str.num_splits x ";") 3))
+(assert (= (str.split_at x ";" 0) "hello"))
+(assert (= (str.split_at x ";" 1) "world"))
+(assert (= (str.split_at x ";" 2) "test"))
+(assert (= (str.num_splits y ";") 2))
+(assert (= (str.split_at y ";" 0) "foo"))
+(assert (= (str.split_at y ";" 1) "bar"))
 (check-sat)
+(get-model)
 )";
 
-        std::cout << "=== Testing Split Replacement Functions ===" << std::endl;
+        std::cout << "=== Testing Variable Split Functions ===" << std::endl;
         std::cout << "Original input:" << std::endl;
         std::cout << testInput << std::endl;
         
@@ -38,27 +39,39 @@ int main(int argc, char* argv[]) {
         }
         
         std::cout << "\n=== Before Replacement ===" << std::endl;
-        auto splitAtConstNodes = context.getSplitAtConstNodes();
-        auto numSplitsConstNodes = context.getNumSplitsConstNodes();
+        auto splitAtVarNodes = context.getSplitAtVarNodes();
+        auto numSplitsVarNodes = context.getNumSplitsVarNodes();
         
-        std::cout << "SplitAt const nodes found: " << splitAtConstNodes.size() << std::endl;
-        for (size_t i = 0; i < splitAtConstNodes.size(); ++i) {
-            std::cout << "  SplitAtConst[" << i << "]: " << context.getSource(splitAtConstNodes[i]) << std::endl;
+        std::cout << "SplitAt var nodes found: " << splitAtVarNodes.size() << std::endl;
+        for (size_t i = 0; i < splitAtVarNodes.size(); ++i) {
+            std::cout << "  SplitAtVar[" << i << "]: " << context.getSource(splitAtVarNodes[i]) << std::endl;
         }
         
-        std::cout << "NumSplits const nodes found: " << numSplitsConstNodes.size() << std::endl;
-        for (size_t i = 0; i < numSplitsConstNodes.size(); ++i) {
-            std::cout << "  NumSplitsConst[" << i << "]: " << context.getSource(numSplitsConstNodes[i]) << std::endl;
+        std::cout << "NumSplits var nodes found: " << numSplitsVarNodes.size() << std::endl;
+        for (size_t i = 0; i < numSplitsVarNodes.size(); ++i) {
+            std::cout << "  NumSplitsVar[" << i << "]: " << context.getSource(numSplitsVarNodes[i]) << std::endl;
         }
         
         std::cout << "\nOriginal SMTLIB2:" << std::endl;
         std::cout << context.getSMTLIB2(true) << std::endl;
         
-        std::cout << "\n=== Applying Replacements ===" << std::endl;
+        std::cout << "\n=== Applying Variable Split Processing ===" << std::endl;
         strp::splitSolver solver(strp::SolverType::Z3);
-        solver.rewriteFormula(context);
         
-        std::cout << "\n=== After Replacement ===" << std::endl;
+        std::cout << "\n--- Step 1: Analyzing split constraints ---" << std::endl;
+        solver.getSplitNums(context, splitAtVarNodes, numSplitsVarNodes);
+        
+        std::cout << "\n--- Step 2: Setting initial split numbers ---" << std::endl;
+        context.setInitSplitNums();
+        
+        std::cout << "\n--- Step 3: Adding concat nodes ---" << std::endl;
+        context.addConcatNodes();
+        
+        std::cout << "\n--- Step 4: Replacing variable nodes ---" << std::endl;
+        solver.replaceNumSplitsVarNodes(context, numSplitsVarNodes);
+        solver.replaceSplitAtVarNodes(context, splitAtVarNodes);
+        
+        std::cout << "\n=== After Variable Split Processing ===" << std::endl;
         std::cout << "Modified SMTLIB2 (from parser):" << std::endl;
         std::cout << context.getSMTLIB2(true) << std::endl;
         
@@ -77,22 +90,63 @@ int main(int argc, char* argv[]) {
             std::cout << "❌ WARNING: Some split nodes still exist after replacement" << std::endl;
         }
         
+        std::cout << "\n=== Split Info Summary ===" << std::endl;
+        auto& splitInfos = context.getAllSplitInfos();
+        std::cout << "Found " << splitInfos.size() << " split info entries:" << std::endl;
+        for (size_t i = 0; i < splitInfos.size(); ++i) {
+            const auto& info = splitInfos[i];
+            std::cout << "  [" << i << "] Variable: " << info.variable 
+                     << ", Delimiter: '" << info.delimiter << "'"
+                     << ", Min: " << info.minSplits 
+                     << ", Max: " << info.maxSplits
+                     << ", HasExact: " << (info.hasExactCount ? "true" : "false");
+            if (info.hasExactCount) {
+                std::cout << ", Exact: " << info.exactCount;
+            }
+            std::cout << ", Required indices: [";
+            for (size_t j = 0; j < info.requiredIndices.size(); ++j) {
+                if (j > 0) std::cout << ",";
+                std::cout << info.requiredIndices[j];
+            }
+            std::cout << "]" << std::endl;
+        }
+        
         std::cout << "\n=== Testing the solver ===" << std::endl;
-        strp::SatResult result = solver.checkSat();
-        switch (result) {
-            case strp::SatResult::SAT:
-                std::cout << "Result: SAT" << std::endl;
-                std::cout << "Model: " << solver.getModel() << std::endl;
-                break;
-            case strp::SatResult::UNSAT:
-                std::cout << "Result: UNSAT" << std::endl;
-                break;
-            case strp::SatResult::UNKNOWN:
-                std::cout << "Result: UNKNOWN" << std::endl;
-                break;
-            case strp::SatResult::ERROR:
-                std::cout << "Result: ERROR" << std::endl;
-                break;
+        strp::SatResult result = solver.solve();
+        std::cout << "Result: " << (result == strp::SatResult::SAT ? "SAT" : 
+                                    result == strp::SatResult::UNSAT ? "UNSAT" : 
+                                    result == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR") << std::endl;
+        if (result == strp::SatResult::SAT) {
+            std::string rawModel = solver.getModel();
+            std::string filteredModel = solver.filterModel(rawModel);
+            std::cout << "Filtered Model (original variables only): " << std::endl << filteredModel << std::endl;
+        }
+        
+        std::cout << "\n=== Testing Incremental Solving ===" << std::endl;
+        std::string incrementalInput = R"(
+(set-logic QF_S)
+(declare-const z String)
+(assert (>= (str.num_splits z ",") 2))
+(assert (<= (str.num_splits z ",") 5))
+(assert (= (str.split_at z "," 0) "a"))
+(assert (= (str.split_at z "," 1) "b"))
+(assert (= (str.split_at z "," 2) "c"))
+(assert (= (str.split_at z "," 3) "d"))
+(check-sat)
+)";
+        
+        strp::Context& incrementalCtx = strp::Context::getInstance();
+        if (incrementalCtx.parseString(incrementalInput)) {
+            std::cout << "Incremental test input parsed successfully" << std::endl;
+            
+            strp::splitSolver incrementalSolver(strp::SolverType::Z3);
+            incrementalSolver.setMaxIterations(20);
+            
+            std::cout << "Starting incremental solving..." << std::endl;
+            strp::SatResult incrementalResult = incrementalSolver.solve();
+            std::cout << "Incremental result: " << (incrementalResult == strp::SatResult::SAT ? "SAT" : 
+                                                    incrementalResult == strp::SatResult::UNSAT ? "UNSAT" : 
+                                                    incrementalResult == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR") << std::endl;
         }
         
     } catch (const std::exception& e) {

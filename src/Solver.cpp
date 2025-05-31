@@ -528,7 +528,10 @@ SatResult splitSolver::checkSat() {
     DEBUG("Checking satisfiability...");
     auto start = std::chrono::high_resolution_clock::now();
     
-    SatResult result = solver->checkSat();
+    std::string formula = context.getSMTLIB2(true);
+    DEBUG("Sending formula to solver: ", formula.substr(0, 200), "...");
+    
+    SatResult result = solver->checkSat(formula);
     
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -608,7 +611,13 @@ void splitSolver::rewriteFormula(Context& ctx) {
     auto numSplitsConstNodes = ctx.getNumSplitsConstNodes();
     replaceSplitAtConstNodes(ctx, splitAtConstNodes);
     replaceNumSplitsConstNodes(ctx, numSplitsConstNodes);
-    ctx.refreshInfo();
+    auto splitAtVarNodes = ctx.getSplitAtVarNodes();
+    auto numSplitsVarNodes = ctx.getNumSplitsVarNodes();
+    getSplitNums(ctx, splitAtVarNodes, numSplitsVarNodes);
+    ctx.setInitSplitNums();
+    ctx.addConcatNodes();
+    replaceNumSplitsVarNodes(ctx, numSplitsVarNodes);
+    replaceSplitAtVarNodes(ctx, splitAtVarNodes);
 }
 
 void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
@@ -632,7 +641,15 @@ void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
                 
                 DEBUG("Processing str.split_at: str='", str, "', delimiter='", delimiter, "', index=", index);
                 
-                std::vector<std::string> parts = splitString(str, delimiter);
+                std::vector<std::string> parts;
+                if (ctx.hasCachedSplit(str, delimiter)) {
+                    parts = ctx.getCachedSplit(str, delimiter);
+                    DEBUG("Using cached split result for: '", str, "' with delimiter '", delimiter, "'");
+                } else {
+                    parts = splitString(str, delimiter);
+                    ctx.cacheSplit(str, delimiter, parts);
+                    DEBUG("Cached split result for: '", str, "' with delimiter '", delimiter, "'");
+                }
                 
                 if (index >= 0 && index < static_cast<int>(parts.size())) {
                     SMTParser::NodePtr replacement = Context::createStringConst(parts[index]);
@@ -676,9 +693,17 @@ void splitSolver::replaceNumSplitsConstNodes(Context& ctx, const std::vector<SMT
                 
                 DEBUG("Processing str.num_splits: str='", str, "', delimiter='", delimiter, "'");
                 
-                std::vector<std::string> parts = splitString(str, delimiter);
-                int count = static_cast<int>(parts.size());
+                std::vector<std::string> parts;
+                if (ctx.hasCachedSplit(str, delimiter)) {
+                    parts = ctx.getCachedSplit(str, delimiter);
+                    DEBUG("Using cached split result for: '", str, "' with delimiter '", delimiter, "'");
+                } else {
+                    parts = splitString(str, delimiter);
+                    ctx.cacheSplit(str, delimiter, parts);
+                    DEBUG("Cached split result for: '", str, "' with delimiter '", delimiter, "'");
+                }
                 
+                int count = static_cast<int>(parts.size());
                 SMTParser::NodePtr replacement = Context::createIntConst(count);
                 replacementMap[node] = replacement;
                 
@@ -743,25 +768,106 @@ bool splitSolver::analyzeResult(Context& ctx, SatResult result, const std::strin
     return true;
 }
 
+std::string splitSolver::filterModel(const std::string& rawModel) {
+    if (rawModel.empty()) {
+        return "";
+    }
+    
+    std::stringstream filteredModel;
+    std::stringstream ss(rawModel);
+    std::string line;
+    
+    while (std::getline(ss, line)) {
+        if (line.find("_split_") == std::string::npos) {
+            if (!line.empty()) {
+                filteredModel << line << "\n";
+            }
+        }
+    }
+    
+    return filteredModel.str();
+}
+
+bool splitSolver::shouldOutputModel() {
+    DEBUG("Checking if model output is needed");
+    return context.needModel();
+}
+
 SatResult splitSolver::solve() {
     INFO("Starting split solving process");
     iterationCount = 0;
     
     rewriteFormula(context);
+    context.printCurrentSplitState();
     
     SatResult result = checkSat();
     INFO("Initial result: ", static_cast<int>(result));
     
     while (shouldContinue(result)) {
-        break;
         iterationCount++;
-        INFO("Iteration ", iterationCount, " - Previous result: ", 
-             result == SatResult::SAT ? "SAT" : 
-             result == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
+        INFO("=== Iteration ", iterationCount, " ===");
+        
+        if (result == SatResult::UNSAT) {
+            if (context.hasMoreSplitCombinations()) {
+                INFO("UNSAT detected, incrementing split numbers");
+                
+                if (context.incrementSplitNums()) {
+                    DEBUG("New split state:");
+                    context.printCurrentSplitState();
+                    
+                    resetSolver();
+                    rewriteFormula(context);
+                    result = checkSat();
+                    continue;
+                } else {
+                    INFO("No more split number combinations available");
+                    break;
+                }
+            } else {
+                INFO("No more split combinations to try, formula is genuinely UNSAT");
+                break;
+            }
+        } else if (result == SatResult::SAT) {
+            INFO("Found SAT result with current split configuration");
+            
+            if (shouldOutputModel()) {
+                std::string rawModel = getModel();
+                if (!rawModel.empty()) {
+                    std::string filteredModel = filterModel(rawModel);
+                    if (!filteredModel.empty()) {
+                        std::cout << filteredModel << std::endl;
+                    } else {
+                        DEBUG("No original variables found in model");
+                    }
+                } else {
+                    DEBUG("No model available from solver");
+                }
+            }
+            break;
+        } else if (result == SatResult::UNKNOWN) {
+            WARN("Unknown result, trying to increment split numbers if possible");
+            if (context.hasMoreSplitCombinations() && context.incrementSplitNums()) {
+                DEBUG("Incremented split numbers due to UNKNOWN");
+                context.printCurrentSplitState();
+                
+                resetSolver();
+                rewriteFormula(context);
+                result = checkSat();
+                continue;
+            } else {
+                INFO("No more combinations to try with UNKNOWN result");
+                break;
+            }
+        } else {
+            ERROR("Solver error occurred, terminating");
+            break;
+        }
+        
         if (analysisFunction && !analysisFunction(context, result, getModel())) {
             INFO("Analysis function indicates termination");
             break;
         }
+        
         if (clauseGenerator) {
             std::string newClause = clauseGenerator(context, result);
             if (!newClause.empty()) {
@@ -780,29 +886,279 @@ SatResult splitSolver::solve() {
                 DEBUG("No new clause generated");
                 break;
             }
-        } else {
-            generateClause(context, result);
-            if (!analyzeResult(context, result, getModel())) {
-                break;
-            }
-            result = checkSat();
         }
     }
     
-    if (iterationCount >= maxIterations && result == SatResult::UNSAT) {
-        INFO("Reached max iterations with UNSAT, returning UNKNOWN");
-        return SatResult::UNKNOWN;
+    if (iterationCount >= maxIterations) {
+        if (result == SatResult::UNSAT) {
+            INFO("Reached max iterations with UNSAT, returning UNKNOWN");
+            return SatResult::UNKNOWN;
+        } else {
+            WARN("Reached maximum iterations (", maxIterations, "), stopping search");
+        }
     }
     
-    INFO("Split solving completed after ", iterationCount, " iterations");
+    INFO("=== Split Solving Completed ===");
+    INFO("Total iterations: ", iterationCount);
     INFO("Final result: ", 
          result == SatResult::SAT ? "SAT" : 
          result == SatResult::UNSAT ? "UNSAT" : 
          result == SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
-    INFO("Final context contains: ", context.getVarCount(), " vars, ", context.getClauseCount(), " clauses");
-    DEBUG("Final SMT formula: \n", context.getSMTLIB2(true));
+    
+    DEBUG("Final context contains: ", context.getVarCount(), " vars, ", context.getClauseCount(), " clauses");
+    DEBUG("Final split state:");
+    context.printCurrentSplitState();
+    
+    if (result == SatResult::SAT) {
+        std::cout << "sat" << std::endl;
+    } else if (result == SatResult::UNSAT) {
+        std::cout << "unsat" << std::endl;
+    } else {
+        std::cout << "unknown" << std::endl;
+    }
     
     return result;
+}
+
+void splitSolver::getSplitNums(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes) {
+    DEBUG("Analyzing split constraints from ", splitAtVarNodes.size(), " split_at nodes and ", numSplitsVarNodes.size(), " num_splits nodes");
+    
+    auto processConstraints = [&](const SMTParser::NodePtr& assertion) {
+        if (!assertion) return;
+        
+        std::function<void(const SMTParser::NodePtr&)> processNode = [&](const SMTParser::NodePtr& node) {
+            if (!node) return;
+            
+            if (node->isStrNumSplits() && node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                
+                if (arg1->isVar() && arg2->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::string delimiter = cleanQuotes(arg2->toString());
+                    ctx.addSplitInfo(variable, delimiter);
+                }
+            } else if (node->isStrSplitAt() && node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                
+                if (arg1->isVar() && arg2->isConst() && arg3->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::string delimiter = cleanQuotes(arg2->toString());
+                    int index = std::stoi(arg3->toString());
+                    
+                    ctx.addSplitInfo(variable, delimiter);
+                    ctx.addRequiredIndex(variable, delimiter, index);
+                }
+            } else if (node->getKind() == SMTParser::NODE_KIND::NT_EQ && node->getChildrenSize() == 2) {
+                auto left = node->getChild(0);
+                auto right = node->getChild(1);
+                
+                if (left->isStrNumSplits() && right->isConst()) {
+                    auto numSplitsNode = left;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int exactCount = std::stoi(right->toString());
+                            ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
+                        }
+                    }
+                } else if (right->isStrNumSplits() && left->isConst()) {
+                    auto numSplitsNode = right;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int exactCount = std::stoi(left->toString());
+                            ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
+                        }
+                    }
+                }
+            } else if (node->getKind() == SMTParser::NODE_KIND::NT_GE && node->getChildrenSize() == 2) {
+                auto left = node->getChild(0);
+                auto right = node->getChild(1);
+                
+                if (left->isStrNumSplits() && right->isConst()) {
+                    auto numSplitsNode = left;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int minSplits = std::stoi(right->toString());
+                            ctx.updateSplitInfo(variable, delimiter, std::max(1, minSplits - 1), -1, -1);
+                        }
+                    }
+                } else if (right->isStrNumSplits() && left->isConst()) {
+                    auto numSplitsNode = right;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int maxSplits = std::stoi(left->toString());
+                            ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
+                        }
+                    }
+                }
+            } else if (node->getKind() == SMTParser::NODE_KIND::NT_LE && node->getChildrenSize() == 2) {
+                auto left = node->getChild(0);
+                auto right = node->getChild(1);
+                
+                if (left->isStrNumSplits() && right->isConst()) {
+                    auto numSplitsNode = left;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int maxSplits = std::stoi(right->toString());
+                            ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
+                        }
+                    }
+                } else if (right->isStrNumSplits() && left->isConst()) {
+                    auto numSplitsNode = right;
+                    if (numSplitsNode->getChildrenSize() >= 2) {
+                        auto var = numSplitsNode->getChild(0);
+                        auto delim = numSplitsNode->getChild(1);
+                        if (var->isVar() && delim->isConst()) {
+                            std::string variable = var->toString();
+                            std::string delimiter = cleanQuotes(delim->toString());
+                            int minSplits = std::stoi(left->toString());
+                            ctx.updateSplitInfo(variable, delimiter, minSplits, -1, -1);
+                        }
+                    }
+                }
+            }
+            
+            for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+                processNode(node->getChild(i));
+            }
+        };
+        
+        processNode(assertion);
+    };
+    
+    auto assertions = ctx.getAssertions();
+    for (auto& assertion : assertions) {
+        processConstraints(assertion);
+    }
+    
+    DEBUG("Completed analysis of split constraints");
+}
+
+void splitSolver::replaceNumSplitsVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes) {
+    if (numSplitsVarNodes.empty()) {
+        DEBUG("No NumSplits var nodes to replace");
+        return;
+    }
+    
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : numSplitsVarNodes) {
+        try {
+            if (node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                
+                if (arg1->isVar() && arg2->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::string delimiter = cleanQuotes(arg2->toString());
+                    
+                    SplitInfo* info = ctx.getSplitInfo(variable, delimiter);
+                    if (info) {
+                        int count = info->hasExactCount ? info->exactCount : info->minSplits;
+                        SMTParser::NodePtr replacement = Context::createIntConst(count);
+                        replacementMap[node] = replacement;
+                        
+                        DEBUG("Replaced (str.num_splits ", variable, " \"", delimiter, "\") with ", count);
+                    } else {
+                        DEBUG("No split info found for variable ", variable, " with delimiter ", delimiter);
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing num_splits var node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        updateAssertionsWithReplacement(ctx, replacementMap);
+        DEBUG("Replaced ", replacementMap.size(), " num_splits var nodes");
+    }
+}
+
+void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes) {
+    if (splitAtVarNodes.empty()) {
+        DEBUG("No SplitAt var nodes to replace");
+        return;
+    }
+    
+    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : splitAtVarNodes) {
+        try {
+            if (node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                
+                if (arg1->isVar() && arg2->isConst() && arg3->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::string delimiter = cleanQuotes(arg2->toString());
+                    int index = std::stoi(arg3->toString());
+                    
+                    SplitInfo* info = ctx.getSplitInfo(variable, delimiter);
+                    if (info) {
+                        int currentSplits = info->hasExactCount ? info->exactCount : info->minSplits;
+                        
+                        if (index >= currentSplits) {
+                            DEBUG("Index ", index, " is out of bounds for current split count ", currentSplits, 
+                                  " for variable ", variable, " with delimiter ", delimiter);
+                            
+                            SMTParser::NodePtr emptyStringReplacement = Context::createStringConst("");
+                            replacementMap[node] = emptyStringReplacement;
+                            ctx.addFalseConstraint();
+                            DEBUG("Replaced out-of-bounds (str.split_at ", variable, " \"", delimiter, "\" ", index, ") with empty string and added false constraint");
+                            continue;
+                        }
+                        
+                        std::string auxVarName = variable + "_split_" + std::to_string(index);
+                        SMTParser::NodePtr replacement = Context::createStringVar(auxVarName);
+                        if (replacement) {
+                            replacementMap[node] = replacement;
+                            DEBUG("Replaced (str.split_at ", variable, " \"", delimiter, "\" ", index, ") with auxiliary variable ", auxVarName);
+                        } else {
+                            DEBUG("Failed to create auxiliary variable ", auxVarName, " - replacing with empty string and adding false constraint");
+                            SMTParser::NodePtr emptyStringReplacement = Context::createStringConst("");
+                            replacementMap[node] = emptyStringReplacement;
+                            ctx.addFalseConstraint();
+                        }
+                    } else {
+                        DEBUG("No split info found for variable ", variable, " with delimiter ", delimiter, " - replacing with empty string");
+                        SMTParser::NodePtr emptyStringReplacement = Context::createStringConst("");
+                        replacementMap[node] = emptyStringReplacement;
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split_at var node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        updateAssertionsWithReplacement(ctx, replacementMap);
+        DEBUG("Replaced ", replacementMap.size(), " split_at var nodes");
+    }
 }
 
 } 

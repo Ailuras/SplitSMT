@@ -5,9 +5,13 @@
 (declare-const y String)
 
 (assert (= (str.split_at "apple,banana,cherry" "," 1) "banana"))
+
 (assert (= (str.num_splits "one;two;three;four" ";") 4))
-; (assert (= (str.len (str.split_at "hello world" " " 0)) 5))
-; (assert (= x (str.split_at "foo:bar:baz" ":" 2)))
+(assert (>= (str.num_splits "one;two;three;four" ";") 4))
+(assert (= (str.split_at "one;two;three;four" ";" 1) "two"))
+
+(assert (= (str.len (str.split_at "hello world" " " 0)) 5))
+(assert (= x (str.split_at "foo:bar:baz" ":" 2)))
 
 (check-sat)
 (get-model)
