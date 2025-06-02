@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_map>
 #include <memory>
+#include <set>
 #include <boost/unordered/unordered_set.hpp>
 #include "Structures.h"
 #include "dag.h"
@@ -15,6 +16,21 @@ namespace strp {
 enum class VarType;
 enum class AtomType;
 enum class ClauseType;
+
+enum class TaskType {
+    CHECK_SAT,
+    GET_MODEL,
+    GET_UNSAT_CORE,
+    GET_PROOF,
+    GET_VALUE,
+    GET_ASSIGNMENT,
+    GET_INFO,
+    GET_OPTION,
+    PUSH,
+    POP,
+    RESET,
+    EXIT
+};
 
 struct SplitInfo {
     std::string variable;
@@ -55,6 +71,11 @@ public:
     std::vector<Clause> getClauses() const;
     std::vector<Lemma> getLemmas() const;
     std::string getSMTLIB2(bool from_parser = true) const;
+    std::set<TaskType> getTask(const std::string& filename) const;
+    
+    bool hasTask(TaskType taskType) const;
+    std::set<TaskType> getAllTasks() const;
+    void clearTasks();
 
     void clear();
     void clearVars();
@@ -104,8 +125,8 @@ public:
     
     void addFalseConstraint();
 
-    void setNeedModel(bool need);
-    bool needModel() const;
+    void updateTasks(const std::string& filename);
+    bool hasConflictingSplitConstraints() const;
 
 private:
     Context();
@@ -115,17 +136,18 @@ private:
     void updateInfo();
     std::string generateCacheKey(const std::string& str, const std::string& delimiter) const;
     std::string generateSplitKey(const std::string& variable, const std::string& delimiter) const;
+    TaskType parseTaskCommand(const std::string& line) const;
 
     boost::unordered_set<Var> vars;
     boost::unordered_set<Atom> atoms;
     std::vector<Clause> clauses;
     std::vector<Lemma> lemmas;
+    std::set<TaskType> tasks;
     
     std::unordered_map<std::string, std::vector<std::string>> splitCache;
     std::unordered_map<std::string, SplitInfo> splitInfoMap;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
-    bool needModelFlag;
     
     utils::Logger& logger = utils::Logger::getInstance();
     SMTParser::Parser SMTParser;

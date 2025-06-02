@@ -26,7 +26,7 @@ void printUsage() {
 void parseArgs(int argc, char* argv[], Args& args) {
     args.inputFile = "";
     args.outputFile = "";
-    args.logLevel = strp::utils::LogLevel::INFO;
+    args.logLevel = strp::utils::LogLevel::ERROR;
     args.solverType = strp::SolverType::Z3;
     args.showHelp = false;
     
@@ -90,20 +90,6 @@ void setupLogging(const Args& args) {
 bool parseInputFile(const std::string& inputFile, strp::Context& context) {
     if (context.parseFile(inputFile)) {
         INFO("Successfully parsed input file");
-        
-        std::ifstream file(inputFile);
-        if (file.is_open()) {
-            std::string line;
-            while (std::getline(file, line)) {
-                if (line.find("get-model") != std::string::npos) {
-                    context.setNeedModel(true);
-                    DEBUG("Found get-model command in input file");
-                    break;
-                }
-            }
-            file.close();
-        }
-        
         return true;
     } else {
         ERROR("Failed to parse file: ", inputFile);

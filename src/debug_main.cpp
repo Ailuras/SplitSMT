@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
-#include <cstdlib>
-#include <fstream>
+#include <chrono>
+#include <vector>
 #include "Logger.h"
 #include "parser.h"
 #include "Context.h"
@@ -14,140 +14,227 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         
-        std::string testInput = R"(
+        std::cout << "=== Testing Optimized getSplitNums Function ===" << std::endl;
+        
+        std::vector<std::string> testCases = {
+            R"(
 (set-logic QF_S)
-(declare-const x String)
-(declare-const y String)
-(assert (= (str.num_splits x ";") 3))
-(assert (= (str.split_at x ";" 0) "hello"))
-(assert (= (str.split_at x ";" 1) "world"))
-(assert (= (str.split_at x ";" 2) "test"))
-(assert (= (str.num_splits y ";") 2))
-(assert (= (str.split_at y ";" 0) "foo"))
-(assert (= (str.split_at y ";" 1) "bar"))
+(declare-const email String)
+(assert (= (str.num_splits email "@") 2))
+(assert (>= (str.num_splits email ".") 2))
+(assert (<= (str.num_splits email ".") 4))
+(assert (= (str.split_at email "@" 0) "username"))
+(assert (= (str.split_at email "@" 1) "domain.com"))
+(assert (= (str.split_at email "." 1) "domain"))
+(assert (= (str.split_at email "." 2) "com"))
+(check-sat)
+(get-model)
+)",
+            R"(
+(set-logic QF_S)
+(declare-const csv_line String)
+(declare-const path String)
+(assert (>= (str.num_splits csv_line ",") 3))
+(assert (<= (str.num_splits csv_line ",") 10))
+(assert (= (str.num_splits path "/") 4))
+(assert (= (str.split_at csv_line "," 0) "name"))
+(assert (= (str.split_at csv_line "," 1) "age"))
+(assert (= (str.split_at csv_line "," 2) "city"))
+(assert (= (str.split_at path "/" 0) "home"))
+(assert (= (str.split_at path "/" 1) "user"))
+(assert (= (str.split_at path "/" 2) "documents"))
+(assert (= (str.split_at path "/" 3) "file.txt"))
+(check-sat)
+)",
+            R"(
+(set-logic QF_S)
+(declare-const data String)
+(assert (= (str.num_splits data ";") 5))
+(assert (= (str.split_at data ";" 0) "field1"))
+(assert (= (str.split_at data ";" 1) "field2"))
+(assert (= (str.split_at data ";" 2) "field3"))
+(assert (= (str.split_at data ";" 3) "field4"))
+(assert (= (str.split_at data ";" 4) "field5"))
+(assert (>= (str.num_splits data ":") 1))
+(assert (= (str.split_at data ":" 0) "prefix"))
+(check-sat)
+)"
+        };
+        
+        for (size_t i = 0; i < testCases.size(); ++i) {
+            std::cout << "\n=== Test Case " << (i + 1) << " ===" << std::endl;
+            
+            context.clear();
+            
+            auto start = std::chrono::high_resolution_clock::now();
+            
+            if (!context.parseString(testCases[i])) {
+                std::cerr << "Failed to parse test case " << (i + 1) << std::endl;
+                continue;
+            }
+            
+            auto parseEnd = std::chrono::high_resolution_clock::now();
+            
+            auto splitAtVarNodes = context.getSplitAtVarNodes();
+            auto numSplitsVarNodes = context.getNumSplitsVarNodes();
+            
+            std::cout << "Found " << splitAtVarNodes.size() << " split_at nodes and " 
+                     << numSplitsVarNodes.size() << " num_splits nodes" << std::endl;
+            
+            strp::splitSolver solver(strp::SolverType::Z3);
+            
+            auto analysisStart = std::chrono::high_resolution_clock::now();
+            solver.getSplitNums(context, splitAtVarNodes, numSplitsVarNodes);
+            auto analysisEnd = std::chrono::high_resolution_clock::now();
+            
+            auto parseTime = std::chrono::duration_cast<std::chrono::microseconds>(parseEnd - start);
+            auto analysisTime = std::chrono::duration_cast<std::chrono::microseconds>(analysisEnd - analysisStart);
+            
+            std::cout << "Performance metrics:" << std::endl;
+            std::cout << "  Parse time: " << parseTime.count() << " μs" << std::endl;
+            std::cout << "  Analysis time: " << analysisTime.count() << " μs" << std::endl;
+            
+            std::cout << "\nExtracted split information:" << std::endl;
+            auto& splitInfos = context.getAllSplitInfos();
+            for (size_t j = 0; j < splitInfos.size(); ++j) {
+                const auto& info = splitInfos[j];
+                std::cout << "  [" << j << "] Variable: " << info.variable 
+                         << ", Delimiter: '" << info.delimiter << "'"
+                         << ", Min: " << info.minSplits 
+                         << ", Max: " << (info.maxSplits > 0 ? std::to_string(info.maxSplits) : "unlimited")
+                         << ", HasExact: " << (info.hasExactCount ? "true" : "false");
+                if (info.hasExactCount) {
+                    std::cout << ", Exact: " << info.exactCount;
+                }
+                std::cout << ", Required indices: [";
+                for (size_t k = 0; k < info.requiredIndices.size(); ++k) {
+                    if (k > 0) std::cout << ",";
+                    std::cout << info.requiredIndices[k];
+                }
+                std::cout << "]" << std::endl;
+            }
+            
+            std::cout << "\nTesting full solve process:" << std::endl;
+            auto solveStart = std::chrono::high_resolution_clock::now();
+            strp::SatResult result = solver.solve();
+            auto solveEnd = std::chrono::high_resolution_clock::now();
+            auto solveTime = std::chrono::duration_cast<std::chrono::milliseconds>(solveEnd - solveStart);
+            
+            std::cout << "Solve result: " << (result == strp::SatResult::SAT ? "SAT" : 
+                                              result == strp::SatResult::UNSAT ? "UNSAT" : 
+                                              result == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR") << std::endl;
+            std::cout << "Solve time: " << solveTime.count() << " ms" << std::endl;
+            
+            if (result == strp::SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
+                std::string rawModel = solver.getModel();
+                std::string filteredModel = solver.filterModel(rawModel);
+                if (!filteredModel.empty()) {
+                    std::cout << "Model (original variables only):" << std::endl;
+                    std::cout << filteredModel << std::endl;
+                }
+            }
+        }
+        
+        std::cout << "\n=== Testing Conflict Detection ===\n" << std::endl;
+        
+        std::string conflictTestCase = R"(
+(set-logic QF_S)
+(declare-const data String)
+(assert (= (str.num_splits data ";") 3))
+(assert (<= (str.num_splits data ";") 2))
+(assert (= (str.split_at data ";" 0) "field1"))
+(assert (= (str.split_at data ";" 1) "field2"))
+(assert (= (str.split_at data ";" 2) "field3"))
+(check-sat)
+)";
+        
+        std::cout << "Testing conflict detection with inconsistent constraints..." << std::endl;
+        std::cout << "Case: exact=3, max<=2, accessing indices [0,1,2]" << std::endl;
+        
+        if (context.parseString(conflictTestCase)) {
+            auto splitAtNodes = context.getSplitAtVarNodes();
+            auto numSplitsNodes = context.getNumSplitsVarNodes();
+            
+            std::cout << "Found " << splitAtNodes.size() << " split_at nodes and " 
+                      << numSplitsNodes.size() << " num_splits nodes" << std::endl;
+            
+            strp::splitSolver solver(strp::SolverType::Z3);
+            
+            auto start = std::chrono::high_resolution_clock::now();
+            solver.getSplitNums(context, splitAtNodes, numSplitsNodes);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+            
+            std::cout << "Conflict detection time: " << duration.count() << " μs" << std::endl;
+            
+            if (context.hasConflictingSplitConstraints()) {
+                std::cout << "✓ Successfully detected constraint conflict!" << std::endl;
+            } else {
+                std::cout << "✗ Failed to detect constraint conflict!" << std::endl;
+            }
+            
+            auto result = solver.solve();
+            std::cout << "Final solve result: " << 
+                (result == strp::SatResult::SAT ? "SAT" : 
+                 result == strp::SatResult::UNSAT ? "UNSAT" : "UNKNOWN") << std::endl;
+        }
+        
+        std::cout << "\n=== Performance Comparison Test ===" << std::endl;
+        std::cout << "Testing with a larger example to demonstrate efficiency..." << std::endl;
+        
+        std::string largeTest = R"(
+(set-logic QF_S)
+(declare-const url String)
+(declare-const query String)
+(declare-const headers String)
+(assert (= (str.num_splits url "/") 6))
+(assert (= (str.split_at url "/" 0) "https:"))
+(assert (= (str.split_at url "/" 1) ""))
+(assert (= (str.split_at url "/" 2) "example.com"))
+(assert (= (str.split_at url "/" 3) "api"))
+(assert (= (str.split_at url "/" 4) "v1"))
+(assert (= (str.split_at url "/" 5) "users"))
+(assert (>= (str.num_splits query "&") 2))
+(assert (<= (str.num_splits query "&") 8))
+(assert (= (str.split_at query "&" 0) "name=john"))
+(assert (= (str.split_at query "&" 1) "age=25"))
+(assert (= (str.num_splits headers "|") 3))
+(assert (= (str.split_at headers "|" 0) "Content-Type: application/json"))
+(assert (= (str.split_at headers "|" 1) "Authorization: Bearer token"))
+(assert (= (str.split_at headers "|" 2) "Accept: application/json"))
 (check-sat)
 (get-model)
 )";
-
-        std::cout << "=== Testing Variable Split Functions ===" << std::endl;
-        std::cout << "Original input:" << std::endl;
-        std::cout << testInput << std::endl;
         
-        if (!context.parseString(testInput)) {
-            std::cerr << "Failed to parse test input" << std::endl;
-            return 1;
-        }
+        context.clear();
         
-        std::cout << "\n=== Before Replacement ===" << std::endl;
-        auto splitAtVarNodes = context.getSplitAtVarNodes();
-        auto numSplitsVarNodes = context.getNumSplitsVarNodes();
+        auto totalStart = std::chrono::high_resolution_clock::now();
         
-        std::cout << "SplitAt var nodes found: " << splitAtVarNodes.size() << std::endl;
-        for (size_t i = 0; i < splitAtVarNodes.size(); ++i) {
-            std::cout << "  SplitAtVar[" << i << "]: " << context.getSource(splitAtVarNodes[i]) << std::endl;
-        }
-        
-        std::cout << "NumSplits var nodes found: " << numSplitsVarNodes.size() << std::endl;
-        for (size_t i = 0; i < numSplitsVarNodes.size(); ++i) {
-            std::cout << "  NumSplitsVar[" << i << "]: " << context.getSource(numSplitsVarNodes[i]) << std::endl;
-        }
-        
-        std::cout << "\nOriginal SMTLIB2:" << std::endl;
-        std::cout << context.getSMTLIB2(true) << std::endl;
-        
-        std::cout << "\n=== Applying Variable Split Processing ===" << std::endl;
-        strp::splitSolver solver(strp::SolverType::Z3);
-        
-        std::cout << "\n--- Step 1: Analyzing split constraints ---" << std::endl;
-        solver.getSplitNums(context, splitAtVarNodes, numSplitsVarNodes);
-        
-        std::cout << "\n--- Step 2: Setting initial split numbers ---" << std::endl;
-        context.setInitSplitNums();
-        
-        std::cout << "\n--- Step 3: Adding concat nodes ---" << std::endl;
-        context.addConcatNodes();
-        
-        std::cout << "\n--- Step 4: Replacing variable nodes ---" << std::endl;
-        solver.replaceNumSplitsVarNodes(context, numSplitsVarNodes);
-        solver.replaceSplitAtVarNodes(context, splitAtVarNodes);
-        
-        std::cout << "\n=== After Variable Split Processing ===" << std::endl;
-        std::cout << "Modified SMTLIB2 (from parser):" << std::endl;
-        std::cout << context.getSMTLIB2(true) << std::endl;
-        
-        std::cout << "Modified SMTLIB2 (from context structures):" << std::endl;
-        std::cout << context.getSMTLIB2(false) << std::endl;
-        
-        std::cout << "\n=== Verification: Check if split nodes still exist ===" << std::endl;
-        auto splitAtNodesAfter = context.getSplitAtNodes();
-        auto numSplitsNodesAfter = context.getNumSplitsNodes();
-        std::cout << "SplitAt nodes after replacement: " << splitAtNodesAfter.size() << std::endl;
-        std::cout << "NumSplits nodes after replacement: " << numSplitsNodesAfter.size() << std::endl;
-        
-        if (splitAtNodesAfter.empty() && numSplitsNodesAfter.empty()) {
-            std::cout << "✅ SUCCESS: All split nodes have been replaced!" << std::endl;
-        } else {
-            std::cout << "❌ WARNING: Some split nodes still exist after replacement" << std::endl;
-        }
-        
-        std::cout << "\n=== Split Info Summary ===" << std::endl;
-        auto& splitInfos = context.getAllSplitInfos();
-        std::cout << "Found " << splitInfos.size() << " split info entries:" << std::endl;
-        for (size_t i = 0; i < splitInfos.size(); ++i) {
-            const auto& info = splitInfos[i];
-            std::cout << "  [" << i << "] Variable: " << info.variable 
-                     << ", Delimiter: '" << info.delimiter << "'"
-                     << ", Min: " << info.minSplits 
-                     << ", Max: " << info.maxSplits
-                     << ", HasExact: " << (info.hasExactCount ? "true" : "false");
-            if (info.hasExactCount) {
-                std::cout << ", Exact: " << info.exactCount;
-            }
-            std::cout << ", Required indices: [";
-            for (size_t j = 0; j < info.requiredIndices.size(); ++j) {
-                if (j > 0) std::cout << ",";
-                std::cout << info.requiredIndices[j];
-            }
-            std::cout << "]" << std::endl;
-        }
-        
-        std::cout << "\n=== Testing the solver ===" << std::endl;
-        strp::SatResult result = solver.solve();
-        std::cout << "Result: " << (result == strp::SatResult::SAT ? "SAT" : 
-                                    result == strp::SatResult::UNSAT ? "UNSAT" : 
-                                    result == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR") << std::endl;
-        if (result == strp::SatResult::SAT) {
-            std::string rawModel = solver.getModel();
-            std::string filteredModel = solver.filterModel(rawModel);
-            std::cout << "Filtered Model (original variables only): " << std::endl << filteredModel << std::endl;
-        }
-        
-        std::cout << "\n=== Testing Incremental Solving ===" << std::endl;
-        std::string incrementalInput = R"(
-(set-logic QF_S)
-(declare-const z String)
-(assert (>= (str.num_splits z ",") 2))
-(assert (<= (str.num_splits z ",") 5))
-(assert (= (str.split_at z "," 0) "a"))
-(assert (= (str.split_at z "," 1) "b"))
-(assert (= (str.split_at z "," 2) "c"))
-(assert (= (str.split_at z "," 3) "d"))
-(check-sat)
-)";
-        
-        strp::Context& incrementalCtx = strp::Context::getInstance();
-        if (incrementalCtx.parseString(incrementalInput)) {
-            std::cout << "Incremental test input parsed successfully" << std::endl;
+        if (context.parseString(largeTest)) {
+            auto splitAtNodes = context.getSplitAtVarNodes();
+            auto numSplitsNodes = context.getNumSplitsVarNodes();
             
-            strp::splitSolver incrementalSolver(strp::SolverType::Z3);
-            incrementalSolver.setMaxIterations(20);
+            std::cout << "Large test case:" << std::endl;
+            std::cout << "  Split_at nodes: " << splitAtNodes.size() << std::endl;
+            std::cout << "  Num_splits nodes: " << numSplitsNodes.size() << std::endl;
+            std::cout << "  Total assertions: " << context.getAssertions().size() << std::endl;
             
-            std::cout << "Starting incremental solving..." << std::endl;
-            strp::SatResult incrementalResult = incrementalSolver.solve();
-            std::cout << "Incremental result: " << (incrementalResult == strp::SatResult::SAT ? "SAT" : 
-                                                    incrementalResult == strp::SatResult::UNSAT ? "UNSAT" : 
-                                                    incrementalResult == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR") << std::endl;
+            strp::splitSolver largeSolver(strp::SolverType::Z3);
+            
+            auto analysisStart = std::chrono::high_resolution_clock::now();
+            largeSolver.getSplitNums(context, splitAtNodes, numSplitsNodes);
+            auto analysisEnd = std::chrono::high_resolution_clock::now();
+            
+            auto analysisTime = std::chrono::duration_cast<std::chrono::microseconds>(analysisEnd - analysisStart);
+            std::cout << "  Optimized analysis time: " << analysisTime.count() << " μs" << std::endl;
+            
+            auto& splitInfos = context.getAllSplitInfos();
+            std::cout << "  Extracted " << splitInfos.size() << " split info entries" << std::endl;
         }
+        
+        auto totalEnd = std::chrono::high_resolution_clock::now();
+        auto totalTime = std::chrono::duration_cast<std::chrono::milliseconds>(totalEnd - totalStart);
+        std::cout << "Total test time: " << totalTime.count() << " ms" << std::endl;
         
     } catch (const std::exception& e) {
         std::cerr << "Error: " << e.what() << std::endl;

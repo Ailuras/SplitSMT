@@ -61,6 +61,7 @@ public:
     Impl() : solver(ctx) {
         z3::params p(ctx);
         p.set("timeout", 30000u);
+        p.set("model", true);
         solver.set(p);
     }
 };
@@ -74,7 +75,34 @@ Z3Solver::~Z3Solver() = default;
 SatResult Z3Solver::checkSat(const std::string& formula) {
     try {
         pImpl->solver.reset();
-        z3::expr_vector exprs = pImpl->ctx.parse_string(formula.c_str());
+        pImpl->variables.clear();
+        
+        std::istringstream ss(formula);
+        std::string line;
+        std::string currentFormula;
+        
+        while (std::getline(ss, line)) {
+            if (line.find("(declare-fun") != std::string::npos) {
+                size_t nameStart = line.find(' ', line.find('(')) + 1;
+                size_t nameEnd = line.find(' ', nameStart);
+                std::string varName = line.substr(nameStart, nameEnd - nameStart);
+                
+                if (line.find("String") != std::string::npos) {
+                    z3::sort string_sort = pImpl->ctx.string_sort();
+                    pImpl->variables.insert({varName, pImpl->ctx.constant(varName.c_str(), string_sort)});
+                } else if (line.find("Int") != std::string::npos) {
+                    pImpl->variables.insert({varName, pImpl->ctx.int_const(varName.c_str())});
+                } else if (line.find("Real") != std::string::npos) {
+                    pImpl->variables.insert({varName, pImpl->ctx.real_const(varName.c_str())});
+                } else if (line.find("Bool") != std::string::npos) {
+                    pImpl->variables.insert({varName, pImpl->ctx.bool_const(varName.c_str())});
+                    DEBUG("Declared bool variable: ", varName);
+                }
+            }
+            currentFormula += line + "\n";
+        }
+        
+        z3::expr_vector exprs = pImpl->ctx.parse_string(currentFormula.c_str());
         for (unsigned i = 0; i < exprs.size(); ++i) {
             pImpl->solver.add(exprs[i]);
         }
@@ -127,8 +155,43 @@ void Z3Solver::reset() {
 
 std::string Z3Solver::getModel() {
     try {
+        if (!pImpl || !pImpl->solver) {
+            return "";
+        }
+        
         z3::model model = pImpl->solver.get_model();
-        return model.to_string();
+        
+        std::stringstream ss;
+        
+        ss << "(\n";
+        
+        for (unsigned i = 0; i < model.size(); ++i) {
+            z3::func_decl decl = model[i];
+            z3::expr body = model.get_const_interp(decl);
+            ss << "  (define-fun " << decl.name() << " () " << decl.range() << "\n";
+            ss << "    " << body << ")\n";
+        }
+        
+        if (model.size() == 0) {
+            for (const auto& [name, expr] : pImpl->variables) {
+                ss << "  (define-fun " << name << " () ";
+                if (expr.is_int()) {
+                    ss << "Int\n    0)\n";
+                } else if (expr.is_real()) {
+                    ss << "Real\n    0.0)\n";
+                } else if (expr.is_bool()) {
+                    ss << "Bool\n    false)\n";
+                } else if (expr.get_sort().sort_kind() == Z3_SEQ_SORT) {
+                    ss << "String\n    \"\")\n";
+                } else {
+                    ss << expr.get_sort() << "\n    " << expr << ")\n";
+                }
+            }
+        }
+        
+        ss << ")";
+        
+        return ss.str();
     } catch (const z3::exception& e) {
         ERROR("Z3 model error: ", e.msg());
         return "";
@@ -605,19 +668,31 @@ void splitSolver::setAnalysisFunction(AnalysisFunction analyzer) {
 void splitSolver::rewriteFormula(Context& ctx) {
     resetSolver();
     
-    auto variables = ctx.getVariables();
-    auto assertions = ctx.getAssertions();
+    LOG1("Begin const nodes rewrite");
     auto splitAtConstNodes = ctx.getSplitAtConstNodes();
     auto numSplitsConstNodes = ctx.getNumSplitsConstNodes();
     replaceSplitAtConstNodes(ctx, splitAtConstNodes);
     replaceNumSplitsConstNodes(ctx, numSplitsConstNodes);
+    
+    LOG1("Begin var nodes rewrite");
     auto splitAtVarNodes = ctx.getSplitAtVarNodes();
     auto numSplitsVarNodes = ctx.getNumSplitsVarNodes();
+    LOG2("Begin getSplitNums");
     getSplitNums(ctx, splitAtVarNodes, numSplitsVarNodes);
+    LOG2("End getSplitNums");
+    
+    LOG2("Begin setInitSplitNums");
     ctx.setInitSplitNums();
+    LOG2("End setInitSplitNums");
+    
+    LOG2("Begin addConcatNodes");
     ctx.addConcatNodes();
+    LOG2("End addConcatNodes");
+    
+    LOG2("Begin replaceNumSplitsVarNodes");
     replaceNumSplitsVarNodes(ctx, numSplitsVarNodes);
     replaceSplitAtVarNodes(ctx, splitAtVarNodes);
+    LOG2("End replaceNumSplitsVarNodes");
 }
 
 void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
@@ -776,11 +851,55 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
     std::stringstream filteredModel;
     std::stringstream ss(rawModel);
     std::string line;
+    bool inFilteredFunction = false;
+    int parenCount = 0;
+    bool modelStarted = false;
     
     while (std::getline(ss, line)) {
-        if (line.find("_split_") == std::string::npos) {
-            if (!line.empty()) {
+        if (line == "(" && !modelStarted) {
+            filteredModel << line << "\n";
+            modelStarted = true;
+        } else if (line == ")" && modelStarted) {
+            filteredModel << line;
+        } else if (line.find("(define-fun") != std::string::npos) {
+            if (line.find("_split_") == std::string::npos) {
+                inFilteredFunction = true;
                 filteredModel << line << "\n";
+                parenCount = 1;
+                for (char c : line.substr(line.find("(define-fun"))) {
+                    if (c == '(') parenCount++;
+                    else if (c == ')') parenCount--;
+                }
+                if (parenCount == 0) {
+                    inFilteredFunction = false;
+                }
+            } else {
+                inFilteredFunction = false;
+                parenCount = 1;
+                for (char c : line.substr(line.find("(define-fun"))) {
+                    if (c == '(') parenCount++;
+                    else if (c == ')') parenCount--;
+                }
+                if (parenCount > 0) {
+                    inFilteredFunction = false;
+                }
+            }
+        } else if (inFilteredFunction) {
+            filteredModel << line << "\n";
+            for (char c : line) {
+                if (c == '(') parenCount++;
+                else if (c == ')') parenCount--;
+            }
+            if (parenCount == 0) {
+                inFilteredFunction = false;
+            }
+        } else if (!inFilteredFunction && parenCount > 0) {
+            for (char c : line) {
+                if (c == '(') parenCount++;
+                else if (c == ')') parenCount--;
+            }
+            if (parenCount == 0) {
+                inFilteredFunction = false;
             }
         }
     }
@@ -790,16 +909,18 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
 
 bool splitSolver::shouldOutputModel() {
     DEBUG("Checking if model output is needed");
-    return context.needModel();
+    return context.hasTask(strp::TaskType::GET_MODEL);
 }
 
 SatResult splitSolver::solve() {
-    INFO("Starting split solving process");
+    INFO("Starting solving process");
     iterationCount = 0;
     
+    INFO("Rewriting formula");
     rewriteFormula(context);
     context.printCurrentSplitState();
     
+    INFO("Checking satisfiability");
     SatResult result = checkSat();
     INFO("Initial result: ", static_cast<int>(result));
     
@@ -828,21 +949,6 @@ SatResult splitSolver::solve() {
                 break;
             }
         } else if (result == SatResult::SAT) {
-            INFO("Found SAT result with current split configuration");
-            
-            if (shouldOutputModel()) {
-                std::string rawModel = getModel();
-                if (!rawModel.empty()) {
-                    std::string filteredModel = filterModel(rawModel);
-                    if (!filteredModel.empty()) {
-                        std::cout << filteredModel << std::endl;
-                    } else {
-                        DEBUG("No original variables found in model");
-                    }
-                } else {
-                    DEBUG("No model available from solver");
-                }
-            }
             break;
         } else if (result == SatResult::UNKNOWN) {
             WARN("Unknown result, trying to increment split numbers if possible");
@@ -891,10 +997,7 @@ SatResult splitSolver::solve() {
     
     if (iterationCount >= maxIterations) {
         if (result == SatResult::UNSAT) {
-            INFO("Reached max iterations with UNSAT, returning UNKNOWN");
             return SatResult::UNKNOWN;
-        } else {
-            WARN("Reached maximum iterations (", maxIterations, "), stopping search");
         }
     }
     
@@ -909,12 +1012,28 @@ SatResult splitSolver::solve() {
     DEBUG("Final split state:");
     context.printCurrentSplitState();
     
-    if (result == SatResult::SAT) {
-        std::cout << "sat" << std::endl;
-    } else if (result == SatResult::UNSAT) {
-        std::cout << "unsat" << std::endl;
-    } else {
-        std::cout << "unknown" << std::endl;
+    if (context.hasTask(strp::TaskType::CHECK_SAT)) {
+        if (result == SatResult::SAT) {
+            std::cout << "sat" << std::endl;
+        } else if (result == SatResult::UNSAT) {
+            std::cout << "unsat" << std::endl;
+        } else {
+            std::cout << "unknown" << std::endl;
+        }
+    }
+    
+    if (result == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
+        std::string rawModel = getModel();
+        if (!rawModel.empty()) {
+            std::string filteredModel = filterModel(rawModel);
+            if (!filteredModel.empty()) {
+                std::cout << filteredModel << std::endl;
+            } else {
+                DEBUG("No original variables found in model");
+            }
+        } else {
+            DEBUG("No model available from solver");
+        }
     }
     
     return result;
@@ -923,137 +1042,133 @@ SatResult splitSolver::solve() {
 void splitSolver::getSplitNums(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes) {
     DEBUG("Analyzing split constraints from ", splitAtVarNodes.size(), " split_at nodes and ", numSplitsVarNodes.size(), " num_splits nodes");
     
-    auto processConstraints = [&](const SMTParser::NodePtr& assertion) {
-        if (!assertion) return;
+    std::function<void(const SMTParser::NodePtr&, const std::set<SMTParser::NodePtr>&)> analyzeConstraint = 
+        [&](const SMTParser::NodePtr& node, const std::set<SMTParser::NodePtr>& targetNodes) {
+        if (!node) return;
         
-        std::function<void(const SMTParser::NodePtr&)> processNode = [&](const SMTParser::NodePtr& node) {
-            if (!node) return;
+        if (node->getKind() == SMTParser::NODE_KIND::NT_EQ && node->getChildrenSize() == 2) {
+            auto left = node->getChild(0);
+            auto right = node->getChild(1);
             
-            if (node->isStrNumSplits() && node->getChildrenSize() >= 2) {
-                auto arg1 = node->getChild(0);
-                auto arg2 = node->getChild(1);
-                
-                if (arg1->isVar() && arg2->isConst()) {
-                    std::string variable = arg1->toString();
-                    std::string delimiter = cleanQuotes(arg2->toString());
-                    ctx.addSplitInfo(variable, delimiter);
-                }
-            } else if (node->isStrSplitAt() && node->getChildrenSize() >= 3) {
-                auto arg1 = node->getChild(0);
-                auto arg2 = node->getChild(1);
-                auto arg3 = node->getChild(2);
-                
-                if (arg1->isVar() && arg2->isConst() && arg3->isConst()) {
-                    std::string variable = arg1->toString();
-                    std::string delimiter = cleanQuotes(arg2->toString());
-                    int index = std::stoi(arg3->toString());
-                    
-                    ctx.addSplitInfo(variable, delimiter);
-                    ctx.addRequiredIndex(variable, delimiter, index);
-                }
-            } else if (node->getKind() == SMTParser::NODE_KIND::NT_EQ && node->getChildrenSize() == 2) {
-                auto left = node->getChild(0);
-                auto right = node->getChild(1);
-                
-                if (left->isStrNumSplits() && right->isConst()) {
-                    auto numSplitsNode = left;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int exactCount = std::stoi(right->toString());
-                            ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
-                        }
-                    }
-                } else if (right->isStrNumSplits() && left->isConst()) {
-                    auto numSplitsNode = right;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int exactCount = std::stoi(left->toString());
-                            ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
-                        }
+            if (targetNodes.count(left) && right->isConst()) {
+                if (left->isStrNumSplits()) {
+                    auto var = left->getChild(0);
+                    auto delim = left->getChild(1);
+                    if (var->isVar() && delim->isConst()) {
+                        std::string variable = var->toString();
+                        std::string delimiter = cleanQuotes(delim->toString());
+                        int exactCount = std::stoi(right->toString());
+                        ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
                     }
                 }
-            } else if (node->getKind() == SMTParser::NODE_KIND::NT_GE && node->getChildrenSize() == 2) {
-                auto left = node->getChild(0);
-                auto right = node->getChild(1);
-                
-                if (left->isStrNumSplits() && right->isConst()) {
-                    auto numSplitsNode = left;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int minSplits = std::stoi(right->toString());
-                            ctx.updateSplitInfo(variable, delimiter, std::max(1, minSplits - 1), -1, -1);
-                        }
-                    }
-                } else if (right->isStrNumSplits() && left->isConst()) {
-                    auto numSplitsNode = right;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int maxSplits = std::stoi(left->toString());
-                            ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
-                        }
-                    }
-                }
-            } else if (node->getKind() == SMTParser::NODE_KIND::NT_LE && node->getChildrenSize() == 2) {
-                auto left = node->getChild(0);
-                auto right = node->getChild(1);
-                
-                if (left->isStrNumSplits() && right->isConst()) {
-                    auto numSplitsNode = left;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int maxSplits = std::stoi(right->toString());
-                            ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
-                        }
-                    }
-                } else if (right->isStrNumSplits() && left->isConst()) {
-                    auto numSplitsNode = right;
-                    if (numSplitsNode->getChildrenSize() >= 2) {
-                        auto var = numSplitsNode->getChild(0);
-                        auto delim = numSplitsNode->getChild(1);
-                        if (var->isVar() && delim->isConst()) {
-                            std::string variable = var->toString();
-                            std::string delimiter = cleanQuotes(delim->toString());
-                            int minSplits = std::stoi(left->toString());
-                            ctx.updateSplitInfo(variable, delimiter, minSplits, -1, -1);
-                        }
+            } else if (targetNodes.count(right) && left->isConst()) {
+                if (right->isStrNumSplits()) {
+                    auto var = right->getChild(0);
+                    auto delim = right->getChild(1);
+                    if (var->isVar() && delim->isConst()) {
+                        std::string variable = var->toString();
+                        std::string delimiter = cleanQuotes(delim->toString());
+                        int exactCount = std::stoi(left->toString());
+                        ctx.updateSplitInfo(variable, delimiter, -1, -1, exactCount);
                     }
                 }
             }
+        } else if (node->getKind() == SMTParser::NODE_KIND::NT_GE && node->getChildrenSize() == 2) {
+            auto left = node->getChild(0);
+            auto right = node->getChild(1);
             
-            for (size_t i = 0; i < node->getChildrenSize(); ++i) {
-                processNode(node->getChild(i));
+            if (targetNodes.count(left) && right->isConst()) {
+                auto var = left->getChild(0);
+                auto delim = left->getChild(1);
+                if (var->isVar() && delim->isConst()) {
+                    std::string variable = var->toString();
+                    std::string delimiter = cleanQuotes(delim->toString());
+                    int minSplits = std::stoi(right->toString());
+                    ctx.updateSplitInfo(variable, delimiter, std::max(1, minSplits), -1, -1);
+                }
+            } else if (targetNodes.count(right) && left->isConst()) {
+                auto var = right->getChild(0);
+                auto delim = right->getChild(1);
+                if (var->isVar() && delim->isConst()) {
+                    std::string variable = var->toString();
+                    std::string delimiter = cleanQuotes(delim->toString());
+                    int maxSplits = std::stoi(left->toString());
+                    ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
+                }
             }
-        };
+        } else if (node->getKind() == SMTParser::NODE_KIND::NT_LE && node->getChildrenSize() == 2) {
+            auto left = node->getChild(0);
+            auto right = node->getChild(1);
+            
+            if (targetNodes.count(left) && right->isConst()) {
+                auto var = left->getChild(0);
+                auto delim = left->getChild(1);
+                if (var->isVar() && delim->isConst()) {
+                    std::string variable = var->toString();
+                    std::string delimiter = cleanQuotes(delim->toString());
+                    int maxSplits = std::stoi(right->toString());
+                    ctx.updateSplitInfo(variable, delimiter, -1, maxSplits, -1);
+                }
+            } else if (targetNodes.count(right) && left->isConst()) {
+                auto var = right->getChild(0);
+                auto delim = right->getChild(1);
+                if (var->isVar() && delim->isConst()) {
+                    std::string variable = var->toString();
+                    std::string delimiter = cleanQuotes(delim->toString());
+                    int minSplits = std::stoi(left->toString());
+                    ctx.updateSplitInfo(variable, delimiter, minSplits, -1, -1);
+                }
+            }
+        }
         
-        processNode(assertion);
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            analyzeConstraint(node->getChild(i), targetNodes);
+        }
     };
+    
+    std::set<SMTParser::NodePtr> allTargetNodes;
+    
+    for (auto& node : numSplitsVarNodes) {
+        if (node->getChildrenSize() >= 2) {
+            auto arg1 = node->getChild(0);
+            auto arg2 = node->getChild(1);
+            
+            if (arg1->isVar() && arg2->isConst()) {
+                std::string variable = arg1->toString();
+                std::string delimiter = cleanQuotes(arg2->toString());
+                ctx.addSplitInfo(variable, delimiter);
+                allTargetNodes.insert(node);
+            }
+        }
+    }
+    
+    for (auto& node : splitAtVarNodes) {
+        if (node->getChildrenSize() >= 3) {
+            auto arg1 = node->getChild(0);
+            auto arg2 = node->getChild(1);
+            auto arg3 = node->getChild(2);
+            
+            if (arg1->isVar() && arg2->isConst() && arg3->isConst()) {
+                std::string variable = arg1->toString();
+                std::string delimiter = cleanQuotes(arg2->toString());
+                int index = std::stoi(arg3->toString());
+                
+                ctx.addSplitInfo(variable, delimiter);
+                ctx.addRequiredIndex(variable, delimiter, index);
+            }
+        }
+    }
     
     auto assertions = ctx.getAssertions();
     for (auto& assertion : assertions) {
-        processConstraints(assertion);
+        analyzeConstraint(assertion, allTargetNodes);
     }
     
-    DEBUG("Completed analysis of split constraints");
+    if (ctx.hasConflictingSplitConstraints()) {
+        ERROR("Detected conflicting split constraints, adding false constraint");
+        ctx.addFalseConstraint();
+    }
+    
 }
 
 void splitSolver::replaceNumSplitsVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitsVarNodes) {
@@ -1161,4 +1276,4 @@ void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
     }
 }
 
-} 
+}

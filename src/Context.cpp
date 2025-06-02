@@ -3,6 +3,7 @@
 #include <sstream>
 #include <fstream>
 #include <filesystem>
+#include <regex>
 
 namespace strp {
 
@@ -12,7 +13,6 @@ Context& Context::getInstance() {
 }
 
 Context::Context() : logger(utils::Logger::getInstance()), SMTParser() {
-    needModelFlag = false;
 }
 
 bool Context::parseFile(const std::string& filename) {
@@ -29,8 +29,10 @@ bool Context::parseFile(const std::string& filename) {
     }
     DEBUG("Parser info updated with ", SMTParser.assertions.size(), " assertions");
     updateInfo();
+    updateTasks(filename);
     std::string smtlib2 = getSMTLIB2(true);
-    DEBUG("SMTLIB2: \n", smtlib2);
+    LOG5("SMTLIB2: \n", smtlib2);
+    DEBUG("Found ", tasks.size(), " tasks");
     return true;
 }
 
@@ -54,8 +56,10 @@ bool Context::parseString(const std::string& input) {
     std::filesystem::remove(tempFilename);
     DEBUG("Parser info updated with ", SMTParser.assertions.size(), " assertions");
     updateInfo();
+    updateTasks(tempFilename);
     std::string smtlib2 = getSMTLIB2(true);
-    DEBUG("SMTLIB2: ", smtlib2);
+    LOG5("SMTLIB2: ", smtlib2);
+    DEBUG("Found ", tasks.size(), " tasks");
     return true;
 }
 
@@ -250,6 +254,87 @@ std::string Context::getSMTLIB2(bool from_parser) const {
     ss << "\n(check-sat)\n";
     
     return ss.str();
+}
+
+TaskType Context::parseTaskCommand(const std::string& line) const {
+    std::string trimmed = line;
+    trimmed.erase(0, trimmed.find_first_not_of(" \t\n\r"));
+    trimmed.erase(trimmed.find_last_not_of(" \t\n\r") + 1);
+    
+    if (trimmed.find("(check-sat") == 0) {
+        return TaskType::CHECK_SAT;
+    } else if (trimmed.find("(get-model") == 0) {
+        return TaskType::GET_MODEL;
+    } else if (trimmed.find("(get-unsat-core") == 0) {
+        return TaskType::GET_UNSAT_CORE;
+    } else if (trimmed.find("(get-proof") == 0) {
+        return TaskType::GET_PROOF;
+    } else if (trimmed.find("(get-value") == 0) {
+        return TaskType::GET_VALUE;
+    } else if (trimmed.find("(get-assignment") == 0) {
+        return TaskType::GET_ASSIGNMENT;
+    } else if (trimmed.find("(get-info") == 0) {
+        return TaskType::GET_INFO;
+    } else if (trimmed.find("(get-option") == 0) {
+        return TaskType::GET_OPTION;
+    } else if (trimmed.find("(push") == 0) {
+        return TaskType::PUSH;
+    } else if (trimmed.find("(pop") == 0) {
+        return TaskType::POP;
+    } else if (trimmed.find("(reset") == 0) {
+        return TaskType::RESET;
+    } else if (trimmed.find("(exit") == 0) {
+        return TaskType::EXIT;
+    }
+    
+    throw std::invalid_argument("Unknown task command: " + trimmed);
+}
+
+std::set<TaskType> Context::getTask(const std::string& filename) const {
+    std::set<TaskType> foundTasks;
+    
+    if (!std::filesystem::exists(filename)) {
+        ERROR("File does not exist: ", filename);
+        return foundTasks;
+    }
+    
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        ERROR("Failed to open file: ", filename);
+        return foundTasks;
+    }
+    
+    std::string line;
+    std::regex taskRegex(R"(\s*\(\s*(check-sat|get-model|get-unsat-core|get-proof|get-value|get-assignment|get-info|get-option|push|pop|reset|exit)\s*[\)\s])");
+    
+    while (std::getline(file, line)) {
+        std::smatch match;
+        if (std::regex_search(line, match, taskRegex)) {
+            try {
+                TaskType task = parseTaskCommand("(" + match[1].str() + ")");
+                foundTasks.insert(task);
+                DEBUG("Found task: ", match[1].str());
+            } catch (const std::invalid_argument&) {
+                continue;
+            }
+        }
+    }
+    
+    file.close();
+    
+    return foundTasks;
+}
+
+bool Context::hasTask(TaskType taskType) const {
+    return tasks.find(taskType) != tasks.end();
+}
+
+std::set<TaskType> Context::getAllTasks() const {
+    return tasks;
+}
+
+void Context::clearTasks() {
+    tasks.clear();
 }
 
 int Context::getType(const SMTParser::NodePtr& node) {
@@ -551,6 +636,7 @@ void Context::clear() {
     clearLemmas();
     clearSplitCache();
     clearSplitInfos();
+    clearTasks();
 }
 
 void Context::clearVars() {
@@ -674,7 +760,7 @@ void Context::addSplitInfo(const std::string& variable, const std::string& delim
         info.variable = variable;
         info.delimiter = delimiter;
         splitInfoMap[key] = info;
-        DEBUG("Added split info for variable: ", variable, " with delimiter: ", delimiter);
+        DEBUG("Added split info for variable: ", variable, " with delimiter: \"", delimiter, "\"");
     }
 }
 
@@ -692,11 +778,11 @@ void Context::updateSplitInfo(const std::string& variable, const std::string& de
         info.exactCount = exactCount;
         info.minSplits = exactCount;
         info.maxSplits = exactCount;
-        DEBUG("Set exact count for ", variable, " with delimiter ", delimiter, ": ", exactCount);
+        DEBUG("Set exact count for ", variable, " with delimiter \"", delimiter, "\": ", exactCount);
     } else {
         if (minSplits >= 0) {
             info.minSplits = std::max(info.minSplits, minSplits);
-            DEBUG("Updated min splits for ", variable, " with delimiter ", delimiter, ": ", info.minSplits);
+            DEBUG("Updated min splits for ", variable, " with delimiter \"", delimiter, "\": ", info.minSplits);
         }
         if (maxSplits >= 0) {
             if (info.maxSplits < 0) {
@@ -704,7 +790,7 @@ void Context::updateSplitInfo(const std::string& variable, const std::string& de
             } else {
                 info.maxSplits = std::min(info.maxSplits, maxSplits);
             }
-            DEBUG("Updated max splits for ", variable, " with delimiter ", delimiter, ": ", info.maxSplits);
+            DEBUG("Updated max splits for ", variable, " with delimiter \"", delimiter, "\": ", info.maxSplits);
         }
     }
 }
@@ -722,7 +808,13 @@ void Context::addRequiredIndex(const std::string& variable, const std::string& d
         info.requiredIndices.push_back(index);
         std::sort(info.requiredIndices.begin(), info.requiredIndices.end());
         
-        DEBUG("Added required index ", index, " for ", variable, " with delimiter ", delimiter, ", keeping conservative min splits: ", info.minSplits);
+        int requiredMinSplits = index + 1;
+        if (!info.hasExactCount && requiredMinSplits > info.minSplits) {
+            info.minSplits = requiredMinSplits;
+            DEBUG("Added required index ", index, " for ", variable, " with delimiter \"", delimiter, "\", updated min splits to: ", info.minSplits);
+        } else {
+            DEBUG("Added required index ", index, " for ", variable, " with delimiter \"", delimiter, "\", current min splits: ", info.minSplits);
+        }
     }
 }
 
@@ -756,14 +848,15 @@ void Context::setInitSplitNums() {
         SplitInfo& info = pair.second;
         if (!info.hasExactCount) {
             if (info.maxSplits > 0 && info.minSplits > info.maxSplits) {
-                WARN("Inconsistent split constraints for ", info.variable, " with delimiter ", info.delimiter, 
-                     ": min=", info.minSplits, " > max=", info.maxSplits);
+                WARN("Inconsistent split constraints for ", info.variable, " with delimiter \"", info.delimiter, 
+                     "\": min=", info.minSplits, " > max=", info.maxSplits);
                 info.minSplits = info.maxSplits;
             }
         }
-        DEBUG("Split info for ", info.variable, " with delimiter ", info.delimiter, 
-              ": min=", info.minSplits, ", max=", info.maxSplits, 
-              ", exact=", info.hasExactCount ? std::to_string(info.exactCount) : "none",
+        DEBUG("Split info for ", info.variable, " with delimiter \"", info.delimiter, 
+              ": min=", info.minSplits, 
+              ", max=", (info.maxSplits > 0 ? std::to_string(info.maxSplits) : "unlimited"),
+              ", exact=", (info.hasExactCount ? std::to_string(info.exactCount) : "none"),
               ", required indices: [", 
               [&]() {
                   std::string indices;
@@ -783,7 +876,7 @@ void Context::addConcatNodes() {
         const SplitInfo& info = pair.second;
         int numParts = info.hasExactCount ? info.exactCount : info.minSplits;
         
-        DEBUG("Creating ", numParts, " auxiliary variables for ", info.variable, " with delimiter ", info.delimiter);
+        DEBUG("Creating ", numParts, " auxiliary variables for ", info.variable, " with delimiter \"", info.delimiter, "\"");
         
         SMTParser::NodePtr originalVar = SMTParser.getVariable(info.variable);
         if (!originalVar) {
@@ -841,7 +934,7 @@ bool Context::incrementSplitNums() {
         
         if (currentSplits < maxAllowed) {
             info.minSplits = currentSplits + 1;
-            DEBUG("Incremented split count for ", info.variable, " with delimiter ", info.delimiter, 
+            DEBUG("Incremented split count for ", info.variable, " with delimiter \"", info.delimiter, 
                   " from ", currentSplits, " to ", info.minSplits);
             return true;
         }
@@ -863,7 +956,7 @@ void Context::resetSplitNums() {
                 minRequired = std::max(minRequired, idx + 1);
             }
             info.minSplits = std::max(1, minRequired - 2);
-            DEBUG("Reset split count for ", info.variable, " with delimiter ", info.delimiter, " to ", info.minSplits, " (conservative start)");
+            DEBUG("Reset split count for ", info.variable, " with delimiter \"", info.delimiter, "\" to ", info.minSplits, " (conservative start)");
         }
     }
 }
@@ -891,10 +984,12 @@ void Context::printCurrentSplitState() const {
     DEBUG("Current split state:");
     for (const auto& pair : splitInfoMap) {
         const SplitInfo& info = pair.second;
-        DEBUG("  ", info.variable, " with delimiter '", info.delimiter, "': current=", info.minSplits, 
+        DEBUG("  ", info.variable, " with delimiter \"", info.delimiter, "\": current=", info.minSplits, 
               ", max=", (info.maxSplits > 0 ? std::to_string(info.maxSplits) : "unlimited"),
-              ", exact=", (info.hasExactCount ? std::to_string(info.exactCount) : "no"));
+              ", exact=", (info.hasExactCount ? std::to_string(info.exactCount) : "none"));
     }
+    std::string smtlib2 = getSMTLIB2(true);
+    LOG5("SMTLIB2: \n", smtlib2);
 }
 
 void Context::addFalseConstraint() {
@@ -903,13 +998,49 @@ void Context::addFalseConstraint() {
     DEBUG("Added false constraint to make formula UNSAT");
 }
 
-void Context::setNeedModel(bool need) {
-    needModelFlag = need;
-    DEBUG("Set needModel flag to: ", need);
+void Context::updateTasks(const std::string& filename) {
+    tasks = getTask(filename);
 }
 
-bool Context::needModel() const {
-    return needModelFlag;
+bool Context::hasConflictingSplitConstraints() const {
+    for (const auto& pair : splitInfoMap) {
+        const SplitInfo& info = pair.second;
+        
+        if (info.hasExactCount) {
+            if (info.maxSplits > 0 && info.exactCount > info.maxSplits) {
+                ERROR("Conflicting split constraints for ", info.variable, " with delimiter \"", info.delimiter, 
+                      "\": exact count=", info.exactCount, " > max=", info.maxSplits);
+                return true;
+            }
+            
+            if (info.exactCount < info.minSplits) {
+                ERROR("Conflicting split constraints for ", info.variable, " with delimiter \"", info.delimiter, 
+                      "\": exact count=", info.exactCount, " < min=", info.minSplits);
+                return true;
+            }
+            continue;
+        }
+        
+        if (info.maxSplits > 0 && info.minSplits > info.maxSplits) {
+            ERROR("Conflicting split constraints for ", info.variable, " with delimiter \"", info.delimiter, 
+                  "\": min=", info.minSplits, " > max=", info.maxSplits);
+            return true;
+        }
+        
+        if (!info.requiredIndices.empty()) {
+            int maxRequiredIndex = *std::max_element(info.requiredIndices.begin(), info.requiredIndices.end());
+            int requiredMinSplits = maxRequiredIndex + 1;
+            
+            if (info.maxSplits > 0 && requiredMinSplits > info.maxSplits) {
+                ERROR("Split constraint conflict for ", info.variable, " with delimiter \"", info.delimiter, 
+                      "\": required index ", maxRequiredIndex, " needs at least ", requiredMinSplits, 
+                      " splits, but max allowed is ", info.maxSplits);
+                return true;
+            }
+        }
+    }
+    
+    return false;
 }
 
 } // namespace strp
