@@ -667,32 +667,17 @@ void splitSolver::setAnalysisFunction(AnalysisFunction analyzer) {
 
 void splitSolver::rewriteFormula(Context& ctx) {
     resetSolver();
-    
-    LOG1("Begin const nodes rewrite");
     auto splitAtConstNodes = ctx.getSplitAtConstNodes();
     auto numSplitsConstNodes = ctx.getNumSplitsConstNodes();
     replaceSplitAtConstNodes(ctx, splitAtConstNodes);
     replaceNumSplitsConstNodes(ctx, numSplitsConstNodes);
-    
-    LOG1("Begin var nodes rewrite");
     auto splitAtVarNodes = ctx.getSplitAtVarNodes();
     auto numSplitsVarNodes = ctx.getNumSplitsVarNodes();
-    LOG2("Begin getSplitNums");
     getSplitNums(ctx, splitAtVarNodes, numSplitsVarNodes);
-    LOG2("End getSplitNums");
-    
-    LOG2("Begin setInitSplitNums");
     ctx.setInitSplitNums();
-    LOG2("End setInitSplitNums");
-    
-    LOG2("Begin addConcatNodes");
     ctx.addConcatNodes();
-    LOG2("End addConcatNodes");
-    
-    LOG2("Begin replaceNumSplitsVarNodes");
     replaceNumSplitsVarNodes(ctx, numSplitsVarNodes);
     replaceSplitAtVarNodes(ctx, splitAtVarNodes);
-    LOG2("End replaceNumSplitsVarNodes");
 }
 
 void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
