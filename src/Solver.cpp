@@ -982,7 +982,7 @@ SatResult splitSolver::solve() {
     
     if (iterationCount >= maxIterations) {
         if (result == SatResult::UNSAT) {
-            return SatResult::UNKNOWN;
+            result = SatResult::UNKNOWN;  // Set result but don't return early
         }
     }
     
