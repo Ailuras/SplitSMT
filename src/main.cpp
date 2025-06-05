@@ -18,7 +18,7 @@ void printUsage() {
     std::cout << "Usage: strprocessor <input_file> [output_file] [-l <log_level>] [-s <solver>] [-h]" << std::endl;
     std::cout << "  <input_file>      Input SMT2 file" << std::endl;
     std::cout << "  [output_file]     Output file (optional)" << std::endl;
-    std::cout << "  -l, --level       Set logging level (default: 20, info level)" << std::endl;
+    std::cout << "  -l, --level       Set logging level (default: 40, error level)" << std::endl;
     std::cout << "  -s, --solver      Set solver type: z3 or cvc5 (default: z3)" << std::endl;
     std::cout << "  -h, --help        Show this help message" << std::endl;
 }
