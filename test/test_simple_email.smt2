@@ -1,0 +1,7 @@
+(set-logic QF_S)
+(declare-fun email () String)
+(assert (str.contains email "@"))
+(assert (> (str.len email) 5))
+(assert (str.suffix email ".com"))
+(check-sat)
+(get-model) 

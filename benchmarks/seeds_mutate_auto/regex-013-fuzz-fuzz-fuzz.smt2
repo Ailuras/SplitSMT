@@ -15,17 +15,9 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 
 (declare-const x String)
 (declare-const y String)
-(declare-const k_splits_4525 Int)
-(declare-const part_1_9471 String)
 (assert (str.in_re y (re.+ (re.* (str.to_re "aT' 'ge")))))
 (assert (= (str.to_int y) 5))
-(assert (= (str.num_splits y "_") k_splits_4525))
-(assert (= k_splits_4525 4))
-(assert (> k_splits_4525 1))
-(assert (= (str.split_at y "_" 1) y))
-(assert (> k_splits_4525 2))
-(assert (= (str.split_at y "_" 2) part_1_9471))
-(assert (= (str.len part_1_9471) 2))
+(assert (= (str.split_at y " " 1) "t3wm"))
 (check-sat)
 
 (exit)

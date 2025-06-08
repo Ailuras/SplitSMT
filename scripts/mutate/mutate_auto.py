@@ -4,7 +4,6 @@
 """
 SMT-LIB Auto Mutator
 This script mutates SMT-LIB files by introducing custom string functions:
-- str.num_splits: returns the number of parts when splitting a string by delimiter
 - str.split_at: returns the I-th part when splitting a string by delimiter
 """
 
@@ -83,37 +82,9 @@ class SMTMutator:
         
         return result
     
-    def generate_num_splits_constraints(self, target_var: str, delimiter: str) -> Tuple[List[str], List[str]]:
-        """Generate str.num_splits related constraints"""
-        declarations = []
-        assertions = []
-        
-        # Declare k_splits variable
-        k_splits_var = f"k_splits_{self.random_gen.randint(1000, 9999)}"
-        declarations.append(f"(declare-const {k_splits_var} Int)")
-        
-        # Main num_splits assertion
-        escaped_delimiter = self.escape_smt_string(delimiter)
-        assertions.append(f"(assert (= (str.num_splits {target_var} {escaped_delimiter}) {k_splits_var}))")
-        
-        # Add 1-2 range constraints for k_splits
-        num_constraints = self.random_gen.randint(1, 2)
-        operators = [">=", "<=", "="]
-        
-        for _ in range(num_constraints):
-            op = self.random_gen.choice(operators)
-            if op == ">=":
-                value = self.random_gen.randint(1, 3)
-            elif op == "<=":
-                value = self.random_gen.randint(5, 10)
-            else:  # op == "="
-                value = self.random_gen.randint(2, 5)
-            
-            assertions.append(f"(assert ({op} {k_splits_var} {value}))")
-        
-        return declarations, assertions, k_splits_var
+
     
-    def generate_split_at_constraints(self, target_var: str, delimiter: str, k_splits_var: str, 
+    def generate_split_at_constraints(self, target_var: str, delimiter: str, 
                                      string_vars: List[str]) -> Tuple[List[str], List[str]]:
         """Generate str.split_at related constraints"""
         declarations = []
@@ -125,9 +96,6 @@ class SMTMutator:
         for i in range(num_constraints):
             # Choose a small index
             idx = self.random_gen.randint(0, 2)
-            
-            # Add validity constraint
-            assertions.append(f"(assert (> {k_splits_var} {idx}))")
             
             # Choose RHS value type
             rhs_type = self.random_gen.choice(["existing_var", "new_string", "new_var"])
@@ -224,12 +192,11 @@ class SMTMutator:
             print(f"Selected target: {target_var}, delimiter: '{delimiter}'")
             
             # Generate constraints
-            num_splits_decls, num_splits_asserts, k_splits_var = self.generate_num_splits_constraints(target_var, delimiter)
-            split_at_decls, split_at_asserts = self.generate_split_at_constraints(target_var, delimiter, k_splits_var, string_vars)
+            split_at_decls, split_at_asserts = self.generate_split_at_constraints(target_var, delimiter, string_vars)
             
             # Combine all new content
-            all_declarations = num_splits_decls + split_at_decls
-            all_assertions = num_splits_asserts + split_at_asserts
+            all_declarations = split_at_decls
+            all_assertions = split_at_asserts
             
             print(f"Generated {len(all_declarations)} declarations and {len(all_assertions)} assertions")
             

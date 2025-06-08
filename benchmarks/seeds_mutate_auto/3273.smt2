@@ -11,7 +11,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (set-info :category "industrial")
 (set-info :status unknown)
 (declare-fun s () String)
-(declare-const k_splits_4423 Int)
 
 
 (assert (not ( <= ( - ( - ( - ( str.len s  ) ( + 1 1  )  ) ( + 1 1  )  ) 1  ) 3  )))
@@ -144,12 +143,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (not ( > ( - ( - ( - ( str.len s  ) ( + 1 1  )  ) ( + 1 1  )  ) ( + 1 1  )  ) 0  )))
 
 
-(assert (= (str.num_splits s "|") k_splits_4423))
-(assert (<= k_splits_4423 5))
-(assert (> k_splits_4423 1))
-(assert (= (str.split_at s "|" 1) "weg1"))
-(assert (> k_splits_4423 0))
-(assert (= (str.split_at s "|" 0) s))
+(assert (= (str.split_at s ":" 1) "dk11o"))
+(assert (= (str.split_at s ":" 2) s))
 (check-sat)
 
 (exit)

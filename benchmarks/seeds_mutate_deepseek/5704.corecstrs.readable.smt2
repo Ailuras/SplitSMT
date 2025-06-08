@@ -27,15 +27,14 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_4)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dash_splits Int)
-(assert (= (str.num_splits var_0xINPUT_107669 "-") num_dash_splits))
-(assert (> num_dash_splits 0))
-(declare-const first_segment String)
-(assert (= (str.split_at var_0xINPUT_107669 "-" 0) first_segment))
-(assert (> (str.len first_segment) 0))
-(declare-const num_empty_splits Int)
-(assert (= (str.num_splits var_0xINPUT_107669 "") num_empty_splits))
-(assert (>= num_empty_splits (str.len var_0xINPUT_107669)))
+(declare-const first_part_107669 String)
+(declare-const second_part_107669 String)
+(assert (= (str.split_at var_0xINPUT_107669 "-" 0) first_part_107669))
+(assert (= (str.split_at var_0xINPUT_107669 "-" 1) second_part_107669))
+(assert (=> (not (str.contains var_0xINPUT_107669 "-")) (= first_part_107669 var_0xINPUT_107669)))
+(assert (=> (not (str.contains var_0xINPUT_107669 "-")) (= second_part_107669 "")))
+(assert (=> (str.contains var_0xINPUT_107669 "-") (> (str.len first_part_107669) 0)))
+(assert (=> (str.contains var_0xINPUT_107669 "-") (or (> (str.len second_part_107669) 0) (= second_part_107669 ""))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

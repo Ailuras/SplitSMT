@@ -20,15 +20,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_1)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_splits_var Int)
-(declare-const split_at_1 String)
-(declare-const split_at_2 String)
-(assert (= (str.num_splits var_0xINPUT_125573 "Y") num_splits_var))
-(assert (= num_splits_var 2))
-(assert (= (str.split_at var_0xINPUT_125573 "Y" 0) split_at_1))
-(assert (= (str.split_at var_0xINPUT_125573 "Y" 1) split_at_2))
-(assert (= split_at_1 "aqd"))
-(assert (= split_at_2 "VEFBFA"))
+(declare-const prefix String)
+(declare-const suffix String)
+(assert (= (str.split_at var_0xINPUT_125573 "Y" 0) prefix))
+(assert (= (str.split_at var_0xINPUT_125573 "Y" 1) suffix))
+(assert (= prefix "aqd"))
+(assert (= suffix "VEFBFA"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

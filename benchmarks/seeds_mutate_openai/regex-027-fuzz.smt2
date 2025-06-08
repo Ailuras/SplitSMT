@@ -22,16 +22,13 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (not (= x "b")))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_C_segments_in_x Int)
-(declare-const first_C_segment String)
-(assert (= (str.num_splits x "C") num_C_segments_in_x))
-(assert (>= num_C_segments_in_x 1))
-(assert (= (str.split_at x "C" 0) first_C_segment))
-(assert (> (str.len first_C_segment) 0))
-(assert (str.in_re first_C_segment (re.* (str.to_re ""))))
-(declare-const num_amp_segments Int)
-(assert (= (str.num_splits x "&") num_amp_segments))
-(assert (>= num_amp_segments 1))
+(declare-const prefix_of_x String)
+(declare-const suffix_of_x String)
+(assert (= (str.split_at x "C" 0) prefix_of_x))
+(assert (= (str.split_at x "C" 1) suffix_of_x))
+(assert (str.in_re prefix_of_x (re.* (str.to_re "C"))))
+(assert (or (= suffix_of_x "") (str.prefix suffix_of_x "")))
+(assert (> (str.len prefix_of_x) 0))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

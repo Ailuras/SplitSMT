@@ -83,7 +83,7 @@ target_include_directories(strprocessor PRIVATE
 
 # Link libraries
 target_link_libraries(strprocessor PRIVATE
-    smtparser
+    smtlib_parser
     ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}
@@ -100,7 +100,7 @@ target_include_directories(debug_strprocessor PRIVATE
 
 # Link libraries for debug executable
 target_link_libraries(debug_strprocessor PRIVATE
-    smtparser
+    smtlib_parser
     ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}

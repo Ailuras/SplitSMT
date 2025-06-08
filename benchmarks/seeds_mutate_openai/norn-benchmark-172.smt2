@@ -32,14 +32,13 @@ Publication: "String constraints for verification" by P.A. Abdulla, M.F. Atig, Y
 (assert (and (<= (str.len var_9) 0 ) (<= 0  (str.len var_9))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_z_splits_in_var_9 Int)
-(declare-const first_segment_before_z String)
-(assert (= (str.num_splits var_9 "z") num_z_splits_in_var_9))
-(assert (>= num_z_splits_in_var_9 1))
-(assert (= (str.split_at var_9 "z" 0) first_segment_before_z))
-(assert (str.in_re first_segment_before_z (re.* (re.range "a" "u"))))
-(assert (<= (str.len first_segment_before_z) (str.len var_9)))
-(assert (str.in_re (str.split_at var_9 "z" 1) (re.* (re.range "a" "u"))))
+(declare-const var_9_part1 String)
+(declare-const var_9_part2 String)
+(assert (= (str.split_at var_9 "m" 0) var_9_part1))
+(assert (= (str.split_at var_9 "m" 1) var_9_part2))
+(assert (str.in_re var_9_part1 (re.* (re.range "a" "l"))))
+(assert (str.in_re var_9_part2 (re.* (re.range "n" "u"))))
+(assert (or (= var_9_part1 "") (= var_9_part2 "")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

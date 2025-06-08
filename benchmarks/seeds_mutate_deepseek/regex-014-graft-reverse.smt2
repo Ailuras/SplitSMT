@@ -21,14 +21,18 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= (str.len y) 4))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const x_splits Int)
-(declare-const y_splits Int)
-(assert (= (str.num_splits x "a") x_splits))
-(assert (= (str.num_splits y "a") y_splits))
-(declare-const x_split_part String)
-(declare-const y_split_part String)
-(assert (= (str.split_at x "a" 0) x_split_part))
-(assert (= (str.split_at y "a" 1) y_split_part))
+(declare-const x_first_part String)
+(declare-const x_second_part String)
+(assert (= (str.split_at x "b" 0) x_first_part))
+(assert (= (str.split_at x "b" 1) x_second_part))
+(assert (or (= x_first_part "") (str.in_re x_first_part (re.* (str.to_re "a")))))
+(assert (str.in_re x_second_part (re.++ (str.to_re "a") (re.* (str.to_re "b")))))
+(declare-const y_first_part String)
+(declare-const y_second_part String)
+(assert (= (str.split_at y "a" 0) y_first_part))
+(assert (= (str.split_at y "a" 1) y_second_part))
+(assert (str.in_re y_first_part (re.* (str.to_re "b"))))
+(assert (str.in_re y_second_part (re.++ (str.to_re "b") (re.* (str.to_re "a")))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -4,7 +4,7 @@ Task: solve
 Solver: run_strprocessor.sh
 Timeout: 30s
 Total Files: 100
-Started: Wed 04 Jun 2025 10:21:29 PM CST
+Started: Sun 08 Jun 2025 11:19:59 PM CST
 ========================================================
 
 ===========================================================
@@ -15,11 +15,10 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 1/100
 -----------------------------------------------------------
-unknown
 -----------------------------------------------------------
-SOLVING_TIME: .142827413
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SOLVING_TIME: .059615128
+RESULT: ERROR
+EXIT_CODE: 139
 
 ===========================================================
 FILE: 05_track_156.smt2
@@ -29,11 +28,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 2/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053451446
+SOLVING_TIME: .032567824
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1094.smt2
@@ -43,11 +42,17 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 3/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 146.
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 79 column 41: unknown constant str.split_at (String String Int) ")
+(error "line 80 column 53: unknown constant str.split_at (String String Int) ")
+(error "line 83 column 47: unknown constant str.split_at (String String Int) ")
+(error "line 84 column 57: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (1ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .027449751
+SOLVING_TIME: .050145807
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 11336.corecstrs.readable.smt2
@@ -57,11 +62,25 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 4/100
 -----------------------------------------------------------
-sat
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 19 column 84: unexpected character")
+(error "line 19 column 85: unexpected character")
+(error "line 19 column 87: unexpected character")
+(error "line 19 column 89: unexpected character")
+(error "line 19 column 99: unexpected character")
+(error "line 19 column 100: unexpected character")
+(error "line 19 column 102: unexpected character")
+(error "line 19 column 104: unexpected character")
+(error "line 19 column 107: unexpected character")
+(error "line 19 column 108: unexpected character")
+(error "line 19 column 110: unexpected character")
+(error "line 19 column 112: unexpected character")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (0ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .026547215
+SOLVING_TIME: .024200645
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 1142.smt2
@@ -71,9 +90,13 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 5/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 191 column 41: unknown constant str.split_at (String String Int) ")
+(error "line 192 column 41: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (5ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .211901084
+SOLVING_TIME: .135165245
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -85,15 +108,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 6/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:30] Z3 error: (error "line 16 column 79: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:30] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:21:30] Solver error occurred[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .022959749
+SOLVING_TIME: .028409601
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11512.corecstrs.readable.smt2
@@ -103,11 +122,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 7/100
 -----------------------------------------------------------
-sat
+error: Unknown or unexptected symbol "not" in line 30.
 -----------------------------------------------------------
-SOLVING_TIME: .028682816
+SOLVING_TIME: .010630271
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 12418.corecstrs.readable.smt2
@@ -119,7 +138,7 @@ INDEX: 8/100
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .027972391
+SOLVING_TIME: .026562969
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -131,11 +150,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 9/100
 -----------------------------------------------------------
-unknown
+error: Unknown or unexptected symbol "=" in line 27.
 -----------------------------------------------------------
-SOLVING_TIME: .044699552
+SOLVING_TIME: .010614981
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 13471.corecstrs.readable.smt2
@@ -145,9 +164,16 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 10/100
 -----------------------------------------------------------
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 19 column 8: unknown constant NULL")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .089228742
+SOLVING_TIME: .024056972
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -159,11 +185,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 11/100
 -----------------------------------------------------------
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048247590
+SOLVING_TIME: .024638369
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1435.smt2
@@ -173,11 +199,16 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 12/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 234.
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 120 column 88: unknown constant str.split_at (String String Int) ")
+(error "line 122 column 53: unknown constant str.split_at (String String Int) ")
+(error "line 123 column 53: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (2ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .050833971
+SOLVING_TIME: .076935395
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 1440.smt2
@@ -187,15 +218,10 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 13/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:30] Z3 error: (error "line 193 column 62: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:30] Result: ERROR (2ms)[0m
-[31m[2025-06-04 22:21:30] Solver error occurred[0m
-unknown
 -----------------------------------------------------------
-SOLVING_TIME: .141751545
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SOLVING_TIME: .118313115
+RESULT: ERROR
+EXIT_CODE: 139
 
 ===========================================================
 FILE: 14593.corecstrs.readable.smt2
@@ -205,11 +231,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 14/100
 -----------------------------------------------------------
-sat
+error: Unknown or unexptected symbol "=" in line 25.
 -----------------------------------------------------------
-SOLVING_TIME: .028689352
+SOLVING_TIME: .009997345
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15929.corecstrs.readable.smt2
@@ -219,9 +245,16 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 15/100
 -----------------------------------------------------------
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 17 column 12: unknown constant NULL")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .046605975
+SOLVING_TIME: .023269819
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -233,15 +266,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 16/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:30] Z3 error: (error "line 14 column 75: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:30] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:21:30] Solver error occurred[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .019402331
+SOLVING_TIME: .024124521
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 18187.corecstrs.readable.smt2
@@ -251,11 +280,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 17/100
 -----------------------------------------------------------
-unknown
+error: ")" missing in line 106.
 -----------------------------------------------------------
-SOLVING_TIME: .085019442
+SOLVING_TIME: .018445501
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 18610.corecstrs.readable.smt2
@@ -265,11 +294,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 18/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .085820711
+SOLVING_TIME: .038075255
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 195.smt2
@@ -279,11 +308,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 19/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 178.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .030409557
+SOLVING_TIME: .052836482
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 19837.corecstrs.readable.smt2
@@ -293,11 +322,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 20/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .094044902
+SOLVING_TIME: .040511066
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1b415777353081399f22c146e473815a5dca078827ae55052c0dcaad.smt2
@@ -307,11 +336,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 21/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 30.
+[31m[2025-06-08 23:20:00] Z3 error: (error "line 19 column 41: unknown constant str.split_at (String String Int) ")
+(error "line 20 column 53: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:00] Result: ERROR (1ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .053441598
+SOLVING_TIME: .077972810
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20934.corecstrs.readable.smt2
@@ -321,15 +354,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 22/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:31] Z3 error: (error "line 56 column 61: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:31] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:21:31] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .025349187
+SOLVING_TIME: .034700015
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 209a7c61bdeaea04f6723684f606699e8a2dac589cf03aa593675c21.smt2
@@ -339,11 +368,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 23/100
 -----------------------------------------------------------
-sat
+error: Unknown or unexptected symbol "=" in line 26.
 -----------------------------------------------------------
-SOLVING_TIME: .112839947
+SOLVING_TIME: .025051435
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2146.smt2
@@ -353,9 +382,13 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 24/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:01] Z3 error: (error "line 236 column 51: unknown constant str.split_at (String String Int) ")
+(error "line 237 column 63: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:01] Result: ERROR (3ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .282656026
+SOLVING_TIME: .187744473
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -367,9 +400,17 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 25/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:01] Z3 error: (error "line 87 column 60: unexpected character")
+(error "line 87 column 61: unexpected character")
+(error "line 87 column 63: unexpected character")
+(error "line 88 column 59: unexpected character")
+(error "line 88 column 60: unexpected character")
+(error "line 88 column 62: unexpected character")
+[0m
+[31m[2025-06-08 23:20:01] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .074281856
+SOLVING_TIME: .027821493
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -381,9 +422,9 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 26/100
 -----------------------------------------------------------
-error: Unknown or unexptected symbol "i" in line 107.
+error: ")" missing in line 110.
 -----------------------------------------------------------
-SOLVING_TIME: .013261371
+SOLVING_TIME: .014505414
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -395,11 +436,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 27/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058381964
+SOLVING_TIME: .032172499
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2261.smt2
@@ -409,11 +450,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 28/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 358.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .097009123
+SOLVING_TIME: .135448314
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 22eff45bfe65a68d77559a93eb7573710d1e9ab053467fc2860a50cc.smt2
@@ -423,19 +464,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 29/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:31] Z3 error: (error "line 11 column 41: unknown constant str.num_splits (String String) ")
-(error "line 13 column 53: unknown constant str.split_at (String String Int) ")
-(error "line 14 column 52: unknown constant str.split_at (String String Int) ")
-(error "line 16 column 41: unknown constant str.num_splits (String String) ")
-(error "line 18 column 53: unknown constant str.split_at (String String Int) ")
-(error "line 19 column 52: unknown constant str.split_at (String String Int) ")
-(error "line 21 column 88: unknown constant str.num_splits (String String) ")
+[31m[2025-06-08 23:20:01] Z3 error: (error "line 19 column 49: unknown constant str.split_at (String String Int) ")
+(error "line 20 column 49: unknown constant str.split_at (String String Int) ")
+(error "line 25 column 47: unknown constant str.split_at (String String Int) ")
+(error "line 26 column 50: unknown constant str.split_at (String String Int) ")
 [0m
-[31m[2025-06-04 22:21:31] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:31] Solver error occurred[0m
+[31m[2025-06-08 23:20:01] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .051133737
+SOLVING_TIME: .055523574
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -447,9 +484,16 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 30/100
 -----------------------------------------------------------
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+[31m[2025-06-08 23:20:01] Z3 error: (error "line 45 column 36: unknown constant NULL")
+[0m
+[31m[2025-06-08 23:20:01] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .060011949
+SOLVING_TIME: .027691187
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -461,11 +505,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 31/100
 -----------------------------------------------------------
-unknown
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 252.
 -----------------------------------------------------------
-SOLVING_TIME: .149643017
+SOLVING_TIME: .069394417
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 26923.corecstrs.readable.smt2
@@ -475,11 +519,18 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 32/100
 -----------------------------------------------------------
-sat
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+[31m[2025-06-08 23:20:01] Z3 error: (error "line 35 column 8: unknown constant NULL")
+[0m
+[31m[2025-06-08 23:20:01] Result: ERROR (0ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .070968641
+SOLVING_TIME: .023679916
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 2774.corecstrs.readable.smt2
@@ -489,11 +540,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 33/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061699523
+SOLVING_TIME: .029689078
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2795.smt2
@@ -503,11 +554,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 34/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .118679254
+SOLVING_TIME: .069184323
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2832.smt2
@@ -519,7 +570,7 @@ INDEX: 35/100
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 250.
 -----------------------------------------------------------
-SOLVING_TIME: .064089902
+SOLVING_TIME: .062960320
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -531,11 +582,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 36/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051261549
+SOLVING_TIME: .025430558
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 29866.corecstrs.readable.smt2
@@ -545,9 +596,13 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 37/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:02] Z3 error: (error "line 13 column 58: unknown constant str.split_at (String String Int) ")
+(error "line 14 column 58: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:02] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .049789574
+SOLVING_TIME: .023603669
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -559,11 +614,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 38/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .049316617
+SOLVING_TIME: .025693429
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 31165.corecstrs.readable.smt2
@@ -573,11 +628,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 39/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047048652
+SOLVING_TIME: .027534880
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3184.smt2
@@ -587,15 +642,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 40/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:32] Z3 error: (error "line 81 column 63: unknown constant str.num_splits (String String) ")
-[0m
-[31m[2025-06-04 22:21:32] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:32] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .062087553
+SOLVING_TIME: .062267113
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3273.smt2
@@ -605,11 +656,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 41/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .095874797
+SOLVING_TIME: .059216022
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3345.smt2
@@ -619,11 +670,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 42/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 104.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .020760309
+SOLVING_TIME: .041963669
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3780.smt2
@@ -633,11 +684,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 43/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .186593081
+SOLVING_TIME: .126562473
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3789.smt2
@@ -647,11 +698,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 44/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in str_num_splits" in line 278.
+[31m[2025-06-08 23:20:02] Z3 error: (error "line 135 column 47: unknown constant str.split_at (String String Int) ")
+(error "line 136 column 61: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:02] Result: ERROR (2ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .088121913
+SOLVING_TIME: .107827951
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 3799.smt2
@@ -661,11 +716,10 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 45/100
 -----------------------------------------------------------
-unknown
 -----------------------------------------------------------
-SOLVING_TIME: .258730646
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SOLVING_TIME: .153017676
+RESULT: ERROR
+EXIT_CODE: 139
 
 ===========================================================
 FILE: 4225.corecstrs.readable.smt2
@@ -675,11 +729,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 46/100
 -----------------------------------------------------------
-sat
+error: Unknown or unexptected symbol "OR on non-boolean" in line 34.
 -----------------------------------------------------------
-SOLVING_TIME: .026006512
+SOLVING_TIME: .009883086
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 4284.corecstrs.readable.smt2
@@ -689,9 +743,16 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 47/100
 -----------------------------------------------------------
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+Encountered null kind node
+[31m[2025-06-08 23:20:02] Z3 error: (error "line 24 column 8: unknown constant NULL")
+[0m
+[31m[2025-06-08 23:20:02] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .136421243
+SOLVING_TIME: .024284437
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -703,11 +764,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 48/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053964185
+SOLVING_TIME: .028665733
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5704.corecstrs.readable.smt2
@@ -717,11 +778,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 49/100
 -----------------------------------------------------------
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .045959291
+SOLVING_TIME: .028432681
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5751.corecstrs.readable.smt2
@@ -733,7 +794,7 @@ INDEX: 50/100
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .028279201
+SOLVING_TIME: .029364972
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -745,15 +806,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 51/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:33] Z3 error: (error "line 57 column 54: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:33] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:33] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .035211507
+SOLVING_TIME: .036344704
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6605.smt2
@@ -763,9 +820,13 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 52/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:02] Z3 error: (error "line 65 column 41: unknown constant str.split_at (String String Int) ")
+(error "line 66 column 41: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:02] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .087415373
+SOLVING_TIME: .048225196
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -777,13 +838,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 53/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:34] Z3 error: (error "line 60 column 63: unknown constant str.split_at (String String Int) ")
+[31m[2025-06-08 23:20:03] Z3 error: (error "line 65 column 47: unknown constant str.split_at (String String Int) ")
+(error "line 66 column 59: unknown constant str.split_at (String String Int) ")
+(error "line 69 column 53: unknown constant str.split_at (String String Int) ")
+(error "line 70 column 41: unknown constant str.split_at (String String Int) ")
 [0m
-[31m[2025-06-04 22:21:34] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:34] Solver error occurred[0m
+[31m[2025-06-08 23:20:03] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .036816491
+SOLVING_TIME: .038944584
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -795,11 +858,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 54/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .437884895
+SOLVING_TIME: .317231111
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 7232.smt2
@@ -809,11 +872,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 55/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:34] Error processing file: Cannot convert string to high precision real number[0m
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .044511267
-RESULT: ERROR
-EXIT_CODE: 1
+SOLVING_TIME: .069837930
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 7413.smt2
@@ -823,9 +886,12 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 56/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:03] Z3 error: (error "line 87 column 69: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:03] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .081709160
+SOLVING_TIME: .044057837
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -837,11 +903,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 57/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in str_num_splits" in line 114.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .017265449
+SOLVING_TIME: .035173191
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 7758.smt2
@@ -851,11 +917,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 58/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 211.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .036997146
+SOLVING_TIME: .064807044
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 7790.corecstrs.readable.smt2
@@ -865,11 +931,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 59/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047442842
+SOLVING_TIME: .026867748
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3.smt2
@@ -879,16 +945,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 60/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:34] Z3 error: (error "line 14 column 82: unknown constant str.num_splits (String String) ")
-(error "line 15 column 61: unknown constant str.num_splits (String String) ")
-[0m
-[31m[2025-06-04 22:21:34] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:34] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .066081982
+SOLVING_TIME: .073335236
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 7845.corecstrs.readable.smt2
@@ -898,11 +959,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 61/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047890206
+SOLVING_TIME: .027797613
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 8213.corecstrs.readable.smt2
@@ -912,15 +973,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 62/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:34] Z3 error: (error "line 18 column 66: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:21:34] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:21:34] Solver error occurred[0m
-unknown
+error: Unknown or unexptected symbol "=" in line 28.
 -----------------------------------------------------------
-SOLVING_TIME: .020552683
+SOLVING_TIME: .010944121
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 840.smt2
@@ -930,11 +987,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 63/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .120167374
+SOLVING_TIME: .075758295
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9519.corecstrs.readable.smt2
@@ -946,7 +1003,7 @@ INDEX: 64/100
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .023215444
+SOLVING_TIME: .028027703
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -960,7 +1017,7 @@ INDEX: 65/100
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .024610801
+SOLVING_TIME: .027000792
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -972,11 +1029,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 66/100
 -----------------------------------------------------------
-unknown
+error: Unknown or unexptected symbol "OR on non-boolean" in line 30.
 -----------------------------------------------------------
-SOLVING_TIME: .045534007
+SOLVING_TIME: .010141501
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ab07f4599d9bee66bca1eef13a90b2c588ae4031b281b9541c2d3ce8.smt2
@@ -986,10 +1043,17 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 67/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:03] Z3 error: (error "line 22 column 53: unknown constant str.split_at (String String Int) ")
+(error "line 23 column 43: unknown constant str.split_at (String String Int) ")
+(error "line 24 column 53: unknown constant str.split_at (String String Int) ")
+(error "line 25 column 43: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:04] Result: ERROR (1ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .014868284
-RESULT: ERROR
-EXIT_CODE: 139
+SOLVING_TIME: .041074697
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: c0cfc14fa7a5df4ebc2120d088a1b48b8761ea41150bb8ee74cdb4e5.smt2
@@ -1000,7 +1064,7 @@ TIMEOUT: 30s
 INDEX: 68/100
 -----------------------------------------------------------
 -----------------------------------------------------------
-SOLVING_TIME: .015396182
+SOLVING_TIME: .017061428
 RESULT: ERROR
 EXIT_CODE: 139
 
@@ -1012,13 +1076,13 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 69/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:21:35] Z3 error: (error "line 19 column 47: unknown constant str.split_at (String String Int) ")
+[31m[2025-06-08 23:20:04] Z3 error: (error "line 19 column 49: unknown constant str.split_at (String String Int) ")
+(error "line 20 column 49: unknown constant str.split_at (String String Int) ")
 [0m
-[31m[2025-06-04 22:21:35] Result: ERROR (1ms)[0m
-[31m[2025-06-04 22:21:35] Solver error occurred[0m
+[31m[2025-06-08 23:20:04] Result: ERROR (1ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .045159653
+SOLVING_TIME: .050148301
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1030,11 +1094,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 70/100
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 21.
 -----------------------------------------------------------
-SOLVING_TIME: .030931910
+SOLVING_TIME: .017521288
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: cafce6050dabbb956aded879c7a995756f4b1542b6ee7d1d04e118d2.smt2
@@ -1044,9 +1108,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 71/100
 -----------------------------------------------------------
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 30.008365573
-RESULT: TIMEOUT
+SOLVING_TIME: .488455171
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: d18744c85ba86d69b147630b131d5efba0ad905fd92c50cbc4830c3a.smt2
@@ -1056,11 +1122,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 72/100
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .028470488
+SOLVING_TIME: .027873691
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: e240506803f8ad8d3bd802371317f10815fd940717184312be58f172.smt2
@@ -1070,11 +1136,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 73/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .087220478
+SOLVING_TIME: .045497816
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c.smt2
@@ -1084,9 +1150,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 74/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:04] Z3 error: (error "line 21 column 69: unknown constant str.split_at (String String Int) ")
+(error "line 22 column 51: unknown constant str.split_at (String String Int) ")
+(error "line 25 column 72: unknown constant str.split_at (String String Int) ")
+(error "line 26 column 72: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:04] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .063648062
+SOLVING_TIME: .030916575
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1098,9 +1170,9 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 75/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 40.
+error: "(" missing in line 39.
 -----------------------------------------------------------
-SOLVING_TIME: .012706384
+SOLVING_TIME: .013719334
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1112,11 +1184,21 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 76/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 29.
+[31m[2025-06-08 23:20:04] Z3 error: (error "line 20 column 33: unexpected character")
+(error "line 20 column 34: unexpected character")
+(error "line 20 column 36: unexpected character")
+(error "line 20 column 38: unexpected character")
+(error "line 20 column 157: unexpected character")
+(error "line 20 column 158: unexpected character")
+(error "line 20 column 160: unexpected character")
+(error "line 20 column 162: unexpected character")
+[0m
+[31m[2025-06-08 23:20:04] Result: ERROR (0ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .010665273
+SOLVING_TIME: .027065054
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: norn-benchmark-172.smt2
@@ -1126,11 +1208,15 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 77/100
 -----------------------------------------------------------
-error: Unknown or unexptected symbol "=" in line 42.
+[31m[2025-06-08 23:20:04] Z3 error: (error "line 33 column 67: unknown constant str.split_at (String String Int) ")
+(error "line 34 column 53: unknown constant str.split_at (String String Int) ")
+[0m
+[31m[2025-06-08 23:20:04] Result: ERROR (0ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .009839775
+SOLVING_TIME: .023717877
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: regex-002-unsat-graft-graft-translate.smt2
@@ -1140,17 +1226,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 78/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:22:05] Z3 error: (error "line 18 column 36: unexpected character")
-(error "line 18 column 37: unexpected character")
-(error "line 18 column 39: unexpected character")
-[0m
-[31m[2025-06-04 22:22:05] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:22:05] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .021550680
+SOLVING_TIME: .025570807
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-003-translate-fuzz-multiply.smt2
@@ -1160,11 +1240,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 79/100
 -----------------------------------------------------------
-unknown
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 35.
 -----------------------------------------------------------
-SOLVING_TIME: .041136493
+SOLVING_TIME: .010852656
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-007-unsat-reverse-translate-multiply.smt2
@@ -1174,11 +1254,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 80/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059210603
+SOLVING_TIME: .030569939
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-009-reverse-multiply-translate.smt2
@@ -1189,8 +1269,9 @@ TIMEOUT: 30s
 INDEX: 81/100
 -----------------------------------------------------------
 -----------------------------------------------------------
-SOLVING_TIME: 30.008896494
-RESULT: TIMEOUT
+SOLVING_TIME: .010365608
+RESULT: ERROR
+EXIT_CODE: 139
 
 ===========================================================
 FILE: regex-012-unsat-fuzz-fuzz-fuzz.smt2
@@ -1200,11 +1281,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 82/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054916313
+SOLVING_TIME: .026724214
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-013-fuzz-fuzz-fuzz.smt2
@@ -1214,11 +1295,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 83/100
 -----------------------------------------------------------
-unknown
+error: Unknown or unexptected symbol "=" in line 25.
 -----------------------------------------------------------
-SOLVING_TIME: .049968541
+SOLVING_TIME: .010383852
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-014-graft-reverse.smt2
@@ -1228,11 +1309,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 84/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047299898
+SOLVING_TIME: .026689528
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-014-reverse-graft-multiply.smt2
@@ -1242,11 +1323,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 85/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .048388916
+SOLVING_TIME: .053049488
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-015-multiply-fuzz.smt2
@@ -1256,11 +1337,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 86/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .046094045
+SOLVING_TIME: .033389420
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-015-translate-fuzz-rotate.smt2
@@ -1270,11 +1351,10 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 87/100
 -----------------------------------------------------------
-unknown
 -----------------------------------------------------------
-SOLVING_TIME: .048834984
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SOLVING_TIME: .009842423
+RESULT: ERROR
+EXIT_CODE: 139
 
 ===========================================================
 FILE: regex-016-translate-translate-reverse.smt2
@@ -1284,11 +1364,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 88/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052320167
+SOLVING_TIME: .029142168
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-020-translate-translate-multiply.smt2
@@ -1298,11 +1378,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 89/100
 -----------------------------------------------------------
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .101842496
+SOLVING_TIME: .075417837
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-022-unsat-fuzz-fuzz-rotate.smt2
@@ -1312,15 +1392,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 90/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:22:36] Z3 error: (error "line 16 column 62: unknown constant str.split_at (String String Int) ")
-[0m
-[31m[2025-06-04 22:22:36] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:22:36] Solver error occurred[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .021254426
+SOLVING_TIME: .028383804
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-025-multiply-translate-rotate.smt2
@@ -1330,11 +1406,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 91/100
 -----------------------------------------------------------
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056466185
+SOLVING_TIME: .818670134
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-027-fuzz.smt2
@@ -1344,9 +1420,9 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 92/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 30.
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 28.
 -----------------------------------------------------------
-SOLVING_TIME: .010287405
+SOLVING_TIME: .011024613
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1358,11 +1434,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 93/100
 -----------------------------------------------------------
-unknown
+error: Unexpected end of file found.
 -----------------------------------------------------------
-SOLVING_TIME: .048971718
+SOLVING_TIME: .009934807
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-045-unsat-multiply-reverse-multiply.smt2
@@ -1372,11 +1448,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 94/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053268159
+SOLVING_TIME: .023928249
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-046-unsat-translate-multiply-translate.smt2
@@ -1386,11 +1462,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 95/100
 -----------------------------------------------------------
-unknown
+error: Unknown or unexptected symbol "=" in line 23.
 -----------------------------------------------------------
-SOLVING_TIME: .043292670
+SOLVING_TIME: .010057236
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-deep-00008-13.smt2
@@ -1400,11 +1476,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 96/100
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in str_num_splits" in line 29.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .011746129
+SOLVING_TIME: .030845940
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: regex-pair-00011-12.smt2
@@ -1414,9 +1490,20 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 97/100
 -----------------------------------------------------------
+[31m[2025-06-08 23:20:06] Z3 error: (error "line 18 column 95: unexpected character")
+(error "line 18 column 96: unexpected character")
+(error "line 18 column 98: unexpected character")
+(error "line 21 column 166: unexpected character")
+(error "line 21 column 167: unexpected character")
+(error "line 21 column 169: unexpected character")
+(error "line 22 column 101: unexpected character")
+(error "line 22 column 102: unexpected character")
+(error "line 22 column 104: unexpected character")
+[0m
+[31m[2025-06-08 23:20:06] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .064202347
+SOLVING_TIME: .029876915
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1428,11 +1515,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 98/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .082057414
+SOLVING_TIME: .045006923
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: slent_kaluza_177_sink.smt2
@@ -1442,11 +1529,11 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 99/100
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053269421
+SOLVING_TIME: .028982721
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: z3-regex-2-negative-reverse-rotate-graft.smt2
@@ -1456,21 +1543,20 @@ SOLVER: run_strprocessor.sh
 TIMEOUT: 30s
 INDEX: 100/100
 -----------------------------------------------------------
-[31m[2025-06-04 22:22:36] Z3 error: (error "line 8 column 28: unexpected character")
-(error "line 8 column 29: unexpected character")
-(error "line 8 column 31: unexpected character")
-(error "line 9 column 33: unexpected character")
-(error "line 9 column 34: unexpected character")
-(error "line 9 column 36: unexpected character")
-(error "line 13 column 54: unexpected character")
-(error "line 13 column 55: unexpected character")
-(error "line 13 column 57: unexpected character")
+[31m[2025-06-08 23:20:06] Z3 error: (error "line 11 column 28: unexpected character")
+(error "line 11 column 29: unexpected character")
+(error "line 11 column 31: unexpected character")
+(error "line 12 column 33: unexpected character")
+(error "line 12 column 34: unexpected character")
+(error "line 12 column 36: unexpected character")
+(error "line 17 column 43: unexpected character")
+(error "line 17 column 44: unexpected character")
+(error "line 17 column 46: unexpected character")
 [0m
-[31m[2025-06-04 22:22:36] Result: ERROR (0ms)[0m
-[31m[2025-06-04 22:22:36] Solver error occurred[0m
+[31m[2025-06-08 23:20:06] Result: ERROR (0ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .019767612
+SOLVING_TIME: .023180010
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1478,13 +1564,13 @@ SAT_RESULT: UNKNOWN
 SUMMARY
 -----------------------------------------------------------
 Total Files: 100
-Successful: 95
-Timeouts: 2
-Errors: 3
-SAT Results: 11
-UNSAT Results: 1
-UNKNOWN Results: 67
-Total Time: 67.472279892s
-Average Time: .674s
-Completed: Wed 04 Jun 2025 10:22:36 PM CST
+Successful: 94
+Timeouts: 0
+Errors: 6
+SAT Results: 10
+UNSAT Results: 41
+UNKNOWN Results: 25
+Total Time: 6.625616294s
+Average Time: .066s
+Completed: Sun 08 Jun 2025 11:20:06 PM CST
 ===========================================================

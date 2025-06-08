@@ -374,19 +374,14 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dot_parts Int)
 (declare-const first_part String)
 (declare-const second_part String)
-(assert (= (str.num_splits s ".") num_dot_parts))
-(assert (> num_dot_parts 0))
-(assert (= (str.split_at s "." 0) first_part))
-(assert (= (str.split_at s "." 1) second_part))
+(assert (= (str.split_at s (str.at s 0) 0) first_part))
+(assert (= (str.split_at s (str.at s 0) 1) second_part))
 (assert (> (str.len first_part) 0))
+(assert (> (str.len second_part) 0))
 (assert (str.in_re first_part (re.+ (re.range "0" "9"))))
 (assert (str.in_re second_part (re.+ (re.range "0" "9"))))
-(declare-const num_zero_parts Int)
-(assert (= (str.num_splits s "0") num_zero_parts))
-(assert (> num_zero_parts 1))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

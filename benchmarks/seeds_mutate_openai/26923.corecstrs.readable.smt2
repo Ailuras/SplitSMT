@@ -27,18 +27,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert (not (str.in_re PCTEMP_LHS_2 (str.to_re "%"))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_slash_segments_in_T_1 Int)
-(declare-const pre_slash_segment_in_T_1 String)
-(declare-const post_slash_segment_in_T_1 String)
-(assert (= (str.num_splits T_1 "/") num_slash_segments_in_T_1))
-(assert (= num_slash_segments_in_T_1 2))
-(assert (= (str.split_at T_1 "/" 0) pre_slash_segment_in_T_1))
-(assert (= (str.split_at T_1 "/" 1) post_slash_segment_in_T_1))
-(assert (= pre_slash_segment_in_T_1 ""))
-(assert (= post_slash_segment_in_T_1 (str.++ "signin" var_0xINPUT_27346)))
-(declare-const num_percent_segments_in_PCTEMP_LHS_1 Int)
-(assert (= (str.num_splits PCTEMP_LHS_1 "%") num_percent_segments_in_PCTEMP_LHS_1))
-(assert (= num_percent_segments_in_PCTEMP_LHS_1 1))
+(declare-const split_var_0xINPUT_27346 String)
+(declare-const remaining_0xINPUT_27346 String)
+(assert (= (str.split_at var_0xINPUT_27346 "/" 0) split_var_0xINPUT_27346))
+(assert (= (str.split_at var_0xINPUT_27346 "/" 1) remaining_0xINPUT_27346))
+(assert (or (= split_var_0xINPUT_27346 "") (= split_var_0xINPUT_27346 "signin")))
+(assert (not (str.contains remaining_0xINPUT_27346 "%")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

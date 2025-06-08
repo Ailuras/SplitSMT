@@ -91,20 +91,14 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_1f)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_utmz_parts Int)
-(declare-const before_utmz String)
-(declare-const after_utmz String)
-(assert (= (str.num_splits var_0xINPUT_49890 "__utmz=") num_utmz_parts))
-(assert (or (= num_utmz_parts 1) (= num_utmz_parts 2)))
-(assert (= (str.split_at var_0xINPUT_49890 "__utmz=" 0) before_utmz))
-(assert (=> (> num_utmz_parts 1) (= (str.split_at var_0xINPUT_49890 "__utmz=" 1) after_utmz)))
-(assert (=> (> num_utmz_parts 1) (str.contains after_utmz "218069774")))
-(declare-const num_dot_parts Int)
-(assert (=> (> num_utmz_parts 1) (= (str.num_splits after_utmz ".") num_dot_parts)))
-(assert (=> (> num_utmz_parts 1) (>= num_dot_parts 1)))
-(declare-const num_hyphen_parts Int)
-(assert (= (str.num_splits var_0xINPUT_49890 "-") num_hyphen_parts))
-(assert (>= num_hyphen_parts 0))
+(declare-fun T_split_before_utmz () String)
+(declare-fun T_split_after_utmz () String)
+(assert (= (str.split_at var_0xINPUT_49890 "__utmz=218069774." 0) T_split_before_utmz))
+(assert (= (str.split_at var_0xINPUT_49890 "__utmz=218069774." 1) T_split_after_utmz))
+(assert (=> T_SELECT_1 (str.in_re T_split_before_utmz (re.* re.allchar))))
+(assert (=> T_SELECT_1 (str.in_re T_split_after_utmz (re.* re.allchar))))
+(assert (=> (not T_SELECT_1) (= T_split_before_utmz "")))
+(assert (=> (not T_SELECT_1) (= T_split_after_utmz "")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -15,13 +15,12 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 
 (declare-const x String)
 (declare-const y String)
-(declare-const k_splits_1208 Int)
+(declare-const part_1_2589 String)
 (assert (str.in_re x (re.+ (re.++ (str.to_re "C-'\x0b'xX'\r'Lk0p<'\r'O:N'\t'Kw'\t'#{7^0' 'Pdr\\&2cTH") (str.to_re "w'\x0b'&OoLr")))))
 (assert (= 8 (str.to_int x)))
-(assert (= (str.num_splits x ":") k_splits_1208))
-(assert (>= k_splits_1208 1))
-(assert (> k_splits_1208 1))
-(assert (= (str.split_at x ":" 1) "84v"))
+(assert (= (str.split_at x "0" 0) "aucpt"))
+(assert (= (str.split_at x "0" 2) part_1_2589))
+(assert (= (str.len part_1_2589) 1))
 (check-sat)
 
 (exit)

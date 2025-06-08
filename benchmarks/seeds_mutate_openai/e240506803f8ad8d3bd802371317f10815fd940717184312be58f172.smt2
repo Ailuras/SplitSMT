@@ -19,18 +19,14 @@ Publications: "Scaling Up DPLL(T) String Solvers Using Context-Dependent Simplif
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at (str.substr (str.substr value2 1 (- (str.len value2) 1)) 1 (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1)) 0) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr (str.substr value2 1 (- (str.len value2) 1)) 1 (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1)) 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr (str.substr value2 1 (- (str.len value2) 1)) 1 (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1)) 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr (str.substr value2 1 (- (str.len value2) 1)) 1 (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1)) 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr (str.substr value2 1 (- (str.len value2) 1)) 1 (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1))) 0) 1 0) 0)))) (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{c}") 1 0) 0))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{b}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr value2 1 (- (str.len value2) 1))) 0) 1 0) 0)))) (not (= (ite (= (str.at value2 0) "\u{d}") 1 0) 0))) (not (not (= (ite (= (str.at value2 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value2 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value2 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= (str.indexof value2 "=" 0) (- 1)) 1 0) 0))) (not (not (= (ite (not (= (str.indexof value2 "=" 0) (- 1))) 1 0) 0)))) (not (not (= (ite (str.contains value2 ",") 1 0) 0)))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len (str.substr value2 1 (- (str.len value2) 1))) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_equal_signs Int)
-(declare-const key_value_split String)
-(declare-const value_part String)
-(assert (= (str.num_splits value2 "=") num_equal_signs))
-(assert (= num_equal_signs 2))
-(assert (= (str.split_at value2 "=" 0) key_value_split))
-(assert (= (str.split_at value2 "=" 1) value_part))
-(assert (> (str.len key_value_split) 0))
-(assert (> (str.len value_part) 0))
-(declare-const num_comma_segments Int)
-(assert (= (str.num_splits value_part ",") num_comma_segments))
-(assert (> num_comma_segments 1))
+(declare-const value2_key String)
+(declare-const value2_value String)
+(assert (= (str.split_at value2 "=" 0) value2_key))
+(assert (= (str.split_at value2 "=" 1) value2_value))
+(assert (> (str.len value2_key) 0))
+(assert (> (str.len value2_value) 0))
+(assert (str.contains value2_key "cache"))
+(assert (str.in_re value2_value (re.* (re.union (str.to_re " ") (str.to_re ",") (str.to_re "\n") (str.to_re "\t") (str.to_re "\f") (str.to_re "\r") (re.range "0" "9") (re.range "a" "z") (re.range "A" "Z")))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -19,12 +19,14 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= (str.to_int y) 5))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_aTge_segments_in_y Int)
-(declare-const first_aTge_segment String)
-(assert (= (str.num_splits y "aT' 'ge") num_aTge_segments_in_y))
-(assert (>= num_aTge_segments_in_y 1))
-(assert (= (str.split_at y "aT' 'ge" 0) first_aTge_segment))
-(assert (> (str.len first_aTge_segment) 0))
+(declare-const y_part1 String)
+(declare-const y_part2 String)
+(assert (= (str.split_at y "T" 0) y_part1))
+(assert (= (str.split_at y "T" 1) y_part2))
+(assert (> (str.len y_part1) 0))
+(assert (> (str.len y_part2) 0))
+(assert (str.in_re y_part1 (re.* (str.to_re "a"))))
+(assert (str.prefix y_part2 "' 'ge"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

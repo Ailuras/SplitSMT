@@ -14,13 +14,12 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (set-info :status unknown)
 
 (declare-const x String)
-(declare-const k_splits_4023 Int)
+(declare-const part_0_4931 String)
 (assert (str.in_re x (re.+ (str.to_re "YY"))))
 (assert (> 2 (str.len x)))
-(assert (= (str.num_splits x "0") k_splits_4023))
-(assert (>= k_splits_4023 2))
-(assert (> k_splits_4023 0))
-(assert (= (str.split_at x "0" 0) x))
+(assert (= (str.split_at x ":" 1) part_0_4931))
+(assert (= (str.len part_0_4931) 7))
+(assert (= (str.split_at x ":" 0) "9ltjvuz"))
 (check-sat)
 
 (exit)

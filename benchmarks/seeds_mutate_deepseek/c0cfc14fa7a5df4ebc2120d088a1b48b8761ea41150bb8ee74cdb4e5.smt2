@@ -16,22 +16,17 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (= (ite (not (= (str.at s 2) (str.at s 3))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 6))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 4))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (not (= (str.at s 4) (str.at s 6))) 1 0) 0)))) (not (= (ite (not (= (str.at s 4) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 5) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const split_pos_3 String)
-(declare-const split_pos_4 String)
-(assert (= (str.split_at s 3) split_pos_3))
-(assert (= (str.split_at s 4) split_pos_4))
-(assert (not (= split_pos_3 split_pos_4)))
-(assert (= (str.len split_pos_3) 3))
-(assert (= (str.len split_pos_4) 4))
-(declare-const num_repeated_chars Int)
-(assert (= (str.num_splits s (str.at s 3)) num_repeated_chars))
-(assert (>= num_repeated_chars 2))
-(declare-const first_part String)
-(declare-const last_part String)
-(assert (= (str.split_at s (str.indexof s (str.at s 3))) first_part))
-(assert (= (str.split_at s (+ (str.indexof s (str.at s 3)) 1)) last_part))
-(assert (> (str.len first_part) 0))
-(assert (> (str.len last_part) 0))
+(declare-const prefix_s String)
+(declare-const suffix_s String)
+; Split at position 3 (since we see comparisons involving positions 2,3,4)
+(assert (= (str.split_at s 3) (str.++ prefix_s suffix_s)))
+(assert (= (str.len prefix_s) 3))
+; Split into parts based on the repeated comparisons at positions 3,4,5,6
+(declare-const part1 String)
+(declare-const part2 String)
+(assert (= (str.split_at s 4) (str.++ part1 part2)))
+(assert (not (= (str.at part1 3) (str.at part2 1)))) ; From original (not (= (str.at s 3) (str.at s 5)))
+(assert (not (= (str.at part2 0) (str.at part2 2)))) ; From original (not (= (str.at s 4) (str.at s 6)))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

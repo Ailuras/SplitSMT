@@ -21,17 +21,15 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= x "ccccbbbbaaaa"))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_c_segments Int)
-(declare-const first_c_segment String)
-(declare-const last_a_segment String)
-(assert (= (str.num_splits x "c") num_c_segments))
-(assert (= num_c_segments 5))
-(assert (= (str.split_at x "c" 0) first_c_segment))
-(assert (= (str.split_at x "a" 3) last_a_segment))
-(assert (str.prefix first_c_segment ""))
-(assert (str.suffix last_a_segment "a"))
-(assert (= (str.len first_c_segment) 0))
-(assert (= (str.len last_a_segment) 1))
+(declare-const prefix_of_x String)
+(declare-const middle_of_x String)
+(declare-const suffix_of_x String)
+(assert (= (str.split_at x "b" 0) prefix_of_x))
+(assert (= (str.split_at x "b" 1) middle_of_x))
+(assert (= (str.split_at x "b" 2) suffix_of_x))
+(assert (= prefix_of_x "cccc"))
+(assert (= middle_of_x "b"))
+(assert (= suffix_of_x "bbbaaaa"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -13,15 +13,11 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 (declare-fun s () String)
 (declare-fun p () String)
-(declare-const k_splits_3221 Int)
 
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (> (str.len s) 10) 1 0) 0)))) (not (= (ite (= (str.len p) 7) 1 0) 0))) (not (= (ite (= (- (+ (- (+ (- (+ (- (- (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 0) 1 0) 0))) (not (= (ite (> (str.len s) 9) 1 0) 0))) (not (= (ite (= (str.len p) 7) 1 0) 0))) (not (= (ite (= (- (+ (- (+ (- (- (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 1) 0) 1 0) 0))) (not (= (ite (> (str.len s) 8) 1 0) 0))) (not (= (ite (= (str.len p) 7) 1 0) 0))) (not (= (ite (= (- (+ (- (- (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 1) 1) 1) 1) 0) 1 0) 0))) (not (= (ite (> (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len p) 7) 1 0) 0))) (not (= (ite (= (- (- (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 1) 1) 0) 1 0) 0))) (not (= (ite (> (str.len s) 6) 1 0) 0))) (not (not (= (ite (= (str.len p) 6) 1 0) 0)))) (not (not (= (ite (= (- (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 5) 1 0) 0))) (not (not (= (ite (= (str.len p) 5) 1 0) 0)))) (not (not (= (ite (= (- (- (- (- (- (str.len p) 1) 1) 1) 1) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (not (= (ite (= (str.len p) 4) 1 0) 0)))) (not (not (= (ite (= (- (- (- (- (str.len p) 1) 1) 1) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (not (= (ite (= (str.len p) 3) 1 0) 0)))) (not (not (= (ite (= (- (- (- (str.len p) 1) 1) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (str.len p) 2) 1 0) 0)))) (not (not (= (ite (= (- (- (str.len p) 1) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (not (= (ite (= (str.len p) 1) 1 0) 0)))) (not (not (= (ite (= (- (str.len p) 1) 0) 1 0) 0)))) (not (= (ite (> (str.len s) 0) 1 0) 0))) (not (not (= (ite (= (str.len p) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
 
-(assert (= (str.num_splits p ",") k_splits_3221))
-(assert (<= k_splits_3221 8))
-(assert (<= k_splits_3221 9))
-(assert (> k_splits_3221 0))
-(assert (= (str.split_at p "," 0) s))
+(assert (= (str.split_at p "/" 0) "7vk2"))
+(assert (= (str.split_at p "/" 1) p))
 (check-sat)
 
 (exit)

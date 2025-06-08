@@ -14,14 +14,10 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (set-info :status unknown)
 
 (declare-const x String)
-(declare-const k_splits_4593 Int)
 (assert (= (str.len x) 16))
 (assert (str.in_re x (re.* (str.to_re "yyffDD"))))
 (assert (str.in_re x (re.* (str.to_re "yyDDvv''\\\\rr''"))))
-(assert (= (str.num_splits x ".") k_splits_4593))
-(assert (= k_splits_4593 4))
-(assert (> k_splits_4593 2))
-(assert (= (str.split_at x "." 2) x))
+(assert (= (str.split_at x "-" 1) x))
 (check-sat)
 
 (exit)

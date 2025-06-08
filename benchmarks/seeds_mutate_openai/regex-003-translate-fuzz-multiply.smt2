@@ -18,17 +18,13 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (str.in_re x (re.+ (re.union (str.to_re "}}00ww''' '' ''',,ccqq44<<++SS99SS..") (str.to_re "\\\\\\\\((")))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_backslash_parts Int)
-(declare-const first_backslash_segment String)
-(declare-const second_backslash_segment String)
-(assert (= (str.num_splits x "\\") num_backslash_parts))
-(assert (>= num_backslash_parts 4))
-(assert (= (str.split_at x "\\" 1) first_backslash_segment))
-(assert (= (str.split_at x "\\" 2) second_backslash_segment))
-(assert (> (str.len first_backslash_segment) 0))
-(assert (> (str.len second_backslash_segment) 0))
-(assert (str.in_re first_backslash_segment (re.+ (str.to_re "NN''00||++||''"))))
-(assert (str.in_re second_backslash_segment (re.+ (str.to_re "rr''``SS!!<<11"))))
+(declare-const split_part_1 String)
+(declare-const split_part_2 String)
+(assert (= (str.split_at x "NN" 0) split_part_1))
+(assert (= (str.split_at x "NN" 1) split_part_2))
+(assert (> (str.len split_part_1) 0))
+(assert (> (str.len split_part_2) 0))
+(assert (str.in_re split_part_2 (re.+ (re.union (str.to_re "}}00ww''' '' ''',,ccqq44<<++SS99SS..") (str.to_re "\\\\\\\\((")))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

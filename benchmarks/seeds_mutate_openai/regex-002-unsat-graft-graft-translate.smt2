@@ -19,15 +19,12 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (str.in_re x (str.to_re ")AU")))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_bracket_splits Int)
-(declare-const bracket_part String)
-(assert (= (str.num_splits x "[") num_bracket_splits))
-(assert (= num_bracket_splits 10))
-(assert (= (str.split_at x "[" 0) bracket_part))
-(assert (str.in_re bracket_part (str.to_re "")))
-(declare-const num_AU_splits Int)
-(assert (= (str.num_splits x "AU") num_AU_splits))
-(assert (>= num_AU_splits 1))
+(declare-const prefix_of_x String)
+(declare-const suffix_of_x String)
+(assert (= (str.split_at x "[" 0) prefix_of_x))
+(assert (= (str.split_at x "[" 1) suffix_of_x))
+(assert (= prefix_of_x ""))
+(assert (= suffix_of_x "[[[[[[[[["))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

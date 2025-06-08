@@ -19,17 +19,14 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= 8 (str.to_int x)))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_colon_segments Int)
-(declare-const first_colon_segment String)
-(declare-const second_colon_segment String)
-(assert (= (str.num_splits x ":") num_colon_segments))
-(assert (>= num_colon_segments 2))
-(assert (= (str.split_at x ":" 0) first_colon_segment))
-(assert (= (str.split_at x ":" 1) second_colon_segment))
-(assert (> (str.len first_colon_segment) 0))
-(assert (> (str.len second_colon_segment) 0))
-(assert (str.in_re first_colon_segment (re.* (str.to_re "C"))))
-(assert (str.in_re second_colon_segment (re.* (str.to_re "w"))))
+(declare-const segment_before_O String)
+(declare-const segment_after_O String)
+(assert (= (str.split_at x "O" 0) segment_before_O))
+(assert (= (str.split_at x "O" 1) segment_after_O))
+(assert (> (str.len segment_before_O) 0))
+(assert (> (str.len segment_after_O) 0))
+(assert (str.in_re segment_before_O (re.* (str.to_re "C"))))
+(assert (str.in_re segment_after_O (re.* (str.to_re "w"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

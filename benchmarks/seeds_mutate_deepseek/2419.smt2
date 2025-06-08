@@ -246,18 +246,18 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dash_splits Int)
-(declare-const first_part String)
-(declare-const second_part String)
-(assert (= (str.num_splits s "-") num_dash_splits))
-(assert (<= num_dash_splits 2))
-(assert (=> (>= num_dash_splits 1) (= (str.split_at s "-" 0) first_part)))
-(assert (=> (>= num_dash_splits 2) (= (str.split_at s "-" 1) second_part)))
-(assert (=> (>= num_dash_splits 1) (> (str.len first_part) 0)))
-(assert (=> (>= num_dash_splits 2) (> (str.len second_part) 0)))
-(declare-const num_dot_splits Int)
-(assert (=> (>= num_dash_splits 2) (= (str.num_splits second_part ".") num_dot_splits)))
-(assert (=> (>= num_dash_splits 2) (<= num_dot_splits 3)))
+(declare-const prefix_part String)
+(declare-const middle_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at s 2 0) prefix_part))
+(assert (= (str.split_at s 2 1) middle_part))
+(assert (> (str.len prefix_part) 0))
+(assert (> (str.len middle_part) 0))
+(assert (str.in_re prefix_part (re.+ (re.range "0" "9"))))
+(assert (str.in_re middle_part (re.+ (re.range "0" "9"))))
+(assert (= (str.split_at middle_part 1 0) suffix_part))
+(assert (> (str.len suffix_part) 0))
+(assert (str.in_re suffix_part (re.+ (re.range "0" "9"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

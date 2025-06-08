@@ -22,17 +22,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_e_segments Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits var_0xINPUT_468363 "e") num_e_segments))
-(assert (= num_e_segments 2))
-(assert (= (str.split_at var_0xINPUT_468363 "e" 0) first_segment))
-(assert (= (str.split_at var_0xINPUT_468363 "e" 1) second_segment))
-(assert (> (str.len first_segment) 0))
-(assert (> (str.len second_segment) 0))
-(assert (str.prefix first_segment "Typ"))
-(assert (str.suffix second_segment "e"))
+(declare-const prefix String)
+(declare-const suffix String)
+(assert (= (str.split_at var_0xINPUT_468363 "T" 1) suffix))
+(assert (= (str.split_at var_0xINPUT_468363 "T" 0) prefix))
+(assert (= prefix ""))
+(assert (= suffix "ype"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

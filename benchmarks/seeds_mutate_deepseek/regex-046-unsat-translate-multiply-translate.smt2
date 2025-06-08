@@ -18,12 +18,14 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (> 2 (str.len x)))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_splits Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits x "Y") num_splits))
-(assert (= (str.split_at x "Y" 0) first_segment))
-(assert (str.in_re first_segment (re.* (str.to_re "Y"))))
+(declare-const first_Y String)
+(declare-const second_Y String)
+(= (str.split_at x "Y" 0) first_Y)
+(= (str.split_at x "Y" 1) second_Y)
+(assert (<= (str.len first_Y) 1))
+(assert (<= (str.len second_Y) 1))
+(assert (str.in_re first_Y (re.opt (str.to_re "Y"))))
+(assert (str.in_re second_Y (re.opt (str.to_re "Y"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

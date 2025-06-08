@@ -462,18 +462,15 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dashes Int)
-(declare-const num_digits Int)
-(declare-const first_part String)
-(declare-const second_part String)
-(assert (= (str.num_splits s "-") num_dashes))
-(assert (<= num_dashes 3))
-(assert (= (str.num_splits s (str.++ (str.from_int 1) (str.from_int 1))) num_digits))
-(assert (>= num_digits 4))
-(assert (= (str.split_at s "-" 0) first_part))
-(assert (= (str.split_at s "-" 1) second_part))
-(assert (str.in_re first_part (re.+ (re.range "0" "9"))))
-(assert (str.in_re second_part (re.+ (re.range "0" "9"))))
+(declare-const prefix_part String)
+(declare-const middle_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at s (str.at s (str.len s)) 0) prefix_part))
+(assert (= (str.split_at s (str.at s (str.len s)) 1) suffix_part))
+(assert (> (str.len prefix_part) 0))
+(assert (> (str.len suffix_part) 0))
+(assert (str.in_re prefix_part (re.+ (re.range "0" "9"))))
+(assert (str.in_re suffix_part (re.+ (re.range "0" "9"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

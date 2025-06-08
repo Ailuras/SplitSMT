@@ -220,19 +220,21 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dashes_in_s Int)
 (declare-const first_part String)
 (declare-const second_part String)
-(assert (= (str.num_splits s "-") num_dashes_in_s))
-(assert (or (= num_dashes_in_s 0) (= num_dashes_in_s 1)))
-(assert (=> (> num_dashes_in_s 0)
-(= (str.split_at s "-" 0) first_part)
-(= (str.split_at s "-" 1) second_part)
-(> (str.len first_part) 0)
-(> (str.len second_part) 0)
-(declare-const num_dots_in_s Int)
-(assert (= (str.num_splits s ".") num_dots_in_s))
-(assert (<= num_dots_in_s 3))
+(assert (= (str.split_at s "-" 0) first_part))
+(assert (= (str.split_at s "-" 1) second_part))
+(assert (or (> (str.len first_part) 0) (> (str.len second_part) 0)))
+(declare-const numeric_part String)
+(assert (= (str.split_at s (str.from_int (str.to_int (str.substr s 0 1))) 0) numeric_part))
+(assert (str.in_re numeric_part (re.* (re.range "0" "9"))))
+(declare-const first_digit String)
+(declare-const rest_digits String)
+(assert (= (str.split_at s (str.at s 0) 0) first_digit))
+(assert (= (str.split_at s (str.at s 0) 1) rest_digits))
+(assert (> (str.len first_digit) 0))
+(assert (str.in_re first_digit (re.range "1" "9")))
+(assert (str.in_re rest_digits (re.* (re.range "0" "9"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

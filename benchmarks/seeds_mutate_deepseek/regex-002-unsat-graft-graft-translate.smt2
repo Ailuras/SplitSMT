@@ -19,16 +19,18 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (str.in_re x (str.to_re ")AU")))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_open_brackets Int)
-(assert (= (str.num_splits x "[[") num_open_brackets))
-(declare-const first_bracket_segment String)
-(assert (= (str.split_at x "[[" 0) first_bracket_segment))
-(assert (str.contains first_bracket_segment "["))
-(declare-const num_close_brackets Int)
-(assert (= (str.num_splits x "]]") num_close_brackets))
-(declare-const au_segment String)
-(assert (= (str.split_at y ")AU" 1) au_segment))
-(assert (str.in_re au_segment (re.* re.allchar)))
+(declare-const x_prefix String)
+(declare-const x_suffix String)
+(assert (= (str.split_at x ")" 0) x_prefix))
+(assert (= (str.split_at x ")" 1) x_suffix))
+(assert (or (= x_prefix "") (str.in_re x_prefix (str.to_re "["))))
+(assert (or (= x_suffix "") (str.in_re x_suffix (str.to_re "AU"))))
+(declare-const x_first_part String)
+(declare-const x_second_part String)
+(assert (= (str.split_at x "AU" 0) x_first_part))
+(assert (= (str.split_at x "AU" 1) x_second_part))
+(assert (= x_first_part "[[[[[[[[["))
+(assert (= x_second_part ""))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

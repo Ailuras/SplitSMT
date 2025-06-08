@@ -178,19 +178,20 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_digits Int)
 (declare-const first_digit String)
 (declare-const remaining_digits String)
-(assert (= (str.num_splits s "") num_digits))
-(assert (> num_digits 1))
-(assert (= (str.split_at s "" 0) first_digit))
-(assert (= (str.split_at s "" 1) remaining_digits))
-(assert (= (str.len first_digit) 1))
-(assert (str.in_re first_digit (re.range "0" "9")))
-(assert (str.in_re remaining_digits (re.* (re.range "0" "9"))))
+(declare-const mid_digit String)
+(assert (= (str.split_at s "0" 0) first_digit))
+(assert (= (str.split_at s "0" 1) remaining_digits))
+(assert (= (str.split_at s "1" 0) mid_digit))
+(assert (> (str.len first_digit) 0))
 (assert (> (str.len remaining_digits) 0))
-(assert (<= (str.len s) 12))
-(assert (> (str.len s) 0))
+(assert (> (str.len mid_digit) 0))
+(assert (str.in_re first_digit (re.+ (re.range "0" "9"))))
+(assert (str.in_re remaining_digits (re.* (re.range "0" "9"))))
+(assert (str.in_re mid_digit (re.range "0" "9")))
+(assert (not (str.prefixof "0" remaining_digits)))
+(assert (not (str.suffixof "0" first_digit)))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

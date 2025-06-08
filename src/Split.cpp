@@ -263,11 +263,7 @@ void splitSolver::addEquivalenceConstraints(Context& ctx, const Division& divisi
 void splitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Adding auxiliary nodes for variable splits");
     
-    splitAtAtoms.clear();
-    auto assertions = ctx.getAssertions();
-    for (auto& assertion : assertions) {
-        findSplitAtAtoms(assertion, splitAtAtoms);
-    }
+    splitAtAtoms = ctx.getSplitAtVarNodes();
     
     auto divisions = ctx.getAllDivisions();
     
@@ -284,22 +280,7 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Completed adding auxiliary nodes for ", divisions.size(), " divisions");
 }
 
-void splitSolver::findSplitAtAtoms(const SMTParser::NodePtr& node, std::vector<SMTParser::NodePtr>& atoms) {
-    if (!node) return;
-    
-    if (node->isStrSplitAt() && node->getChildrenSize() >= 3) {
-        auto arg1 = node->getChild(0);
-        auto arg2 = node->getChild(1);
-        if (arg1->isVar() && arg2->isConst()) {
-            atoms.push_back(node);
-            DEBUG("Found split_at atom: ", node->toString());
-        }
-    }
-    
-    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
-        findSplitAtAtoms(node->getChild(i), atoms);
-    }
-}
+
 
 void splitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
@@ -322,7 +303,8 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                         auto arg2 = splitAtom->getChild(1);
                         auto arg3 = splitAtom->getChild(2);
                         
-                        if (arg1->toString() == variable && 
+                        if (arg1->isVar() && arg2->isConst() &&
+                            arg1->toString() == variable && 
                             cleanQuotes(arg2->toString()) == delimiter) {
                             
                             int index = std::stoi(arg3->toString());
@@ -395,7 +377,16 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
         } else if (line == ")" && modelStarted) {
             filteredModel << line;
         } else if (line.find("(define-fun") != std::string::npos) {
-            if (line.find("_split_") == std::string::npos) {
+            bool isAuxiliaryVar = false;
+            
+            if (line.find("_split_") != std::string::npos ||
+                line.find("_split ") != std::string::npos ||
+                line.find("_last ") != std::string::npos ||
+                line.find("b_") != std::string::npos) {
+                isAuxiliaryVar = true;
+            }
+            
+            if (!isAuxiliaryVar) {
                 inFilteredFunction = true;
                 filteredModel << line << "\n";
                 parenCount = 1;

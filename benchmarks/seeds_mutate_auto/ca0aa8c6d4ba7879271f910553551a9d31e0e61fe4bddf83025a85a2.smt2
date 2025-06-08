@@ -12,17 +12,10 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (set-info :status unknown)
 
 (declare-fun s () String)
-(declare-const k_splits_9778 Int)
 
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at s 3) (str.at s 4)) 1 0) 0)))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (not (= (ite (= (str.at s 2) (str.at s 4)) 1 0) 0)))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (= (ite (= (str.at s 3) (str.at s 3)) 1 0) 0))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (not (= (ite (= (str.at s 2) (str.at s 3)) 1 0) 0)))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at s 4)) 1 0) 0))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at s 3)) 1 0) 0))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (= (ite (= (str.at s 2) (str.at s 2)) 1 0) 0))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (str.at s 1) (str.at s 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (str.at s 0) (str.at s 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at s 1)) 1 0) 0))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (not (= (ite (= (str.at s 0) (str.at s 1)) 1 0) 0)))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at s 0)) 1 0) 0))) (not (= (ite (> (str.len s) 0) 1 0) 0))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (<= (+ (str.len s) 1) 0) 1 0) 0)))))
 
-(assert (= (str.num_splits s "_") k_splits_9778))
-(assert (>= k_splits_9778 1))
-(assert (<= k_splits_9778 6))
-(assert (> k_splits_9778 2))
-(assert (= (str.split_at s "_" 2) s))
-(assert (> k_splits_9778 2))
-(assert (= (str.split_at s "_" 2) s))
+(assert (= (str.split_at s ":" 1) "krw"))
 (check-sat)
 
 (exit)

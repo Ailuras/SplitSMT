@@ -22,18 +22,13 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (not (= x "[[[[zz")))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_bracket_segments Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits x "[[") num_bracket_segments))
-(assert (>= num_bracket_segments 2))
-(assert (= (str.split_at x "[[" 0) first_segment))
-(assert (= (str.split_at x "[[" 1) second_segment))
-(assert (str.in_re first_segment (re.* (str.to_re "zz"))))
-(assert (str.in_re second_segment (re.* (str.to_re "zz"))))
-(declare-const num_z_segments Int)
-(assert (= (str.num_splits x "zz") num_z_segments))
-(assert (< num_z_segments 4))
+(declare-const pre_segment String)
+(declare-const post_segment String)
+(assert (= (str.split_at x "zz" 0) pre_segment))
+(assert (= (str.split_at x "zz" 1) post_segment))
+(assert (> (str.len pre_segment) 0))
+(assert (str.in_re pre_segment (re.* (str.to_re "["))))
+(assert (str.in_re post_segment (re.* (str.to_re "["))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

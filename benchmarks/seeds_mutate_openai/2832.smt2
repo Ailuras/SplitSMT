@@ -238,17 +238,12 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_hyphen_parts Int)
-(declare-const leading_part String)
-(declare-const trailing_part String)
-(assert (= (str.num_splits s "-") num_hyphen_parts))
-(assert (>= num_hyphen_parts 2))
-(assert (= (str.split_at s "-" 0) leading_part))
-(assert (= (str.split_at s "-" 1) trailing_part))
-(assert (> (str.len leading_part) 0))
-(assert (> (str.len trailing_part) 0))
-(assert (str.in_re leading_part (re.+ (re.range "0" "9"))))
-(assert (str.in_re trailing_part (re.+ (re.range "0" "9"))))
+(declare-const first_char String)
+(declare-const rest_of_s String)
+(assert (= (str.split_at s 1) (first_char, rest_of_s)))
+(assert (str.in_re first_char (re.range "0" "9")))
+(assert (not (= first_char "0")))
+(assert (>= (str.len rest_of_s) 1))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

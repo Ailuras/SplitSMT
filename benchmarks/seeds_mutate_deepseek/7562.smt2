@@ -100,19 +100,16 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_zero_splits Int)
-(assert (= (str.num_splits s "0") num_zero_splits))
-(assert (> num_zero_splits 1))
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.split_at s "0" 0) first_segment))
-(assert (= (str.split_at s "0" 1) second_segment))
-(assert (> (str.len first_segment) 0))
-(assert (> (str.len second_segment) 0))
-(assert (not (str.contains first_segment "0")))
-(declare-const num_digit_groups Int)
-(assert (= (str.num_splits s (re.++ (re.range "1" "9") (re.* (re.range "0" "9")))) num_digit_groups))
-(assert (>= num_digit_groups 2))
+(declare-fun s_head () String)
+(declare-fun s_tail () String)
+(assert (= (str.split_at s "0" 0) s_head))
+(assert (= (str.split_at s "0" 1) s_tail))
+(assert (or (= s_head "") (str.in_re s_head (re.* (re.range "0" "9")))))
+(assert (or (= s_tail "") (str.in_re s_tail (re.* (re.range "0" "9")))))
+(assert (<= (str.len s_head) 5))
+(assert (<= (str.len s_tail) 5))
+(assert (=> (not (= s_head "")) (= (str.at s_head 0) "0")))
+(assert (=> (not (= s_tail "")) (= (str.at s_tail 0) "0")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

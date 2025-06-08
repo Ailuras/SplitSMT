@@ -21,17 +21,17 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (< (str.len x) 50))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_vvVVLLww_segments Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits x "vvVVLLww") num_vvVVLLww_segments))
-(assert (>= num_vvVVLLww_segments 2))
-(assert (= (str.split_at x "vvVVLLww" 0) first_segment))
-(assert (= (str.split_at x "vvVVLLww" 1) second_segment))
-(assert (str.in_re first_segment (re.* (str.to_re "vvVVLLww"))))
-(assert (str.in_re second_segment (re.* (str.to_re "vvVVLLww"))))
-(assert (> (str.len first_segment) 0))
-(assert (> (str.len second_segment) 0))
+(declare-const prefix_x String)
+(declare-const middle_x String)
+(declare-const suffix_x String)
+(assert (= (str.split_at x "VVLL" 0) prefix_x))
+(assert (= (str.split_at x "VVLL" 1) middle_x))
+(assert (= (str.split_at x "VVLL" 2) suffix_x))
+(assert (> (str.len prefix_x) 0))
+(assert (> (str.len middle_x) 0))
+(assert (> (str.len suffix_x) 0))
+(assert (str.in_re middle_x (re.* (str.to_re "vvVVLLww"))))
+(assert (str.in_re suffix_x (re.* (str.to_re "vvVVLLww"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

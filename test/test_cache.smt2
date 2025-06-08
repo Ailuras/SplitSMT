@@ -1,7 +1,0 @@
-(set-logic QF_S)
-(declare-const x String)
-(assert (= (str.num_splits "one;two;three;four" ";") 4))
-(assert (>= (str.num_splits "one;two;three;four" ";") 4))
-(assert (= (str.split_at "one;two;three;four" ";" 1) "two"))
-(assert (= (str.split_at "one;two;three;four" ";" 2) "three"))
-(check-sat) 

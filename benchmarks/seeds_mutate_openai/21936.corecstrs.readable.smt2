@@ -91,13 +91,13 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_1f)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_segments_in_var_input Int)
-(assert (= (str.num_splits var_0xINPUT_96392 "__utmz=16886264.") num_segments_in_var_input))
-(assert (>= num_segments_in_var_input 2))
-(declare-const split_segment_pre String)
-(declare-const split_segment_post String)
-(assert (= (str.split_at var_0xINPUT_96392 "__utmz=16886264." 0) split_segment_pre))
-(assert (= (str.split_at var_0xINPUT_96392 "__utmz=16886264." 1) split_segment_post))
+(declare-const T_split_0 String)
+(declare-const T_split_1 String)
+(assert (= (str.split_at var_0xINPUT_96392 "-" 0) T_split_0))
+(assert (= (str.split_at var_0xINPUT_96392 "-" 1) T_split_1))
+(assert (= T_split_0 ""))
+(assert (= T_split_1 (str.++ T0_5 T1_5)))
+(assert (not (str.contains T_split_1 "__utmz=16886264.")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

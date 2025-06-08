@@ -14,17 +14,13 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (declare-fun word1 () String)
 (declare-fun in1 () String)
 (declare-fun in0 () String)
-(declare-const k_splits_9028 Int)
+(declare-const part_1_1027 String)
 
 (assert (and (not (not (= (ite (= word1 in1) 1 0) 0))) (not (= (ite (= word1 in0) 1 0) 0))))
 
-(assert (= (str.num_splits in1 "-") k_splits_9028))
-(assert (= k_splits_9028 3))
-(assert (<= k_splits_9028 6))
-(assert (> k_splits_9028 1))
-(assert (= (str.split_at in1 "-" 1) "cdht"))
-(assert (> k_splits_9028 2))
-(assert (= (str.split_at in1 "-" 2) in0))
+(assert (= (str.split_at in1 ":" 0) word1))
+(assert (= (str.split_at in1 ":" 2) part_1_1027))
+(assert (= (str.len part_1_1027) 6))
 (check-sat)
 
 (exit)

@@ -16,22 +16,11 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at s 3) (str.at s 4)) 1 0) 0)))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (not (= (ite (= (str.at s 2) (str.at s 4)) 1 0) 0)))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (= (ite (= (str.at s 3) (str.at s 3)) 1 0) 0))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (not (= (ite (= (str.at s 2) (str.at s 3)) 1 0) 0)))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at s 4)) 1 0) 0))) (not (= (ite (> (str.len s) 4) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at s 3)) 1 0) 0))) (not (= (ite (> (str.len s) 3) 1 0) 0))) (not (= (ite (= (str.at s 2) (str.at s 2)) 1 0) 0))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (str.at s 1) (str.at s 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (str.at s 0) (str.at s 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at s 1)) 1 0) 0))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (not (= (ite (= (str.at s 0) (str.at s 1)) 1 0) 0)))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at s 0)) 1 0) 0))) (not (= (ite (> (str.len s) 0) 1 0) 0))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (<= (+ (str.len s) 1) 0) 1 0) 0)))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_split_a Int)
-(declare-const parts_a_0 String)
-(declare-const parts_a_1 String)
-(assert (= (str.num_splits s "a") num_split_a))
-(assert (>= num_split_a 1))
-(assert (= (str.split_at s "a" 0) parts_a_0))
-(assert (= (str.split_at s "a" 1) parts_a_1))
-(assert (or (> (str.len parts_a_0) 0) (> (str.len parts_a_1) 0)))
-(declare-const num_split_b Int)
-(declare-const parts_b_0 String)
-(declare-const parts_b_1 String)
-(assert (= (str.num_splits s "b") num_split_b))
-(assert (>= num_split_b 1))
-(assert (= (str.split_at s "b" 0) parts_b_0))
-(assert (= (str.split_at s "b" 1) parts_b_1))
-(assert (or (> (str.len parts_b_0) 0) (> (str.len parts_b_1) 0)))
+(declare-const part1 String)
+(declare-const part2 String)
+(assert (= (str.split_at s "a" 1) part2))
+(assert (> (str.len part1) 0))
+(assert (> (str.len part2) 0))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

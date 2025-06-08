@@ -31,15 +31,18 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_splits_var_0xINPUT_15379 Int)
-(declare-const split_first_part String)
-(declare-const split_second_part String)
-(assert (= (str.num_splits var_0xINPUT_15379 "__gads=") num_splits_var_0xINPUT_15379))
-(assert (>= num_splits_var_0xINPUT_15379 1))
-(assert (= (str.split_at var_0xINPUT_15379 "__gads=" 0) split_first_part))
-(assert (= (str.len split_second_part) (str.len T5_2)))
-(assert (= split_second_part T5_2))
-(assert (str.in_re split_first_part (re.* (re.complement (str.to_re "_")))))
+(declare-const prefix_T4_2 String)
+(declare-const suffix_T4_2 String)
+(assert (= (str.split_at T4_2 "=" 0) prefix_T4_2))
+(assert (= (str.split_at T4_2 "=" 1) suffix_T4_2))
+(assert (not (str.contains prefix_T4_2 "__gads")))
+(assert (> (str.len suffix_T4_2) 0))
+(declare-const first_part_T1_2 String)
+(declare-const second_part_T1_2 String)
+(assert (= (str.split_at T1_2 "_" 0) first_part_T1_2))
+(assert (= (str.split_at T1_2 "_" 1) second_part_T1_2))
+(assert (not (str.contains first_part_T1_2 "__gads=")))
+(assert (> (str.len second_part_T1_2) 0))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

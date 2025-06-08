@@ -22,15 +22,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_substrings Int)
-(declare-const first_substring String)
-(declare-const last_substring String)
-(assert (= (str.num_splits var_0xINPUT_340186 "e") num_substrings))
-(assert (= num_substrings 3))
-(assert (= (str.split_at var_0xINPUT_340186 "e" 0) first_substring))
-(assert (= (str.split_at var_0xINPUT_340186 "e" 2) last_substring))
-(assert (= first_substring "S"))
-(assert (= last_substring "rch"))
+(declare-const first_part String)
+(declare-const second_part String)
+(assert (= (str.split_at var_0xINPUT_340186 "e" 0) first_part))
+(assert (= (str.split_at var_0xINPUT_340186 "e" 1) second_part))
+(assert (= first_part "S"))
+(assert (= second_part "arch"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

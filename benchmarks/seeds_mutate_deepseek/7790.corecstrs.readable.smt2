@@ -23,18 +23,16 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_underscore_parts Int)
-(declare-const first_part String)
-(assert (= (str.num_splits var_0xINPUT_201252 "_") num_underscore_parts))
-(assert (>= num_underscore_parts 1))
-(assert (= (str.split_at var_0xINPUT_201252 "_" 0) first_part))
-(assert (>= (str.len first_part) 0))
-(declare-const num_space_parts Int)
-(assert (= (str.num_splits var_0xINPUT_201252 " ") num_space_parts))
-(assert (= num_space_parts 1))
-(declare-const array_parts Int)
-(assert (= (str.num_splits var_0xINPUT_201252 "array") array_parts))
-(assert (or (= array_parts 1) (= array_parts 2)))
+(declare-const input_prefix String)
+(declare-const input_suffix String)
+(assert (= (str.split_at var_0xINPUT_201252 "a" 0) input_prefix))
+(assert (= (str.split_at var_0xINPUT_201252 "a" 1) input_suffix))
+(assert (or (= input_prefix "") (str.contains input_prefix "a")))
+(assert (or (= input_suffix "") (str.contains input_suffix "a")))
+(assert (=> (not (= var_0xINPUT_201252 "array"))
+(not (= input_prefix "array"))))
+(assert (=> (str.prefixof "ar" var_0xINPUT_201252)
+(= (str.len input_prefix) 1)))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -20,14 +20,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_1)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_colon_splits Int)
-(declare-const first_part_before_colon String)
-(assert (= (str.num_splits var_0xINPUT_47381 ":") num_colon_splits))
-(assert (=> (> num_colon_splits 0)
-(= (str.split_at var_0xINPUT_47381 ":" 0) first_part_before_colon)))
-(assert (=> (> num_colon_splits 0)
-(not (= first_part_before_colon "file"))))
-(assert (str.contains var_0xINPUT_47381 (str.++ ":" (str.++ "/" "/"))))
+(declare-const protocol_part String)
+(declare-const rest_part String)
+(assert (= (str.split_at var_0xINPUT_47381 ":" 0) protocol_part))
+(assert (= (str.split_at var_0xINPUT_47381 ":" 1) rest_part))
+(assert (or (not (= protocol_part "file")) (str.contains rest_part "/")))
+(assert (=> (str.prefix var_0xINPUT_47381 "file:") (not (= rest_part ""))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

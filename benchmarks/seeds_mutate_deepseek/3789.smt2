@@ -262,21 +262,14 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dash_splits Int)
-(declare-const before_dash String)
-(declare-const after_dash String)
-(assert (= (str.num_splits s "-") num_dash_splits))
-(assert (<= num_dash_splits 3))
-(assert (= (str.split_at s "-" 0) before_dash))
-(assert (= (str.split_at s "-" 1) after_dash))
-(assert (=> (> num_dash_splits 0) (> (str.len before_dash) 0)))
-(assert (=> (> num_dash_splits 1) (> (str.len after_dash) 0)))
-(declare-const num_dot_splits Int)
-(assert (= (str.num_splits s ".") num_dot_splits))
-(assert (<= num_dot_splits 2))
-(declare-const digit_segments Int)
-(assert (= (str.num_splits s (re.range "0" "9")) digit_segments))
-(assert (>= digit_segments (str.len s)))
+(declare-const first_part_s String)
+(declare-const second_part_s String)
+(assert (= (str.split_at s (str.substr s ( + 1 1 ) ( - ( + ( + 1 1 ) ( + 1 1 ) ) ( + 1 1 ) )) 0) first_part_s))
+(assert (= (str.split_at s (str.substr s ( + 1 1 ) ( - ( + ( + 1 1 ) ( + 1 1 ) ) ( + 1 1 ) )) 1) second_part_s))
+(assert (> (str.len first_part_s) 0))
+(assert (> (str.len second_part_s) 0))
+(assert (str.in_re first_part_s (re.+ (re.range "0" "9"))))
+(assert (str.in_re second_part_s (re.+ (re.range "0" "9"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

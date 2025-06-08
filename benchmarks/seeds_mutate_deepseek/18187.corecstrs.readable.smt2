@@ -70,20 +70,34 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_b)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const utma_parts Int)
-(declare-const utma_before String)
-(declare-const utma_after String)
-(assert (= (str.num_splits var_0xINPUT_35104 "__utma=") utma_parts))
-(assert (>= utma_parts 1))
-(assert (= (str.split_at var_0xINPUT_35104 "__utma=" 0) utma_before))
-(assert (= (str.split_at var_0xINPUT_35104 "__utma=" 1) utma_after))
-(assert (or (not (= utma_parts 1)) (str.contains utma_after ";")))
-(declare-const utmb_parts Int)
-(assert (= (str.num_splits var_0xINPUT_35104 "__utmb=") utmb_parts))
-(assert (>= utmb_parts 1))
-(declare-const cookie_segments Int)
-(assert (= (str.num_splits var_0xINPUT_35104 ";") cookie_segments))
-(assert (>= cookie_segments 1))
+(declare-const utma_part String)
+(declare-const post_utma_part String)
+(declare-const utmb_part String)
+(declare-const post_utmb_part String)
+(declare-const utmc_part String)
+(declare-const post_utmc_part String)
+; Split on UTMA cookie if present
+(assert (or (not (= PCTEMP_LHS_1 (- 1)))
+(and (= (str.split_at var_0xINPUT_35104 "__utma=" 0) utma_part)
+(= (str.split_at var_0xINPUT_35104 "__utma=" 1) post_utma_part)
+(str.contains post_utma_part "."))))
+; Split on UTMB cookie if present
+(assert (or (not (= PCTEMP_LHS_2 (- 1)))
+(and (= (str.split_at var_0xINPUT_35104 "__utmb=" 0) utmb_part)
+(= (str.split_at var_0xINPUT_35104 "__utmb=" 1) post_utmb_part)
+(not (str.contains post_utmb_part ".")))))
+; Split on UTMC cookie if present
+(assert (or (not (= PCTEMP_LHS_3 (- 1)))
+(and (= (str.split_at var_0xINPUT_35104 "__utmc=" 0) utmc_part)
+(= (str.split_at var_0xINPUT_35104 "__utmc=" 1) post_utmc_part)
+(not (str.contains post_utmc_part ".")))))
+; Validate cookie value formats
+(assert (=> (not (= PCTEMP_LHS_1 (- 1)))
+(and (str.in_re post_utma_part (re.++ (re.* (re.range "0" "9")) (str.to_re ".") (re.* (re.range "0" "9"))))))
+(assert (=> (not (= PCTEMP_LHS_2 (- 1)))
+(str.in_re post_utmb_part (re.* (re.range "0" "9"))))
+(assert (=> (not (= PCTEMP_LHS_3 (- 1)))
+(str.in_re post_utmc_part (re.* (re.range "0" "9"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -21,18 +21,14 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= x "ccccbbbbaaaa"))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_aaaa_splits Int)
-(declare-const before_aaaa String)
-(assert (= (str.num_splits x "aaaa") num_aaaa_splits))
-(assert (>= num_aaaa_splits 1))
-(assert (= (str.split_at x "aaaa" 0) before_aaaa))
-(assert (str.in_re before_aaaa (re.* (re.union (str.to_re "c") (str.to_re "b")))))
-(declare-const num_bbbb_splits Int)
-(declare-const after_bbbb String)
-(assert (= (str.num_splits x "bbbb") num_bbbb_splits))
-(assert (>= num_bbbb_splits 1))
-(assert (= (str.split_at x "bbbb" 1) after_bbbb))
-(assert (str.in_re after_bbbb (re.* (str.to_re "aaaa"))))
+(declare-const x_prefix String)
+(declare-const x_suffix String)
+(assert (= (str.split_at x "bbbb" 0) x_prefix))
+(assert (= (str.split_at x "bbbb" 1) x_suffix))
+(assert (= x_prefix "cccc"))
+(assert (= x_suffix "aaaa"))
+(assert (not (str.in_re x_prefix (str.to_re "aaaa"))))
+(assert (not (str.in_re x_suffix (str.to_re "cccc"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

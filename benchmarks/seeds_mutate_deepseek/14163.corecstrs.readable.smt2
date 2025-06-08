@@ -20,16 +20,10 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_1)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_underscores Int)
-(assert (= (str.num_splits var_0xINPUT_147214 "_") num_underscores))
-(declare-const before_underscore String)
-(declare-const after_underscore String)
-(assert (= (str.split_at var_0xINPUT_147214 "_" 0) before_underscore))
-(assert (= (str.split_at var_0xINPUT_147214 "_" 1) after_underscore))
-(assert (> (str.len before_underscore) 0))
-(assert (str.contains after_underscore "INPUT"))
-(declare-const search_parts Int)
-(assert (= (str.num_splits var_0xINPUT_147214 "Search") search_parts))
+(declare-fun prefix_part () String)
+(declare-fun suffix_part () String)
+(assert (= (str.split_at var_0xINPUT_147214 "Search" 0) prefix_part))
+(assert (= (str.split_at var_0xINPUT_147214 "Search" 1) suffix_part))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

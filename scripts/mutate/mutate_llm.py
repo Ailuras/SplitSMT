@@ -3,7 +3,7 @@
 
 """
 SMT-LIB Multi-LLM Mutator
-This script uses various LLM providers to intelligently add split constraints to SMT-LIB files
+This script uses various LLM providers to intelligently add str.split_at constraints to SMT-LIB files
 Supports: OpenAI, Claude, DeepSeek
 """
 
@@ -257,15 +257,16 @@ class LLMMutator:
         self.provider = LLMProviderFactory.create_provider(provider, model)
         
         self.system_prompt = """You are an expert in SMT solver constraints and string operations.
-Your task is to analyze the given SMT-LIB2 file and add intelligent split constraints using str.num_splits and str.split_at functions.
+Your task is to analyze the given SMT-LIB2 file and add intelligent split constraints using str.split_at functions.
 
 Guidelines:
 1. Analyze existing string variables and constraints
-2. Add meaningful split constraints that could reveal interesting behaviors
-3. Declare necessary auxiliary variables (Int for num_splits, String for split_at results)
+2. Add meaningful str.split_at constraints that could reveal interesting behaviors
+3. Declare necessary auxiliary variables (String for split_at results)
 4. Add constraints that make logical sense with existing constraints
 5. Use delimiters that are relevant to the problem context
-6. Add validation constraints for split results
+6. Use small index values (0, 1, 2) for str.split_at
+7. Add validation constraints for split results
 
 Output format: Return ONLY the additional constraints to be inserted, one per line, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
 """
@@ -282,14 +283,14 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
 (assert (= (str.len x) 7))
 (check-sat)""",
                 "output": """; --- LLM Generated Split Constraints ---
-(declare-const num_N_segments_in_x Int)
 (declare-const first_T_segment_of_x String)
-(assert (= (str.num_splits x "N") num_N_segments_in_x))
-(assert (> num_N_segments_in_x 2))
+(declare-const second_T_segment_of_x String)
 (assert (= (str.split_at x "N" 0) first_T_segment_of_x))
+(assert (= (str.split_at x "N" 1) second_T_segment_of_x))
 (assert (> (str.len first_T_segment_of_x) 0))
+(assert (> (str.len second_T_segment_of_x) 0))
 (assert (str.in_re first_T_segment_of_x (re.+ (str.to_re "T"))))
-(assert (= (str.num_splits y ",") 1))
+(assert (str.in_re second_T_segment_of_x (re.+ (str.to_re "T"))))
 ; --- End LLM Generated Constraints ---"""
             },
             {
@@ -301,19 +302,19 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
 (assert (str.suffix email ".com"))
 (check-sat)""",
                 "output": """; --- LLM Generated Split Constraints ---
-(declare-const num_at_parts Int)
 (declare-const local_part String)
 (declare-const domain_part String)
-(assert (= (str.num_splits email "@") num_at_parts))
-(assert (= num_at_parts 2))
+(declare-const subdomain_part String)
+(declare-const tld_part String)
 (assert (= (str.split_at email "@" 0) local_part))
 (assert (= (str.split_at email "@" 1) domain_part))
 (assert (> (str.len local_part) 0))
 (assert (> (str.len domain_part) 0))
 (assert (str.suffix domain_part ".com"))
-(declare-const num_dot_parts Int)
-(assert (= (str.num_splits domain_part ".") num_dot_parts))
-(assert (>= num_dot_parts 2))
+(assert (= (str.split_at domain_part "." 0) subdomain_part))
+(assert (= (str.split_at domain_part "." 1) tld_part))
+(assert (> (str.len subdomain_part) 0))
+(assert (= tld_part "com"))
 ; --- End LLM Generated Constraints ---"""
             }
         ]
@@ -359,7 +360,7 @@ class SMTFileMutator:
     
     def has_split_functions(self, content: str) -> bool:
         """Check if the file already contains split functions"""
-        return ('str.num_splits' in content or 'str.split_at' in content)
+        return 'str.split_at' in content
     
     def find_insertion_point(self, lines: List[str]) -> int:
         """Find the best place to insert new constraints (before check-sat)"""

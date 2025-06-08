@@ -16,14 +16,9 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 
 (declare-fun T_1 () Bool)
 (declare-fun var_0xINPUT_47381 () String)
-(declare-const k_splits_5685 Int)
 (assert (= T_1 (not (= "file:" var_0xINPUT_47381))))
 (assert T_1)
-(assert (= (str.num_splits var_0xINPUT_47381 ",") k_splits_5685))
-(assert (<= k_splits_5685 5))
-(assert (>= k_splits_5685 1))
-(assert (> k_splits_5685 2))
-(assert (= (str.split_at var_0xINPUT_47381 "," 2) var_0xINPUT_47381))
+(assert (= (str.split_at var_0xINPUT_47381 "-" 2) var_0xINPUT_47381))
 (check-sat)
 
 (exit)

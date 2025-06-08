@@ -22,21 +22,13 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (> (str.len x) (str.len m)))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_splits_x Int)
-(declare-const num_splits_m Int)
-(declare-const first_part_x String)
-(declare-const first_part_m String)
-; Split constraints for x and m to analyze their relationship
-(assert (= (str.num_splits x "") num_splits_x))
-(assert (= (str.num_splits m "") num_splits_m))
-(assert (> num_splits_x num_splits_m))
-; Split at position 1 to compare initial segments
-(assert (= (str.split_at x "" 1) first_part_x))
-(assert (= (str.split_at m "" 1) first_part_m))
-(assert (not (= first_part_x first_part_m)))
-; Validate the empty string split results
-(assert (>= (str.len first_part_x) 1))
-(assert (>= (str.len first_part_m) 1))
+(declare-const x_prefix String)
+(declare-const x_suffix String)
+(declare-const m_prefix String)
+(declare-const m_suffix String)
+(assert (= (str.split_at x "a" 1) x_suffix))
+(assert (= (str.split_at m "a" 1) m_suffix))
+(assert (=> (and (str.contains x "a") (str.contains m "a"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

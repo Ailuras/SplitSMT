@@ -16,14 +16,8 @@ Publications: "Scaling Up DPLL(T) String Solvers Using Context-Dependent Simplif
 
 (declare-fun key2 () String)
 (declare-fun value2 () String)
-(declare-const k_splits_1283 Int)
-(declare-const part_0_9099 String)
 (assert (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.len (str.substr value2 1 (- (str.len value2) 1))) 0) 1 0) 0)))) (not (= (ite (= (str.at value2 0) " ") 1 0) 0))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= (str.indexof value2 "=" 0) (- 1)) 1 0) 0))) (not (not (= (ite (not (= (str.indexof value2 "=" 0) (- 1))) 1 0) 0)))) (not (not (= (ite (str.contains value2 ",") 1 0) 0)))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (>= 1 0)) (>= (- (str.len value2) 1) 0)))
-(assert (= (str.num_splits value2 ";") k_splits_1283))
-(assert (>= k_splits_1283 2))
-(assert (> k_splits_1283 1))
-(assert (= (str.split_at value2 ";" 1) part_0_9099))
-(assert (= (str.len part_0_9099) 6))
+(assert (= (str.split_at key2 "_" 1) "x8fiel"))
 (check-sat)
 
 (exit)

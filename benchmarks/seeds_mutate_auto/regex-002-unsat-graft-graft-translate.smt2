@@ -15,16 +15,10 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 
 (declare-const x String)
 (declare-const y String)
-(declare-const k_splits_4760 Int)
 (assert (= x "[[[[[[[[["))
 (assert (str.in_re x (str.to_re ")AU")))
-(assert (= (str.num_splits y "|") k_splits_4760))
-(assert (= k_splits_4760 3))
-(assert (<= k_splits_4760 10))
-(assert (> k_splits_4760 2))
-(assert (= (str.split_at y "|" 2) x))
-(assert (> k_splits_4760 1))
-(assert (= (str.split_at y "|" 1) "2cut7"))
+(assert (= (str.split_at x ":" 2) "0t9f28m"))
+(assert (= (str.split_at x ":" 1) x))
 (check-sat)
 
 (exit)

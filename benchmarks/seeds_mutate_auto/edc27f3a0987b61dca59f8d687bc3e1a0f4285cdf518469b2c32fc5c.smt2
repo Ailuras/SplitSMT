@@ -16,14 +16,9 @@ Publications: "Scaling Up DPLL(T) String Solvers Using Context-Dependent Simplif
 
 (declare-fun key2 () String)
 (declare-fun value2 () String)
-(declare-const k_splits_3881 Int)
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at (str.substr value2 1 (- (str.len value2) 1)) 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr value2 1 (- (str.len value2) 1))) 0) 1 0) 0)))) (not (= (ite (= (str.at value2 0) "\u{b}") 1 0) 0))) (not (not (= (ite (= (str.at value2 0) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at value2 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value2 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value2 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= (str.indexof value2 "=" 0) (- 1)) 1 0) 0))) (not (not (= (ite (not (= (str.indexof value2 "=" 0) (- 1))) 1 0) 0)))) (not (not (= (ite (str.contains value2 ",") 1 0) 0)))) (not (not (= (ite (= (str.len value2) 0) 1 0) 0)))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (not (= (ite (= key2 "cache-control") 1 0) 0))) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)) (>= 1 0)) (>= (- (str.len value2) 1) 0)))
-(assert (= (str.num_splits key2 ")") k_splits_3881))
-(assert (>= k_splits_3881 3))
-(assert (> k_splits_3881 0))
-(assert (= (str.split_at key2 ")" 0) "ytqf"))
-(assert (> k_splits_3881 1))
-(assert (= (str.split_at key2 ")" 1) "jyzz"))
+(assert (= (str.split_at value2 "}" 2) "a2e21b"))
+(assert (= (str.split_at value2 "}" 2) key2))
 (check-sat)
 
 (exit)

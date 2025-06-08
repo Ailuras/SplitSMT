@@ -18,15 +18,14 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (not (str.in_re S (re.++ re.allchar (str.to_re "bbb")))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_bbb_parts Int)
-(declare-const after_bbb String)
-(assert (= (str.num_splits S "bbb") num_bbb_parts))
-(assert (>= num_bbb_parts 2))
-(assert (= (str.split_at S "bbb" 1) after_bbb))
-(assert (str.in_re after_bbb (re.++ (str.to_re "aaa") re.allchar)))
-(declare-const num_aaa_parts Int)
-(assert (= (str.num_splits S "aaa") num_aaa_parts))
-(assert (<= num_aaa_parts 1))
+(declare-const prefix_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at S "bbbaaa" 0) prefix_part))
+(assert (= (str.split_at S "bbbaaa" 1) suffix_part))
+(assert (>= (str.len prefix_part) 0))
+(assert (>= (str.len suffix_part) 0))
+(assert (not (str.in_re prefix_part (re.++ re.allchar (str.to_re "bbb")))))
+(assert (str.contains suffix_part "bbbaaa"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

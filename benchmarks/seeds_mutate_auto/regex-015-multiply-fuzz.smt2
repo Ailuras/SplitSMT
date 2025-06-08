@@ -15,15 +15,12 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 
 (declare-const x String)
 (declare-const y String)
-(declare-const k_splits_4343 Int)
 (assert (str.in_re x (re.+ (str.to_re "tK*!vu|E,.a""'1@H#Z6k"))))
 (assert (str.in_re y (re.* (re.+ (str.to_re "gC,t12")))))
 (assert (= (str.to_int x) 11))
 (assert (= (str.to_int y) 0))
-(assert (= (str.num_splits x "0") k_splits_4343))
-(assert (= k_splits_4343 5))
-(assert (> k_splits_4343 0))
-(assert (= (str.split_at x "0" 0) "xre9"))
+(assert (= (str.split_at y " " 0) x))
+(assert (= (str.split_at y " " 1) "f6ji"))
 (check-sat)
 
 (exit)

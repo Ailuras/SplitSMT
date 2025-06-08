@@ -22,16 +22,17 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_underscore_parts Int)
-(declare-const first_part String)
-(assert (= (str.num_splits var_0xINPUT_340186 "_") num_underscore_parts))
-(assert (>= num_underscore_parts 2))
-(assert (= (str.split_at var_0xINPUT_340186 "_" 0) first_part))
-(assert (> (str.len first_part) 0))
-(assert (not (str.contains first_part "Search")))
-(declare-const num_capital_parts Int)
-(assert (= (str.num_splits var_0xINPUT_340186 "A") num_capital_parts))
-(assert (<= num_capital_parts 3))
+(declare-const prefix_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at var_0xINPUT_340186 "S" 0) prefix_part))
+(assert (= (str.split_at var_0xINPUT_340186 "S" 1) suffix_part))
+(assert (or (= prefix_part "") (not (str.contains prefix_part "S"))))
+(assert (or (= suffix_part "") (str.prefix suffix_part "earch")))
+(declare-const first_char String)
+(declare-const rest_chars String)
+(assert (= (str.split_at var_0xINPUT_340186 "" 1) first_char))
+(assert (= (str.split_at var_0xINPUT_340186 "" 2) rest_chars))
+(assert (=> (not (= var_0xINPUT_340186 "")) (not (= first_char "S"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

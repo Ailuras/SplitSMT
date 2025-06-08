@@ -18,19 +18,11 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (and (not (not (= (ite (= word1 in1) 1 0) 0))) (not (= (ite (= word1 in0) 1 0) 0))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_space_splits_in1 Int)
-(declare-const num_space_splits_in0 Int)
-(declare-const first_word_in1 String)
-(declare-const first_word_in0 String)
-(assert (= (str.num_splits in1 " ") num_space_splits_in1))
-(assert (= (str.num_splits in0 " ") num_space_splits_in0))
-(assert (>= num_space_splits_in1 1))
-(assert (>= num_space_splits_in0 1))
-(assert (= (str.split_at in1 " " 0) first_word_in1))
-(assert (= (str.split_at in0 " " 0) first_word_in0))
-(assert (> (str.len first_word_in1) 0))
-(assert (> (str.len first_word_in0) 0))
-(assert (or (= word1 first_word_in1) (= word1 first_word_in0)))
+(declare-const prefix_of_word1 String)
+(declare-const suffix_of_word1 String)
+(assert (= (str.split_at word1 "" 0) prefix_of_word1))
+(assert (= (str.split_at word1 "" 1) suffix_of_word1))
+(assert (or (not (= prefix_of_word1 word1)) (not (= suffix_of_word1 ""))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

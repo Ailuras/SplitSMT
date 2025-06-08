@@ -39,7 +39,6 @@ private:
     std::vector<SMTParser::NodePtr> splitAtAtoms;
 
     void initializeSolver();
-    void findSplitAtAtoms(const SMTParser::NodePtr& node, std::vector<SMTParser::NodePtr>& atoms);
     bool containsSplitAtom(const SMTParser::NodePtr& node, const SMTParser::NodePtr& splitAtom);
     std::string nodeToString(const SMTParser::NodePtr& node);
 };

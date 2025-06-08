@@ -19,16 +19,13 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (str.in_re x (re.* (str.to_re "yyDDvv''\\\\rr''"))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_yy_segments Int)
-(declare-const first_segment String)
-(assert (= (str.num_splits x "yy") num_yy_segments))
-(assert (>= num_yy_segments 2))
-(assert (= (str.split_at x "yy" 0) first_segment))
-(assert (> (str.len first_segment) 0))
-(assert (str.in_re first_segment (re.* (str.to_re "ffDD"))))
-(declare-const num_DD_segments Int)
-(assert (= (str.num_splits x "DD") num_DD_segments))
-(assert (>= num_DD_segments 2))
+(declare-const segment1 String)
+(declare-const segment2 String)
+(assert (= (str.split_at x "DD" 0) segment1))
+(assert (= (str.split_at x "DD" 1) segment2))
+(assert (> (str.len segment1) 0))
+(assert (str.in_re segment1 (re.* (str.to_re "yyff"))))
+(assert (str.in_re segment2 (re.* (str.to_re "vv''\\\\rr''"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

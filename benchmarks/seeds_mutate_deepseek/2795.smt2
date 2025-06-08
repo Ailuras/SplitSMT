@@ -178,16 +178,17 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_zero_segments Int)
-(declare-const first_nonzero_segment String)
-(assert (= (str.num_splits s "0") num_zero_segments))
-(assert (> num_zero_segments 1))
-(assert (= (str.split_at s "0" 0) first_nonzero_segment))
-(assert (> (str.len first_nonzero_segment) 0))
-(assert (str.in_re first_nonzero_segment (re.range "1" "9")))
-(declare-const num_length_groups Int)
-(assert (= (str.num_splits s "") num_length_groups))
-(assert (>= num_length_groups 5))
+(declare-const prefix_part String)
+(declare-const middle_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at s "0" 0) prefix_part))
+(assert (= (str.split_at s "0" 1) middle_part))
+(assert (> (str.len prefix_part) 0))
+(assert (> (str.len middle_part) 0))
+(assert (str.in_re prefix_part (re.+ (re.range "1" "9"))))
+(assert (str.in_re middle_part (re.+ (re.range "0" "9"))))
+(assert (= (str.substr s (- (str.len s) 1) 1) suffix_part))
+(assert (str.in_re suffix_part (re.range "0" "9")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

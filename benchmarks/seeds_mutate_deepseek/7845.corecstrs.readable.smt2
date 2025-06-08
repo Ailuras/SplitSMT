@@ -23,16 +23,18 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_underscore_parts Int)
-(declare-const first_part_after_split String)
-(assert (= (str.num_splits var_0xINPUT_502700 "_") num_underscore_parts))
-(assert (>= num_underscore_parts 2))
-(assert (= (str.split_at var_0xINPUT_502700 "_" 1) first_part_after_split))
-(assert (str.contains first_part_after_split "INPUT"))
-(declare-const num_digit_segments Int)
-(assert (= (str.num_splits var_0xINPUT_502700 "0") num_digit_segments))
-(assert (>= num_digit_segments 1))
-(assert (str.contains var_0xINPUT_502700 "502700"))
+; Split on first character to analyze string prefix
+(declare-fun prefix_0_1 () String)
+(assert (= (str.split_at var_0xINPUT_502700 "" 1) prefix_0_1))
+(assert (=> (not (str.prefixof "a" var_0xINPUT_502700)) (not (= (str.len prefix_0_1) 0))))
+; Split on "a" to verify it starts the word "array"
+(declare-fun after_first_a () String)
+(assert (= (str.split_at var_0xINPUT_502700 "a" 1) after_first_a))
+(assert (=> (str.prefixof "a" var_0xINPUT_502700) (str.prefixof "rray" after_first_a)))
+; Split into first 3 and remaining characters for validation
+(declare-fun first_3_chars () String)
+(assert (= (str.split_at var_0xINPUT_502700 "" 3) first_3_chars))
+(assert (=> (>= (str.len var_0xINPUT_502700) 3) (str.prefixof "arr" first_3_chars)))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

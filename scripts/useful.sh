@@ -1,21 +1,33 @@
+#!/bin/bash
+
+# StrProcessor 使用指南
+# 
+# 最新更新：
+# - 优化了 split 函数处理性能，移除了冗余的 findSplitAtAtoms 函数
+# - 简化了变异逻辑，只使用 str.split_at 函数（移除了 str.num_splits 支持）
+# - 改进了模型输出过滤，只显示原始变量值，不显示内部辅助变量
+# - 提升了求解器性能和结果的可读性
+#
+# =============================================================================
+
 # select seeds
 python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num-seeds 100 --output-dir benchmarks/seeds
 
-# mutate seeds
+# mutate seeds (使用 str.split_at 函数进行变异，不再使用 str.num_splits)
 
-# 1. 自动变异器 (默认)
+# 1. 自动变异器 (默认) - 基于规则生成 str.split_at 约束
 ./scripts/mutate/mutate_batch.sh
 
-# 2. 自动变异器 (明确指定)
+# 2. 自动变异器 (明确指定) - 8个并行任务
 ./scripts/mutate/mutate_batch.sh -p auto -j 8
 
-# 3. LLM变异器 - DeepSeek
+# 3. LLM变异器 - DeepSeek (智能生成 str.split_at 约束)
 ./scripts/mutate/mutate_batch.sh -p deepseek -j 4
 
-# 4. LLM变异器 - OpenAI GPT
+# 4. LLM变异器 - OpenAI GPT (智能生成 str.split_at 约束)
 ./scripts/mutate/mutate_batch.sh -p openai -j 4
 
-# 5. LLM变异器 - Claude
+# 5. LLM变异器 - Claude (智能生成 str.split_at 约束)
 ./scripts/mutate/mutate_batch.sh -p claude -j 4
 
 # 6. 指定特定模型的LLM变异
@@ -24,14 +36,20 @@ python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num
 ./scripts/mutate/mutate_batch.sh -p claude -m claude-3-sonnet-20240229 -j 4
 
 # 7. 单文件变异示例 (如果需要测试单个文件)
+# 自动变异 - 生成基于规则的 str.split_at 约束
 python scripts/mutate/mutate_auto.py --input benchmarks/seeds/example.smt2 --output benchmarks/test_auto.smt2
+# LLM变异 - 智能生成 str.split_at 约束
 python scripts/mutate/mutate_llm.py --input benchmarks/seeds/example.smt2 --output benchmarks/test_llm.smt2 --provider deepseek
+
+# 快速测试单个变异文件求解
+./run_strprocessor.sh benchmarks/test_auto.smt2 -l 10
+./run_strprocessor.sh benchmarks/test_llm.smt2 -l 10
 
 # 8. 求解变异后的文件
 # 求解原始种子文件
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds.log
 
-# 求解自动变异文件
+# 求解自动变异文件 (现在性能更优，输出更清晰)
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_auto -f results_mutate_auto.log
 
 # 求解DeepSeek变异文件
@@ -79,3 +97,22 @@ python scripts/solve/analysis_results.py --seeds-dir benchmarks/seeds --mutated-
 
 # 分析特定超时时间下的结果
 python scripts/solve/analysis_results.py --seeds-dir benchmarks/seeds --mutated-dirs benchmarks/seeds_mutate_auto --result-logs results/results_mutate_auto_60s.log --seeds-result-log results/results_seeds.log --output-file charts/timeout_60s_analysis.xlsx
+
+# =============================================================================
+# 性能提升说明:
+# 
+# 1. 代码优化:
+#    - 删除了重复的 findSplitAtAtoms 函数，使用 Context::getSplitAtVarNodes()
+#    - 优化了变异算法，减少了不必要的 str.num_splits 处理
+#    - 改进了模型输出过滤，提高了结果可读性
+#
+# 2. 变异策略简化:
+#    - 专注于 str.split_at 函数，移除了复杂的 str.num_splits 逻辑
+#    - 减少了生成的辅助变量数量
+#    - 提高了变异文件的质量和可理解性
+#
+# 3. 求解器性能:
+#    - 优化的约束生成减少了求解时间
+#    - 更清晰的模型输出，只显示关键变量
+#    - 改进的约束结构提高了求解效率
+# =============================================================================

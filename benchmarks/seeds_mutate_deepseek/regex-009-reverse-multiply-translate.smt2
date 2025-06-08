@@ -21,12 +21,22 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (< (str.len x) 50))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_segments_vv Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits x "vvVVLLww") num_segments_vv))
-(assert (= (str.split_at x "vvVVLLww" 0) first_segment))
-(assert (= (str.split_at x "vvVVLLww" 1) second_segment))
+(declare-const first_part String)
+(declare-const second_part String)
+(declare-const pattern_part String)
+(declare-const remaining_part String)
+; Split x at position 20 (roughly middle given length between 40-50)
+(assert (= (str.split_at x 20) first_part))
+(assert (= (str.split_at x 21) second_part))
+(assert (> (str.len first_part) 0))
+(assert (> (str.len second_part) 0))
+; Split on the repeating pattern "vvVVLLww"
+(assert (= (str.split_at x "vvVVLLww" 0) pattern_part))
+(assert (= (str.split_at x "vvVVLLww" 1) remaining_part))
+(assert (str.in_re pattern_part (re.* (str.to_re "vvVVLLww"))))
+(assert (str.in_re remaining_part (re.* (str.to_re "vvVVLLww"))))
+; Validate that splits preserve the total length
+(assert (= (str.len x) (+ (str.len first_part) (str.len second_part))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

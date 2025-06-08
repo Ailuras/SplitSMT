@@ -661,7 +661,7 @@ void Context::replaceNodes(const boost::unordered_map<SMTParser::NodePtr, SMTPar
 
 SMTParser::NodePtr Context::createNode(const std::string& node_str) {
     try {
-        return getInstance().SMTParser.mkNode(node_str);
+        return getInstance().SMTParser.mkExpr(node_str);
     } catch (const std::exception& e) {
         ERROR("Failed to create node from string '", node_str, "': ", e.what());
         return nullptr;

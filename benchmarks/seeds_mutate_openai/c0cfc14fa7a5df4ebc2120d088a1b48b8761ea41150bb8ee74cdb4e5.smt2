@@ -16,16 +16,14 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (= (ite (not (= (str.at s 2) (str.at s 3))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 6))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 4))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (not (= (str.at s 4) (str.at s 6))) 1 0) 0)))) (not (= (ite (not (= (str.at s 4) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 5) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_a_segments Int)
-(declare-const first_part String)
-(declare-const second_part String)
-(assert (= (str.num_splits s "a") num_a_segments))
-(assert (>= num_a_segments 2))
-(assert (= (str.split_at s "a" 0) first_part))
-(assert (= (str.split_at s "a" 1) second_part))
-(assert (or (= first_part "") (str.contains first_part "a")))
-(assert (or (= second_part "") (str.contains second_part "a")))
-(assert (not (= first_part second_part)))
+(declare-const prefix String)
+(declare-const suffix String)
+(assert (= (str.split_at s 3) (prefix, suffix)))
+(assert (= (str.len s) 7))
+(assert (> (str.len prefix) 0))
+(assert (> (str.len suffix) 0))
+(assert (not (= (str.at prefix 2) (str.at suffix 0))))
+(assert (not (= (str.at prefix 0) (str.at suffix 1))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

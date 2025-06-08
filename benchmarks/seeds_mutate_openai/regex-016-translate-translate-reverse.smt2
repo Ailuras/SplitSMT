@@ -21,15 +21,18 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (not (= x "321YX~MYX~M")))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_YX_M_segments Int)
-(assert (= (str.num_splits x "YX~M") num_YX_M_segments))
-(assert (>= num_YX_M_segments 2))
-(declare-const num_321_segments Int)
-(assert (= (str.num_splits x "321") num_321_segments))
-(assert (>= num_321_segments 2))
-(declare-const first_split String)
-(assert (= (str.split_at x "YX~M" 0) first_split))
-(assert (or (= first_split "") (str.in_re first_split (re.* (str.to_re "321")))))
+(declare-const first_segment String)
+(declare-const second_segment String)
+(declare-const third_segment String)
+(assert (= (str.split_at x "M" 0) first_segment))
+(assert (= (str.split_at x "M" 1) second_segment))
+(assert (> (str.len first_segment) 0))
+(assert (> (str.len second_segment) 0))
+(assert (str.in_re first_segment (re.* (re.union (str.to_re "YX~") (str.to_re "321")))))
+(assert (str.in_re second_segment (re.* (re.union (str.to_re "YX~") (str.to_re "321")))))
+(assert (= (str.len (str.++ first_segment second_segment)) 11))
+(assert (not (= (str.++ first_segment second_segment) "YX~M321YX~M")))
+(assert (not (= (str.++ first_segment second_segment) "321YX~MYX~M")))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

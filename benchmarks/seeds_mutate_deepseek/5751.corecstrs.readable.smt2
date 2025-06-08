@@ -27,18 +27,14 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_4)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dash_splits Int)
-(declare-const first_part String)
-(declare-const second_part String)
-(assert (= (str.num_splits var_0xINPUT_118656 "-") num_dash_splits))
-(assert (>= num_dash_splits 1))
-(assert (<= num_dash_splits 2))
-(assert (= (str.split_at var_0xINPUT_118656 "-" 0) first_part))
-(assert (or (= num_dash_splits 1) (= (str.split_at var_0xINPUT_118656 "-" 1) second_part)))
-(assert (not (str.contains first_part "-")))
-(assert (not (str.contains second_part "-")))
-(assert (=> (= num_dash_splits 2) (not (= first_part ""))))
-(assert (=> (= num_dash_splits 2) (not (= second_part ""))))
+(declare-const first_half_118656 String)
+(declare-const second_half_118656 String)
+(assert (= (str.split_at var_0xINPUT_118656 "-" 0) first_half_118656))
+(assert (= (str.split_at var_0xINPUT_118656 "-" 1) second_half_118656))
+(assert (=> (not (str.contains var_0xINPUT_118656 "-")) (= first_half_118656 var_0xINPUT_118656)))
+(assert (=> (not (str.contains var_0xINPUT_118656 "-")) (= second_half_118656 "")))
+(assert (=> (str.contains var_0xINPUT_118656 "-") (not (= first_half_118656 ""))))
+(assert (=> (str.contains var_0xINPUT_118656 "-") (not (= second_half_118656 ""))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

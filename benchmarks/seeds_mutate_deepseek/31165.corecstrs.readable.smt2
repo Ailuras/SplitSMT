@@ -22,15 +22,18 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_empty_splits Int)
-(declare-const first_non_empty_part String)
-(assert (= (str.num_splits var_0xINPUT_188781 "") num_empty_splits))
-(assert (> num_empty_splits 1))
-(assert (= (str.split_at var_0xINPUT_188781 "" 0) first_non_empty_part))
-(assert (not (= first_non_empty_part "")))
-(declare-const num_space_splits Int)
-(assert (= (str.num_splits var_0xINPUT_188781 " ") num_space_splits))
-(assert (<= num_space_splits 10))
+(declare-const first_part_188781 String)
+(declare-const second_part_188781 String)
+; Split on common JavaScript delimiters that might appear in input
+(assert (= (str.split_at var_0xINPUT_188781 "=" 0) first_part_188781))
+(assert (= (str.split_at var_0xINPUT_188781 "=" 1) second_part_188781))
+; Validate split results (since input is non-empty)
+(assert (=> (not (= var_0xINPUT_188781 "")) (or (> (str.len first_part_188781) 0) (> (str.len second_part_188781) 0))))
+; Additional split for potential URL parameters
+(declare-const param_key_188781 String)
+(declare-const param_value_188781 String)
+(assert (= (str.split_at var_0xINPUT_188781 "?" 0) param_key_188781))
+(assert (= (str.split_at var_0xINPUT_188781 "?" 1) param_value_188781))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

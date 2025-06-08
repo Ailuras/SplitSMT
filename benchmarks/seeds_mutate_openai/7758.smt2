@@ -196,18 +196,12 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_dash_splits Int)
-(declare-const first_segment String)
-(declare-const second_segment String)
-(assert (= (str.num_splits s "-") num_dash_splits))
-(assert (>= num_dash_splits 1))
-(assert (= (str.split_at s "-" 0) first_segment))
-(assert (= (str.split_at s "-" 1) second_segment))
-(assert (str.in_re first_segment (re.* (re.range "0" "9"))))
-(assert (str.in_re second_segment (re.* (re.range "0" "9"))))
-(assert (not (= (str.len first_segment) 0)))
-(assert (not (= (str.len second_segment) 0)))
-(assert (= (str.len (str.substr s 0 (str.len first_segment))) (str.len first_segment)))
+(declare-const first_digit String)
+(declare-const rest_digits String)
+(assert (= (str.split_at s 1) (first_digit rest_digits)))
+(assert (str.in_re first_digit (re.range "0" "9")))
+(assert (str.in_re rest_digits (re.* (re.range "0" "9"))))
+(assert (> (str.len rest_digits) 0))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

@@ -61,15 +61,18 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_f)
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_parts Int)
-(declare-const first_part String)
-(declare-const last_part String)
-(assert (= (str.num_splits PCTEMP_LHS_1 "%") num_parts))
-(assert (> num_parts 5))
-(assert (= (str.split_at PCTEMP_LHS_1 "%" 0) first_part))
-(assert (= (str.split_at PCTEMP_LHS_1 "%" (- num_parts 1)) last_part))
-(assert (= first_part "http://www.ig.gmodules.com/gadgets/proxy/refresh="))
-(assert (= last_part "/%rawurl%"))
+(declare-const url_before_rawurl String)
+(declare-const url_after_rawurl String)
+(assert (= (str.split_at PCTEMP_LHS_1 "%rawurl%" 0) url_before_rawurl))
+(assert (= (str.split_at PCTEMP_LHS_1 "%rawurl%" 1) url_after_rawurl))
+(assert (str.contains url_before_rawurl "http://www.ig.gmodules.com/gadgets/proxy/refresh="))
+(assert (str.contains url_after_rawurl "&container=%container%%rewriteMime%&gadget=%gadget%/"))
+(declare-const url_before_refresh String)
+(declare-const url_after_refresh String)
+(assert (= (str.split_at PCTEMP_LHS_1 "%refresh%" 0) url_before_refresh))
+(assert (= (str.split_at PCTEMP_LHS_1 "%refresh%" 1) url_after_refresh))
+(assert (str.contains url_before_refresh "http://www.ig.gmodules.com/gadgets/proxy/refresh="))
+(assert (str.contains url_after_refresh "&container=%container%%rewriteMime%&gadget=%gadget%/%rawurl%"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

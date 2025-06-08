@@ -14,15 +14,9 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (set-info :status unknown)
 
 (declare-const S String)
-(declare-const k_splits_9069 Int)
 (assert (str.in_re S (re.++ re.allchar (str.to_re "bbbaaa"))))
 (assert (not (str.in_re S (re.++ re.allchar (str.to_re "bbb")))))
-(assert (= (str.num_splits S " ") k_splits_9069))
-(assert (= k_splits_9069 4))
-(assert (> k_splits_9069 1))
 (assert (= (str.split_at S " " 1) S))
-(assert (> k_splits_9069 0))
-(assert (= (str.split_at S " " 0) "667"))
 (check-sat)
 
 (exit)

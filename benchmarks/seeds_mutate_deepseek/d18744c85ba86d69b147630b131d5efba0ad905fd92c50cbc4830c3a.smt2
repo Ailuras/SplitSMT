@@ -18,25 +18,27 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (and (not (not (= (ite (= word1 in1) 1 0) 0))) (not (= (ite (= word1 in0) 1 0) 0))))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const word1_num_spaces Int)
-(declare-const in0_num_spaces Int)
-(declare-const in1_num_spaces Int)
-(declare-const word1_first_part String)
-(declare-const in0_first_part String)
-(declare-const in1_first_part String)
-; Count space separators in each string
-(assert (= (str.num_splits word1 " ") word1_num_spaces))
-(assert (= (str.num_splits in0 " ") in0_num_spaces))
-(assert (= (str.num_splits in1 " ") in1_num_spaces))
-; Split first segment before space
-(assert (= (str.split_at word1 " " 0) word1_first_part))
-(assert (= (str.split_at in0 " " 0) in0_first_part))
-(assert (= (str.split_at in1 " " 0) in1_first_part))
-; Constraints ensuring word1 is prefix/suffix of others
-(assert (or (str.prefixof word1_first_part in0_first_part)
-(str.suffixof word1_first_part in0_first_part)))
-(assert (not (str.prefixof word1_first_part in1_first_part)))
-(assert (not (str.suffixof word1_first_part in1_first_part)))
+(declare-fun word1_prefix () String)
+(declare-fun word1_suffix () String)
+(declare-fun in0_prefix () String)
+(declare-fun in0_suffix () String)
+(declare-fun in1_prefix () String)
+(declare-fun in1_suffix () String)
+; Split word1 at first character for analysis
+(assert (= (str.split_at word1 "" 1) word1_prefix))
+(assert (= (str.split_at word1 "" 2) word1_suffix))
+; Split input strings for comparison
+(assert (= (str.split_at in0 "" 1) in0_prefix))
+(assert (= (str.split_at in0 "" 2) in0_suffix))
+(assert (= (str.split_at in1 "" 1) in1_prefix))
+(assert (= (str.split_at in1 "" 2) in1_suffix))
+; Ensure split parts are non-empty if original string has length > 1
+(assert (=> (> (str.len word1) 1) (not (= word1_prefix ""))))
+(assert (=> (> (str.len in0) 1) (not (= in0_prefix ""))))
+(assert (=> (> (str.len in1) 1) (not (= in1_prefix ""))))
+; Add constraints based on original assertions
+(assert (or (not (= word1_prefix in1_prefix)) (not (= word1_suffix in1_suffix))))
+(assert (or (not (= word1_prefix in0_prefix)) (not (= word1_suffix in0_suffix))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

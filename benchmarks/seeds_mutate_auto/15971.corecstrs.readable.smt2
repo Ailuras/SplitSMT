@@ -16,13 +16,12 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 
 (declare-fun T_1 () Bool)
 (declare-fun var_0xINPUT_193107 () String)
-(declare-const k_splits_4722 Int)
+(declare-const part_1_8117 String)
 (assert (= T_1 (= var_0xINPUT_193107 "Type")))
 (assert T_1)
-(assert (= (str.num_splits var_0xINPUT_193107 "-") k_splits_4722))
-(assert (= k_splits_4722 4))
-(assert (> k_splits_4722 2))
-(assert (= (str.split_at var_0xINPUT_193107 "-" 2) "i68ew"))
+(assert (= (str.split_at var_0xINPUT_193107 "4" 0) "krld"))
+(assert (= (str.split_at var_0xINPUT_193107 "4" 1) part_1_8117))
+(assert (str.contains part_1_8117 "g"))
 (check-sat)
 
 (exit)

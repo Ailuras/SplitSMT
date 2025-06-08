@@ -104,21 +104,14 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_partitions Int)
-(declare-const partition1 String)
-(declare-const partition2 String)
-(declare-const partition3 String)
-(assert (= (str.num_splits s "-") num_partitions))
-(assert (= num_partitions 3))
-(assert (= (str.split_at s "-" 0) partition1))
-(assert (= (str.split_at s "-" 1) partition2))
-(assert (= (str.split_at s "-" 2) partition3))
-(assert (str.in_re partition1 (re.+ (re.range "0" "9"))))
-(assert (str.in_re partition2 (re.+ (re.range "0" "9"))))
-(assert (str.in_re partition3 (re.+ (re.range "0" "9"))))
-(assert (> (str.len partition1) 0))
-(assert (> (str.len partition2) 0))
-(assert (> (str.len partition3) 0))
+(declare-const prefix_part String)
+(declare-const suffix_part String)
+(assert (= (str.split_at s "-" 0) prefix_part))
+(assert (= (str.split_at s "-" 1) suffix_part))
+(assert (> (str.len prefix_part) 0))
+(assert (> (str.len suffix_part) 0))
+(assert (str.in_re prefix_part (re.+ (re.range "0" "9"))))
+(assert (str.prefixof "-" suffix_part))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

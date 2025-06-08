@@ -1,8 +1,8 @@
 (set-logic QF_S)
 (declare-fun x () String)
 
-(assert (= (str.split_at x "-" 0) "hello"))
-(assert (str.prefixof "w" (str.split_at x "-" 2)))
+(assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
+; (assert (str.prefixof "w" (str.split_at x "-" 2)))
 
 ; ; AuxiliaryAssert，分为三部分，第一部分是关于x和x_last的声明，第二部分是关于x_split_0, x_split_1, x_split_2的声明，第三部分是关于b_x_split_num_0, b_x_split_num_2的声明
 ; (assert (= x (str.++ x_split + x_last)))

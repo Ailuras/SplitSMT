@@ -21,20 +21,22 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= (str.to_int y) 0))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const x_num_splits Int)
-(declare-const y_num_splits Int)
-(declare-const x_first_split String)
-(declare-const y_first_split String)
-; Split constraints for x
-(assert (= (str.num_splits x "t") x_num_splits))
-(assert (> x_num_splits 0))
-(assert (= (str.split_at x "t" 0) x_first_split))
-(assert (str.in_re x_first_split (re.* (re.union (str.to_re "K") (str.to_re "*") (str.to_re "!")))))
-; Split constraints for y
-(assert (= (str.num_splits y ",") y_num_splits))
-(assert (> y_num_splits 1))
-(assert (= (str.split_at y "," 0) y_first_split))
-(assert (str.in_re y_first_split (re.+ (str.to_re "gC"))))
+(declare-const x_prefix String)
+(declare-const x_suffix String)
+(declare-const y_prefix String)
+(declare-const y_suffix String)
+(assert (= (str.split_at x "|" 0) x_prefix))
+(assert (= (str.split_at x "|" 1) x_suffix))
+(assert (= (str.split_at y "," 0) y_prefix))
+(assert (= (str.split_at y "," 1) y_suffix))
+(assert (str.in_re x_prefix (re.+ (str.to_re "tK*!"))))
+(assert (str.in_re x_suffix (re.+ (str.to_re "vu|E,.a\"'1@H#Z6k"))))
+(assert (str.in_re y_prefix (re.+ (str.to_re "gC"))))
+(assert (str.in_re y_suffix (re.+ (str.to_re "t12"))))
+(assert (>= (str.len x_prefix) 0))
+(assert (>= (str.len x_suffix) 0))
+(assert (>= (str.len y_prefix) 0))
+(assert (>= (str.len y_suffix) 0))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

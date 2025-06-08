@@ -21,16 +21,18 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= (str.to_int y) 0))
 
 ; --- LLM Generated Split Constraints ---
-(declare-const num_comma_segments_in_y Int)
-(declare-const first_comma_segment_in_y String)
-(assert (= (str.num_splits y ",") num_comma_segments_in_y))
-(assert (>= num_comma_segments_in_y 1))
-(assert (= (str.split_at y "," 0) first_comma_segment_in_y))
-(assert (> (str.len first_comma_segment_in_y) 0))
-(assert (str.in_re first_comma_segment_in_y (re.* (re.+ (str.to_re "gC")))))
-(declare-const num_pipe_segments_in_x Int)
-(assert (= (str.num_splits x "|") num_pipe_segments_in_x))
-(assert (>= num_pipe_segments_in_x 1))
+(declare-const first_part_of_x String)
+(declare-const second_part_of_x String)
+(assert (= (str.split_at x "|" 0) first_part_of_x))
+(assert (= (str.split_at x "|" 1) second_part_of_x))
+(assert (str.in_re first_part_of_x (re.* (str.to_re "tK*!vu"))))
+(assert (str.in_re second_part_of_x (re.* (str.to_re "E,.a\"'1@H#Z6k"))))
+(declare-const first_part_of_y String)
+(declare-const second_part_of_y String)
+(assert (= (str.split_at y "," 0) first_part_of_y))
+(assert (= (str.split_at y "," 1) second_part_of_y))
+(assert (str.in_re first_part_of_y (re.* (str.to_re "gC"))))
+(assert (str.in_re second_part_of_y (re.* (str.to_re "t12"))))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)
