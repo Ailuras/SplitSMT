@@ -1,10 +1,8 @@
-(set-logic QF_SLIA)
-(set-info :status sat)
+(set-logic QF_S)
+(declare-fun x () String)
 
-(declare-const x String)
-(declare-const y String)
-
-(assert (= (str.num_splits x ",") 4))
-(assert (= (str.split_at x "," 1) y))
+(assert (= (str.split_at x "-" 0) "hello"))
+(assert (str.prefixof (str.split_at x "-" 2) "w"))
 
 (check-sat)
+(get-model)

@@ -35,6 +35,7 @@ set(SOURCES
     src/Context.cpp
     src/Structures.cpp
     src/Solver.cpp
+    src/Split.cpp
 )
 
 # Set RPATH for runtime library search
@@ -65,6 +66,7 @@ add_executable(debug_strprocessor
     src/Context.cpp
     src/Structures.cpp
     src/Solver.cpp
+    src/Split.cpp
 )
 
 # Create compile_commands.json for IDE integration

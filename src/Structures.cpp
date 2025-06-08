@@ -1,5 +1,29 @@
 #include "Structures.h"
 #include "Context.h"
+#include <algorithm>
+#include <sstream>
+
+std::vector<std::string> splitString(const std::string& str, const std::string& delimiter) {
+    std::vector<std::string> result;
+    if (delimiter.empty()) {
+        for (char c : str) {
+            result.push_back(std::string(1, c));
+        }
+        return result;
+    }
+    
+    size_t start = 0;
+    size_t end = str.find(delimiter);
+    
+    while (end != std::string::npos) {
+        result.push_back(str.substr(start, end - start));
+        start = end + delimiter.length();
+        end = str.find(delimiter, start);
+    }
+    result.push_back(str.substr(start));
+    
+    return result;
+}
 
 namespace strp {
 
@@ -29,5 +53,25 @@ Clause::Clause(const SMTParser::NodePtr& node, Context& context, bool is_origina
 Lemma::Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Context& context) :
     premises(premises),
     conclusion(conclusion) {}
+
+Division::Division(const std::string& divided, const std::string& delimiter, const std::string& dividedType) :
+    divided(divided),
+    dividedType(dividedType),
+    delimiter(delimiter),
+    splitNums(0) {
+    
+    if (dividedType == "const") {
+        splits = splitString(divided, delimiter);
+        splitNums = static_cast<int>(splits.size());
+        
+        for (int i = 0; i < splitNums; ++i) {
+            splitNumsAppeared.push_back(i);
+        }
+    }
+}
+
+std::string Division::generateKey(const std::string& divided, const std::string& delimiter) {
+    return divided + "##" + delimiter;
+}
 
 } // namespace strp

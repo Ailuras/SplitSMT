@@ -5,17 +5,17 @@
 (declare-const path_string String)
 (declare-const email String)
 
-; (assert (= (str.split_at input_string ";" 0) "header"))
-; (assert (= (str.split_at input_string ";" 1) "data1"))
-; (assert (= (str.split_at input_string ";" 2) "data2"))
-; (assert (= (str.split_at input_string ";" 3) "footer"))
+(assert (= (str.split_at input_string ";" 0) "header"))
+(assert (= (str.split_at input_string ";" 1) "data1"))
+(assert (= (str.split_at input_string ";" 2) "data2"))
+(assert (= (str.split_at input_string ";" 3) "footer"))
 
-; (assert (= (str.num_splits input_string ";") 4))
+(assert (= (str.num_splits input_string ";") 4))
 
-; (assert (>= (str.num_splits csv_data ",") 3))
-; (assert (<= (str.num_splits csv_data ",") 6))
-; (assert (= (str.split_at csv_data "," 0) "name"))
-; (assert (= (str.split_at csv_data "," 1) "age"))
+(assert (>= (str.num_splits csv_data ",") 3))
+(assert (<= (str.num_splits csv_data ",") 6))
+(assert (= (str.split_at csv_data "," 0) "name"))
+(assert (= (str.split_at csv_data "," 1) "age"))
 ; (assert (= (str.split_at csv_data "," 2) "city"))
 
 ; (assert (= (str.num_splits path_string "/") 3))

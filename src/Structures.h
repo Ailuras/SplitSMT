@@ -224,4 +224,31 @@ private:
     std::string comment;
 };
 
+class Division {
+public:
+    Division() = default;
+    Division(const std::string& divided, const std::string& delimiter, const std::string& dividedType);
+    Division(const Division& other) = default;
+    Division& operator=(const Division& other) = default;
+    ~Division() = default;
+
+    std::string getDivided() const { return divided; }
+    std::string getDividedType() const { return dividedType; }
+    std::string getDelimiter() const { return delimiter; }
+    int getSplitNums() const { return splitNums; }
+    std::vector<std::string> getSplits() const { return splits; }
+    std::string getSplit(int index) const { return splits[index]; }
+    int getMaxSplitNumAppeared() const { return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); }
+    
+    static std::string generateKey(const std::string& divided, const std::string& delimiter);
+
+private:
+    std::string divided;
+    std::string dividedType;
+    std::string delimiter;
+    int splitNums;
+    std::vector<std::string> splits;
+    std::vector<int> splitNumsAppeared;
+};
+
 } // namespace strp

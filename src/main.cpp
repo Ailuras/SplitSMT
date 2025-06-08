@@ -4,7 +4,7 @@
 #include <fstream>
 #include "Logger.h"
 #include "Context.h"
-#include "Solver.h"
+#include "Split.h"
 
 struct Args {
     std::string inputFile;
@@ -110,7 +110,6 @@ int main(int argc, char* argv[]) {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
             strp::splitSolver solver(args.solverType);
-            solver.setMaxIterations(10);
             solver.solve();
         } else {
             return 1;
