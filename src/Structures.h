@@ -4,6 +4,7 @@
 #include <memory>
 #include <unordered_map>
 #include <iostream>
+#include <cassert>
 #include <boost/unordered/unordered_set.hpp>
 #include <boost/functional/hash.hpp>
 #include "dag.h"
@@ -235,10 +236,14 @@ public:
     std::string getDivided() const { return divided; }
     std::string getDividedType() const { return dividedType; }
     std::string getDelimiter() const { return delimiter; }
-    int getSplitNums() const { return splitNums; }
-    std::vector<std::string> getSplits() const { return splits; }
-    std::string getSplit(int index) const { return splits[index]; }
-    int getMaxSplitNumAppeared() const { return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); }
+
+    int getConstSplitNums() const { assert(dividedType == "const"); return splitNums; }
+    std::vector<std::string> getConstSplits() const { assert(dividedType == "const"); return splits; }
+    std::string getConstSplit(int index) const { assert(dividedType == "const"); return splits[index]; }
+
+    void addVarSplitNumAppeared(int num) { assert(dividedType == "var"); splitNumsAppeared.push_back(num); }
+    int getVarMaxSplitNumAppeared() const { assert(dividedType == "var"); return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); }
+    const std::vector<int>& getVarSplitNumsAppeared() const { assert(dividedType == "var"); return splitNumsAppeared; }
     
     static std::string generateKey(const std::string& divided, const std::string& delimiter);
 

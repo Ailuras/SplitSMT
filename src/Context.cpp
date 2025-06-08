@@ -273,6 +273,21 @@ std::vector<SMTParser::NodePtr> Context::getVariables() {
     return std::vector<SMTParser::NodePtr>(varSet.begin(), varSet.end());
 }
 
+void Context::declareStringVar(const std::string& name) {
+    SMTParser.mkVarStr(name);
+    DEBUG("Declared string variable: ", name);
+}
+
+void Context::declareBoolVar(const std::string& name) {
+    SMTParser.mkVarBool(name);
+    DEBUG("Declared boolean variable: ", name);
+}
+
+void Context::addAssertion(const std::string& constraint) {
+    SMTParser.assert(constraint);
+    DEBUG("Added assertion: ", constraint);
+}
+
 std::vector<SMTParser::NodePtr> Context::getAssertions() {
     return SMTParser.assertions;
 }
@@ -745,6 +760,10 @@ bool Context::hasDivision(const std::string& divided, const std::string& delimit
     return divisions.find(key) != divisions.end();
 }
 
+const std::unordered_map<std::string, Division>& Context::getAllDivisions() const {
+    return divisions;
+}
+
 void Context::updateSplitNodeToAtoms() {
     clearSplitNodeToAtoms();
     
@@ -776,6 +795,7 @@ void Context::updateSplitNodeToAtoms() {
 
 void Context::updateDivisions() {
     auto splitAtConstNodes = getSplitAtConstNodes();
+    auto splitAtVarNodes = getSplitAtVarNodes();
     
     for (auto& node : splitAtConstNodes) {
         try {
@@ -796,13 +816,47 @@ void Context::updateDivisions() {
                 if (!hasDivision(str, delimiter)) {
                     Division newDivision(str, delimiter, "const");
                     addDivision(newDivision);
-                    DEBUG("Created new division for: '", str, "' with delimiter '", delimiter, "'");
+                    DEBUG("Created new const division for: '", str, "' with delimiter '", delimiter, "'");
                 } else {
-                    DEBUG("Using existing division for: '", str, "' with delimiter '", delimiter, "'");
+                    DEBUG("Using existing const division for: '", str, "' with delimiter '", delimiter, "'");
                 }
             }
         } catch (const std::exception& e) {
             DEBUG("Error processing const split node: ", e.what());
+        }
+    }
+    
+    for (auto& node : splitAtVarNodes) {
+        try {
+            if (node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                
+                std::string variable = arg1->toString();
+                
+                std::string delimiter = arg2->toString();
+                if (delimiter.size() >= 2 && delimiter.front() == '"' && delimiter.back() == '"') {
+                    delimiter = delimiter.substr(1, delimiter.size() - 2);
+                }
+                
+                int index = std::stoi(arg3->toString());
+                
+                Division* division = getDivision(variable, delimiter);
+                if (!division) {
+                    Division newDivision(variable, delimiter, "var");
+                    addDivision(newDivision);
+                    division = getDivision(variable, delimiter);
+                    DEBUG("Created new var division for: '", variable, "' with delimiter '", delimiter, "'");
+                }
+                
+                if (division) {
+                    division->addVarSplitNumAppeared(index);
+                    DEBUG("Added split index ", index, " for variable '", variable, "' with delimiter '", delimiter, "'");
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing var split node: ", e.what());
         }
     }
     

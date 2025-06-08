@@ -47,6 +47,10 @@ public:
     void addLemma(const Lemma& lemma);
     void addDivision(const Division& division);
     
+    void declareStringVar(const std::string& name);
+    void declareBoolVar(const std::string& name);
+    void addAssertion(const std::string& constraint);
+    
     std::vector<SMTParser::NodePtr> getSplitAtNodes();
     std::vector<SMTParser::NodePtr> getSplitAtNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getSplitAtConstNodes();
@@ -61,6 +65,7 @@ public:
     std::unordered_map<std::string, Division> getDivisions() const;
     Division* getDivision(const std::string& divided, const std::string& delimiter);
     bool hasDivision(const std::string& divided, const std::string& delimiter) const;
+    const std::unordered_map<std::string, Division>& getAllDivisions() const;
     std::string getSMTLIB2(bool from_parser = true) const;
     std::set<TaskType> getTask(const std::string& filename) const;
     
