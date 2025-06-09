@@ -1,0 +1,152 @@
+%% 该模板修改自《计算机学报》latex 模板
+%% 主要是将双栏改成单栏，去掉了部分计算机学报标识；
+%% 源文件自：https://www.overleaf.com/latex/templates/latextemplet-cjc-xelatex/ybmmymncrrmw
+%% 
+%%
+%% This is file `CjC_template_tex.tex',
+%% is modified by Zhi Wang (zhiwang@ieee.org) based on the template 
+%% provided by Chinese Journal of Computers (http://cjc.ict.ac.cn/).
+%%
+%% This version is capable with Overleaf (XeLaTeX).
+%%
+%% Update date: 2023/03/10
+%% -------------------------------------------------------------------
+%% Copyright (C) 2016--2023 
+%% -------------------------------------------------------------------
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    https://www.latex-project.org/lppl.txt
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008 or later.
+%% -------------------------------------------------------------------
+
+\documentclass[10.5pt,compsoc,UTF8]{CjC}
+\usepackage{CTEX}
+\usepackage{graphicx}
+\usepackage{footmisc}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage[noadjust]{cite}
+\usepackage{amsmath,amsthm}
+\usepackage{amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage{ccaption}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{xcolor,stfloats}
+\usepackage{comment}
+\setcounter{page}{1}
+\graphicspath{{figures/}}
+\usepackage{cuted}%flushend,
+\usepackage{captionhack}
+\usepackage{epstopdf}
+\usepackage{gbt7714}
+
+%===============================%
+
+\headevenname{\mbox{\quad} \hfill  \mbox{\zihao{-5}{ \hfill 5月总结  } \hspace {50mm} \mbox{2025 年 6 月}}}%
+\headoddname{作者姓名等 \hfill 报告题目}%
+
+%footnote use of *
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\setcounter{footnote}{0}
+\renewcommand\footnotelayout{\zihao{5-}}
+
+\newtheoremstyle{mystyle}{0pt}{0pt}{\normalfont}{1em}{\bf}{}{1em}{}
+\theoremstyle{mystyle}
+\renewcommand\figurename{figure~}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\abc}{\color{white}\vrule width 2pt}
+\renewcommand{\bibsection}{}
+\makeatletter
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
+\makeatother
+\setlength\parindent{2em}
+%\renewcommand{\hth}{\begin{CJK*}{UTF8}{gbsn}}
+%\renewcommand{\htss}{\begin{CJK*}{UTF8}{gbsn}}
+
+
+\begin{document}
+
+\hyphenpenalty=50000
+\makeatletter
+\newcommand\mysmall{\@setfontsize\mysmall{7}{9.5}}
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+
+\let\temp\footnote
+\renewcommand \footnote[1]{\temp{\zihao{-5}#1}}
+
+
+\thispagestyle{plain}%
+\thispagestyle{empty}%
+\pagestyle{CjCheadings}
+
+% \zihao{5-}\noindent 作者姓名 等 \hfill 《课程名称 or 报告题目》\hfill 2023 年 9 月\\
+% \noindent\rule[0.25\baselineskip]{\textwidth}{1pt}
+
+{
+\centering
+% \vspace {11mm}
+{\zihao{2} \heiti 进度汇报 }
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\zihao{5}
+\vskip 10mm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{\heiti split约束建模工作}
+
+本月主要完成了字符串split约束的建模和求解框架设计。针对字符串分割操作str.split\_at的复杂性，提出了一种基于辅助变量的编码方案。
+
+\subsection{整体求解思路}
+
+split约束求解采用公式重写的策略，将包含str.split\_at操作的SMT公式转换为标准字符串理论约束。核心思想是根据split操作的参数类型采用不同的处理方式：对于常量参数直接计算分割结果，对于变量参数引入辅助变量进行建模。
+
+求解过程包括四个主要阶段：（1）公式预处理和分割信息收集；（2）添加辅助变量和基础约束；（3）生成等价性约束和辅助引理；（4）节点替换和最终求解。
+
+\subsection{分类处理策略}
+
+对于常量字符串的split操作，系统直接执行字符串分割并用计算结果替换原始节点。这种策略避免了不必要的约束生成，提高了求解效率。当分割索引超出范围时，相关原子公式被替换为false。
+
+对于变量字符串的split操作，引入辅助变量进行编码。为每个变量x及其分隔符d创建辅助变量x\_split、x\_last和x\_split\_i等，通过约束确保x = x\_split ++ x\_last的分解形式。同时使用布尔变量b\_x\_split\_num\_i编码分割长度信息。
+
+\subsection{约束编码方案}
+
+基础约束确保字符串的正确分解：原始变量等于前缀部分与后缀部分的拼接，后缀部分要么为空要么以分隔符开头，每个分割段不包含分隔符。
+
+等价性约束建立辅助布尔变量与分割长度的对应关系，通过递归构造的方式表达分割前缀的组成。辅助引理则确保当公式中出现特定索引的split操作时，对应的布尔变量必须为真，保证约束系统的完整性。
+
+最终通过模型过滤机制，在输出中隐藏辅助变量，仅展示原始变量的赋值结果。
+
+
+
+% \section{\heiti LLM辅助的SMT公式重写器}
+
+
+
+\vspace {10mm}
+\centerline
+{\zihao{5}\textsf{参~考~文~献}}
+\zihao{5-} \addtolength{\itemsep}{-1em}
+\vspace {1.5mm}
+\bibliographystyle{gbt7714-numerical}
+\bibliography{ref.bib}
+
+\end{document}
+
+

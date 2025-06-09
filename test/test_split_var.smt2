@@ -1,7 +1,12 @@
 (set-logic QF_S)
 (declare-fun x () String)
+; (assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
+; (assert (= (str.split_at "apple,banana,cherry" "," 1) "banana"))
+; (assert (= (str.split_at "apple,banana,cherry" "," 3) "no_such_index"))
+(assert (= (str.at "\"String with \\\"quotes\\\"\"" 0) x)
+(check-sat)
+(get-model)
 
-(assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
 ; (assert (str.prefixof "w" (str.split_at x "-" 2)))
 
 ; ; AuxiliaryAssert，分为三部分，第一部分是关于x和x_last的声明，第二部分是关于x_split_0, x_split_1, x_split_2的声明，第三部分是关于b_x_split_num_0, b_x_split_num_2的声明
@@ -20,6 +25,3 @@
 ; assert (=> (= "hello" x_split_0) (or b_x_split_num_0 b_x_split_num_2)))
 
 ; ; replaceSplitAtVarNodes，最后将原公式中的(str.split_at x "-" 0)替换为x_split_0，(str.split_at x "-" 2)替换为x_split_2
-
-(check-sat)
-(get-model)
