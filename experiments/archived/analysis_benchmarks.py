@@ -66,11 +66,14 @@ def process_smt2_files(input_dir):
     """Process all SMT2 files in the input directory."""
     all_data = []
     
-    # Get all SMT2 files and sort them naturally
+    # Get all SMT2 files recursively and sort them naturally
     try:
-        smt2_files = [f for f in os.listdir(input_dir) if f.endswith('.smt2')]
+        smt2_files = []
+        for root, dirs, files in os.walk(input_dir):
+            for file in files:
+                if file.endswith('.smt2'):
+                    smt2_files.append(os.path.join(root, file))
         smt2_files = natsort.natsorted(smt2_files)  # Natural sort the files
-        smt2_files = [os.path.join(input_dir, f) for f in smt2_files]
         print(f"Found {len(smt2_files)} SMT2 files")
     except FileNotFoundError:
         print(f"Input directory {input_dir} not found!")

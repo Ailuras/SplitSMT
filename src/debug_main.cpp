@@ -1,59 +1,61 @@
-#include <iostream>
-#include <chrono>
-#include <fstream>
+#include "Split.h"
+#include "Logger.h"
 #include "Context.h"
+#include <iostream>
 
 using namespace strp;
 
 int main() {
-    std::cout << "=== Testing optimized Context functions ===" << std::endl;
+    strp::utils::Logger::getInstance().setLevel(strp::utils::LogLevel::DEBUG);
+    
+    std::cout << "Testing External Solvers" << std::endl;
     
     Context& ctx = Context::getInstance();
     
-    auto start = std::chrono::high_resolution_clock::now();
+    ctx.parseString(R"(
+        (set-logic QF_S)
+        (declare-fun x () String)
+        (declare-fun y () String)
+        (assert (= x "hello"))
+        (assert (= y "world"))
+        (assert (= (str.++ x " " y) "hello world"))
+        (check-sat)
+    )");
     
-    if (ctx.parseFile("test/test_split_optimization.smt2")) {
-        std::cout << "✓ Successfully parsed test file" << std::endl;
+    // Test each external solver
+    std::vector<std::pair<SolverType, std::string>> solvers = {
+        {SolverType::EXTERNAL_Z3, "External Z3"},
+        {SolverType::EXTERNAL_CVC5, "External CVC5"},
+        {SolverType::EXTERNAL_OSTRICH, "External Ostrich"},
+        {SolverType::EXTERNAL_Z3_NOODLER, "External Z3-Noodler"}
+    };
+    
+    for (const auto& [solverType, solverName] : solvers) {
+        std::cout << "\n=== Testing " << solverName << " ===" << std::endl;
         
-        auto splitNodes = ctx.getSplitAtNodes();
-        std::cout << "✓ Found " << splitNodes.size() << " split nodes (with deduplication)" << std::endl;
-        
-        auto splitConstNodes = ctx.getSplitAtConstNodes();
-        std::cout << "✓ Found " << splitConstNodes.size() << " split const nodes" << std::endl;
-        
-        auto splitVarNodes = ctx.getSplitAtVarNodes();
-        std::cout << "✓ Found " << splitVarNodes.size() << " split var nodes" << std::endl;
-        
-        for (size_t i = 0; i < splitNodes.size(); ++i) {
-            std::cout << "  Split node " << i << ": " << Context::getComment(splitNodes[i]) << std::endl;
+        try {
+            splitSolver solver(solverType);
+            SatResult result = solver.solve();
+            
+            std::cout << solverName << " result: ";
+            switch (result) {
+                case SatResult::SAT:
+                    std::cout << "SAT" << std::endl;
+                    break;
+                case SatResult::UNSAT:
+                    std::cout << "UNSAT" << std::endl;
+                    break;
+                case SatResult::UNKNOWN:
+                    std::cout << "UNKNOWN" << std::endl;
+                    break;
+                case SatResult::ERROR:
+                    std::cout << "ERROR" << std::endl;
+                    break;
+            }
+        } catch (const std::exception& e) {
+            std::cout << solverName << " failed: " << e.what() << std::endl;
         }
-        
-        ctx.updateSplitNodeToAtoms();
-        
-        for (auto& splitNode : splitNodes) {
-            auto atoms = ctx.getAtomsForSplitNode(splitNode);
-            std::cout << "  Split node has " << atoms.size() << " related atoms" << std::endl;
-        }
-        
-        std::cout << "✓ Updated split node to atoms mapping" << std::endl;
-        std::cout << "✓ Total variables: " << ctx.getVarCount() << std::endl;
-        std::cout << "✓ Total atoms: " << ctx.getAtomCount() << std::endl;
-        std::cout << "✓ Total clauses: " << ctx.getClauseCount() << std::endl;
-        
-    } else {
-        std::cout << "✗ Failed to parse test file" << std::endl;
-        return 1;
     }
-    
-    auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    
-    std::cout << "✓ Execution completed in " << duration.count() << " microseconds" << std::endl;
-    
-    std::cout << "=== All optimizations verified ===" << std::endl;
-    std::cout << "✓ Deduplication works for getSplitAtNodes" << std::endl;
-    std::cout << "✓ updateSplitNodeToAtoms is more efficient" << std::endl;
-    std::cout << "✓ Removed deprecated functions successfully" << std::endl;
     
     return 0;
 } 

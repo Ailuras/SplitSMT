@@ -34,7 +34,7 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run ostrich with the specified timeout and suppress unnecessary output
+# Run ostrich with the specified timeout, enable incremental mode for model support, and filter verbose output
 # --preserve-status: preserve the exit status of the command
 # --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
-timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/ostrich" -quiet -logo "$SMT_FILE"
+timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/ostrich" +incremental -quiet -logo -runtime "$SMT_FILE" 2>&1 | grep -v -E "Loading|OSTRICH|Matthew|For more|contributions|Running|Considered|Warning|^\s*$|^\s*\.\.\." | grep -E "sat|unsat|unknown|model|define-fun|\(|\)|^$"

@@ -34,7 +34,7 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run z3 with the specified timeout
+# Run z3 with the specified timeout and enable model generation
 # --preserve-status: preserve the exit status of the command
 # --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
-timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" "$SMT_FILE"
+timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"

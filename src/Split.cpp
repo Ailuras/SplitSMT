@@ -56,6 +56,22 @@ void splitSolver::initializeSolver() {
                 solver = std::make_unique<CVC5Solver>();
                 INFO("Initialized CVC5 solver");
                 break;
+            case SolverType::EXTERNAL_Z3:
+                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_Z3);
+                INFO("Initialized external Z3 solver");
+                break;
+            case SolverType::EXTERNAL_CVC5:
+                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_CVC5);
+                INFO("Initialized external CVC5 solver");
+                break;
+            case SolverType::EXTERNAL_OSTRICH:
+                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_OSTRICH);
+                INFO("Initialized external Ostrich solver");
+                break;
+            case SolverType::EXTERNAL_Z3_NOODLER:
+                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_Z3_NOODLER);
+                INFO("Initialized external Z3-Noodler solver");
+                break;
             default:
                 ERROR("Unknown solver type");
                 throw std::runtime_error("Unknown solver type");

@@ -18,6 +18,7 @@ OUTPUT_FILE="solve_results.log"
 SOLVER_SCRIPT="./run_strprocessor.sh"
 TIMEOUT=30
 TASK_NAME="solve"
+SOLVER_TYPE="z3"
 
 # Function to print colored output
 print_info() {
@@ -44,13 +45,17 @@ show_usage() {
     echo "  -i, --input-dir DIR     Input directory containing SMT-LIB files (default: benchmarks/seeds)"
     echo "  -o, --output-dir DIR    Output directory for results (default: results)"
     echo "  -f, --output-file FILE  Output file name (default: solve_results.log)"
-    echo "  -s, --solver SCRIPT     Solver script path (default: ./run_strprocessor.sh)"
+    echo "  -s, --solver-script SCRIPT  Solver script path (default: ./run_strprocessor.sh)"
+    echo "  --solver TYPE           Solver type (default: z3)"
+    echo "                          Built-in solvers: z3, cvc5"
+    echo "                          External solvers: ext-z3, ext-cvc5, ext-ostrich, ext-z3-noodler"
     echo "  -t, --timeout SEC       Timeout in seconds (default: 30)"
     echo "  -n, --task-name NAME    Task name for logging (default: solve)"
     echo "  -h, --help              Show this help message"
     echo ""
     echo "Example:"
     echo "  $0 -i benchmarks/seeds -o results -t 60"
+    echo "  $0 -i benchmarks/seeds --solver ext-ostrich -t 60"
     echo ""
 }
 
@@ -69,8 +74,12 @@ while [[ $# -gt 0 ]]; do
             OUTPUT_FILE="$2"
             shift 2
             ;;
-        -s|--solver)
+        -s|--solver-script)
             SOLVER_SCRIPT="$2"
+            shift 2
+            ;;
+        --solver)
+            SOLVER_TYPE="$2"
             shift 2
             ;;
         -t|--timeout)
@@ -108,6 +117,7 @@ print_info "Input directory: $INPUT_DIR"
 print_info "Output directory: $OUTPUT_DIR"
 print_info "Output file: $OUTPUT_FILE"
 print_info "Solver script: $SOLVER_SCRIPT"
+print_info "Solver type: $SOLVER_TYPE"
 print_info "Timeout: ${TIMEOUT}s"
 print_info "Task name: $TASK_NAME"
 
@@ -167,7 +177,8 @@ overall_start=$(date +%s.%N)
 echo "========================================================" >> "$FULL_OUTPUT_PATH"
 echo "SMT-LIB FILES SOLVING RESULTS" >> "$FULL_OUTPUT_PATH"
 echo "Task: $TASK_NAME" >> "$FULL_OUTPUT_PATH"
-echo "Solver: $(basename "$SOLVER_SCRIPT")" >> "$FULL_OUTPUT_PATH"
+echo "Solver Script: $(basename "$SOLVER_SCRIPT")" >> "$FULL_OUTPUT_PATH"
+echo "Solver Type: $SOLVER_TYPE" >> "$FULL_OUTPUT_PATH"
 echo "Timeout: ${TIMEOUT}s" >> "$FULL_OUTPUT_PATH"
 echo "Total Files: $total_files" >> "$FULL_OUTPUT_PATH"
 echo "Started: $(date)" >> "$FULL_OUTPUT_PATH"
@@ -187,7 +198,8 @@ for file in "${smt_files[@]}"; do
     echo "FILE: $filename" >> "$FULL_OUTPUT_PATH"
     echo "PATH: $file" >> "$FULL_OUTPUT_PATH"
     echo "TASK: $TASK_NAME" >> "$FULL_OUTPUT_PATH"
-    echo "SOLVER: $(basename "$SOLVER_SCRIPT")" >> "$FULL_OUTPUT_PATH"
+    echo "SOLVER_SCRIPT: $(basename "$SOLVER_SCRIPT")" >> "$FULL_OUTPUT_PATH"
+    echo "SOLVER_TYPE: $SOLVER_TYPE" >> "$FULL_OUTPUT_PATH"
     echo "TIMEOUT: ${TIMEOUT}s" >> "$FULL_OUTPUT_PATH"
     echo "INDEX: $file_index/$total_files" >> "$FULL_OUTPUT_PATH"
     print_single_separator
@@ -199,7 +211,7 @@ for file in "${smt_files[@]}"; do
     temp_output=$(mktemp)
     
     # Run the solver with timeout
-    timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" > "$temp_output" 2>&1
+    timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" --solver "$SOLVER_TYPE" > "$temp_output" 2>&1
     exit_status=$?
     
     # Record end time

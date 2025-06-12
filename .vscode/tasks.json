@@ -4,7 +4,7 @@
         {
             "label": "Analyze and Preprocess Benchmarks",
             "type": "shell",
-            "command": "bash experiments/bench_preprocess.sh --input-dir Norn --process-script scripts/preprocess.py --output-dir Norn-preprocessed --log-dir results/preprocess --log-file Norn-preprocess.log --excel-dir charts --excel-file Norn.xlsx",
+            "command": "bash experiments/archived/bench_preprocess.sh --input-dir benchmarks/2015-Norn --process-script scripts/archived/preprocess.py --output-dir benchmarks/2015-Norn-preprocessed --log-dir results/preprocess --log-file Norn-preprocess.log --excel-dir charts --excel-file Norn.xlsx",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -13,7 +13,7 @@
         {
             "label": "Run CVC5 Tests",
             "type": "shell",
-            "command": "bash experiments/bench_solve.sh --input-dir Norn --output-dir results --task cvc5 --solver cvc5 --timeout 10 --parallel 20 --excel-dir charts --excel-file Norn.xlsx",
+            "command": "bash experiments/archived/bench_solve.sh --input-dir benchmarks/2015-Norn --output-dir results --task cvc5 --solver cvc5 --timeout 10 --parallel 20 --excel-dir charts --excel-file Norn.xlsx",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -22,7 +22,7 @@
         {
             "label": "Run CVC5-Preprocess Tests",
             "type": "shell",
-            "command": "bash experiments/bench_solve.sh --input-dir Norn-preprocessed --output-dir results --task cvc5-preprocess --solver cvc5 --timeout 10 --parallel 20 --excel-dir charts --excel-file Norn.xlsx",
+            "command": "bash experiments/archived/bench_solve.sh --input-dir benchmarks/2015-Norn-preprocessed --output-dir results --task cvc5-preprocess --solver cvc5 --timeout 10 --parallel 20 --excel-dir charts --excel-file Norn.xlsx",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"
@@ -31,7 +31,7 @@
         {
             "label": "Process All Results",
             "type": "shell",
-            "command": "python experiments/analysis_solve.py --input-excel charts/Norn.xlsx --log-dir results/cvc5 results/cvc5-preprocess --output-file charts/Norn_updated.xlsx",
+            "command": "python experiments/archived/analysis_solve.py --input-excel charts/Norn.xlsx --log-dir results/cvc5 results/cvc5-preprocess --output-file charts/Norn_updated.xlsx",
             "presentation": {
                 "reveal": "always",
                 "panel": "shared"

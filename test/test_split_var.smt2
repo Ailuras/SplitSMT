@@ -1,9 +1,8 @@
 (set-logic QF_S)
 (declare-fun x () String)
-; (assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
+(assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
 ; (assert (= (str.split_at "apple,banana,cherry" "," 1) "banana"))
 ; (assert (= (str.split_at "apple,banana,cherry" "," 3) "no_such_index"))
-(assert (= (str.at "\"String with \\\"quotes\\\"\"" 0) x)
 (check-sat)
 (get-model)
 

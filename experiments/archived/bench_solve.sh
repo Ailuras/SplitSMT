@@ -109,7 +109,7 @@ if [ "$SOLVER_NAME" != "cvc5" ] && [ "$SOLVER_NAME" != "z3" ]; then
 fi
 
 # Set solver path based on solver name
-SOLVER_PATH="/home/hanrui/StrCvc5/solvers/$SOLVER_NAME/run.sh"
+SOLVER_PATH="/home/hanrui/StrProcessor/solvers/$SOLVER_NAME/run.sh"
 
 # Check if input directory exists
 if [ ! -d "$INPUT_DIR" ]; then
@@ -206,8 +206,8 @@ if [ ! -z "$EXCEL_DIR" ] && [ ! -z "$EXCEL_FILE" ]; then
     echo "Processing results for Excel report..."
     
     # Get absolute path for Excel file
-    EXCEL_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/$EXCEL_DIR/$EXCEL_FILE"
-    OUTPUT_EXCEL="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/$EXCEL_DIR/${EXCEL_FILE%.*}_${TASK_NAME}.xlsx"
+    EXCEL_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/$EXCEL_DIR/$EXCEL_FILE"
+    OUTPUT_EXCEL="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)/$EXCEL_DIR/${EXCEL_FILE%.*}_${TASK_NAME}.xlsx"
     
     # Check if input Excel file exists
     if [ ! -f "$EXCEL_PATH" ]; then

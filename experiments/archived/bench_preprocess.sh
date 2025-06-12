@@ -109,7 +109,7 @@ print_single_separator() {
 
 # Step 1: Run initial benchmark analysis
 echo "Running initial benchmark analysis..."
-python experiments/analysis_benchmarks.py --input-dir "$INPUT_DIR" --output-dir "$EXCEL_DIR" --output-file "$EXCEL_FILE"
+python experiments/archived/analysis_benchmarks.py --input-dir "$INPUT_DIR" --output-dir "$EXCEL_DIR" --output-file "$EXCEL_FILE"
 echo "Initial analysis saved in: $EXCEL_DIR/$EXCEL_FILE"
 
 # Step 2: Process all .smt2 files recursively
@@ -193,7 +193,7 @@ done
 
 # Step 3: Run preprocessing analysis
 echo "Running preprocessing analysis..."
-python experiments/analysis_preprocess.py --input-excel "$EXCEL_DIR/$EXCEL_FILE" --input-log "$LOG_FILE" --output-file "$EXCEL_DIR/$EXCEL_FILE"
+python experiments/archived/analysis_preprocess.py --input-excel "$EXCEL_DIR/$EXCEL_FILE" --input-log "$LOG_FILE" --output-file "$EXCEL_DIR/$EXCEL_FILE"
 echo "Preprocessing analysis saved in: $EXCEL_DIR/$EXCEL_FILE"
 
 echo "Processing complete. Results saved in: $OUTPUT_DIR"

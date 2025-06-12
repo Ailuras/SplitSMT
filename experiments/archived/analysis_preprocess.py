@@ -33,6 +33,7 @@ def parse_log_file(log_file):
     """Parse a log file and extract results for each file."""
     results = {}
     current_file = None
+    current_path = None
     current_result = {}
     script_output = []
     collecting_output = False
@@ -48,13 +49,18 @@ def parse_log_file(log_file):
                 
                 # Parse file information
                 if line.startswith('FILE:'):
-                    if current_file and current_result:
+                    if current_path and current_result:
                         current_result['script_output'] = '\n'.join(script_output)
-                        results[current_file] = current_result
+                        results[current_path] = current_result
                     current_file = line.split(':', 1)[1].strip()
+                    current_path = None
                     current_result = {}
                     script_output = []
                     collecting_output = False
+                
+                # Parse path information
+                elif line.startswith('PATH:'):
+                    current_path = line.split(':', 1)[1].strip()
                 
                 # Parse result information
                 elif line.startswith('RESULT:'):
@@ -73,9 +79,9 @@ def parse_log_file(log_file):
         print(f"Error parsing log file {log_file}: {e}")
     
     # Add the last result
-    if current_file and current_result:
+    if current_path and current_result:
         current_result['script_output'] = '\n'.join(script_output)
-        results[current_file] = current_result
+        results[current_path] = current_result
     
     return results
 
@@ -87,9 +93,9 @@ def update_excel(excel_file, results, output_file):
         
         # Update results for each file
         for index, row in df.iterrows():
-            file_name = row['file_name']
-            if file_name in results:
-                result = results[file_name]
+            file_path = row['path']
+            if file_path in results:
+                result = results[file_path]
                 df.at[index, 'res_preprocess_result'] = result.get('result', '')
                 df.at[index, 'res_preprocess_time'] = result.get('time', '')
                 df.at[index, 'res_preprocess_reason'] = result.get('script_output', '')

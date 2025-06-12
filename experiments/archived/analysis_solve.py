@@ -46,6 +46,7 @@ def parse_log_file(log_file):
     """Parse a log file and extract results for each file."""
     results = {}
     current_file = None
+    current_path = None
     current_result = {}
     solver_output = []
     collecting_output = False
@@ -61,13 +62,18 @@ def parse_log_file(log_file):
                 
                 # Parse file information
                 if line.startswith('FILE:'):
-                    if current_file and current_result:
+                    if current_path and current_result:
                         current_result['solver_output'] = '\n'.join(solver_output)
-                        results[current_file] = current_result
+                        results[current_path] = current_result
                     current_file = line.split(':', 1)[1].strip()
+                    current_path = None
                     current_result = {}
                     solver_output = []
                     collecting_output = False
+                
+                # Parse path information
+                elif line.startswith('PATH:'):
+                    current_path = line.split(':', 1)[1].strip()
                 
                 # Parse result information
                 elif line.startswith('RESULT:'):
@@ -88,9 +94,9 @@ def parse_log_file(log_file):
         print(f"Error parsing log file {log_file}: {e}")
     
     # Add the last result
-    if current_file and current_result:
+    if current_path and current_result:
         current_result['solver_output'] = '\n'.join(solver_output)
-        results[current_file] = current_result
+        results[current_path] = current_result
     
     return results
 
@@ -114,12 +120,32 @@ def update_excel(excel_file, results, task_name, output_file):
         
         # Update results for each file
         for index, row in df.iterrows():
-            file_name = row['file_name']
-            if file_name in results:
-                result = results[file_name]
+            file_path = row['path']
+            
+            # Try exact path match first
+            if file_path in results:
+                result = results[file_path]
                 df.at[index, result_col] = result.get('result', '')
                 df.at[index, time_col] = result.get('time', '')
                 df.at[index, reason_col] = result.get('solver_output', '')
+            else:
+                # Try matching by converting original path to preprocessed path
+                # E.g., /path/2015-Norn/file.smt2 -> /path/2015-Norn-preprocessed/file.smt2
+                if '2015-Norn/' in file_path and '2015-Norn-preprocessed/' not in file_path:
+                    preprocessed_path = file_path.replace('2015-Norn/', '2015-Norn-preprocessed/')
+                    if preprocessed_path in results:
+                        result = results[preprocessed_path]
+                        df.at[index, result_col] = result.get('result', '')
+                        df.at[index, time_col] = result.get('time', '')
+                        df.at[index, reason_col] = result.get('solver_output', '')
+                # Try the reverse conversion as well
+                elif '2015-Norn-preprocessed/' in file_path:
+                    original_path = file_path.replace('2015-Norn-preprocessed/', '2015-Norn/')
+                    if original_path in results:
+                        result = results[original_path]
+                        df.at[index, result_col] = result.get('result', '')
+                        df.at[index, time_col] = result.get('time', '')
+                        df.at[index, reason_col] = result.get('solver_output', '')
         
         # Create output directory if it doesn't exist
         os.makedirs(os.path.dirname(output_file), exist_ok=True)
