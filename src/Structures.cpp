@@ -50,9 +50,7 @@ Clause::Clause(const SMTParser::NodePtr& node, Context& context, bool is_origina
     }
 }
 
-Lemma::Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Context& context) :
-    premises(premises),
-    conclusion(conclusion) {}
+
 
 Division::Division(const std::string& divided, const std::string& delimiter, const std::string& dividedType) :
     divided(divided),

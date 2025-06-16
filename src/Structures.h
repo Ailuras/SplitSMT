@@ -3,10 +3,10 @@
 #include <vector>
 #include <memory>
 #include <unordered_map>
+#include <unordered_set>
 #include <iostream>
 #include <cassert>
-#include <boost/unordered/unordered_set.hpp>
-#include <boost/functional/hash.hpp>
+#include <functional>
 #include "dag.h"
 
 namespace strp {
@@ -71,9 +71,12 @@ public:
         return !(*this == other);
     }
     
-    friend std::size_t hash_value(const Var& var) {
-        return boost::hash<SMTParser::NodePtr>()(var.node);
-    }
+    // Simple hash function for unordered containers
+    struct Hash {
+        std::size_t operator()(const Var& var) const noexcept {
+            return reinterpret_cast<std::size_t>(&var);
+        }
+    };
 
 private:
     SMTParser::NodePtr node;
@@ -126,9 +129,12 @@ public:
         return !(*this == other);
     }
     
-    friend std::size_t hash_value(const Atom& atom) {
-        return boost::hash<SMTParser::NodePtr>()(atom.node);
-    }
+    // Simple hash function for unordered containers
+    struct Hash {
+        std::size_t operator()(const Atom& atom) const noexcept {
+            return reinterpret_cast<std::size_t>(&atom);
+        }
+    };
 
 private:
     SMTParser::NodePtr node;
@@ -180,7 +186,7 @@ public:
     ClauseType getType() const { return type; }
     std::string getSource() const { return source; }
     std::string getComment() const { return comment; }
-    boost::unordered_set<Atom> getAtoms() const { return atoms; }
+    std::unordered_set<Atom, Atom::Hash> getAtoms() const { return atoms; }
 
     bool isAtom() const { return node->isAtom(); }
     bool isOriginal() const { return is_original; }
@@ -194,36 +200,11 @@ private:
     ClauseType type;
     std::string source;
     std::string comment;
-    boost::unordered_set<Atom> atoms;
+    std::unordered_set<Atom, Atom::Hash> atoms;
     bool is_original;
 };
 
-class Lemma {
-public:
-    Lemma() = default;
-    Lemma(const std::vector<Clause>& premises, const Clause& conclusion, Context& context);
-    Lemma(const Lemma& other) = default;
-    Lemma& operator=(const Lemma& other) = default;
-    ~Lemma() = default;
 
-    std::string getSource() const { return source; }
-    std::string getComment() const { return comment; }
-    
-    std::string toSMT() const {
-        std::string result;
-        for (const auto& premise : premises) {
-            result += premise.toSMT() + "\n";
-        }
-        result += conclusion.toSMT();
-        return result;
-    }
-
-private:
-    std::vector<Clause> premises;
-    Clause conclusion;
-    std::string source;
-    std::string comment;
-};
 
 class Division {
 public:
@@ -257,3 +238,5 @@ private:
 };
 
 } // namespace strp
+
+// Hash functions are now defined as nested classes within Var and Atom

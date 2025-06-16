@@ -36,10 +36,10 @@ private:
     SolverType currentSolverType;
     Context& context;
     
-    std::vector<SMTParser::NodePtr> splitAtAtoms;
+    std::vector<SMTParser::NodePtr> splitAtTerms;
 
     void initializeSolver();
-    bool containsSplitAtom(const SMTParser::NodePtr& node, const SMTParser::NodePtr& splitAtom);
+
     std::string nodeToString(const SMTParser::NodePtr& node);
 };
 

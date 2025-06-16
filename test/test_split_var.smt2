@@ -1,6 +1,6 @@
 (set-logic QF_S)
 (declare-fun x () String)
-(assert (or (= (str.split_at x "-" 0) "hello") (= (str.split_at x "-" 2) "w")))
+(assert (or (= (str.split_at x "aa" 0) "hello") (= (str.split_at x "aa" 2) "w")))
 ; (assert (= (str.split_at "apple,banana,cherry" "," 1) "banana"))
 ; (assert (= (str.split_at "apple,banana,cherry" "," 3) "no_such_index"))
 (check-sat)

@@ -16,8 +16,7 @@ find_package(PkgConfig REQUIRED)
 pkg_check_modules(GMP REQUIRED gmp)
 pkg_check_modules(MPFR REQUIRED mpfr)
 
-# Find Boost
-find_package(Boost REQUIRED COMPONENTS system)
+# Boost is no longer required after migration to STL containers
 
 # Set variables for SMTParser
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
@@ -76,7 +75,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 target_include_directories(strprocessor PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include
-    ${Boost_INCLUDE_DIRS}
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )
@@ -84,7 +82,6 @@ target_include_directories(strprocessor PRIVATE
 # Link libraries
 target_link_libraries(strprocessor PRIVATE
     smtparser
-    ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}
 )
@@ -93,7 +90,6 @@ target_link_libraries(strprocessor PRIVATE
 target_include_directories(debug_strprocessor PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include
-    ${Boost_INCLUDE_DIRS}
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )
@@ -101,7 +97,6 @@ target_include_directories(debug_strprocessor PRIVATE
 # Link libraries for debug executable
 target_link_libraries(debug_strprocessor PRIVATE
     smtparser
-    ${Boost_LIBRARIES}
     ${GMP_LIBRARIES}
     ${MPFR_LIBRARIES}
 )

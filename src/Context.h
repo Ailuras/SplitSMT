@@ -2,9 +2,9 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
 #include <memory>
 #include <set>
-#include <boost/unordered/unordered_set.hpp>
 #include "Structures.h"
 #include "dag.h"
 #include "Logger.h"
@@ -44,7 +44,7 @@ public:
     void addVar(const Var& var);
     void addAtom(const Atom& atom);
     void addClause(const Clause& clause);
-    void addLemma(const Lemma& lemma);
+
     void addDivision(const Division& division);
     
     void declareStringVar(const std::string& name);
@@ -58,10 +58,10 @@ public:
     
     std::vector<SMTParser::NodePtr> getVariables();
     std::vector<SMTParser::NodePtr> getAssertions();
-    boost::unordered_set<Var> getVars() const;
-    boost::unordered_set<Atom> getAtoms() const;
+    std::unordered_set<Var, Var::Hash> getVars() const;
+    std::unordered_set<Atom, Atom::Hash> getAtoms() const;
     std::vector<Clause> getClauses() const;
-    std::vector<Lemma> getLemmas() const;
+
     std::unordered_map<std::string, Division> getDivisions() const;
     Division* getDivision(const std::string& divided, const std::string& delimiter);
     bool hasDivision(const std::string& divided, const std::string& delimiter) const;
@@ -77,18 +77,18 @@ public:
     void clearVars();
     void clearAtoms();
     void clearClauses();
-    void clearLemmas();
+
     void clearDivisions();
     void clearSplitNodeToAtoms();
     
     void updateSplitNodeToAtoms();
     void updateDivisions();
-    boost::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
+    std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     
     size_t getVarCount() const;
     size_t getAtomCount() const;
     size_t getClauseCount() const;
-    size_t getLemmaCount() const;
+
     
     static int getType(const SMTParser::NodePtr& node);
     static VarType getVarType(const SMTParser::NodePtr& node);
@@ -100,8 +100,8 @@ public:
     static std::vector<SMTParser::NodePtr> getAtoms(const SMTParser::NodePtr& node);
     static bool containsNode(const SMTParser::NodePtr& parent, const SMTParser::NodePtr& target);
 
-    static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
-    static void replaceNodes(const boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
+    static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
+    static void replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
     static SMTParser::NodePtr createNode(const std::string& node_str);
     static SMTParser::NodePtr createStringConst(const std::string& value);
     static SMTParser::NodePtr createIntConst(int value);
@@ -119,17 +119,17 @@ private:
     void updateTasks(const std::string& filename);
     TaskType parseTaskCommand(const std::string& line) const;
 
-    boost::unordered_set<Var> vars;
-    boost::unordered_set<Atom> atoms;
+    std::unordered_set<Var, Var::Hash> vars;
+    std::unordered_set<Atom, Atom::Hash> atoms;
     std::vector<Clause> clauses;
-    std::vector<Lemma> lemmas;
+
     std::set<TaskType> tasks;
     
     std::unordered_map<std::string, Division> divisions;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
     
-    std::unordered_map<SMTParser::NodePtr, boost::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
+    std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
     
     utils::Logger& logger = utils::Logger::getInstance();
     SMTParser::Parser SMTParser;

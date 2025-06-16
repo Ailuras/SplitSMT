@@ -9,7 +9,7 @@
 #include <filesystem>
 #include <chrono>
 #include <unordered_map>
-#include <boost/unordered_map.hpp>
+
 #include <iomanip>
 #include <algorithm>
 
@@ -103,14 +103,13 @@ std::string splitSolver::getUnsatCore() {
     return "";
 }
 
-// checked
 void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
     if (splitAtConstNodes.empty()) {
         DEBUG("No SplitAt const nodes to replace");
         return;
     }
     
-    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
     for (auto& node : splitAtConstNodes) {
         try {
             if (node->getChildrenSize() >= 3) {
@@ -131,7 +130,7 @@ void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
                     DEBUG("Replaced ", ctx.getSource(node), " with ", ctx.getSource(replacement));
                 } else {
                     SMTParser::NodePtr replacement = Context::createBoolConst(false);
-                    boost::unordered_set<SMTParser::NodePtr> atoms = ctx.getAtomsForSplitNode(node);
+                    std::unordered_set<SMTParser::NodePtr> atoms = ctx.getAtomsForSplitNode(node);
                     for (auto& atom : atoms) {
                         DEBUG("Atom: ", ctx.getSource(atom));
                         replacementMap[atom] = replacement;
@@ -154,7 +153,7 @@ void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
     
     DEBUG("Replacing ", splitAtVarNodes.size(), " split_at var nodes with auxiliary variables");
     
-    boost::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
     
     for (auto& node : splitAtVarNodes) {
         try {
@@ -279,7 +278,7 @@ void splitSolver::addEquivalenceConstraints(Context& ctx, const Division& divisi
 void splitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Adding auxiliary nodes for variable splits");
     
-    splitAtAtoms = ctx.getSplitAtVarNodes();
+    splitAtTerms = ctx.getSplitAtVarNodes();
     
     auto divisions = ctx.getAllDivisions();
     
@@ -297,11 +296,9 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
 }
 
 
-
 void splitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
     
-    auto assertions = ctx.getAssertions();
     auto divisions = ctx.getAllDivisions();
     
     for (const auto& [key, division] : divisions) {
@@ -310,21 +307,21 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
             std::string delimiter = division.getDelimiter();
             auto allIndices = division.getVarSplitNumsAppeared();
             
-            for (auto& assertion : assertions) {
-                for (auto& splitAtom : splitAtAtoms) {
-                    if (containsSplitAtom(assertion, splitAtom) && 
-                        splitAtom->getChildrenSize() >= 3) {
+            for (auto& splitAtTerm : splitAtTerms) {
+                if (splitAtTerm->getChildrenSize() >= 3) {
+                    auto arg1 = splitAtTerm->getChild(0);
+                    auto arg2 = splitAtTerm->getChild(1);
+                    auto arg3 = splitAtTerm->getChild(2);
+                    
+                    if (arg1->isVar() && arg2->isConst() &&
+                        arg1->toString() == variable && 
+                        cleanQuotes(arg2->toString()) == delimiter) {
                         
-                        auto arg1 = splitAtom->getChild(0);
-                        auto arg2 = splitAtom->getChild(1);
-                        auto arg3 = splitAtom->getChild(2);
+                        int index = std::stoi(arg3->toString());
                         
-                        if (arg1->isVar() && arg2->isConst() &&
-                            arg1->toString() == variable && 
-                            cleanQuotes(arg2->toString()) == delimiter) {
-                            
-                            int index = std::stoi(arg3->toString());
-                            
+                        auto atoms = ctx.getAtomsForSplitNode(splitAtTerm);
+                        
+                        for (auto& atom : atoms) {
                             std::string disjuncts = "";
                             bool first = true;
                             for (int idx : allIndices) {
@@ -337,9 +334,9 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                             
                             std::string lemma;
                             if (disjuncts.find(" ") != std::string::npos) {
-                                lemma = "(=> " + nodeToString(assertion) + " (or " + disjuncts + "))";
+                                lemma = "(=> " + nodeToString(atom) + " (or " + disjuncts + "))";
                             } else {
-                                lemma = "(=> " + nodeToString(assertion) + " " + disjuncts + ")";
+                                lemma = "(=> " + nodeToString(atom) + " " + disjuncts + ")";
                             }
                             
                             ctx.addAssertion(lemma);
@@ -350,20 +347,6 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
             }
         }
     }
-}
-
-bool splitSolver::containsSplitAtom(const SMTParser::NodePtr& node, const SMTParser::NodePtr& splitAtom) {
-    if (!node || !splitAtom) return false;
-    
-    if (node == splitAtom) return true;
-    
-    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
-        if (containsSplitAtom(node->getChild(i), splitAtom)) {
-            return true;
-        }
-    }
-    
-    return false;
 }
 
 std::string splitSolver::nodeToString(const SMTParser::NodePtr& node) {
