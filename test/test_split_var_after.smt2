@@ -1,11 +1,17 @@
-(set-logic QF_S)
-(declare-fun b_x_split_num_0 () Bool)
-(declare-fun x_split_2 () String)
+(set-logic QF_SLIA)
+(declare-fun x_split () String)
 (declare-fun x_split_0 () String)
 (declare-fun x_split_1 () String)
+(declare-fun x_split_2 () String)
 (declare-fun x_last () String)
+(declare-fun b_x_split_num_0 () Bool)
 (declare-fun b_x_split_num_2 () Bool)
-(declare-fun x_split () String)
+(declare-fun b_x_split_index_0 () Bool)
+(declare-fun b_x_split_index_1 () Bool)
+(declare-fun b_x_split_index_2 () Bool)
+(declare-fun x_split_index_0 () Int)
+(declare-fun x_split_index_1 () Int)
+(declare-fun x_split_index_2 () Int)
 (declare-fun x () String)
 (assert (or (= "hello" x_split_0) (= "w" x_split_2)))
 (assert (= (str.++ x_split x_last) x))
@@ -15,7 +21,41 @@
 (assert (not (str.contains x_split_2 "aa")))
 (assert (= (= x_split (str.++ x_split_0 "aa" x_split_1 "aa" x_split_2)) b_x_split_num_2))
 (assert (= (= x_split x_split_0) b_x_split_num_0))
-(assert (=> (or (= "hello" x_split_0) (= "w" x_split_2)) b_x_split_num_2))
-(assert (=> (or (= "hello" x_split_0) (= "w" x_split_2)) (or b_x_split_num_0 b_x_split_num_2)))
+
+(assert (= x_split_index_0 (str.indexof x_split "aa" 0)))
+(assert (= x_split_index_1 (str.indexof x_split "aa" (+ x_split_index_0 2))))
+(assert (= x_split_index_2 (str.indexof x_split "aa" (+ x_split_index_1 2))))
+
+; 新约束，仅在分隔符不为单字符时生成
+(assert (=>
+    b_x_split_index_0
+    (or
+        (= x_split_index_0 (str.len x_split_0))
+        (= x_split_index_0 -1)
+    )
+))
+(assert (=>
+    b_x_split_index_1
+    (or
+        (= (- x_split_index_1 x_split_index_0 2) (str.len x_split_1))
+        (= x_split_index_1 -1)
+    )
+))
+(assert (=>
+    b_x_split_index_2
+    (or
+        (= (- x_split_index_2 x_split_index_1 2) (str.len x_split_2))
+        (= x_split_index_2 -1)
+    )
+))
+(assert (=> b_x_split_num_0 b_x_split_index_0))
+(assert (=> b_x_split_num_2 (and b_x_split_index_0 b_x_split_index_1 b_x_split_index_2)))
+
+(assert (=> (= "w" x_split_2) b_x_split_num_2))
+(assert (=> (= "hello" x_split_0) (or b_x_split_num_0 b_x_split_num_2)))
+
+; (assert (= x "helloaaaaw"))
+; (assert (not b_x_split_num_0))
 (check-sat)
+(get-model)
 (exit)

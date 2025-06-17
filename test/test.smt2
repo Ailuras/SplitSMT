@@ -1,0 +1,7 @@
+(set-logic QF_SLIA)
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (= (- x 1 2) 1))
+(check-sat)
+(get-model)
+(exit)

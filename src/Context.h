@@ -49,6 +49,7 @@ public:
     
     void declareStringVar(const std::string& name);
     void declareBoolVar(const std::string& name);
+    void declareIntVar(const std::string& name);
     void addAssertion(const std::string& constraint);
     
     std::vector<SMTParser::NodePtr> getSplitAtNodes();

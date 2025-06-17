@@ -224,6 +224,15 @@ void splitSolver::addAuxiliaryVariables(Context& ctx, const Division& division) 
         ctx.declareBoolVar(si);
     }
     
+    if (delimiter.length() != 1) {
+        for (int i = 0; i <= maxIndex; ++i) {
+            std::string bi = "b_" + variable + "_split_index_" + std::to_string(i);
+            std::string xi = variable + "_split_index_" + std::to_string(i);
+            ctx.declareBoolVar(bi);
+            ctx.declareIntVar(xi);
+        }
+    }
+    
     DEBUG("Declared auxiliary variables for ", variable, " with delimiter '", delimiter, "'");
 }
 
@@ -275,6 +284,75 @@ void splitSolver::addEquivalenceConstraints(Context& ctx, const Division& divisi
     }
 }
 
+void splitSolver::addIndexConstraints(Context& ctx, const Division& division) {
+    std::string variable = division.getDivided();
+    std::string delimiter = division.getDelimiter();
+    int maxIndex = division.getVarMaxSplitNumAppeared();
+    if (delimiter.length() == 1) {
+        return;
+    }
+    std::string x_split = variable + "_split";
+    int delimiterLen = static_cast<int>(delimiter.length());
+
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string xi = variable + "_split_index_" + std::to_string(i);
+        std::string constraint;
+        if (i == 0) {
+            constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiter + "\" 0))";
+        } else {
+            std::string prevXi = variable + "_split_index_" + std::to_string(i - 1);
+            constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiter + "\" (+ " + prevXi + " " + std::to_string(delimiterLen) + ")))";
+        }
+        ctx.addAssertion(constraint);
+        DEBUG("Added index constraint: ", constraint);
+    }
+    
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string bi = "b_" + variable + "_split_index_" + std::to_string(i);
+        std::string xi = variable + "_split_index_" + std::to_string(i);
+        std::string splitVar = variable + "_split_" + std::to_string(i);
+        std::string constraint;
+        if (i == 0) {
+            constraint = "(=> " + bi + " (or (= " + xi + " (str.len " + splitVar + ")) (= " + xi + " -1)))";
+        } else {
+            std::string prevXi = variable + "_split_index_" + std::to_string(i - 1);
+            constraint = "(=> " + bi + " (or (= (- " + xi + " " + prevXi + " " + std::to_string(delimiterLen) + ") (str.len " + splitVar + ")) (= " + xi + " -1)))";
+        }
+        ctx.addAssertion(constraint);
+        DEBUG("Added conditional constraint: ", constraint);
+    }
+}
+
+void splitSolver::addIndexLemmas(Context& ctx, const Division& division) {
+    std::string variable = division.getDivided();
+    std::string delimiter = division.getDelimiter();
+    
+    if (delimiter.length() == 1) {
+        return;
+    }
+    
+    auto splitNums = division.getVarSplitNumsAppeared();
+    
+    for (int idx : splitNums) {
+        std::string si = "b_" + variable + "_split_num_" + std::to_string(idx);
+        
+        if (idx == 0) {
+            std::string bi = "b_" + variable + "_split_index_0";
+            std::string constraint = "(=> " + si + " " + bi + ")";
+            ctx.addAssertion(constraint);
+            DEBUG("Added index lemma: ", constraint);
+        } else {
+            std::string constraint = "(=> " + si + " (and";
+            for (int i = 0; i <= idx; ++i) {
+                constraint += " b_" + variable + "_split_index_" + std::to_string(i);
+            }
+            constraint += "))";
+            ctx.addAssertion(constraint);
+            DEBUG("Added index lemma: ", constraint);
+        }
+    }
+}
+
 void splitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Adding auxiliary nodes for variable splits");
     
@@ -289,12 +367,13 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
             addAuxiliaryVariables(ctx, division);
             addBasicConstraints(ctx, division);
             addEquivalenceConstraints(ctx, division);
+            addIndexConstraints(ctx, division);
+            addIndexLemmas(ctx, division);
         }
     }
     
     DEBUG("Completed adding auxiliary nodes for ", divisions.size(), " divisions");
 }
-
 
 void splitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");

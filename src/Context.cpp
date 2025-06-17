@@ -282,6 +282,11 @@ void Context::declareBoolVar(const std::string& name) {
     DEBUG("Declared boolean variable: ", name);
 }
 
+void Context::declareIntVar(const std::string& name) {
+    SMTParser.mkVarInt(name);
+    DEBUG("Declared integer variable: ", name);
+}
+
 void Context::addAssertion(const std::string& constraint) {
     SMTParser.assert(constraint);
     DEBUG("Added assertion: ", constraint);
