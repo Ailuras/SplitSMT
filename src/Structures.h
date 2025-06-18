@@ -204,36 +204,82 @@ private:
     bool is_original;
 };
 
-
-
 class Division {
 public:
     Division() = default;
-    Division(const std::string& divided, const std::string& delimiter, const std::string& dividedType);
-    Division(const Division& other) = default;
-    Division& operator=(const Division& other) = default;
-    ~Division() = default;
+    Division(const std::string& divided, const std::string& delimiter);
+    virtual ~Division() = default;
 
     std::string getDivided() const { return divided; }
-    std::string getDividedType() const { return dividedType; }
     std::string getDelimiter() const { return delimiter; }
-
-    int getConstSplitNums() const { assert(dividedType == "const"); return splitNums; }
-    std::vector<std::string> getConstSplits() const { assert(dividedType == "const"); return splits; }
-    std::string getConstSplit(int index) const { assert(dividedType == "const"); return splits[index]; }
-
-    void addVarSplitNumAppeared(int num) { assert(dividedType == "var"); splitNumsAppeared.push_back(num); }
-    int getVarMaxSplitNumAppeared() const { assert(dividedType == "var"); return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); }
-    const std::vector<int>& getVarSplitNumsAppeared() const { assert(dividedType == "var"); return splitNumsAppeared; }
+    std::string getHashString() const { return hash_string; }
+    virtual bool isConstType() const = 0;
+    virtual bool isVarType() const = 0;
+    
+    bool isNumSplitsUsed() const { return num_splits_used; }
+    void setNumSplitsUsed(bool used) { this->num_splits_used = used; }
     
     static std::string generateKey(const std::string& divided, const std::string& delimiter);
 
-private:
+protected:
     std::string divided;
-    std::string dividedType;
     std::string delimiter;
-    int splitNums;
+    std::string hash_string;
+    bool num_splits_used = false;
+    
+private:
+    std::string generateHashString() const;
+};
+
+class ConstDivision : public Division {
+public:
+    ConstDivision(const std::string& divided, const std::string& delimiter);
+    
+    bool isConstType() const override { return true; }
+    bool isVarType() const override { return false; }
+    
+    int getSplitNums() const { return splitNums; }
+    const std::vector<std::string>& getSplits() const { return splits; }
+    std::string getSplit(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splits.size())) {
+            throw std::out_of_range("Split index out of range");
+        }
+        return splits[index]; 
+    }
+    
+    bool hasSplitNum() const { return has_split_num; }
+    void setHasSplitNum(bool has_split_num) { this->has_split_num = has_split_num; }
+
+private:
     std::vector<std::string> splits;
+    int splitNums;
+    bool has_split_num = false;
+};
+
+class VarDivision : public Division {
+public:
+    VarDivision(const std::string& divided, const std::string& delimiter);
+    
+    bool isConstType() const override { return false; }
+    bool isVarType() const override { return true; }
+    
+    void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
+    int getMaxSplitNumAppeared() const { 
+        if (splitNumsAppeared.empty()) {
+            return num_splits_used ? 0 : -1;
+        }
+        return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); 
+    }
+    const std::vector<int>& getSplitNumsAppeared() const { return splitNumsAppeared; }
+    int getSplitNumAppeared(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splitNumsAppeared.size())) {
+            throw std::out_of_range("Split number index out of range");
+        }
+        return splitNumsAppeared[index]; 
+    }
+    bool hasSplitNums() const { return !splitNumsAppeared.empty(); }
+
+private:
     std::vector<int> splitNumsAppeared;
 };
 

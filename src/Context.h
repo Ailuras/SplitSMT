@@ -45,7 +45,7 @@ public:
     void addAtom(const Atom& atom);
     void addClause(const Clause& clause);
 
-    void addDivision(const Division& division);
+    void addDivision(std::unique_ptr<Division> division);
     
     void declareStringVar(const std::string& name);
     void declareBoolVar(const std::string& name);
@@ -56,6 +56,10 @@ public:
     std::vector<SMTParser::NodePtr> getSplitAtNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getSplitAtConstNodes();
     std::vector<SMTParser::NodePtr> getSplitAtVarNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitNodes(const SMTParser::NodePtr& node);
+    std::vector<SMTParser::NodePtr> getNumSplitConstNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitVarNodes();
     
     std::vector<SMTParser::NodePtr> getVariables();
     std::vector<SMTParser::NodePtr> getAssertions();
@@ -63,27 +67,24 @@ public:
     std::unordered_set<Atom, Atom::Hash> getAtoms() const;
     std::vector<Clause> getClauses() const;
 
-    std::unordered_map<std::string, Division> getDivisions() const;
     Division* getDivision(const std::string& divided, const std::string& delimiter);
     bool hasDivision(const std::string& divided, const std::string& delimiter) const;
-    const std::unordered_map<std::string, Division>& getAllDivisions() const;
+    const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
     std::string getSMTLIB2(bool from_parser = true) const;
     std::set<TaskType> getTask(const std::string& filename) const;
     
     bool hasTask(TaskType taskType) const;
     std::set<TaskType> getAllTasks() const;
     void clearTasks();
-
     void clear();
     void clearVars();
     void clearAtoms();
     void clearClauses();
-
     void clearDivisions();
     void clearSplitNodeToAtoms();
     
-    void updateSplitNodeToAtoms();
     void updateDivisions();
+    void updateSplitNodeToAtoms();
     std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     
     size_t getVarCount() const;
@@ -116,6 +117,8 @@ private:
     ~Context() = default;
     Context(const Context&) = delete;
     Context& operator=(const Context&) = delete;
+    Context(Context&&) = delete;
+    Context& operator=(Context&&) = delete;
     void updateInfo();
     void updateTasks(const std::string& filename);
     TaskType parseTaskCommand(const std::string& line) const;
@@ -123,14 +126,12 @@ private:
     std::unordered_set<Var, Var::Hash> vars;
     std::unordered_set<Atom, Atom::Hash> atoms;
     std::vector<Clause> clauses;
-
     std::set<TaskType> tasks;
     
-    std::unordered_map<std::string, Division> divisions;
+    std::unordered_map<std::string, std::unique_ptr<Division>> divisions;
+    std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
-    
-    std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
     
     utils::Logger& logger = utils::Logger::getInstance();
     SMTParser::Parser SMTParser;

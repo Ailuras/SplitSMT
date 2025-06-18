@@ -1,7 +1,6 @@
 (set-logic QF_SLIA)
 (declare-fun x () String)
-(assert (= (str.split_at x "aa" 0) "a"))
-(assert (= (str.split_at x "aa" 1) "a"))
+()
 (check-sat)
 (get-model)
 

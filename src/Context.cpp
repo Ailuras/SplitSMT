@@ -361,6 +361,70 @@ std::vector<SMTParser::NodePtr> Context::getSplitAtVarNodes() {
     return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
 }
 
+std::vector<SMTParser::NodePtr> Context::getNumSplitNodes() {
+    std::unordered_set<SMTParser::NodePtr> numSplitNodes;
+    
+    auto assertions = getAssertions();
+    for (const auto& assertion : assertions) {
+        auto numSplitNodesInAssertion = getNumSplitNodes(assertion);
+        for (const auto& node : numSplitNodesInAssertion) {
+            numSplitNodes.insert(node);
+        }
+    }
+    
+    return std::vector<SMTParser::NodePtr>(numSplitNodes.begin(), numSplitNodes.end());
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitNodes(const SMTParser::NodePtr& node) {
+    std::unordered_set<SMTParser::NodePtr> numSplitNodes;
+    
+    std::function<void(const SMTParser::NodePtr&)> collectNumSplitNodes = [&](const SMTParser::NodePtr& node) {
+        if (!node) return;
+        if (node->isStrNumSplits()) {
+            numSplitNodes.insert(node);
+        }
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            collectNumSplitNodes(node->getChild(i));
+        }
+    };
+    
+    collectNumSplitNodes(node);
+    
+    return std::vector<SMTParser::NodePtr>(numSplitNodes.begin(), numSplitNodes.end());
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitConstNodes() {
+    std::unordered_set<SMTParser::NodePtr> result;
+    
+    auto numSplitNodes = getNumSplitNodes();
+    for (const auto& node : numSplitNodes) {
+        if (node->getChildrenSize() >= 1) {
+            auto arg1 = node->getChild(0);
+            if (arg1->isConst()) {
+                result.insert(node);
+            }
+        }
+    }
+    
+    return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+}
+
+std::vector<SMTParser::NodePtr> Context::getNumSplitVarNodes() {
+    std::unordered_set<SMTParser::NodePtr> result;
+    
+    auto numSplitNodes = getNumSplitNodes();
+    for (const auto& node : numSplitNodes) {
+        if (node->getChildrenSize() >= 1) {
+            auto arg1 = node->getChild(0);
+            if (!arg1->isConst()) {
+                result.insert(node);
+            }
+        }
+    }
+    
+    return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+}
+
 std::vector<SMTParser::NodePtr> Context::getAtoms(const SMTParser::NodePtr& node) {
     std::unordered_set<SMTParser::NodePtr> nodes;
     getInstance().SMTParser.collectAtoms(node, nodes);
@@ -587,9 +651,7 @@ std::vector<Clause> Context::getClauses() const {
 
 
 
-std::unordered_map<std::string, Division> Context::getDivisions() const {
-    return divisions;
-}
+
 
 void Context::clear() {
     clearVars();
@@ -733,16 +795,16 @@ SMTParser::NodePtr Context::createBoolVar(const std::string& name) {
     return nullptr;
 }
 
-void Context::addDivision(const Division& division) {
-    std::string key = Division::generateKey(division.getDivided(), division.getDelimiter());
-    divisions[key] = division;
+void Context::addDivision(std::unique_ptr<Division> division) {
+    std::string key = Division::generateKey(division->getDivided(), division->getDelimiter());
+    divisions[key] = std::move(division);
 }
 
 Division* Context::getDivision(const std::string& divided, const std::string& delimiter) {
     std::string key = Division::generateKey(divided, delimiter);
     auto it = divisions.find(key);
     if (it != divisions.end()) {
-        return &it->second;
+        return it->second.get();
     }
     return nullptr;
 }
@@ -752,7 +814,7 @@ bool Context::hasDivision(const std::string& divided, const std::string& delimit
     return divisions.find(key) != divisions.end();
 }
 
-const std::unordered_map<std::string, Division>& Context::getAllDivisions() const {
+const std::unordered_map<std::string, std::unique_ptr<Division>>& Context::getAllDivisions() const {
     return divisions;
 }
 
@@ -762,6 +824,7 @@ void Context::updateSplitNodeToAtoms() {
     auto assertions = getAssertions();
     std::unordered_set<SMTParser::NodePtr> allAtoms;
     auto allSplitNodes = getSplitAtNodes();
+    auto allNumSplitNodes = getNumSplitNodes();
     
     for (auto& assertion : assertions) {
         auto atomsInAssertion = getAtoms(assertion);
@@ -782,12 +845,28 @@ void Context::updateSplitNodeToAtoms() {
         }
     }
     
-    DEBUG("Updated splitNodeToAtoms with ", splitNodeToAtoms.size(), " splitAt nodes");
+    for (auto& numSplitNode : allNumSplitNodes) {
+        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
+        
+        for (auto& atom : allAtoms) {
+            if (containsNode(atom, numSplitNode)) {
+                relatedAtoms.insert(atom);
+            }
+        }
+        
+        if (!relatedAtoms.empty()) {
+            splitNodeToAtoms[numSplitNode] = relatedAtoms;
+        }
+    }
+    
+    DEBUG("Updated splitNodeToAtoms with ", splitNodeToAtoms.size(), " split nodes (split_at + num_splits)");
 }
 
 void Context::updateDivisions() {
     auto splitAtConstNodes = getSplitAtConstNodes();
     auto splitAtVarNodes = getSplitAtVarNodes();
+    auto numSplitConstNodes = getNumSplitConstNodes();
+    auto numSplitVarNodes = getNumSplitVarNodes();
     
     for (auto& node : splitAtConstNodes) {
         try {
@@ -806,8 +885,7 @@ void Context::updateDivisions() {
                 }
                 
                 if (!hasDivision(str, delimiter)) {
-                    Division newDivision(str, delimiter, "const");
-                    addDivision(newDivision);
+                    addDivision(std::make_unique<ConstDivision>(str, delimiter));
                     DEBUG("Created new const division for: '", str, "' with delimiter '", delimiter, "'");
                 } else {
                     DEBUG("Using existing const division for: '", str, "' with delimiter '", delimiter, "'");
@@ -836,19 +914,76 @@ void Context::updateDivisions() {
                 
                 Division* division = getDivision(variable, delimiter);
                 if (!division) {
-                    Division newDivision(variable, delimiter, "var");
-                    addDivision(newDivision);
+                    addDivision(std::make_unique<VarDivision>(variable, delimiter));
                     division = getDivision(variable, delimiter);
                     DEBUG("Created new var division for: '", variable, "' with delimiter '", delimiter, "'");
                 }
                 
-                if (division) {
-                    division->addVarSplitNumAppeared(index);
+                if (division && division->isVarType()) {
+                    static_cast<VarDivision*>(division)->addSplitNumAppeared(index);
                     DEBUG("Added split index ", index, " for variable '", variable, "' with delimiter '", delimiter, "'");
                 }
             }
         } catch (const std::exception& e) {
             DEBUG("Error processing var split node: ", e.what());
+        }
+    }
+    
+    for (auto& node : numSplitConstNodes) {
+        try {
+            if (node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                
+                std::string str = arg1->toString();
+                if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
+                    str = str.substr(1, str.size() - 2);
+                }
+                
+                std::string delimiter = arg2->toString();
+                if (delimiter.size() >= 2 && delimiter.front() == '"' && delimiter.back() == '"') {
+                    delimiter = delimiter.substr(1, delimiter.size() - 2);
+                }
+                
+                if (!hasDivision(str, delimiter)) {
+                    addDivision(std::make_unique<ConstDivision>(str, delimiter));
+                    DEBUG("Created new const division for num_splits: '", str, "' with delimiter '", delimiter, "'");
+                } else {
+                    DEBUG("Using existing const division for num_splits: '", str, "' with delimiter '", delimiter, "'");
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing const num_splits node: ", e.what());
+        }
+    }
+    
+    for (auto& node : numSplitVarNodes) {
+        try {
+            if (node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                
+                std::string variable = arg1->toString();
+                
+                std::string delimiter = arg2->toString();
+                if (delimiter.size() >= 2 && delimiter.front() == '"' && delimiter.back() == '"') {
+                    delimiter = delimiter.substr(1, delimiter.size() - 2);
+                }
+                
+                Division* division = getDivision(variable, delimiter);
+                if (!division) {
+                    addDivision(std::make_unique<VarDivision>(variable, delimiter));
+                    division = getDivision(variable, delimiter);
+                    DEBUG("Created new var division for num_splits: '", variable, "' with delimiter '", delimiter, "'");
+                }
+                
+                if (division) {
+                    division->setNumSplitsUsed(true);
+                    DEBUG("Marked num_splits usage for variable '", variable, "' with delimiter '", delimiter, "'");
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing var num_splits node: ", e.what());
         }
     }
     

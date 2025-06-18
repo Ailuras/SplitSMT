@@ -23,14 +23,17 @@ public:
 
     void rewriteFormula(Context& ctx);
     void replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes);
+    void replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes);
     void replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes);
+    void replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes);
 
     void addAuxiliaryNodes(Context& ctx);
-    void addAuxiliaryVariables(Context& ctx, const Division& division);
-    void addBasicConstraints(Context& ctx, const Division& division);
-    void addEquivalenceConstraints(Context& ctx, const Division& division);
-    void addIndexConstraints(Context& ctx, const Division& division);
-    void addIndexLemmas(Context& ctx, const Division& division);
+    void addAuxiliaryVariables(Context& ctx, const Division* division);
+    void addBasicConstraints(Context& ctx, const Division* division);
+    void addEquivalenceConstraints(Context& ctx, const Division* division);
+    void addIndexConstraints(Context& ctx, const Division* division);
+    void addIndexLemmas(Context& ctx, const Division* division);
+    void addNumSplitsConstraints(Context& ctx, const Division* division);
     void addAuxiliaryLemmas(Context& ctx);
 
 private:

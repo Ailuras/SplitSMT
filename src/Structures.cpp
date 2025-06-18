@@ -2,6 +2,8 @@
 #include "Context.h"
 #include <algorithm>
 #include <sstream>
+#include <functional>
+#include <chrono>
 
 std::vector<std::string> splitString(const std::string& str, const std::string& delimiter) {
     std::vector<std::string> result;
@@ -50,23 +52,33 @@ Clause::Clause(const SMTParser::NodePtr& node, Context& context, bool is_origina
     }
 }
 
-
-
-Division::Division(const std::string& divided, const std::string& delimiter, const std::string& dividedType) :
+Division::Division(const std::string& divided, const std::string& delimiter) :
     divided(divided),
-    dividedType(dividedType),
     delimiter(delimiter),
-    splitNums(0) {
-    
-    if (dividedType == "const") {
-        splits = splitString(divided, delimiter);
-        splitNums = static_cast<int>(splits.size());
-        
-        for (int i = 0; i < splitNums; ++i) {
-            splitNumsAppeared.push_back(i);
-        }
-    }
+    num_splits_used(false) {
+    hash_string = generateHashString();
 }
+
+std::string Division::generateHashString() const {
+    static int counter = 0;
+    counter++;
+    
+    std::stringstream ss;
+    ss << "div" << counter;
+    return ss.str();
+}
+
+ConstDivision::ConstDivision(const std::string& divided, const std::string& delimiter) :
+    Division(divided, delimiter),
+    splitNums(0),
+    has_split_num(false) {
+    
+    splits = splitString(divided, delimiter);
+    splitNums = static_cast<int>(splits.size());
+}
+
+VarDivision::VarDivision(const std::string& divided, const std::string& delimiter) :
+    Division(divided, delimiter) {}
 
 std::string Division::generateKey(const std::string& divided, const std::string& delimiter) {
     return divided + "##" + delimiter;
