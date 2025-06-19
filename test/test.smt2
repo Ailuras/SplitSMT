@@ -2,9 +2,9 @@
 (declare-fun input () String)
 (declare-fun temp () String)
 
-(assert (not (= (str.num_splits input "/") 1)))
-(assert (= (str.split_at input "/" 1) temp))
-(assert (= (str.num_splits temp ":") 2))
+; (assert (not (= (str.num_splits input "/") 1)))
+(assert (or (= (str.split_at input "/" 1) temp) (= (str.split_end input "/" 1) temp)))
+; (assert (= (str.num_splits temp ":") 2))
 
 (check-sat)
 (get-model)

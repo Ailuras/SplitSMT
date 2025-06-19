@@ -148,6 +148,64 @@ void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
     Context::replaceNodes(replacementMap);
 }
 
+void splitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndConstNodes) {
+    if (splitEndConstNodes.empty()) {
+        DEBUG("No SplitEnd const nodes to replace");
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    for (auto& node : splitEndConstNodes) {
+        try {
+            if (node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                DEBUG("SplitEnd Node: ", ctx.getSource(node));
+                std::string str = cleanQuotes(arg1->toString());
+                std::string delimiter = cleanQuotes(arg2->toString());
+                int index = std::stoi(arg3->toString());
+                
+                Division* division = ctx.getDivision(str, delimiter);
+                if (division && division->isConstType()) {
+                    ConstDivision* constDiv = static_cast<ConstDivision*>(division);
+                    if (index >= 0 && index < constDiv->getSplitNums()) {
+                        std::string splitEndValue = "";
+                        const auto& splits = constDiv->getSplits();
+                        
+                        for (int i = index; i < static_cast<int>(splits.size()); ++i) {
+                            if (i > index) {
+                                splitEndValue += delimiter;
+                            }
+                            splitEndValue += splits[i];
+                        }
+                        
+                        std::string quotedValue = "\"" + splitEndValue + "\"";
+                        SMTParser::NodePtr replacement = Context::createStringConst(quotedValue);
+                        replacementMap[node] = replacement;
+                        DEBUG("Replaced ", ctx.getSource(node), " with ", ctx.getSource(replacement));
+                    } else {
+                        SMTParser::NodePtr replacement = Context::createStringConst("\"\"");
+                        replacementMap[node] = replacement;
+                        DEBUG("Index out of bounds for str.split_end, replaced with empty string");
+                    }
+                } else {
+                    SMTParser::NodePtr replacement = Context::createBoolConst(false);
+                    std::unordered_set<SMTParser::NodePtr> atoms = ctx.getAtomsForSplitNode(node);
+                    for (auto& atom : atoms) {
+                        DEBUG("Atom: ", ctx.getSource(atom));
+                        replacementMap[atom] = replacement;
+                    }
+                    DEBUG("Division not found for str.split_end");
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split_end node: ", e.what());
+        }
+    }
+    Context::replaceNodes(replacementMap);
+}
+
 void splitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes) {
     if (numSplitConstNodes.empty()) {
         DEBUG("No NumSplit const nodes to replace");
@@ -248,6 +306,66 @@ void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
     }
 }
 
+void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes) {
+    if (splitEndVarNodes.empty()) {
+        DEBUG("No SplitEnd var nodes to replace");
+        return;
+    }
+    
+    DEBUG("Replacing ", splitEndVarNodes.size(), " split_end var nodes with auxiliary variables");
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : splitEndVarNodes) {
+        try {
+            if (node && node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                DEBUG("SplitEnd Node: ", ctx.getSource(node));
+                
+                if (arg1->isVar() && arg2->isConst() && arg3->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::string delimiter = cleanQuotes(arg2->toString());
+                    int index = std::stoi(arg3->toString());
+                    
+                    Division* division = ctx.getDivision(variable, delimiter);
+                    if (division && division->isVarType()) {
+                        VarDivision* varDiv = static_cast<VarDivision*>(division);
+                        auto splitEndNums = varDiv->getSplitEndNumsAppeared();
+                        if (std::find(splitEndNums.begin(), splitEndNums.end(), index) != splitEndNums.end()) {
+                            std::string hashStr = division->getHashString();
+                            std::string xi = hashStr + "_split_end_" + std::to_string(index);
+                            SMTParser::NodePtr replacement = Context::createStringVar(xi);
+                            
+                            if (replacement) {
+                                replacementMap[node] = replacement;
+                                DEBUG("Replaced ", ctx.getSource(node), " with ", ctx.getSource(replacement));
+                            } else {
+                                WARN("Failed to create replacement variable: ", xi);
+                            }
+                        } else {
+                            DEBUG("Index ", index, " not found in split_end division for variable ", variable);
+                        }
+                    } else {
+                        WARN("Division not found for variable ", variable, " with delimiter '", delimiter, "'");
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split_end node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("About to call replaceNodes with ", replacementMap.size(), " replacements");
+        Context::replaceNodes(replacementMap);
+        DEBUG("replaceNodes completed");
+    } else {
+        DEBUG("No replacements to make");
+    }
+}
+
 void splitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes) {
     if (numSplitVarNodes.empty()) {
         DEBUG("No NumSplit var nodes to replace");
@@ -308,7 +426,7 @@ void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
     int maxIndex = varDiv->getMaxSplitNumAppeared();
     
     if (maxIndex == -1 && !division->isNumSplitsUsed()) {
-        DEBUG("Skipping auxiliary variables for ", variable, " - no split_at or num_splits usage");
+        DEBUG("Skipping auxiliary variables for ", variable, " - no split_at, split_end or num_splits usage");
         return;
     }
     
@@ -337,6 +455,11 @@ void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
     for (int idx : varDiv->getSplitNumsAppeared()) {
         std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
         ctx.declareBoolVar(si);
+    }
+    
+    for (int idx : varDiv->getSplitEndNumsAppeared()) {
+        std::string xi = hashStr + "_split_end_" + std::to_string(idx);
+        ctx.declareStringVar(xi);
     }
     
     if (delimiter.length() != 1) {
@@ -548,6 +671,8 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
 void splitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
     
+    auto splitEndVarNodes = ctx.getSplitEndVarNodes();
+    
     const auto& divisions = ctx.getAllDivisions();
     
     for (const auto& [key, divisionPtr] : divisions) {
@@ -590,6 +715,58 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                             ctx.addAssertion(lemma);
                             DEBUG("Added lemma: ", lemma);
                         }
+                    }
+                }
+            }
+            
+            for (auto& splitEndTerm : splitEndVarNodes) {
+                if (splitEndTerm->getChildrenSize() >= 3) {
+                    auto arg1 = splitEndTerm->getChild(0);
+                    auto arg2 = splitEndTerm->getChild(1);
+                    auto arg3 = splitEndTerm->getChild(2);
+                    
+                    if (arg1->toString() == variable && cleanQuotes(arg2->toString()) == delimiter) {
+                        int index = std::stoi(arg3->toString());
+                        
+                        auto atoms = ctx.getAtomsForSplitNode(splitEndTerm);
+                        
+                        for (auto& atom : atoms) {
+                            std::string disjuncts = "";
+                            bool first = true;
+                            for (int idx : allIndices) {
+                                if (idx >= index) {
+                                    if (!first) disjuncts += " ";
+                                    disjuncts += "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                                    first = false;
+                                }
+                            }
+                            
+                            std::string lemma;
+                            if (disjuncts.find(" ") != std::string::npos) {
+                                lemma = "(=> " + nodeToString(atom) + " (or " + disjuncts + "))";
+                            } else {
+                                lemma = "(=> " + nodeToString(atom) + " " + disjuncts + ")";
+                            }
+                            
+                            ctx.addAssertion(lemma);
+                            DEBUG("Added split_end lemma: ", lemma);
+                        }
+                    }
+                }
+            }
+            
+            for (int idx : allIndices) {
+                std::string bSplitNum = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                
+                for (int endIdx : varDiv->getSplitEndNumsAppeared()) {
+                    if (endIdx <= idx) {
+                        std::string splitEndVar = hashStr + "_split_end_" + std::to_string(endIdx);
+                        std::string splitVar = hashStr + "_split_" + std::to_string(idx);
+                        std::string lastVar = hashStr + "_last";
+                        
+                        std::string lemma = "(=> " + bSplitNum + " (= (str.++ " + splitVar + " " + lastVar + ") " + splitEndVar + "))";
+                        ctx.addAssertion(lemma);
+                        DEBUG("Added split_end auxiliary lemma: ", lemma);
                     }
                 }
             }
@@ -692,10 +869,15 @@ void splitSolver::rewriteFormula(Context& ctx) {
     
     auto splitAtConstNodes = ctx.getSplitAtConstNodes();
     replaceSplitAtConstNodes(ctx, splitAtConstNodes);
+    auto splitEndConstNodes = ctx.getSplitEndConstNodes();
+    replaceSplitEndConstNodes(ctx, splitEndConstNodes);
     auto numSplitConstNodes = ctx.getNumSplitConstNodes();
     replaceNumSplitConstNodes(ctx, numSplitConstNodes);
+    
     auto splitAtVarNodes = ctx.getSplitAtVarNodes();
     replaceSplitAtVarNodes(ctx, splitAtVarNodes);
+    auto splitEndVarNodes = ctx.getSplitEndVarNodes();
+    replaceSplitEndVarNodes(ctx, splitEndVarNodes);
     auto numSplitVarNodes = ctx.getNumSplitVarNodes();
     replaceNumSplitVarNodes(ctx, numSplitVarNodes);
     

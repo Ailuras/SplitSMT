@@ -264,6 +264,10 @@ public:
     bool isVarType() const override { return true; }
     
     void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
+    void addSplitEndNumAppeared(int num) { 
+        splitNumsAppeared.push_back(num);
+        splitEndNumsAppeared.push_back(num);
+    }
     int getMaxSplitNumAppeared() const { 
         if (splitNumsAppeared.empty()) {
             return num_splits_used ? 0 : -1;
@@ -271,6 +275,7 @@ public:
         return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); 
     }
     const std::vector<int>& getSplitNumsAppeared() const { return splitNumsAppeared; }
+    const std::vector<int>& getSplitEndNumsAppeared() const { return splitEndNumsAppeared; }
     int getSplitNumAppeared(int index) const { 
         if (index < 0 || index >= static_cast<int>(splitNumsAppeared.size())) {
             throw std::out_of_range("Split number index out of range");
@@ -278,9 +283,11 @@ public:
         return splitNumsAppeared[index]; 
     }
     bool hasSplitNums() const { return !splitNumsAppeared.empty(); }
+    bool hasSplitEndNums() const { return !splitEndNumsAppeared.empty(); }
 
 private:
     std::vector<int> splitNumsAppeared;
+    std::vector<int> splitEndNumsAppeared;
 };
 
 } // namespace strp

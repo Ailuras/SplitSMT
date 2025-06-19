@@ -56,6 +56,10 @@ public:
     std::vector<SMTParser::NodePtr> getSplitAtNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getSplitAtConstNodes();
     std::vector<SMTParser::NodePtr> getSplitAtVarNodes();
+    std::vector<SMTParser::NodePtr> getSplitEndNodes();
+    std::vector<SMTParser::NodePtr> getSplitEndNodes(const SMTParser::NodePtr& node);
+    std::vector<SMTParser::NodePtr> getSplitEndConstNodes();
+    std::vector<SMTParser::NodePtr> getSplitEndVarNodes();
     std::vector<SMTParser::NodePtr> getNumSplitNodes();
     std::vector<SMTParser::NodePtr> getNumSplitNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getNumSplitConstNodes();

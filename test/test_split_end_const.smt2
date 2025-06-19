@@ -1,0 +1,5 @@
+(set-logic QF_S)
+(declare-fun temp () String)
+(assert (= (str.split_end "a-b-c-d" "-" 2) temp))
+(check-sat)
+(get-model)
