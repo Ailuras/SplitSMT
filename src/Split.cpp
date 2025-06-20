@@ -12,6 +12,7 @@
 
 #include <iomanip>
 #include <algorithm>
+#include <functional>
 
 std::string cleanQuotes(const std::string& str) {
     if (str.length() >= 2 && str.front() == '"' && str.back() == '"') {
@@ -187,7 +188,7 @@ void splitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTP
                     } else {
                         SMTParser::NodePtr replacement = Context::createStringConst("\"\"");
                         replacementMap[node] = replacement;
-                        DEBUG("Index out of bounds for str.split_end, replaced with empty string");
+                        DEBUG("Index out of bounds for str.split_rest, replaced with empty string");
                     }
                 } else {
                     SMTParser::NodePtr replacement = Context::createBoolConst(false);
@@ -196,11 +197,11 @@ void splitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTP
                         DEBUG("Atom: ", ctx.getSource(atom));
                         replacementMap[atom] = replacement;
                     }
-                    DEBUG("Division not found for str.split_end");
+                    DEBUG("Division not found for str.split_rest");
                 }
             }
         } catch (const std::exception& e) {
-            DEBUG("Error processing split_end node: ", e.what());
+            DEBUG("Error processing split_rest node: ", e.what());
         }
     }
     Context::replaceNodes(replacementMap);
@@ -312,7 +313,7 @@ void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
         return;
     }
     
-    DEBUG("Replacing ", splitEndVarNodes.size(), " split_end var nodes with auxiliary variables");
+    DEBUG("Replacing ", splitEndVarNodes.size(), " split_rest var nodes with auxiliary variables");
     
     std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
     
@@ -345,7 +346,7 @@ void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
                                 WARN("Failed to create replacement variable: ", xi);
                             }
                         } else {
-                            DEBUG("Index ", index, " not found in split_end division for variable ", variable);
+                            DEBUG("Index ", index, " not found in split_rest division for variable ", variable);
                         }
                     } else {
                         WARN("Division not found for variable ", variable, " with delimiter '", delimiter, "'");
@@ -353,7 +354,7 @@ void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
                 }
             }
         } catch (const std::exception& e) {
-            DEBUG("Error processing split_end node: ", e.what());
+            DEBUG("Error processing split_rest node: ", e.what());
         }
     }
     
@@ -418,6 +419,254 @@ void splitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTPar
     }
 }
 
+void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
+    DEBUG("Converting zero-parameter define-fun to variables + assertions using topological sort");
+    
+    // Step 1: Collect all zero-parameter functions
+    std::vector<FunctionDependency> functions;
+    auto allFunctions = ctx.getFunctions();
+    
+    for (const auto& func : allFunctions) {
+        if (func && func->getFuncBody() && func->getFuncParamsSize() == 0) {
+            std::string funcName = func->getName();
+            std::string funcBody = ctx.nodeToString(func->getFuncBody());
+            std::string sortName = func->getSort()->toString();
+            
+            functions.emplace_back(func, funcName, sortName, funcBody);
+            DEBUG("Found zero-parameter function: ", funcName, " : ", sortName);
+        }
+    }
+    
+    if (functions.empty()) {
+        DEBUG("No zero-parameter functions to convert");
+        return;
+    }
+    
+    // Step 2: Build dependency graph
+    updateFunctionDependencies(ctx, functions);
+    
+    // Step 3: Get topological order
+    std::vector<std::string> processingOrder = topologicalSort(functions);
+    
+    if (processingOrder.empty()) {
+        WARN("Failed to create topological order - possible circular dependencies");
+        return;
+    }
+    
+    // Step 4: Process functions in topological order
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::unordered_map<std::string, std::string> functionToVariable; // func_name -> var_name
+    std::vector<std::string> assertionsToAdd;
+    std::vector<std::string> functionsToRemove;
+    
+    DEBUG("Processing ", processingOrder.size(), " functions in topological order");
+    
+    for (const std::string& funcName : processingOrder) {
+        // Find the function
+        auto it = std::find_if(functions.begin(), functions.end(),
+                              [&funcName](const FunctionDependency& f) { return f.name == funcName; });
+        
+        if (it == functions.end()) continue;
+        
+        const FunctionDependency& funcDep = *it;
+        
+        // Create replacement variable
+        SMTParser::NodePtr replacementVar = nullptr;
+        if (funcDep.returnType == "Int") {
+            ctx.declareIntVar(funcName);
+            replacementVar = Context::createIntVar(funcName);
+        } else if (funcDep.returnType == "Bool") {
+            ctx.declareBoolVar(funcName);
+            replacementVar = Context::createBoolVar(funcName);
+        } else if (funcDep.returnType == "String") {
+            ctx.declareStringVar(funcName);
+            replacementVar = Context::createStringVar(funcName);
+        }
+        
+        if (replacementVar) {
+            replacementMap[funcDep.function] = replacementVar;
+            functionToVariable[funcName] = funcName; // Same name for variable
+            
+            std::string assertion = "(= " + funcName + " " + funcDep.body + ")";
+            assertionsToAdd.push_back(assertion);
+            functionsToRemove.push_back(funcName);
+            
+            DEBUG("Will convert function ", funcName, " to variable with assertion: ", assertion);
+        }
+    }
+    
+    // Step 5: Apply all replacements at once
+    if (!replacementMap.empty()) {
+        DEBUG("Applying ", replacementMap.size(), " function-to-variable replacements");
+        Context::replaceNodes(replacementMap);
+    }
+    
+    // Step 6: Remove function definitions
+    if (!functionsToRemove.empty()) {
+        ctx.removeFunDef(functionsToRemove);
+        DEBUG("Removed ", functionsToRemove.size(), " function definitions");
+    }
+    
+    // Step 7: Add assertions
+    for (const auto& assertion : assertionsToAdd) {
+        ctx.addAssertion(assertion);
+        DEBUG("Added assertion: ", assertion);
+    }
+    
+    // Step 8: Handle remaining func_def nodes with proper mapping
+    DEBUG("Searching for remaining func_def nodes to replace");
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> funcDefReplacements;
+    
+    auto assertions = ctx.getAssertions();
+    for (auto& assertion : assertions) {
+        findAndReplaceFuncDefNodes(assertion, funcDefReplacements, ctx, functionToVariable);
+    }
+    
+    if (!funcDefReplacements.empty()) {
+        DEBUG("Found ", funcDefReplacements.size(), " func_def nodes to replace");
+        Context::replaceNodes(funcDefReplacements);
+        DEBUG("Replaced remaining func_def nodes");
+    }
+    
+    DEBUG("Completed zero-parameter function conversion using topological sort");
+}
+
+void splitSolver::updateFunctionDependencies(Context& ctx, std::vector<FunctionDependency>& functions) {
+    DEBUG("Building function dependency graph");
+    
+    // Create a map for quick lookup
+    std::unordered_map<std::string, FunctionDependency*> funcMap;
+    for (auto& func : functions) {
+        funcMap[func.name] = &func;
+    }
+    
+    // Find dependencies for each function
+    for (auto& func : functions) {
+        for (const auto& [otherName, otherFunc] : funcMap) {
+            if (otherName != func.name && func.body.find(otherName) != std::string::npos) {
+                func.dependencies.insert(otherName);
+                DEBUG("Function ", func.name, " depends on ", otherName);
+            }
+        }
+    }
+    
+    DEBUG("Built dependency graph for ", functions.size(), " functions");
+}
+
+std::vector<std::string> splitSolver::topologicalSort(const std::vector<FunctionDependency>& functions) {
+    DEBUG("Performing topological sort");
+    
+    std::vector<std::string> result;
+    std::unordered_set<std::string> visited;
+    std::unordered_set<std::string> visiting;
+    
+    // Create function map for quick lookup
+    std::unordered_map<std::string, const FunctionDependency*> funcMap;
+    for (const auto& func : functions) {
+        funcMap[func.name] = &func;
+    }
+    
+    std::function<bool(const std::string&)> dfs = [&](const std::string& funcName) -> bool {
+        if (visiting.count(funcName)) {
+            WARN("Circular dependency detected involving function: ", funcName);
+            return false; // Circular dependency
+        }
+        
+        if (visited.count(funcName)) {
+            return true; // Already processed
+        }
+        
+        visiting.insert(funcName);
+        
+        auto it = funcMap.find(funcName);
+        if (it != funcMap.end()) {
+            for (const std::string& dep : it->second->dependencies) {
+                if (!dfs(dep)) {
+                    return false;
+                }
+            }
+        }
+        
+        visiting.erase(funcName);
+        visited.insert(funcName);
+        result.push_back(funcName);
+        return true;
+    };
+    
+    // Process all functions
+    for (const auto& func : functions) {
+        if (!visited.count(func.name)) {
+            if (!dfs(func.name)) {
+                ERROR("Failed to create topological sort due to circular dependencies");
+                return {};
+            }
+        }
+    }
+    
+    DEBUG("Topological sort completed. Processing order: ", 
+          [&]() {
+              std::string order;
+              for (const auto& name : result) {
+                  if (!order.empty()) order += " -> ";
+                  order += name;
+              }
+              return order;
+          }());
+    
+    return result;
+}
+
+void splitSolver::findAndReplaceFuncDefNodes(SMTParser::NodePtr node, 
+                                           std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacements,
+                                           Context& ctx,
+                                           const std::unordered_map<std::string, std::string>& functionToVariable) {
+    if (!node) return;
+    
+    // Check if this node is a func_def node
+    if (node->getName() == "func_def" || node->getName().find("func_def") != std::string::npos) {
+        DEBUG("Found func_def node: ", ctx.getSource(node));
+        
+        // Try to determine which function this func_def represents
+        // This is a heuristic approach - in practice, we need more sophisticated analysis
+        
+        // For now, try to match with the context or use a heuristic
+        // If we can't determine the exact function, we need to analyze the surrounding context
+        
+        // First, try to find if this func_def appears in a context where we can infer the function
+        std::string contextStr = ctx.getSource(node);
+        
+        // Look for function names in the context
+        SMTParser::NodePtr replacement = nullptr;
+        for (const auto& [funcName, varName] : functionToVariable) {
+            // This is a simplified heuristic - in a more robust implementation,
+            // we would need to track the exact mapping during parsing
+            if (contextStr.find(funcName) != std::string::npos) {
+                replacement = Context::createIntVar(varName);
+                DEBUG("Mapping func_def to variable: ", varName, " (inferred from function: ", funcName, ")");
+                break;
+            }
+        }
+        
+        // If we can't determine the exact mapping, create a placeholder but log a warning
+        if (!replacement) {
+            WARN("Could not determine exact function mapping for func_def node. Creating placeholder.");
+            std::string placeholderName = "func_def_replacement_" + std::to_string(replacements.size());
+            ctx.declareIntVar(placeholderName);
+            replacement = Context::createIntVar(placeholderName);
+            DEBUG("Created placeholder: ", placeholderName);
+        }
+        
+        if (replacement) {
+            replacements[node] = replacement;
+        }
+    }
+    
+    // Recursively process children
+    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+        findAndReplaceFuncDefNodes(node->getChild(i), replacements, ctx, functionToVariable);
+    }
+}
+
 void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
     std::string delimiter = division->getDelimiter();
@@ -426,7 +675,7 @@ void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
     int maxIndex = varDiv->getMaxSplitNumAppeared();
     
     if (maxIndex == -1 && !division->isNumSplitsUsed()) {
-        DEBUG("Skipping auxiliary variables for ", variable, " - no split_at, split_end or num_splits usage");
+        DEBUG("Skipping auxiliary variables for ", variable, " - no split_at, split_rest or num_splits usage");
         return;
     }
     
@@ -749,7 +998,7 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                             }
                             
                             ctx.addAssertion(lemma);
-                            DEBUG("Added split_end lemma: ", lemma);
+                            DEBUG("Added split_rest lemma: ", lemma);
                         }
                     }
                 }
@@ -766,7 +1015,7 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                         
                         std::string lemma = "(=> " + bSplitNum + " (= (str.++ " + splitVar + " " + lastVar + ") " + splitEndVar + "))";
                         ctx.addAssertion(lemma);
-                        DEBUG("Added split_end auxiliary lemma: ", lemma);
+                        DEBUG("Added split_rest auxiliary lemma: ", lemma);
                     }
                 }
             }
@@ -864,6 +1113,13 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
 void splitSolver::rewriteFormula(Context& ctx) {
     resetSolver();
     ctx.updateDivisions();
+
+    INFO("Converting zero-parameter functions to variables");
+    convertZeroParamDefineFuns(ctx);
+    DEBUG("=== Final SMT-LIB after converting zero-parameter functions to variables ===");
+    LOG5("\n", ctx.getSMTLIB2(true));
+    DEBUG("=== End of SMT-LIB after converting zero-parameter functions to variables ===");
+
     addAuxiliaryNodes(ctx);
     addAuxiliaryLemmas(ctx);
     
@@ -881,8 +1137,11 @@ void splitSolver::rewriteFormula(Context& ctx) {
     auto numSplitVarNodes = ctx.getNumSplitVarNodes();
     replaceNumSplitVarNodes(ctx, numSplitVarNodes);
     
+    std::vector<std::string> splitFuncNames = ctx.getSplitRelatedFunctionNames();
+    ctx.removeFunDef(splitFuncNames);
+    
     DEBUG("=== Final SMT-LIB after rewriting ===");
-    LOG5(ctx.getSMTLIB2(true));
+    LOG5("\n", ctx.getSMTLIB2(true));
     DEBUG("=== End of SMT-LIB ===");
 }
 

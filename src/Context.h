@@ -75,6 +75,10 @@ public:
     bool hasDivision(const std::string& divided, const std::string& delimiter) const;
     const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
     std::string getSMTLIB2(bool from_parser = true) const;
+    void removeFunDef(const std::vector<std::string>& funcNames);
+    std::vector<std::string> getSplitRelatedFunctionNames() const;
+    std::vector<SMTParser::NodePtr> getFunctions() const;
+    std::string nodeToString(const SMTParser::NodePtr& node) const;
     std::set<TaskType> getTask(const std::string& filename) const;
     
     bool hasTask(TaskType taskType) const;

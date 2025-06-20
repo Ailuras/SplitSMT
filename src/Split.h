@@ -5,8 +5,21 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 
 namespace strp {
+
+struct FunctionDependency {
+    SMTParser::NodePtr function;
+    std::string name;
+    std::string returnType;
+    std::string body;
+    std::unordered_set<std::string> dependencies;
+    
+    FunctionDependency(SMTParser::NodePtr func, const std::string& funcName, 
+                      const std::string& type, const std::string& funcBody)
+        : function(func), name(funcName), returnType(type), body(funcBody) {}
+};
 
 class splitSolver {
 public:
@@ -28,6 +41,8 @@ public:
     void replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes);
     void replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes);
     void replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes);
+    void convertZeroParamDefineFuns(Context& ctx);
+    void replaceSplitRelatedConstants(Context& ctx);
 
     void addAuxiliaryNodes(Context& ctx);
     void addAuxiliaryVariables(Context& ctx, const Division* division);
@@ -46,6 +61,12 @@ private:
     std::vector<SMTParser::NodePtr> splitAtTerms;
 
     void initializeSolver();
+    void updateFunctionDependencies(Context& ctx, std::vector<FunctionDependency>& functions);
+    std::vector<std::string> topologicalSort(const std::vector<FunctionDependency>& functions);
+    void findAndReplaceFuncDefNodes(SMTParser::NodePtr node, 
+                                   std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacements,
+                                   Context& ctx,
+                                   const std::unordered_map<std::string, std::string>& functionToVariable);
 
     std::string nodeToString(const SMTParser::NodePtr& node);
 };

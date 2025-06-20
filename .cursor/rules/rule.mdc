@@ -1,7 +1,7 @@
 ---
 description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
-编译相关命令：make、make clean。在make时，需要先conda deactivate，不然会链接不到正确的boost库。
+编译相关命令：make、make clean。
 重要文件位置：我的编译相关接口在external/SMTLIBParser/include/parser.h中，如果你想测试功能是否正常，可以随意修改src/debug_main.cpp的内容用于测试，测试相关的文件则放在test文件夹中。

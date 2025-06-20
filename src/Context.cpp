@@ -106,6 +106,64 @@ std::string Context::getSMTLIB2(bool from_parser) const {
     return ss.str();
 }
 
+void Context::removeFunDef(const std::vector<std::string>& funcNames) {
+    if (!funcNames.empty()) {
+        size_t removed = SMTParser.removeFuns(funcNames);
+        DEBUG("Removed ", removed, " functions from parser");
+        for (const auto& funcName : funcNames) {
+            DEBUG("Requested removal of function: ", funcName);
+        }
+    }
+    DEBUG("Marked split-related functions for removal during SMT-LIB output");
+}
+
+std::vector<std::string> Context::getSplitRelatedFunctionNames() const {
+    std::vector<std::string> splitFuncNames;
+    std::set<std::string> splitRelatedNames;
+    std::vector<SMTParser::NodePtr> functions = const_cast<Context*>(this)->SMTParser.getFunctions();
+    
+    // First pass: find functions with parameters that directly contain split operations
+    for (const auto& func : functions) {
+        if (func && func->getFuncBody() && func->getFuncParamsSize() > 0) {
+            std::string funcBodyStr = const_cast<Context*>(this)->SMTParser.toString(func->getFuncBody());
+            if (funcBodyStr.find("str.split_at") != std::string::npos ||
+                funcBodyStr.find("str.split_rest") != std::string::npos ||
+                funcBodyStr.find("str.num_splits") != std::string::npos) {
+                splitRelatedNames.insert(func->getName());
+            }
+        }
+    }
+    
+    // Second pass: find functions with parameters that reference split-related functions
+    bool foundNew = true;
+    while (foundNew) {
+        foundNew = false;
+        for (const auto& func : functions) {
+            if (func && func->getFuncBody() && func->getFuncParamsSize() > 0 && splitRelatedNames.find(func->getName()) == splitRelatedNames.end()) {
+                std::string funcBodyStr = const_cast<Context*>(this)->SMTParser.toString(func->getFuncBody());
+                for (const auto& splitName : splitRelatedNames) {
+                    if (funcBodyStr.find(splitName) != std::string::npos) {
+                        splitRelatedNames.insert(func->getName());
+                        foundNew = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    
+    splitFuncNames.assign(splitRelatedNames.begin(), splitRelatedNames.end());
+    return splitFuncNames;
+}
+
+std::vector<SMTParser::NodePtr> Context::getFunctions() const {
+    return const_cast<Context*>(this)->SMTParser.getFunctions();
+}
+
+std::string Context::nodeToString(const SMTParser::NodePtr& node) const {
+    return const_cast<Context*>(this)->SMTParser.toString(node);
+}
+
 TaskType Context::parseTaskCommand(const std::string& line) const {
     std::string trimmed = line;
     trimmed.erase(0, trimmed.find_first_not_of(" \t\n\r"));
@@ -380,7 +438,7 @@ std::vector<SMTParser::NodePtr> Context::getSplitEndNodes(const SMTParser::NodeP
     
     std::function<void(const SMTParser::NodePtr&)> collectSplitEndNodes = [&](const SMTParser::NodePtr& node) {
         if (!node) return;
-        if (node->isStrSplitEnd()) {
+        if (node->isStrSplitRest()) {
             splitEndNodes.insert(node);
         }
         for (size_t i = 0; i < node->getChildrenSize(); ++i) {
@@ -761,9 +819,30 @@ SMTParser::NodePtr Context::replaceNodes(const SMTParser::NodePtr& expr, const s
 
 void Context::replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap) {
     auto& parser = getInstance().SMTParser;
+    
+    // Replace nodes in assertions
     for (size_t i = 0; i < parser.assertions.size(); ++i) {
         std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = nodeMap;
         parser.assertions[i] = parser.replaceNodes(parser.assertions[i], convertedMap);
+    }
+    
+    // Replace nodes in function definitions
+    auto functions = parser.getFunctions();
+    for (auto& func : functions) {
+        if (func && func->isFuncDef() && func->getChildrenSize() > 0) {
+            // Replace nodes in function body (first child)
+            std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> convertedMap = nodeMap;
+            auto newBody = parser.replaceNodes(func->getChild(0), convertedMap);
+            if (newBody != func->getChild(0)) {
+                // Collect function parameters (children 1 onwards)
+                std::vector<SMTParser::NodePtr> params;
+                for (size_t i = 1; i < func->getChildrenSize(); ++i) {
+                    params.push_back(func->getChild(i));
+                }
+                // Update the function with new body
+                func->updateFuncDef(func->getSort(), newBody, params);
+            }
+        }
     }
 }
 
@@ -928,7 +1007,7 @@ void Context::updateSplitNodeToAtoms() {
         }
     }
     
-    DEBUG("Updated splitNodeToAtoms with ", splitNodeToAtoms.size(), " split nodes (split_at + split_end + num_splits)");
+    DEBUG("Updated splitNodeToAtoms with ", splitNodeToAtoms.size(), " split nodes (split_at + split_rest + num_splits)");
 }
 
 void Context::updateDivisions() {
@@ -1018,13 +1097,13 @@ void Context::updateDivisions() {
                 
                 if (!hasDivision(str, delimiter)) {
                     addDivision(std::make_unique<ConstDivision>(str, delimiter));
-                    DEBUG("Created new const division for split_end: '", str, "' with delimiter '", delimiter, "'");
+                    DEBUG("Created new const division for split_rest: '", str, "' with delimiter '", delimiter, "'");
                 } else {
-                    DEBUG("Using existing const division for split_end: '", str, "' with delimiter '", delimiter, "'");
+                    DEBUG("Using existing const division for split_rest: '", str, "' with delimiter '", delimiter, "'");
                 }
             }
         } catch (const std::exception& e) {
-            DEBUG("Error processing const split_end node: ", e.what());
+            DEBUG("Error processing const split_rest node: ", e.what());
         }
     }
     
@@ -1048,16 +1127,16 @@ void Context::updateDivisions() {
                 if (!division) {
                     addDivision(std::make_unique<VarDivision>(variable, delimiter));
                     division = getDivision(variable, delimiter);
-                    DEBUG("Created new var division for split_end: '", variable, "' with delimiter '", delimiter, "'");
+                    DEBUG("Created new var division for split_rest: '", variable, "' with delimiter '", delimiter, "'");
                 }
                 
                 if (division && division->isVarType()) {
                     static_cast<VarDivision*>(division)->addSplitEndNumAppeared(index);
-                    DEBUG("Added split_end index ", index, " for variable '", variable, "' with delimiter '", delimiter, "'");
+                    DEBUG("Added split_rest index ", index, " for variable '", variable, "' with delimiter '", delimiter, "'");
                 }
             }
         } catch (const std::exception& e) {
-            DEBUG("Error processing var split_end node: ", e.what());
+            DEBUG("Error processing var split_rest node: ", e.what());
         }
     }
     
