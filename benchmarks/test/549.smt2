@@ -1,0 +1,136 @@
+(set-option :produce-unsat-cores true) ; enable generation of unsat cores
+(set-option :produce-models true) ; enable model generation
+(set-logic ALL)
+
+; 统一获取长度的函数
+(define-fun get_split_length ((x String) (d String) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (str.num_splits x d) limit)
+         (str.num_splits x d)
+         limit)
+    (str.num_splits x d)
+  )
+)
+
+; 统一获取元素的函数
+(define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (str.num_splits x d) limit))
+    (str.split_rest x d (- limit 1))
+    (str.split_at x d i)
+  )
+)
+
+(declare-sort var261 0)
+(declare-sort var3204 0)
+(declare-sort var1706 0)
+(declare-sort var2109 0)
+(declare-sort var1422 0)
+(declare-sort void 0)
+(declare-sort Iterator 0)
+(declare-sort ClassObject 0)
+(declare-fun String-init () String)
+(define-fun <init>/1968657023 () String "")
+(define-fun append/672562846 ((s String) (tail String)) String (str.++ s tail))
+(declare-fun address/-1972983160 (var261) var3204)
+(declare-fun append/-1031950772 (String var1706) String)
+(declare-fun cast-from-var3204-to-var1706 (var3204) var1706)
+(declare-fun append/-1166366385 (String Int) String)
+(declare-fun providerAddress/-1972983160 (var261) var3204)
+(declare-fun service/-1972983160 (var261) var2109)
+(declare-fun cast-from-var2109-to-var1706 (var2109) var1706)
+(declare-fun app/-1972983160 (var261) var2109)
+(declare-fun param/-1972983160 (var261) var1422)
+(declare-fun cast-from-var1422-to-var1706 (var1422) var1706)
+(define-fun toString/-2075883882 ((s String)) String s)
+(declare-const null-var261 var261)
+(declare-const var167 var261) ; Statement: r1 := @this: org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch 
+(assert (not (= var167 null-var261)))
+(define-const var2582 String String-init) ; Statement: $r0 = new java.lang.StringBuilder 
+(assert true)
+;(assert (<init>/1968657023 var2582)) ; Statement: specialinvoke $r0.<java.lang.StringBuilder: void <init>()>() 
+(declare-const var2582!1 String)
+(assert (= var2582!1 ""))
+(assert true)
+(define-const var50 String (append/672562846 var2582!1 "ConditionMatch{address=\u0027")) ; Statement: $r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ConditionMatch{address=\'") 
+(declare-const var2582!2 String)
+(assert (= var2582!2 (str.++ var2582!1 "ConditionMatch{address=\u0027")))
+(define-const var12 var3204 (address/-1972983160 var167)) ; Statement: $r2 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch address> 
+(assert true)
+(define-const var995 String (append/-1031950772 var50 (cast-from-var3204-to-var1706 var12))) ; Statement: $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2) 
+(declare-const var50!1 String)
+(assert (str.prefixof var50 var50!1))
+(assert true)
+(define-const var3638 String (append/-1166366385 var995 39)) ; Statement: $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var995!1 String)
+(assert (str.prefixof var995 var995!1))
+(assert true)
+(define-const var1789 String (append/672562846 var3638 "providerAddress=\u0027")) ; Statement: $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("providerAddress=\'") 
+(declare-const var3638!1 String)
+(assert (= var3638!1 (str.++ var3638 "providerAddress=\u0027")))
+(define-const var3417 var3204 (providerAddress/-1972983160 var167)) ; Statement: $r6 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch providerAddress> 
+(assert true)
+(define-const var599 String (append/-1031950772 var1789 (cast-from-var3204-to-var1706 var3417))) ; Statement: $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6) 
+(declare-const var1789!1 String)
+(assert (str.prefixof var1789 var1789!1))
+(assert true)
+(define-const var1885 String (append/-1166366385 var599 39)) ; Statement: $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var599!1 String)
+(assert (str.prefixof var599 var599!1))
+(assert true)
+(define-const var2665 String (append/672562846 var1885 ", service=\u0027")) ; Statement: $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", service=\'") 
+(declare-const var1885!1 String)
+(assert (= var1885!1 (str.++ var1885 ", service=\u0027")))
+(define-const var3320 var2109 (service/-1972983160 var167)) ; Statement: $r10 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch service> 
+(assert true)
+(define-const var3765 String (append/-1031950772 var2665 (cast-from-var2109-to-var1706 var3320))) ; Statement: $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r10) 
+(declare-const var2665!1 String)
+(assert (str.prefixof var2665 var2665!1))
+(assert true)
+(define-const var366 String (append/-1166366385 var3765 39)) ; Statement: $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var3765!1 String)
+(assert (str.prefixof var3765 var3765!1))
+(assert true)
+(define-const var1560 String (append/672562846 var366 ", app=\u0027")) ; Statement: $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", app=\'") 
+(declare-const var366!1 String)
+(assert (= var366!1 (str.++ var366 ", app=\u0027")))
+(define-const var2829 var2109 (app/-1972983160 var167)) ; Statement: $r14 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch app> 
+(assert true)
+(define-const var1995 String (append/-1031950772 var1560 (cast-from-var2109-to-var1706 var2829))) ; Statement: $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14) 
+(declare-const var1560!1 String)
+(assert (str.prefixof var1560 var1560!1))
+(assert true)
+(define-const var1663 String (append/-1166366385 var1995 39)) ; Statement: $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var1995!1 String)
+(assert (str.prefixof var1995 var1995!1))
+(assert true)
+(define-const var1223 String (append/672562846 var1663 ", param=\u0027")) ; Statement: $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", param=\'") 
+(declare-const var1663!1 String)
+(assert (= var1663!1 (str.++ var1663 ", param=\u0027")))
+(define-const var1691 var1422 (param/-1972983160 var167)) ; Statement: $r18 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: java.util.List param> 
+(assert true)
+(define-const var3642 String (append/-1031950772 var1223 (cast-from-var1422-to-var1706 var1691))) ; Statement: $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18) 
+(declare-const var1223!1 String)
+(assert (str.prefixof var1223 var1223!1))
+(assert true)
+(define-const var3372 String (append/-1166366385 var3642 39)) ; Statement: $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var3642!1 String)
+(assert (str.prefixof var3642 var3642!1))
+(assert true)
+(define-const var2123 String (append/-1166366385 var3372 125)) ; Statement: $r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125) 
+(declare-const var3372!1 String)
+(assert (str.prefixof var3372 var3372!1))
+(assert true)
+(define-const var3103 String (toString/-2075883882 var2123)) ; Statement: $r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>() 
+ ; Statement: return $r23 
+(check-sat)
+; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), address/-1972983160=([org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch], org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch), append/-1031950772=([java.lang.StringBuilder, java.lang.Object], java.lang.StringBuilder), cast-from-var3204-to-var1706=([org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch], java.lang.Object), append/-1166366385=([java.lang.StringBuilder, char], java.lang.StringBuilder), providerAddress/-1972983160=([org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch], org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch), service/-1972983160=([org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch], org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch), cast-from-var2109-to-var1706=([org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch], java.lang.Object), app/-1972983160=([org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch], org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch), param/-1972983160=([org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch], java.util.List), cast-from-var1422-to-var1706=([java.util.List], java.lang.Object), toString/-2075883882=([java.lang.StringBuilder], java.lang.String)}
+; {var261=org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch, var167=r1, var2582=$r0, var50=$r3, var3204=org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch, var12=$r2, var1706=java.lang.Object, var995=$r4, var3638=$r5, var1789=$r7, var3417=$r6, var599=$r8, var1885=$r9, var2665=$r11, var2109=org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch, var3320=$r10, var3765=$r12, var366=$r13, var1560=$r15, var2829=$r14, var1995=$r16, var1663=$r17, var1223=$r19, var1422=java.util.List, var1691=$r18, var3642=$r20, var3372=$r21, var2123=$r22, var3103=$r23}
+; {org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch=var261, r1=var167, $r0=var2582, $r3=var50, org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch=var3204, $r2=var12, java.lang.Object=var1706, $r4=var995, $r5=var3638, $r7=var1789, $r6=var3417, $r8=var599, $r9=var1885, $r11=var2665, org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch=var2109, $r10=var3320, $r12=var3765, $r13=var366, $r15=var1560, $r14=var2829, $r16=var1995, $r17=var1663, $r19=var1223, java.util.List=var1422, $r18=var1691, $r20=var3642, $r21=var3372, $r22=var2123, $r23=var3103}
+;seq <java.lang.StringBuilder: void <init>()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.String toString()>
+;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 5,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>": 5,"<java.lang.StringBuilder: java.lang.StringBuilder append(char)>": 6,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
+;stmts r1 := @this: org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch;	$r0 = new java.lang.StringBuilder;	specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();	$r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("ConditionMatch{address=\'");	$r2 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch address>;	$r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);	$r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("providerAddress=\'");	$r6 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.AddressMatch providerAddress>;	$r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r6);	$r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", service=\'");	$r10 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch service>;	$r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r10);	$r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", app=\'");	$r14 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: org.apache.dubbo.rpc.cluster.router.mesh.rule.virtualservice.match.ListStringMatch app>;	$r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r14);	$r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", param=\'");	$r18 = r1.<org.apache.dubbo.rpc.cluster.configurator.parser.model.ConditionMatch: java.util.List param>;	$r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r18);	$r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r22 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);	$r23 = virtualinvoke $r22.<java.lang.StringBuilder: java.lang.String toString()>();	return $r23
+;block_num 1

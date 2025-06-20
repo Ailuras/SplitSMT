@@ -1,0 +1,103 @@
+(set-option :produce-unsat-cores true) ; enable generation of unsat cores
+(set-option :produce-models true) ; enable model generation
+(set-logic ALL)
+
+; 统一获取长度的函数
+(define-fun get_split_length ((x String) (d String) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (str.num_splits x d) limit)
+         (str.num_splits x d)
+         limit)
+    (str.num_splits x d)
+  )
+)
+
+; 统一获取元素的函数
+(define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (str.num_splits x d) limit))
+    (str.split_rest x d (- limit 1))
+    (str.split_at x d i)
+  )
+)
+
+(declare-sort var3189 0)
+(declare-sort var760 0)
+(declare-sort var1032 0)
+(declare-sort var611 0)
+(declare-sort var2374 0)
+(declare-sort void 0)
+(declare-sort Iterator 0)
+(declare-sort ClassObject 0)
+(declare-fun String-init () String)
+(define-fun <init>/1968657023 () String "")
+(declare-fun clazz/1671654241 (var3189) ClassObject)
+(declare-fun getName/-1958580599 (ClassObject) String)
+(define-fun append/672562846 ((s String) (tail String)) String (str.++ s tail))
+(declare-fun var3189_toUpperMethodName/-1477839737 (String) String)
+(define-fun toString/-2075883882 ((s String)) String s)
+(declare-fun methodClassMap/1671654241 (var3189) var1032)
+(declare-fun var1032_get/1088891777 (var1032 var611) var611)
+(declare-fun cast-from-String-to-var611 (String) var611)
+(declare-fun cast-from-var611-to-ClassObject (var611) ClassObject)
+(declare-fun var1032_put/1464166817 (var1032 var611 var611) var611)
+(declare-fun cast-from-ClassObject-to-var611 (ClassObject) var611)
+(declare-const null-var3189 var3189)
+(declare-const null-String String)
+(declare-const null-ClassObject ClassObject)
+(declare-const null-var2374 var2374)
+(declare-const var1694 var3189) ; Statement: r1 := @this: org.apache.dubbo.validation.support.jvalidation.JValidator 
+(assert (not (= var1694 null-var3189)))
+(declare-const var2138 String) ; Statement: r5 := @parameter0: java.lang.String 
+(assert (not (= var2138 null-String)))
+(define-const var1704 ClassObject null-ClassObject) ; Statement: r20 = null 
+(define-const var3544 String String-init) ; Statement: $r0 = new java.lang.StringBuilder 
+(assert true)
+;(assert (<init>/1968657023 var3544)) ; Statement: specialinvoke $r0.<java.lang.StringBuilder: void <init>()>() 
+(declare-const var3544!1 String)
+(assert (= var3544!1 ""))
+(define-const var2751 ClassObject (clazz/1671654241 var1694)) ; Statement: $r2 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.Class clazz> 
+(assert true)
+(define-const var3615 String (getName/-1958580599 var2751)) ; Statement: $r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>() 
+(assert true)
+(define-const var1165 String (append/672562846 var3544!1 var3615)) ; Statement: $r4 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3) 
+(declare-const var3544!2 String)
+(assert (= var3544!2 (str.++ var3544!1 var3615)))
+(assert true)
+(define-const var504 String (append/672562846 var1165 "$")) ; Statement: $r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("$") 
+(declare-const var1165!1 String)
+(assert (= var1165!1 (str.++ var1165 "$")))
+(define-const var820 String (var3189_toUpperMethodName/-1477839737 var2138)) ; Statement: $r6 = staticinvoke <org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.String toUpperMethodName(java.lang.String)>(r5) 
+(assert true)
+(define-const var1144 String (append/672562846 var504 var820)) ; Statement: $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6) 
+(declare-const var504!1 String)
+(assert (= var504!1 (str.++ var504 var820)))
+(assert true)
+(define-const var346 String (toString/-2075883882 var1144)) ; Statement: r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>() 
+(define-const var715 var1032 (methodClassMap/1671654241 var1694)) ; Statement: $r10 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.util.Map methodClassMap> 
+(define-const var2063 var611 (var1032_get/1088891777 var715 (cast-from-String-to-var611 var346))) ; Statement: $r11 = interfaceinvoke $r10.<java.util.Map: java.lang.Object get(java.lang.Object)>(r9) 
+(define-const var566 ClassObject (cast-from-var611-to-ClassObject var2063)) ; Statement: r12 = (java.lang.Class) $r11 
+ ; Statement: if r12 == null goto $r13 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>() 
+(assert (not (= var566 null-ClassObject))) ; Negate: Cond: r12 == null  
+(declare-const var3808 var2374) ; Statement: $r17 := @caughtexception 
+(assert (not (= var3808 null-var2374)))
+(define-const var2851 var1032 (methodClassMap/1671654241 var1694)) ; Statement: $r19 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.util.Map methodClassMap> 
+(define-const var636 ClassObject (clazz/1671654241 var1694)) ; Statement: $r18 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.Class clazz> 
+;(assert (var1032_put/1464166817 var2851 (cast-from-String-to-var611 var346) (cast-from-ClassObject-to-var611 var636))) ; Statement: interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r9, $r18) 
+
+(declare-const var2851!1 var1032)
+(declare-const var346!1 String)
+(declare-const var636!1 ClassObject)
+(assert true) ; Non Conditional
+ ; Statement: return r20 
+(check-sat)
+; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), clazz/1671654241=([org.apache.dubbo.validation.support.jvalidation.JValidator], java.lang.Class), getName/-1958580599=([java.lang.Class], java.lang.String), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), var3189_toUpperMethodName/-1477839737=([java.lang.String], java.lang.String), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), methodClassMap/1671654241=([org.apache.dubbo.validation.support.jvalidation.JValidator], java.util.Map), var1032_get/1088891777=([java.util.Map, java.lang.Object], java.lang.Object), cast-from-String-to-var611=([java.lang.String], java.lang.Object), cast-from-var611-to-ClassObject=([java.lang.Object], java.lang.Class), var1032_put/1464166817=([java.util.Map, java.lang.Object, java.lang.Object], java.lang.Object), cast-from-ClassObject-to-var611=([java.lang.Class], java.lang.Object)}
+; {var3189=org.apache.dubbo.validation.support.jvalidation.JValidator, var1694=r1, var2138=r5, var760=null_type, var1704=r20, var3544=$r0, var2751=$r2, var3615=$r3, var1165=$r4, var504=$r7, var820=$r6, var1144=$r8, var346=r9, var1032=java.util.Map, var715=$r10, var611=java.lang.Object, var2063=$r11, var566=r12, var2374=java.lang.ClassNotFoundException, var3808=$r17, var2851=$r19, var636=$r18}
+; {org.apache.dubbo.validation.support.jvalidation.JValidator=var3189, r1=var1694, r5=var2138, null_type=var760, r20=var1704, $r0=var3544, $r2=var2751, $r3=var3615, $r4=var1165, $r7=var504, $r6=var820, $r8=var1144, r9=var346, java.util.Map=var1032, $r10=var715, java.lang.Object=var611, $r11=var2063, r12=var566, java.lang.ClassNotFoundException=var2374, $r17=var3808, $r19=var2851, $r18=var636}
+;seq <java.lang.StringBuilder: void <init>()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.String toString()>
+;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 3,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
+;stmts r1 := @this: org.apache.dubbo.validation.support.jvalidation.JValidator;	r5 := @parameter0: java.lang.String;	r20 = null;	$r0 = new java.lang.StringBuilder;	specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();	$r2 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.Class clazz>;	$r3 = virtualinvoke $r2.<java.lang.Class: java.lang.String getName()>();	$r4 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r3);	$r7 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("$");	$r6 = staticinvoke <org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.String toUpperMethodName(java.lang.String)>(r5);	$r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);	r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.String toString()>();	$r10 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.util.Map methodClassMap>;	$r11 = interfaceinvoke $r10.<java.util.Map: java.lang.Object get(java.lang.Object)>(r9);	r12 = (java.lang.Class) $r11;	if r12 == null goto $r13 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();	$r17 := @caughtexception;	$r19 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.util.Map methodClassMap>;	$r18 = r1.<org.apache.dubbo.validation.support.jvalidation.JValidator: java.lang.Class clazz>;	interfaceinvoke $r19.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(r9, $r18);	return r20
+;block_num 3

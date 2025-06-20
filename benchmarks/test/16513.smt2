@@ -1,0 +1,217 @@
+(set-option :produce-unsat-cores true) ; enable generation of unsat cores
+(set-option :produce-models true) ; enable model generation
+(set-logic ALL)
+
+; 统一获取长度的函数
+(define-fun get_split_length ((x String) (d String) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (str.num_splits x d) limit)
+         (str.num_splits x d)
+         limit)
+    (str.num_splits x d)
+  )
+)
+
+; 统一获取元素的函数
+(define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (str.num_splits x d) limit))
+    (str.split_rest x d (- limit 1))
+    (str.split_at x d i)
+  )
+)
+
+(declare-sort var236 0)
+(declare-sort var2591 0)
+(declare-sort var2221 0)
+(declare-sort var289 0)
+(declare-sort var1344 0)
+(declare-sort var3604 0)
+(declare-sort var238 0)
+(declare-sort var3074 0)
+(declare-sort var1669 0)
+(declare-sort var3972 0)
+(declare-sort var2599 0)
+(declare-sort var1021 0)
+(declare-sort var1284 0)
+(declare-sort var2026 0)
+(declare-sort var3554 0)
+(declare-sort void 0)
+(declare-sort Iterator 0)
+(declare-sort ClassObject 0)
+(declare-fun <init>/-1604619608 (var289 var2591 var2221) void)
+(declare-fun cast-from-var236-to-var289 (var236) var289)
+(declare-fun var1344-init () var1344)
+(declare-fun <init>/882121004 (var1344) void)
+(declare-fun cast-from-var1344-to-var3604 (var1344) var3604)
+(declare-fun executors/485699407 (var236) var3604)
+(declare-fun getOrDefaultApplicationModel/-1374397043 (var2591) var238)
+(declare-fun var3074_getInstance/1376797019 (var238) var3074)
+(declare-fun executorRepository/485699407 (var236) var3074)
+(declare-fun getUrl/1588539622 (var1669) var2591)
+(declare-fun cast-from-var236-to-var1669 (var236) var1669)
+(declare-fun toInetSocketAddress/806229023 (var2591) var3972)
+(declare-fun localAddress/485699407 (var236) var3972)
+(declare-fun getHost/-1506772130 (var2591) String)
+(declare-fun getParameter/506106603 (var2591 String String) String)
+(declare-fun getPort/20614931 (var2591) Int)
+(declare-fun getParameter/448702405 (var2591 String Int) Int)
+(declare-fun getParameter/2144001655 (var2591 String Bool) Bool)
+(declare-fun var2599_isInvalidLocalHost/244948788 (String) Bool)
+(declare-fun var3972-init () var3972)
+(declare-fun <init>/481518073 (var3972 String Int) void)
+(declare-fun bindAddress/485699407 (var236) var3972)
+(declare-fun accepts/485699407 (var236) Int)
+(declare-fun var1284-init () var1284)
+(declare-fun String-init () String)
+(define-fun <init>/1968657023 () String "")
+(define-fun append/672562846 ((s String) (tail String)) String (str.++ s tail))
+(declare-fun getClass/1258963082 (var2026) ClassObject)
+(declare-fun cast-from-var236-to-var2026 (var236) var2026)
+(declare-fun getSimpleName/-390194377 (ClassObject) String)
+(declare-fun append/-1031950772 (String var2026) String)
+(declare-fun cast-from-var3972-to-var2026 (var3972) var2026)
+(declare-fun getMessage/849299655 (var1021) String)
+(define-fun toString/-2075883882 ((s String)) String s)
+(declare-fun <init>/1118340853 (var1284 var3972 var3972 String var1021) void)
+(declare-const null-var236 var236)
+(declare-const null-var2591 var2591)
+(declare-const null-var2221 var2221)
+(declare-const null-var1021 var1021)
+(declare-const null-NullType var3554)
+(declare-const null-var3972 var3972)
+(declare-const var2855 var236) ; Statement: r0 := @this: org.apache.dubbo.remoting.transport.AbstractServer 
+(assert (not (= var2855 null-var236)))
+(declare-const var3688 var2591) ; Statement: r1 := @parameter0: org.apache.dubbo.common.URL 
+(assert (not (= var3688 null-var2591)))
+(declare-const var2503 var2221) ; Statement: r2 := @parameter1: org.apache.dubbo.remoting.ChannelHandler 
+(assert (not (= var2503 null-var2221)))
+(assert true)
+;(assert (<init>/-1604619608 (cast-from-var236-to-var289 var2855) var3688 var2503)) ; Statement: specialinvoke r0.<org.apache.dubbo.remoting.transport.AbstractEndpoint: void <init>(org.apache.dubbo.common.URL,org.apache.dubbo.remoting.ChannelHandler)>(r1, r2) 
+
+(declare-const var2855!1 var236)
+(declare-const var3688!1 var2591)
+(declare-const var2503!1 var2221)
+(define-const var3377 var1344 var1344-init) ; Statement: $r3 = new org.apache.dubbo.common.utils.ConcurrentHashSet 
+(assert true)
+;(assert (<init>/882121004 var3377)) ; Statement: specialinvoke $r3.<org.apache.dubbo.common.utils.ConcurrentHashSet: void <init>()>() 
+
+(declare-const var3377!1 var1344)
+(declare-const var2855!2 var236)
+(assert (not (= var2855!2 null-var236)))
+(assert (= (executors/485699407 var2855!2) (cast-from-var1344-to-var3604 var3377!1))) ; Statement: r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.util.Set executors> = $r3 
+(assert true)
+(define-const var3227 var238 (getOrDefaultApplicationModel/-1374397043 var3688!1)) ; Statement: $r4 = virtualinvoke r1.<org.apache.dubbo.common.URL: org.apache.dubbo.rpc.model.ApplicationModel getOrDefaultApplicationModel()>() 
+(define-const var2382 var3074 (var3074_getInstance/1376797019 var3227)) ; Statement: $r5 = staticinvoke <org.apache.dubbo.common.threadpool.manager.ExecutorRepository: org.apache.dubbo.common.threadpool.manager.ExecutorRepository getInstance(org.apache.dubbo.rpc.model.ApplicationModel)>($r4) 
+(declare-const var2855!3 var236)
+(assert (not (= var2855!3 null-var236)))
+(assert (= (executorRepository/485699407 var2855!3) var2382)) ; Statement: r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.threadpool.manager.ExecutorRepository executorRepository> = $r5 
+(assert true)
+(define-const var2866 var2591 (getUrl/1588539622 (cast-from-var236-to-var1669 var2855!3))) ; Statement: $r6 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>() 
+(assert true)
+(define-const var1046 var3972 (toInetSocketAddress/806229023 var2866)) ; Statement: $r7 = virtualinvoke $r6.<org.apache.dubbo.common.URL: java.net.InetSocketAddress toInetSocketAddress()>() 
+(declare-const var2855!4 var236)
+(assert (not (= var2855!4 null-var236)))
+(assert (= (localAddress/485699407 var2855!4) var1046)) ; Statement: r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress localAddress> = $r7 
+(assert true)
+(define-const var556 var2591 (getUrl/1588539622 (cast-from-var236-to-var1669 var2855!4))) ; Statement: $r10 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>() 
+(assert true)
+(define-const var793 var2591 (getUrl/1588539622 (cast-from-var236-to-var1669 var2855!4))) ; Statement: $r8 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>() 
+(assert true)
+(define-const var98 String (getHost/-1506772130 var793)) ; Statement: $r9 = virtualinvoke $r8.<org.apache.dubbo.common.URL: java.lang.String getHost()>() 
+(assert true)
+(define-const var274 String (getParameter/506106603 var556 "bind.ip" var98)) ; Statement: r45 = virtualinvoke $r10.<org.apache.dubbo.common.URL: java.lang.String getParameter(java.lang.String,java.lang.String)>("bind.ip", $r9) 
+(assert true)
+(define-const var3093 var2591 (getUrl/1588539622 (cast-from-var236-to-var1669 var2855!4))) ; Statement: $r12 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>() 
+(assert true)
+(define-const var3057 var2591 (getUrl/1588539622 (cast-from-var236-to-var1669 var2855!4))) ; Statement: $r11 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>() 
+(assert true)
+(define-const var1960 Int (getPort/20614931 var3057)) ; Statement: $i0 = virtualinvoke $r11.<org.apache.dubbo.common.URL: int getPort()>() 
+(assert true)
+(define-const var630 Int (getParameter/448702405 var3093 "bind.port" var1960)) ; Statement: i1 = virtualinvoke $r12.<org.apache.dubbo.common.URL: int getParameter(java.lang.String,int)>("bind.port", $i0) 
+(assert true)
+(define-const var3017 Bool (getParameter/2144001655 var3688!1 "anyhost" (ite (= 1 0) true false))) ; Statement: $z0 = virtualinvoke r1.<org.apache.dubbo.common.URL: boolean getParameter(java.lang.String,boolean)>("anyhost", 0) 
+ ; Statement: if $z0 != 0 goto r45 = "0.0.0.0" 
+(assert (not (not (= (ite var3017 1 0) 0)))) ; Negate: Cond: $z0 != 0  
+(define-const var1206 Bool (var2599_isInvalidLocalHost/244948788 var274)) ; Statement: $z1 = staticinvoke <org.apache.dubbo.common.utils.NetUtils: boolean isInvalidLocalHost(java.lang.String)>(r45) 
+ ; Statement: if $z1 == 0 goto $r46 = new java.net.InetSocketAddress 
+(assert (= (ite var1206 1 0) 0)) ; Cond: $z1 == 0 
+(define-const var1623 var3972 var3972-init) ; Statement: $r46 = new java.net.InetSocketAddress 
+(assert true)
+;(assert (<init>/481518073 var1623 var274 var630)) ; Statement: specialinvoke $r46.<java.net.InetSocketAddress: void <init>(java.lang.String,int)>(r45, i1) 
+
+(declare-const var1623!1 var3972)
+(declare-const var274!1 String)
+(declare-const var630!1 Int)
+(declare-const var2855!5 var236)
+(assert (not (= var2855!5 null-var236)))
+(assert (= (bindAddress/485699407 var2855!5) var1623!1)) ; Statement: r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress bindAddress> = $r46 
+(assert true)
+(define-const var571 Int (getParameter/448702405 var3688!1 "accepts" 0)) ; Statement: $i2 = virtualinvoke r1.<org.apache.dubbo.common.URL: int getParameter(java.lang.String,int)>("accepts", 0) 
+(declare-const var2855!6 var236)
+(assert (not (= var2855!6 null-var236)))
+(assert (= (accepts/485699407 var2855!6) var571)) ; Statement: r0.<org.apache.dubbo.remoting.transport.AbstractServer: int accepts> = $i2 
+(assert true) ; Handling Exception: java.lang.Throwable 
+(declare-const var3129 var1021) ; Statement: $r30 := @caughtexception 
+(assert (not (= var3129 null-var1021)))
+(define-const var1672 var1284 var1284-init) ; Statement: $r31 = new org.apache.dubbo.remoting.RemotingException 
+(assert true)
+(define-const var5 var3972 (toInetSocketAddress/806229023 var3688!1)) ; Statement: $r44 = virtualinvoke r1.<org.apache.dubbo.common.URL: java.net.InetSocketAddress toInetSocketAddress()>() 
+(define-const var188 String String-init) ; Statement: $r32 = new java.lang.StringBuilder 
+(assert true)
+;(assert (<init>/1968657023 var188)) ; Statement: specialinvoke $r32.<java.lang.StringBuilder: void <init>()>() 
+(declare-const var188!1 String)
+(assert (= var188!1 ""))
+(assert true)
+(define-const var1824 String (append/672562846 var188!1 "Failed to bind ")) ; Statement: $r35 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to bind ") 
+(declare-const var188!2 String)
+(assert (= var188!2 (str.++ var188!1 "Failed to bind ")))
+(assert true)
+(define-const var3466 ClassObject (getClass/1258963082 (cast-from-var236-to-var2026 var2855!6))) ; Statement: $r33 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>() 
+(assert true)
+(define-const var1197 String (getSimpleName/-390194377 var3466)) ; Statement: $r34 = virtualinvoke $r33.<java.lang.Class: java.lang.String getSimpleName()>() 
+(assert true)
+(define-const var2524 String (append/672562846 var1824 var1197)) ; Statement: $r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r34) 
+(declare-const var1824!1 String)
+(assert (= var1824!1 (str.++ var1824 var1197)))
+(assert true)
+(define-const var1296 String (append/672562846 var2524 " on ")) ; Statement: $r38 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" on ") 
+(declare-const var2524!1 String)
+(assert (= var2524!1 (str.++ var2524 " on ")))
+(define-const var2892 var3972 (bindAddress/485699407 var2855!6)) ; Statement: $r37 = r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress bindAddress> 
+(assert true)
+(define-const var3670 String (append/-1031950772 var1296 (cast-from-var3972-to-var2026 var2892))) ; Statement: $r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r37) 
+(declare-const var1296!1 String)
+(assert (str.prefixof var1296 var1296!1))
+(assert true)
+(define-const var1628 String (append/672562846 var3670 ", cause: ")) ; Statement: $r41 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", cause: ") 
+(declare-const var3670!1 String)
+(assert (= var3670!1 (str.++ var3670 ", cause: ")))
+(assert true)
+(define-const var256 String (getMessage/849299655 var3129)) ; Statement: $r40 = virtualinvoke $r30.<java.lang.Throwable: java.lang.String getMessage()>() 
+(assert true)
+(define-const var651 String (append/672562846 var1628 var256)) ; Statement: $r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r40) 
+(declare-const var1628!1 String)
+(assert (= var1628!1 (str.++ var1628 var256)))
+(assert true)
+(define-const var3495 String (toString/-2075883882 var651)) ; Statement: $r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>() 
+(assert true)
+;(assert (<init>/1118340853 var1672 var5 null-var3972 var3495 var3129)) ; Statement: specialinvoke $r31.<org.apache.dubbo.remoting.RemotingException: void <init>(java.net.InetSocketAddress,java.net.InetSocketAddress,java.lang.String,java.lang.Throwable)>($r44, null, $r43, $r30) 
+
+(declare-const var1672!1 var1284)
+(declare-const var5!1 var3972)
+(declare-const var304 var3554)
+(declare-const var3495!1 String)
+(declare-const var3129!1 var1021)
+ ; Statement: throw $r31 
+(check-sat)
+; {<init>/-1604619608=([org.apache.dubbo.remoting.transport.AbstractEndpoint, org.apache.dubbo.common.URL, org.apache.dubbo.remoting.ChannelHandler], void), cast-from-var236-to-var289=([org.apache.dubbo.remoting.transport.AbstractServer], org.apache.dubbo.remoting.transport.AbstractEndpoint), var1344-init=([], org.apache.dubbo.common.utils.ConcurrentHashSet), <init>/882121004=([org.apache.dubbo.common.utils.ConcurrentHashSet], void), cast-from-var1344-to-var3604=([org.apache.dubbo.common.utils.ConcurrentHashSet], java.util.Set), executors/485699407=([org.apache.dubbo.remoting.transport.AbstractServer], java.util.Set), getOrDefaultApplicationModel/-1374397043=([org.apache.dubbo.common.URL], org.apache.dubbo.rpc.model.ApplicationModel), var3074_getInstance/1376797019=([org.apache.dubbo.rpc.model.ApplicationModel], org.apache.dubbo.common.threadpool.manager.ExecutorRepository), executorRepository/485699407=([org.apache.dubbo.remoting.transport.AbstractServer], org.apache.dubbo.common.threadpool.manager.ExecutorRepository), getUrl/1588539622=([org.apache.dubbo.remoting.transport.AbstractPeer], org.apache.dubbo.common.URL), cast-from-var236-to-var1669=([org.apache.dubbo.remoting.transport.AbstractServer], org.apache.dubbo.remoting.transport.AbstractPeer), toInetSocketAddress/806229023=([org.apache.dubbo.common.URL], java.net.InetSocketAddress), localAddress/485699407=([org.apache.dubbo.remoting.transport.AbstractServer], java.net.InetSocketAddress), getHost/-1506772130=([org.apache.dubbo.common.URL], java.lang.String), getParameter/506106603=([org.apache.dubbo.common.URL, java.lang.String, java.lang.String], java.lang.String), getPort/20614931=([org.apache.dubbo.common.URL], int), getParameter/448702405=([org.apache.dubbo.common.URL, java.lang.String, int], int), getParameter/2144001655=([org.apache.dubbo.common.URL, java.lang.String, boolean], boolean), var2599_isInvalidLocalHost/244948788=([java.lang.String], boolean), var3972-init=([], java.net.InetSocketAddress), <init>/481518073=([java.net.InetSocketAddress, java.lang.String, int], void), bindAddress/485699407=([org.apache.dubbo.remoting.transport.AbstractServer], java.net.InetSocketAddress), accepts/485699407=([org.apache.dubbo.remoting.transport.AbstractServer], int), var1284-init=([], org.apache.dubbo.remoting.RemotingException), String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), getClass/1258963082=([java.lang.Object], java.lang.Class), cast-from-var236-to-var2026=([org.apache.dubbo.remoting.transport.AbstractServer], java.lang.Object), getSimpleName/-390194377=([java.lang.Class], java.lang.String), append/-1031950772=([java.lang.StringBuilder, java.lang.Object], java.lang.StringBuilder), cast-from-var3972-to-var2026=([java.net.InetSocketAddress], java.lang.Object), getMessage/849299655=([java.lang.Throwable], java.lang.String), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), <init>/1118340853=([org.apache.dubbo.remoting.RemotingException, java.net.InetSocketAddress, java.net.InetSocketAddress, java.lang.String, java.lang.Throwable], void)}
+; {var236=org.apache.dubbo.remoting.transport.AbstractServer, var2855=r0, var2591=org.apache.dubbo.common.URL, var3688=r1, var2221=org.apache.dubbo.remoting.ChannelHandler, var2503=r2, var289=org.apache.dubbo.remoting.transport.AbstractEndpoint, var1344=org.apache.dubbo.common.utils.ConcurrentHashSet, var3377=$r3, var3604=java.util.Set, var238=org.apache.dubbo.rpc.model.ApplicationModel, var3227=$r4, var3074=org.apache.dubbo.common.threadpool.manager.ExecutorRepository, var2382=$r5, var1669=org.apache.dubbo.remoting.transport.AbstractPeer, var2866=$r6, var3972=java.net.InetSocketAddress, var1046=$r7, var556=$r10, var793=$r8, var98=$r9, var274=r45, var3093=$r12, var3057=$r11, var1960=$i0, var630=i1, var3017=$z0, var2599=org.apache.dubbo.common.utils.NetUtils, var1206=$z1, var1623=$r46, var571=$i2, var1021=java.lang.Throwable, var3129=$r30, var1284=org.apache.dubbo.remoting.RemotingException, var1672=$r31, var5=$r44, var188=$r32, var1824=$r35, var2026=java.lang.Object, var3466=$r33, var1197=$r34, var2524=$r36, var1296=$r38, var2892=$r37, var3670=$r39, var1628=$r41, var256=$r40, var651=$r42, var3495=$r43, var304=null, var3554=null_type}
+; {org.apache.dubbo.remoting.transport.AbstractServer=var236, r0=var2855, org.apache.dubbo.common.URL=var2591, r1=var3688, org.apache.dubbo.remoting.ChannelHandler=var2221, r2=var2503, org.apache.dubbo.remoting.transport.AbstractEndpoint=var289, org.apache.dubbo.common.utils.ConcurrentHashSet=var1344, $r3=var3377, java.util.Set=var3604, org.apache.dubbo.rpc.model.ApplicationModel=var238, $r4=var3227, org.apache.dubbo.common.threadpool.manager.ExecutorRepository=var3074, $r5=var2382, org.apache.dubbo.remoting.transport.AbstractPeer=var1669, $r6=var2866, java.net.InetSocketAddress=var3972, $r7=var1046, $r10=var556, $r8=var793, $r9=var98, r45=var274, $r12=var3093, $r11=var3057, $i0=var1960, i1=var630, $z0=var3017, org.apache.dubbo.common.utils.NetUtils=var2599, $z1=var1206, $r46=var1623, $i2=var571, java.lang.Throwable=var1021, $r30=var3129, org.apache.dubbo.remoting.RemotingException=var1284, $r31=var1672, $r44=var5, $r32=var188, $r35=var1824, java.lang.Object=var2026, $r33=var3466, $r34=var1197, $r36=var2524, $r38=var1296, $r37=var2892, $r39=var3670, $r41=var1628, $r40=var256, $r42=var651, $r43=var3495, null=var304, null_type=var3554}
+;seq <java.lang.StringBuilder: void <init>()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.String toString()>
+;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 5,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>": 1,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
+;stmts r0 := @this: org.apache.dubbo.remoting.transport.AbstractServer;	r1 := @parameter0: org.apache.dubbo.common.URL;	r2 := @parameter1: org.apache.dubbo.remoting.ChannelHandler;	specialinvoke r0.<org.apache.dubbo.remoting.transport.AbstractEndpoint: void <init>(org.apache.dubbo.common.URL,org.apache.dubbo.remoting.ChannelHandler)>(r1, r2);	$r3 = new org.apache.dubbo.common.utils.ConcurrentHashSet;	specialinvoke $r3.<org.apache.dubbo.common.utils.ConcurrentHashSet: void <init>()>();	r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.util.Set executors> = $r3;	$r4 = virtualinvoke r1.<org.apache.dubbo.common.URL: org.apache.dubbo.rpc.model.ApplicationModel getOrDefaultApplicationModel()>();	$r5 = staticinvoke <org.apache.dubbo.common.threadpool.manager.ExecutorRepository: org.apache.dubbo.common.threadpool.manager.ExecutorRepository getInstance(org.apache.dubbo.rpc.model.ApplicationModel)>($r4);	r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.threadpool.manager.ExecutorRepository executorRepository> = $r5;	$r6 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>();	$r7 = virtualinvoke $r6.<org.apache.dubbo.common.URL: java.net.InetSocketAddress toInetSocketAddress()>();	r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress localAddress> = $r7;	$r10 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>();	$r8 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>();	$r9 = virtualinvoke $r8.<org.apache.dubbo.common.URL: java.lang.String getHost()>();	r45 = virtualinvoke $r10.<org.apache.dubbo.common.URL: java.lang.String getParameter(java.lang.String,java.lang.String)>("bind.ip", $r9);	$r12 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>();	$r11 = virtualinvoke r0.<org.apache.dubbo.remoting.transport.AbstractServer: org.apache.dubbo.common.URL getUrl()>();	$i0 = virtualinvoke $r11.<org.apache.dubbo.common.URL: int getPort()>();	i1 = virtualinvoke $r12.<org.apache.dubbo.common.URL: int getParameter(java.lang.String,int)>("bind.port", $i0);	$z0 = virtualinvoke r1.<org.apache.dubbo.common.URL: boolean getParameter(java.lang.String,boolean)>("anyhost", 0);	if $z0 != 0 goto r45 = "0.0.0.0";	$z1 = staticinvoke <org.apache.dubbo.common.utils.NetUtils: boolean isInvalidLocalHost(java.lang.String)>(r45);	if $z1 == 0 goto $r46 = new java.net.InetSocketAddress;	$r46 = new java.net.InetSocketAddress;	specialinvoke $r46.<java.net.InetSocketAddress: void <init>(java.lang.String,int)>(r45, i1);	r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress bindAddress> = $r46;	$i2 = virtualinvoke r1.<org.apache.dubbo.common.URL: int getParameter(java.lang.String,int)>("accepts", 0);	r0.<org.apache.dubbo.remoting.transport.AbstractServer: int accepts> = $i2;	$r30 := @caughtexception;	$r31 = new org.apache.dubbo.remoting.RemotingException;	$r44 = virtualinvoke r1.<org.apache.dubbo.common.URL: java.net.InetSocketAddress toInetSocketAddress()>();	$r32 = new java.lang.StringBuilder;	specialinvoke $r32.<java.lang.StringBuilder: void <init>()>();	$r35 = virtualinvoke $r32.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Failed to bind ");	$r33 = virtualinvoke r0.<java.lang.Object: java.lang.Class getClass()>();	$r34 = virtualinvoke $r33.<java.lang.Class: java.lang.String getSimpleName()>();	$r36 = virtualinvoke $r35.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r34);	$r38 = virtualinvoke $r36.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" on ");	$r37 = r0.<org.apache.dubbo.remoting.transport.AbstractServer: java.net.InetSocketAddress bindAddress>;	$r39 = virtualinvoke $r38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r37);	$r41 = virtualinvoke $r39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", cause: ");	$r40 = virtualinvoke $r30.<java.lang.Throwable: java.lang.String getMessage()>();	$r42 = virtualinvoke $r41.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r40);	$r43 = virtualinvoke $r42.<java.lang.StringBuilder: java.lang.String toString()>();	specialinvoke $r31.<org.apache.dubbo.remoting.RemotingException: void <init>(java.net.InetSocketAddress,java.net.InetSocketAddress,java.lang.String,java.lang.Throwable)>($r44, null, $r43, $r30);	throw $r31
+;block_num 4

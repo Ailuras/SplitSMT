@@ -60,6 +60,10 @@ python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_z3_api.log --solver z3
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_cvc5_api.log --solver cvc5
 
+# 使用外部求解器求解现实例子
+./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_cvc5.log --solver ext-cvc5 -t 60 -p 30
+./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
+
 # 4. 多求解器结果分析
 
 # 分析所有变异类型和求解器组合的完整报告（包含求解器一致性检查）

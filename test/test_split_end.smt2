@@ -1,6 +1,0 @@
-(set-logic QF_S)
-(declare-fun x () String)
-; (assert (= x "a-b-c-d"))
-(assert (= (str.split_end "a-b-c-d" "-" 2) x))
-(check-sat)
-(get-model) 
