@@ -1,0 +1,142 @@
+(set-option :produce-unsat-cores true) ; enable generation of unsat cores
+(set-option :produce-models true) ; enable model generation
+(set-logic ALL)
+
+; 统一获取长度的函数
+(define-fun get_split_length ((x String) (d String) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (str.num_splits x d) limit)
+         (str.num_splits x d)
+         limit)
+    (str.num_splits x d)
+  )
+)
+
+; 统一获取元素的函数
+(define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (str.num_splits x d) limit))
+    (str.split_rest x d (- limit 1))
+    (str.split_at x d i)
+  )
+)
+
+(declare-sort var686 0)
+(declare-sort void 0)
+(declare-sort Iterator 0)
+(declare-sort ClassObject 0)
+(declare-fun String-init () String)
+(define-fun <init>/1968657023 () String "")
+(define-fun append/672562846 ((s String) (tail String)) String (str.++ s tail))
+(declare-fun accessKey/1412438896 (var686) String)
+(declare-fun append/-1166366385 (String Int) String)
+(declare-fun secretKey/1412438896 (var686) String)
+(declare-fun consumerSide/1412438896 (var686) String)
+(declare-fun providerSide/1412438896 (var686) String)
+(declare-fun creator/1412438896 (var686) String)
+(declare-fun options/1412438896 (var686) String)
+(define-fun toString/-2075883882 ((s String)) String s)
+(declare-const null-var686 var686)
+(declare-const var441 var686) ; Statement: r1 := @this: org.apache.dubbo.auth.model.AccessKeyPair 
+(assert (not (= var441 null-var686)))
+(define-const var3444 String String-init) ; Statement: $r0 = new java.lang.StringBuilder 
+(assert true)
+;(assert (<init>/1968657023 var3444)) ; Statement: specialinvoke $r0.<java.lang.StringBuilder: void <init>()>() 
+(declare-const var3444!1 String)
+(assert (= var3444!1 ""))
+(assert true)
+(define-const var2923 String (append/672562846 var3444!1 "AccessKeyPair{accessKey=\u0027")) ; Statement: $r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AccessKeyPair{accessKey=\'") 
+(declare-const var3444!2 String)
+(assert (= var3444!2 (str.++ var3444!1 "AccessKeyPair{accessKey=\u0027")))
+(define-const var2141 String (accessKey/1412438896 var441)) ; Statement: $r2 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String accessKey> 
+(assert true)
+(define-const var659 String (append/672562846 var2923 var2141)) ; Statement: $r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2) 
+(declare-const var2923!1 String)
+(assert (= var2923!1 (str.++ var2923 var2141)))
+(assert true)
+(define-const var2933 String (append/-1166366385 var659 39)) ; Statement: $r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var659!1 String)
+(assert (str.prefixof var659 var659!1))
+(assert true)
+(define-const var58 String (append/672562846 var2933 ", secretKey=\u0027")) ; Statement: $r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", secretKey=\'") 
+(declare-const var2933!1 String)
+(assert (= var2933!1 (str.++ var2933 ", secretKey=\u0027")))
+(define-const var2329 String (secretKey/1412438896 var441)) ; Statement: $r6 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String secretKey> 
+(assert true)
+(define-const var210 String (append/672562846 var58 var2329)) ; Statement: $r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6) 
+(declare-const var58!1 String)
+(assert (= var58!1 (str.++ var58 var2329)))
+(assert true)
+(define-const var3730 String (append/-1166366385 var210 39)) ; Statement: $r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var210!1 String)
+(assert (str.prefixof var210 var210!1))
+(assert true)
+(define-const var3530 String (append/672562846 var3730 ", consumerSide=\u0027")) ; Statement: $r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", consumerSide=\'") 
+(declare-const var3730!1 String)
+(assert (= var3730!1 (str.++ var3730 ", consumerSide=\u0027")))
+(define-const var1697 String (consumerSide/1412438896 var441)) ; Statement: $r10 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String consumerSide> 
+(assert true)
+(define-const var2152 String (append/672562846 var3530 var1697)) ; Statement: $r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10) 
+(declare-const var3530!1 String)
+(assert (= var3530!1 (str.++ var3530 var1697)))
+(assert true)
+(define-const var3882 String (append/-1166366385 var2152 39)) ; Statement: $r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var2152!1 String)
+(assert (str.prefixof var2152 var2152!1))
+(assert true)
+(define-const var3771 String (append/672562846 var3882 ", providerSide=\u0027")) ; Statement: $r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", providerSide=\'") 
+(declare-const var3882!1 String)
+(assert (= var3882!1 (str.++ var3882 ", providerSide=\u0027")))
+(define-const var1560 String (providerSide/1412438896 var441)) ; Statement: $r14 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String providerSide> 
+(assert true)
+(define-const var182 String (append/672562846 var3771 var1560)) ; Statement: $r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14) 
+(declare-const var3771!1 String)
+(assert (= var3771!1 (str.++ var3771 var1560)))
+(assert true)
+(define-const var3515 String (append/-1166366385 var182 39)) ; Statement: $r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var182!1 String)
+(assert (str.prefixof var182 var182!1))
+(assert true)
+(define-const var2518 String (append/672562846 var3515 ", creator=\u0027")) ; Statement: $r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", creator=\'") 
+(declare-const var3515!1 String)
+(assert (= var3515!1 (str.++ var3515 ", creator=\u0027")))
+(define-const var1568 String (creator/1412438896 var441)) ; Statement: $r18 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String creator> 
+(assert true)
+(define-const var1304 String (append/672562846 var2518 var1568)) ; Statement: $r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18) 
+(declare-const var2518!1 String)
+(assert (= var2518!1 (str.++ var2518 var1568)))
+(assert true)
+(define-const var1915 String (append/-1166366385 var1304 39)) ; Statement: $r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var1304!1 String)
+(assert (str.prefixof var1304 var1304!1))
+(assert true)
+(define-const var1710 String (append/672562846 var1915 ", options=\u0027")) ; Statement: $r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", options=\'") 
+(declare-const var1915!1 String)
+(assert (= var1915!1 (str.++ var1915 ", options=\u0027")))
+(define-const var809 String (options/1412438896 var441)) ; Statement: $r22 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String options> 
+(assert true)
+(define-const var1534 String (append/672562846 var1710 var809)) ; Statement: $r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r22) 
+(declare-const var1710!1 String)
+(assert (= var1710!1 (str.++ var1710 var809)))
+(assert true)
+(define-const var1116 String (append/-1166366385 var1534 39)) ; Statement: $r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39) 
+(declare-const var1534!1 String)
+(assert (str.prefixof var1534 var1534!1))
+(assert true)
+(define-const var199 String (append/-1166366385 var1116 125)) ; Statement: $r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125) 
+(declare-const var1116!1 String)
+(assert (str.prefixof var1116 var1116!1))
+(assert true)
+(define-const var1639 String (toString/-2075883882 var199)) ; Statement: $r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>() 
+ ; Statement: return $r27 
+(check-sat)
+; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), accessKey/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), append/-1166366385=([java.lang.StringBuilder, char], java.lang.StringBuilder), secretKey/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), consumerSide/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), providerSide/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), creator/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), options/1412438896=([org.apache.dubbo.auth.model.AccessKeyPair], java.lang.String), toString/-2075883882=([java.lang.StringBuilder], java.lang.String)}
+; {var686=org.apache.dubbo.auth.model.AccessKeyPair, var441=r1, var3444=$r0, var2923=$r3, var2141=$r2, var659=$r4, var2933=$r5, var58=$r7, var2329=$r6, var210=$r8, var3730=$r9, var3530=$r11, var1697=$r10, var2152=$r12, var3882=$r13, var3771=$r15, var1560=$r14, var182=$r16, var3515=$r17, var2518=$r19, var1568=$r18, var1304=$r20, var1915=$r21, var1710=$r23, var809=$r22, var1534=$r24, var1116=$r25, var199=$r26, var1639=$r27}
+; {org.apache.dubbo.auth.model.AccessKeyPair=var686, r1=var441, $r0=var3444, $r3=var2923, $r2=var2141, $r4=var659, $r5=var2933, $r7=var58, $r6=var2329, $r8=var210, $r9=var3730, $r11=var3530, $r10=var1697, $r12=var2152, $r13=var3882, $r15=var3771, $r14=var1560, $r16=var182, $r17=var3515, $r19=var2518, $r18=var1568, $r20=var1304, $r21=var1915, $r23=var1710, $r22=var809, $r24=var1534, $r25=var1116, $r26=var199, $r27=var1639}
+;seq <java.lang.StringBuilder: void <init>()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(char)>;	<java.lang.StringBuilder: java.lang.String toString()>
+;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 12,"<java.lang.StringBuilder: java.lang.StringBuilder append(char)>": 7,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
+;stmts r1 := @this: org.apache.dubbo.auth.model.AccessKeyPair;	$r0 = new java.lang.StringBuilder;	specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();	$r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("AccessKeyPair{accessKey=\'");	$r2 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String accessKey>;	$r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r2);	$r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r7 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", secretKey=\'");	$r6 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String secretKey>;	$r8 = virtualinvoke $r7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r6);	$r9 = virtualinvoke $r8.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r11 = virtualinvoke $r9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", consumerSide=\'");	$r10 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String consumerSide>;	$r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r10);	$r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r15 = virtualinvoke $r13.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", providerSide=\'");	$r14 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String providerSide>;	$r16 = virtualinvoke $r15.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r14);	$r17 = virtualinvoke $r16.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r19 = virtualinvoke $r17.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", creator=\'");	$r18 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String creator>;	$r20 = virtualinvoke $r19.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r18);	$r21 = virtualinvoke $r20.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r23 = virtualinvoke $r21.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(", options=\'");	$r22 = r1.<org.apache.dubbo.auth.model.AccessKeyPair: java.lang.String options>;	$r24 = virtualinvoke $r23.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r22);	$r25 = virtualinvoke $r24.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(39);	$r26 = virtualinvoke $r25.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(125);	$r27 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>();	return $r27
+;block_num 1

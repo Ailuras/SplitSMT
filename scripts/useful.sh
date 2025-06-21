@@ -63,6 +63,8 @@ python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num
 # 使用外部求解器求解现实例子
 ./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_cvc5.log --solver ext-cvc5 -t 60 -p 30
 ./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
+python scripts/solve/classify_files.py --excel-file charts/results_test_ext_cvc5_analysis.xlsx --output-dir benchmarks/test_ext_cvc5 --source-dir benchmarks/test
+python scripts/solve/classify_files.py --excel-file charts/results_test_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/test_ext_z3-noodler --source-dir benchmarks/test
 
 # 4. 多求解器结果分析
 

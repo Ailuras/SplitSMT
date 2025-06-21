@@ -128,24 +128,14 @@ process_batch() {
     local batch_unknown=0
     local batch_unclear=0
     
-    # Write batch header
-    echo "========================================================" >> "$batch_output_file"
-    echo "BATCH $batch_id RESULTS" >> "$batch_output_file"
-    echo "Task: $TASK_NAME" >> "$batch_output_file"
-    echo "Solver Script: $(basename "$SOLVER_SCRIPT")" >> "$batch_output_file"
-    echo "Solver Type: $SOLVER_TYPE" >> "$batch_output_file"
-    echo "Timeout: ${TIMEOUT}s" >> "$batch_output_file"
-    echo "Batch Files: ${#batch_files[@]}" >> "$batch_output_file"
-    echo "Started: $(date)" >> "$batch_output_file"
-    echo "========================================================" >> "$batch_output_file"
-    echo "" >> "$batch_output_file"
+    # No batch header needed - keep log file clean
     
     local file_index=0
     for file in "${batch_files[@]}"; do
         file_index=$((file_index + 1))
         filename=$(basename "$file")
         
-        print_info "[Batch $batch_id][$file_index/${#batch_files[@]}] Processing: $filename"
+        # No individual file progress output
         
         # Write file header
         echo "===========================================================" >> "$batch_output_file"
@@ -185,33 +175,46 @@ process_batch() {
         if [[ $exit_status -eq 124 ]] || [[ $exit_status -eq 137 ]]; then
             echo "RESULT: TIMEOUT" >> "$batch_output_file"
             batch_timeout=$((batch_timeout + 1))
-            print_warning "[Batch $batch_id][$file_index/${#batch_files[@]}] TIMEOUT: $filename"
+            # Silent timeout handling
         elif [[ $exit_status -eq 0 ]]; then
             echo "RESULT: SUCCESS" >> "$batch_output_file"
             batch_success=$((batch_success + 1))
             
+            # Check solver output more comprehensively
             if grep -q "^sat$" "$temp_output" 2>/dev/null; then
                 echo "SAT_RESULT: SAT" >> "$batch_output_file"
                 batch_sat=$((batch_sat + 1))
-                print_success "[Batch $batch_id][$file_index/${#batch_files[@]}] SAT: $filename"
             elif grep -q "^unsat$" "$temp_output" 2>/dev/null; then
                 echo "SAT_RESULT: UNSAT" >> "$batch_output_file"
                 batch_unsat=$((batch_unsat + 1))
-                print_success "[Batch $batch_id][$file_index/${#batch_files[@]}] UNSAT: $filename"
             elif grep -q "^unknown$" "$temp_output" 2>/dev/null; then
                 echo "SAT_RESULT: UNKNOWN" >> "$batch_output_file"
                 batch_unknown=$((batch_unknown + 1))
-                print_success "[Batch $batch_id][$file_index/${#batch_files[@]}] UNKNOWN: $filename"
+            elif grep -qE "^(sat|unsat|unknown)$" "$temp_output" 2>/dev/null; then
+                # Handle case-insensitive or with extra whitespace
+                result=$(grep -iE "^(sat|unsat|unknown)$" "$temp_output" 2>/dev/null | head -1 | tr '[:upper:]' '[:lower:]' | tr -d ' ')
+                if [[ "$result" == "sat" ]]; then
+                    echo "SAT_RESULT: SAT" >> "$batch_output_file"
+                    batch_sat=$((batch_sat + 1))
+                elif [[ "$result" == "unsat" ]]; then
+                    echo "SAT_RESULT: UNSAT" >> "$batch_output_file"
+                    batch_unsat=$((batch_unsat + 1))
+                elif [[ "$result" == "unknown" ]]; then
+                    echo "SAT_RESULT: UNKNOWN" >> "$batch_output_file"
+                    batch_unknown=$((batch_unknown + 1))
+                else
+                    echo "SAT_RESULT: UNCLEAR" >> "$batch_output_file"
+                    batch_unclear=$((batch_unclear + 1))
+                fi
             else
                 echo "SAT_RESULT: UNCLEAR" >> "$batch_output_file"
                 batch_unclear=$((batch_unclear + 1))
-                print_success "[Batch $batch_id][$file_index/${#batch_files[@]}] SUCCESS (unclear result): $filename"
             fi
         else
             echo "RESULT: ERROR" >> "$batch_output_file"
             echo "EXIT_CODE: $exit_status" >> "$batch_output_file"
             batch_error=$((batch_error + 1))
-            print_error "[Batch $batch_id][$file_index/${#batch_files[@]}] ERROR (exit $exit_status): $filename"
+            # Silent error handling
         fi
         
         # Clean up temp file
@@ -220,20 +223,7 @@ process_batch() {
         echo "" >> "$batch_output_file"
     done
     
-    # Write batch summary
-    echo "========================================================" >> "$batch_output_file"
-    echo "BATCH $batch_id SUMMARY" >> "$batch_output_file"
-    echo "-----------------------------------------------------------" >> "$batch_output_file"
-    echo "Batch Files: ${#batch_files[@]}" >> "$batch_output_file"
-    echo "Successful: $batch_success" >> "$batch_output_file"
-    echo "Timeouts: $batch_timeout" >> "$batch_output_file"
-    echo "Errors: $batch_error" >> "$batch_output_file"
-    echo "SAT Results: $batch_sat" >> "$batch_output_file"
-    echo "UNSAT Results: $batch_unsat" >> "$batch_output_file"
-    echo "UNKNOWN Results: $batch_unknown" >> "$batch_output_file"
-    echo "UNCLEAR Results: $batch_unclear" >> "$batch_output_file"
-    echo "Completed: $(date)" >> "$batch_output_file"
-    echo "========================================================" >> "$batch_output_file"
+    # No batch summary needed - keep log file clean
     
     print_info "[Batch $batch_id] Completed: ${#batch_files[@]} files processed"
 }
@@ -369,77 +359,53 @@ unclear_count=0
 overall_end=$(date +%s.%N)
 overall_duration=$(echo "$overall_end - $overall_start" | bc -l)
 
-# Write main header to output file
-echo "========================================================" >> "$FULL_OUTPUT_PATH"
-echo "SMT-LIB FILES PARALLEL SOLVING RESULTS" >> "$FULL_OUTPUT_PATH"
-echo "Task: $TASK_NAME" >> "$FULL_OUTPUT_PATH"
-echo "Solver Script: $(basename "$SOLVER_SCRIPT")" >> "$FULL_OUTPUT_PATH"
-echo "Solver Type: $SOLVER_TYPE" >> "$FULL_OUTPUT_PATH"
-echo "Timeout: ${TIMEOUT}s" >> "$FULL_OUTPUT_PATH"
-echo "Parallel Processes: $NUM_PARALLEL" >> "$FULL_OUTPUT_PATH"
-echo "Total Files: $total_files" >> "$FULL_OUTPUT_PATH"
-echo "Started: $(date)" >> "$FULL_OUTPUT_PATH"
-echo "========================================================" >> "$FULL_OUTPUT_PATH"
-echo "" >> "$FULL_OUTPUT_PATH"
+# No main header needed - keep log file clean, only individual file results
 
-# Merge all batch files and collect statistics
+# Merge all batch files directly (no filtering needed since we removed batch summaries)
 for batch_file in "${BATCH_FILES[@]}"; do
     if [[ -f "$batch_file" ]]; then
         cat "$batch_file" >> "$FULL_OUTPUT_PATH"
-        
-        # Extract statistics from batch file
-        if grep -q "Successful:" "$batch_file"; then
-            batch_success=$(grep "Successful:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            success_count=$((success_count + batch_success))
-        fi
-        if grep -q "Timeouts:" "$batch_file"; then
-            batch_timeouts=$(grep "Timeouts:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            timeout_count=$((timeout_count + batch_timeouts))
-        fi
-        if grep -q "Errors:" "$batch_file"; then
-            batch_errors=$(grep "Errors:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            error_count=$((error_count + batch_errors))
-        fi
-        if grep -q "SAT Results:" "$batch_file"; then
-            batch_sat=$(grep "SAT Results:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            sat_count=$((sat_count + batch_sat))
-        fi
-        if grep -q "UNSAT Results:" "$batch_file"; then
-            batch_unsat=$(grep "UNSAT Results:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            unsat_count=$((unsat_count + batch_unsat))
-        fi
-        if grep -q "UNKNOWN Results:" "$batch_file"; then
-            batch_unknown=$(grep "UNKNOWN Results:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            unknown_count=$((unknown_count + batch_unknown))
-        fi
-        if grep -q "UNCLEAR Results:" "$batch_file"; then
-            batch_unclear=$(grep "UNCLEAR Results:" "$batch_file" | tail -1 | cut -d: -f2 | tr -d ' ')
-            unclear_count=$((unclear_count + batch_unclear))
-        fi
     fi
 done
+
+# Extract statistics directly from the merged log file
+success_count=$(grep -c "RESULT: SUCCESS" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$success_count" ]]; then success_count=0; fi
+
+timeout_count=$(grep -c "RESULT: TIMEOUT" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$timeout_count" ]]; then timeout_count=0; fi
+
+error_count=$(grep -c "RESULT: ERROR" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$error_count" ]]; then error_count=0; fi
+
+sat_count=$(grep -c "SAT_RESULT: SAT" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$sat_count" ]]; then sat_count=0; fi
+
+unsat_count=$(grep -c "SAT_RESULT: UNSAT" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$unsat_count" ]]; then unsat_count=0; fi
+
+unknown_count=$(grep -c "SAT_RESULT: UNKNOWN" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$unknown_count" ]]; then unknown_count=0; fi
+
+unclear_count=$(grep -c "SAT_RESULT: UNCLEAR" "$FULL_OUTPUT_PATH" 2>/dev/null)
+if [[ -z "$unclear_count" ]]; then unclear_count=0; fi
 
 # Clean up temporary batch directory
 print_info "Cleaning up temporary batch directory: $TEMP_BATCH_DIR"
 rm -rf "$TEMP_BATCH_DIR"
 
-# Write final summary to output file
-echo "========================================================" >> "$FULL_OUTPUT_PATH"
-echo "FINAL SUMMARY" >> "$FULL_OUTPUT_PATH"
-echo "-----------------------------------------------------------" >> "$FULL_OUTPUT_PATH"
-echo "Total Files: $total_files" >> "$FULL_OUTPUT_PATH"
-echo "Successful: $success_count" >> "$FULL_OUTPUT_PATH"
-echo "Timeouts: $timeout_count" >> "$FULL_OUTPUT_PATH"
-echo "Errors: $error_count" >> "$FULL_OUTPUT_PATH"
-echo "SAT Results: $sat_count" >> "$FULL_OUTPUT_PATH"
-echo "UNSAT Results: $unsat_count" >> "$FULL_OUTPUT_PATH"
-echo "UNKNOWN Results: $unknown_count" >> "$FULL_OUTPUT_PATH"
-echo "UNCLEAR Results: $unclear_count" >> "$FULL_OUTPUT_PATH"
-echo "Parallel Processes: $NUM_PARALLEL" >> "$FULL_OUTPUT_PATH"
-echo "Total Time: ${overall_duration}s" >> "$FULL_OUTPUT_PATH"
-echo "Average Time: $(echo "scale=3; $overall_duration / $total_files" | bc -l)s" >> "$FULL_OUTPUT_PATH"
-echo "Completed: $(date)" >> "$FULL_OUTPUT_PATH"
-echo "========================================================" >> "$FULL_OUTPUT_PATH"
+# No final summary in log file - keep it clean
+
+# Verification: Check if totals add up
+calculated_total=$((success_count + timeout_count + error_count))
+if [[ $calculated_total -ne $total_files ]]; then
+    print_warning "Statistics mismatch! Calculated: $calculated_total, Expected: $total_files"
+fi
+
+success_breakdown=$((sat_count + unsat_count + unknown_count + unclear_count))
+if [[ $success_breakdown -ne $success_count ]]; then
+    print_warning "Success breakdown mismatch! Sum: $success_breakdown, Expected: $success_count"
+fi
 
 # Print final statistics to console
 print_info "=== Parallel Solving Completed ==="
@@ -457,9 +423,35 @@ print_info "Total time: $(printf "%.2f" "$overall_duration")s"
 print_info "Average time: $(echo "scale=3; $overall_duration / $total_files" | bc -l)s per file"
 print_info "Results saved in: $FULL_OUTPUT_PATH"
 
+# Generate Excel analysis report
+print_info "Generating Excel analysis report..."
+ANALYSIS_SCRIPT="scripts/solve/simple_analysis.py"
+
+# Create charts directory
+mkdir -p "charts"
+
+if [[ -f "$ANALYSIS_SCRIPT" ]]; then
+    python3 "$ANALYSIS_SCRIPT" --log-file "$FULL_OUTPUT_PATH" --output-dir "charts" --task-name "$TASK_NAME"
+else
+    print_warning "Analysis script not found: $ANALYSIS_SCRIPT"
+fi
+
 # Exit with appropriate code
-if [[ $error_count -gt 0 ]]; then
+# Only exit with error if a significant portion of files failed
+# or if the script itself encountered critical issues
+error_rate=$(echo "scale=2; $error_count * 100 / $total_files" | bc -l)
+critical_error_threshold=50  # Exit with error if >50% of files failed
+
+if [[ $total_files -eq 0 ]]; then
+    print_error "No files were processed"
+    exit 1
+elif (( $(echo "$error_rate > $critical_error_threshold" | bc -l) )); then
+    print_error "High error rate: ${error_rate}% of files failed"
     exit 1
 else
+    # Consider it successful if most files were processed
+    if [[ $error_count -gt 0 ]]; then
+        print_warning "Completed with ${error_count} errors (${error_rate}% error rate)"
+    fi
     exit 0
 fi 
