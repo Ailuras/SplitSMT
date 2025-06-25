@@ -152,7 +152,7 @@ int main(int argc, char* argv[]) {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
             strp::splitSolver solver(args.solverType);
-            solver.solve();
+            solver.solve(args.inputFile);
         } else {
             return 1;
         }

@@ -38,7 +38,7 @@ def parse_args():
 
 def create_result_directories(output_dir, clean=True):
     """Create subdirectories for each result type."""
-    result_types = ['SAT', 'UNSAT', 'UNKNOWN', 'UNCLEAR', 'ERROR', 'TIMEOUT', 'OTHER']
+    result_types = ['SAT', 'UNSAT', 'UNKNOWN', 'UNCLEAR', 'ERROR', 'WARN', 'TIMEOUT']
     created_dirs = {}
     
     # Clean existing directories if requested
@@ -87,7 +87,10 @@ def determine_result_category(row):
     # Check sat_result column
     if 'sat_result' in row and pd.notna(row['sat_result']):
         sat_result = str(row['sat_result']).strip().upper()
-        if sat_result == 'SAT':
+        # All warning types (SAT_WARN, UNSAT_WARN, WARN) should go to WARN folder
+        if 'WARN' in sat_result:
+            return 'WARN'
+        elif sat_result == 'SAT':
             return 'SAT'
         elif sat_result == 'UNSAT':
             return 'UNSAT'
@@ -95,9 +98,11 @@ def determine_result_category(row):
             return 'UNKNOWN'
         elif sat_result == 'UNCLEAR':
             return 'UNCLEAR'
+        elif sat_result == 'ERROR':
+            return 'ERROR'
     
-    # Default category for unclassified files
-    return 'OTHER'
+    # Default category for unclassified files (previously OTHER)
+    return 'UNCLEAR'
 
 def find_source_file(file_name, file_path, source_dir):
     """Find the source SMT file, trying different locations."""
@@ -187,7 +192,8 @@ def classify_files(df, result_dirs, source_dir, dry_run=False):
             'SAT': stats['SAT'],
             'UNSAT': stats['UNSAT'], 
             'UNKNOWN': stats['UNKNOWN'],
-            'ERROR': stats['ERROR']
+            'ERROR': stats['ERROR'],
+            'WARN': stats['WARN']
         })
     
     pbar.close()

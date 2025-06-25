@@ -42,6 +42,24 @@ def parse_log_file(log_file):
                 if line.startswith('FILE:'):
                     if current_result:
                         current_result['solver_output'] = clean_text_for_excel('\n'.join(solver_output)[:500])
+                        
+                        # Check for error/warning patterns in solver output and classify accordingly
+                        output_text = '\n'.join(solver_output)
+                        has_error = any(keyword in output_text.lower() for keyword in ['error:', 'error '])
+                        has_warning = any(keyword in output_text.lower() for keyword in ['warning:', 'warning '])
+                        
+                        # Override sat_result based on error/warning detection
+                        # Priority: ERROR > original result > WARN (for cases with warning but valid result)
+                        if has_error:
+                            current_result['sat_result'] = 'ERROR'
+                        elif has_warning:
+                            # Keep the original result if it's definitive (SAT/UNSAT), but add warning info
+                            original_result = current_result.get('sat_result', '').upper()
+                            if original_result in ['SAT', 'UNSAT']:
+                                current_result['sat_result'] = f"{original_result}_WARN"
+                            else:
+                                current_result['sat_result'] = 'WARN'
+                        
                         results.append(current_result)
                     current_result = {'file_name': clean_text_for_excel(line.split(':', 1)[1].strip())}
                     solver_output = []
@@ -80,6 +98,24 @@ def parse_log_file(log_file):
     
     if current_result:
         current_result['solver_output'] = clean_text_for_excel('\n'.join(solver_output)[:500])
+        
+        # Check for error/warning patterns in solver output and classify accordingly
+        output_text = '\n'.join(solver_output)
+        has_error = any(keyword in output_text.lower() for keyword in ['error:', 'error '])
+        has_warning = any(keyword in output_text.lower() for keyword in ['warning:', 'warning '])
+        
+        # Override sat_result based on error/warning detection
+        # Priority: ERROR > original result > WARN (for cases with warning but valid result)
+        if has_error:
+            current_result['sat_result'] = 'ERROR'
+        elif has_warning:
+            # Keep the original result if it's definitive (SAT/UNSAT), but add warning info
+            original_result = current_result.get('sat_result', '').upper()
+            if original_result in ['SAT', 'UNSAT']:
+                current_result['sat_result'] = f"{original_result}_WARN"
+            else:
+                current_result['sat_result'] = 'WARN'
+        
         results.append(current_result)
     
     return results

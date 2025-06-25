@@ -66,8 +66,15 @@ python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num
 python scripts/solve/classify_files.py --excel-file charts/results_test_ext_cvc5_analysis.xlsx --output-dir benchmarks/test_ext_cvc5 --source-dir benchmarks/test
 python scripts/solve/classify_files.py --excel-file charts/results_test_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/test_ext_z3-noodler --source-dir benchmarks/test
 
-# 4. 多求解器结果分析
+./scripts/solve/solve_batch.sh -i benchmarks/awesome -f results_awesome_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
+python scripts/solve/classify_files.py --excel-file charts/results_awesome_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/awesome_ext_z3-noodler --source-dir benchmarks/awesome
+./scripts/solve/solve_batch.sh -i benchmarks/top20_gh -f results_top20_gh_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
+python scripts/solve/classify_files.py --excel-file charts/results_top20_gh_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/top20_gh_ext_z3-noodler --source-dir benchmarks/top20_gh
+./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
+python scripts/solve/classify_files.py --excel-file charts/results_top20_maven_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/top20_maven_ext_z3-noodler --source-dir benchmarks/top20_maven
 
+# 4. 多求解器结果分析
+ 
 # 分析所有变异类型和求解器组合的完整报告（包含求解器一致性检查）
 python scripts/solve/analysis_results.py \
     --results-dir results \

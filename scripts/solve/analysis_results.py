@@ -122,6 +122,18 @@ def parse_result_log(log_file):
                 if current_file and current_result:
                     current_result['solver_output'] = '\n'.join(solver_output)
                     current_result['solver_type'] = solver_type
+                    
+                    # Check for error/warning patterns in solver output and classify accordingly
+                    output_text = '\n'.join(solver_output)
+                    has_error = any(keyword in output_text.lower() for keyword in ['error:', 'error '])
+                    has_warning = any(keyword in output_text.lower() for keyword in ['warning:', 'warning '])
+                    
+                    # Override sat_result based on error/warning detection
+                    if has_error:
+                        current_result['sat_result'] = 'ERROR'
+                    elif has_warning and current_result.get('sat_result', '').upper() not in ['SAT', 'UNSAT']:
+                        current_result['sat_result'] = 'WARN'
+                    
                     results[current_file] = current_result
                 
                 current_file = line.split(':', 1)[1].strip()
@@ -157,6 +169,18 @@ def parse_result_log(log_file):
     if current_file and current_result:
         current_result['solver_output'] = '\n'.join(solver_output)
         current_result['solver_type'] = solver_type
+        
+        # Check for error/warning patterns in solver output and classify accordingly
+        output_text = '\n'.join(solver_output)
+        has_error = any(keyword in output_text.lower() for keyword in ['error:', 'error '])
+        has_warning = any(keyword in output_text.lower() for keyword in ['warning:', 'warning '])
+        
+        # Override sat_result based on error/warning detection
+        if has_error:
+            current_result['sat_result'] = 'ERROR'
+        elif has_warning and current_result.get('sat_result', '').upper() not in ['SAT', 'UNSAT']:
+            current_result['sat_result'] = 'WARN'
+        
         results[current_file] = current_result
     
     return results
@@ -307,8 +331,11 @@ def analyze_correctness_changes(result1, result2):
 
 def analyze_solver_consistency(results_dict, solver_types):
     """Analyze consistency across different solvers for the same problem."""
-    # Collect all non-unknown results
+    # Collect all results
+    all_results = []
     definitive_results = []
+    has_errors = False
+    has_warnings = False
     
     for solver_type in solver_types:
         result = results_dict.get(solver_type, {})
@@ -316,9 +343,25 @@ def analyze_solver_consistency(results_dict, solver_types):
         if not sat_result:
             sat_result = result.get('result', '')
         
-        # Only consider definitive results (SAT/UNSAT), ignore UNKNOWN
-        if sat_result.upper() in ['SAT', 'UNSAT']:
-            definitive_results.append(sat_result.upper())
+        if sat_result:
+            all_results.append(sat_result.upper())
+            
+            # Check for errors and warnings
+            if sat_result.upper() == 'ERROR':
+                has_errors = True
+            elif sat_result.upper() == 'WARN':
+                has_warnings = True
+            # Only consider definitive results (SAT/UNSAT) for consistency check
+            elif sat_result.upper() in ['SAT', 'UNSAT']:
+                definitive_results.append(sat_result.upper())
+    
+    # If there are errors, mark as having errors
+    if has_errors:
+        return "⚠️ HAS_ERRORS"
+    
+    # If there are warnings but no errors, mark appropriately
+    if has_warnings and not definitive_results:
+        return "⚠️ HAS_WARNINGS"
     
     if not definitive_results:
         return "NO_DEFINITIVE_RESULTS"
@@ -328,7 +371,10 @@ def analyze_solver_consistency(results_dict, solver_types):
     if 'SAT' in unique_results and 'UNSAT' in unique_results:
         return "⚠️ SERIOUS_INCONSISTENCY"
     elif len(unique_results) == 1:
-        return "CONSISTENT"
+        if has_warnings:
+            return "CONSISTENT_WITH_WARNINGS"
+        else:
+            return "CONSISTENT"
     else:
         return "MINOR_INCONSISTENCY"
 
@@ -416,9 +462,11 @@ def create_solver_comparison_report(seeds_data, all_results, output_file):
                 
                 # Calculate statistics
                 total_results = len(results_for_combo)
-                sat_count = len([r for r in results_for_combo if 'sat' in r.lower() and 'unsat' not in r.lower()])
+                sat_count = len([r for r in results_for_combo if 'sat' in r.lower() and 'unsat' not in r.lower() and 'error' not in r.lower()])
                 unsat_count = len([r for r in results_for_combo if 'unsat' in r.lower()])
                 unknown_count = len([r for r in results_for_combo if 'unknown' in r.lower()])
+                error_count = len([r for r in results_for_combo if 'error' in r.lower()])
+                warn_count = len([r for r in results_for_combo if 'warn' in r.lower()])
                 
                 avg_time = sum(times_for_combo) / len(times_for_combo) if times_for_combo else 0
                 
@@ -429,9 +477,13 @@ def create_solver_comparison_report(seeds_data, all_results, output_file):
                     'sat_count': sat_count,
                     'unsat_count': unsat_count,
                     'unknown_count': unknown_count,
+                    'error_count': error_count,
+                    'warn_count': warn_count,
                     'avg_time': f"{avg_time:.3f}s" if avg_time > 0 else '',
                     'sat_rate': f"{sat_count/total_results:.1%}" if total_results > 0 else '0%',
-                    'unsat_rate': f"{unsat_count/total_results:.1%}" if total_results > 0 else '0%'
+                    'unsat_rate': f"{unsat_count/total_results:.1%}" if total_results > 0 else '0%',
+                    'error_rate': f"{error_count/total_results:.1%}" if total_results > 0 else '0%',
+                    'warn_rate': f"{warn_count/total_results:.1%}" if total_results > 0 else '0%'
                 })
         
         df_perf = pd.DataFrame(perf_data)

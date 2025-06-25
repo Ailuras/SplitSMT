@@ -2,7 +2,6 @@
 (set-option :produce-models true) ; enable model generation
 (set-logic ALL)
 
-; 统一获取长度的函数
 (define-fun get_split_length ((x String) (d String) (limit Int)) Int
   (ite
     (> limit 0)
@@ -13,7 +12,6 @@
   )
 )
 
-; 统一获取元素的函数
 (define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
   (ite
     (and (> limit 0)
@@ -24,36 +22,106 @@
   )
 )
 
-(declare-sort var2628 0)
-(declare-sort var335 0)
-(declare-sort var3064 0)
+(declare-sort var2926 0)
+(declare-sort var3157 0)
+(declare-sort var2912 0)
+(declare-sort var781 0)
+(declare-sort var2662 0)
+(declare-sort var1680 0)
+(declare-sort var3185 0)
+(declare-sort var2684 0)
+(declare-sort var3020 0)
+(declare-sort var2745 0)
+(declare-sort var1868 0)
+(declare-sort var872 0)
+(declare-sort var3990 0)
+(declare-sort var3354 0)
+(declare-sort var54 0)
+(declare-sort var2710 0)
+(declare-sort var245 0)
+(declare-sort var764 0)
+(declare-sort var271 0)
+(declare-sort var3647 0)
+(declare-sort var3622 0)
+(declare-sort var971 0)
 (declare-sort void 0)
 (declare-sort Iterator 0)
 (declare-sort ClassObject 0)
-(declare-fun getServiceParameter/1782298180 (var2628 String String) String)
-(declare-fun var3064_isEmpty/-813097145 (String) Bool)
-(declare-const null-var2628 var2628)
-(declare-const null-String String)
-(declare-const null-Int Int)
-(declare-const var790 var2628) ; Statement: r0 := @this: org.apache.dubbo.common.URL 
-(assert (not (= var790 null-var2628)))
-(declare-const var3611 String) ; Statement: r1 := @parameter0: java.lang.String 
-(assert (not (= var3611 null-String)))
-(declare-const var610 String) ; Statement: r2 := @parameter1: java.lang.String 
-(assert (not (= var610 null-String)))
-(declare-const var3009 Int) ; Statement: l1 := @parameter2: long 
-(assert (not (= var3009 null-Int)))
+(declare-const var2745!class ClassObject)
+(declare-fun getRemote/226840252 (var3157) var781)
+(declare-fun var2662_ofNullable/-1077078438 (var1680) var2662)
+(declare-fun cast-from-var781-to-var1680 (var781) var1680)
+(declare-fun var2684_bootstrap$/-310720989 () var3185)
+(declare-fun map/1305667865 (var2662 var3185) var2662)
+(declare-fun var3020_requireNonNull/-961817614 (var1680) var1680)
+(declare-fun cast-from-ClassObject-to-var1680 (ClassObject) var1680)
+(declare-fun var1868_bootstrap$/-1505935947 (ClassObject) var3185)
+(declare-fun var872_bootstrap$/296627957 () var3185)
+(declare-fun orElse/-757175127 (var2662 var1680) var1680)
+(declare-fun cast-from-var1680-to-var3990 (var1680) var3990)
+(declare-fun getQosConfiguration/-783028813 (var3157) var3354)
+(declare-fun getAnonymousAllowCommands/-248263360 (var3354) String)
+(declare-fun var54_isNotEmpty/-1251449450 (String) Bool)
+(declare-fun var245_stream/-1757820 ((Array Int var1680)) var2710)
+(declare-fun cast-from-__Array__Int__String__-to-__Array__Int__var1680__ ((Array Int String)) (Array Int var1680))
+(declare-fun var271_bootstrap$/-1363727556 () var764)
+(declare-fun var2710_filter/320182972 (var2710 var764) var2710)
+(declare-fun var3647_bootstrap$/830065891 () var3185)
+(declare-fun var2710_map/130902797 (var2710 var3185) var2710)
+(declare-fun var3622_bootstrap$/2005026009 (var3157) var764)
+(declare-fun var2710_anyMatch/-1059037355 (var2710 var764) Bool)
+(declare-const null-var2926 var2926)
+(declare-const null-var3157 var3157)
+(declare-const null-var2912 var2912)
+(declare-const null-NullType var971)
+(declare-const null-var1680 var1680)
+(declare-const var2731 var2926) ; Statement: r23 := @this: org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker 
+(assert (not (= var2731 null-var2926)))
+(declare-const var726 var3157) ; Statement: r0 := @parameter0: org.apache.dubbo.qos.api.CommandContext 
+(assert (not (= var726 null-var3157)))
+(declare-const var486 var2912) ; Statement: r13 := @parameter1: org.apache.dubbo.qos.api.PermissionLevel 
+(assert (not (= var486 null-var2912)))
 (assert true)
-(define-const var3436 String (getServiceParameter/1782298180 var790 var3611 var610)) ; Statement: r3 = virtualinvoke r0.<org.apache.dubbo.common.URL: java.lang.String getServiceParameter(java.lang.String,java.lang.String)>(r1, r2) 
-(define-const var743 Bool (var3064_isEmpty/-813097145 var3436)) ; Statement: $z0 = staticinvoke <org.apache.dubbo.common.utils.StringUtils: boolean isEmpty(java.lang.String)>(r3) 
- ; Statement: if $z0 == 0 goto $l0 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(r3) 
-(assert (not (= (ite var743 1 0) 0))) ; Negate: Cond: $z0 == 0  
- ; Statement: return l1 
+(define-const var3311 var781 (getRemote/226840252 var726)) ; Statement: $r1 = virtualinvoke r0.<org.apache.dubbo.qos.api.CommandContext: io.netty.channel.Channel getRemote()>() 
+(define-const var1472 var2662 (var2662_ofNullable/-1077078438 (cast-from-var781-to-var1680 var3311))) ; Statement: $r3 = staticinvoke <java.util.Optional: java.util.Optional ofNullable(java.lang.Object)>($r1) 
+(define-const var2474 var3185 var2684_bootstrap$/-310720989) ; Statement: $r2 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$remoteAddress__891: java.util.function.Function bootstrap$()>() 
+(assert true)
+(define-const var3991 var2662 (map/1305667865 var1472 var2474)) ; Statement: $r5 = virtualinvoke $r3.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r2) 
+;(assert (var3020_requireNonNull/-961817614 (cast-from-ClassObject-to-var1680 var2745!class))) ; Statement: staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(class "Ljava/net/InetSocketAddress;") 
+
+(declare-const var1544 ClassObject)
+(define-const var2730 var3185 (var1868_bootstrap$/-1505935947 var2745!class)) ; Statement: $r4 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$cast__906: java.util.function.Function bootstrap$(java.lang.Class)>(class "Ljava/net/InetSocketAddress;") 
+(assert true)
+(define-const var3290 var2662 (map/1305667865 var3991 var2730)) ; Statement: $r7 = virtualinvoke $r5.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r4) 
+(define-const var1866 var3185 var872_bootstrap$/296627957) ; Statement: $r6 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$getAddress__909: java.util.function.Function bootstrap$()>() 
+(assert true)
+(define-const var1709 var2662 (map/1305667865 var3290 var1866)) ; Statement: $r8 = virtualinvoke $r7.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r6) 
+(assert true)
+(define-const var2273 var1680 (orElse/-757175127 var1709 null-var1680)) ; Statement: $r9 = virtualinvoke $r8.<java.util.Optional: java.lang.Object orElse(java.lang.Object)>(null) 
+(define-const var1582 var3990 (cast-from-var1680-to-var3990 var2273)) ; Statement: r10 = (java.net.InetAddress) $r9 
+(assert true)
+(define-const var2488 var3354 (getQosConfiguration/-783028813 var726)) ; Statement: r11 = virtualinvoke r0.<org.apache.dubbo.qos.api.CommandContext: org.apache.dubbo.qos.api.QosConfiguration getQosConfiguration()>() 
+(assert true)
+(define-const var91 String (getAnonymousAllowCommands/-248263360 var2488)) ; Statement: r12 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: java.lang.String getAnonymousAllowCommands()>() 
+(define-const var429 Bool (var54_isNotEmpty/-1251449450 var91)) ; Statement: $z0 = staticinvoke <org.apache.dubbo.common.utils.StringUtils: boolean isNotEmpty(java.lang.String)>(r12) 
+ ; Statement: if $z0 == 0 goto r24 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: org.apache.dubbo.qos.api.PermissionLevel getAnonymousAccessPermissionLevel()>() 
+(assert (not (= (ite var429 1 0) 0))) ; Negate: Cond: $z0 == 0  
+; split operation: var3728 = var91.split(",") ; Statement: $r16 = virtualinvoke r12.<java.lang.String: java.lang.String[] split(java.lang.String)>(",") 
+(define-const var3278 var2710 (var245_stream/-1757820 (cast-from-__Array__Int__String__-to-__Array__Int__var1680__ var3728))) ; Statement: $r18 = staticinvoke <java.util.Arrays: java.util.stream.Stream stream(java.lang.Object[])>($r16) 
+(define-const var3006 var764 var271_bootstrap$/-1363727556) ; Statement: $r17 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$isNotEmpty__914: java.util.function.Predicate bootstrap$()>() 
+(define-const var545 var2710 (var2710_filter/320182972 var3278 var3006)) ; Statement: $r20 = interfaceinvoke $r18.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>($r17) 
+(define-const var2436 var3185 var3647_bootstrap$/830065891) ; Statement: $r19 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$trim__921: java.util.function.Function bootstrap$()>() 
+(define-const var3372 var2710 (var2710_map/130902797 var545 var2436)) ; Statement: $r22 = interfaceinvoke $r20.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>($r19) 
+(define-const var1009 var764 (var3622_bootstrap$/2005026009 var726)) ; Statement: $r21 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$lambda_access_0__926: java.util.function.Predicate bootstrap$(org.apache.dubbo.qos.api.CommandContext)>(r0) 
+(define-const var3224 Bool (var2710_anyMatch/-1059037355 var3372 var1009)) ; Statement: $z3 = interfaceinvoke $r22.<java.util.stream.Stream: boolean anyMatch(java.util.function.Predicate)>($r21) 
+ ; Statement: if $z3 == 0 goto r24 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: org.apache.dubbo.qos.api.PermissionLevel getAnonymousAccessPermissionLevel()>() 
+(assert (not (= (ite var3224 1 0) 0))) ; Negate: Cond: $z3 == 0  
+ ; Statement: return 1 
 (check-sat)
-; {getServiceParameter/1782298180=([org.apache.dubbo.common.URL, java.lang.String, java.lang.String], java.lang.String), var3064_isEmpty/-813097145=([java.lang.String], boolean)}
-; {var2628=org.apache.dubbo.common.URL, var790=r0, var3611=r1, var335=null_type, var610=r2, var3009=l1, var3436=r3, var3064=org.apache.dubbo.common.utils.StringUtils, var743=$z0}
-; {org.apache.dubbo.common.URL=var2628, r0=var790, r1=var3611, null_type=var335, r2=var610, l1=var3009, r3=var3436, org.apache.dubbo.common.utils.StringUtils=var3064, $z0=var743}
-;seq <org.apache.dubbo.common.utils.StringUtils: boolean isEmpty(java.lang.String)>
-;cnt {"<org.apache.dubbo.common.utils.StringUtils: boolean isEmpty(java.lang.String)>": 1}
-;stmts r0 := @this: org.apache.dubbo.common.URL;	r1 := @parameter0: java.lang.String;	r2 := @parameter1: java.lang.String;	l1 := @parameter2: long;	r3 = virtualinvoke r0.<org.apache.dubbo.common.URL: java.lang.String getServiceParameter(java.lang.String,java.lang.String)>(r1, r2);	$z0 = staticinvoke <org.apache.dubbo.common.utils.StringUtils: boolean isEmpty(java.lang.String)>(r3);	if $z0 == 0 goto $l0 = staticinvoke <java.lang.Long: long parseLong(java.lang.String)>(r3);	return l1
-;block_num 2
+; {getRemote/226840252=([org.apache.dubbo.qos.api.CommandContext], io.netty.channel.Channel), var2662_ofNullable/-1077078438=([java.lang.Object], java.util.Optional), cast-from-var781-to-var1680=([io.netty.channel.Channel], java.lang.Object), var2684_bootstrap$/-310720989=([], java.util.function.Function), map/1305667865=([java.util.Optional, java.util.function.Function], java.util.Optional), var3020_requireNonNull/-961817614=([java.lang.Object], java.lang.Object), cast-from-ClassObject-to-var1680=([java.lang.Class], java.lang.Object), var1868_bootstrap$/-1505935947=([java.lang.Class], java.util.function.Function), var872_bootstrap$/296627957=([], java.util.function.Function), orElse/-757175127=([java.util.Optional, java.lang.Object], java.lang.Object), cast-from-var1680-to-var3990=([java.lang.Object], java.net.InetAddress), getQosConfiguration/-783028813=([org.apache.dubbo.qos.api.CommandContext], org.apache.dubbo.qos.api.QosConfiguration), getAnonymousAllowCommands/-248263360=([org.apache.dubbo.qos.api.QosConfiguration], java.lang.String), var54_isNotEmpty/-1251449450=([java.lang.String], boolean), var245_stream/-1757820=([java.lang.Object[]], java.util.stream.Stream), cast-from-__Array__Int__String__-to-__Array__Int__var1680__=([java.lang.String[]], java.lang.Object[]), var271_bootstrap$/-1363727556=([], java.util.function.Predicate), var2710_filter/320182972=([java.util.stream.Stream, java.util.function.Predicate], java.util.stream.Stream), var3647_bootstrap$/830065891=([], java.util.function.Function), var2710_map/130902797=([java.util.stream.Stream, java.util.function.Function], java.util.stream.Stream), var3622_bootstrap$/2005026009=([org.apache.dubbo.qos.api.CommandContext], java.util.function.Predicate), var2710_anyMatch/-1059037355=([java.util.stream.Stream, java.util.function.Predicate], boolean)}
+; {var2926=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker, var2731=r23, var3157=org.apache.dubbo.qos.api.CommandContext, var726=r0, var2912=org.apache.dubbo.qos.api.PermissionLevel, var486=r13, var781=io.netty.channel.Channel, var3311=$r1, var2662=java.util.Optional, var1680=java.lang.Object, var1472=$r3, var3185=java.util.function.Function, var2684=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$remoteAddress__891, var2474=$r2, var3991=$r5, var3020=java.util.Objects, var2745=java.net.InetSocketAddress, var1544=class "Ljava/net/InetSocketAddress;", var1868=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$cast__906, var2730=$r4, var3290=$r7, var872=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$getAddress__909, var1866=$r6, var1709=$r8, var2273=$r9, var3990=java.net.InetAddress, var1582=r10, var3354=org.apache.dubbo.qos.api.QosConfiguration, var2488=r11, var91=r12, var54=org.apache.dubbo.common.utils.StringUtils, var429=$z0, var3728=$r16, var2710=java.util.stream.Stream, var245=java.util.Arrays, var3278=$r18, var764=java.util.function.Predicate, var271=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$isNotEmpty__914, var3006=$r17, var545=$r20, var3647=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$trim__921, var2436=$r19, var3372=$r22, var3622=org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$lambda_access_0__926, var1009=$r21, var3224=$z3, var971=null_type}
+; {org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker=var2926, r23=var2731, org.apache.dubbo.qos.api.CommandContext=var3157, r0=var726, org.apache.dubbo.qos.api.PermissionLevel=var2912, r13=var486, io.netty.channel.Channel=var781, $r1=var3311, java.util.Optional=var2662, java.lang.Object=var1680, $r3=var1472, java.util.function.Function=var3185, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$remoteAddress__891=var2684, $r2=var2474, $r5=var3991, java.util.Objects=var3020, java.net.InetSocketAddress=var2745, class "Ljava/net/InetSocketAddress;"=var1544, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$cast__906=var1868, $r4=var2730, $r7=var3290, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$getAddress__909=var872, $r6=var1866, $r8=var1709, $r9=var2273, java.net.InetAddress=var3990, r10=var1582, org.apache.dubbo.qos.api.QosConfiguration=var3354, r11=var2488, r12=var91, org.apache.dubbo.common.utils.StringUtils=var54, $z0=var429, $r16=var3728, java.util.stream.Stream=var2710, java.util.Arrays=var245, $r18=var3278, java.util.function.Predicate=var764, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$isNotEmpty__914=var271, $r17=var3006, $r20=var545, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$trim__921=var3647, $r19=var2436, $r22=var3372, org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$lambda_access_0__926=var3622, $r21=var1009, $z3=var3224, null_type=var971}
+;seq <org.apache.dubbo.common.utils.StringUtils: boolean isNotEmpty(java.lang.String)>;	<java.lang.String: java.lang.String[] split(java.lang.String)>
+;cnt {"<org.apache.dubbo.common.utils.StringUtils: boolean isNotEmpty(java.lang.String)>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
+;stmts r23 := @this: org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker;	r0 := @parameter0: org.apache.dubbo.qos.api.CommandContext;	r13 := @parameter1: org.apache.dubbo.qos.api.PermissionLevel;	$r1 = virtualinvoke r0.<org.apache.dubbo.qos.api.CommandContext: io.netty.channel.Channel getRemote()>();	$r3 = staticinvoke <java.util.Optional: java.util.Optional ofNullable(java.lang.Object)>($r1);	$r2 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$remoteAddress__891: java.util.function.Function bootstrap$()>();	$r5 = virtualinvoke $r3.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r2);	staticinvoke <java.util.Objects: java.lang.Object requireNonNull(java.lang.Object)>(class "Ljava/net/InetSocketAddress;");	$r4 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$cast__906: java.util.function.Function bootstrap$(java.lang.Class)>(class "Ljava/net/InetSocketAddress;");	$r7 = virtualinvoke $r5.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r4);	$r6 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$getAddress__909: java.util.function.Function bootstrap$()>();	$r8 = virtualinvoke $r7.<java.util.Optional: java.util.Optional map(java.util.function.Function)>($r6);	$r9 = virtualinvoke $r8.<java.util.Optional: java.lang.Object orElse(java.lang.Object)>(null);	r10 = (java.net.InetAddress) $r9;	r11 = virtualinvoke r0.<org.apache.dubbo.qos.api.CommandContext: org.apache.dubbo.qos.api.QosConfiguration getQosConfiguration()>();	r12 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: java.lang.String getAnonymousAllowCommands()>();	$z0 = staticinvoke <org.apache.dubbo.common.utils.StringUtils: boolean isNotEmpty(java.lang.String)>(r12);	if $z0 == 0 goto r24 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: org.apache.dubbo.qos.api.PermissionLevel getAnonymousAccessPermissionLevel()>();	$r16 = virtualinvoke r12.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$r18 = staticinvoke <java.util.Arrays: java.util.stream.Stream stream(java.lang.Object[])>($r16);	$r17 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$isNotEmpty__914: java.util.function.Predicate bootstrap$()>();	$r20 = interfaceinvoke $r18.<java.util.stream.Stream: java.util.stream.Stream filter(java.util.function.Predicate)>($r17);	$r19 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$trim__921: java.util.function.Function bootstrap$()>();	$r22 = interfaceinvoke $r20.<java.util.stream.Stream: java.util.stream.Stream map(java.util.function.Function)>($r19);	$r21 = staticinvoke <org.apache.dubbo.qos.permission.DefaultAnonymousAccessPermissionChecker$lambda_access_0__926: java.util.function.Predicate bootstrap$(org.apache.dubbo.qos.api.CommandContext)>(r0);	$z3 = interfaceinvoke $r22.<java.util.stream.Stream: boolean anyMatch(java.util.function.Predicate)>($r21);	if $z3 == 0 goto r24 = virtualinvoke r11.<org.apache.dubbo.qos.api.QosConfiguration: org.apache.dubbo.qos.api.PermissionLevel getAnonymousAccessPermissionLevel()>();	return 1
+;block_num 3

@@ -9,6 +9,7 @@
 #include <filesystem>
 #include <chrono>
 #include <unordered_map>
+#include <iterator>
 
 #include <iomanip>
 #include <algorithm>
@@ -458,8 +459,11 @@ void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
     std::unordered_map<std::string, std::string> functionToVariable; // func_name -> var_name
     std::vector<std::string> assertionsToAdd;
     std::vector<std::string> functionsToRemove;
+    std::vector<std::string> skippedFunctions;
     
     DEBUG("Processing ", processingOrder.size(), " functions in topological order");
+    
+    std::unordered_set<std::string> skippedFunctionSet;
     
     for (const std::string& funcName : processingOrder) {
         // Find the function
@@ -469,6 +473,29 @@ void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
         if (it == functions.end()) continue;
         
         const FunctionDependency& funcDep = *it;
+        
+        // Check if the function body contains undeclared functions (indicated by "/" in function names)
+        bool hasUndeclaredFunctions = funcDep.body.find("/") != std::string::npos;
+        
+        // Also check if any of its dependencies were skipped
+        bool hasSkippedDependencies = false;
+        for (const std::string& dep : funcDep.dependencies) {
+            if (skippedFunctionSet.count(dep)) {
+                hasSkippedDependencies = true;
+                break;
+            }
+        }
+        
+        if (hasUndeclaredFunctions || hasSkippedDependencies) {
+            if (hasUndeclaredFunctions) {
+                DEBUG("Skipping conversion of function ", funcName, " due to undeclared functions in body: ", funcDep.body);
+            } else {
+                DEBUG("Skipping conversion of function ", funcName, " due to skipped dependencies");
+            }
+            skippedFunctions.push_back(funcName);
+            skippedFunctionSet.insert(funcName);
+            continue;
+        }
         
         // Create replacement variable
         SMTParser::NodePtr replacementVar = nullptr;
@@ -492,6 +519,13 @@ void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
             functionsToRemove.push_back(funcName);
             
             DEBUG("Will convert function ", funcName, " to variable with assertion: ", assertion);
+        }
+    }
+    
+    if (!skippedFunctions.empty()) {
+        DEBUG("Skipped conversion of ", skippedFunctions.size(), " functions due to undeclared dependencies: ");
+        for (const auto& skipped : skippedFunctions) {
+            DEBUG("  - ", skipped);
         }
     }
     
@@ -1179,16 +1213,127 @@ SatResult splitSolver::checkSat() {
     return result;
 }
 
-SatResult splitSolver::solve() {
+SatResult splitSolver::tryDirectSolve(const std::string& originalFilePath) {
+    INFO("Attempting to solve original formula directly");
+    
+    // If we have the original file path, use it directly with external solvers
+    if (!originalFilePath.empty() && (currentSolverType == SolverType::EXTERNAL_Z3 ||
+                                      currentSolverType == SolverType::EXTERNAL_CVC5 ||
+                                      currentSolverType == SolverType::EXTERNAL_OSTRICH ||
+                                      currentSolverType == SolverType::EXTERNAL_Z3_NOODLER)) {
+        INFO("Using original file directly with external solver: ", originalFilePath);
+        
+        // Read the original file content
+        std::ifstream file(originalFilePath);
+        if (!file.is_open()) {
+            ERROR("Failed to open original file: ", originalFilePath);
+            return SatResult::ERROR;
+        }
+        
+        std::string originalContent((std::istreambuf_iterator<char>(file)),
+                                   std::istreambuf_iterator<char>());
+        file.close();
+        
+        if (!solver) {
+            ERROR("Solver not initialized");
+            return SatResult::ERROR;
+        }
+        
+        DEBUG("Sending original file content directly to solver");
+        SatResult directResult = solver->checkSat(originalContent);
+        
+        // If direct solving succeeded (SAT, UNSAT, or UNKNOWN), handle output and return
+        if (directResult != SatResult::ERROR) {
+            INFO("Direct solving succeeded with result: ", 
+                 directResult == SatResult::SAT ? "SAT" : 
+                 directResult == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
+            
+            // Handle output for direct solving
+            if (context.hasTask(strp::TaskType::CHECK_SAT)) {
+                if (directResult == SatResult::SAT) {
+                    std::cout << "sat" << std::endl;
+                } else if (directResult == SatResult::UNSAT) {
+                    std::cout << "unsat" << std::endl;
+                } else {
+                    std::cout << "unknown" << std::endl;
+                }
+            }
+            if (directResult == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
+                std::string rawModel = getModel();
+                if (!rawModel.empty()) {
+                    std::string filteredModel = filterModel(rawModel);
+                    if (!filteredModel.empty()) {
+                        std::cout << filteredModel << std::endl;
+                    } else {
+                        DEBUG("No original variables found in model");
+                    }
+                } else {
+                    DEBUG("No model available from solver");
+                }
+            }
+            return directResult;
+        }
+        
+        WARN("Direct solving with original file failed, trying parsed content");
+    }
+    
+    // Fallback to using parsed content (original behavior)
+    SatResult directResult = checkSat();
+    
+    // If direct solving succeeded (SAT, UNSAT, or UNKNOWN), handle output and return
+    if (directResult != SatResult::ERROR) {
+        INFO("Direct solving succeeded with result: ", 
+             directResult == SatResult::SAT ? "SAT" : 
+             directResult == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
+        
+        // Handle output for direct solving
+        if (context.hasTask(strp::TaskType::CHECK_SAT)) {
+            if (directResult == SatResult::SAT) {
+                std::cout << "sat" << std::endl;
+            } else if (directResult == SatResult::UNSAT) {
+                std::cout << "unsat" << std::endl;
+            } else {
+                std::cout << "unknown" << std::endl;
+            }
+        }
+        if (directResult == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
+            std::string rawModel = getModel();
+            if (!rawModel.empty()) {
+                std::string filteredModel = filterModel(rawModel);
+                if (!filteredModel.empty()) {
+                    std::cout << filteredModel << std::endl;
+                } else {
+                    DEBUG("No original variables found in model");
+                }
+            } else {
+                DEBUG("No model available from solver");
+            }
+        }
+        return directResult;
+    }
+    
+    // If direct solving failed with ERROR, indicate that rewriting is needed
+    WARN("Direct solving failed with ERROR, formula rewriting required");
+    return SatResult::ERROR;
+}
+
+SatResult splitSolver::solve(const std::string& originalFilePath) {
     INFO("Starting solving process");
 
+    // Try direct solving first
+    SatResult directResult = tryDirectSolve(originalFilePath);
+    if (directResult != SatResult::ERROR) {
+        return directResult;
+    }
+    
+    // If direct solving failed, proceed with formula rewriting
     INFO("Rewriting formula");
     rewriteFormula(context);
     
-    INFO("Checking satisfiability");
+    INFO("Checking satisfiability with rewritten formula");
     SatResult result = checkSat();
     
-    INFO("Final result: ", 
+    INFO("Final result after rewriting: ", 
          result == SatResult::SAT ? "SAT" : 
          result == SatResult::UNSAT ? "UNSAT" : 
          result == SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");

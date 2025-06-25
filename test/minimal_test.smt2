@@ -1,0 +1,6 @@
+(set-logic ALL)
+(declare-fun toLowerCase/1946809429 (String String) String)
+(declare-const var20 String)
+(declare-const var2185 String)
+(assert (= var20 (toLowerCase/1946809429 var20 var2185)))
+(check-sat) 

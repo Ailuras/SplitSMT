@@ -172,52 +172,48 @@ void testFunctionReplacement() {
     }
 }
 
-int main(int argc, char* argv[]) {
-    strp::utils::Logger::getInstance().setLevel(strp::utils::LogLevel::DEBUG);
+int main() {
+    LOGGER.setLevel(strp::utils::LogLevel::DEBUG);
     
-    if (argc > 1 && std::string(argv[1]) == "--test-replacement") {
-        testFunctionReplacement();
-        return 0;
-    }
-    
-    if (argc > 1 && std::string(argv[1]) == "--analyze") {
-        std::cout << "Analyzing test.smt2 file structure" << std::endl;
+    try {
+        auto& context = strp::Context::getInstance();
+        std::string testFile = "benchmarks/test_ext_z3-noodler/error/4925.smt2";
         
-        Context& ctx = Context::getInstance();
-        ctx.clear();
+        std::cout << "Testing problematic SMT2 file: " << testFile << std::endl;
         
-        // Read and parse the test file
-        std::ifstream file("test/test.smt2");
-        if (!file.is_open()) {
-            std::cerr << "Error: Could not open test/test.smt2" << std::endl;
-            return 1;
-        }
-        
-        std::stringstream buffer;
-        buffer << file.rdbuf();
-        std::string content = buffer.str();
-        file.close();
-        
-        try {
-            ctx.parseString(content);
+        if (context.parseFile(testFile)) {
+            std::cout << "File parsed successfully!" << std::endl;
             
-            std::cout << "\n=== ORIGINAL STRUCTURE ===" << std::endl;
-            analyzeFunctions(ctx);
-            analyzeAssertions(ctx);
-            findAllFuncDefReferences(ctx);
+            std::cout << "\n=== SMT-LIB2 OUTPUT IMMEDIATELY AFTER PARSING ===" << std::endl;
+            std::string smtlib2_after_parse = context.getSMTLIB2(true);
+            std::cout << smtlib2_after_parse << std::endl;
             
-        } catch (const std::exception& e) {
-            std::cerr << "Parsing error: " << e.what() << std::endl;
-            return 1;
+            std::cout << "\n=== FUNCTIONS BEFORE PROCESSING ===" << std::endl;
+            auto allFunctions = context.getFunctions();
+            for (const auto& func : allFunctions) {
+                if (func) {
+                    std::cout << "Function: " << func->getName() 
+                              << ", Parameters: " << func->getFuncParamsSize()
+                              << ", Has body: " << (func->getFuncBody() ? "Yes" : "No")
+                              << std::endl;
+                    if (func->getFuncBody()) {
+                        std::cout << "  Body: " << context.nodeToString(func->getFuncBody()) << std::endl;
+                    }
+                }
+            }
+            
+            std::cout << "\n=== PROCESSING ===" << std::endl;
+            strp::splitSolver solver(strp::SolverType::Z3);
+            
+            std::cout << "\n=== SMT-LIB2 OUTPUT AFTER PROCESSING ===" << std::endl;
+            std::string smtlib2_after_process = context.getSMTLIB2(true);
+            std::cout << smtlib2_after_process << std::endl;
+        } else {
+            std::cout << "Failed to parse file!" << std::endl;
         }
-        
-        return 0;
+    } catch (const std::exception& e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
     }
-    
-    std::cout << "Usage:" << std::endl;
-    std::cout << "  " << argv[0] << " --test-replacement  : Test function replacement" << std::endl;
-    std::cout << "  " << argv[0] << " --analyze           : Analyze test.smt2 structure" << std::endl;
-    std::cout << "  " << argv[0] << " <file>              : Process file normally" << std::endl;
     
     return 0;
 } 

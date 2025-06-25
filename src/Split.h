@@ -27,8 +27,9 @@ public:
     ~splitSolver() = default;
 
     void setSolver(SolverType type);
-    SatResult solve();
+    SatResult solve(const std::string& originalFilePath = "");
     SatResult checkSat();
+    SatResult tryDirectSolve(const std::string& originalFilePath = "");
     void resetSolver();
     std::string getModel();
     std::string getUnsatCore();
