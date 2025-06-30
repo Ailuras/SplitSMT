@@ -444,7 +444,7 @@ void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
     }
     
     // Step 2: Build dependency graph
-    updateFunctionDependencies(ctx, functions);
+    updateFunctionDependencies(functions);
     
     // Step 3: Get topological order
     std::vector<std::string> processingOrder = topologicalSort(functions);
@@ -565,7 +565,7 @@ void splitSolver::convertZeroParamDefineFuns(Context& ctx) {
     DEBUG("Completed zero-parameter function conversion using topological sort");
 }
 
-void splitSolver::updateFunctionDependencies(Context& ctx, std::vector<FunctionDependency>& functions) {
+void splitSolver::updateFunctionDependencies(std::vector<FunctionDependency>& functions) {
     DEBUG("Building function dependency graph");
     
     // Create a map for quick lookup
@@ -1274,7 +1274,7 @@ SatResult splitSolver::tryDirectSolve(const std::string& originalFilePath) {
             return directResult;
         }
         
-        WARN("Direct solving with original file failed, trying parsed content");
+        // WARN("Direct solving with original file failed, trying parsed content");
     }
     
     // Fallback to using parsed content (original behavior)
@@ -1321,10 +1321,10 @@ SatResult splitSolver::solve(const std::string& originalFilePath) {
     INFO("Starting solving process");
 
     // Try direct solving first
-    SatResult directResult = tryDirectSolve(originalFilePath);
-    if (directResult != SatResult::ERROR) {
-        return directResult;
-    }
+    // SatResult directResult = tryDirectSolve(originalFilePath);
+    // if (directResult != SatResult::ERROR) {
+    //     return directResult;
+    // }
     
     // If direct solving failed, proceed with formula rewriting
     INFO("Rewriting formula");

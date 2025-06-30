@@ -538,7 +538,7 @@ SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) con
         WARN("External solver timeout");
         return SatResult::UNKNOWN;
     } else {
-        ERROR("External solver error or unexpected output");
+        // ERROR("External solver error or unexpected output");
         return SatResult::ERROR;
     }
 }

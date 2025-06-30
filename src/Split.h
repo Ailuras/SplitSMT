@@ -62,7 +62,7 @@ private:
     std::vector<SMTParser::NodePtr> splitAtTerms;
 
     void initializeSolver();
-    void updateFunctionDependencies(Context& ctx, std::vector<FunctionDependency>& functions);
+    void updateFunctionDependencies(std::vector<FunctionDependency>& functions);
     std::vector<std::string> topologicalSort(const std::vector<FunctionDependency>& functions);
     void findAndReplaceFuncDefNodes(SMTParser::NodePtr node, 
                                    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacements,

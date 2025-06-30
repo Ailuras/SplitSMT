@@ -172,47 +172,65 @@ void testFunctionReplacement() {
     }
 }
 
-int main() {
-    LOGGER.setLevel(strp::utils::LogLevel::DEBUG);
+int main(int argc, char* argv[]) {
+    strp::utils::Logger::getInstance().setLevel(strp::utils::LogLevel::DEBUG);
     
-    try {
-        auto& context = strp::Context::getInstance();
-        std::string testFile = "benchmarks/test_ext_z3-noodler/error/4925.smt2";
-        
+    if (argc > 1) {
+        std::string testFile = argv[1];
         std::cout << "Testing problematic SMT2 file: " << testFile << std::endl;
         
-        if (context.parseFile(testFile)) {
-            std::cout << "File parsed successfully!" << std::endl;
-            
-            std::cout << "\n=== SMT-LIB2 OUTPUT IMMEDIATELY AFTER PARSING ===" << std::endl;
-            std::string smtlib2_after_parse = context.getSMTLIB2(true);
-            std::cout << smtlib2_after_parse << std::endl;
-            
-            std::cout << "\n=== FUNCTIONS BEFORE PROCESSING ===" << std::endl;
-            auto allFunctions = context.getFunctions();
-            for (const auto& func : allFunctions) {
-                if (func) {
-                    std::cout << "Function: " << func->getName() 
-                              << ", Parameters: " << func->getFuncParamsSize()
-                              << ", Has body: " << (func->getFuncBody() ? "Yes" : "No")
-                              << std::endl;
-                    if (func->getFuncBody()) {
-                        std::cout << "  Body: " << context.nodeToString(func->getFuncBody()) << std::endl;
-                    }
-                }
+        Context& ctx = Context::getInstance();
+        ctx.clear();
+        
+        try {
+            bool parseResult = ctx.parseFile(testFile);
+            if (!parseResult) {
+                std::cerr << "Failed to parse file!" << std::endl;
+                return 1;
             }
             
-            std::cout << "\n=== PROCESSING ===" << std::endl;
-            strp::splitSolver solver(strp::SolverType::Z3);
+            std::cout << "File parsed successfully!" << std::endl;
+            std::cout << "Found " << ctx.getVarCount() << " variables" << std::endl;
+            std::cout << "Found " << ctx.getAtomCount() << " atoms" << std::endl;
+            std::cout << "Found " << ctx.getClauseCount() << " clauses" << std::endl;
             
-            std::cout << "\n=== SMT-LIB2 OUTPUT AFTER PROCESSING ===" << std::endl;
-            std::string smtlib2_after_process = context.getSMTLIB2(true);
-            std::cout << smtlib2_after_process << std::endl;
-        } else {
-            std::cout << "Failed to parse file!" << std::endl;
+            std::string smtlib = ctx.getSMTLIB2(true);
+            std::cout << "Generated SMT-LIB2:" << std::endl;
+            std::cout << smtlib.substr(0, 1000) << "..." << std::endl;
+            
+        } catch (const std::exception& e) {
+            std::cerr << "Exception caught: " << e.what() << std::endl;
+            return 1;
         }
+        
+        return 0;
+    }
+    
+    std::string testFile = "benchmarks/awesome_ext_z3-noodler/error/1491.smt2";
+    std::cout << "Testing problematic SMT2 file: " << testFile << std::endl;
+    
+    Context& ctx = Context::getInstance();
+    ctx.clear();
+    
+    try {
+        bool parseResult = ctx.parseFile(testFile);
+        if (!parseResult) {
+            std::cerr << "Failed to parse file!" << std::endl;
+            return 1;
+        }
+        
+        std::cout << "File parsed successfully!" << std::endl;
+        std::cout << "Found " << ctx.getVarCount() << " variables" << std::endl;
+        std::cout << "Found " << ctx.getAtomCount() << " atoms" << std::endl;
+        std::cout << "Found " << ctx.getClauseCount() << " clauses" << std::endl;
+        
+        std::string smtlib = ctx.getSMTLIB2(true);
+        std::cout << "Generated SMT-LIB2:" << std::endl;
+        std::cout << smtlib.substr(0, 1000) << "..." << std::endl;
+        
     } catch (const std::exception& e) {
-        std::cout << "Exception caught: " << e.what() << std::endl;
+        std::cerr << "Exception caught: " << e.what() << std::endl;
+        return 1;
     }
     
     return 0;

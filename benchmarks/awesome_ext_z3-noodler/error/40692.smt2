@@ -62,7 +62,6 @@
 (declare-fun getFont/-1191561058 (var3286) var2633)
 (declare-fun cast-from-var3026-to-var3286 (var3026) var3286)
 (declare-fun getSize/1707555820 (var2633) Int)
-(declare-fun cast-from-Int-to-Real (Int) Real)
 (declare-fun deriveFont/-816435095 (var2633 Real) var2633)
 (declare-fun setFont/-1113720754 (var3286 var2633) void)
 (declare-fun setColor/1206064488 (var3286 var2924) void)
