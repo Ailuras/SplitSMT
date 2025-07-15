@@ -8,6 +8,7 @@ Supports: OpenAI, Claude, DeepSeek
 """
 
 import os
+import random
 import sys
 import re
 import json
@@ -26,7 +27,7 @@ class LLMConfig:
         "openai": {
             "api_key": "sk-YXvRQcCLnbWOjyEJ5BjTI3dcikKzl3SGeocvoms0g3MxEc0q",
             "base_url": "https://api2.aigcbest.top/v1",
-            "models": ["gpt-4o", "gpt-4", "gpt-3.5-turbo"],
+            "models": ["gpt-4.1", "gpt-o1", "gpt-3.5-turbo"],
             "default_model": "gpt-4o"
         },
         "claude": {
@@ -252,26 +253,40 @@ class LLMProviderFactory:
         return LLMConfig.PROVIDERS.get(provider, {}).get("models", [])
 
 class LLMMutator:
-    def __init__(self, provider: str = "openai", model: str = None):
+    def __init__(self, provider: str = "openai", model: str = None, method_type : str = None):
         self.provider_name = provider
         self.provider = LLMProviderFactory.create_provider(provider, model)
-        
-        self.system_prompt = """You are an expert in SMT solver constraints and string operations.
+        self.method_type = method_type
+
+        self.rws_task = ['User Input Validation secnario, such as Email format validation, URL parsing, or phone number formats',
+'Configuration File Processing secnario, such as Key-value pairs, INI files, or JSON-like structures',
+'Log Analysis secnario, such as Timestamp extraction, log level parsing, or IP address validation',
+'CSV/TSV Parsing secnario, such as Field separation, quoted strings, or escape characters',
+'Authentication Token Handling secnario, such as JWT parsing, API key validation, or session tokens']
+
+        self.rws_system_prompt = [f"""You are an expert in SMT solver constraints and string operations. 
+Your task is to generate SMT-LIB2 constraints and add intelligent split constraints using str.split_at functions, for {task}.
+
+Output format: Return all the SMT-LIB2 text, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
+""" for task in self.rws_task]
+
+        self.rws_examples = [[]]
+
+        self.sfc_system_prompt = """You are an expert in SMT solver constraints and string operations.
 Your task is to analyze the given SMT-LIB2 file and add intelligent split constraints using str.split_at functions.
 
 Guidelines:
 1. Analyze existing string variables and constraints
 2. Add meaningful str.split_at constraints that could reveal interesting behaviors
 3. Declare necessary auxiliary variables (String for split_at results)
-4. Add constraints that make logical sense with existing constraints
-5. Use delimiters that are relevant to the problem context
-6. Use small index values (0, 1, 2) for str.split_at
-7. Add validation constraints for split results
+4. Use delimiters that are relevant to the problem context
+5. Use small index values (0, 1, 2) for str.split_at
+6. Add validation constraints for split results
 
 Output format: Return ONLY the additional constraints to be inserted, one per line, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
 """
-        
-        self.examples = [
+
+        self.sfc_examples = [
             {
                 "input": """(set-logic QF_SLIA)
 (declare-const x String)
@@ -316,19 +331,156 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
 (assert (> (str.len subdomain_part) 0))
 (assert (= tld_part "com"))
 ; --- End LLM Generated Constraints ---"""
-            }
+            }            
+        ]
+
+# Create sophisticated constraints where the same string variable appears in multiple partitions with different delimiters, 
+# split results serve as inputs to further split operations (nested splits), and multiple interdependent operations form constraint networks.
+
+        self.cso_system_prompt = """You are an expert in SMT solver constraints and string operations. 
+Your task is to analyze the given SMT-LIB2 file and add sophisticated split constraints using str.split_at functions. 
+
+Guidelines: 
+1. Analyze existing string variables and constraints 
+2. Add meaningful str.split_at constraints that could reveal interesting behaviors
+3. Declare necessary auxiliary variables (String for split_at results)
+4. Apply different delimiters to the same string variable to create overlapping partition views
+5. Use split results as inputs to subsequent split operations, creating deep dependency chains
+6. Combine multi-delimiter and nested split operations so that results from different delimiter paths feed into each other's nested chains
+
+Output format: Return ONLY the additional constraints to be inserted, one per line, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
+"""
+
+        self.cso_examples = [
+            {
+                "input": """(set-logic QF_SLIA)
+(declare-const x String)
+(declare-const y String)
+(assert (str.in_re x (re.* (re.++ (str.to_re "T") (str.to_re "N")))))
+(assert (str.in_re y (re.* (re.* (str.to_re "T")))))
+(assert (= (str.len x) (str.len y)))
+(assert (not (= x y)))
+(assert (= (str.len x) 7))
+(check-sat)""",
+                "output": """; --- LLM Generated Split Constraints ---
+
+; Split x at position 2 and 5 to create two-level partitions
+(declare-const x_split1 String)
+(declare-const x_split2 String)
+(assert (= (str.substr x 0 2) x_split1))
+(assert (= (str.substr x 2 5) x_split2))
+
+; Split x_split1 at position 1 (nested split from first part)
+(declare-const x_split1a String)
+(declare-const x_split1b String)
+(assert (= (str.substr x_split1 0 1) x_split1a))
+(assert (= (str.substr x_split1 1 1) x_split1b))
+
+; Split x_split2 at position 3 (nested split from second part)
+(declare-const x_split2a String)
+(declare-const x_split2b String)
+(assert (= (str.substr x_split2 0 3) x_split2a))
+(assert (= (str.substr x_split2 3 2) x_split2b))
+
+; Create an overlapping view of x using different delimiter positions
+(declare-const x_alt1 String)
+(declare-const x_alt2 String)
+(assert (= (str.substr x 1 3) x_alt1))
+(assert (= (str.substr x 4 3) x_alt2))
+
+; Nested split on overlapping part x_alt1
+(declare-const x_alt1a String)
+(declare-const x_alt1b String)
+(assert (= (str.substr x_alt1 0 2) x_alt1a))
+(assert (= (str.substr x_alt1 2 1) x_alt1b))
+
+; Use y as secondary split source
+(declare-const y_split1 String)
+(declare-const y_split2 String)
+(assert (= (str.substr y 0 3) y_split1))
+(assert (= (str.substr y 3 4) y_split2))
+
+; Combine split results from x and y
+; For example: concatenating splits across x and y
+(declare-const xy_merge String)
+(assert (= xy_merge (str.++ x_split1b y_split1)))
+
+; Further split merged result
+(declare-const xy_merge_sub String)
+(assert (= (str.substr xy_merge 1 3) xy_merge_sub))
+
+; Use xy_merge_sub as a dependent in nested split chains
+(declare-const xy_merge_sub_a String)
+(declare-const xy_merge_sub_b String)
+(assert (= (str.substr xy_merge_sub 0 2) xy_merge_sub_a))
+(assert (= (str.substr xy_merge_sub 2 1) xy_merge_sub_b))
+
+; --- End LLM Generated Constraints ---
+"""
+            },
+            {
+                "input": """(set-logic QF_SLIA)
+(declare-const email String)
+(declare-const domain String)
+(assert (str.contains email "@"))
+(assert (> (str.len email) 5))
+(assert (str.suffix email ".com"))
+(check-sat)""",
+                "output": """; --- LLM Generated Split Constraints ---
+
+; Split email at the '@' character to separate local-part and domain
+(declare-const local String)
+(declare-const email_domain_part String)
+(assert (= (str.indexof email "@" 0)  (str.len local)))
+(assert (= email (str.++ local "@" email_domain_part)))
+
+; Split email_domain_part at the first '.' to separate domain name and TLD
+(declare-const domain_name String)
+(declare-const tld_with_dot String)
+(assert (= (str.indexof email_domain_part "." 0) (str.len domain_name)))
+(assert (= email_domain_part (str.++ domain_name tld_with_dot)))
+
+; Remove the leading '.' from tld_with_dot to isolate the TLD
+(declare-const tld String)
+(assert (= (str.substr tld_with_dot 1 (- (str.len tld_with_dot) 1)) tld))
+
+; Assert domain matches domain_name extracted from email
+(assert (= domain domain_name))
+
+; --- End LLM Generated Constraints ---
+"""
+            }            
         ]
 
     def create_messages(self, smt_content: str) -> List[Dict[str, str]]:
-        messages = [{"role": "system", "content": self.system_prompt}]
-        
-        for example in self.examples:
-            messages.extend([
-                {"role": "user", "content": example["input"]},
-                {"role": "assistant", "content": example["output"]}
-            ])
-        
-        messages.append({"role": "user", "content": smt_content})
+        # rws or sfc or cso
+        if self.method_type == 'rws':
+            index = random.sample([i for i in range(5)], 1)[0]
+            messages = [{"role": "system", "content": self.rws_system_prompt[index]}]
+            for example in self.rws_examples[index]:
+                messages.extend([
+                    {"role": "user", "content": example["input"]},
+                    {"role": "assistant", "content": example["output"]}
+                ])
+        else:
+            if self.method_type == 'sfc':
+                messages = [{"role": "system", "content": self.sfc_system_prompt}]
+                for example in self.sfc_examples:
+                    messages.extend([
+                        {"role": "user", "content": example["input"]},
+                        {"role": "assistant", "content": example["output"]}
+                    ])                
+            elif self.method_type == 'cso':
+                messages = [{"role": "system", "content": self.cso_system_prompt}]
+                for example in self.cso_examples:
+                    messages.extend([
+                        {"role": "user", "content": example["input"]},
+                        {"role": "assistant", "content": example["output"]}
+                    ])                
+            else:
+                raise ValueError('invalid method type')
+            
+            messages.append({"role": "user", "content": smt_content})
         return messages
 
     def generate_split_constraints(self, smt_content: str) -> str:
@@ -340,8 +492,8 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
             raise
 
 class SMTFileMutator:
-    def __init__(self, provider: str = "openai", model: str = None):
-        self.llm_mutator = LLMMutator(provider, model)
+    def __init__(self, provider: str = "openai", model: str = None, method_type :str = None):
+        self.llm_mutator = LLMMutator(provider, model, method_type)
     
     def extract_string_variables(self, content: str) -> List[str]:
         """Extract declared string variable names from SMT content"""
@@ -485,7 +637,8 @@ def main():
     parser.add_argument('--list-providers', action='store_true', help='List available providers')
     parser.add_argument('--list-models', help='List models for a provider')
     parser.add_argument('--verbose', '-v', action='store_true', help='Verbose logging')
-    
+    parser.add_argument('--method_type', '-t', help='rws or sfc or cso')
+
     args = parser.parse_args()
     
     if args.verbose:
@@ -510,7 +663,7 @@ def main():
     
     # Initialize mutator
     try:
-        mutator = SMTFileMutator(args.provider, args.model)
+        mutator = SMTFileMutator(args.provider, args.model, args.method_type)
         logging.info(f"Using provider: {args.provider}")
         if args.model:
             logging.info(f"Using model: {args.model}")
