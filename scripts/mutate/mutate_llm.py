@@ -258,19 +258,35 @@ class LLMMutator:
         self.provider = LLMProviderFactory.create_provider(provider, model)
         self.method_type = method_type
 
-        self.rws_task = ['User Input Validation secnario, such as Email format validation, URL parsing, or phone number formats',
-'Configuration File Processing secnario, such as Key-value pairs, INI files, or JSON-like structures',
-'Log Analysis secnario, such as Timestamp extraction, log level parsing, or IP address validation',
-'CSV/TSV Parsing secnario, such as Field separation, quoted strings, or escape characters',
-'Authentication Token Handling secnario, such as JWT parsing, API key validation, or session tokens']
+        self.rws_task = {'User Input Validation secnario': ['Email format validation', 'URL parsing', 'phone number formats'],
+                         'Configuration File Processing secnario': ['Key-value pairs', 'INI files', 'JSON-like structures'],
+                         'Log Analysis secnario': ['Timestamp extraction', 'log level parsing', 'IP address validation'],
+                         'CSV/TSV Parsing secnario': ['Field separation', 'quoted strings', 'escape characters'],
+                         'Authentication Token Handling secnario': ['JWT parsing', 'API key validation', 'session tokens']}
 
-        self.rws_system_prompt = [f"""You are an expert in SMT solver constraints and string operations. 
-Your task is to generate SMT-LIB2 constraints and add intelligent split constraints using str.split_at functions, for {task}.
+        self.rws_system_prompt = lambda x: f"""You are an expert in SMT solver constraints and string operations. 
+Your task is to generate SMT-LIB2 constraints and add intelligent split constraints using str.split_at functions, for "{x}" secnario.
 
 Output format: Return all the SMT-LIB2 text, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
-""" for task in self.rws_task]
+"""
 
-        self.rws_examples = [[]]
+        self.rws_examples = {
+            'Email format validation':[],
+            'URL parsing':[],
+            'phone number formats':[],
+            'Key-value pairs':[],
+            'INI files':[],
+            'JSON-like structures':[],
+            'Timestamp extraction':[],
+            'log level parsing':[],
+            'IP address validation':[],
+            'Field separation':[],
+            'quoted strings':[],
+            'escape characters':[],
+            'JWT parsing':[],
+            'API key validation':[],
+            'session tokens':[]
+        }
 
         self.sfc_system_prompt = """You are an expert in SMT solver constraints and string operations.
 Your task is to analyze the given SMT-LIB2 file and add intelligent split constraints using str.split_at functions.
@@ -455,9 +471,10 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
     def create_messages(self, smt_content: str) -> List[Dict[str, str]]:
         # rws or sfc or cso
         if self.method_type == 'rws':
-            index = random.sample([i for i in range(5)], 1)[0]
-            messages = [{"role": "system", "content": self.rws_system_prompt[index]}]
-            for example in self.rws_examples[index]:
+            scenario = random.sample(list(self.rws_task.keys()), 1)[0]
+            task = random.sample(self.rws_task[scenario], 1)[0]
+            messages = [{"role": "system", "content": self.rws_system_prompt(task)}]
+            for example in self.rws_examples[task]:
                 messages.extend([
                     {"role": "user", "content": example["input"]},
                     {"role": "assistant", "content": example["output"]}

@@ -8,49 +8,23 @@
 #include "Structures.h"
 #include "dag.h"
 #include "Logger.h"
-#include "parser.h"
-#include "kind.h"
+#include "Parser.h"
 
 namespace strp {
-
-enum class VarType;
-enum class AtomType;
-enum class ClauseType;
-
-enum class TaskType {
-    CHECK_SAT,
-    GET_MODEL,
-    GET_UNSAT_CORE,
-    GET_PROOF,
-    GET_VALUE,
-    GET_ASSIGNMENT,
-    GET_INFO,
-    GET_OPTION,
-    PUSH,
-    POP,
-    RESET,
-    EXIT
-};
-
-
 
 class Context {
 public:
     static Context& getInstance();
-    
     bool parseFile(const std::string& filename);
     bool parseString(const std::string& input);
-    
-    void addVar(const Var& var);
-    void addAtom(const Atom& atom);
-    void addClause(const Clause& clause);
 
     void addDivision(std::unique_ptr<Division> division);
-    
-    void declareStringVar(const std::string& name);
-    void declareBoolVar(const std::string& name);
-    void declareIntVar(const std::string& name);
-    void addAssertion(const std::string& constraint);
+    Division* getDivision(const std::string& divided, const std::string& delimiter);
+    bool hasDivision(const std::string& divided, const std::string& delimiter) const;
+    const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
+    std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
+    bool hasTask(TaskType taskType) const;
+    std::set<TaskType> getAllTasks() const;
     
     std::vector<SMTParser::NodePtr> getSplitAtNodes();
     std::vector<SMTParser::NodePtr> getSplitAtNodes(const SMTParser::NodePtr& node);
@@ -65,90 +39,14 @@ public:
     std::vector<SMTParser::NodePtr> getNumSplitConstNodes();
     std::vector<SMTParser::NodePtr> getNumSplitVarNodes();
     
-    std::vector<SMTParser::NodePtr> getVariables();
-    std::vector<SMTParser::NodePtr> getAssertions();
-    std::unordered_set<Var, Var::Hash> getVars() const;
-    std::unordered_set<Atom, Atom::Hash> getAtoms() const;
-    std::vector<Clause> getClauses() const;
-
-    Division* getDivision(const std::string& divided, const std::string& delimiter);
-    bool hasDivision(const std::string& divided, const std::string& delimiter) const;
-    const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
-    std::string getSMTLIB2(bool from_parser = true) const;
-    void removeFunDef(const std::vector<std::string>& funcNames);
-    std::vector<std::string> getSplitRelatedFunctionNames() const;
-    std::vector<SMTParser::NodePtr> getFunctions() const;
-    std::string nodeToString(const SMTParser::NodePtr& node) const;
-    std::set<TaskType> getTask(const std::string& filename) const;
-    
-    bool hasTask(TaskType taskType) const;
-    std::set<TaskType> getAllTasks() const;
-    void clearTasks();
-    void clear();
-    void clearVars();
-    void clearAtoms();
-    void clearClauses();
-    void clearDivisions();
-    void clearSplitNodeToAtoms();
-    
+    void updateInfo();
     void updateDivisions();
     void updateSplitNodeToAtoms();
-    std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
-    
-    size_t getVarCount() const;
-    size_t getAtomCount() const;
-    size_t getClauseCount() const;
-
-    
-    static int getType(const SMTParser::NodePtr& node);
-    static VarType getVarType(const SMTParser::NodePtr& node);
-    static AtomType getAtomType(const SMTParser::NodePtr& node);
-    static ClauseType getClauseType(const SMTParser::NodePtr& node);
-    static std::string getSource(const SMTParser::NodePtr& node);
-    static std::string getComment(const SMTParser::NodePtr& node);
-
-    static std::vector<SMTParser::NodePtr> getAtoms(const SMTParser::NodePtr& node);
-    static bool containsNode(const SMTParser::NodePtr& parent, const SMTParser::NodePtr& target);
-
-    static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
-    static void replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
-    static SMTParser::NodePtr createNode(const std::string& node_str);
-    static SMTParser::NodePtr createStringConst(const std::string& value);
-    static SMTParser::NodePtr createIntConst(int value);
-    static SMTParser::NodePtr createBoolConst(bool value);
-    static SMTParser::NodePtr createStringVar(const std::string& name);
-    static SMTParser::NodePtr createIntVar(const std::string& name);
-    static SMTParser::NodePtr createBoolVar(const std::string& name);
-
-    struct SMTSeparationResult {
-        std::string splitConstraints;
-        std::string otherConstraints;
-        std::vector<std::string> splitRelatedFunctions;
-        std::vector<std::string> splitRelatedVariables;
-        std::unordered_map<std::string, std::string> variableDeclarations;
-        std::unordered_map<std::string, std::string> tempVariableDeclarations;
-    };
-    
-    SMTSeparationResult separateSplitConstraints(const std::string& filename);
-    std::string mergeSMTConstraints(const std::string& rewrittenSplitPart, const std::string& otherPart);
-    bool isSplitRelatedLine(const std::string& line);
-    std::vector<std::string> extractSplitFunctionNames(const std::string& smtContent);
-    
-private:
-    bool parseStandard(const std::string& filename);
-    bool parseWithConstraintSeparation(const SMTSeparationResult& separationResult, const std::string& filename);
-    std::string removeTemporaryVariables(const std::string& smtContent, const std::unordered_map<std::string, std::string>& tempVars);
-    std::string mergeAtOriginalPosition(const std::string& rewrittenSplitPart, const std::string& otherPart);
-    SMTSeparationResult lastSeparationResult;
-    bool usedConstraintSeparation = false;
-
-public:
-    std::unordered_map<std::string, std::string> extractVariablesFromSplitConstraints(const std::string& splitConstraints);
-    std::unordered_map<std::string, std::string> extractTempVariables(const std::string& splitConstraints);
-    std::string inferVariableType(const std::string& variableName, const std::string& context);
-    bool isTempVariable(const std::string& variableName, const std::string& context);
-    std::vector<std::string> extractVariableNames(const std::string& line);
-    std::string generateVariableDeclarations(const std::unordered_map<std::string, std::string>& varDeclarations);
+    void updateTasks(const std::string& filename);
+    void clearTasks();
+    void clear();
+    void clearDivisions();
+    void clearSplitNodeToAtoms();
     
     std::string mergeRewrittenConstraints();
     bool wasConstraintSeparationUsed() const;
@@ -156,6 +54,9 @@ public:
     void clearConstraintSeparationFlag() { usedConstraintSeparation = false; }
     void processSplitConstraints(const SMTSeparationResult& separationResult);
     std::string rewriteAndMergeConstraints(const SMTSeparationResult& separationResult);
+    
+    Parser& getParser() { return parser; }
+    const Parser& getParser() const { return parser; }
 
 private:
     Context();
@@ -164,26 +65,17 @@ private:
     Context& operator=(const Context&) = delete;
     Context(Context&&) = delete;
     Context& operator=(Context&&) = delete;
-    void updateInfo();
-    void updateTasks(const std::string& filename);
-    TaskType parseTaskCommand(const std::string& line) const;
 
-    std::unordered_set<Var, Var::Hash> vars;
-    std::unordered_set<Atom, Atom::Hash> atoms;
-    std::vector<Clause> clauses;
     std::set<TaskType> tasks;
-    
     std::unordered_map<std::string, std::unique_ptr<Division>> divisions;
     std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
     
     utils::Logger& logger = utils::Logger::getInstance();
-    SMTParser::Parser SMTParser;
-    std::vector<std::string> orderDeclarationsByDependency(
-        const std::vector<std::string>& declarations,
-        const std::unordered_set<std::string>& availableVars);
-    std::string cleanNonAsciiCharacters(const std::string& input);
+    Parser& parser = Parser::getInstance();
+    SMTSeparationResult lastSeparationResult;
+    bool usedConstraintSeparation = false;
 };
 
 } // namespace strp

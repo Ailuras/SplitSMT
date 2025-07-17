@@ -6,11 +6,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/2
+INDEX: 1/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .048192992
+SOLVING_TIME: .060540622
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -22,13 +22,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/2
+INDEX: 2/21
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048980902
+SOLVING_TIME: .053674974
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 17301.smt2
@@ -37,12 +37,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 1/2
+BATCH: 0
+INDEX: 3/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049006214
+SOLVING_TIME: .058590713
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -53,12 +53,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 2/2
+BATCH: 0
+INDEX: 4/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053485766
+SOLVING_TIME: .049614685
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -69,14 +69,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 1/2
+BATCH: 0
+INDEX: 5/21
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .020912039
+SOLVING_TIME: .050954257
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1927.smt2
@@ -85,14 +85,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 2/2
+BATCH: 0
+INDEX: 6/21
 -----------------------------------------------------------
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .054050711
+SOLVING_TIME: .052048130
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 325.smt2
@@ -101,12 +101,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 1/2
+BATCH: 0
+INDEX: 7/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056239380
+SOLVING_TIME: .051822177
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -117,12 +117,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 2/2
+BATCH: 0
+INDEX: 8/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .044630712
+SOLVING_TIME: .051943318
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -133,12 +133,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 1/2
+BATCH: 0
+INDEX: 9/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055228780
+SOLVING_TIME: .051855696
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -149,12 +149,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 2/2
+BATCH: 0
+INDEX: 10/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049361599
+SOLVING_TIME: .049319516
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -165,12 +165,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 1/2
+BATCH: 0
+INDEX: 11/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .045388580
+SOLVING_TIME: .056037091
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -181,12 +181,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 2/2
+BATCH: 0
+INDEX: 12/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .044769303
+SOLVING_TIME: .052809166
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -197,12 +197,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 1/2
+BATCH: 0
+INDEX: 13/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057606871
+SOLVING_TIME: .047161023
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -213,12 +213,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 2/2
+BATCH: 0
+INDEX: 14/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057823598
+SOLVING_TIME: .046066292
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -229,14 +229,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 1/2
+BATCH: 0
+INDEX: 15/21
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .024851009
+SOLVING_TIME: .050286661
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5096.smt2
@@ -245,14 +245,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 2/2
+BATCH: 0
+INDEX: 16/21
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .023756858
+SOLVING_TIME: .052422048
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5097.smt2
@@ -261,14 +261,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 1/2
+BATCH: 0
+INDEX: 17/21
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .027272392
+SOLVING_TIME: .053311236
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5098.smt2
@@ -277,14 +277,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 2/2
+BATCH: 0
+INDEX: 18/21
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .028440937
+SOLVING_TIME: .054738323
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5516.smt2
@@ -293,14 +293,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 1/2
+BATCH: 0
+INDEX: 19/21
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053797921
+SOLVING_TIME: .053947039
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 8947.smt2
@@ -309,12 +309,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 2/2
+BATCH: 0
+INDEX: 20/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053714922
+SOLVING_TIME: .049845230
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -325,12 +325,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 1/1
+BATCH: 0
+INDEX: 21/21
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051171285
+SOLVING_TIME: .051301017
 RESULT: SUCCESS
 SAT_RESULT: SAT
 

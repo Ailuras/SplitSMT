@@ -6,13 +6,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/2
+INDEX: 1/23
 -----------------------------------------------------------
-unsat
+[31m[2025-07-16 18:48:10] Result: ERROR (40ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .042425485
+SOLVING_TIME: .066017331
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 3839.smt2
@@ -22,13 +23,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/2
+INDEX: 2/23
 -----------------------------------------------------------
-unsat
+[31m[2025-07-16 18:48:10] Result: ERROR (39ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .041180841
+SOLVING_TIME: .059237099
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 3849.smt2
@@ -37,13 +39,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 1/2
+BATCH: 0
+INDEX: 3/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (46ms)[0m
+[31m[2025-07-16 18:48:10] Result: ERROR (40ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .071415158
+SOLVING_TIME: .064413808
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -54,13 +56,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 2/2
+BATCH: 0
+INDEX: 4/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (39ms)[0m
+[31m[2025-07-16 18:48:10] Result: ERROR (43ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .062214564
+SOLVING_TIME: .065392564
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -71,13 +73,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 1/2
+BATCH: 0
+INDEX: 5/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (48ms)[0m
+[31m[2025-07-16 18:48:10] Result: ERROR (42ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .071294140
+SOLVING_TIME: .063991824
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -88,13 +90,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 2/2
+BATCH: 0
+INDEX: 6/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (45ms)[0m
+[31m[2025-07-16 18:48:10] Result: ERROR (42ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .068448321
+SOLVING_TIME: .063682938
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -105,13 +107,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 1/2
+BATCH: 0
+INDEX: 7/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (43ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (44ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .067927157
+SOLVING_TIME: .068354326
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -122,14 +124,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 2/2
+BATCH: 0
+INDEX: 8/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Error processing file: stoi[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (41ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .021814733
-RESULT: ERROR
-EXIT_CODE: 1
+SOLVING_TIME: .064405963
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 6784.smt2
@@ -138,13 +141,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 1/2
+BATCH: 0
+INDEX: 9/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (42ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (38ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .069080854
+SOLVING_TIME: .063500937
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -155,13 +158,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 2/2
+BATCH: 0
+INDEX: 10/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (43ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (43ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .068078052
+SOLVING_TIME: .069909859
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -172,13 +175,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 1/2
+BATCH: 0
+INDEX: 11/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (51ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (45ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .076294814
+SOLVING_TIME: .069797135
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -189,13 +192,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 2/2
+BATCH: 0
+INDEX: 12/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (42ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (42ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .063892420
+SOLVING_TIME: .067215518
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -206,13 +209,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 1/2
+BATCH: 0
+INDEX: 13/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (37ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (41ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .060914164
+SOLVING_TIME: .063525093
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -223,13 +226,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 2/2
+BATCH: 0
+INDEX: 14/23
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:24] Result: ERROR (35ms)[0m
+[31m[2025-07-16 18:48:11] Result: ERROR (43ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .059099705
+SOLVING_TIME: .067397777
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -240,12 +243,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 1/2
+BATCH: 0
+INDEX: 15/23
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .041824375
+SOLVING_TIME: .037854610
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -256,14 +259,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 2/2
+BATCH: 0
+INDEX: 16/23
 -----------------------------------------------------------
-unsat
+[31m[2025-07-16 18:48:11] Result: ERROR (42ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .044392602
+SOLVING_TIME: .065793730
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 9484-deviant-0.smt2
@@ -272,12 +276,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 1/2
+BATCH: 0
+INDEX: 17/23
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .037087042
+SOLVING_TIME: .040792979
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -288,12 +292,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 2/2
+BATCH: 0
+INDEX: 18/23
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .036800445
+SOLVING_TIME: .039004571
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -304,14 +308,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 1/2
+BATCH: 0
+INDEX: 19/23
 -----------------------------------------------------------
-unsat
+[31m[2025-07-16 18:48:11] Result: ERROR (43ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .044460519
+SOLVING_TIME: .064010112
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 966-deviant-0.smt2
@@ -320,12 +325,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 2/2
+BATCH: 0
+INDEX: 20/23
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .039834966
+SOLVING_TIME: .038386439
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -336,14 +341,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 1/2
+BATCH: 0
+INDEX: 21/23
 -----------------------------------------------------------
-unsat
+[31m[2025-07-16 18:48:12] Result: ERROR (41ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .041261191
+SOLVING_TIME: .063879300
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 976-deviant-0.smt2
@@ -352,15 +358,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 2/2
+BATCH: 0
+INDEX: 22/23
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-[31m[2025-07-15 20:03:24] Result: ERROR (45ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .062094788
+SOLVING_TIME: .133599585
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -371,14 +374,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-cvc5
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 1/1
+BATCH: 0
+INDEX: 23/23
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-16 18:48:12] Result: ERROR (41ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .024639087
+SOLVING_TIME: .065004422
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 

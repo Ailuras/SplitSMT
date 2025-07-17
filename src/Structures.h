@@ -11,198 +11,30 @@
 
 namespace strp {
 
+struct SMTSeparationResult {
+    std::string splitConstraints;
+    std::string otherConstraints;
+    std::vector<std::string> splitRelatedFunctions;
+    std::vector<std::string> splitRelatedVariables;
+    std::unordered_map<std::string, std::string> variableDeclarations;
+};
+
+enum class TaskType {
+    CHECK_SAT,
+    GET_MODEL,
+    GET_UNSAT_CORE,
+    GET_PROOF,
+    GET_VALUE,
+    GET_ASSIGNMENT,
+    GET_INFO,
+    GET_OPTION,
+    PUSH,
+    POP,
+    RESET,
+    EXIT
+};
+
 class Context;
-
-enum class VarType {
-    INTEGER,
-    REAL,
-    BOOLEAN,
-    STRING,
-    FUNCTION,
-    UNKNOWN
-};
-
-inline std::ostream& operator<<(std::ostream& os, const VarType& type) {
-    switch (type) {
-        case VarType::INTEGER: return os << "INTEGER";
-        case VarType::REAL: return os << "REAL";
-        case VarType::BOOLEAN: return os << "BOOLEAN";
-        case VarType::STRING: return os << "STRING";
-        case VarType::FUNCTION: return os << "FUNCTION";
-        case VarType::UNKNOWN: return os << "UNKNOWN";
-        default: return os << "Invalid";
-    }
-}
-
-class Var {
-public:
-    Var() = default;
-    Var(const SMTParser::NodePtr& node, Context& context);
-    Var(const Var& other) = default;
-    Var& operator=(const Var& other) = default;
-    ~Var() = default;
-    
-    std::string getName() const { return node->getName(); }
-    VarType getType() const { return type; }
-    std::string getSource() const { return source; }
-    std::string getComment() const { return comment; }
-    
-    std::string toSMT() const {
-        std::string typeStr;
-        switch (type) {
-            case VarType::INTEGER: typeStr = "Int"; break;
-            case VarType::REAL: typeStr = "Real"; break;
-            case VarType::BOOLEAN: typeStr = "Bool"; break;
-            case VarType::STRING: typeStr = "String"; break;
-            case VarType::FUNCTION: typeStr = source; break;
-            default: typeStr = source; break;
-        }
-        if (type == VarType::FUNCTION) {
-            return source;
-        }
-        return "(declare-fun " + getName() + " () " + typeStr + ")";
-    }
-    
-    bool operator==(const Var& other) const {
-        return node == other.node;
-    }
-    
-    bool operator!=(const Var& other) const {
-        return !(*this == other);
-    }
-    
-    // Simple hash function for unordered containers
-    struct Hash {
-        std::size_t operator()(const Var& var) const noexcept {
-            return reinterpret_cast<std::size_t>(&var);
-        }
-    };
-
-private:
-    SMTParser::NodePtr node;
-    VarType type;
-    std::string source;
-    std::string comment;
-};
-
-enum class AtomType {
-    Arithmetic,
-    String,
-    Regular,
-    UninterpretedFunction,
-    Unknown
-};
-
-inline std::ostream& operator<<(std::ostream& os, const AtomType& type) {
-    switch (type) {
-        case AtomType::Arithmetic: return os << "Arithmetic";
-        case AtomType::String: return os << "String";
-        case AtomType::Regular: return os << "Regular";
-        case AtomType::UninterpretedFunction: return os << "UninterpretedFunction";
-        case AtomType::Unknown: return os << "Unknown";
-        default: return os << "Invalid";
-    }
-}
-
-class Atom {
-public:
-    Atom() = default;
-    Atom(const SMTParser::NodePtr& node, Context& context);
-    Atom(const Atom& other) = default;
-    Atom& operator=(const Atom& other) = default;
-    ~Atom() = default;
-    
-    std::string getName() const { return node->getName(); }
-    AtomType getType() const { return type; }
-    std::string getSource() const { return source; }
-    std::string getComment() const { return comment; }
-    
-    std::string toSMT() const {
-        return source;
-    }
-    
-    bool operator==(const Atom& other) const {
-        return node == other.node;
-    }
-    
-    bool operator!=(const Atom& other) const {
-        return !(*this == other);
-    }
-    
-    // Simple hash function for unordered containers
-    struct Hash {
-        std::size_t operator()(const Atom& atom) const noexcept {
-            return reinterpret_cast<std::size_t>(&atom);
-        }
-    };
-
-private:
-    SMTParser::NodePtr node;
-    AtomType type;
-    std::string source;
-    std::string comment;
-};
-
-enum class ClauseType {
-    Leaf,
-    Implies,
-    And,
-    Or,
-    Not,
-    Iff,
-    Xor,
-    Ite,
-    Forall,
-    Exists,
-    Unknown
-};
-
-inline std::ostream& operator<<(std::ostream& os, const ClauseType& type) {
-    switch (type) {
-        case ClauseType::Leaf: return os << "Leaf";
-        case ClauseType::Implies: return os << "Implies";
-        case ClauseType::And: return os << "And";
-        case ClauseType::Or: return os << "Or";
-        case ClauseType::Not: return os << "Not";
-        case ClauseType::Iff: return os << "Iff";
-        case ClauseType::Xor: return os << "Xor";
-        case ClauseType::Ite: return os << "Ite";
-        case ClauseType::Forall: return os << "Forall";
-        case ClauseType::Exists: return os << "Exists";
-        case ClauseType::Unknown: return os << "Unknown";
-        default: return os << "Invalid";
-    }
-}
-
-class Clause {
-public:
-    Clause() = default;
-    Clause(const SMTParser::NodePtr& node, Context& context, bool is_original = false);
-    Clause(const Clause& other) = default;
-    Clause& operator=(const Clause& other) = default;
-    ~Clause() = default;
-    
-    std::string getName() const { return node->getName(); }
-    ClauseType getType() const { return type; }
-    std::string getSource() const { return source; }
-    std::string getComment() const { return comment; }
-    std::unordered_set<Atom, Atom::Hash> getAtoms() const { return atoms; }
-
-    bool isAtom() const { return node->isAtom(); }
-    bool isOriginal() const { return is_original; }
-    
-    std::string toSMT() const {
-        return "(assert " + source + ")";
-    }
-
-private:
-    SMTParser::NodePtr node;
-    ClauseType type;
-    std::string source;
-    std::string comment;
-    std::unordered_set<Atom, Atom::Hash> atoms;
-    bool is_original;
-};
 
 class Division {
 public:
@@ -291,5 +123,3 @@ private:
 };
 
 } // namespace strp
-
-// Hash functions are now defined as nested classes within Var and Atom

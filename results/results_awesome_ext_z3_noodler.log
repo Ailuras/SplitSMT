@@ -6,11 +6,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/10
+INDEX: 1/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .147850263
+SOLVING_TIME: .099311309
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -22,11 +22,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/10
+INDEX: 2/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054135470
+SOLVING_TIME: .052974443
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -38,13 +38,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 3/10
+INDEX: 3/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .018854416
+SOLVING_TIME: .052123549
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11234.smt2
@@ -54,11 +54,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 4/10
+INDEX: 4/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .067082634
+SOLVING_TIME: .059846359
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -70,11 +70,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 5/10
+INDEX: 5/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .026018327
+SOLVING_TIME: .026700107
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -86,11 +86,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 6/10
+INDEX: 6/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057931303
+SOLVING_TIME: .058093052
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -102,13 +102,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 7/10
+INDEX: 7/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048986458
+SOLVING_TIME: .050712340
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11642.smt2
@@ -118,13 +118,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 8/10
+INDEX: 8/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .049371939
+SOLVING_TIME: .055647996
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11661.smt2
@@ -134,13 +134,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 9/10
+INDEX: 9/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .052317705
+SOLVING_TIME: .053070945
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11713.smt2
@@ -150,11 +150,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 10/10
+INDEX: 10/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .047972440
+SOLVING_TIME: .053676863
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -165,14 +165,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 1/10
+BATCH: 0
+INDEX: 11/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 38.
-warning: "define-fun-rec" command is safely ignored in line 39.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .091900754
+SOLVING_TIME: .059697286
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -183,12 +181,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 2/10
+BATCH: 0
+INDEX: 12/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052628538
+SOLVING_TIME: .057710490
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -199,14 +197,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 3/10
+BATCH: 0
+INDEX: 13/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .061095189
+SOLVING_TIME: .057867667
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 11910.smt2
@@ -215,12 +213,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 4/10
+BATCH: 0
+INDEX: 14/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054179549
+SOLVING_TIME: .060423911
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -231,12 +229,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 5/10
+BATCH: 0
+INDEX: 15/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .073043798
+SOLVING_TIME: .051104165
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -247,14 +245,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 6/10
+BATCH: 0
+INDEX: 16/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .054390163
+SOLVING_TIME: .058507741
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1227.smt2
@@ -263,12 +261,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 7/10
+BATCH: 0
+INDEX: 17/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .066739049
+SOLVING_TIME: .061580538
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -279,14 +277,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 8/10
+BATCH: 0
+INDEX: 18/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 34.
-warning: "define-fun-rec" command is safely ignored in line 35.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058200665
+SOLVING_TIME: .059765078
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -297,14 +293,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 9/10
+BATCH: 0
+INDEX: 19/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .057895885
+SOLVING_TIME: .054723039
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 125.smt2
@@ -313,12 +309,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 10/10
+BATCH: 0
+INDEX: 20/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .071241157
+SOLVING_TIME: .054766118
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -329,12 +325,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 1/10
+BATCH: 0
+INDEX: 21/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .067720858
+SOLVING_TIME: .055054413
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -345,12 +341,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 2/10
+BATCH: 0
+INDEX: 22/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .070596922
+SOLVING_TIME: .058643813
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -361,12 +357,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 3/10
+BATCH: 0
+INDEX: 23/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .047934521
+SOLVING_TIME: .052681302
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -377,12 +373,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 4/10
+BATCH: 0
+INDEX: 24/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .048926574
+SOLVING_TIME: .054382591
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -393,14 +389,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 5/10
+BATCH: 0
+INDEX: 25/198
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:01] Error processing file: stoi[0m
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .022416529
-RESULT: ERROR
-EXIT_CODE: 1
+SOLVING_TIME: .060788766
+RESULT: SUCCESS
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1434.smt2
@@ -409,12 +405,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 6/10
+BATCH: 0
+INDEX: 26/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057824725
+SOLVING_TIME: .057065616
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -425,12 +421,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 7/10
+BATCH: 0
+INDEX: 27/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053038122
+SOLVING_TIME: .056697044
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -441,14 +437,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 8/10
+BATCH: 0
+INDEX: 28/198
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .073269786
+SOLVING_TIME: .285178338
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 15181.smt2
@@ -457,14 +453,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 9/10
+BATCH: 0
+INDEX: 29/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .057339472
+SOLVING_TIME: .061232319
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1574.smt2
@@ -473,14 +469,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 2
-INDEX: 10/10
+BATCH: 0
+INDEX: 30/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .050552394
+SOLVING_TIME: .061152899
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 16116.smt2
@@ -489,12 +485,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 1/10
+BATCH: 0
+INDEX: 31/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058641904
+SOLVING_TIME: .051745028
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -505,14 +501,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 2/10
+BATCH: 0
+INDEX: 32/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053774920
+SOLVING_TIME: .058549929
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 17264.smt2
@@ -521,12 +517,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 3/10
+BATCH: 0
+INDEX: 33/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049187061
+SOLVING_TIME: .049189987
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -537,14 +533,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 4/10
+BATCH: 0
+INDEX: 34/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056782559
+SOLVING_TIME: .075441464
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1768.smt2
@@ -553,14 +549,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 5/10
+BATCH: 0
+INDEX: 35/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .058897973
+SOLVING_TIME: .078089735
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1778.smt2
@@ -569,16 +565,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 6/10
+BATCH: 0
+INDEX: 36/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .020255587
+SOLVING_TIME: .060767093
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1798.smt2
@@ -587,14 +581,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 7/10
+BATCH: 0
+INDEX: 37/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .049627379
+SOLVING_TIME: .059740813
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 18293.smt2
@@ -603,14 +597,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 8/10
+BATCH: 0
+INDEX: 38/198
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:02] Error processing file: stoi[0m
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .031146621
-RESULT: ERROR
-EXIT_CODE: 1
+SOLVING_TIME: .063976339
+RESULT: SUCCESS
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 19222.smt2
@@ -619,14 +613,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 9/10
+BATCH: 0
+INDEX: 39/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .055343472
+SOLVING_TIME: .057898726
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 19251.smt2
@@ -635,12 +629,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 10/10
+BATCH: 0
+INDEX: 40/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063666891
+SOLVING_TIME: .057800196
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -651,12 +645,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 1/10
+BATCH: 0
+INDEX: 41/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .078063288
+SOLVING_TIME: .063532718
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -667,12 +661,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 2/10
+BATCH: 0
+INDEX: 42/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .072586799
+SOLVING_TIME: .063643180
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -683,14 +677,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 3/10
+BATCH: 0
+INDEX: 43/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .028623197
+SOLVING_TIME: .081472626
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20049.smt2
@@ -699,12 +693,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 4/10
+BATCH: 0
+INDEX: 44/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049587725
+SOLVING_TIME: .058286086
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -715,14 +709,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 5/10
+BATCH: 0
+INDEX: 45/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .100155394
+SOLVING_TIME: .064100154
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20116.smt2
@@ -731,12 +725,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 6/10
+BATCH: 0
+INDEX: 46/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .065024588
+SOLVING_TIME: .061554477
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -747,14 +741,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 7/10
+BATCH: 0
+INDEX: 47/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 75.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .016263110
+SOLVING_TIME: .052623383
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20413.smt2
@@ -763,14 +757,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 8/10
+BATCH: 0
+INDEX: 48/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .015971121
+SOLVING_TIME: .052283631
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20494.smt2
@@ -779,14 +773,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 9/10
+BATCH: 0
+INDEX: 49/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .052753555
+SOLVING_TIME: .054291909
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20498.smt2
@@ -795,14 +789,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 10/10
+BATCH: 0
+INDEX: 50/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .054259862
+SOLVING_TIME: .051107312
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 20512.smt2
@@ -811,14 +805,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 1/10
+BATCH: 0
+INDEX: 51/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056482208
+SOLVING_TIME: .052695178
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 2054.smt2
@@ -827,12 +821,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 2/10
+BATCH: 0
+INDEX: 52/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .046390238
+SOLVING_TIME: .051996016
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -843,14 +837,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 3/10
+BATCH: 0
+INDEX: 53/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053561564
+SOLVING_TIME: .058872666
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 21168.smt2
@@ -859,14 +853,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 4/10
+BATCH: 0
+INDEX: 54/198
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .141723860
+SOLVING_TIME: .053133086
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 21189.smt2
@@ -875,14 +869,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 5/10
+BATCH: 0
+INDEX: 55/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 216.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .020492608
+SOLVING_TIME: .068105273
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 21345.smt2
@@ -891,12 +885,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 6/10
+BATCH: 0
+INDEX: 56/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .062432916
+SOLVING_TIME: .051996961
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -907,12 +901,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 7/10
+BATCH: 0
+INDEX: 57/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053102884
+SOLVING_TIME: .053602869
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -923,12 +917,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 8/10
+BATCH: 0
+INDEX: 58/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056454894
+SOLVING_TIME: .051368222
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -939,12 +933,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 9/10
+BATCH: 0
+INDEX: 59/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053439407
+SOLVING_TIME: .055791014
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -955,12 +949,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 10/10
+BATCH: 0
+INDEX: 60/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055608544
+SOLVING_TIME: .301446347
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -971,14 +965,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 1/10
+BATCH: 0
+INDEX: 61/198
 -----------------------------------------------------------
-sat
+[31m[2025-07-16 18:47:09] Result: ERROR (30790ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .074702233
+SOLVING_TIME: 30.814786454
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 21922.smt2
@@ -987,14 +982,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 2/10
+BATCH: 0
+INDEX: 62/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .064051371
+SOLVING_TIME: .061951467
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1005,12 +998,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 3/10
+BATCH: 0
+INDEX: 63/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .065533694
+SOLVING_TIME: .052868711
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1021,12 +1014,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 4/10
+BATCH: 0
+INDEX: 64/198
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .041769081
+SOLVING_TIME: .054167796
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1037,12 +1030,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 5/10
+BATCH: 0
+INDEX: 65/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056798681
+SOLVING_TIME: .054421417
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1053,12 +1046,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 6/10
+BATCH: 0
+INDEX: 66/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058267417
+SOLVING_TIME: .050746121
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1069,12 +1062,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 7/10
+BATCH: 0
+INDEX: 67/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053862900
+SOLVING_TIME: .049122838
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1085,12 +1078,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 8/10
+BATCH: 0
+INDEX: 68/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .140357767
+SOLVING_TIME: .068221089
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1101,12 +1094,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 9/10
+BATCH: 0
+INDEX: 69/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051129564
+SOLVING_TIME: .057151724
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1117,12 +1110,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 10/10
+BATCH: 0
+INDEX: 70/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053950004
+SOLVING_TIME: .051098340
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1133,12 +1126,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 1/10
+BATCH: 0
+INDEX: 71/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .068862993
+SOLVING_TIME: .057869888
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1149,12 +1142,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 2/10
+BATCH: 0
+INDEX: 72/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050656960
+SOLVING_TIME: .058558117
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1165,12 +1158,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 3/10
+BATCH: 0
+INDEX: 73/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052699630
+SOLVING_TIME: .052637208
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1181,14 +1174,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 4/10
+BATCH: 0
+INDEX: 74/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .050132271
+SOLVING_TIME: .049799245
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 2933.smt2
@@ -1197,12 +1190,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 5/10
+BATCH: 0
+INDEX: 75/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .103669854
+SOLVING_TIME: .094524055
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1213,14 +1206,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 6/10
+BATCH: 0
+INDEX: 76/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .054251742
+SOLVING_TIME: .056628336
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3122.smt2
@@ -1229,14 +1222,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 7/10
+BATCH: 0
+INDEX: 77/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053993030
+SOLVING_TIME: .060668193
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3231.smt2
@@ -1245,12 +1238,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 8/10
+BATCH: 0
+INDEX: 78/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053307600
+SOLVING_TIME: .057187666
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1261,12 +1254,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 9/10
+BATCH: 0
+INDEX: 79/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056556635
+SOLVING_TIME: .056509362
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1277,14 +1270,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 7
-INDEX: 10/10
+BATCH: 0
+INDEX: 80/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .079718384
+SOLVING_TIME: .058497293
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1295,14 +1286,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 1/10
+BATCH: 0
+INDEX: 81/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .090769120
+SOLVING_TIME: .065438058
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1313,14 +1302,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 2/10
+BATCH: 0
+INDEX: 82/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .028558575
+SOLVING_TIME: .084953524
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 337.smt2
@@ -1329,14 +1318,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 3/10
+BATCH: 0
+INDEX: 83/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .055033421
+SOLVING_TIME: .096583524
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34010.smt2
@@ -1345,14 +1334,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 4/10
+BATCH: 0
+INDEX: 84/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .047966991
+SOLVING_TIME: .055829746
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34014-deviant-0.smt2
@@ -1361,14 +1350,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 5/10
+BATCH: 0
+INDEX: 85/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .022916132
+SOLVING_TIME: .085026662
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34014-deviant-1.smt2
@@ -1377,14 +1366,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 6/10
+BATCH: 0
+INDEX: 86/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .022921150
+SOLVING_TIME: .059308457
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34014.smt2
@@ -1393,14 +1382,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 7/10
+BATCH: 0
+INDEX: 87/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .020733768
+SOLVING_TIME: .060314862
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34019-deviant-0.smt2
@@ -1409,14 +1398,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 8/10
+BATCH: 0
+INDEX: 88/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .023002843
+SOLVING_TIME: .056058105
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 34019.smt2
@@ -1425,14 +1414,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 9/10
+BATCH: 0
+INDEX: 89/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .019924433
+SOLVING_TIME: .058085374
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 340.smt2
@@ -1441,14 +1430,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 10/10
+BATCH: 0
+INDEX: 90/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .024148806
+SOLVING_TIME: .116043113
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 347.smt2
@@ -1457,14 +1446,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 1/10
+BATCH: 0
+INDEX: 91/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .026339068
+SOLVING_TIME: .124095106
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 35360-deviant-0.smt2
@@ -1473,12 +1462,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 2/10
+BATCH: 0
+INDEX: 92/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052714220
+SOLVING_TIME: .062216912
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1489,14 +1478,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 3/10
+BATCH: 0
+INDEX: 93/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .049607701
+SOLVING_TIME: .063082886
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 35365-deviant-0.smt2
@@ -1505,12 +1494,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 4/10
+BATCH: 0
+INDEX: 94/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .062534377
+SOLVING_TIME: .059349259
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1521,12 +1510,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 5/10
+BATCH: 0
+INDEX: 95/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .022710640
+SOLVING_TIME: .025618584
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1537,12 +1526,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 6/10
+BATCH: 0
+INDEX: 96/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061508977
+SOLVING_TIME: .061688106
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1553,12 +1542,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 7/10
+BATCH: 0
+INDEX: 97/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .030020130
+SOLVING_TIME: .024519919
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1569,12 +1558,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 8/10
+BATCH: 0
+INDEX: 98/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053314533
+SOLVING_TIME: .059042515
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1585,12 +1574,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 9/10
+BATCH: 0
+INDEX: 99/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .024400949
+SOLVING_TIME: .024640520
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1601,12 +1590,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 10/10
+BATCH: 0
+INDEX: 100/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058687681
+SOLVING_TIME: .058431667
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1617,12 +1606,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 1/10
+BATCH: 0
+INDEX: 101/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .036594105
+SOLVING_TIME: .027223879
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1633,12 +1622,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 2/10
+BATCH: 0
+INDEX: 102/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057472199
+SOLVING_TIME: .058926392
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1649,12 +1638,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 3/10
+BATCH: 0
+INDEX: 103/198
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .027148195
+SOLVING_TIME: .025260364
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1665,14 +1654,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 4/10
+BATCH: 0
+INDEX: 104/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .025953379
+SOLVING_TIME: .120810119
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 35411.smt2
@@ -1681,14 +1670,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 5/10
+BATCH: 0
+INDEX: 105/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .052390578
+SOLVING_TIME: .057036106
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 35414.smt2
@@ -1697,14 +1686,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 6/10
+BATCH: 0
+INDEX: 106/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .054144321
+SOLVING_TIME: .069789203
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 356.smt2
@@ -1713,14 +1702,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 7/10
+BATCH: 0
+INDEX: 107/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .021774861
+SOLVING_TIME: .121012338
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 36626.smt2
@@ -1729,12 +1718,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 8/10
+BATCH: 0
+INDEX: 108/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .046688199
+SOLVING_TIME: .049598358
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1745,12 +1734,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 9/10
+BATCH: 0
+INDEX: 109/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051946589
+SOLVING_TIME: .055243210
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1761,14 +1750,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 10/10
+BATCH: 0
+INDEX: 110/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .024957419
+SOLVING_TIME: .063184693
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3766.smt2
@@ -1777,12 +1766,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 1/10
+BATCH: 0
+INDEX: 111/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052822076
+SOLVING_TIME: .059459269
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1793,12 +1782,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 2/10
+BATCH: 0
+INDEX: 112/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052974100
+SOLVING_TIME: .058859938
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1809,14 +1798,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 3/10
+BATCH: 0
+INDEX: 113/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .042295732
+SOLVING_TIME: .060491977
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3783.smt2
@@ -1825,14 +1814,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 4/10
+BATCH: 0
+INDEX: 114/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .057898811
+SOLVING_TIME: .058720626
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 37934.smt2
@@ -1841,14 +1830,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 5/10
+BATCH: 0
+INDEX: 115/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .021229629
+SOLVING_TIME: .058050676
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 37944.smt2
@@ -1857,14 +1846,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 6/10
+BATCH: 0
+INDEX: 116/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .023365681
+SOLVING_TIME: .061672411
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 37946.smt2
@@ -1873,14 +1862,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 7/10
+BATCH: 0
+INDEX: 117/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .030556543
+SOLVING_TIME: .066864487
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 37.smt2
@@ -1889,14 +1878,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 8/10
+BATCH: 0
+INDEX: 118/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .065486476
+SOLVING_TIME: .081881200
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1907,12 +1894,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 9/10
+BATCH: 0
+INDEX: 119/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055820327
+SOLVING_TIME: .052557381
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1923,12 +1910,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 10/10
+BATCH: 0
+INDEX: 120/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049219177
+SOLVING_TIME: .065859380
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1939,14 +1926,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 1/10
+BATCH: 0
+INDEX: 121/198
 -----------------------------------------------------------
-error: Multiple declarations of "Multiple declarations of function" in line 65.
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .018303111
+SOLVING_TIME: .066894474
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 41929.smt2
@@ -1955,12 +1942,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 2/10
+BATCH: 0
+INDEX: 122/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055670239
+SOLVING_TIME: .055778706
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1971,12 +1958,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 3/10
+BATCH: 0
+INDEX: 123/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .071290284
+SOLVING_TIME: .065776307
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1987,12 +1974,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 4/10
+BATCH: 0
+INDEX: 124/198
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .149210534
+SOLVING_TIME: .070647067
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2003,12 +1990,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 5/10
+BATCH: 0
+INDEX: 125/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .092842961
+SOLVING_TIME: .055444033
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2019,12 +2006,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 6/10
+BATCH: 0
+INDEX: 126/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .081986449
+SOLVING_TIME: .057885197
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2035,12 +2022,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 7/10
+BATCH: 0
+INDEX: 127/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .048452481
+SOLVING_TIME: .054022746
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2051,14 +2038,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 8/10
+BATCH: 0
+INDEX: 128/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .070174378
+SOLVING_TIME: .057522906
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2069,14 +2054,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 9/10
+BATCH: 0
+INDEX: 129/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 33.
-warning: "define-fun-rec" command is safely ignored in line 34.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .075472673
+SOLVING_TIME: .056966121
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2087,12 +2070,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 10/10
+BATCH: 0
+INDEX: 130/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054089038
+SOLVING_TIME: .052601953
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2103,12 +2086,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 1/10
+BATCH: 0
+INDEX: 131/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053065015
+SOLVING_TIME: .055909277
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2119,15 +2102,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 2/10
+BATCH: 0
+INDEX: 132/198
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:01] Result: ERROR (29ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048854835
+SOLVING_TIME: .061275736
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4444.smt2
@@ -2136,15 +2118,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 3/10
+BATCH: 0
+INDEX: 133/198
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:01] Result: ERROR (28ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048644492
+SOLVING_TIME: .064899005
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4457.smt2
@@ -2153,14 +2134,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 4/10
+BATCH: 0
+INDEX: 134/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 41.
-warning: "define-fun-rec" command is safely ignored in line 42.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .081532194
+SOLVING_TIME: .068910183
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2171,12 +2150,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 5/10
+BATCH: 0
+INDEX: 135/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056793056
+SOLVING_TIME: .058547795
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2187,12 +2166,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 6/10
+BATCH: 0
+INDEX: 136/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058064373
+SOLVING_TIME: .098786128
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2203,14 +2182,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 7/10
+BATCH: 0
+INDEX: 137/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .051740686
+SOLVING_TIME: .058594196
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4599.smt2
@@ -2219,12 +2198,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 8/10
+BATCH: 0
+INDEX: 138/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059415588
+SOLVING_TIME: .056705144
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2235,14 +2214,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 9/10
+BATCH: 0
+INDEX: 139/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .019088406
+SOLVING_TIME: .053097656
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4684.smt2
@@ -2251,14 +2230,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 10/10
+BATCH: 0
+INDEX: 140/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .019318881
+SOLVING_TIME: .054263323
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4722.smt2
@@ -2267,12 +2246,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 1/10
+BATCH: 0
+INDEX: 141/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061437226
+SOLVING_TIME: .058602626
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2283,14 +2262,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 2/10
+BATCH: 0
+INDEX: 142/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 32.
-warning: "define-fun-rec" command is safely ignored in line 33.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .072046603
+SOLVING_TIME: .059338688
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2301,16 +2278,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 3/10
+BATCH: 0
+INDEX: 143/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 36.
-warning: "define-fun-rec" command is safely ignored in line 37.
-error: Multiple definitions or keybindings of "Type mismatch in distinct" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .025161914
+SOLVING_TIME: .062897095
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4765.smt2
@@ -2319,12 +2294,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 4/10
+BATCH: 0
+INDEX: 144/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056156233
+SOLVING_TIME: .062926517
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2335,14 +2310,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 5/10
+BATCH: 0
+INDEX: 145/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .068415915
+SOLVING_TIME: .056629732
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2353,12 +2326,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 6/10
+BATCH: 0
+INDEX: 146/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .103056522
+SOLVING_TIME: .087210514
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2369,14 +2342,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 7/10
+BATCH: 0
+INDEX: 147/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 46.
-warning: "define-fun-rec" command is safely ignored in line 47.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057554267
+SOLVING_TIME: .059994131
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2387,14 +2358,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 8/10
+BATCH: 0
+INDEX: 148/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .067406815
+SOLVING_TIME: .054549185
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2405,16 +2374,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 9/10
+BATCH: 0
+INDEX: 149/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .023354608
+SOLVING_TIME: .073156510
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5228.smt2
@@ -2423,12 +2390,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 10/10
+BATCH: 0
+INDEX: 150/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051783902
+SOLVING_TIME: .053153601
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2439,14 +2406,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 1/10
+BATCH: 0
+INDEX: 151/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .022933256
+SOLVING_TIME: .058946245
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 52.smt2
@@ -2455,12 +2422,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 2/10
+BATCH: 0
+INDEX: 152/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050513888
+SOLVING_TIME: .053929160
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2471,14 +2438,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 3/10
+BATCH: 0
+INDEX: 153/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .050178732
+SOLVING_TIME: .056014864
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5844.smt2
@@ -2487,12 +2454,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 4/10
+BATCH: 0
+INDEX: 154/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057605588
+SOLVING_TIME: .059594813
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2503,12 +2470,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 5/10
+BATCH: 0
+INDEX: 155/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053737746
+SOLVING_TIME: .051583106
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2519,14 +2486,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 6/10
+BATCH: 0
+INDEX: 156/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053008721
+SOLVING_TIME: .064725900
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 6058.smt2
@@ -2535,14 +2502,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 7/10
+BATCH: 0
+INDEX: 157/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053389976
+SOLVING_TIME: .054153789
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 6076.smt2
@@ -2551,12 +2518,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 8/10
+BATCH: 0
+INDEX: 158/198
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .048460251
+SOLVING_TIME: .047815509
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2567,14 +2534,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 9/10
+BATCH: 0
+INDEX: 159/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053876954
+SOLVING_TIME: .055841946
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 619.smt2
@@ -2583,12 +2550,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 10/10
+BATCH: 0
+INDEX: 160/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063623258
+SOLVING_TIME: .059729810
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2599,12 +2566,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 1/10
+BATCH: 0
+INDEX: 161/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.720620162
+SOLVING_TIME: 1.722621783
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2615,14 +2582,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 2/10
+BATCH: 0
+INDEX: 162/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .024357889
+SOLVING_TIME: 1.492301120
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 629.smt2
@@ -2631,12 +2598,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 3/10
+BATCH: 0
+INDEX: 163/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059829261
+SOLVING_TIME: .062719568
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2647,13 +2614,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 4/10
+BATCH: 0
+INDEX: 164/198
 -----------------------------------------------------------
-[31m[2025-07-15 20:03:03] Failed to create topological sort due to circular dependencies[0m
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059116931
+SOLVING_TIME: .059138053
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2664,12 +2630,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 5/10
+BATCH: 0
+INDEX: 165/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055124676
+SOLVING_TIME: .062413299
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2680,14 +2646,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 6/10
+BATCH: 0
+INDEX: 166/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049804272
+SOLVING_TIME: .053029453
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2698,12 +2662,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 7/10
+BATCH: 0
+INDEX: 167/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050017373
+SOLVING_TIME: .050565611
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2714,12 +2678,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 8/10
+BATCH: 0
+INDEX: 168/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .111773399
+SOLVING_TIME: .096091647
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2730,14 +2694,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 9/10
+BATCH: 0
+INDEX: 169/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 223.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .025706787
+SOLVING_TIME: .051360537
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6760.smt2
@@ -2746,14 +2710,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 10/10
+BATCH: 0
+INDEX: 170/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 30.
-warning: "define-fun-rec" command is safely ignored in line 31.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .073875908
+SOLVING_TIME: .060344021
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2764,12 +2726,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 1/10
+BATCH: 0
+INDEX: 171/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .056260025
+SOLVING_TIME: .055965222
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2780,14 +2742,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 2/10
+BATCH: 0
+INDEX: 172/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053709079
+SOLVING_TIME: .059327837
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 685.smt2
@@ -2796,14 +2758,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 3/10
+BATCH: 0
+INDEX: 173/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053172838
+SOLVING_TIME: .056165536
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 6947.smt2
@@ -2812,14 +2774,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 4/10
+BATCH: 0
+INDEX: 174/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 33.
-warning: "define-fun-rec" command is safely ignored in line 34.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .067116009
+SOLVING_TIME: .059035167
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2830,12 +2790,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 5/10
+BATCH: 0
+INDEX: 175/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .062623567
+SOLVING_TIME: .059601046
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2846,14 +2806,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 6/10
+BATCH: 0
+INDEX: 176/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 195.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .023245246
+SOLVING_TIME: .050748569
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 723.smt2
@@ -2862,12 +2822,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 7/10
+BATCH: 0
+INDEX: 177/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .066147145
+SOLVING_TIME: .064593085
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2878,12 +2838,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 8/10
+BATCH: 0
+INDEX: 178/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054685204
+SOLVING_TIME: .060621123
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2894,12 +2854,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 9/10
+BATCH: 0
+INDEX: 179/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049627178
+SOLVING_TIME: .050995429
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2910,12 +2870,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 17
-INDEX: 10/10
+BATCH: 0
+INDEX: 180/198
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051334766
+SOLVING_TIME: .050588035
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2926,12 +2886,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 1/10
+BATCH: 0
+INDEX: 181/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .069950695
+SOLVING_TIME: .053641859
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2942,14 +2902,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 2/10
+BATCH: 0
+INDEX: 182/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 47.
-warning: "define-fun-rec" command is safely ignored in line 48.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054094839
+SOLVING_TIME: .079068465
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2960,12 +2918,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 3/10
+BATCH: 0
+INDEX: 183/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .048928672
+SOLVING_TIME: .051053437
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2976,12 +2934,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 4/10
+BATCH: 0
+INDEX: 184/198
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .049008724
+SOLVING_TIME: .048338962
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2992,12 +2950,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 5/10
+BATCH: 0
+INDEX: 185/198
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052591091
+SOLVING_TIME: .052162740
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3008,12 +2966,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 6/10
+BATCH: 0
+INDEX: 186/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052550015
+SOLVING_TIME: .059679474
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3024,12 +2982,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 7/10
+BATCH: 0
+INDEX: 187/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .062422625
+SOLVING_TIME: .059665683
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3040,12 +2998,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 8/10
+BATCH: 0
+INDEX: 188/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .152237720
+SOLVING_TIME: .078646430
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3056,14 +3014,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 9/10
+BATCH: 0
+INDEX: 189/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .021581040
+SOLVING_TIME: .063003768
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 8916.smt2
@@ -3072,14 +3030,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 18
-INDEX: 10/10
+BATCH: 0
+INDEX: 190/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .021131781
+SOLVING_TIME: .061834678
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 8948.smt2
@@ -3088,14 +3046,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 1/8
+BATCH: 0
+INDEX: 191/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .053161462
+SOLVING_TIME: .058571774
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 8949.smt2
@@ -3104,14 +3062,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 2/8
+BATCH: 0
+INDEX: 192/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .055646811
+SOLVING_TIME: .058769197
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 9179.smt2
@@ -3120,12 +3078,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 3/8
+BATCH: 0
+INDEX: 193/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .070041426
+SOLVING_TIME: .054774219
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3136,12 +3094,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 4/8
+BATCH: 0
+INDEX: 194/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .075941114
+SOLVING_TIME: .053746884
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3152,14 +3110,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 5/8
+BATCH: 0
+INDEX: 195/198
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .019842023
+SOLVING_TIME: .051578193
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 9391.smt2
@@ -3168,14 +3126,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 6/8
+BATCH: 0
+INDEX: 196/198
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 30.
-warning: "define-fun-rec" command is safely ignored in line 31.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .072644833
+SOLVING_TIME: .057615729
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3186,14 +3142,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 7/8
+BATCH: 0
+INDEX: 197/198
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .058180887
+SOLVING_TIME: .062836801
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 996.smt2
@@ -3202,12 +3158,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 19
-INDEX: 8/8
+BATCH: 0
+INDEX: 198/198
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054383863
+SOLVING_TIME: .058947572
 RESULT: SUCCESS
 SAT_RESULT: SAT
 

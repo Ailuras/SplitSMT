@@ -32,6 +32,7 @@ message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMT
 set(SOURCES
     src/main.cpp
     src/Context.cpp
+    src/Parser.cpp
     src/Structures.cpp
     src/Solver.cpp
     src/Split.cpp
@@ -62,10 +63,11 @@ add_executable(strprocessor ${SOURCES})
 # Add debug executable
 add_executable(debug_strprocessor
     src/debug_main.cpp
-    src/Context.cpp
-    src/Structures.cpp
-    src/Solver.cpp
-    src/Split.cpp
+src/Context.cpp
+src/Parser.cpp
+src/Structures.cpp
+src/Solver.cpp
+src/Split.cpp
 )
 
 # Create compile_commands.json for IDE integration

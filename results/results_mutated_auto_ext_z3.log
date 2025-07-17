@@ -10,7 +10,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .196805225
+SOLVING_TIME: .186658586
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -24,11 +24,11 @@ TIMEOUT: 60s
 BATCH: 0
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .046014473
+SOLVING_TIME: .041295428
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1094_easy.smt2
@@ -42,7 +42,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.786150188
+SOLVING_TIME: .104598429
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -56,11 +56,11 @@ TIMEOUT: 60s
 BATCH: 0
 INDEX: 4/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .083682309
+SOLVING_TIME: .020164683
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1142_easy.smt2
@@ -72,11 +72,11 @@ TIMEOUT: 60s
 BATCH: 0
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .146895520
+SOLVING_TIME: .018126253
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11465.corecstrs.readable_easy.smt2
@@ -88,11 +88,11 @@ TIMEOUT: 60s
 BATCH: 0
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .053790721
+SOLVING_TIME: .013585677
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11512.corecstrs.readable_easy.smt2
@@ -104,11 +104,11 @@ TIMEOUT: 60s
 BATCH: 1
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .196056633
+SOLVING_TIME: .021315585
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 12418.corecstrs.readable_easy.smt2
@@ -120,11 +120,11 @@ TIMEOUT: 60s
 BATCH: 1
 INDEX: 2/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054682430
+SOLVING_TIME: .051781824
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 13196.corecstrs.readable_easy.smt2
@@ -136,11 +136,11 @@ TIMEOUT: 60s
 BATCH: 1
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .061231373
+SOLVING_TIME: .036252639
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 13471.corecstrs.readable_easy.smt2
@@ -152,11 +152,11 @@ TIMEOUT: 60s
 BATCH: 1
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .053479021
+SOLVING_TIME: .059046658
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 14163.corecstrs.readable_easy.smt2
@@ -168,11 +168,11 @@ TIMEOUT: 60s
 BATCH: 1
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .060784391
+SOLVING_TIME: .016728429
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1435_easy.smt2
@@ -186,7 +186,7 @@ INDEX: 6/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .169784710
+SOLVING_TIME: .077145485
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -202,7 +202,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .197677351
+SOLVING_TIME: .139734122
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -216,11 +216,11 @@ TIMEOUT: 60s
 BATCH: 2
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .043556570
+SOLVING_TIME: .067560445
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15929.corecstrs.readable_easy.smt2
@@ -232,11 +232,11 @@ TIMEOUT: 60s
 BATCH: 2
 INDEX: 3/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054588972
+SOLVING_TIME: .021483442
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15971.corecstrs.readable_easy.smt2
@@ -248,11 +248,11 @@ TIMEOUT: 60s
 BATCH: 2
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .055922017
+SOLVING_TIME: .040881593
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 18187.corecstrs.readable_easy.smt2
@@ -266,7 +266,7 @@ INDEX: 5/6
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .089471125
+SOLVING_TIME: .058264402
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -280,11 +280,11 @@ TIMEOUT: 60s
 BATCH: 2
 INDEX: 6/6
 -----------------------------------------------------------
-sat
+error: "(" missing in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .096575422
+SOLVING_TIME: .033019106
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 195_easy.smt2
@@ -298,7 +298,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .196692864
+SOLVING_TIME: .129817306
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -314,7 +314,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .069028776
+SOLVING_TIME: .134852788
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -330,7 +330,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .134319066
+SOLVING_TIME: .096276505
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -346,7 +346,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .067549218
+SOLVING_TIME: .049939718
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -360,11 +360,11 @@ TIMEOUT: 60s
 BATCH: 3
 INDEX: 5/6
 -----------------------------------------------------------
-sat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .093536238
+SOLVING_TIME: .015104048
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2146_easy.smt2
@@ -376,11 +376,11 @@ TIMEOUT: 60s
 BATCH: 3
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .212481743
+SOLVING_TIME: .038434881
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 21888.corecstrs.readable_easy.smt2
@@ -392,11 +392,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .197639806
+SOLVING_TIME: .100074392
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 21936.corecstrs.readable_easy.smt2
@@ -408,11 +408,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .068321187
+SOLVING_TIME: .018916390
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 22358.corecstrs.readable_easy.smt2
@@ -424,11 +424,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .059703210
+SOLVING_TIME: .015248814
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2261_easy.smt2
@@ -442,7 +442,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .215374857
+SOLVING_TIME: .118391097
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -456,11 +456,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .083274086
+SOLVING_TIME: .021335496
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 24063.corecstrs.readable_easy.smt2
@@ -472,11 +472,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 6/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .047781638
+SOLVING_TIME: .022101463
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2419_easy.smt2
@@ -490,7 +490,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .194588066
+SOLVING_TIME: .100269658
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -504,11 +504,11 @@ TIMEOUT: 60s
 BATCH: 5
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .044204519
+SOLVING_TIME: .042780563
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2774.corecstrs.readable_easy.smt2
@@ -520,11 +520,11 @@ TIMEOUT: 60s
 BATCH: 5
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .118514353
+SOLVING_TIME: .041706054
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2795_easy.smt2
@@ -538,7 +538,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .128768267
+SOLVING_TIME: .099814080
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -552,11 +552,11 @@ TIMEOUT: 60s
 BATCH: 5
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .138643413
+SOLVING_TIME: .019741035
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 28371.corecstrs.readable_easy.smt2
@@ -568,11 +568,11 @@ TIMEOUT: 60s
 BATCH: 5
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .045317161
+SOLVING_TIME: .019570078
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 29866.corecstrs.readable_easy.smt2
@@ -584,11 +584,11 @@ TIMEOUT: 60s
 BATCH: 6
 INDEX: 1/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .195540166
+SOLVING_TIME: .019606012
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 30902.corecstrs.readable_easy.smt2
@@ -602,7 +602,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051904248
+SOLVING_TIME: .100263026
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -616,11 +616,11 @@ TIMEOUT: 60s
 BATCH: 6
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048159628
+SOLVING_TIME: .110396728
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3184_easy.smt2
@@ -634,7 +634,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .112154591
+SOLVING_TIME: .097228170
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -648,11 +648,11 @@ TIMEOUT: 60s
 BATCH: 6
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .111887439
+SOLVING_TIME: .024797994
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3345_easy.smt2
@@ -664,11 +664,11 @@ TIMEOUT: 60s
 BATCH: 6
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .072866245
+SOLVING_TIME: .028160997
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3780_easy.smt2
@@ -680,11 +680,11 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .193364355
+SOLVING_TIME: .054630416
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3789_easy.smt2
@@ -696,11 +696,11 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .184950594
+SOLVING_TIME: .033736554
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3799_easy.smt2
@@ -714,7 +714,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .257490992
+SOLVING_TIME: .119013692
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -728,11 +728,11 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .048268769
+SOLVING_TIME: .040829151
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 4284.corecstrs.readable_easy.smt2
@@ -744,11 +744,11 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .046201338
+SOLVING_TIME: .047925566
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 47005a791d44eab8208b098b498abeddba2aa19a62ca4325179f51c6_easy.smt2
@@ -760,11 +760,11 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .051680847
+SOLVING_TIME: .014644148
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5704.corecstrs.readable_easy.smt2
@@ -776,11 +776,11 @@ TIMEOUT: 60s
 BATCH: 8
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .194212036
+SOLVING_TIME: .029535082
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5751.corecstrs.readable_easy.smt2
@@ -792,11 +792,11 @@ TIMEOUT: 60s
 BATCH: 8
 INDEX: 2/6
 -----------------------------------------------------------
-sat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .059148570
+SOLVING_TIME: .034551047
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5965_easy.smt2
@@ -810,7 +810,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .072128704
+SOLVING_TIME: .101517820
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -824,11 +824,11 @@ TIMEOUT: 60s
 BATCH: 8
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .093839440
+SOLVING_TIME: .015333279
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6640_easy.smt2
@@ -842,7 +842,7 @@ INDEX: 5/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .104884672
+SOLVING_TIME: .073001762
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -858,7 +858,7 @@ INDEX: 6/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .400305506
+SOLVING_TIME: .058027141
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -872,11 +872,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .194178102
+SOLVING_TIME: .027752047
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7413_easy.smt2
@@ -888,11 +888,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .080051328
+SOLVING_TIME: .033879195
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7562_easy.smt2
@@ -904,11 +904,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .063122923
+SOLVING_TIME: .016527704
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7758_easy.smt2
@@ -920,11 +920,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .100280903
+SOLVING_TIME: .052478918
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7790.corecstrs.readable_easy.smt2
@@ -936,11 +936,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .090445544
+SOLVING_TIME: .091249366
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3_easy.smt2
@@ -952,11 +952,11 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .095594826
+SOLVING_TIME: .017800240
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7845.corecstrs.readable_easy.smt2
@@ -968,11 +968,11 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .193071444
+SOLVING_TIME: .028087785
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 8213.corecstrs.readable_easy.smt2
@@ -984,11 +984,11 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .051732092
+SOLVING_TIME: .032557386
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 840_easy.smt2
@@ -1002,7 +1002,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .127832344
+SOLVING_TIME: .125463185
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1016,11 +1016,11 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 4/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057771235
+SOLVING_TIME: .046672620
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9520.corecstrs.readable_easy.smt2
@@ -1032,11 +1032,11 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 5/6
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .091611017
+SOLVING_TIME: .021116814
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9583.corecstrs.readable_easy.smt2
@@ -1048,11 +1048,11 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 6/6
 -----------------------------------------------------------
-sat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .054475155
+SOLVING_TIME: .025280670
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ab07f4599d9bee66bca1eef13a90b2c588ae4031b281b9541c2d3ce8_easy.smt2
@@ -1064,11 +1064,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .193325679
+SOLVING_TIME: .049275373
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: c0cfc14fa7a5df4ebc2120d088a1b48b8761ea41150bb8ee74cdb4e5_easy.smt2
@@ -1080,11 +1080,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .063652046
+SOLVING_TIME: .062831122
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: c8acc8ecab64c517af418aae567bc63d6913034d12ad1cfcf3d6558a_easy.smt2
@@ -1096,11 +1096,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .090298969
+SOLVING_TIME: .067846315
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ca0aa8c6d4ba7879271f910553551a9d31e0e61fe4bddf83025a85a2_easy.smt2
@@ -1112,11 +1112,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .072331407
+SOLVING_TIME: .058264381
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: cafce6050dabbb956aded879c7a995756f4b1542b6ee7d1d04e118d2_easy.smt2
@@ -1128,11 +1128,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .553220423
+SOLVING_TIME: .023680657
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: d18744c85ba86d69b147630b131d5efba0ad905fd92c50cbc4830c3a_easy.smt2
@@ -1144,11 +1144,11 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .051864252
+SOLVING_TIME: .058416512
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: e240506803f8ad8d3bd802371317f10815fd940717184312be58f172_easy.smt2
@@ -1160,11 +1160,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .190517594
+SOLVING_TIME: .173484313
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c_easy.smt2
@@ -1176,11 +1176,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .053940394
+SOLVING_TIME: .060517897
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: instance47890_easy.smt2
@@ -1194,7 +1194,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057739298
+SOLVING_TIME: .170643848
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1208,11 +1208,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: 3.589364961
+SOLVING_TIME: .015959138
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: norn-benchmark-172_easy.smt2
@@ -1224,11 +1224,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .066455774
+SOLVING_TIME: .016691816
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-002-unsat-graft-graft-translate_easy.smt2
@@ -1240,11 +1240,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .053379097
+SOLVING_TIME: .021365203
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-003-translate-fuzz-multiply_easy.smt2
@@ -1256,11 +1256,11 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .192139487
+SOLVING_TIME: .051473855
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-007-unsat-reverse-translate-multiply_easy.smt2
@@ -1272,11 +1272,11 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .057354149
+SOLVING_TIME: .032669722
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-009-reverse-multiply-translate_easy.smt2
@@ -1290,7 +1290,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 6.401677024
+SOLVING_TIME: .434900588
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1304,11 +1304,11 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057246877
+SOLVING_TIME: .018129550
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-013-fuzz-fuzz-fuzz_easy.smt2
@@ -1320,11 +1320,11 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .052994709
+SOLVING_TIME: .018014906
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-014-graft-reverse_easy.smt2
@@ -1336,11 +1336,11 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054095907
+SOLVING_TIME: .021149947
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-014-reverse-graft-multiply_easy.smt2
@@ -1352,11 +1352,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .191434314
+SOLVING_TIME: .094867381
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-015-multiply-fuzz_easy.smt2
@@ -1368,11 +1368,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054661469
+SOLVING_TIME: .016386579
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-015-translate-fuzz-rotate_easy.smt2
@@ -1384,11 +1384,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .049016599
+SOLVING_TIME: .066044372
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-016-translate-translate-reverse_easy.smt2
@@ -1400,11 +1400,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .051835341
+SOLVING_TIME: .085957740
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-020-translate-translate-multiply_easy.smt2
@@ -1416,11 +1416,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .049881963
+SOLVING_TIME: .063058767
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-022-unsat-fuzz-fuzz-rotate_easy.smt2
@@ -1432,11 +1432,11 @@ TIMEOUT: 60s
 BATCH: 14
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .101313644
+SOLVING_TIME: .018642476
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-025-multiply-translate-rotate_easy.smt2
@@ -1448,11 +1448,11 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .190635128
+SOLVING_TIME: .168855992
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-027-fuzz_easy.smt2
@@ -1464,11 +1464,11 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055288037
+SOLVING_TIME: .060776990
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-031-fuzz-translate-fuzz_easy.smt2
@@ -1482,7 +1482,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052109877
+SOLVING_TIME: .094610198
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1496,11 +1496,11 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057889474
+SOLVING_TIME: .016979170
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-046-unsat-translate-multiply-translate_easy.smt2
@@ -1514,7 +1514,7 @@ INDEX: 5/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .073175494
+SOLVING_TIME: .048098265
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1528,11 +1528,11 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in equality" in line 4.
 -----------------------------------------------------------
-SOLVING_TIME: .061903043
+SOLVING_TIME: .018017445
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-pair-00011-12_easy.smt2
@@ -1544,11 +1544,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .191562909
+SOLVING_TIME: .050907765
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-small-00053-10_easy.smt2
@@ -1560,11 +1560,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .059006190
+SOLVING_TIME: .033408067
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: slent_kaluza_177_sink_easy.smt2
@@ -1576,11 +1576,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .048088437
+SOLVING_TIME: .059641584
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: z3-regex-2-negative-reverse-rotate-graft_easy.smt2
@@ -1592,11 +1592,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054438356
+SOLVING_TIME: .020341278
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 02bf4342a92a0fa8b68b0f91afdd134841abf13a7f6f4725b6102785_hard.smt2
@@ -1608,11 +1608,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .183399230
+SOLVING_TIME: .052182706
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 05_track_156_hard.smt2
@@ -1624,11 +1624,11 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .068159109
+SOLVING_TIME: .017033244
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1094_hard.smt2
@@ -1640,11 +1640,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .188926513
+SOLVING_TIME: .059813280
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11336.corecstrs.readable_hard.smt2
@@ -1656,11 +1656,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .049183029
+SOLVING_TIME: .031450312
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1142_hard.smt2
@@ -1672,11 +1672,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .227494668
+SOLVING_TIME: .047305018
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11465.corecstrs.readable_hard.smt2
@@ -1688,11 +1688,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 4/6
 -----------------------------------------------------------
-unknown
+error: Kind mismatch of command "Type mismatch in str_num_splits" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .119222415
+SOLVING_TIME: .030694262
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11512.corecstrs.readable_hard.smt2
@@ -1704,11 +1704,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .050716231
+SOLVING_TIME: .047579859
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 12418.corecstrs.readable_hard.smt2
@@ -1720,11 +1720,11 @@ TIMEOUT: 60s
 BATCH: 17
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .048289324
+SOLVING_TIME: .058243929
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 13196.corecstrs.readable_hard.smt2
@@ -1736,11 +1736,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .189667053
+SOLVING_TIME: .128056895
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 13471.corecstrs.readable_hard.smt2
@@ -1752,11 +1752,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .052447267
+SOLVING_TIME: .047776876
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 14163.corecstrs.readable_hard.smt2
@@ -1768,11 +1768,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .045296178
+SOLVING_TIME: .053306633
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1435_hard.smt2
@@ -1784,11 +1784,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .118486975
+SOLVING_TIME: .055029586
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1440_hard.smt2
@@ -1800,11 +1800,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .228703898
+SOLVING_TIME: .021678753
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 14593.corecstrs.readable_hard.smt2
@@ -1816,11 +1816,11 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .047785813
+SOLVING_TIME: .016217449
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15929.corecstrs.readable_hard.smt2
@@ -1832,11 +1832,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .190459329
+SOLVING_TIME: .049909838
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15971.corecstrs.readable_hard.smt2
@@ -1848,11 +1848,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .054057841
+SOLVING_TIME: .031580550
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 18187.corecstrs.readable_hard.smt2
@@ -1864,11 +1864,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .064035465
+SOLVING_TIME: .114351320
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 18610.corecstrs.readable_hard.smt2
@@ -1880,11 +1880,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .077770738
+SOLVING_TIME: .054825565
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 195_hard.smt2
@@ -1896,11 +1896,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .115332303
+SOLVING_TIME: .024617544
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 19837.corecstrs.readable_hard.smt2
@@ -1912,11 +1912,11 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .061524770
+SOLVING_TIME: .020756426
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1b415777353081399f22c146e473815a5dca078827ae55052c0dcaad_hard.smt2
@@ -1928,11 +1928,11 @@ TIMEOUT: 60s
 BATCH: 20
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: "(" missing in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .188824458
+SOLVING_TIME: .058375734
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 20934.corecstrs.readable_hard.smt2
@@ -1944,11 +1944,11 @@ TIMEOUT: 60s
 BATCH: 20
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .070826253
+SOLVING_TIME: .031792708
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 209a7c61bdeaea04f6723684f606699e8a2dac589cf03aa593675c21_hard.smt2
@@ -1960,11 +1960,11 @@ TIMEOUT: 60s
 BATCH: 20
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .093958476
+SOLVING_TIME: .062247160
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2146_hard.smt2
@@ -1978,7 +1978,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .249561013
+SOLVING_TIME: .120672645
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1992,11 +1992,11 @@ TIMEOUT: 60s
 BATCH: 20
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .057655708
+SOLVING_TIME: .018793582
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 21936.corecstrs.readable_hard.smt2
@@ -2008,11 +2008,11 @@ TIMEOUT: 60s
 BATCH: 20
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057620234
+SOLVING_TIME: .016176448
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 22358.corecstrs.readable_hard.smt2
@@ -2026,7 +2026,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .187786494
+SOLVING_TIME: .124593814
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2040,11 +2040,11 @@ TIMEOUT: 60s
 BATCH: 21
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .209625361
+SOLVING_TIME: .023330118
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 22eff45bfe65a68d77559a93eb7573710d1e9ab053467fc2860a50cc_hard.smt2
@@ -2056,11 +2056,11 @@ TIMEOUT: 60s
 BATCH: 21
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .138857774
+SOLVING_TIME: .060674370
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 24063.corecstrs.readable_hard.smt2
@@ -2072,11 +2072,11 @@ TIMEOUT: 60s
 BATCH: 21
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .059712772
+SOLVING_TIME: .094718911
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 2419_hard.smt2
@@ -2088,11 +2088,11 @@ TIMEOUT: 60s
 BATCH: 21
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .121538579
+SOLVING_TIME: .022364044
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 26923.corecstrs.readable_hard.smt2
@@ -2104,12 +2104,11 @@ TIMEOUT: 60s
 BATCH: 21
 INDEX: 6/6
 -----------------------------------------------------------
-[31m[2025-07-15 19:03:34] Result: ERROR (30013ms)[0m
-unknown
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: 30.037203815
+SOLVING_TIME: .023718039
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2774.corecstrs.readable_hard.smt2
@@ -2121,11 +2120,11 @@ TIMEOUT: 60s
 BATCH: 22
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .189246385
+SOLVING_TIME: .123974416
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 2795_hard.smt2
@@ -2139,7 +2138,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .110627316
+SOLVING_TIME: .122876079
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2153,11 +2152,11 @@ TIMEOUT: 60s
 BATCH: 22
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .141279261
+SOLVING_TIME: .045682719
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 28371.corecstrs.readable_hard.smt2
@@ -2169,11 +2168,11 @@ TIMEOUT: 60s
 BATCH: 22
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .104041561
+SOLVING_TIME: .019222816
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 29866.corecstrs.readable_hard.smt2
@@ -2185,11 +2184,11 @@ TIMEOUT: 60s
 BATCH: 22
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .067323136
+SOLVING_TIME: .067520970
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 30902.corecstrs.readable_hard.smt2
@@ -2201,11 +2200,11 @@ TIMEOUT: 60s
 BATCH: 22
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .046169165
+SOLVING_TIME: .047879074
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 31165.corecstrs.readable_hard.smt2
@@ -2217,11 +2216,11 @@ TIMEOUT: 60s
 BATCH: 23
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .188335043
+SOLVING_TIME: .138522594
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 3184_hard.smt2
@@ -2235,7 +2234,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .108080946
+SOLVING_TIME: .109355001
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2251,7 +2250,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .100861109
+SOLVING_TIME: .094239595
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2265,11 +2264,11 @@ TIMEOUT: 60s
 BATCH: 23
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .118225232
+SOLVING_TIME: .019814478
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3780_hard.smt2
@@ -2281,11 +2280,11 @@ TIMEOUT: 60s
 BATCH: 23
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .177442455
+SOLVING_TIME: .022307054
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3789_hard.smt2
@@ -2297,11 +2296,11 @@ TIMEOUT: 60s
 BATCH: 23
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .175159173
+SOLVING_TIME: .017642390
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3799_hard.smt2
@@ -2315,7 +2314,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .280826958
+SOLVING_TIME: .133154818
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2329,11 +2328,11 @@ TIMEOUT: 60s
 BATCH: 24
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .056609796
+SOLVING_TIME: .050487194
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 4284.corecstrs.readable_hard.smt2
@@ -2345,11 +2344,11 @@ TIMEOUT: 60s
 BATCH: 24
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .062196398
+SOLVING_TIME: .019367716
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 47005a791d44eab8208b098b498abeddba2aa19a62ca4325179f51c6_hard.smt2
@@ -2361,11 +2360,11 @@ TIMEOUT: 60s
 BATCH: 24
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .112787875
+SOLVING_TIME: .018011117
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5704.corecstrs.readable_hard.smt2
@@ -2377,11 +2376,11 @@ TIMEOUT: 60s
 BATCH: 24
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057382103
+SOLVING_TIME: .019346556
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5751.corecstrs.readable_hard.smt2
@@ -2393,11 +2392,11 @@ TIMEOUT: 60s
 BATCH: 24
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .052397258
+SOLVING_TIME: .020205513
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5965_hard.smt2
@@ -2409,11 +2408,11 @@ TIMEOUT: 60s
 BATCH: 25
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .184765381
+SOLVING_TIME: .059339044
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6605_hard.smt2
@@ -2425,11 +2424,11 @@ TIMEOUT: 60s
 BATCH: 25
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .091900994
+SOLVING_TIME: .031675685
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6640_hard.smt2
@@ -2441,11 +2440,11 @@ TIMEOUT: 60s
 BATCH: 25
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .076254526
+SOLVING_TIME: .046790315
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6a7eca6a2b5eca14a3ff82c751b52b8775cc7ce1db96e62b4e49f9f6_hard.smt2
@@ -2457,11 +2456,11 @@ TIMEOUT: 60s
 BATCH: 25
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .379118481
+SOLVING_TIME: .018234973
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7232_hard.smt2
@@ -2475,7 +2474,7 @@ INDEX: 5/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .085904780
+SOLVING_TIME: .098905437
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2489,11 +2488,11 @@ TIMEOUT: 60s
 BATCH: 25
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .071327243
+SOLVING_TIME: .021278827
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7562_hard.smt2
@@ -2507,7 +2506,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .186958169
+SOLVING_TIME: .123998625
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2521,11 +2520,11 @@ TIMEOUT: 60s
 BATCH: 26
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .120126390
+SOLVING_TIME: .056669326
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7790.corecstrs.readable_hard.smt2
@@ -2537,11 +2536,11 @@ TIMEOUT: 60s
 BATCH: 26
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054241012
+SOLVING_TIME: .019839448
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3_hard.smt2
@@ -2555,7 +2554,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .096585028
+SOLVING_TIME: .094233331
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2569,11 +2568,11 @@ TIMEOUT: 60s
 BATCH: 26
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_num_splits" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055190790
+SOLVING_TIME: .021157397
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 8213.corecstrs.readable_hard.smt2
@@ -2585,11 +2584,11 @@ TIMEOUT: 60s
 BATCH: 26
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .046385692
+SOLVING_TIME: .023457509
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 840_hard.smt2
@@ -2601,11 +2600,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .185315476
+SOLVING_TIME: .100288309
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9519.corecstrs.readable_hard.smt2
@@ -2617,12 +2616,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 2/6
 -----------------------------------------------------------
-[31m[2025-07-15 19:03:34] Result: ERROR (30015ms)[0m
-unknown
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: 30.036784252
+SOLVING_TIME: .035349062
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9520.corecstrs.readable_hard.smt2
@@ -2634,11 +2632,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055322809
+SOLVING_TIME: .037549708
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9583.corecstrs.readable_hard.smt2
@@ -2650,11 +2648,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .056429524
+SOLVING_TIME: .021604896
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ab07f4599d9bee66bca1eef13a90b2c588ae4031b281b9541c2d3ce8_hard.smt2
@@ -2666,12 +2664,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 5/6
 -----------------------------------------------------------
-[31m[2025-07-15 19:04:04] Result: ERROR (30016ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: 30.048008777
+SOLVING_TIME: .078372524
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: c0cfc14fa7a5df4ebc2120d088a1b48b8761ea41150bb8ee74cdb4e5_hard.smt2
@@ -2683,11 +2680,11 @@ TIMEOUT: 60s
 BATCH: 27
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .057428615
+SOLVING_TIME: .022752011
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: c8acc8ecab64c517af418aae567bc63d6913034d12ad1cfcf3d6558a_hard.smt2
@@ -2701,7 +2698,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .186280675
+SOLVING_TIME: .119541143
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2715,11 +2712,11 @@ TIMEOUT: 60s
 BATCH: 28
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .060596633
+SOLVING_TIME: .024278170
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: cafce6050dabbb956aded879c7a995756f4b1542b6ee7d1d04e118d2_hard.smt2
@@ -2731,11 +2728,11 @@ TIMEOUT: 60s
 BATCH: 28
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .639680157
+SOLVING_TIME: .059504336
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: d18744c85ba86d69b147630b131d5efba0ad905fd92c50cbc4830c3a_hard.smt2
@@ -2747,11 +2744,11 @@ TIMEOUT: 60s
 BATCH: 28
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056352056
+SOLVING_TIME: .116896213
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: e240506803f8ad8d3bd802371317f10815fd940717184312be58f172_hard.smt2
@@ -2763,11 +2760,11 @@ TIMEOUT: 60s
 BATCH: 28
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .071927363
+SOLVING_TIME: .153490847
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c_hard.smt2
@@ -2779,11 +2776,11 @@ TIMEOUT: 60s
 BATCH: 28
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .061328465
+SOLVING_TIME: .019358812
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: instance47890_hard.smt2
@@ -2797,7 +2794,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .182812404
+SOLVING_TIME: .164088215
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2811,11 +2808,11 @@ TIMEOUT: 60s
 BATCH: 29
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .060578711
+SOLVING_TIME: .080598234
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: norn-benchmark-172_hard.smt2
@@ -2829,7 +2826,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053595716
+SOLVING_TIME: .110924959
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2843,11 +2840,11 @@ TIMEOUT: 60s
 BATCH: 29
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .056635211
+SOLVING_TIME: .018453287
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-003-translate-fuzz-multiply_hard.smt2
@@ -2861,7 +2858,7 @@ INDEX: 5/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055874243
+SOLVING_TIME: .060168759
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2875,11 +2872,11 @@ TIMEOUT: 60s
 BATCH: 29
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .096060038
+SOLVING_TIME: .016988197
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-009-reverse-multiply-translate_hard.smt2
@@ -2891,11 +2888,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .184512711
+SOLVING_TIME: .477181143
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-012-unsat-fuzz-fuzz-fuzz_hard.smt2
@@ -2907,11 +2904,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .042842700
+SOLVING_TIME: .015462224
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-013-fuzz-fuzz-fuzz_hard.smt2
@@ -2923,11 +2920,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .059500226
+SOLVING_TIME: .019170097
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-014-graft-reverse_hard.smt2
@@ -2939,11 +2936,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .062047451
+SOLVING_TIME: .021124785
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-014-reverse-graft-multiply_hard.smt2
@@ -2955,11 +2952,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .064918989
+SOLVING_TIME: .018799381
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-015-multiply-fuzz_hard.smt2
@@ -2971,11 +2968,11 @@ TIMEOUT: 60s
 BATCH: 30
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .096126229
+SOLVING_TIME: .021032758
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-015-translate-fuzz-rotate_hard.smt2
@@ -2989,7 +2986,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .186254507
+SOLVING_TIME: .117538409
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3003,11 +3000,11 @@ TIMEOUT: 60s
 BATCH: 31
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .052948697
+SOLVING_TIME: .025946109
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-020-translate-translate-multiply_hard.smt2
@@ -3019,11 +3016,11 @@ TIMEOUT: 60s
 BATCH: 31
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .059704162
+SOLVING_TIME: .060887558
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-022-unsat-fuzz-fuzz-rotate_hard.smt2
@@ -3037,7 +3034,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .044341160
+SOLVING_TIME: .060188355
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3051,11 +3048,11 @@ TIMEOUT: 60s
 BATCH: 31
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .070274280
+SOLVING_TIME: .021757315
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-027-fuzz_hard.smt2
@@ -3067,11 +3064,11 @@ TIMEOUT: 60s
 BATCH: 31
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .097175173
+SOLVING_TIME: .022028629
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-031-fuzz-translate-fuzz_hard.smt2
@@ -3085,7 +3082,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .182203685
+SOLVING_TIME: .118233360
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3099,11 +3096,11 @@ TIMEOUT: 60s
 BATCH: 32
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .057206361
+SOLVING_TIME: .016661851
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-046-unsat-translate-multiply-translate_hard.smt2
@@ -3115,11 +3112,11 @@ TIMEOUT: 60s
 BATCH: 32
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .050413761
+SOLVING_TIME: .050957177
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-deep-00008-13_hard.smt2
@@ -3131,11 +3128,11 @@ TIMEOUT: 60s
 BATCH: 32
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in equality" in line 5.
 -----------------------------------------------------------
-SOLVING_TIME: .059448027
+SOLVING_TIME: .023792127
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-pair-00011-12_hard.smt2
@@ -3147,12 +3144,11 @@ TIMEOUT: 60s
 BATCH: 32
 INDEX: 5/6
 -----------------------------------------------------------
-[31m[2025-07-15 19:03:34] Result: ERROR (30012ms)[0m
-unknown
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: 30.037288657
+SOLVING_TIME: .038999399
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-small-00053-10_hard.smt2
@@ -3164,11 +3160,11 @@ TIMEOUT: 60s
 BATCH: 32
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .055334281
+SOLVING_TIME: .035337407
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: slent_kaluza_177_sink_hard.smt2
@@ -3180,11 +3176,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .183986253
+SOLVING_TIME: .120932559
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: z3-regex-2-negative-reverse-rotate-graft_hard.smt2
@@ -3196,11 +3192,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .052463194
+SOLVING_TIME: .048607596
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 02bf4342a92a0fa8b68b0f91afdd134841abf13a7f6f4725b6102785_medium.smt2
@@ -3212,11 +3208,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .150264805
+SOLVING_TIME: .020237822
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 05_track_156_medium.smt2
@@ -3228,11 +3224,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .081683503
+SOLVING_TIME: .107666307
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1094_medium.smt2
@@ -3244,11 +3240,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .078701872
+SOLVING_TIME: .022345432
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11336.corecstrs.readable_medium.smt2
@@ -3260,11 +3256,11 @@ TIMEOUT: 60s
 BATCH: 33
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .052058992
+SOLVING_TIME: .016691548
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1142_medium.smt2
@@ -3276,11 +3272,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .224930456
+SOLVING_TIME: .017655841
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11465.corecstrs.readable_medium.smt2
@@ -3292,11 +3288,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .047608608
+SOLVING_TIME: .033531845
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 11512.corecstrs.readable_medium.smt2
@@ -3308,11 +3304,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .052590041
+SOLVING_TIME: .058998061
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 12418.corecstrs.readable_medium.smt2
@@ -3324,11 +3320,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 4/6
 -----------------------------------------------------------
-sat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .078378271
+SOLVING_TIME: .022973484
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 13196.corecstrs.readable_medium.smt2
@@ -3340,11 +3336,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .104295286
+SOLVING_TIME: .054046721
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 13471.corecstrs.readable_medium.smt2
@@ -3356,11 +3352,11 @@ TIMEOUT: 60s
 BATCH: 34
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055831334
+SOLVING_TIME: .027952524
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 14163.corecstrs.readable_medium.smt2
@@ -3372,11 +3368,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .182438789
+SOLVING_TIME: .114969018
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 1435_medium.smt2
@@ -3388,11 +3384,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .112299687
+SOLVING_TIME: .024371478
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1440_medium.smt2
@@ -3404,11 +3400,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .261173998
+SOLVING_TIME: .059817063
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 14593.corecstrs.readable_medium.smt2
@@ -3420,11 +3416,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055365603
+SOLVING_TIME: .017589113
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 15929.corecstrs.readable_medium.smt2
@@ -3436,11 +3432,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .047353905
+SOLVING_TIME: .077013061
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 15971.corecstrs.readable_medium.smt2
@@ -3452,11 +3448,11 @@ TIMEOUT: 60s
 BATCH: 35
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .048204223
+SOLVING_TIME: .014943450
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 18187.corecstrs.readable_medium.smt2
@@ -3468,11 +3464,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .181169859
+SOLVING_TIME: .082141946
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 18610.corecstrs.readable_medium.smt2
@@ -3484,11 +3480,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .070880677
+SOLVING_TIME: .047589932
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 195_medium.smt2
@@ -3500,11 +3496,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .090751424
+SOLVING_TIME: .057673655
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 19837.corecstrs.readable_medium.smt2
@@ -3516,11 +3512,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .068908172
+SOLVING_TIME: .021915626
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 1b415777353081399f22c146e473815a5dca078827ae55052c0dcaad_medium.smt2
@@ -3532,11 +3528,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .127220017
+SOLVING_TIME: .038576739
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 20934.corecstrs.readable_medium.smt2
@@ -3548,11 +3544,11 @@ TIMEOUT: 60s
 BATCH: 36
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .063250985
+SOLVING_TIME: .021148057
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 209a7c61bdeaea04f6723684f606699e8a2dac589cf03aa593675c21_medium.smt2
@@ -3564,11 +3560,11 @@ TIMEOUT: 60s
 BATCH: 37
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .183599849
+SOLVING_TIME: .082535601
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2146_medium.smt2
@@ -3582,7 +3578,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .294028516
+SOLVING_TIME: .125478938
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3596,11 +3592,11 @@ TIMEOUT: 60s
 BATCH: 37
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .062049867
+SOLVING_TIME: .085651816
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 21936.corecstrs.readable_medium.smt2
@@ -3612,11 +3608,11 @@ TIMEOUT: 60s
 BATCH: 37
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .055979885
+SOLVING_TIME: .023589890
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 22358.corecstrs.readable_medium.smt2
@@ -3628,11 +3624,11 @@ TIMEOUT: 60s
 BATCH: 37
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .051471089
+SOLVING_TIME: .016737972
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2261_medium.smt2
@@ -3644,11 +3640,11 @@ TIMEOUT: 60s
 BATCH: 37
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .142020136
+SOLVING_TIME: .015621866
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 22eff45bfe65a68d77559a93eb7573710d1e9ab053467fc2860a50cc_medium.smt2
@@ -3660,11 +3656,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .182338380
+SOLVING_TIME: .082688052
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 24063.corecstrs.readable_medium.smt2
@@ -3676,11 +3672,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .063971009
+SOLVING_TIME: .043970229
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2419_medium.smt2
@@ -3692,11 +3688,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .133480145
+SOLVING_TIME: .061199195
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 26923.corecstrs.readable_medium.smt2
@@ -3708,11 +3704,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .068527096
+SOLVING_TIME: .092229564
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 2774.corecstrs.readable_medium.smt2
@@ -3724,11 +3720,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 5/6
 -----------------------------------------------------------
-sat
+error: "(" missing in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .135101733
+SOLVING_TIME: .017116982
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2795_medium.smt2
@@ -3740,11 +3736,11 @@ TIMEOUT: 60s
 BATCH: 38
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .100866943
+SOLVING_TIME: .018422789
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 2832_medium.smt2
@@ -3758,7 +3754,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .179876480
+SOLVING_TIME: .120552409
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3772,11 +3768,11 @@ TIMEOUT: 60s
 BATCH: 39
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056268951
+SOLVING_TIME: .108461742
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 29866.corecstrs.readable_medium.smt2
@@ -3788,11 +3784,11 @@ TIMEOUT: 60s
 BATCH: 39
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .057278866
+SOLVING_TIME: .057251822
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 30902.corecstrs.readable_medium.smt2
@@ -3804,11 +3800,11 @@ TIMEOUT: 60s
 BATCH: 39
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .056962732
+SOLVING_TIME: .015791814
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 31165.corecstrs.readable_medium.smt2
@@ -3820,11 +3816,11 @@ TIMEOUT: 60s
 BATCH: 39
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .062390205
+SOLVING_TIME: .018408502
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3184_medium.smt2
@@ -3838,7 +3834,7 @@ INDEX: 6/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .094068988
+SOLVING_TIME: .060218272
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3852,11 +3848,11 @@ TIMEOUT: 60s
 BATCH: 40
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .179498184
+SOLVING_TIME: .081846632
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3345_medium.smt2
@@ -3868,11 +3864,11 @@ TIMEOUT: 60s
 BATCH: 40
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .077357362
+SOLVING_TIME: .015210011
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3780_medium.smt2
@@ -3886,7 +3882,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .231534203
+SOLVING_TIME: .115065363
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3900,11 +3896,11 @@ TIMEOUT: 60s
 BATCH: 40
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .168323412
+SOLVING_TIME: .044558264
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 3799_medium.smt2
@@ -3916,11 +3912,11 @@ TIMEOUT: 60s
 BATCH: 40
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .186224186
+SOLVING_TIME: .020764930
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 4225.corecstrs.readable_medium.smt2
@@ -3932,11 +3928,11 @@ TIMEOUT: 60s
 BATCH: 40
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .053079541
+SOLVING_TIME: .026335932
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 4284.corecstrs.readable_medium.smt2
@@ -3948,11 +3944,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .176418308
+SOLVING_TIME: .095755566
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 47005a791d44eab8208b098b498abeddba2aa19a62ca4325179f51c6_medium.smt2
@@ -3964,11 +3960,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .062679870
+SOLVING_TIME: .036619881
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5704.corecstrs.readable_medium.smt2
@@ -3980,11 +3976,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .049405438
+SOLVING_TIME: .060656554
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5751.corecstrs.readable_medium.smt2
@@ -3996,11 +3992,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .059170834
+SOLVING_TIME: .055399762
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 5965_medium.smt2
@@ -4012,11 +4008,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .076051737
+SOLVING_TIME: .019879769
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6605_medium.smt2
@@ -4028,11 +4024,11 @@ TIMEOUT: 60s
 BATCH: 41
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .082505724
+SOLVING_TIME: .026151110
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6640_medium.smt2
@@ -4046,7 +4042,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .178652275
+SOLVING_TIME: .116641023
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4062,7 +4058,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .428390273
+SOLVING_TIME: .116309259
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4078,7 +4074,7 @@ INDEX: 3/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .090413630
+SOLVING_TIME: .099623212
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4094,7 +4090,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .081273607
+SOLVING_TIME: .050321643
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4108,11 +4104,11 @@ TIMEOUT: 60s
 BATCH: 42
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .063196808
+SOLVING_TIME: .014481684
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7758_medium.smt2
@@ -4124,11 +4120,11 @@ TIMEOUT: 60s
 BATCH: 42
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .080168114
+SOLVING_TIME: .015916406
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7790.corecstrs.readable_medium.smt2
@@ -4140,11 +4136,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .177925914
+SOLVING_TIME: .079607299
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3_medium.smt2
@@ -4156,11 +4152,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .116818077
+SOLVING_TIME: .047104165
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 7845.corecstrs.readable_medium.smt2
@@ -4172,11 +4168,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .054650001
+SOLVING_TIME: .059081628
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 8213.corecstrs.readable_medium.smt2
@@ -4188,11 +4184,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .060260596
+SOLVING_TIME: .055291915
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 840_medium.smt2
@@ -4204,11 +4200,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .104816832
+SOLVING_TIME: .016713004
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9519.corecstrs.readable_medium.smt2
@@ -4220,11 +4216,11 @@ TIMEOUT: 60s
 BATCH: 43
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .054192961
+SOLVING_TIME: .017802034
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 9520.corecstrs.readable_medium.smt2
@@ -4236,11 +4232,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .177309963
+SOLVING_TIME: .118418867
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 9583.corecstrs.readable_medium.smt2
@@ -4252,11 +4248,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 2/6
 -----------------------------------------------------------
-sat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .081805511
+SOLVING_TIME: .047435648
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ab07f4599d9bee66bca1eef13a90b2c588ae4031b281b9541c2d3ce8_medium.smt2
@@ -4268,11 +4264,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .072878515
+SOLVING_TIME: .054612248
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: c0cfc14fa7a5df4ebc2120d088a1b48b8761ea41150bb8ee74cdb4e5_medium.smt2
@@ -4284,11 +4280,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .079322859
+SOLVING_TIME: .051081214
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: c8acc8ecab64c517af418aae567bc63d6913034d12ad1cfcf3d6558a_medium.smt2
@@ -4300,11 +4296,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .096872467
+SOLVING_TIME: .021018603
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: ca0aa8c6d4ba7879271f910553551a9d31e0e61fe4bddf83025a85a2_medium.smt2
@@ -4316,11 +4312,11 @@ TIMEOUT: 60s
 BATCH: 44
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .062931769
+SOLVING_TIME: .019012937
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: cafce6050dabbb956aded879c7a995756f4b1542b6ee7d1d04e118d2_medium.smt2
@@ -4332,11 +4328,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .625737739
+SOLVING_TIME: .077742198
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: d18744c85ba86d69b147630b131d5efba0ad905fd92c50cbc4830c3a_medium.smt2
@@ -4348,12 +4344,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 2/6
 -----------------------------------------------------------
-[31m[2025-07-15 19:03:34] Result: ERROR (30015ms)[0m
-unknown
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: 30.0372735716
+SOLVING_TIME: .047896692
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: e240506803f8ad8d3bd802371317f10815fd940717184312be58f172_medium.smt2
@@ -4365,11 +4360,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .068260414
+SOLVING_TIME: .080545014
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c_medium.smt2
@@ -4381,11 +4376,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .056856288
+SOLVING_TIME: .115086961
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: instance47890_medium.smt2
@@ -4397,11 +4392,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .055979567
+SOLVING_TIME: .032757434
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: instance51264_medium.smt2
@@ -4413,11 +4408,11 @@ TIMEOUT: 60s
 BATCH: 45
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .053246455
+SOLVING_TIME: .018340333
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: norn-benchmark-172_medium.smt2
@@ -4429,11 +4424,11 @@ TIMEOUT: 60s
 BATCH: 46
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .175367239
+SOLVING_TIME: .080225538
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-002-unsat-graft-graft-translate_medium.smt2
@@ -4447,7 +4442,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053121070
+SOLVING_TIME: .107426682
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4461,11 +4456,11 @@ TIMEOUT: 60s
 BATCH: 46
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .055897921
+SOLVING_TIME: .021074719
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-007-unsat-reverse-translate-multiply_medium.smt2
@@ -4477,11 +4472,11 @@ TIMEOUT: 60s
 BATCH: 46
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .060880009
+SOLVING_TIME: .057295306
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-009-reverse-multiply-translate_medium.smt2
@@ -4493,11 +4488,11 @@ TIMEOUT: 60s
 BATCH: 46
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .080333840
+SOLVING_TIME: .333607106
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-012-unsat-fuzz-fuzz-fuzz_medium.smt2
@@ -4509,11 +4504,11 @@ TIMEOUT: 60s
 BATCH: 46
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .060986433
+SOLVING_TIME: .021765400
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-013-fuzz-fuzz-fuzz_medium.smt2
@@ -4527,7 +4522,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .174394758
+SOLVING_TIME: .122878000
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4543,7 +4538,7 @@ INDEX: 2/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057673512
+SOLVING_TIME: .117925950
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4557,11 +4552,11 @@ TIMEOUT: 60s
 BATCH: 47
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: "(" missing in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .056024170
+SOLVING_TIME: .056290561
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-015-multiply-fuzz_medium.smt2
@@ -4573,11 +4568,11 @@ TIMEOUT: 60s
 BATCH: 47
 INDEX: 4/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .055366246
+SOLVING_TIME: .018930861
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-015-translate-fuzz-rotate_medium.smt2
@@ -4589,11 +4584,11 @@ TIMEOUT: 60s
 BATCH: 47
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .072557957
+SOLVING_TIME: .018334150
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-016-translate-translate-reverse_medium.smt2
@@ -4605,11 +4600,11 @@ TIMEOUT: 60s
 BATCH: 47
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .052933403
+SOLVING_TIME: .032349537
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-020-translate-translate-multiply_medium.smt2
@@ -4621,11 +4616,11 @@ TIMEOUT: 60s
 BATCH: 48
 INDEX: 1/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .174434861
+SOLVING_TIME: .090710624
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-022-unsat-fuzz-fuzz-rotate_medium.smt2
@@ -4637,11 +4632,11 @@ TIMEOUT: 60s
 BATCH: 48
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .054880874
+SOLVING_TIME: .037751804
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-025-multiply-translate-rotate_medium.smt2
@@ -4653,11 +4648,11 @@ TIMEOUT: 60s
 BATCH: 48
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Cannot open file "/tmp/strprocessor_split_temp.smt2".
 -----------------------------------------------------------
-SOLVING_TIME: .051894147
+SOLVING_TIME: .040645508
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-027-fuzz_medium.smt2
@@ -4671,7 +4666,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .065020757
+SOLVING_TIME: .103634911
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4685,11 +4680,11 @@ TIMEOUT: 60s
 BATCH: 48
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_rest" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .069690475
+SOLVING_TIME: .022956344
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-045-unsat-multiply-reverse-multiply_medium.smt2
@@ -4703,7 +4698,7 @@ INDEX: 6/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061175785
+SOLVING_TIME: .060979212
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4719,7 +4714,7 @@ INDEX: 1/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .173683792
+SOLVING_TIME: .137009092
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4733,11 +4728,11 @@ TIMEOUT: 60s
 BATCH: 49
 INDEX: 2/6
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .058487370
+SOLVING_TIME: 1.452059189
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: regex-pair-00011-12_medium.smt2
@@ -4749,11 +4744,11 @@ TIMEOUT: 60s
 BATCH: 49
 INDEX: 3/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in equality" in line 4.
 -----------------------------------------------------------
-SOLVING_TIME: .061244016
+SOLVING_TIME: .020516410
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: regex-small-00053-10_medium.smt2
@@ -4767,7 +4762,7 @@ INDEX: 4/6
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .068169394
+SOLVING_TIME: .057679605
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -4781,11 +4776,11 @@ TIMEOUT: 60s
 BATCH: 49
 INDEX: 5/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .069904229
+SOLVING_TIME: .020133319
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: z3-regex-2-negative-reverse-rotate-graft_medium.smt2
@@ -4797,9 +4792,9 @@ TIMEOUT: 60s
 BATCH: 49
 INDEX: 6/6
 -----------------------------------------------------------
-unsat
+error: Kind mismatch of command "Type mismatch in str_split_at" in line 2.
 -----------------------------------------------------------
-SOLVING_TIME: .062526374
+SOLVING_TIME: .022162288
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNCLEAR
 
