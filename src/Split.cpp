@@ -1145,14 +1145,13 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
 }
 
 void splitSolver::rewriteFormula(Context& ctx) {
-    resetSolver();
-    ctx.updateDivisions();
-
     INFO("Converting zero-parameter functions to variables");
     convertZeroParamDefineFuns(ctx);
     DEBUG("=== Final SMT-LIB after converting zero-parameter functions to variables ===");
     LOG5("\n", ctx.getSMTLIB2(true));
     DEBUG("=== End of SMT-LIB after converting zero-parameter functions to variables ===");
+    resetSolver();
+    ctx.updateDivisions();
 
     addAuxiliaryNodes(ctx);
     addAuxiliaryLemmas(ctx);
@@ -1179,7 +1178,8 @@ void splitSolver::rewriteFormula(Context& ctx) {
     DEBUG("=== End of SMT-LIB ===");
 }
 
-SatResult splitSolver::checkSat() {
+// In Split.cpp, modify the checkSat function to accept an optional formula parameter:
+SatResult splitSolver::checkSat(const std::string& formula) {
     if (!solver) {
         ERROR("Solver not initialized");
         return SatResult::ERROR;
@@ -1188,9 +1188,10 @@ SatResult splitSolver::checkSat() {
     DEBUG("Checking satisfiability...");
     auto start = std::chrono::high_resolution_clock::now();
     
-    std::string formula = context.getSMTLIB2(true);
-    DEBUG("Sending formula to solver: ", formula.substr(0, 200), "...");
-    SatResult result = solver->checkSat(formula);
+    // Use provided formula or get from context
+    std::string smtFormula = formula.empty() ? context.getSMTLIB2(true) : formula;
+    DEBUG("Sending formula to solver: ", smtFormula.substr(0, 200), "...");
+    SatResult result = solver->checkSat(smtFormula);
     
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
@@ -1213,131 +1214,54 @@ SatResult splitSolver::checkSat() {
     return result;
 }
 
-SatResult splitSolver::tryDirectSolve(const std::string& originalFilePath) {
-    INFO("Attempting to solve original formula directly");
+// Add a member variable to store the formula being solved
+// In Split.h private section, add:
+// std::string currentFormula;
+
+// Modify the solve function:
+SatResult splitSolver::solve() {
+    INFO("Starting split solver");
     
-    // If we have the original file path, use it directly with external solvers
-    if (!originalFilePath.empty() && (currentSolverType == SolverType::EXTERNAL_Z3 ||
-                                      currentSolverType == SolverType::EXTERNAL_CVC5 ||
-                                      currentSolverType == SolverType::EXTERNAL_OSTRICH ||
-                                      currentSolverType == SolverType::EXTERNAL_Z3_NOODLER)) {
-        INFO("Using original file directly with external solver: ", originalFilePath);
-        
-        // Read the original file content
-        std::ifstream file(originalFilePath);
-        if (!file.is_open()) {
-            ERROR("Failed to open original file: ", originalFilePath);
-            return SatResult::ERROR;
-        }
-        
-        std::string originalContent((std::istreambuf_iterator<char>(file)),
-                                   std::istreambuf_iterator<char>());
-        file.close();
-        
-        if (!solver) {
-            ERROR("Solver not initialized");
-            return SatResult::ERROR;
-        }
-        
-        DEBUG("Sending original file content directly to solver");
-        SatResult directResult = solver->checkSat(originalContent);
-        
-        // If direct solving succeeded (SAT, UNSAT, or UNKNOWN), handle output and return
-        if (directResult != SatResult::ERROR) {
-            INFO("Direct solving succeeded with result: ", 
-                 directResult == SatResult::SAT ? "SAT" : 
-                 directResult == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
-            
-            // Handle output for direct solving
-            if (context.hasTask(strp::TaskType::CHECK_SAT)) {
-                if (directResult == SatResult::SAT) {
-                    std::cout << "sat" << std::endl;
-                } else if (directResult == SatResult::UNSAT) {
-                    std::cout << "unsat" << std::endl;
-                } else {
-                    std::cout << "unknown" << std::endl;
-                }
-            }
-            if (directResult == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
-                std::string rawModel = getModel();
-                if (!rawModel.empty()) {
-                    std::string filteredModel = filterModel(rawModel);
-                    if (!filteredModel.empty()) {
-                        std::cout << filteredModel << std::endl;
-                    } else {
-                        DEBUG("No original variables found in model");
-                    }
-                } else {
-                    DEBUG("No model available from solver");
-                }
-            }
-            return directResult;
-        }
-        
-        // WARN("Direct solving with original file failed, trying parsed content");
+    // Check if constraint separation was used
+    bool usedSeparation = context.wasConstraintSeparationUsed();
+    
+    if (usedSeparation) {
+        INFO("Constraint separation was used - will merge after rewriting");
     }
     
-    // Fallback to using parsed content (original behavior)
-    SatResult directResult = checkSat();
-    
-    // If direct solving succeeded (SAT, UNSAT, or UNKNOWN), handle output and return
-    if (directResult != SatResult::ERROR) {
-        INFO("Direct solving succeeded with result: ", 
-             directResult == SatResult::SAT ? "SAT" : 
-             directResult == SatResult::UNSAT ? "UNSAT" : "UNKNOWN");
-        
-        // Handle output for direct solving
-        if (context.hasTask(strp::TaskType::CHECK_SAT)) {
-            if (directResult == SatResult::SAT) {
-                std::cout << "sat" << std::endl;
-            } else if (directResult == SatResult::UNSAT) {
-                std::cout << "unsat" << std::endl;
-            } else {
-                std::cout << "unknown" << std::endl;
-            }
-        }
-        if (directResult == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
-            std::string rawModel = getModel();
-            if (!rawModel.empty()) {
-                std::string filteredModel = filterModel(rawModel);
-                if (!filteredModel.empty()) {
-                    std::cout << filteredModel << std::endl;
-                } else {
-                    DEBUG("No original variables found in model");
-                }
-            } else {
-                DEBUG("No model available from solver");
-            }
-        }
-        return directResult;
-    }
-    
-    // If direct solving failed with ERROR, indicate that rewriting is needed
-    WARN("Direct solving failed with ERROR, formula rewriting required");
-    return SatResult::ERROR;
-}
-
-SatResult splitSolver::solve(const std::string& originalFilePath) {
-    INFO("Starting solving process");
-
-    // Try direct solving first
-    // SatResult directResult = tryDirectSolve(originalFilePath);
-    // if (directResult != SatResult::ERROR) {
-    //     return directResult;
-    // }
-    
-    // If direct solving failed, proceed with formula rewriting
+    // Rewrite the formula (this only affects split constraints if separation was used)
     INFO("Rewriting formula");
     rewriteFormula(context);
     
-    INFO("Checking satisfiability with rewritten formula");
-    SatResult result = checkSat();
+    std::string finalFormula;
     
-    INFO("Final result after rewriting: ", 
+    // If constraint separation was used, merge the rewritten constraints
+    if (usedSeparation) {
+        INFO("Merging rewritten split constraints with original formula");
+        
+        // Get the merged formula
+        finalFormula = context.mergeRewrittenConstraints();
+        currentFormula = finalFormula; // Store for potential model/unsat core retrieval
+        
+        DEBUG("Merged formula length: ", finalFormula.length(), " characters");
+        LOG5("Merged formula:\n", finalFormula);
+        
+        INFO("Using merged formula for solving");
+    } else {
+        // If no separation was used, get the rewritten formula from context
+        finalFormula = context.getSMTLIB2(true);
+        currentFormula = finalFormula;
+    }
+    
+    // Now solve the final formula directly
+    SatResult result = checkSat(finalFormula);
+    
+    INFO("Final result: ", 
          result == SatResult::SAT ? "SAT" : 
          result == SatResult::UNSAT ? "UNSAT" : 
          result == SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
 
+    // Handle output based on tasks
     if (context.hasTask(strp::TaskType::CHECK_SAT)) {
         if (result == SatResult::SAT) {
             std::cout << "sat" << std::endl;
@@ -1347,6 +1271,7 @@ SatResult splitSolver::solve(const std::string& originalFilePath) {
             std::cout << "unknown" << std::endl;
         }
     }
+    
     if (result == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
         std::string rawModel = getModel();
         if (!rawModel.empty()) {
@@ -1360,7 +1285,13 @@ SatResult splitSolver::solve(const std::string& originalFilePath) {
             DEBUG("No model available from solver");
         }
     }
+    
     return result;
 }
 
-} 
+// Also need to keep the original checkSat() for backward compatibility
+SatResult splitSolver::checkSat() {
+    return checkSat("");
+}
+
+}

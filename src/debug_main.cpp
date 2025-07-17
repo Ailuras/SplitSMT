@@ -206,13 +206,15 @@ int main(int argc, char* argv[]) {
         return 0;
     }
     
-    std::string testFile = "benchmarks/awesome_ext_z3-noodler/error/1491.smt2";
-    std::cout << "Testing problematic SMT2 file: " << testFile << std::endl;
+    std::string testFile = "benchmarks/awesome/37.smt2";
+    std::cout << "Testing split constraint separation on: " << testFile << std::endl;
     
     Context& ctx = Context::getInstance();
     ctx.clear();
     
     try {
+        std::cout << "\n=== Testing Integrated Split Constraint Processing ===" << std::endl;
+        
         bool parseResult = ctx.parseFile(testFile);
         if (!parseResult) {
             std::cerr << "Failed to parse file!" << std::endl;
@@ -224,9 +226,14 @@ int main(int argc, char* argv[]) {
         std::cout << "Found " << ctx.getAtomCount() << " atoms" << std::endl;
         std::cout << "Found " << ctx.getClauseCount() << " clauses" << std::endl;
         
-        std::string smtlib = ctx.getSMTLIB2(true);
-        std::cout << "Generated SMT-LIB2:" << std::endl;
-        std::cout << smtlib.substr(0, 1000) << "..." << std::endl;
+        std::string finalSMT = ctx.getSMTLIB2(true);
+        std::cout << "\nFinal processed SMT-LIB2:" << std::endl;
+        std::cout << "=====================================" << std::endl;
+        std::cout << finalSMT.substr(0, 1000);
+        if (finalSMT.length() > 1000) {
+            std::cout << "\n... (truncated, total length: " << finalSMT.length() << " chars)";
+        }
+        std::cout << std::endl;
         
     } catch (const std::exception& e) {
         std::cerr << "Exception caught: " << e.what() << std::endl;

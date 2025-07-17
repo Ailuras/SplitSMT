@@ -120,6 +120,43 @@ public:
     static SMTParser::NodePtr createIntVar(const std::string& name);
     static SMTParser::NodePtr createBoolVar(const std::string& name);
 
+    struct SMTSeparationResult {
+        std::string splitConstraints;
+        std::string otherConstraints;
+        std::vector<std::string> splitRelatedFunctions;
+        std::vector<std::string> splitRelatedVariables;
+        std::unordered_map<std::string, std::string> variableDeclarations;
+        std::unordered_map<std::string, std::string> tempVariableDeclarations;
+    };
+    
+    SMTSeparationResult separateSplitConstraints(const std::string& filename);
+    std::string mergeSMTConstraints(const std::string& rewrittenSplitPart, const std::string& otherPart);
+    bool isSplitRelatedLine(const std::string& line);
+    std::vector<std::string> extractSplitFunctionNames(const std::string& smtContent);
+    
+private:
+    bool parseStandard(const std::string& filename);
+    bool parseWithConstraintSeparation(const SMTSeparationResult& separationResult, const std::string& filename);
+    std::string removeTemporaryVariables(const std::string& smtContent, const std::unordered_map<std::string, std::string>& tempVars);
+    std::string mergeAtOriginalPosition(const std::string& rewrittenSplitPart, const std::string& otherPart);
+    SMTSeparationResult lastSeparationResult;
+    bool usedConstraintSeparation = false;
+
+public:
+    std::unordered_map<std::string, std::string> extractVariablesFromSplitConstraints(const std::string& splitConstraints);
+    std::unordered_map<std::string, std::string> extractTempVariables(const std::string& splitConstraints);
+    std::string inferVariableType(const std::string& variableName, const std::string& context);
+    bool isTempVariable(const std::string& variableName, const std::string& context);
+    std::vector<std::string> extractVariableNames(const std::string& line);
+    std::string generateVariableDeclarations(const std::unordered_map<std::string, std::string>& varDeclarations);
+    
+    std::string mergeRewrittenConstraints();
+    bool wasConstraintSeparationUsed() const;
+    const SMTSeparationResult& getLastSeparationResult() const;
+    void clearConstraintSeparationFlag() { usedConstraintSeparation = false; }
+    void processSplitConstraints(const SMTSeparationResult& separationResult);
+    std::string rewriteAndMergeConstraints(const SMTSeparationResult& separationResult);
+
 private:
     Context();
     ~Context() = default;
@@ -143,6 +180,10 @@ private:
     
     utils::Logger& logger = utils::Logger::getInstance();
     SMTParser::Parser SMTParser;
+    std::vector<std::string> orderDeclarationsByDependency(
+        const std::vector<std::string>& declarations,
+        const std::unordered_set<std::string>& availableVars);
+    std::string cleanNonAsciiCharacters(const std::string& input);
 };
 
 } // namespace strp

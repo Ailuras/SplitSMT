@@ -27,9 +27,9 @@ public:
     ~splitSolver() = default;
 
     void setSolver(SolverType type);
-    SatResult solve(const std::string& originalFilePath = "");
+    SatResult solve();
     SatResult checkSat();
-    SatResult tryDirectSolve(const std::string& originalFilePath = "");
+    SatResult checkSat(const std::string& formula);
     void resetSolver();
     std::string getModel();
     std::string getUnsatCore();
@@ -43,7 +43,6 @@ public:
     void replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes);
     void replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes);
     void convertZeroParamDefineFuns(Context& ctx);
-    void replaceSplitRelatedConstants(Context& ctx);
 
     void addAuxiliaryNodes(Context& ctx);
     void addAuxiliaryVariables(Context& ctx, const Division* division);
@@ -58,18 +57,19 @@ private:
     std::unique_ptr<SolverInterface> solver;
     SolverType currentSolverType;
     Context& context;
-    
+
+    std::string currentFormula;
     std::vector<SMTParser::NodePtr> splitAtTerms;
 
     void initializeSolver();
     void updateFunctionDependencies(std::vector<FunctionDependency>& functions);
     std::vector<std::string> topologicalSort(const std::vector<FunctionDependency>& functions);
     void findAndReplaceFuncDefNodes(SMTParser::NodePtr node, 
-                                   std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacements,
-                                   Context& ctx,
-                                   const std::unordered_map<std::string, std::string>& functionToVariable);
-
-    std::string nodeToString(const SMTParser::NodePtr& node);
-};
-
+        std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& replacements,
+        Context& ctx,
+        const std::unordered_map<std::string, std::string>& functionToVariable);
+        
+        std::string nodeToString(const SMTParser::NodePtr& node);
+    };
+    std::string cleanNonAsciiCharacters(const std::string& input);
 } 
