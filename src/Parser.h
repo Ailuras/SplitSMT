@@ -14,57 +14,53 @@ namespace strp {
 class Parser {
 public:
     static Parser& getInstance();
-    bool parseFile(const std::string& filename);
-    bool parseString(const std::string& input);
+    bool parseFile(const std::string& filename, Decomposition& decomposition);
     
     void declareStringVar(const std::string& name);
     void declareBoolVar(const std::string& name);
     void declareIntVar(const std::string& name);
-    static SMTParser::NodePtr createNode(const std::string& node_str);
-    static SMTParser::NodePtr createStringConst(const std::string& value);
-    static SMTParser::NodePtr createIntConst(int value);
-    static SMTParser::NodePtr createBoolConst(bool value);
-    static SMTParser::NodePtr createStringVar(const std::string& name);
-    static SMTParser::NodePtr createIntVar(const std::string& name);
-    static SMTParser::NodePtr createBoolVar(const std::string& name);
+    SMTParser::NodePtr createNode(const std::string& node_str);
+    SMTParser::NodePtr createStringConst(const std::string& value);
+    SMTParser::NodePtr createIntConst(int value);
+    SMTParser::NodePtr createBoolConst(bool value);
+    SMTParser::NodePtr createStringVar(const std::string& name);
+    SMTParser::NodePtr createIntVar(const std::string& name);
+    SMTParser::NodePtr createBoolVar(const std::string& name);
     static bool containsNode(const SMTParser::NodePtr& parent, const SMTParser::NodePtr& target);
-    static SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
+    SMTParser::NodePtr replaceNodes(const SMTParser::NodePtr& expr, const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
     void replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap);
     void addAssertion(const std::string& constraint);
 
     std::vector<SMTParser::NodePtr> getVariables();
     std::vector<SMTParser::NodePtr> getAssertions();
-    static std::vector<SMTParser::NodePtr> getAtoms(const SMTParser::NodePtr& node);
-    std::string getSMTLIB2(bool from_parser = true) const;
+    std::vector<SMTParser::NodePtr> getAtoms(const SMTParser::NodePtr& node);
+    std::string getSMTLIB2(bool from_parser = true);
     static TaskType parseTaskCommand(const std::string& command);
     std::set<TaskType> getTask(const std::string& filename) const;
-    static std::string getSource(const SMTParser::NodePtr& node);
-    static std::string getComment(const SMTParser::NodePtr& node);
-    std::string nodeToString(const SMTParser::NodePtr& node) const;
+    std::string getString(const SMTParser::NodePtr& node);
 
-    void removeFunDef(const std::vector<std::string>& funcNames);
-    std::vector<std::string> getSplitRelatedFunctionNames() const;
-    std::vector<SMTParser::NodePtr> getFunctions() const;
-    
-    std::string mergeSMTConstraints(const std::string& rewrittenSplitPart, const std::string& otherPart);
-    SMTSeparationResult separateSplitConstraints(const std::string& filename);
-    bool isSplitRelatedLine(const std::string& line);
-    std::vector<std::string> extractSplitFunctionNames(const std::string& smtContent);
-    
-    std::unordered_map<std::string, std::string> extractVariablesFromSplitConstraints(const std::string& splitConstraints);
-    std::string inferVariableType(const std::string& variableName, const std::string& context);
-    bool isTempVariable(const std::string& variableName);
-    std::vector<std::string> extractVariableNames(const std::string& line);
-    std::string generateVariableDeclarations(const std::unordered_map<std::string, std::string>& varDeclarations);
-    
-    SMTParser::NodePtr getVariable(const std::string& name) const;
-    bool isVariableDeclared(const std::string& varName) const;
-    std::set<std::string> getUsedVariables() const;
+    // for decomposition
+    bool need_decomposition(const std::string& filename);
+    Decomposition getDecomposition(const std::string& filename);
+    std::string getSplitSMTLIB2(const Decomposition& decomposition);
+    std::vector<std::pair<std::string, std::string>> getAllVariables(Decomposition& decomposition);
+
+    // for merging
+    std::string getMergedSMTLIB2(const Decomposition& decomposition);
+    bool needDelete(const std::string& constraint, const Decomposition& decomposition);
     
     SMTParser::Parser SMTParser;
-    std::vector<std::string> funcDefNames;
-
 private:
+
+    std::pair<std::vector<std::string>, std::vector<std::string>> extractConstraints(const std::string& content, std::vector<std::string>& splitFunctionNames);
+    std::vector<std::pair<std::string, std::string>> extractVariablesFromConstraints(const std::vector<std::string>& constraints);
+    std::string extractFunctionName(const std::string& functionDef);
+    std::vector<std::string> extractVariablesAppeared(const std::vector<std::string>& constraints, const std::set<std::string>& allVars);
+    std::vector<std::string> extractAllConstraints(const std::string& content);
+    bool isSplitRelated(const std::string& constraint, const std::vector<std::string>& splitFunctionNames = {});
+    std::string convertDefineToAssert(const std::string& content);
+    bool needConvert(const std::string& constraint, const std::vector<std::pair<std::string, std::string>>& variablesHasDefined);
+    
     Parser();
     ~Parser() = default;
     Parser(const Parser&) = delete;

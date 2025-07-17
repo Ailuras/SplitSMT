@@ -69,6 +69,7 @@
 (define-const var3952 String var1556-EOL) ; Statement: $r3 = <org.springframework.core.SortedProperties: java.lang.String EOL> 
 ; split operation: var3654 = var1735.split(var3952) ; Statement: $r9 = virtualinvoke $r8.<java.lang.String: java.lang.String[] split(java.lang.String)>($r3) 
 (define-const var811 Int (get_split_length var1735 var3952 -1)) ; Statement: $i0 = lengthof $r9 
+; (assert (= var811 (get_split_length var1735 var3952 -1)))
 (define-const var2546 Int 0) ; Statement: i1 = 0 
 (assert true) ; Non Conditional
  ; Statement: if i1 >= $i0 goto return 

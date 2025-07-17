@@ -5,6 +5,7 @@
 #include "Logger.h"
 #include "Context.h"
 #include "Split.h"
+// #include "Solver.h"
 
 struct Args {
     std::string inputFile;
@@ -151,8 +152,8 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
-            // strp::splitSolver solver(args.solverType);
-            // solver.solve();
+            strp::splitSolver solver(args.solverType);
+            solver.solve();
         } else {
             return 1;
         }

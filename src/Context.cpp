@@ -17,44 +17,18 @@ Context& Context::getInstance() {
     return instance;
 }
 
-Context::Context() : logger(utils::Logger::getInstance()) {
-}
+Context::Context() : logger(utils::Logger::getInstance()) {}
 
 bool Context::parseFile(const std::string& filename) {
-    DEBUG("Parsing file: ", filename);
     clear();
     
-    if (!parser.parseFile(filename)) {
+    if (!parser.parseFile(filename, decomposition)) {
         ERROR("Failed to parse file: ", filename);
         return false;
     }
-    
-    updateInfo();
     updateTasks(filename);
     updateDivisions();
-    updateSplitNodeToAtoms();
-    DEBUG("Found ", tasks.size(), " tasks");
     return true;
-}
-
-bool Context::parseString(const std::string& input) {
-    DEBUG("Parsing string input");
-    clear();
-    
-    if (!parser.parseString(input)) {
-        ERROR("Failed to parse string input");
-        return false;
-    }
-    
-    updateInfo();
-    DEBUG("Found ", tasks.size(), " tasks");
-    return true;
-}
-
-void Context::updateInfo() {
-    std::vector<SMTParser::NodePtr> variables = parser.getVariables();
-    std::vector<SMTParser::NodePtr> assertions = parser.getAssertions();
-    DEBUG("Found ", variables.size(), " variables and ", assertions.size(), " assertions");
 }
 
 void Context::updateTasks(const std::string& filename) {
@@ -125,12 +99,12 @@ std::vector<SMTParser::NodePtr> Context::getSplitAtVarNodes() {
     return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
 }
 
-std::vector<SMTParser::NodePtr> Context::getSplitEndNodes() {
+std::vector<SMTParser::NodePtr> Context::getSplitRestNodes() {
     std::unordered_set<SMTParser::NodePtr> splitEndNodes;
     
     auto assertions = parser.getAssertions();
     for (const auto& assertion : assertions) {
-        auto splitEndNodesInAssertion = getSplitEndNodes(assertion);
+        auto splitEndNodesInAssertion = getSplitRestNodes(assertion);
         for (const auto& node : splitEndNodesInAssertion) {
             splitEndNodes.insert(node);
         }
@@ -139,7 +113,7 @@ std::vector<SMTParser::NodePtr> Context::getSplitEndNodes() {
     return std::vector<SMTParser::NodePtr>(splitEndNodes.begin(), splitEndNodes.end());
 }
 
-std::vector<SMTParser::NodePtr> Context::getSplitEndNodes(const SMTParser::NodePtr& node) {
+std::vector<SMTParser::NodePtr> Context::getSplitRestNodes(const SMTParser::NodePtr& node) {
     std::unordered_set<SMTParser::NodePtr> splitEndNodes;
     
     std::function<void(const SMTParser::NodePtr&)> collectSplitEndNodes = [&](const SMTParser::NodePtr& node) {
@@ -160,7 +134,7 @@ std::vector<SMTParser::NodePtr> Context::getSplitEndNodes(const SMTParser::NodeP
 std::vector<SMTParser::NodePtr> Context::getSplitEndConstNodes() {
     std::unordered_set<SMTParser::NodePtr> result;
     
-    auto splitEndNodes = getSplitEndNodes();
+    auto splitEndNodes = getSplitRestNodes();
     for (const auto& node : splitEndNodes) {
         if (node->getChildrenSize() >= 1) {
             auto arg1 = node->getChild(0);
@@ -176,7 +150,7 @@ std::vector<SMTParser::NodePtr> Context::getSplitEndConstNodes() {
 std::vector<SMTParser::NodePtr> Context::getSplitEndVarNodes() {
     std::unordered_set<SMTParser::NodePtr> result;
     
-    auto splitEndNodes = getSplitEndNodes();
+    auto splitEndNodes = getSplitRestNodes();
     for (const auto& node : splitEndNodes) {
         if (node->getChildrenSize() >= 1) {
             auto arg1 = node->getChild(0);
@@ -265,18 +239,18 @@ void Context::clearTasks() {
     tasks.clear();
 }
 
-void Context::clear() {
-    clearDivisions();
-    clearSplitNodeToAtoms();
-    clearTasks();
-}
-
 void Context::clearDivisions() {
     divisions.clear();
 }
 
 void Context::clearSplitNodeToAtoms() {
     splitNodeToAtoms.clear();
+}
+
+void Context::clear() {
+    clearTasks();
+    clearDivisions();
+    clearSplitNodeToAtoms();
 }
 
 void Context::addDivision(std::unique_ptr<Division> division) {
@@ -300,65 +274,6 @@ bool Context::hasDivision(const std::string& divided, const std::string& delimit
 
 const std::unordered_map<std::string, std::unique_ptr<Division>>& Context::getAllDivisions() const {
     return divisions;
-}
-
-void Context::updateSplitNodeToAtoms() {
-    clearSplitNodeToAtoms();
-    
-    auto assertions = parser.getAssertions();
-    std::unordered_set<SMTParser::NodePtr> allAtoms;
-    auto allSplitNodes = getSplitAtNodes();
-    auto allSplitEndNodes = getSplitEndNodes();
-    auto allNumSplitNodes = getNumSplitNodes();
-    
-    for (auto& assertion : assertions) {
-        auto atomsInAssertion = Parser::getAtoms(assertion);
-        allAtoms.insert(atomsInAssertion.begin(), atomsInAssertion.end());
-    }
-    
-    for (auto& splitNode : allSplitNodes) {
-        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
-        
-        for (auto& atom : allAtoms) {
-            if (Parser::containsNode(atom, splitNode)) {
-                relatedAtoms.insert(atom);
-            }
-        }
-        
-        if (!relatedAtoms.empty()) {
-            splitNodeToAtoms[splitNode] = relatedAtoms;
-        }
-    }
-    
-    for (auto& splitEndNode : allSplitEndNodes) {
-        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
-        
-        for (auto& atom : allAtoms) {
-            if (Parser::containsNode(atom, splitEndNode)) {
-                relatedAtoms.insert(atom);
-            }
-        }
-        
-        if (!relatedAtoms.empty()) {
-            splitNodeToAtoms[splitEndNode] = relatedAtoms;
-        }
-    }
-    
-    for (auto& numSplitNode : allNumSplitNodes) {
-        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
-        
-        for (auto& atom : allAtoms) {
-            if (Parser::containsNode(atom, numSplitNode)) {
-                relatedAtoms.insert(atom);
-            }
-        }
-        
-        if (!relatedAtoms.empty()) {
-            splitNodeToAtoms[numSplitNode] = relatedAtoms;
-        }
-    }
-    
-    DEBUG("Updated split node to atoms mapping with ", splitNodeToAtoms.size(), " entries");
 }
 
 void Context::updateDivisions() {
@@ -498,6 +413,65 @@ void Context::updateDivisions() {
     updateSplitNodeToAtoms();
 }
 
+void Context::updateSplitNodeToAtoms() {
+    clearSplitNodeToAtoms();
+    
+    auto assertions = parser.getAssertions();
+    std::unordered_set<SMTParser::NodePtr> allAtoms;
+    auto allSplitNodes = getSplitAtNodes();
+    auto allSplitEndNodes = getSplitRestNodes();
+    auto allNumSplitNodes = getNumSplitNodes();
+    
+    for (auto& assertion : assertions) {
+        auto atomsInAssertion = parser.getAtoms(assertion);
+        allAtoms.insert(atomsInAssertion.begin(), atomsInAssertion.end());
+    }
+    
+    for (auto& splitNode : allSplitNodes) {
+        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
+        
+        for (auto& atom : allAtoms) {
+            if (Parser::containsNode(atom, splitNode)) {
+                relatedAtoms.insert(atom);
+            }
+        }
+        
+        if (!relatedAtoms.empty()) {
+            splitNodeToAtoms[splitNode] = relatedAtoms;
+        }
+    }
+    
+    for (auto& splitEndNode : allSplitEndNodes) {
+        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
+        
+        for (auto& atom : allAtoms) {
+            if (Parser::containsNode(atom, splitEndNode)) {
+                relatedAtoms.insert(atom);
+            }
+        }
+        
+        if (!relatedAtoms.empty()) {
+            splitNodeToAtoms[splitEndNode] = relatedAtoms;
+        }
+    }
+    
+    for (auto& numSplitNode : allNumSplitNodes) {
+        std::unordered_set<SMTParser::NodePtr> relatedAtoms;
+        
+        for (auto& atom : allAtoms) {
+            if (Parser::containsNode(atom, numSplitNode)) {
+                relatedAtoms.insert(atom);
+            }
+        }
+        
+        if (!relatedAtoms.empty()) {
+            splitNodeToAtoms[numSplitNode] = relatedAtoms;
+        }
+    }
+    
+    DEBUG("Updated split node to atoms mapping with ", splitNodeToAtoms.size(), " entries");
+}
+
 std::unordered_set<SMTParser::NodePtr> Context::getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const {
     auto it = splitNodeToAtoms.find(splitNode);
     if (it != splitNodeToAtoms.end()) {
@@ -506,66 +480,9 @@ std::unordered_set<SMTParser::NodePtr> Context::getAtomsForSplitNode(const SMTPa
     return std::unordered_set<SMTParser::NodePtr>();
 }
 
-std::string Context::mergeRewrittenConstraints() {
-    if (!usedConstraintSeparation) {
-        return parser.getSMTLIB2(true);
-    }
-    
-    std::string rewrittenSplit = parser.getSMTLIB2(true);
-    
-    DEBUG("Temporary variables to remove:");
-    for (const auto& var : lastSeparationResult.variableDeclarations) {
-        DEBUG("  - ", var.first, " (", var.second, ")");
-    }
-    
-    return parser.mergeSMTConstraints(rewrittenSplit, lastSeparationResult.otherConstraints);
-}
-
-bool Context::wasConstraintSeparationUsed() const {
-    return usedConstraintSeparation;
-}
-
-const SMTSeparationResult& Context::getLastSeparationResult() const {
-    return lastSeparationResult;
-}
-
-void Context::processSplitConstraints(const SMTSeparationResult& separationResult) {
-    if (separationResult.splitConstraints.empty()) {
-        DEBUG("No split constraints to process");
-        return;
-    }
-    
-    DEBUG("Processing split constraints with ", separationResult.splitRelatedFunctions.size(), " functions");
-    
-    for (const auto& funcName : separationResult.splitRelatedFunctions) {
-        DEBUG("Found split-related function: ", funcName);
-    }
-}
-
-std::string Context::rewriteAndMergeConstraints(const SMTSeparationResult& separationResult) {
-    if (separationResult.splitConstraints.empty()) {
-        return separationResult.otherConstraints;
-    }
-    
-    Context splitContext;
-    bool parseSuccess = splitContext.parseString(separationResult.splitConstraints);
-    if (!parseSuccess) {
-        ERROR("Failed to parse split constraints for rewriting");
-        return separationResult.otherConstraints;
-    }
-    
-    DEBUG("Successfully parsed split constraints for rewriting");
-    
-    splitSolver solver(SolverType::Z3);
-    solver.rewriteFormula(splitContext);
-    
-    std::string rewrittenSplit = splitContext.getParser().getSMTLIB2(true);
-    DEBUG("Rewritten split constraints length: ", rewrittenSplit.length(), " chars");
-    
-    std::string finalSMT = parser.mergeSMTConstraints(rewrittenSplit, separationResult.otherConstraints);
-    DEBUG("Final merged SMT length: ", finalSMT.length(), " chars");
-    
-    return finalSMT;
+std::string Context::getFormula() {
+    DEBUG("Getting formula");
+    return parser.getMergedSMTLIB2(decomposition);
 }
 
 } // namespace strp

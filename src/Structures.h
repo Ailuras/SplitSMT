@@ -11,12 +11,14 @@
 
 namespace strp {
 
-struct SMTSeparationResult {
-    std::string splitConstraints;
-    std::string otherConstraints;
-    std::vector<std::string> splitRelatedFunctions;
-    std::vector<std::string> splitRelatedVariables;
-    std::unordered_map<std::string, std::string> variableDeclarations;
+struct Decomposition {
+    std::vector<std::string> splitConstraints;
+    std::vector<std::string> otherConstraints;
+    std::vector<std::string> splitRelatedFunctionNames;
+    std::vector<std::pair<std::string, std::string>> variables;
+    std::vector<std::pair<std::string, std::string>> variablesNeedDeclare;
+    std::vector<std::pair<std::string, std::string>> variablesHasDefined;
+    std::string splitSMTLIB2;
 };
 
 enum class TaskType {

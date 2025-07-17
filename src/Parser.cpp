@@ -6,6 +6,7 @@
 #include <regex>
 #include <algorithm>
 #include <filesystem>
+#include <queue>
 
 namespace strp {
 
@@ -14,28 +15,514 @@ Parser& Parser::getInstance() {
     return instance;
 }
 
-Parser::Parser() {
-    DEBUG("Parser initialized");
-}
+Parser::Parser() {}
 
-bool Parser::parseFile(const std::string& filename) {
-    bool success = SMTParser.parse(filename);
+bool Parser::parseFile(const std::string& filename, Decomposition& decomposition) {
+    LOG1("Starting to parse file: ", filename);
+    
+    std::string smt_content;
+    if (need_decomposition(filename)) {
+        LOG2("File requires decomposition, processing with split logic");
+        decomposition = getDecomposition(filename);
+        LOG3("Decomposition completed:");
+        LOG3("  - Split constraints: ", decomposition.splitConstraints.size(), " items");
+        LOG3("  - Other constraints: ", decomposition.otherConstraints.size(), " items");
+        LOG3("  - Variables: ", decomposition.variables.size());
+    } else {
+        LOG2("File does not require decomposition, reading directly");
+        std::ifstream file(filename);
+        std::stringstream buffer;
+        buffer << file.rdbuf();
+        decomposition.splitSMTLIB2 = buffer.str();
+        LOG3("Read ", decomposition.splitSMTLIB2.length(), " characters from file");
+    }
+    
+    LOG2("Attempting to parse SMTLIB2 content with SMTParser");
+    bool success = SMTParser.parseStr(decomposition.splitSMTLIB2);
+    
     if (success) {
-        DEBUG("Successfully parsed file: ", filename);
+        INFO("Successfully parsed file: ", filename);
+        LOG2("Parse result details:");
+        LOG2("  - Total assertions: ", SMTParser.assertions.size());
+        LOG2("  - Total variables: ", SMTParser.getVariables().size());
+        LOG3("  - SMTLIB2 content length: ", decomposition.splitSMTLIB2.length());
     } else {
         ERROR("Failed to parse file: ", filename);
+        LOG1("Parse failure details:");
+        LOG1("  - SMTLIB2 content preview: ", decomposition.splitSMTLIB2.substr(0, 200), "...");
     }
+    
+    DEBUG("Found ", SMTParser.assertions.size(), " assertions and ", SMTParser.getVariables().size(), " variables");
     return success;
 }
 
-bool Parser::parseString(const std::string& input) {
-    bool success = SMTParser.parseStr(input);
-    if (success) {
-        DEBUG("Successfully parsed string input");
-    } else {
-        ERROR("Failed to parse string input");
+bool Parser::need_decomposition(const std::string& filename) {
+    LOG3("Checking if file needs decomposition: ", filename);
+    
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        ERROR("Failed to open file: ", filename);
+        return false;
     }
-    return success;
+    
+    std::string content((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+    file.close();
+    
+    bool hasSplitLength = content.find("get_split_length") != std::string::npos;
+    bool hasSplitElement = content.find("get_split_element") != std::string::npos;
+    bool hasSplitOperation = content.find("split operation") != std::string::npos;
+    
+    LOG4("Decomposition check results:");
+    LOG4("  - Contains get_split_length: ", hasSplitLength);
+    LOG4("  - Contains get_split_element: ", hasSplitElement);
+    LOG4("  - Contains split operation: ", hasSplitOperation);
+    
+    bool needsDecomp = hasSplitLength || hasSplitElement || hasSplitOperation;
+    LOG3("File needs decomposition: ", needsDecomp);
+    
+    return needsDecomp;
+}
+
+Decomposition Parser::getDecomposition(const std::string& filename) {
+    LOG2("Starting decomposition of file: ", filename);
+    Decomposition decomposition;
+    
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        ERROR("Failed to open file: ", filename);
+        return decomposition;
+    }
+    
+    std::string content((std::istreambuf_iterator<char>(file)),
+                        std::istreambuf_iterator<char>());
+    file.close();
+    LOG3("Read ", content.length(), " characters from file");
+    
+    LOG2("Extracting and categorizing constraints");
+    decomposition.splitRelatedFunctionNames.clear();
+    std::pair<std::vector<std::string>, std::vector<std::string>> constraints = extractConstraints(content, decomposition.splitRelatedFunctionNames);
+    decomposition.splitConstraints = constraints.first;
+    decomposition.otherConstraints = constraints.second;
+    LOG3("Split constraints: ", decomposition.splitConstraints.size(), " items");
+    for (const auto& constraint : decomposition.splitConstraints) {
+        LOG4("  - Constraint: ", constraint);
+    }
+    LOG3("Other constraints: ", decomposition.otherConstraints.size(), " items");
+    
+    LOG2("Extracting all variables");
+    decomposition.variables = getAllVariables(decomposition);
+    LOG3("Found ", decomposition.variables.size(), " total variables");
+
+    LOG2("Generating split SMTLIB2 content");
+    decomposition.splitSMTLIB2 = getSplitSMTLIB2(decomposition);
+    LOG3("Generated SMTLIB2: ", decomposition.splitSMTLIB2.length(), " chars");
+    
+    LOG1("Decomposition completed successfully");
+    return decomposition;
+}
+
+std::string Parser::extractFunctionName(const std::string& functionDef) {
+    size_t start = functionDef.find("(define-fun ");
+    if (start == std::string::npos) return "";
+    
+    start += 12;
+    size_t end = functionDef.find(" ", start);
+    if (end == std::string::npos) return "";
+    
+    return functionDef.substr(start, end - start);
+}
+
+
+std::pair<std::vector<std::string>, std::vector<std::string>> Parser::extractConstraints(const std::string& content, std::vector<std::string>& splitFunctionNames) {
+    LOG4("Extracting and categorizing constraints from content");
+    std::vector<std::string> splitConstraints;
+    std::vector<std::string> otherConstraints;
+    
+    std::vector<std::string> allConstraints = extractAllConstraints(content);
+    
+    int totalConstraints = 0;
+    for (const auto& constraint : allConstraints) {
+        totalConstraints++;
+        
+        bool isCurrentSplit = isSplitRelated(constraint, splitFunctionNames);
+        
+        // Check if this is a define-fun constraint and extract function name if it's split related
+        if (constraint.find("(define-fun ") != std::string::npos && isCurrentSplit) {
+            std::string funcName = extractFunctionName(constraint);
+            if (!funcName.empty()) {
+                splitFunctionNames.push_back(funcName);
+                LOG5("Found split function: ", funcName);
+            }
+        }
+        
+        if (isCurrentSplit) {
+            splitConstraints.push_back(constraint);
+        } else if (!constraint.empty() && constraint.find("assert true") == std::string::npos) {
+            otherConstraints.push_back(constraint);
+        }
+    }
+    
+    LOG4("Constraint extraction results:");
+    LOG4("  - Total constraints found: ", totalConstraints);
+    LOG4("  - Split constraints: ", splitConstraints.size());
+    LOG4("  - Split function names: ", splitFunctionNames.size());
+    LOG4("  - Other constraints: ", otherConstraints.size());
+    
+    return {splitConstraints, otherConstraints};
+}
+
+std::vector<std::string> Parser::extractAllConstraints(const std::string& content) {
+    std::vector<std::string> constraints;
+    LOG4("Extracting all constraints from content (using balanced parentheses parsing)");
+    
+    size_t pos = 0;
+    while (pos < content.length()) {
+        // Skip whitespace and comments
+        while (pos < content.length() && (std::isspace(content[pos]) || content[pos] == ';')) {
+            if (content[pos] == ';') {
+                // Skip comment line
+                while (pos < content.length() && content[pos] != '\n') {
+                    pos++;
+                }
+            } else {
+                pos++;
+            }
+        }
+        
+        if (pos >= content.length()) break;
+        
+        // Found start of a constraint (should be '(')
+        if (content[pos] == '(') {
+            size_t start = pos;
+            int parenCount = 0;
+            bool inString = false;
+            
+            // Parse balanced parentheses
+            while (pos < content.length()) {
+                char c = content[pos];
+                if (c == '"' && (pos == 0 || content[pos-1] != '\\')) {
+                    inString = !inString;
+                }
+                if (!inString) {
+                    if (c == '(') parenCount++;
+                    else if (c == ')') {
+                        parenCount--;
+                        if (parenCount == 0) {
+                            pos++; // Include the closing parenthesis
+                            break;
+                        }
+                    }
+                }
+                pos++;
+            }
+            
+            if (parenCount == 0) {
+                std::string constraint = content.substr(start, pos - start);
+                constraints.push_back(constraint);
+            } else {
+                LOG4("Warning: Unbalanced parentheses starting at position ", start);
+                pos = start + 1; // Skip this character and continue
+            }
+        } else {
+            // Unexpected character, skip it
+            pos++;
+        }
+    }
+    
+    LOG4("Extracted ", constraints.size(), " constraints from content");
+    return constraints;
+}
+
+bool Parser::isSplitRelated(const std::string& constraint, const std::vector<std::string>& splitFunctionNames) {
+    bool hasDirectSplit = constraint.find("str.split_at") != std::string::npos ||
+                          constraint.find("str.split_rest") != std::string::npos ||
+                          constraint.find("str.num_splits") != std::string::npos;
+    
+    if (hasDirectSplit) {
+        // LOG5("Constraint has direct split syntax: ", constraint);
+        return true;
+    }
+    
+    for (const auto& funcName : splitFunctionNames) {
+        if (constraint.find("(" + funcName + " ") != std::string::npos) {
+            // LOG5("Constraint calls split function ", funcName, ": ", constraint);
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+std::vector<std::pair<std::string, std::string>> Parser::getAllVariables(Decomposition& decomposition) {
+    std::vector<std::pair<std::string, std::string>> allVars;
+    std::vector<std::pair<std::string, std::string>> splitVars = extractVariablesFromConstraints(decomposition.splitConstraints);
+    std::vector<std::pair<std::string, std::string>> otherVars = extractVariablesFromConstraints(decomposition.otherConstraints);
+    
+    std::set<std::string> seenVars;
+    for (const auto& var : splitVars) {
+        if (seenVars.find(var.first) == seenVars.end()) {
+            allVars.push_back(var);
+            seenVars.insert(var.first);
+        }
+    }
+    for (const auto& var : otherVars) {
+        if (seenVars.find(var.first) == seenVars.end()) {
+            allVars.push_back(var);
+            seenVars.insert(var.first);
+        }
+    }
+
+    decomposition.variablesHasDefined = splitVars;
+    std::set<std::string> allVarNames;
+    for (const auto& var : allVars) {
+        allVarNames.insert(var.first);
+    }
+    
+    std::vector<std::string> variableAppeared = extractVariablesAppeared(decomposition.splitConstraints, allVarNames);
+    std::set<std::string> hasDefinedNames;
+    for (const auto& var : decomposition.variablesHasDefined) {
+        hasDefinedNames.insert(var.first);
+    }
+    
+    decomposition.variablesNeedDeclare.clear();
+    for (const auto& varName : variableAppeared) {
+        if (hasDefinedNames.find(varName) == hasDefinedNames.end()) {
+            // 找到对应的变量类型
+            for (const auto& var : allVars) {
+                if (var.first == varName) {
+                    decomposition.variablesNeedDeclare.push_back(var);
+                    break;
+                }
+            }
+        }
+    }
+
+    return allVars;
+}
+
+std::vector<std::pair<std::string, std::string>> Parser::extractVariablesFromConstraints(const std::vector<std::string>& constraints) {
+    std::vector<std::pair<std::string, std::string>> variables;
+    LOG4("Extracting variables from constraints using regex matching");
+    
+    std::regex declFunRegex(R"(\(declare-fun\s+([^\s\)]+)\s+\(\)\s+([^\s\)]+))");
+    std::regex declConstRegex(R"(\(declare-const\s+([^\s\)]+)\s+([^\s\)]+))");
+    std::regex defConstRegex(R"(\(define-const\s+([^\s\)]+)\s+([^\s\)]+))");
+    
+    std::vector<std::regex> regexes = {declFunRegex, declConstRegex, defConstRegex};
+    std::vector<std::string> types = {"declared function", "declared constant", "defined constant"};
+    
+    for (const auto& constraint : constraints) {
+        for (size_t i = 0; i < regexes.size(); ++i) {
+            std::sregex_iterator begin(constraint.begin(), constraint.end(), regexes[i]);
+            std::sregex_iterator end;
+            
+            for (std::sregex_iterator it = begin; it != end; ++it) {
+                std::string varName = (*it)[1].str();
+                std::string varType = (*it)[2].str();
+                if (!varName.empty() && !varType.empty()) {
+                    variables.push_back({varName, varType});
+                }
+            }
+        }
+    }
+    
+    LOG4("Extracted ", variables.size(), " variables from constraints");
+    return variables;
+}
+
+std::vector<std::string> Parser::extractVariablesAppeared(const std::vector<std::string>& constraints, const std::set<std::string>& allVars) {
+    std::vector<std::string> appearedVars;
+    LOG4("Extracting variables that appear in constraints from allVars set");
+    
+    for (const auto& var : allVars) {
+        for (const auto& constraint : constraints) {
+            if (constraint.find(var) != std::string::npos) {
+                appearedVars.push_back(var);
+                LOG5("Variable appeared in constraints: ", var);
+                break;
+            }
+        }
+    }
+    
+    LOG4("Found ", appearedVars.size(), " variables that appear in constraints");
+    return appearedVars;
+}
+
+bool Parser::needConvert(const std::string& constraint, const std::vector<std::pair<std::string, std::string>>& variablesHasDefined) {
+    std::regex defConstRegex(R"(\(define-const\s+([^\s\)]+)\s+([^\s\)]+))");
+    
+    std::smatch match;
+    if (std::regex_search(constraint, match, defConstRegex)) {
+        std::string varName = match[1].str();
+        for (const auto& var : variablesHasDefined) {
+            if (var.first == varName) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+std::string Parser::convertDefineToAssert(const std::string& constraint) {
+    std::regex defConstRegex(R"(\(define-const\s+([^\s\)]+)\s+([^\s\)]+)\s+(.+)\))");
+    
+    std::smatch match;
+    if (std::regex_search(constraint, match, defConstRegex)) {
+        std::string varName = match[1].str();
+        std::string value = match[3].str();
+        
+        std::string result = "(assert (= " + varName + " " + value + "))";
+        return result;
+    }
+    
+    return constraint;
+}
+
+std::string Parser::getSplitSMTLIB2(const Decomposition& decomposition) {
+    std::stringstream ss;
+    
+    ss << "(set-logic ALL)" << std::endl;
+    LOG4("Added set-logic ALL");
+    
+    for (const auto& var : decomposition.variablesNeedDeclare) {
+        ss << "(declare-fun " << var.first << " () " << var.second << ")" << std::endl;
+        LOG5("Declared variable: ", var.first, " as ", var.second);
+    }
+    for (const auto& var : decomposition.variablesHasDefined) {
+        ss << "(declare-fun " << var.first << " () " << var.second << ")" << std::endl;
+        LOG5("Declared variable: ", var.first, " as ", var.second);
+    }
+    
+    if (!decomposition.splitConstraints.empty()) {
+        for (const auto& constraint : decomposition.splitConstraints) {
+            if (needConvert(constraint, decomposition.variablesHasDefined)) {
+                ss << convertDefineToAssert(constraint) << std::endl;
+            } else {
+                ss << constraint << std::endl;
+            }
+        }
+        LOG4("Added split constraints (", decomposition.splitConstraints.size(), " items)");
+    }
+    
+    ss << "(check-sat)" << std::endl;
+    LOG4("Added check-sat");
+    
+    std::string result = ss.str();
+    LOG3("Generated SMTLIB2 content: ", result.length(), " characters");
+    LOG4("Generated SMTLIB2 content:");
+    LOG4(result);
+    return result;
+}
+
+
+
+bool Parser::needDelete(const std::string& constraint, const Decomposition& decomposition) {
+    if (isSplitRelated(constraint, decomposition.splitRelatedFunctionNames)) {
+        return true;
+    }
+    
+    std::regex declFunRegex(R"(\(declare-fun\s+([^\s\)]+)\s+\(\)\s+([^\s\)]+))");
+    std::smatch match;
+    if (std::regex_search(constraint, match, declFunRegex)) {
+        std::string varName = match[1].str();
+        for (const auto& var : decomposition.variablesNeedDeclare) {
+            if (var.first == varName) {
+                return true;
+            }
+        }
+        for (const auto& var : decomposition.variablesHasDefined) {
+            if (var.first == varName) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+std::string Parser::getMergedSMTLIB2(const Decomposition& decomposition) {
+    LOG2("Starting to merge SMTLIB2 content");
+    
+    std::string splitSMTLIB2 = getSMTLIB2(true);
+    std::vector<std::string> allConstraints = extractAllConstraints(splitSMTLIB2);
+    std::vector<std::string> pureConstraints;
+    for (const auto& constraint : allConstraints) {
+        if (!needDelete(constraint, decomposition)) {
+            pureConstraints.push_back(constraint);
+        }
+    }
+    
+    std::vector<std::string> mergedConstraints = decomposition.otherConstraints;
+    
+    for (const auto& var : decomposition.variablesHasDefined) {
+        std::string declareStmt = "(declare-fun " + var.first + " () " + var.second + ")";
+        bool varFound = false;
+        
+        for (size_t i = 0; i < mergedConstraints.size(); ++i) {
+            if (mergedConstraints[i].find(var.first) != std::string::npos) {
+                mergedConstraints.insert(mergedConstraints.begin() + i, declareStmt);
+                varFound = true;
+                LOG5("Inserted variable declaration for ", var.first, " at position ", i);
+                break;
+            }
+        }
+        
+        if (!varFound) {
+            bool insertedBeforeCheckSat = false;
+            for (size_t i = 0; i < mergedConstraints.size(); ++i) {
+                if (mergedConstraints[i].find("(check-sat") == 0) {
+                    mergedConstraints.insert(mergedConstraints.begin() + i, declareStmt);
+                    insertedBeforeCheckSat = true;
+                    LOG5("Inserted variable declaration for ", var.first, " before check-sat at position ", i);
+                    break;
+                }
+            }
+            if (!insertedBeforeCheckSat) {
+                mergedConstraints.push_back(declareStmt);
+                LOG5("Appended variable declaration for ", var.first, " at end");
+            }
+        }
+    }
+    
+    std::vector<std::string> pureDeclarations;
+    std::vector<std::string> pureAssertions;
+    
+    for (const auto& constraint : pureConstraints) {
+        if (constraint.find("(declare-") == 0 || 
+            constraint.find("(define-") == 0 || 
+            constraint.find("(assert ") == 0) {
+            if (constraint.find("(assert ") == 0) {
+                pureAssertions.push_back(constraint);
+            } else {
+                pureDeclarations.push_back(constraint);
+            }
+        }
+    }
+    
+    bool insertedBeforeCheckSat = false;
+    for (size_t i = 0; i < mergedConstraints.size(); ++i) {
+        if (mergedConstraints[i].find("(check-sat") == 0) {
+            mergedConstraints.insert(mergedConstraints.begin() + i, pureDeclarations.begin(), pureDeclarations.end());
+            mergedConstraints.insert(mergedConstraints.begin() + i + pureDeclarations.size(), pureAssertions.begin(), pureAssertions.end());
+            insertedBeforeCheckSat = true;
+            LOG5("Inserted ", pureDeclarations.size(), " declarations and ", pureAssertions.size(), " assertions before check-sat");
+            break;
+        }
+    }
+    
+    if (!insertedBeforeCheckSat) {
+        mergedConstraints.insert(mergedConstraints.end(), pureDeclarations.begin(), pureDeclarations.end());
+        mergedConstraints.insert(mergedConstraints.end(), pureAssertions.begin(), pureAssertions.end());
+        LOG5("Appended ", pureDeclarations.size(), " declarations and ", pureAssertions.size(), " assertions at end");
+    }
+    
+    std::stringstream result;
+    for (const auto& constraint : mergedConstraints) {
+        result << constraint << std::endl;
+    }
+    
+    LOG2("Merged SMTLIB2 generation completed, total constraints: ", mergedConstraints.size());
+    return result.str();
 }
 
 TaskType Parser::parseTaskCommand(const std::string& command) {
@@ -128,8 +615,7 @@ std::vector<SMTParser::NodePtr> Parser::getAssertions() {
 
 std::vector<SMTParser::NodePtr> Parser::getAtoms(const SMTParser::NodePtr& node) {
     std::unordered_set<SMTParser::NodePtr> nodes;
-    Parser dummyParser;
-    dummyParser.SMTParser.collectAtoms(node, nodes);
+    SMTParser.collectAtoms(node, nodes);
     std::vector<SMTParser::NodePtr> atoms(nodes.begin(), nodes.end());
     return atoms;
 }
@@ -145,109 +631,29 @@ bool Parser::containsNode(const SMTParser::NodePtr& parent, const SMTParser::Nod
     return false;
 }
 
-std::string Parser::getSource(const SMTParser::NodePtr& node) {
-    Parser dummyParser;
-    return dummyParser.SMTParser.toString(node);
+std::string Parser::getString(const SMTParser::NodePtr& node) {
+    return SMTParser.toString(node);
 }
 
-std::string Parser::getComment(const SMTParser::NodePtr& node) {
-    if (!node) return "";
-    
-    std::string source = getSource(node);
-    
-    if (source.find("str.in_re") != std::string::npos && source.find("str.to_re") != std::string::npos) {
-        size_t start = source.find("str.to_re") + 10;
-        size_t end = source.find(')', start);
-        if (start < source.length() && end != std::string::npos) {
-            std::string regex = source.substr(start, end - start);
-            regex.erase(0, regex.find_first_not_of(" "));
-            regex.erase(regex.find_last_not_of(" ") + 1);
-            
-            if (regex.size() >= 2 && regex.front() == '"' && regex.back() == '"') {
-                regex = regex.substr(1, regex.size() - 2);
-            }
-            
-            return regex;
-        }
-    }
-    
-    if (source.find("str.in_re") != std::string::npos && source.find("not") != std::string::npos) {
-        size_t reStart = source.find("str.to_re");
-        if (reStart != std::string::npos) {
-            reStart += 10;
-            size_t reEnd = source.find(')', reStart);
-            if (reStart < source.length() && reEnd != std::string::npos) {
-                std::string regex = source.substr(reStart, reEnd - reStart);
-                regex.erase(0, regex.find_first_not_of(" "));
-                regex.erase(regex.find_last_not_of(" ") + 1);
-                
-                if (regex.size() >= 2 && regex.front() == '"' && regex.back() == '"') {
-                    regex = regex.substr(1, regex.size() - 2);
-                }
-                
-                auto children = node->getChildren();
-                if (!children.empty()) {
-                    auto child = children[0];
-                    if (child && child->getChildrenSize() > 0) {
-                        auto var = getComment(child->getChildren()[0]);
-                        return var + " not in " + regex;
-                    }
-                }
-            }
-        }
-    }
-    
-    return source;
-}
-
-std::string Parser::getSMTLIB2(bool from_parser) const {
+std::string Parser::getSMTLIB2(bool from_parser) {
     if (from_parser) {
-        return const_cast<Parser*>(this)->SMTParser.dumpSMT2();
+        return SMTParser.dumpSMT2();
     } else {
         std::stringstream ss;
         ss << "(set-logic ALL)" << std::endl;
-        
-        std::vector<SMTParser::NodePtr> variables = const_cast<Parser*>(this)->getVariables();
+        std::vector<SMTParser::NodePtr> variables = getVariables();
         for (const auto& var : variables) {
             if (var) {
-                ss << getSource(var) << std::endl;
+                ss << getString(var) << std::endl;
             }
         }
-        
-        std::vector<SMTParser::NodePtr> assertions = const_cast<Parser*>(this)->getAssertions();
+        std::vector<SMTParser::NodePtr> assertions = getAssertions();
         for (const auto& assertion : assertions) {
-            ss << "(assert " << getSource(assertion) << ")" << std::endl;
+            ss << "(assert " << getString(assertion) << ")" << std::endl;
         }
-        
         ss << "(check-sat)" << std::endl;
         return ss.str();
     }
-}
-
-void Parser::removeFunDef(const std::vector<std::string>& funcNames) {
-    for (const auto& funcName : funcNames) {
-        SMTParser.removeFuns(funcNames);
-        DEBUG("Removed function definition: ", funcName);
-    }
-}
-
-std::vector<std::string> Parser::getSplitRelatedFunctionNames() const {
-    std::vector<std::string> splitFuncNames;
-    
-    std::string smtContent = getSMTLIB2(true);
-    std::vector<std::string> extractedNames = const_cast<Parser*>(this)->extractSplitFunctionNames(smtContent);
-    
-    splitFuncNames.insert(splitFuncNames.end(), extractedNames.begin(), extractedNames.end());
-    
-    return splitFuncNames;
-}
-
-std::vector<SMTParser::NodePtr> Parser::getFunctions() const {
-    return const_cast<Parser*>(this)->SMTParser.getFunctions();
-}
-
-std::string Parser::nodeToString(const SMTParser::NodePtr& node) const {
-    return const_cast<Parser*>(this)->SMTParser.toString(node);
 }
 
 SMTParser::NodePtr Parser::replaceNodes(const SMTParser::NodePtr& expr, const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap) {
@@ -274,8 +680,7 @@ SMTParser::NodePtr Parser::replaceNodes(const SMTParser::NodePtr& expr, const st
         return expr;
     }
     
-    Parser dummyParser;
-    return dummyParser.SMTParser.mkOper(expr->getSort(), expr->getKind(), newChildren);
+    return SMTParser.mkOper(expr->getSort(), expr->getKind(), newChildren);
 }
 
 void Parser::replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap) {
@@ -285,44 +690,39 @@ void Parser::replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser
 }
 
 SMTParser::NodePtr Parser::createNode(const std::string& node_str) {
-    Parser dummyParser;
-    if (dummyParser.SMTParser.parseStr("(assert " + node_str + ")")) {
-        if (!dummyParser.SMTParser.assertions.empty()) {
-            return dummyParser.SMTParser.assertions[0];
+    if (SMTParser.parseStr("(assert " + node_str + ")")) {
+        if (!SMTParser.assertions.empty()) {
+            return SMTParser.assertions.back();
         }
     }
     return nullptr;
 }
 
 SMTParser::NodePtr Parser::createStringConst(const std::string& value) {
-    Parser dummyParser;
-    return dummyParser.SMTParser.mkConstStr(value);
+    return SMTParser.mkConstStr(value);
 }
 
 SMTParser::NodePtr Parser::createIntConst(int value) {
-    Parser dummyParser;
-    return dummyParser.SMTParser.mkConstInt(value);
+    return SMTParser.mkConstInt(value);
 }
 
 SMTParser::NodePtr Parser::createBoolConst(bool value) {
-    Parser dummyParser;
     if (value) {
-        return dummyParser.SMTParser.mkTrue();
+        return SMTParser.mkTrue();
     } else {
-        return dummyParser.SMTParser.mkFalse();
+        return SMTParser.mkFalse();
     }
 }
 
 SMTParser::NodePtr Parser::createStringVar(const std::string& name) {
-    Parser dummyParser;
-    auto var = dummyParser.SMTParser.getVariable(name);
+    auto var = SMTParser.getVariable(name);
     if (var) {
         return var;
     }
     
     std::string declareStmt = "(declare-fun " + name + " () String)";
-    if (dummyParser.SMTParser.parseStr(declareStmt)) {
-        var = dummyParser.SMTParser.getVariable(name);
+    if (SMTParser.parseStr(declareStmt)) {
+        var = SMTParser.getVariable(name);
         if (var) {
             DEBUG("Created new string variable: ", name);
             return var;
@@ -334,15 +734,14 @@ SMTParser::NodePtr Parser::createStringVar(const std::string& name) {
 }
 
 SMTParser::NodePtr Parser::createIntVar(const std::string& name) {
-    Parser dummyParser;
-    auto var = dummyParser.SMTParser.getVariable(name);
+    auto var = SMTParser.getVariable(name);
     if (var) {
         return var;
     }
 
     std::string declareStmt = "(declare-fun " + name + " () Int)";
-    if (dummyParser.SMTParser.parseStr(declareStmt)) {
-        var = dummyParser.SMTParser.getVariable(name);
+    if (SMTParser.parseStr(declareStmt)) {
+        var = SMTParser.getVariable(name);
         if (var) {
             DEBUG("Created new int variable: ", name);
             return var;
@@ -354,15 +753,14 @@ SMTParser::NodePtr Parser::createIntVar(const std::string& name) {
 }
 
 SMTParser::NodePtr Parser::createBoolVar(const std::string& name) {
-    Parser dummyParser;
-    auto var = dummyParser.SMTParser.getVariable(name);
+    auto var = SMTParser.getVariable(name);
     if (var) {
         return var;
     }
 
     std::string declareStmt = "(declare-fun " + name + " () Bool)";
-    if (dummyParser.SMTParser.parseStr(declareStmt)) {
-        var = dummyParser.SMTParser.getVariable(name);
+    if (SMTParser.parseStr(declareStmt)) {
+        var = SMTParser.getVariable(name);
         if (var) {
             DEBUG("Created new bool variable: ", name);
             return var;
@@ -373,337 +771,6 @@ SMTParser::NodePtr Parser::createBoolVar(const std::string& name) {
     return nullptr;
 }
 
-SMTSeparationResult Parser::separateSplitConstraints(const std::string& filename) {
-    SMTSeparationResult result;
-    
-    if (!std::filesystem::exists(filename)) {
-        ERROR("File does not exist: ", filename);
-        return result;
-    }
-    
-    std::ifstream file(filename);
-    if (!file.is_open()) {
-        ERROR("Failed to open file: ", filename);
-        return result;
-    }
-    
-    std::vector<std::string> allLines;
-    std::string line;
-    while (std::getline(file, line)) {
-        allLines.push_back(line);
-    }
-    file.close();
-    
-    std::ostringstream splitConstraints;
-    std::ostringstream otherConstraints;
-    std::unordered_map<std::string, std::string> varDeclarations;
-    std::unordered_set<std::string> splitUsedVars;
-    
-    splitConstraints << "(set-logic ALL)\n";
-    otherConstraints << "(set-logic ALL)\n";
-    
-    for (const auto& line : allLines) {
-        std::string trimmedLine = line;
-        trimmedLine.erase(0, trimmedLine.find_first_not_of(" \t"));
-        
-        if (trimmedLine.empty() || trimmedLine[0] == ';' ||
-            trimmedLine.find("(set-logic") == 0 || 
-            trimmedLine.find("(set-option") == 0) {
-            continue;
-        }
-        
-        if (isSplitRelatedLine(line)) {
-            std::vector<std::string> vars = extractVariableNames(line);
-            for (const auto& var : vars) {
-                splitUsedVars.insert(var);
-            }
-        }
-        
-        if (trimmedLine.find("(declare-fun") == 0) {
-            size_t nameStart = trimmedLine.find(' ', 12);
-            if (nameStart != std::string::npos) {
-                nameStart = trimmedLine.find_first_not_of(' ', nameStart);
-                size_t nameEnd = trimmedLine.find(' ', nameStart);
-                if (nameEnd != std::string::npos) {
-                    std::string varName = trimmedLine.substr(nameStart, nameEnd - nameStart);
-                    varDeclarations[varName] = line;
-                }
-            }
-        }
-    }
-    
-    for (const auto& line : allLines) {
-        std::string trimmedLine = line;
-        trimmedLine.erase(0, trimmedLine.find_first_not_of(" \t"));
-        
-        if (trimmedLine.empty() || trimmedLine[0] == ';' ||
-            trimmedLine.find("(set-logic") == 0 || 
-            trimmedLine.find("(set-option") == 0) {
-            continue;
-        }
-        
-        if (trimmedLine.find("(declare-fun") == 0) {
-            size_t nameStart = trimmedLine.find(' ', 12);
-            if (nameStart != std::string::npos) {
-                nameStart = trimmedLine.find_first_not_of(' ', nameStart);
-                size_t nameEnd = trimmedLine.find(' ', nameStart);
-                if (nameEnd != std::string::npos) {
-                    std::string varName = trimmedLine.substr(nameStart, nameEnd - nameStart);
-                    if (splitUsedVars.find(varName) != splitUsedVars.end()) {
-                        splitConstraints << line << "\n";
-                    } else {
-                        otherConstraints << line << "\n";
-                    }
-                }
-            }
-            continue;
-        }
-        
-        if (isSplitRelatedLine(line)) {
-            splitConstraints << line << "\n";
-        } else {
-            otherConstraints << line << "\n";
-        }
-    }
-    
-    splitConstraints << "\n(check-sat)\n";
-    otherConstraints << "\n(check-sat)\n";
-    
-    result.splitConstraints = splitConstraints.str();
-    result.otherConstraints = otherConstraints.str();
-    
-    result.variableDeclarations = extractVariablesFromSplitConstraints(result.splitConstraints);
 
-    if (!result.variableDeclarations.empty()) {
-        std::string varDeclarations = generateVariableDeclarations(result.variableDeclarations);
-        size_t logicPos = result.splitConstraints.find("(set-logic ALL)\n");
-        if (logicPos != std::string::npos) {
-            size_t insertPos = logicPos + 16;
-            result.splitConstraints.insert(insertPos, "\n" + varDeclarations);
-        }
-        DEBUG("Added ", result.variableDeclarations.size(), " variable declarations to split constraints");
-    }
-    
-    DEBUG("Separated split constraints (", result.splitConstraints.length(), " chars) from other constraints (", result.otherConstraints.length(), " chars)");
-    
-    return result;
-}
-
-bool Parser::isSplitRelatedLine(const std::string& line) {
-    return line.find("str.split_at") != std::string::npos ||
-           line.find("str.split_rest") != std::string::npos ||
-           line.find("str.num_splits") != std::string::npos ||
-           line.find("split_at") != std::string::npos ||
-           line.find("split_rest") != std::string::npos ||
-           line.find("num_splits") != std::string::npos;
-}
-
-std::vector<std::string> Parser::extractSplitFunctionNames(const std::string& smtContent) {
-    std::vector<std::string> functionNames;
-    std::regex funcDefRegex(R"(\(define-fun\s+([^\s\)]+))");
-    std::sregex_iterator iter(smtContent.begin(), smtContent.end(), funcDefRegex);
-    std::sregex_iterator end;
-    
-    for (; iter != end; ++iter) {
-        std::string funcName = (*iter)[1].str();
-        if (funcName.find("split") != std::string::npos) {
-            functionNames.push_back(funcName);
-            DEBUG("Found split-related function: ", funcName);
-        }
-    }
-    
-    return functionNames;
-}
-
-std::string Parser::mergeSMTConstraints(const std::string& rewrittenSplitPart, const std::string& otherPart) {
-    std::ostringstream result;
-    
-    std::istringstream splitStream(rewrittenSplitPart);
-    std::istringstream otherStream(otherPart);
-    
-    std::vector<std::string> allDeclarations;
-    std::vector<std::string> allAssertions;
-    std::unordered_set<std::string> declaredVars;
-    
-    std::string line;
-    
-    while (std::getline(otherStream, line)) {
-        std::string trimmed = line;
-        trimmed.erase(0, trimmed.find_first_not_of(" \t"));
-        
-        if (trimmed.find("(declare-") == 0) {
-            size_t nameStart = trimmed.find(' ');
-            if (nameStart != std::string::npos) {
-                nameStart = trimmed.find_first_not_of(' ', nameStart);
-                size_t nameEnd = trimmed.find(' ', nameStart);
-                if (nameEnd != std::string::npos) {
-                    std::string varName = trimmed.substr(nameStart, nameEnd - nameStart);
-                    if (declaredVars.find(varName) == declaredVars.end()) {
-                        allDeclarations.push_back(line);
-                        declaredVars.insert(varName);
-                    }
-                }
-            }
-        } else if (trimmed.find("(assert") == 0) {
-            allAssertions.push_back(line);
-        }
-    }
-    
-    while (std::getline(splitStream, line)) {
-        std::string trimmed = line;
-        trimmed.erase(0, trimmed.find_first_not_of(" \t"));
-        
-        if (trimmed.find("(declare-") == 0) {
-            size_t nameStart = trimmed.find(' ');
-            if (nameStart != std::string::npos) {
-                nameStart = trimmed.find_first_not_of(' ', nameStart);
-                size_t nameEnd = trimmed.find(' ', nameStart);
-                if (nameEnd != std::string::npos) {
-                    std::string varName = trimmed.substr(nameStart, nameEnd - nameStart);
-                    if (declaredVars.find(varName) == declaredVars.end()) {
-                        allDeclarations.push_back(line);
-                        declaredVars.insert(varName);
-                    }
-                }
-            }
-        } else if (trimmed.find("(assert") == 0) {
-            allAssertions.push_back(line);
-        }
-    }
-    
-    result << "(set-logic ALL)\n\n";
-    
-    for (const auto& decl : allDeclarations) {
-        result << decl << "\n";
-    }
-    if (!allDeclarations.empty()) {
-        result << "\n";
-    }
-    
-    for (const auto& assertion : allAssertions) {
-        result << assertion << "\n";
-    }
-    
-    result << "\n(check-sat)\n";
-    
-    return result.str();
-}
-
-std::unordered_map<std::string, std::string> Parser::extractVariablesFromSplitConstraints(const std::string& splitConstraints) {
-    std::unordered_map<std::string, std::string> variableDeclarations;
-    
-    std::istringstream iss(splitConstraints);
-    std::string line;
-    std::unordered_set<std::string> alreadyDeclared;
-    
-    while (std::getline(iss, line)) {
-        if (line.find("(declare-fun") != std::string::npos) {
-            std::regex declareRegex(R"(\(declare-fun\s+([^\s\)]+))");
-            std::smatch match;
-            if (std::regex_search(line, match, declareRegex)) {
-                std::string varName = match[1].str();
-                alreadyDeclared.insert(varName);
-            }
-        }
-    }
-    
-    iss.clear();
-    iss.str(splitConstraints);
-    
-    while (std::getline(iss, line)) {
-        std::vector<std::string> variables = extractVariableNames(line);
-        for (const std::string& var : variables) {
-            if (variableDeclarations.find(var) == variableDeclarations.end() &&
-                alreadyDeclared.find(var) == alreadyDeclared.end()) {
-                std::string type = inferVariableType(var, line);
-                bool isTemp = isTempVariable(var);
-                if (!isTemp) {
-                    variableDeclarations[var] = type;
-                    DEBUG("Detected variable: ", var, " with type: ", type);
-                }
-            }
-        }
-    }
-    
-    return variableDeclarations;
-}
-
-std::string Parser::inferVariableType(const std::string& variableName, const std::string& context) {
-    if (context.find("str.") != std::string::npos) {
-        return "String";
-    }
-    if (context.find("=") != std::string::npos && 
-        (context.find("true") != std::string::npos || context.find("false") != std::string::npos)) {
-        return "Bool";
-    }
-    if (variableName.find("num") != std::string::npos || variableName.find("index") != std::string::npos) {
-        return "Int";
-    }
-    return "String";
-}
-
-bool Parser::isTempVariable(const std::string& variableName) {
-    std::regex varRegex(R"(\b(var\d+|div\d+\w*)\b)");
-    return std::regex_search(variableName, varRegex);
-}
-
-std::vector<std::string> Parser::extractVariableNames(const std::string& line) {
-    std::vector<std::string> variables;
-    
-    std::set<std::string> keywords = {
-        "assert", "declare-fun", "set-logic", "check-sat", "get-model",
-        "str.split_at", "str.split_rest", "str.num_splits", "str.len", "str.substr",
-        "str.indexof", "str.replace", "str.contains", "str.prefixof", "str.suffixof",
-        "str.to_re", "str.in_re", "re.union", "re.inter", "re.diff", "re.comp",
-        "re.range", "re.opt", "re.plus", "re.loop", "re.allchar", "re.nostr",
-        "and", "or", "not", "implies", "iff", "xor", "ite", "forall", "exists",
-        "true", "false", "Int", "String", "Bool", "Real"
-    };
-    
-    std::regex variableRegex(R"([a-zA-Z_][a-zA-Z0-9_]*)");
-    std::sregex_iterator iter(line.begin(), line.end(), variableRegex);
-    std::sregex_iterator end;
-    
-    for (; iter != end; ++iter) {
-        std::string var = iter->str();
-        if (keywords.find(var) == keywords.end() &&
-            !var.empty() &&
-            var != "hello" && var != "l") {
-            variables.push_back(var);
-        }
-    }
-    
-    return variables;
-}
-
-std::string Parser::generateVariableDeclarations(const std::unordered_map<std::string, std::string>& varDeclarations) {
-    std::ostringstream declarations;
-    for (const auto& [varName, varType] : varDeclarations) {
-        declarations << "(declare-fun " << varName << " () " << varType << ")\n";
-    }
-    return declarations.str();
-}
-
-SMTParser::NodePtr Parser::getVariable(const std::string& name) const {
-    return const_cast<Parser*>(this)->SMTParser.getVariable(name);
-}
-
-bool Parser::isVariableDeclared(const std::string& varName) const {
-    auto var = const_cast<Parser*>(this)->SMTParser.getVariable(varName);
-    return (var != nullptr);
-}
-
-std::set<std::string> Parser::getUsedVariables() const {
-    std::set<std::string> usedVars;
-    
-    auto variables = const_cast<Parser*>(this)->getVariables();
-    for (const auto& var : variables) {
-        if (var) {
-            usedVars.insert(var->getName());
-        }
-    }
-    
-    return usedVars;
-}
 
 } // namespace strp 
