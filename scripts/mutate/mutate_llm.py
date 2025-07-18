@@ -271,7 +271,9 @@ Output format: Return all the SMT-LIB2 text, starting with "; --- LLM Generated 
 """
 
         self.rws_examples = {
-            'Email format validation':[],
+            'Email format validation':[
+                {""}
+            ],
             'URL parsing':[],
             'phone number formats':[],
             'Key-value pairs':[],

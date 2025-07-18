@@ -35,7 +35,7 @@
 (declare-fun var2732_get/1088891777 (var2732 var2514) var2514)
 (declare-fun cast-from-String-to-var2514 (String) var2514)
 (declare-fun cast-from-var2514-to-Int (var2514) Int)
-(declare-fun OOVExternalFeatWt/1510098587 (var2781) Real)
+(declare-fun OOVExternalFeatWt/1510098587 (var2781) Float64)
 (declare-const null-var2781 var2781)
 (declare-const null-String String)
 (declare-const null-Int Int)
@@ -58,7 +58,7 @@
 (define-const var727 Int (get_split_length var1907 "\u005cs+" -1)) ; Statement: $i0 = lengthof $r27 
  ; Statement: if $i0 >= 2 goto d4 = 0.0 
 (assert (not (>= var727 2))) ; Negate: Cond: $i0 >= 2  
-(define-const var3344 Real (OOVExternalFeatWt/1510098587 var2415)) ; Statement: $d2 = r0.<edu.stanford.nlp.patterns.PhraseScorer: double OOVExternalFeatWt> 
+(define-const var3344 Float64 (OOVExternalFeatWt/1510098587 var2415)) ; Statement: $d2 = r0.<edu.stanford.nlp.patterns.PhraseScorer: double OOVExternalFeatWt> 
  ; Statement: return $d2 
 (check-sat)
 ; {constVars/1510098587=([edu.stanford.nlp.patterns.PhraseScorer], edu.stanford.nlp.patterns.ConstantsAndVariables), getWordClassClusters/1499979921=([edu.stanford.nlp.patterns.ConstantsAndVariables], java.util.Map), var2732_get/1088891777=([java.util.Map, java.lang.Object], java.lang.Object), cast-from-String-to-var2514=([java.lang.String], java.lang.Object), cast-from-var2514-to-Int=([java.lang.Object], java.lang.Integer), OOVExternalFeatWt/1510098587=([edu.stanford.nlp.patterns.PhraseScorer], double)}

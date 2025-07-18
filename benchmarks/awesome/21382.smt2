@@ -35,15 +35,15 @@
 (declare-const null-var1098 var1098)
 (declare-const null-var2080 var2080)
 (declare-const null-var3002 var3002)
-(declare-const null-Real Real)
+(declare-const null-Float64 Float64)
 (declare-const var1889 var1098) ; Statement: r3 := @this: edu.stanford.nlp.patterns.PhraseScorer 
 (assert (not (= var1889 null-var1098)))
 (declare-const var3981 var2080) ; Statement: r6 := @parameter0: edu.stanford.nlp.stats.Counter 
 (assert (not (= var3981 null-var2080)))
 (declare-const var2772 var3002) ; Statement: r0 := @parameter1: edu.stanford.nlp.patterns.CandidatePhrase 
 (assert (not (= var2772 null-var3002)))
-(declare-const var1986 Real) ; Statement: d2 := @parameter2: double 
-(assert (not (= var1986 null-Real)))
+(declare-const var1986 Float64) ; Statement: d2 := @parameter2: double 
+(assert (not (= var1986 null-Float64)))
 (assert true)
 (define-const var1172 String (getPhrase/-292787131 var2772)) ; Statement: $r1 = virtualinvoke r0.<edu.stanford.nlp.patterns.CandidatePhrase: java.lang.String getPhrase()>() 
 ; split operation: var3189 = var1172.split("\u005cs+") ; Statement: r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+") 

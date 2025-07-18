@@ -29,7 +29,7 @@
 (declare-sort ClassObject 0)
 (declare-fun getOutput/-1207014030 (var1952) String)
 (declare-fun cast-from-var1119-to-var1952 (var1119) var1952)
-(declare-fun Real_parseDouble/1471110886 (String) Real)
+(declare-fun Float64_parseDouble/1471110886 (String) Float64)
 (declare-const null-var1119 var1119)
 (declare-const var1051 var1119) ; Statement: r0 := @this: edu.stanford.nlp.ie.crf.CRFClassifierEvaluator 
 (assert (not (= var1051 null-var1119)))
@@ -46,10 +46,10 @@
  ; Statement: if i3 >= $i1 goto $r5 = <edu.stanford.nlp.ie.crf.CRFClassifierEvaluator: edu.stanford.nlp.util.logging.Redwood$RedwoodChannels log> 
 (assert (not (>= var3409 var2269))) ; Negate: Cond: i3 >= $i1  
 (define-const var3970 String (get_split_element var1531 "\u005cs+" -1 var3409)) ; Statement: $r9 = r2[i3] 
-(define-const var2514 Real (Real_parseDouble/1471110886 var3970)) ; Statement: $d0 = staticinvoke <java.lang.Double: double parseDouble(java.lang.String)>($r9) 
+(define-const var2514 Float64 (Float64_parseDouble/1471110886 var3970)) ; Statement: $d0 = staticinvoke <java.lang.Double: double parseDouble(java.lang.String)>($r9) 
  ; Statement: return $d0 
 (check-sat)
-; {getOutput/-1207014030=([edu.stanford.nlp.optimization.CmdEvaluator], java.lang.String), cast-from-var1119-to-var1952=([edu.stanford.nlp.ie.crf.CRFClassifierEvaluator], edu.stanford.nlp.optimization.CmdEvaluator), Real_parseDouble/1471110886=([java.lang.String], double)}
+; {getOutput/-1207014030=([edu.stanford.nlp.optimization.CmdEvaluator], java.lang.String), cast-from-var1119-to-var1952=([edu.stanford.nlp.ie.crf.CRFClassifierEvaluator], edu.stanford.nlp.optimization.CmdEvaluator), Float64_parseDouble/1471110886=([java.lang.String], double)}
 ; {var1119=edu.stanford.nlp.ie.crf.CRFClassifierEvaluator, var1051=r0, var1952=edu.stanford.nlp.optimization.CmdEvaluator, var1531=r1, var1441=r2, var1742=i2, var2524=$i0, var3409=i3, var2269=$i1, var3970=$r9, var2514=$d0}
 ; {edu.stanford.nlp.ie.crf.CRFClassifierEvaluator=var1119, r0=var1051, edu.stanford.nlp.optimization.CmdEvaluator=var1952, r1=var1531, r2=var1441, i2=var1742, $i0=var2524, i3=var3409, $i1=var2269, $r9=var3970, $d0=var2514}
 ;seq <java.lang.String: java.lang.String[] split(java.lang.String)>

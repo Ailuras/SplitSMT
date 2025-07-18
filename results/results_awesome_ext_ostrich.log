@@ -6,14 +6,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1544ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.568705556
+SOLVING_TIME: 2.705490670
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 10794.smt2
@@ -23,12 +22,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1338ms)[0m
+[31m[2025-07-18 15:26:05] Result: ERROR (1766ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.365110000
+SOLVING_TIME: 1.798824324
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -40,13 +39,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:09] Result: ERROR (3838ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .023564741
+SOLVING_TIME: 3.931082459
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 11234.smt2
@@ -56,12 +56,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (2297ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (2807ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 2.317593786
+SOLVING_TIME: 2.847347428
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -73,28 +73,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .025545677
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 114.smt2
-PATH: benchmarks/awesome/114.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 6/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1317ms)[0m
+[31m[2025-07-18 15:26:16] Result: ERROR (3418ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.338160833
+SOLVING_TIME: 3.461628588
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -106,14 +90,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1507ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.526131772
+SOLVING_TIME: 3.429032066
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11642.smt2
@@ -123,14 +106,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 8/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1498ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.518380824
+SOLVING_TIME: 3.224733742
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11661.smt2
@@ -139,32 +121,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 9/10
+BATCH: 1
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (1421ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.440763228
+SOLVING_TIME: 2.636983248
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 11713.smt2
-PATH: benchmarks/awesome/11713.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 10/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1129ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.149082681
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11770.smt2
@@ -174,33 +138,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 1/10
+INDEX: 2/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 38.
-warning: "define-fun-rec" command is safely ignored in line 39.
-[31m[2025-07-15 20:02:20] Result: ERROR (1605ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.630940102
+SOLVING_TIME: 4.543074035
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 1181.smt2
-PATH: benchmarks/awesome/1181.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 1
-INDEX: 2/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1299ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.317335198
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11864.smt2
@@ -210,30 +154,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.724010776
+SOLVING_TIME: 2.677863516
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 11910.smt2
-PATH: benchmarks/awesome/11910.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 1
-INDEX: 4/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1302ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.323243017
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 12029.smt2
@@ -243,14 +170,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 5/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1277ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.296311101
+SOLVING_TIME: 2.545843419
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 12063.smt2
@@ -260,11 +186,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 6/10
+INDEX: 5/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.632456069
+SOLVING_TIME: 2.443041829
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -276,32 +202,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 2.332956324
+SOLVING_TIME: 3.634046819
 RESULT: SUCCESS
 SAT_RESULT: SAT
-
-===========================================================
-FILE: 12328.smt2
-PATH: benchmarks/awesome/12328.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 1
-INDEX: 8/10
------------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 34.
-warning: "define-fun-rec" command is safely ignored in line 35.
-[31m[2025-07-15 20:02:31] Result: ERROR (1166ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.184264243
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 12358.smt2
@@ -311,14 +218,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 9/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:32] Result: ERROR (1248ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.269644760
+SOLVING_TIME: 2.976876732
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 125.smt2
@@ -327,13 +233,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 1
-INDEX: 10/10
+BATCH: 2
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:34] Result: ERROR (1625ms)[0m
+[31m[2025-07-18 15:26:04] Result: ERROR (2721ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.649924089
+SOLVING_TIME: 2.748101223
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -345,12 +251,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 1/10
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1357ms)[0m
+[31m[2025-07-18 15:26:07] Result: ERROR (3421ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.382916413
+SOLVING_TIME: 3.458692757
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -362,46 +268,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 2/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1327ms)[0m
+[31m[2025-07-18 15:26:10] Result: ERROR (3170ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.357009089
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 13089.smt2
-PATH: benchmarks/awesome/13089.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 2
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1540ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.567733016
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 13120.smt2
-PATH: benchmarks/awesome/13120.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 2
-INDEX: 4/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1482ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.507429921
+SOLVING_TIME: 3.229563648
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -413,45 +285,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 5/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Error processing file: stoi[0m
------------------------------------------------------------
-SOLVING_TIME: .031060391
-RESULT: ERROR
-EXIT_CODE: 1
-
-===========================================================
-FILE: 1434.smt2
-PATH: benchmarks/awesome/1434.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 2
-INDEX: 6/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1277ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (1676ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.309322942
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 1435.smt2
-PATH: benchmarks/awesome/1435.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 2
-INDEX: 7/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1346ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.376632982
+SOLVING_TIME: 1.702619412
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -463,12 +302,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 8/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1203ms)[0m
+[31m[2025-07-18 15:26:42] Result: ERROR (30120ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.223603475
+SOLVING_TIME: 30.150012843
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -480,14 +319,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 9/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1273ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.293026781
+SOLVING_TIME: 1.830312891
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1574.smt2
@@ -497,14 +335,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 10/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1067ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.091304820
+SOLVING_TIME: 1.748520645
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 16116.smt2
@@ -514,12 +351,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1313ms)[0m
+[31m[2025-07-18 15:26:04] Result: ERROR (2880ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.338901591
+SOLVING_TIME: 2.907082730
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -531,31 +368,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1511ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.532431627
+SOLVING_TIME: 3.217198665
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 17264.smt2
-PATH: benchmarks/awesome/17264.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 3
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1309ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.339717155
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1759.smt2
@@ -565,11 +384,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 4/10
+INDEX: 3/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.914949865
+SOLVING_TIME: 3.215921696
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -581,11 +400,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 5/10
+INDEX: 4/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.962882530
+SOLVING_TIME: 2.889532268
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -597,15 +416,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 6/10
+INDEX: 5/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:19] Result: ERROR (5585ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .028515590
+SOLVING_TIME: 5.612338116
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 1798.smt2
@@ -615,11 +433,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.669425917
+SOLVING_TIME: 2.933483358
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -631,13 +449,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 8/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Error processing file: stoi[0m
+[31m[2025-07-18 15:26:25] Result: ERROR (3000ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .032574317
-RESULT: ERROR
-EXIT_CODE: 1
+SOLVING_TIME: 3.033018664
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 19222.smt2
@@ -646,12 +465,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 9/10
+BATCH: 4
+INDEX: 1/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.558198137
+SOLVING_TIME: 2.459640910
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -662,13 +481,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 3
-INDEX: 10/10
+BATCH: 4
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1052ms)[0m
+[31m[2025-07-18 15:26:07] Result: ERROR (3430ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.075103944
+SOLVING_TIME: 3.483900837
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -680,12 +499,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 1/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1596ms)[0m
+[31m[2025-07-18 15:26:10] Result: ERROR (3380ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.620843055
+SOLVING_TIME: 3.448105699
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -697,12 +516,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 2/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1499ms)[0m
+[31m[2025-07-18 15:26:14] Result: ERROR (3539ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.529493292
+SOLVING_TIME: 3.586427462
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -714,13 +533,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 3/10
+INDEX: 5/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:21] Result: ERROR (7007ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .020046389
+SOLVING_TIME: 7.067692275
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20049.smt2
@@ -730,12 +550,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 4/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1348ms)[0m
+[31m[2025-07-18 15:26:24] Result: ERROR (2646ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.368053836
+SOLVING_TIME: 2.717682518
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -747,13 +567,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 5/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:27] Result: ERROR (3156ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .120580660
+SOLVING_TIME: 3.189673961
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20116.smt2
@@ -762,13 +583,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 6/10
+BATCH: 5
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1228ms)[0m
+[31m[2025-07-18 15:26:04] Result: ERROR (2888ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.261064868
+SOLVING_TIME: 2.921674258
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -779,14 +600,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 7/10
+BATCH: 5
+INDEX: 2/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 75.
+[31m[2025-07-18 15:26:05] Result: ERROR (1412ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .018543373
+SOLVING_TIME: 1.440174540
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20413.smt2
@@ -795,14 +617,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 8/10
+BATCH: 5
+INDEX: 3/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:09] Result: ERROR (3887ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .025753830
+SOLVING_TIME: 3.955580176
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20494.smt2
@@ -811,15 +634,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 9/10
+BATCH: 5
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1287ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.309888536
+SOLVING_TIME: 2.625834852
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 20498.smt2
@@ -828,15 +650,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 4
-INDEX: 10/10
+BATCH: 5
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1304ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.343592662
+SOLVING_TIME: 2.674551151
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 20512.smt2
@@ -846,30 +667,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 5
-INDEX: 1/10
+INDEX: 6/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.694863263
+SOLVING_TIME: 3.369181557
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 2054.smt2
-PATH: benchmarks/awesome/2054.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 5
-INDEX: 2/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1255ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.281643499
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 21157.smt2
@@ -879,11 +683,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 5
-INDEX: 3/10
+INDEX: 7/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.734353214
+SOLVING_TIME: 3.647710175
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -894,31 +698,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 4/10
+BATCH: 6
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1226ms)[0m
+[31m[2025-07-18 15:26:02] Result: ERROR (1446ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.250420344
+SOLVING_TIME: 1.468471880
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 21189.smt2
-PATH: benchmarks/awesome/21189.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 5
-INDEX: 5/10
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 216.
------------------------------------------------------------
-SOLVING_TIME: .017427680
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 21345.smt2
@@ -927,30 +715,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 6/10
+BATCH: 6
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1282ms)[0m
+[31m[2025-07-18 15:26:04] Result: ERROR (1646ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.303707251
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 21366.smt2
-PATH: benchmarks/awesome/21366.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 5
-INDEX: 7/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1319ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.342011639
+SOLVING_TIME: 1.671123995
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -961,13 +732,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 8/10
+BATCH: 6
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1194ms)[0m
+[31m[2025-07-18 15:26:06] Result: ERROR (2100ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.220835849
+SOLVING_TIME: 2.146368708
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -978,49 +749,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 5
-INDEX: 9/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (1238ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.266977493
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 21586-deviant-0.smt2
-PATH: benchmarks/awesome/21586-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 5
-INDEX: 10/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1297ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.316978750
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 21586.smt2
-PATH: benchmarks/awesome/21586.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
 BATCH: 6
-INDEX: 1/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1563ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.584776293
+SOLVING_TIME: 3.470329935
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 21922.smt2
@@ -1030,14 +766,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 6
-INDEX: 2/10
+INDEX: 5/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-[31m[2025-07-15 20:02:21] Result: ERROR (1285ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (2664ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.310317394
+SOLVING_TIME: 2.693868141
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1049,29 +783,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 6
-INDEX: 3/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1343ms)[0m
+[31m[2025-07-18 15:26:43] Result: ERROR (30331ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.364911961
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 2345.smt2
-PATH: benchmarks/awesome/2345.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 6
-INDEX: 4/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1263ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.283737755
+SOLVING_TIME: 30.363614587
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1083,14 +800,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 6
-INDEX: 5/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1348ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.368432877
+SOLVING_TIME: 1.877174947
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2376.smt2
@@ -1099,13 +815,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 6/10
+BATCH: 7
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1292ms)[0m
+[31m[2025-07-18 15:26:22] Result: ERROR (20902ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.316623645
+SOLVING_TIME: 20.927203920
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1116,32 +832,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 7/10
+BATCH: 7
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1256ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.277344696
+SOLVING_TIME: 26.499916526
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 245_1.smt2
-PATH: benchmarks/awesome/245_1.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 6
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1504ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.527308095
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 245.smt2
@@ -1150,79 +848,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 6
-INDEX: 9/10
+BATCH: 7
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (896ms)[0m
+[31m[2025-07-18 15:26:50] Result: ERROR (1223ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .912957724
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 2475.smt2
-PATH: benchmarks/awesome/2475.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 6
-INDEX: 10/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (869ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: .890376464
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 248.smt2
-PATH: benchmarks/awesome/248.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 1/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.710136267
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 2565.smt2
-PATH: benchmarks/awesome/2565.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 2/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.457160417
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 25.smt2
-PATH: benchmarks/awesome/25.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1515ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.537989021
+SOLVING_TIME: 1.251779022
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1234,31 +866,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 7
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1510ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.531312241
+SOLVING_TIME: 1.557942970
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 2933.smt2
-PATH: benchmarks/awesome/2933.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 5/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1290ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.309826846
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 307.smt2
@@ -1268,14 +882,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 7
-INDEX: 6/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1249ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.266797931
+SOLVING_TIME: 1.490505682
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3122.smt2
@@ -1285,47 +898,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 7
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.632236922
+SOLVING_TIME: 1.513905227
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 3231.smt2
-PATH: benchmarks/awesome/3231.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (1155ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.175367702
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 33018.smt2
-PATH: benchmarks/awesome/33018.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 7
-INDEX: 9/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1231ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.251862824
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 33306.smt2
@@ -1335,14 +914,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 7
-INDEX: 10/10
+INDEX: 7/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-[31m[2025-07-15 20:02:32] Result: ERROR (1045ms)[0m
+[31m[2025-07-18 15:26:58] Result: ERROR (3773ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.070229587
+SOLVING_TIME: 3.798466408
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1354,14 +931,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-[31m[2025-07-15 20:02:20] Result: ERROR (1473ms)[0m
+[31m[2025-07-18 15:26:09] Result: ERROR (8265ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.496201635
+SOLVING_TIME: 8.291983632
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1373,13 +948,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .027292861
+SOLVING_TIME: 2.961530074
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 337.smt2
@@ -1389,14 +964,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1318ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.342009839
+SOLVING_TIME: 2.535140492
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34010.smt2
@@ -1406,11 +980,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.771058655
+SOLVING_TIME: 3.238048649
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1422,13 +996,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:48] Result: ERROR (30125ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .021699088
+SOLVING_TIME: 30.173927690
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 34014-deviant-1.smt2
@@ -1438,13 +1013,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:18] Result: ERROR (30096ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .019693756
+SOLVING_TIME: 30.122664251
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 34014.smt2
@@ -1454,13 +1030,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 7/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:48] Result: ERROR (30093ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .028549305
+SOLVING_TIME: 30.128774366
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 34019-deviant-0.smt2
@@ -1469,14 +1046,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 8/10
+BATCH: 9
+INDEX: 1/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:31] Result: ERROR (30112ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .033081160
+SOLVING_TIME: 30.135819680
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 34019.smt2
@@ -1485,14 +1063,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 9/10
+BATCH: 9
+INDEX: 2/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:01] Result: ERROR (30107ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .029578190
+SOLVING_TIME: 30.136869612
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 340.smt2
@@ -1501,14 +1080,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 8
-INDEX: 10/10
+BATCH: 9
+INDEX: 3/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:03] Result: ERROR (1627ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .018780146
+SOLVING_TIME: 1.653385290
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 347.smt2
@@ -1518,29 +1098,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 9
-INDEX: 1/10
+INDEX: 4/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:05] Result: ERROR (1729ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .030323191
+SOLVING_TIME: 1.759568879
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35360-deviant-0.smt2
-PATH: benchmarks/awesome/35360-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 9
-INDEX: 2/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.802501203
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 35360.smt2
@@ -1550,30 +1115,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 9
-INDEX: 3/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1285ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.306017129
+SOLVING_TIME: 1.637113404
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 35365-deviant-0.smt2
-PATH: benchmarks/awesome/35365-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 9
-INDEX: 4/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.856328107
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 35365.smt2
@@ -1583,29 +1131,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 9
-INDEX: 5/10
+INDEX: 6/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:27:36] Result: ERROR (30099ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .024043243
+SOLVING_TIME: 30.130950136
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35367-deviant-0.smt2
-PATH: benchmarks/awesome/35367-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 9
-INDEX: 6/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.881106092
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 35367.smt2
@@ -1615,27 +1148,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 9
-INDEX: 7/10
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .030213419
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35369-deviant-0.smt2
-PATH: benchmarks/awesome/35369-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 9
-INDEX: 8/10
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.892819908
+SOLVING_TIME: 2.402116218
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1646,30 +1163,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 9
-INDEX: 9/10
+BATCH: 10
+INDEX: 1/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:06] Result: ERROR (4800ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .029690608
+SOLVING_TIME: 4.840992176
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35370-deviant-0.smt2
-PATH: benchmarks/awesome/35370-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 9
-INDEX: 10/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.810640787
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 35370.smt2
@@ -1679,29 +1181,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 1/10
+INDEX: 2/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:36] Result: ERROR (30165ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .030542701
+SOLVING_TIME: 30.247740209
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35371-deviant-0.smt2
-PATH: benchmarks/awesome/35371-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 10
-INDEX: 2/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 2.024392963
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 35371.smt2
@@ -1711,13 +1198,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .036376941
+SOLVING_TIME: 3.739687158
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 353.smt2
@@ -1727,13 +1214,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:42] Result: ERROR (2291ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .030313300
+SOLVING_TIME: 2.331259716
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 35411.smt2
@@ -1743,11 +1231,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.803962192
+SOLVING_TIME: 1.781654097
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1759,11 +1247,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.651379956
+SOLVING_TIME: 1.827778984
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1775,47 +1263,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 7/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .027852506
+SOLVING_TIME: 1.699823027
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 36626.smt2
-PATH: benchmarks/awesome/36626.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 10
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1297ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.321319783
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 36941.smt2
-PATH: benchmarks/awesome/36941.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 10
-INDEX: 9/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1298ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.317349139
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3751.smt2
@@ -1824,14 +1278,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 10
-INDEX: 10/10
+BATCH: 11
+INDEX: 1/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:04] Result: ERROR (3046ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .024799154
+SOLVING_TIME: 3.076549952
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 3766.smt2
@@ -1841,29 +1296,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 1/10
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1331ms)[0m
+[31m[2025-07-18 15:26:08] Result: ERROR (3911ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.348898611
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 37741.smt2
-PATH: benchmarks/awesome/37741.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 11
-INDEX: 2/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1292ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.312836695
+SOLVING_TIME: 3.934382017
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1875,11 +1313,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.745258532
+SOLVING_TIME: 2.657858766
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1891,14 +1329,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1665ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.695940897
+SOLVING_TIME: 2.813212633
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 37934.smt2
@@ -1908,13 +1345,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:23] Result: ERROR (9780ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .030313646
+SOLVING_TIME: 9.821209009
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37944.smt2
@@ -1924,13 +1362,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:30] Result: ERROR (6399ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .025410585
+SOLVING_TIME: 6.460731713
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37946.smt2
@@ -1940,13 +1379,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 11
-INDEX: 7/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:36] Result: ERROR (6439ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .034516973
+SOLVING_TIME: 6.479810723
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37.smt2
@@ -1955,15 +1395,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 8/10
+BATCH: 12
+INDEX: 1/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
-[31m[2025-07-15 20:02:26] Result: ERROR (1419ms)[0m
+[31m[2025-07-18 15:26:10] Result: ERROR (8798ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.439290086
+SOLVING_TIME: 8.821688388
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1974,30 +1412,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 11
-INDEX: 9/10
+BATCH: 12
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1238ms)[0m
+[31m[2025-07-18 15:26:11] Result: ERROR (1757ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.266091237
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 38977.smt2
-PATH: benchmarks/awesome/38977.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 11
-INDEX: 10/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1228ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.250166022
+SOLVING_TIME: 1.783958095
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2009,29 +1430,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 12
-INDEX: 1/10
+INDEX: 3/7
 -----------------------------------------------------------
-error: Multiple declarations of "Multiple declarations of function" in line 65.
+[31m[2025-07-18 15:26:13] Result: ERROR (1377ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .017694145
+SOLVING_TIME: 1.415086262
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 41929.smt2
-PATH: benchmarks/awesome/41929.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 12
-INDEX: 2/10
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.853374915
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 4197.smt2
@@ -2041,12 +1447,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 12
-INDEX: 3/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1238ms)[0m
+[31m[2025-07-18 15:26:43] Result: ERROR (30174ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.255844252
+SOLVING_TIME: 30.196374504
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2058,31 +1464,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 12
-INDEX: 4/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1646ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.676323034
+SOLVING_TIME: 2.095880844
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 42142.smt2
-PATH: benchmarks/awesome/42142.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 12
-INDEX: 5/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1718ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.736553486
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4296.smt2
@@ -2092,29 +1480,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 12
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (2300ms)[0m
+[31m[2025-07-18 15:26:47] Result: ERROR (1908ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 2.320737993
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 42.smt2
-PATH: benchmarks/awesome/42.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 12
-INDEX: 7/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1426ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.447215177
+SOLVING_TIME: 1.932486108
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2126,16 +1497,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 12
-INDEX: 8/10
+INDEX: 7/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 31.
-warning: "define-fun-rec" command is safely ignored in line 32.
-[31m[2025-07-15 20:02:30] Result: ERROR (1153ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.173671347
+SOLVING_TIME: 1.878180909
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4349.smt2
@@ -2144,17 +1512,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 9/10
+BATCH: 13
+INDEX: 1/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 33.
-warning: "define-fun-rec" command is safely ignored in line 34.
-[31m[2025-07-15 20:02:31] Result: ERROR (1051ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.070632242
+SOLVING_TIME: 2.953731135
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4369.smt2
@@ -2163,15 +1528,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 12
-INDEX: 10/10
+BATCH: 13
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:32] Result: ERROR (1110ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.133868561
+SOLVING_TIME: 2.910864253
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 437.smt2
@@ -2181,46 +1545,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 13
-INDEX: 1/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:19] Result: ERROR (1080ms)[0m
+[31m[2025-07-18 15:26:09] Result: ERROR (1986ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.102133888
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4444-deviant-0.smt2
-PATH: benchmarks/awesome/4444-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 13
-INDEX: 2/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1347ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.375496869
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4444.smt2
-PATH: benchmarks/awesome/4444.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 13
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:22] Result: ERROR (1359ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.392312016
+SOLVING_TIME: 2.025443523
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2232,14 +1562,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 13
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 41.
-warning: "define-fun-rec" command is safely ignored in line 42.
-[31m[2025-07-15 20:02:24] Result: ERROR (1344ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (2673ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.367934335
+SOLVING_TIME: 2.723464112
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2251,29 +1579,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 13
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1283ms)[0m
+[31m[2025-07-18 15:26:15] Result: ERROR (3511ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.303668430
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4536.smt2
-PATH: benchmarks/awesome/4536.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 13
-INDEX: 6/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1497ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.525542575
+SOLVING_TIME: 3.587110301
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2285,31 +1596,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 13
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1291ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.315550108
+SOLVING_TIME: 3.204940805
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4599.smt2
-PATH: benchmarks/awesome/4599.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 13
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1492ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.525511949
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4659.smt2
@@ -2319,13 +1612,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 13
-INDEX: 9/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .016634402
+SOLVING_TIME: 3.421283472
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 4684.smt2
@@ -2334,31 +1627,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 13
-INDEX: 10/10
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .018005411
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 4722.smt2
-PATH: benchmarks/awesome/4722.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
 BATCH: 14
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1539ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.563660959
+SOLVING_TIME: 2.644270256
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 472.smt2
@@ -2368,16 +1644,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 32.
-warning: "define-fun-rec" command is safely ignored in line 33.
-[31m[2025-07-15 20:02:21] Result: ERROR (1326ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.349132252
+SOLVING_TIME: 4.253472668
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4762.smt2
@@ -2387,30 +1660,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 36.
-warning: "define-fun-rec" command is safely ignored in line 37.
-error: Multiple definitions or keybindings of "Type mismatch in distinct" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .043544712
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 4765.smt2
-PATH: benchmarks/awesome/4765.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 14
-INDEX: 4/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1484ms)[0m
+[31m[2025-07-18 15:26:11] Result: ERROR (2971ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.510869628
+SOLVING_TIME: 3.020598954
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2422,33 +1677,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 5/10
+INDEX: 4/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
-[31m[2025-07-15 20:02:24] Result: ERROR (1364ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.391477683
+SOLVING_TIME: 3.133795646
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4906.smt2
-PATH: benchmarks/awesome/4906.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 14
-INDEX: 6/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1266ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.293240608
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4935.smt2
@@ -2458,14 +1693,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 7/10
+INDEX: 5/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 46.
-warning: "define-fun-rec" command is safely ignored in line 47.
-[31m[2025-07-15 20:02:27] Result: ERROR (1208ms)[0m
+[31m[2025-07-18 15:26:16] Result: ERROR (2114ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.227233044
+SOLVING_TIME: 2.176390562
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2477,14 +1710,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 8/10
+INDEX: 6/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
-[31m[2025-07-15 20:02:28] Result: ERROR (1309ms)[0m
+[31m[2025-07-18 15:26:20] Result: ERROR (3639ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.333351358
+SOLVING_TIME: 3.732170320
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2496,15 +1727,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 14
-INDEX: 9/10
+INDEX: 7/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 37.
-warning: "define-fun-rec" command is safely ignored in line 38.
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:23] Result: ERROR (3048ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .021747086
+SOLVING_TIME: 3.080807631
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 5228.smt2
@@ -2513,15 +1743,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 14
-INDEX: 10/10
+BATCH: 15
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1078ms)[0m
-unknown
+sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.096803534
+SOLVING_TIME: 2.634618624
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 5237.smt2
@@ -2531,28 +1760,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 1/10
+INDEX: 2/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .022195424
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 52.smt2
-PATH: benchmarks/awesome/52.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 15
-INDEX: 2/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1536ms)[0m
+[31m[2025-07-18 15:26:07] Result: ERROR (3440ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.555933252
+SOLVING_TIME: 3.473353668
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2564,11 +1777,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 2.221748670
+SOLVING_TIME: 3.064547644
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2580,12 +1793,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1372ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (1617ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.400889724
+SOLVING_TIME: 1.667461046
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2597,14 +1810,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1254ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.277822836
+SOLVING_TIME: 2.516709746
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6001.smt2
@@ -2614,11 +1826,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.735577502
+SOLVING_TIME: 3.097154772
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2630,14 +1842,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 15
-INDEX: 7/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1502ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.533125586
+SOLVING_TIME: 3.281325604
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6076.smt2
@@ -2646,15 +1857,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 8/10
+BATCH: 16
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (1419ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.439203372
+SOLVING_TIME: 2.526435573
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6116.smt2
@@ -2663,32 +1873,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 15
-INDEX: 9/10
+BATCH: 16
+INDEX: 2/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1178ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.198402300
+SOLVING_TIME: 3.113224482
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 619.smt2
-PATH: benchmarks/awesome/619.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 15
-INDEX: 10/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:32] Result: ERROR (1224ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.245655628
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6268.smt2
@@ -2698,12 +1890,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 16
-INDEX: 1/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1272ms)[0m
+[31m[2025-07-18 15:26:37] Result: ERROR (30142ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.292944781
+SOLVING_TIME: 30.238485983
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2715,28 +1907,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 16
-INDEX: 2/10
+INDEX: 4/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .031149522
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 629.smt2
-PATH: benchmarks/awesome/629.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 16
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:21] Result: ERROR (1260ms)[0m
+[31m[2025-07-18 15:27:07] Result: ERROR (30099ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.280719829
+SOLVING_TIME: 30.127915992
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2748,32 +1924,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 16
-INDEX: 4/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:21] Failed to create topological sort due to circular dependencies[0m
-[31m[2025-07-15 20:02:22] Result: ERROR (1477ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.526562581
+SOLVING_TIME: 1.605578109
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 635.smt2
-PATH: benchmarks/awesome/635.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 16
-INDEX: 5/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1445ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.469088671
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 649.smt2
@@ -2783,14 +1940,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 16
-INDEX: 6/10
+INDEX: 6/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 35.
-warning: "define-fun-rec" command is safely ignored in line 36.
-[31m[2025-07-15 20:02:25] Result: ERROR (1271ms)[0m
+[31m[2025-07-18 15:27:11] Result: ERROR (1937ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.295700032
+SOLVING_TIME: 1.962563078
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2802,47 +1957,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 16
-INDEX: 7/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:26] Result: ERROR (1078ms)[0m
+[31m[2025-07-18 15:27:12] Result: ERROR (932ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.098763018
+SOLVING_TIME: .957725309
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 6672.smt2
-PATH: benchmarks/awesome/6672.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 16
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1297ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.329832440
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 670.smt2
-PATH: benchmarks/awesome/670.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 16
-INDEX: 9/10
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 223.
------------------------------------------------------------
-SOLVING_TIME: .027843575
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 6760.smt2
@@ -2851,32 +1973,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 16
-INDEX: 10/10
------------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 30.
-warning: "define-fun-rec" command is safely ignored in line 31.
-[31m[2025-07-15 20:02:29] Result: ERROR (1253ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.275929435
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 6769_1.smt2
-PATH: benchmarks/awesome/6769_1.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
 BATCH: 17
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1335ms)[0m
+[31m[2025-07-18 15:26:31] Result: ERROR (30239ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.352095606
+SOLVING_TIME: 30.267221304
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2888,11 +1991,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.757220308
+SOLVING_TIME: 1.877670426
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2904,14 +2007,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 3/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1312ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.334969977
+SOLVING_TIME: 2.033693948
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6947.smt2
@@ -2921,14 +2023,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 4/10
+INDEX: 4/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 33.
-warning: "define-fun-rec" command is safely ignored in line 34.
-[31m[2025-07-15 20:02:24] Result: ERROR (1446ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.484075876
+SOLVING_TIME: 2.705407921
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -2940,29 +2039,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 5/10
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 2.730305412
+SOLVING_TIME: 2.402070537
 RESULT: SUCCESS
 SAT_RESULT: SAT
-
-===========================================================
-FILE: 721.smt2
-PATH: benchmarks/awesome/721.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 17
-INDEX: 6/10
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 195.
------------------------------------------------------------
-SOLVING_TIME: .019444644
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
 
 ===========================================================
 FILE: 723.smt2
@@ -2972,46 +2055,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 7/10
+INDEX: 6/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1249ms)[0m
+[31m[2025-07-18 15:26:42] Result: ERROR (2245ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.274480542
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 72.smt2
-PATH: benchmarks/awesome/72.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 17
-INDEX: 8/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:30] Result: ERROR (1196ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.216732825
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 739.smt2
-PATH: benchmarks/awesome/739.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 17
-INDEX: 9/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:31] Result: ERROR (1076ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.095328070
+SOLVING_TIME: 2.268825412
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3023,12 +2072,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 17
-INDEX: 10/10
+INDEX: 7/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:32] Result: ERROR (1008ms)[0m
+[31m[2025-07-18 15:26:44] Result: ERROR (1120ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.027711558
+SOLVING_TIME: 1.143289588
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3040,12 +2089,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 1/10
+INDEX: 1/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:20] Result: ERROR (1332ms)[0m
+[31m[2025-07-18 15:26:02] Result: ERROR (1437ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.353943853
+SOLVING_TIME: 1.463948555
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3057,31 +2106,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 2/10
+INDEX: 2/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 47.
-warning: "define-fun-rec" command is safely ignored in line 48.
-[31m[2025-07-15 20:02:21] Result: ERROR (1361ms)[0m
+[31m[2025-07-18 15:26:10] Result: ERROR (7554ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.382367454
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 78.smt2
-PATH: benchmarks/awesome/78.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 18
-INDEX: 3/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:23] Result: ERROR (1520ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.547872374
+SOLVING_TIME: 7.580301452
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3093,12 +2123,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 4/10
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1361ms)[0m
+[31m[2025-07-18 15:26:12] Result: ERROR (1658ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.390250052
+SOLVING_TIME: 1.718303641
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3110,46 +2140,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 5/10
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1329ms)[0m
+[31m[2025-07-18 15:26:13] Result: ERROR (1436ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.354723867
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 82.smt2
-PATH: benchmarks/awesome/82.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 18
-INDEX: 6/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:27] Result: ERROR (1302ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.321327722
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 8415.smt2
-PATH: benchmarks/awesome/8415.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 18
-INDEX: 7/10
------------------------------------------------------------
-[31m[2025-07-15 20:02:28] Result: ERROR (1258ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.275746491
+SOLVING_TIME: 1.462218146
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3161,12 +2157,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 8/10
+INDEX: 5/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:58] Result: ERROR (30090ms)[0m
+[31m[2025-07-18 15:26:15] Result: ERROR (1950ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.115856742
+SOLVING_TIME: 1.971382865
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3178,13 +2174,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 9/10
+INDEX: 6/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:19] Result: ERROR (3542ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .025312705
+SOLVING_TIME: 3.580527259
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 8916.smt2
@@ -3194,13 +2191,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 18
-INDEX: 10/10
+INDEX: 7/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:22] Result: ERROR (3637ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .023768939
+SOLVING_TIME: 3.669397916
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 8948.smt2
@@ -3210,11 +2208,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 1/8
+INDEX: 1/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.743076065
+SOLVING_TIME: 2.525820672
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3226,11 +2224,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 2/8
+INDEX: 2/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 2.065795648
+SOLVING_TIME: 3.280177360
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -3242,12 +2240,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 3/8
+INDEX: 3/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:24] Result: ERROR (1323ms)[0m
+[31m[2025-07-18 15:26:09] Result: ERROR (1982ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.351737023
+SOLVING_TIME: 2.037221764
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3259,14 +2257,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 4/8
+INDEX: 4/7
 -----------------------------------------------------------
-[31m[2025-07-15 20:02:25] Result: ERROR (1446ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.466361086
+SOLVING_TIME: 2.880416895
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9338.smt2
@@ -3276,13 +2273,14 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 5/8
+INDEX: 5/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+[31m[2025-07-18 15:26:15] Result: ERROR (2881ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .019363672
+SOLVING_TIME: 2.920879336
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 9391.smt2
@@ -3292,14 +2290,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 6/8
+INDEX: 6/7
 -----------------------------------------------------------
-warning: "define-fun-rec" command is safely ignored in line 30.
-warning: "define-fun-rec" command is safely ignored in line 31.
-[31m[2025-07-15 20:02:26] Result: ERROR (1336ms)[0m
+[31m[2025-07-18 15:26:45] Result: ERROR (30216ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.363928403
+SOLVING_TIME: 30.250272648
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -3311,28 +2307,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 19
-INDEX: 7/8
+INDEX: 7/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.667772242
+SOLVING_TIME: 1.688651920
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 996.smt2
-PATH: benchmarks/awesome/996.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 19
-INDEX: 8/8
------------------------------------------------------------
-[31m[2025-07-15 20:02:29] Result: ERROR (1201ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.216501593
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
 

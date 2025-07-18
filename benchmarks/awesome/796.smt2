@@ -43,11 +43,11 @@
 (declare-fun font/-151695256 (var2188) var3670)
 (declare-fun getFontMetrics/1328729825 (var2511 var3670) var3291)
 (declare-fun cast-from-var2188-to-var2511 (var2188) var2511)
-(declare-fun x/-707491510 (var1385) Real)
-(declare-fun cast-from-Real-to-Int (Real) Int)
+(declare-fun x/-707491510 (var1385) Float64)
+(declare-fun cast-from-Float64-to-Int (Float64) Int)
 (declare-fun arcSize/-151695256 (var2188) Int)
 (declare-fun nodeWidthPadding/-151695256 (var2188) Int)
-(declare-fun y/-707491510 (var1385) Real)
+(declare-fun y/-707491510 (var1385) Float64)
 (declare-fun getAscent/-437535464 (var3291) Int)
 (declare-fun getLeading/764211298 (var3291) Int)
 (declare-fun nodeHeightPadding/-151695256 (var2188) Int)
@@ -94,15 +94,15 @@
 (define-const var222 var3670 (font/-151695256 var2156)) ; Statement: $r6 = r0.<org.antlr.v4.gui.TreeViewer: java.awt.Font font> 
 (assert true)
 (define-const var1160 var3291 (getFontMetrics/1328729825 (cast-from-var2188-to-var2511 var2156) var222)) ; Statement: $r11 = virtualinvoke r0.<org.antlr.v4.gui.TreeViewer: java.awt.FontMetrics getFontMetrics(java.awt.Font)>($r6) 
-(define-const var3921 Real (x/-707491510 var1757)) ; Statement: $d0 = r2.<java.awt.geom.Rectangle2D$Double: double x> 
-(define-const var2270 Int (cast-from-Real-to-Int var3921)) ; Statement: $i2 = (int) $d0 
+(define-const var3921 Float64 (x/-707491510 var1757)) ; Statement: $d0 = r2.<java.awt.geom.Rectangle2D$Double: double x> 
+(define-const var2270 Int (cast-from-Float64-to-Int var3921)) ; Statement: $i2 = (int) $d0 
 (define-const var1116 Int (arcSize/-151695256 var2156)) ; Statement: $i0 = r0.<org.antlr.v4.gui.TreeViewer: int arcSize> 
 (define-const var503 Int (div var1116 2)) ; Statement: $i1 = $i0 / 2 
 (define-const var2565 Int (+ var2270 var503)) ; Statement: $i4 = $i2 + $i1 
 (define-const var2933 Int (nodeWidthPadding/-151695256 var2156)) ; Statement: $i3 = r0.<org.antlr.v4.gui.TreeViewer: int nodeWidthPadding> 
 (define-const var817 Int (+ var2565 var2933)) ; Statement: $i21 = $i4 + $i3 
-(define-const var2631 Real (y/-707491510 var1757)) ; Statement: $d1 = r2.<java.awt.geom.Rectangle2D$Double: double y> 
-(define-const var1978 Int (cast-from-Real-to-Int var2631)) ; Statement: $i6 = (int) $d1 
+(define-const var2631 Float64 (y/-707491510 var1757)) ; Statement: $d1 = r2.<java.awt.geom.Rectangle2D$Double: double y> 
+(define-const var1978 Int (cast-from-Float64-to-Int var2631)) ; Statement: $i6 = (int) $d1 
 (assert true)
 (define-const var3356 Int (getAscent/-437535464 var1160)) ; Statement: $i5 = virtualinvoke $r11.<java.awt.FontMetrics: int getAscent()>() 
 (define-const var2279 Int (+ var1978 var3356)) ; Statement: $i8 = $i6 + $i5 
@@ -119,7 +119,7 @@
 (assert (>= var647 var1108)) ; Cond: i33 >= $i34 
  ; Statement: return 
 (check-sat)
-; {getBoundsOfNode/-98686064=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.awt.geom.Rectangle2D$Double), isHighlighted/979820081=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], boolean), boxColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), borderColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), textColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), setColor/1206064488=([java.awt.Graphics, java.awt.Color], void), getText/1718706454=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.lang.String), font/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Font), getFontMetrics/1328729825=([javax.swing.JComponent, java.awt.Font], java.awt.FontMetrics), cast-from-var2188-to-var2511=([org.antlr.v4.gui.TreeViewer], javax.swing.JComponent), x/-707491510=([java.awt.geom.Rectangle2D$Double], double), cast-from-Real-to-Int=([double], int), arcSize/-151695256=([org.antlr.v4.gui.TreeViewer], int), nodeWidthPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int), y/-707491510=([java.awt.geom.Rectangle2D$Double], double), getAscent/-437535464=([java.awt.FontMetrics], int), getLeading/764211298=([java.awt.FontMetrics], int), nodeHeightPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int)}
+; {getBoundsOfNode/-98686064=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.awt.geom.Rectangle2D$Double), isHighlighted/979820081=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], boolean), boxColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), borderColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), textColor/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Color), setColor/1206064488=([java.awt.Graphics, java.awt.Color], void), getText/1718706454=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.lang.String), font/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Font), getFontMetrics/1328729825=([javax.swing.JComponent, java.awt.Font], java.awt.FontMetrics), cast-from-var2188-to-var2511=([org.antlr.v4.gui.TreeViewer], javax.swing.JComponent), x/-707491510=([java.awt.geom.Rectangle2D$Double], double), cast-from-Float64-to-Int=([double], int), arcSize/-151695256=([org.antlr.v4.gui.TreeViewer], int), nodeWidthPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int), y/-707491510=([java.awt.geom.Rectangle2D$Double], double), getAscent/-437535464=([java.awt.FontMetrics], int), getLeading/764211298=([java.awt.FontMetrics], int), nodeHeightPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int)}
 ; {var2188=org.antlr.v4.gui.TreeViewer, var2156=r0, var3407=java.awt.Graphics, var3203=r3, var1340=org.antlr.v4.runtime.tree.Tree, var2560=r1, var1385=java.awt.geom.Rectangle2D$Double, var1757=r2, var3050=z3, var1063=$z0, var1995=$z5, var1634=java.awt.Color, var3021=$r14, var490=$z2, var258=$r20, var471=$r5, var260=$r9, var670=$r10, var3670=java.awt.Font, var222=$r6, var3291=java.awt.FontMetrics, var2511=javax.swing.JComponent, var1160=$r11, var3921=$d0, var2270=$i2, var1116=$i0, var503=$i1, var2565=$i4, var2933=$i3, var817=$i21, var2631=$d1, var1978=$i6, var3356=$i5, var2279=$i8, var2945=$i7, var3858=$i9, var1788=$i11, var193=$i10, var3518=i32, var647=i33, var1108=$i34}
 ; {org.antlr.v4.gui.TreeViewer=var2188, r0=var2156, java.awt.Graphics=var3407, r3=var3203, org.antlr.v4.runtime.tree.Tree=var1340, r1=var2560, java.awt.geom.Rectangle2D$Double=var1385, r2=var1757, z3=var3050, $z0=var1063, $z5=var1995, java.awt.Color=var1634, $r14=var3021, $z2=var490, $r20=var258, $r5=var471, $r9=var260, $r10=var670, java.awt.Font=var3670, $r6=var222, java.awt.FontMetrics=var3291, javax.swing.JComponent=var2511, $r11=var1160, $d0=var3921, $i2=var2270, $i0=var1116, $i1=var503, $i4=var2565, $i3=var2933, $i21=var817, $d1=var2631, $i6=var1978, $i5=var3356, $i8=var2279, $i7=var2945, $i9=var3858, $i11=var1788, $i10=var193, i32=var3518, i33=var647, $i34=var1108}
 ;seq <java.lang.String: java.lang.String[] split(java.lang.String)>

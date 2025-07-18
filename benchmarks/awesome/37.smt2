@@ -49,7 +49,7 @@
 (assert true)
 ;(assert (<init>/-1102441200 var401)) ; Statement: specialinvoke $r43.<edu.stanford.nlp.pipeline.AnnotationSerializer$IntermediateSemanticGraph: void <init>()>() 
 
-(declare-const var401!1 var2188)，
+(declare-const var401!1 var2188)
 (assert true)
 (define-const var115 String (readLine/150542008 var818)) ; Statement: $r2 = virtualinvoke r1.<java.io.BufferedReader: java.lang.String readLine()>() 
 (assert true)

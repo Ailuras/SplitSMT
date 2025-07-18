@@ -6,12 +6,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/23
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:16] Result: ERROR (1048ms)[0m
+[31m[2025-07-18 15:29:51] Result: ERROR (1225ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.073708256
+SOLVING_TIME: 1.246415264
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -22,98 +22,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 2/23
+BATCH: 1
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:17] Result: ERROR (928ms)[0m
+[31m[2025-07-18 15:29:51] Result: ERROR (1137ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .950446832
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 3849.smt2
-PATH: benchmarks/top20_gh/3849.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 3/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:18] Result: ERROR (1131ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.154687612
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 3879.smt2
-PATH: benchmarks/top20_gh/3879.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 4/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:19] Result: ERROR (1103ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.126524390
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 3884.smt2
-PATH: benchmarks/top20_gh/3884.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 5/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:20] Result: ERROR (1145ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.170939415
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 3886.smt2
-PATH: benchmarks/top20_gh/3886.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 6/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:21] Result: ERROR (1100ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.124410139
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 5194.smt2
-PATH: benchmarks/top20_gh/5194.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 7/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:22] Result: ERROR (1210ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.233295866
+SOLVING_TIME: 1.162476959
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -124,15 +39,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 8/23
+BATCH: 2
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:23] Result: ERROR (949ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .975378785
+SOLVING_TIME: 1.881495131
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6784.smt2
@@ -141,13 +55,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 9/23
+BATCH: 3
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:24] Result: ERROR (928ms)[0m
+[31m[2025-07-18 15:29:52] Result: ERROR (2120ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .952459733
+SOLVING_TIME: 2.145007227
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -158,13 +72,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 10/23
+BATCH: 4
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:25] Result: ERROR (1043ms)[0m
+[31m[2025-07-18 15:29:52] Result: ERROR (2103ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.066194051
+SOLVING_TIME: 2.130727982
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -175,13 +89,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 11/23
+BATCH: 5
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:26] Result: ERROR (940ms)[0m
+[31m[2025-07-18 15:29:52] Result: ERROR (2065ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .964914669
+SOLVING_TIME: 2.089198402
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -192,65 +106,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 12/23
+BATCH: 6
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:27] Result: ERROR (925ms)[0m
+[31m[2025-07-18 15:29:52] Result: ERROR (2059ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .948961266
+SOLVING_TIME: 2.084890952
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 6933.smt2
-PATH: benchmarks/top20_gh/6933.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 13/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:29] Result: ERROR (1136ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.160180799
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 6991.smt2
-PATH: benchmarks/top20_gh/6991.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 14/23
------------------------------------------------------------
-[31m[2025-07-16 18:48:30] Result: ERROR (1086ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.109020521
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 9474-deviant-0.smt2
-PATH: benchmarks/top20_gh/9474-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 15/23
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: 1.157461623
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9474.smt2
@@ -259,47 +123,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 16/23
+BATCH: 7
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:32] Result: ERROR (946ms)[0m
+[31m[2025-07-18 15:29:51] Result: ERROR (1355ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .972168576
+SOLVING_TIME: 1.382299077
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 9484-deviant-0.smt2
-PATH: benchmarks/top20_gh/9484-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 17/23
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: 1.121275464
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 9484-deviant-1.smt2
-PATH: benchmarks/top20_gh/9484-deviant-1.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 18/23
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: 1.131725930
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9484.smt2
@@ -308,31 +140,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 19/23
+BATCH: 8
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:35] Result: ERROR (890ms)[0m
+[31m[2025-07-18 15:29:51] Result: ERROR (1250ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .916561634
+SOLVING_TIME: 1.272064877
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 966-deviant-0.smt2
-PATH: benchmarks/top20_gh/966-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 20/23
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.228011830
-RESULT: SUCCESS
-SAT_RESULT: SAT
 
 ===========================================================
 FILE: 966.smt2
@@ -341,31 +157,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 21/23
+BATCH: 9
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:37] Result: ERROR (927ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .954558118
+SOLVING_TIME: 1.715695810
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 976-deviant-0.smt2
-PATH: benchmarks/top20_gh/976-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 22/23
------------------------------------------------------------
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.773228844
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 976.smt2
@@ -374,13 +173,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 23/23
+BATCH: 10
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:48:40] Result: ERROR (1097ms)[0m
+[31m[2025-07-18 15:29:53] Result: ERROR (2602ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.122635278
+SOLVING_TIME: 2.631488752
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 

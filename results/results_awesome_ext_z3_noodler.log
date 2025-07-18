@@ -6,13 +6,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/198
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .099311309
+SOLVING_TIME: .067428658
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 10794.smt2
@@ -22,13 +22,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/198
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052974443
+SOLVING_TIME: .059909817
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11107.smt2
@@ -38,11 +38,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 3/198
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052123549
+SOLVING_TIME: .096419913
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -54,11 +54,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 4/198
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059846359
+SOLVING_TIME: .070645014
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -70,27 +70,11 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 5/198
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .026700107
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 114.smt2
-PATH: benchmarks/awesome/114.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 6/198
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058093052
+SOLVING_TIME: .109971249
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -102,13 +86,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 7/198
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .050712340
+SOLVING_TIME: .062686082
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11642.smt2
@@ -118,13 +102,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 8/198
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055647996
+SOLVING_TIME: .055885328
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11661.smt2
@@ -133,30 +117,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 9/198
+BATCH: 1
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053070945
+SOLVING_TIME: .055529991
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 11713.smt2
-PATH: benchmarks/awesome/11713.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 10/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .053676863
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11770.smt2
@@ -165,30 +133,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 11/198
+BATCH: 1
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059697286
+SOLVING_TIME: .061958555
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 1181.smt2
-PATH: benchmarks/awesome/1181.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 12/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .057710490
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 11864.smt2
@@ -197,30 +149,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 13/198
+BATCH: 1
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057867667
+SOLVING_TIME: .061168508
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 11910.smt2
-PATH: benchmarks/awesome/11910.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 14/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .060423911
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 12029.smt2
@@ -229,14 +165,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 15/198
+BATCH: 1
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051104165
+SOLVING_TIME: .053321082
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 12063.smt2
@@ -245,14 +181,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 16/198
+BATCH: 1
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058507741
+SOLVING_TIME: .058085059
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1227.smt2
@@ -261,28 +197,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 17/198
+BATCH: 1
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061580538
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 12328.smt2
-PATH: benchmarks/awesome/12328.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 18/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .059765078
+SOLVING_TIME: .072359798
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -293,14 +213,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 19/198
+BATCH: 1
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054723039
+SOLVING_TIME: .052142907
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 125.smt2
@@ -309,12 +229,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 20/198
+BATCH: 2
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054766118
+SOLVING_TIME: .165541761
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -325,12 +245,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 21/198
+BATCH: 2
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055054413
+SOLVING_TIME: .069320409
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -341,44 +261,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 22/198
+BATCH: 2
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058643813
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 13089.smt2
-PATH: benchmarks/awesome/13089.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 23/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .052681302
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 13120.smt2
-PATH: benchmarks/awesome/13120.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 24/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .054382591
+SOLVING_TIME: .078525017
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -389,44 +277,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 25/198
+BATCH: 2
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .060788766
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 1434.smt2
-PATH: benchmarks/awesome/1434.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 26/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .057065616
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 1435.smt2
-PATH: benchmarks/awesome/1435.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 27/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .056697044
+SOLVING_TIME: .070522400
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -437,12 +293,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 28/198
+BATCH: 2
+INDEX: 5/7
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .285178338
+SOLVING_TIME: 7.007588923
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -453,14 +309,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 29/198
+BATCH: 2
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061232319
+SOLVING_TIME: .064234348
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1574.smt2
@@ -469,14 +325,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 30/198
+BATCH: 2
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061152899
+SOLVING_TIME: .059391076
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 16116.smt2
@@ -485,12 +341,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 31/198
+BATCH: 3
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051745028
+SOLVING_TIME: .156674571
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -501,30 +357,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 32/198
+BATCH: 3
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058549929
+SOLVING_TIME: .057283666
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 17264.smt2
-PATH: benchmarks/awesome/17264.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 33/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .049189987
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1759.smt2
@@ -533,14 +373,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 34/198
+BATCH: 3
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .075441464
+SOLVING_TIME: .067751216
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1768.smt2
@@ -549,14 +389,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 35/198
+BATCH: 3
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .078089735
+SOLVING_TIME: .054729732
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1778.smt2
@@ -565,12 +405,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 36/198
+BATCH: 3
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .060767093
+SOLVING_TIME: .152393865
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -581,14 +421,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 37/198
+BATCH: 3
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059740813
+SOLVING_TIME: .065591575
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 18293.smt2
@@ -597,12 +437,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 38/198
+BATCH: 3
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063976339
+SOLVING_TIME: .108982323
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -613,14 +453,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 39/198
+BATCH: 4
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057898726
+SOLVING_TIME: .064809681
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 19251.smt2
@@ -629,12 +469,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 40/198
+BATCH: 4
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057800196
+SOLVING_TIME: .074772090
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -645,12 +485,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 41/198
+BATCH: 4
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063532718
+SOLVING_TIME: .067143471
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -661,12 +501,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 42/198
+BATCH: 4
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063643180
+SOLVING_TIME: .094263490
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -677,14 +517,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 43/198
+BATCH: 4
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+[31m[2025-07-18 15:28:22] Result: ERROR (30067ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .081472626
+SOLVING_TIME: 30.098295238
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 20049.smt2
@@ -693,12 +534,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 44/198
+BATCH: 4
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058286086
+SOLVING_TIME: .070874686
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -709,12 +550,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 45/198
+BATCH: 4
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .064100154
+SOLVING_TIME: 5.449625810
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -725,12 +566,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 46/198
+BATCH: 5
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061554477
+SOLVING_TIME: .162004303
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -741,12 +582,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 47/198
+BATCH: 5
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052623383
+SOLVING_TIME: .094444729
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -757,12 +598,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 48/198
+BATCH: 5
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052283631
+SOLVING_TIME: .086497836
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -773,14 +614,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 49/198
+BATCH: 5
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054291909
+SOLVING_TIME: .054881452
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 20498.smt2
@@ -789,14 +630,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 50/198
+BATCH: 5
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051107312
+SOLVING_TIME: .064743270
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 20512.smt2
@@ -805,30 +646,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 51/198
+BATCH: 5
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052695178
+SOLVING_TIME: .061953597
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 2054.smt2
-PATH: benchmarks/awesome/2054.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 52/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051996016
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 21157.smt2
@@ -837,14 +662,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 53/198
+BATCH: 5
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058872666
+SOLVING_TIME: .060630601
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 21168.smt2
@@ -853,30 +678,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 54/198
+BATCH: 6
+INDEX: 1/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053133086
+SOLVING_TIME: .062008617
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 21189.smt2
-PATH: benchmarks/awesome/21189.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 55/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .068105273
-RESULT: SUCCESS
-SAT_RESULT: SAT
 
 ===========================================================
 FILE: 21345.smt2
@@ -885,28 +694,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 56/198
+BATCH: 6
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051996961
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 21366.smt2
-PATH: benchmarks/awesome/21366.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 57/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .053602869
+SOLVING_TIME: .110029090
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -917,12 +710,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 58/198
+BATCH: 6
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051368222
+SOLVING_TIME: .067140290
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -933,47 +726,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 59/198
+BATCH: 6
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055791014
+SOLVING_TIME: .066598686
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 21586-deviant-0.smt2
-PATH: benchmarks/awesome/21586-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 60/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .301446347
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 21586.smt2
-PATH: benchmarks/awesome/21586.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 61/198
------------------------------------------------------------
-[31m[2025-07-16 18:47:09] Result: ERROR (30790ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 30.814786454
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 21922.smt2
@@ -982,14 +742,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 62/198
+BATCH: 6
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061951467
+SOLVING_TIME: .059017856
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2344.smt2
@@ -998,30 +758,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 63/198
+BATCH: 6
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .052868711
+SOLVING_TIME: .072263307
 RESULT: SUCCESS
 SAT_RESULT: SAT
-
-===========================================================
-FILE: 2345.smt2
-PATH: benchmarks/awesome/2345.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 64/198
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: .054167796
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2371.smt2
@@ -1030,14 +774,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 65/198
+BATCH: 6
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054421417
+SOLVING_TIME: .053466606
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 2376.smt2
@@ -1046,12 +790,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 66/198
+BATCH: 7
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050746121
+SOLVING_TIME: .171415742
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1062,28 +806,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 67/198
+BATCH: 7
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .049122838
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 245_1.smt2
-PATH: benchmarks/awesome/245_1.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 68/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .068221089
+SOLVING_TIME: .072115152
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1094,76 +822,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 69/198
+BATCH: 7
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057151724
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 2475.smt2
-PATH: benchmarks/awesome/2475.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 70/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051098340
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 248.smt2
-PATH: benchmarks/awesome/248.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 71/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .057869888
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 2565.smt2
-PATH: benchmarks/awesome/2565.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 72/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .058558117
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 25.smt2
-PATH: benchmarks/awesome/25.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 73/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .052637208
+SOLVING_TIME: .095550387
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1174,30 +838,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 74/198
+BATCH: 7
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .049799245
+SOLVING_TIME: .060774610
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 2933.smt2
-PATH: benchmarks/awesome/2933.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 75/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .094524055
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 307.smt2
@@ -1206,14 +854,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 76/198
+BATCH: 7
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056628336
+SOLVING_TIME: .051117937
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3122.smt2
@@ -1222,46 +870,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 77/198
+BATCH: 7
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .060668193
+SOLVING_TIME: .063763992
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 3231.smt2
-PATH: benchmarks/awesome/3231.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 78/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .057187666
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 33018.smt2
-PATH: benchmarks/awesome/33018.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 79/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .056509362
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 33306.smt2
@@ -1270,12 +886,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 80/198
+BATCH: 7
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058497293
+SOLVING_TIME: .502366176
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1286,12 +902,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 81/198
+BATCH: 8
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .065438058
+SOLVING_TIME: .939211665
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1302,14 +918,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 82/198
+BATCH: 8
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .084953524
+SOLVING_TIME: .070188079
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 337.smt2
@@ -1318,14 +934,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 83/198
+BATCH: 8
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .096583524
+SOLVING_TIME: .056577225
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34010.smt2
@@ -1334,14 +950,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 84/198
+BATCH: 8
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055829746
+SOLVING_TIME: .057839277
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34014-deviant-0.smt2
@@ -1350,14 +966,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 85/198
+BATCH: 8
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .085026662
+SOLVING_TIME: .065167329
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34014-deviant-1.smt2
@@ -1366,14 +982,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 86/198
+BATCH: 8
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059308457
+SOLVING_TIME: .060710207
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34014.smt2
@@ -1382,12 +998,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 87/198
+BATCH: 8
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .060314862
+SOLVING_TIME: .139312038
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1398,14 +1014,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 88/198
+BATCH: 9
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056058105
+SOLVING_TIME: .060475334
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 34019.smt2
@@ -1414,12 +1030,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 89/198
+BATCH: 9
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058085374
+SOLVING_TIME: .137267004
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1430,12 +1046,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 90/198
+BATCH: 9
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .116043113
+SOLVING_TIME: .137607038
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1446,28 +1062,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 91/198
+BATCH: 9
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .124095106
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 35360-deviant-0.smt2
-PATH: benchmarks/awesome/35360-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 92/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .062216912
+SOLVING_TIME: .138824948
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1478,30 +1078,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 93/198
+BATCH: 9
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .063082886
+SOLVING_TIME: .063668836
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 35365-deviant-0.smt2
-PATH: benchmarks/awesome/35365-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 94/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .059349259
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 35365.smt2
@@ -1510,28 +1094,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 95/198
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .025618584
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35367-deviant-0.smt2
-PATH: benchmarks/awesome/35367-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 96/198
+BATCH: 9
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061688106
+SOLVING_TIME: .108900730
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1542,28 +1110,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 97/198
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .024519919
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35369-deviant-0.smt2
-PATH: benchmarks/awesome/35369-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 98/198
+BATCH: 9
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059042515
+SOLVING_TIME: .098120424
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1574,28 +1126,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 99/198
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .024640520
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35370-deviant-0.smt2
-PATH: benchmarks/awesome/35370-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 100/198
+BATCH: 10
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058431667
+SOLVING_TIME: .173383945
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1606,28 +1142,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 101/198
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
------------------------------------------------------------
-SOLVING_TIME: .027223879
-RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
-
-===========================================================
-FILE: 35371-deviant-0.smt2
-PATH: benchmarks/awesome/35371-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 102/198
+BATCH: 10
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058926392
+SOLVING_TIME: .120210671
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1638,14 +1158,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 103/198
+BATCH: 10
+INDEX: 3/7
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in equality" in line 1.
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .025260364
+SOLVING_TIME: .117825559
 RESULT: SUCCESS
-SAT_RESULT: UNCLEAR
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 353.smt2
@@ -1654,12 +1174,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 104/198
+BATCH: 10
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .120810119
+SOLVING_TIME: .145748446
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1670,14 +1190,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 105/198
+BATCH: 10
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057036106
+SOLVING_TIME: .062763765
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 35414.smt2
@@ -1686,14 +1206,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 106/198
+BATCH: 10
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .069789203
+SOLVING_TIME: .062440500
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 356.smt2
@@ -1702,46 +1222,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 107/198
+BATCH: 10
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .121012338
+SOLVING_TIME: .066795324
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 36626.smt2
-PATH: benchmarks/awesome/36626.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 108/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .049598358
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 36941.smt2
-PATH: benchmarks/awesome/36941.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 109/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .055243210
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3751.smt2
@@ -1750,12 +1238,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 110/198
+BATCH: 11
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063184693
+SOLVING_TIME: .192063207
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1766,28 +1254,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 111/198
+BATCH: 11
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059459269
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 37741.smt2
-PATH: benchmarks/awesome/37741.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 112/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .058859938
+SOLVING_TIME: .069604696
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1798,14 +1270,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 113/198
+BATCH: 11
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .060491977
+SOLVING_TIME: .053207675
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 3783.smt2
@@ -1814,14 +1286,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 114/198
+BATCH: 11
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058720626
+SOLVING_TIME: .059778422
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 37934.smt2
@@ -1830,14 +1302,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 115/198
+BATCH: 11
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+[31m[2025-07-18 15:28:22] Result: ERROR (30121ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .058050676
+SOLVING_TIME: 30.152263829
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37944.smt2
@@ -1846,14 +1319,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 116/198
+BATCH: 11
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+[31m[2025-07-18 15:28:52] Result: ERROR (30043ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .061672411
+SOLVING_TIME: 30.079044017
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37946.smt2
@@ -1862,14 +1336,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 117/198
+BATCH: 11
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+[31m[2025-07-18 15:29:22] Result: ERROR (30041ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .066864487
+SOLVING_TIME: 30.082706449
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 37.smt2
@@ -1878,12 +1353,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 118/198
+BATCH: 12
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .081881200
+SOLVING_TIME: .176349451
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1894,30 +1369,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 119/198
+BATCH: 12
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052557381
+SOLVING_TIME: .052345252
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 38977.smt2
-PATH: benchmarks/awesome/38977.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 120/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .065859380
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 40692.smt2
@@ -1926,30 +1385,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 121/198
+BATCH: 12
+INDEX: 3/7
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .066894474
+SOLVING_TIME: .057923268
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 41929.smt2
-PATH: benchmarks/awesome/41929.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 122/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .055778706
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4197.smt2
@@ -1958,12 +1401,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 123/198
+BATCH: 12
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .065776307
+SOLVING_TIME: .155059722
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1974,30 +1417,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 124/198
+BATCH: 12
+INDEX: 5/7
 -----------------------------------------------------------
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .070647067
+SOLVING_TIME: .063785388
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 42142.smt2
-PATH: benchmarks/awesome/42142.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 125/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .055444033
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4296.smt2
@@ -2006,28 +1433,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 126/198
+BATCH: 12
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057885197
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 42.smt2
-PATH: benchmarks/awesome/42.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 127/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .054022746
+SOLVING_TIME: .121240211
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2038,14 +1449,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 128/198
+BATCH: 12
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057522906
+SOLVING_TIME: .057300737
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4349.smt2
@@ -2054,14 +1465,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 129/198
+BATCH: 13
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056966121
+SOLVING_TIME: .061892001
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4369.smt2
@@ -2070,14 +1481,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 130/198
+BATCH: 13
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052601953
+SOLVING_TIME: .059202855
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 437.smt2
@@ -2086,44 +1497,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 131/198
+BATCH: 13
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .055909277
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4444-deviant-0.smt2
-PATH: benchmarks/awesome/4444-deviant-0.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 132/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .061275736
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4444.smt2
-PATH: benchmarks/awesome/4444.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 133/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .064899005
+SOLVING_TIME: .084411063
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2134,12 +1513,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 134/198
+BATCH: 13
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .068910183
+SOLVING_TIME: .235063050
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2150,28 +1529,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 135/198
+BATCH: 13
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058547795
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4536.smt2
-PATH: benchmarks/awesome/4536.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 136/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .098786128
+SOLVING_TIME: .202623595
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2182,30 +1545,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 137/198
+BATCH: 13
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058594196
+SOLVING_TIME: .058651565
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4599.smt2
-PATH: benchmarks/awesome/4599.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 138/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .056705144
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4659.smt2
@@ -2214,12 +1561,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 139/198
+BATCH: 13
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053097656
+SOLVING_TIME: .057619178
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2230,28 +1577,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 140/198
+BATCH: 14
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .054263323
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4722.smt2
-PATH: benchmarks/awesome/4722.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 141/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .058602626
+SOLVING_TIME: .151907826
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2262,14 +1593,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 142/198
+BATCH: 14
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059338688
+SOLVING_TIME: .051824686
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4762.smt2
@@ -2278,28 +1609,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 143/198
+BATCH: 14
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .062897095
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4765.smt2
-PATH: benchmarks/awesome/4765.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 144/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .062926517
+SOLVING_TIME: .092708582
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2310,30 +1625,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 145/198
+BATCH: 14
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056629732
+SOLVING_TIME: .058791190
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4906.smt2
-PATH: benchmarks/awesome/4906.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 146/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .087210514
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 4935.smt2
@@ -2342,12 +1641,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 147/198
+BATCH: 14
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059994131
+SOLVING_TIME: .067568327
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2358,14 +1657,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 148/198
+BATCH: 14
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054549185
+SOLVING_TIME: .055710090
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5218.smt2
@@ -2374,14 +1673,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 149/198
+BATCH: 14
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .073156510
+SOLVING_TIME: .057335677
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5228.smt2
@@ -2390,12 +1689,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 150/198
+BATCH: 15
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053153601
+SOLVING_TIME: .151599808
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2406,28 +1705,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 151/198
+BATCH: 15
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .058946245
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 52.smt2
-PATH: benchmarks/awesome/52.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 152/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .053929160
+SOLVING_TIME: .081404885
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2438,14 +1721,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 153/198
+BATCH: 15
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056014864
+SOLVING_TIME: .058474769
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5844.smt2
@@ -2454,12 +1737,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 154/198
+BATCH: 15
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059594813
+SOLVING_TIME: .127382566
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2470,14 +1753,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 155/198
+BATCH: 15
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051583106
+SOLVING_TIME: .066817942
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6001.smt2
@@ -2486,14 +1769,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 156/198
+BATCH: 15
+INDEX: 6/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .064725900
+SOLVING_TIME: .058010273
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6058.smt2
@@ -2502,14 +1785,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 157/198
+BATCH: 15
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054153789
+SOLVING_TIME: .055977968
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6076.smt2
@@ -2518,12 +1801,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 158/198
+BATCH: 16
+INDEX: 1/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047815509
+SOLVING_TIME: .060013897
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2534,30 +1817,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 159/198
+BATCH: 16
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055841946
+SOLVING_TIME: .053281465
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 619.smt2
-PATH: benchmarks/awesome/619.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 160/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .059729810
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6268.smt2
@@ -2566,12 +1833,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 161/198
+BATCH: 16
+INDEX: 3/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: 1.722621783
+SOLVING_TIME: 1.873593636
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2582,30 +1849,15 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 162/198
+BATCH: 16
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+[31m[2025-07-18 15:28:23] Result: ERROR (30024ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.492301120
+SOLVING_TIME: 30.054457421
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 629.smt2
-PATH: benchmarks/awesome/629.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 163/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .062719568
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 633.smt2
@@ -2614,30 +1866,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 164/198
+BATCH: 16
+INDEX: 5/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059138053
+SOLVING_TIME: .061748718
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 635.smt2
-PATH: benchmarks/awesome/635.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 165/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .062413299
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 649.smt2
@@ -2646,12 +1882,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 166/198
+BATCH: 16
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .053029453
+SOLVING_TIME: .060389657
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2662,46 +1898,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 167/198
+BATCH: 16
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050565611
+SOLVING_TIME: .090470442
 RESULT: SUCCESS
 SAT_RESULT: SAT
-
-===========================================================
-FILE: 6672.smt2
-PATH: benchmarks/awesome/6672.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 168/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .096091647
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 670.smt2
-PATH: benchmarks/awesome/670.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 169/198
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: .051360537
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6760.smt2
@@ -2710,28 +1914,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 170/198
+BATCH: 17
+INDEX: 1/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .060344021
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 6769_1.smt2
-PATH: benchmarks/awesome/6769_1.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 171/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .055965222
+SOLVING_TIME: .166290783
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2742,14 +1930,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 172/198
+BATCH: 17
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059327837
+SOLVING_TIME: .064093234
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 685.smt2
@@ -2758,14 +1946,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 173/198
+BATCH: 17
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056165536
+SOLVING_TIME: .059746895
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 6947.smt2
@@ -2774,12 +1962,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 174/198
+BATCH: 17
+INDEX: 4/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059035167
+SOLVING_TIME: .083809603
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2790,30 +1978,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 175/198
+BATCH: 17
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .059601046
+SOLVING_TIME: .069263656
 RESULT: SUCCESS
 SAT_RESULT: SAT
-
-===========================================================
-FILE: 721.smt2
-PATH: benchmarks/awesome/721.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 176/198
------------------------------------------------------------
-unsat
------------------------------------------------------------
-SOLVING_TIME: .050748569
-RESULT: SUCCESS
-SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 723.smt2
@@ -2822,44 +1994,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 177/198
+BATCH: 17
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .064593085
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 72.smt2
-PATH: benchmarks/awesome/72.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 178/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .060621123
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 739.smt2
-PATH: benchmarks/awesome/739.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 179/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .050995429
+SOLVING_TIME: .086291683
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2870,12 +2010,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 180/198
+BATCH: 17
+INDEX: 7/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .050588035
+SOLVING_TIME: .051904319
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2886,14 +2026,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 181/198
+BATCH: 18
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053641859
+SOLVING_TIME: .065913464
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 788.smt2
@@ -2902,28 +2042,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 182/198
+BATCH: 18
+INDEX: 2/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .079068465
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 78.smt2
-PATH: benchmarks/awesome/78.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 183/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051053437
+SOLVING_TIME: .091209358
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -2934,12 +2058,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 184/198
+BATCH: 18
+INDEX: 3/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .048338962
+SOLVING_TIME: .056356328
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -2950,46 +2074,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 185/198
+BATCH: 18
+INDEX: 4/7
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052162740
+SOLVING_TIME: .049971380
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
-
-===========================================================
-FILE: 82.smt2
-PATH: benchmarks/awesome/82.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 186/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .059679474
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 8415.smt2
-PATH: benchmarks/awesome/8415.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 187/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .059665683
-RESULT: SUCCESS
-SAT_RESULT: SAT
 
 ===========================================================
 FILE: 860.smt2
@@ -2998,12 +2090,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 188/198
+BATCH: 18
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .078646430
+SOLVING_TIME: .161797728
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3014,12 +2106,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 189/198
+BATCH: 18
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .063003768
+SOLVING_TIME: .086652981
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3030,12 +2122,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 190/198
+BATCH: 18
+INDEX: 7/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .061834678
+SOLVING_TIME: .112009010
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3046,14 +2138,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 191/198
+BATCH: 19
+INDEX: 1/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058571774
+SOLVING_TIME: .067408367
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 8949.smt2
@@ -3062,14 +2154,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 192/198
+BATCH: 19
+INDEX: 2/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058769197
+SOLVING_TIME: .056613458
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9179.smt2
@@ -3078,14 +2170,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 193/198
+BATCH: 19
+INDEX: 3/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .054774219
+SOLVING_TIME: .061021594
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9192.smt2
@@ -3094,14 +2186,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 194/198
+BATCH: 19
+INDEX: 4/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053746884
+SOLVING_TIME: .056547737
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 9338.smt2
@@ -3110,12 +2202,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 195/198
+BATCH: 19
+INDEX: 5/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .051578193
+SOLVING_TIME: .103442921
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3126,12 +2218,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 196/198
+BATCH: 19
+INDEX: 6/7
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .057615729
+SOLVING_TIME: .079603721
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -3142,28 +2234,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 197/198
+BATCH: 19
+INDEX: 7/7
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .062836801
+SOLVING_TIME: .059256789
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 996.smt2
-PATH: benchmarks/awesome/996.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3-noodler
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 198/198
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .058947572
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 

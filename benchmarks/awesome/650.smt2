@@ -38,7 +38,7 @@
 (declare-fun getHeight/-2047551061 (var3034) Int)
 (declare-fun nodeHeightPadding/-151695256 (var430) Int)
 (declare-fun getText/1718706454 (var430 var2449) String)
-(declare-fun cast-from-Int-to-Real (Int) Real)
+(declare-fun cast-from-Int-to-Float64 (Int) Float64)
 (declare-const null-var1761 var1761)
 (declare-const null-var2449 var2449)
 (declare-const var1751 var1761) ; Statement: r0 := @this: org.antlr.v4.gui.TreeViewer$VariableExtentProvide 
@@ -62,10 +62,10 @@
 ; split operation: var1556 = var1862.split("\n") ; Statement: r9 = virtualinvoke r8.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n") 
 (define-const var2173 Int (get_split_length var1862 "\n" -1)) ; Statement: $i4 = lengthof r9 
 (define-const var2594 Int (* var1189 var2173)) ; Statement: $i5 = i3 * $i4 
-(define-const var518 Real (cast-from-Int-to-Real var2594)) ; Statement: $d0 = (double) $i5 
+(define-const var518 Float64 (cast-from-Int-to-Float64 var2594)) ; Statement: $d0 = (double) $i5 
  ; Statement: return $d0 
 (check-sat)
-; {viewer/-1439921249=([org.antlr.v4.gui.TreeViewer$VariableExtentProvide], org.antlr.v4.gui.TreeViewer), font/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Font), getFontMetrics/1328729825=([javax.swing.JComponent, java.awt.Font], java.awt.FontMetrics), cast-from-var430-to-var2036=([org.antlr.v4.gui.TreeViewer], javax.swing.JComponent), getHeight/-2047551061=([java.awt.FontMetrics], int), nodeHeightPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int), getText/1718706454=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.lang.String), cast-from-Int-to-Real=([int], double)}
+; {viewer/-1439921249=([org.antlr.v4.gui.TreeViewer$VariableExtentProvide], org.antlr.v4.gui.TreeViewer), font/-151695256=([org.antlr.v4.gui.TreeViewer], java.awt.Font), getFontMetrics/1328729825=([javax.swing.JComponent, java.awt.Font], java.awt.FontMetrics), cast-from-var430-to-var2036=([org.antlr.v4.gui.TreeViewer], javax.swing.JComponent), getHeight/-2047551061=([java.awt.FontMetrics], int), nodeHeightPadding/-151695256=([org.antlr.v4.gui.TreeViewer], int), getText/1718706454=([org.antlr.v4.gui.TreeViewer, org.antlr.v4.runtime.tree.Tree], java.lang.String), cast-from-Int-to-Float64=([int], double)}
 ; {var1761=org.antlr.v4.gui.TreeViewer$VariableExtentProvide, var1751=r0, var2449=org.antlr.v4.runtime.tree.Tree, var57=r6, var430=org.antlr.v4.gui.TreeViewer, var2295=$r3, var1081=$r1, var1632=java.awt.Font, var3175=$r2, var3034=java.awt.FontMetrics, var2036=javax.swing.JComponent, var3107=r4, var3058=$i2, var1290=$r5, var3049=$i0, var705=$i1, var1189=i3, var2555=$r7, var1862=r8, var1556=r9, var2173=$i4, var2594=$i5, var518=$d0}
 ; {org.antlr.v4.gui.TreeViewer$VariableExtentProvide=var1761, r0=var1751, org.antlr.v4.runtime.tree.Tree=var2449, r6=var57, org.antlr.v4.gui.TreeViewer=var430, $r3=var2295, $r1=var1081, java.awt.Font=var1632, $r2=var3175, java.awt.FontMetrics=var3034, javax.swing.JComponent=var2036, r4=var3107, $i2=var3058, $r5=var1290, $i0=var3049, $i1=var705, i3=var1189, $r7=var2555, r8=var1862, r9=var1556, $i4=var2173, $i5=var2594, $d0=var518}
 ;seq <java.lang.String: java.lang.String[] split(java.lang.String)>

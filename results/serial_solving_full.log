@@ -5,48 +5,85 @@
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/awesome...
-[0;34m[INFO][0m Found 198 SMT2 files
-[0;34m[INFO][0m Files per batch: 198
+[0;34m[INFO][0m Found 140 SMT2 files
+[0;34m[INFO][0m Files per batch: 7
 [0;34m[INFO][0m Created temporary batch directory: results/results_awesome_ext_z3_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 198 files (PID: 2934955)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 7 files (PID: 2464553)
+[0;34m[INFO][0m Started batch 1 with 7 files (PID: 2464554)
+[0;34m[INFO][0m Started batch 2 with 7 files (PID: 2464556)
+[0;34m[INFO][0m Started batch 3 with 7 files (PID: 2464557)
+[0;34m[INFO][0m Started batch 4 with 7 files (PID: 2464559)
+[0;34m[INFO][0m Started batch 5 with 7 files (PID: 2464562)
+[0;34m[INFO][0m Started batch 6 with 7 files (PID: 2464565)
+[0;34m[INFO][0m Started batch 7 with 7 files (PID: 2464567)
+[0;34m[INFO][0m Started batch 8 with 7 files (PID: 2464568)
+[0;34m[INFO][0m Started batch 9 with 7 files (PID: 2464572)
+[0;34m[INFO][0m Started batch 10 with 7 files (PID: 2464576)
+[0;34m[INFO][0m Started batch 11 with 7 files (PID: 2464581)
+[0;34m[INFO][0m Started batch 12 with 7 files (PID: 2464583)
+[0;34m[INFO][0m Started batch 13 with 7 files (PID: 2464586)
+[0;34m[INFO][0m Started batch 14 with 7 files (PID: 2464590)
+[0;34m[INFO][0m Started batch 15 with 7 files (PID: 2464595)
+[0;34m[INFO][0m Started batch 16 with 7 files (PID: 2464599)
+[0;34m[INFO][0m Started batch 17 with 7 files (PID: 2464604)
+[0;34m[INFO][0m Started batch 18 with 7 files (PID: 2464607)
+[0;34m[INFO][0m Started batch 19 with 7 files (PID: 2464614)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 198 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 7 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_awesome_ext_z3_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 198
-[0;32m[SUCCESS][0m Successful: 198
-[0;34m[INFO][0m SAT: 174, UNSAT: 8, UNKNOWN: 10, UNCLEAR: 6
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 14.38s
-[0;34m[INFO][0m Average time: .072s per file
+[0;32m[SUCCESS][0m Total files processed: 140
+[0;32m[SUCCESS][0m Successful: 140
+[0;34m[INFO][0m SAT: 13, UNSAT: 69, UNKNOWN: 58, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 90.68s
+[0;34m[INFO][0m Average time: .647s per file
 [0;34m[INFO][0m Results saved in: results/results_awesome_ext_z3.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_awesome_ext_z3.log
 Excel report saved to: charts/results_awesome_ext_z3_analysis.xlsx
 
 Summary Statistics:
-Total files: 198
+Total files: 140
 Results breakdown:
 result
-SUCCESS    198
+SUCCESS    140
 
 SAT results breakdown:
 sat_result
-SAT        174
-UNKNOWN     10
-UNSAT        8
-ERROR        6
+UNSAT      69
+UNKNOWN    58
+SAT        13
 
 Timing statistics:
-Average solving time: 0.054s
-Max solving time: 0.123s
-Min solving time: 0.025s
+Average solving time: 1.053s
+Max solving time: 30.086s
+Min solving time: 0.047s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/awesome
 [0;34m[INFO][0m Output directory: results
@@ -54,46 +91,85 @@ Min solving time: 0.025s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-cvc5
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/awesome...
-[0;34m[INFO][0m Found 198 SMT2 files
-[0;34m[INFO][0m Files per batch: 198
+[0;34m[INFO][0m Found 140 SMT2 files
+[0;34m[INFO][0m Files per batch: 7
 [0;34m[INFO][0m Created temporary batch directory: results/results_awesome_ext_cvc5_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 198 files (PID: 2940266)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 7 files (PID: 2473715)
+[0;34m[INFO][0m Started batch 1 with 7 files (PID: 2473716)
+[0;34m[INFO][0m Started batch 2 with 7 files (PID: 2473717)
+[0;34m[INFO][0m Started batch 3 with 7 files (PID: 2473719)
+[0;34m[INFO][0m Started batch 4 with 7 files (PID: 2473721)
+[0;34m[INFO][0m Started batch 5 with 7 files (PID: 2473723)
+[0;34m[INFO][0m Started batch 6 with 7 files (PID: 2473725)
+[0;34m[INFO][0m Started batch 7 with 7 files (PID: 2473728)
+[0;34m[INFO][0m Started batch 8 with 7 files (PID: 2473731)
+[0;34m[INFO][0m Started batch 9 with 7 files (PID: 2473734)
+[0;34m[INFO][0m Started batch 10 with 7 files (PID: 2473736)
+[0;34m[INFO][0m Started batch 11 with 7 files (PID: 2473740)
+[0;34m[INFO][0m Started batch 12 with 7 files (PID: 2473743)
+[0;34m[INFO][0m Started batch 13 with 7 files (PID: 2473746)
+[0;34m[INFO][0m Started batch 14 with 7 files (PID: 2473748)
+[0;34m[INFO][0m Started batch 15 with 7 files (PID: 2473755)
+[0;34m[INFO][0m Started batch 16 with 7 files (PID: 2473761)
+[0;34m[INFO][0m Started batch 17 with 7 files (PID: 2473763)
+[0;34m[INFO][0m Started batch 18 with 7 files (PID: 2473768)
+[0;34m[INFO][0m Started batch 19 with 7 files (PID: 2473777)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 198 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 7 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_awesome_ext_cvc5_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 198
-[0;32m[SUCCESS][0m Successful: 198
-[0;34m[INFO][0m SAT: 25, UNSAT: 0, UNKNOWN: 167, UNCLEAR: 6
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 16.89s
-[0;34m[INFO][0m Average time: .085s per file
+[0;32m[SUCCESS][0m Total files processed: 140
+[0;32m[SUCCESS][0m Successful: 140
+[0;34m[INFO][0m SAT: 52, UNSAT: 66, UNKNOWN: 22, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 90.70s
+[0;34m[INFO][0m Average time: .647s per file
 [0;34m[INFO][0m Results saved in: results/results_awesome_ext_cvc5.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_awesome_ext_cvc5.log
 Excel report saved to: charts/results_awesome_ext_cvc5_analysis.xlsx
 
 Summary Statistics:
-Total files: 198
+Total files: 140
 Results breakdown:
 result
-SUCCESS    198
+SUCCESS    140
 
 SAT results breakdown:
 sat_result
-ERROR    173
-SAT       25
+UNSAT      66
+SAT        52
+UNKNOWN    22
 
 Timing statistics:
-Average solving time: 0.062s
-Max solving time: 0.083s
-Min solving time: 0.023s
+Average solving time: 3.321s
+Max solving time: 30.102s
+Min solving time: 0.040s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/awesome
 [0;34m[INFO][0m Output directory: results
@@ -101,16 +177,85 @@ Min solving time: 0.023s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-ostrich
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/awesome...
-[0;34m[INFO][0m Found 198 SMT2 files
-[0;34m[INFO][0m Files per batch: 198
+[0;34m[INFO][0m Found 140 SMT2 files
+[0;34m[INFO][0m Files per batch: 7
 [0;34m[INFO][0m Created temporary batch directory: results/results_awesome_ext_ostrich_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 198 files (PID: 2945853)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 7 files (PID: 2482561)
+[0;34m[INFO][0m Started batch 1 with 7 files (PID: 2482562)
+[0;34m[INFO][0m Started batch 2 with 7 files (PID: 2482563)
+[0;34m[INFO][0m Started batch 3 with 7 files (PID: 2482565)
+[0;34m[INFO][0m Started batch 4 with 7 files (PID: 2482568)
+[0;34m[INFO][0m Started batch 5 with 7 files (PID: 2482569)
+[0;34m[INFO][0m Started batch 6 with 7 files (PID: 2482573)
+[0;34m[INFO][0m Started batch 7 with 7 files (PID: 2482574)
+[0;34m[INFO][0m Started batch 8 with 7 files (PID: 2482578)
+[0;34m[INFO][0m Started batch 9 with 7 files (PID: 2482581)
+[0;34m[INFO][0m Started batch 10 with 7 files (PID: 2482583)
+[0;34m[INFO][0m Started batch 11 with 7 files (PID: 2482589)
+[0;34m[INFO][0m Started batch 12 with 7 files (PID: 2482592)
+[0;34m[INFO][0m Started batch 13 with 7 files (PID: 2482595)
+[0;34m[INFO][0m Started batch 14 with 7 files (PID: 2482599)
+[0;34m[INFO][0m Started batch 15 with 7 files (PID: 2482602)
+[0;34m[INFO][0m Started batch 16 with 7 files (PID: 2482609)
+[0;34m[INFO][0m Started batch 17 with 7 files (PID: 2482614)
+[0;34m[INFO][0m Started batch 18 with 7 files (PID: 2482617)
+[0;34m[INFO][0m Started batch 19 with 7 files (PID: 2482623)
 [0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 15] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 7 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_awesome_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 140
+[0;32m[SUCCESS][0m Successful: 140
+[0;34m[INFO][0m SAT: 8, UNSAT: 54, UNKNOWN: 78, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 107.67s
+[0;34m[INFO][0m Average time: .769s per file
+[0;34m[INFO][0m Results saved in: results/results_awesome_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_awesome_ext_ostrich.log
+Excel report saved to: charts/results_awesome_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 140
+Results breakdown:
+result
+SUCCESS    140
+
+SAT results breakdown:
+sat_result
+UNKNOWN    78
+UNSAT      54
+SAT         8
+
+Timing statistics:
+Average solving time: 5.978s
+Max solving time: 30.364s
+Min solving time: 0.958s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/awesome
 [0;34m[INFO][0m Output directory: results
@@ -118,48 +263,85 @@ Min solving time: 0.023s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3-noodler
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/awesome...
-[0;34m[INFO][0m Found 198 SMT2 files
-[0;34m[INFO][0m Files per batch: 198
+[0;34m[INFO][0m Found 140 SMT2 files
+[0;34m[INFO][0m Files per batch: 7
 [0;34m[INFO][0m Created temporary batch directory: results/results_awesome_ext_z3_noodler_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 198 files (PID: 2966426)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 7 files (PID: 2502625)
+[0;34m[INFO][0m Started batch 1 with 7 files (PID: 2502626)
+[0;34m[INFO][0m Started batch 2 with 7 files (PID: 2502627)
+[0;34m[INFO][0m Started batch 3 with 7 files (PID: 2502629)
+[0;34m[INFO][0m Started batch 4 with 7 files (PID: 2502631)
+[0;34m[INFO][0m Started batch 5 with 7 files (PID: 2502633)
+[0;34m[INFO][0m Started batch 6 with 7 files (PID: 2502635)
+[0;34m[INFO][0m Started batch 7 with 7 files (PID: 2502637)
+[0;34m[INFO][0m Started batch 8 with 7 files (PID: 2502641)
+[0;34m[INFO][0m Started batch 9 with 7 files (PID: 2502645)
+[0;34m[INFO][0m Started batch 10 with 7 files (PID: 2502649)
+[0;34m[INFO][0m Started batch 11 with 7 files (PID: 2502652)
+[0;34m[INFO][0m Started batch 12 with 7 files (PID: 2502655)
+[0;34m[INFO][0m Started batch 13 with 7 files (PID: 2502658)
+[0;34m[INFO][0m Started batch 14 with 7 files (PID: 2502665)
+[0;34m[INFO][0m Started batch 15 with 7 files (PID: 2502666)
+[0;34m[INFO][0m Started batch 16 with 7 files (PID: 2502669)
+[0;34m[INFO][0m Started batch 17 with 7 files (PID: 2502672)
+[0;34m[INFO][0m Started batch 18 with 7 files (PID: 2502674)
+[0;34m[INFO][0m Started batch 19 with 7 files (PID: 2502678)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 198 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 7 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 7 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_awesome_ext_z3_noodler_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 198
-[0;32m[SUCCESS][0m Successful: 198
-[0;34m[INFO][0m SAT: 180, UNSAT: 8, UNKNOWN: 4, UNCLEAR: 6
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 49.91s
-[0;34m[INFO][0m Average time: .252s per file
+[0;32m[SUCCESS][0m Total files processed: 140
+[0;32m[SUCCESS][0m Successful: 140
+[0;34m[INFO][0m SAT: 65, UNSAT: 69, UNKNOWN: 6, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 90.81s
+[0;34m[INFO][0m Average time: .648s per file
 [0;34m[INFO][0m Results saved in: results/results_awesome_ext_z3_noodler.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_awesome_ext_z3_noodler.log
 Excel report saved to: charts/results_awesome_ext_z3_noodler_analysis.xlsx
 
 Summary Statistics:
-Total files: 198
+Total files: 140
 Results breakdown:
 result
-SUCCESS    198
+SUCCESS    140
 
 SAT results breakdown:
 sat_result
-SAT        180
-UNSAT        8
-ERROR        7
-UNKNOWN      3
+UNSAT      69
+SAT        65
+UNKNOWN     6
 
 Timing statistics:
-Average solving time: 0.233s
-Max solving time: 30.815s
-Min solving time: 0.025s
+Average solving time: 1.266s
+Max solving time: 30.152s
+Min solving time: 0.050s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_maven
 [0;34m[INFO][0m Output directory: results
@@ -167,45 +349,66 @@ Min solving time: 0.025s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_maven...
-[0;34m[INFO][0m Found 21 SMT2 files
-[0;34m[INFO][0m Files per batch: 21
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_maven_ext_z3_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 21 files (PID: 2973394)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2511688)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2511689)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2511690)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2511692)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2511694)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2511697)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2511698)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2511700)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2511702)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2511705)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2511708)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 21 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_maven_ext_z3_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 21
-[0;32m[SUCCESS][0m Successful: 21
-[0;34m[INFO][0m SAT: 21, UNSAT: 0, UNKNOWN: 0, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 1.50s
-[0;34m[INFO][0m Average time: .071s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 0, UNSAT: 5, UNKNOWN: 6, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.27s
+[0;34m[INFO][0m Average time: .024s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_maven_ext_z3.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_maven_ext_z3.log
 Excel report saved to: charts/results_top20_maven_ext_z3_analysis.xlsx
 
 Summary Statistics:
-Total files: 21
+Total files: 11
 Results breakdown:
 result
-SUCCESS    21
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-SAT    21
+UNKNOWN    6
+UNSAT      5
 
 Timing statistics:
-Average solving time: 0.052s
-Max solving time: 0.061s
-Min solving time: 0.046s
+Average solving time: 0.089s
+Max solving time: 0.245s
+Min solving time: 0.057s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_maven
 [0;34m[INFO][0m Output directory: results
@@ -213,46 +416,66 @@ Min solving time: 0.046s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-cvc5
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_maven...
-[0;34m[INFO][0m Found 21 SMT2 files
-[0;34m[INFO][0m Files per batch: 21
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_maven_ext_cvc5_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 21 files (PID: 2974181)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2512174)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2512175)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2512176)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2512179)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2512181)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2512182)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2512184)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2512187)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2512190)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2512192)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2512195)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 21 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_maven_ext_cvc5_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 21
-[0;32m[SUCCESS][0m Successful: 21
-[0;34m[INFO][0m SAT: 4, UNSAT: 0, UNKNOWN: 17, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 1.70s
-[0;34m[INFO][0m Average time: .080s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 6, UNSAT: 5, UNKNOWN: 0, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.72s
+[0;34m[INFO][0m Average time: .065s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_maven_ext_cvc5.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_maven_ext_cvc5.log
 Excel report saved to: charts/results_top20_maven_ext_cvc5_analysis.xlsx
 
 Summary Statistics:
-Total files: 21
+Total files: 11
 Results breakdown:
 result
-SUCCESS    21
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-ERROR    17
-SAT       4
+SAT      6
+UNSAT    5
 
 Timing statistics:
-Average solving time: 0.060s
-Max solving time: 0.069s
-Min solving time: 0.042s
+Average solving time: 0.199s
+Max solving time: 0.698s
+Min solving time: 0.046s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_maven
 [0;34m[INFO][0m Output directory: results
@@ -260,46 +483,66 @@ Min solving time: 0.042s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-ostrich
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_maven...
-[0;34m[INFO][0m Found 21 SMT2 files
-[0;34m[INFO][0m Files per batch: 21
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_maven_ext_ostrich_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 21 files (PID: 2975004)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2512767)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2512768)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2512769)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2512771)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2512773)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2512775)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2512777)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2512779)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2512781)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2512783)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2512785)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 21 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_maven_ext_ostrich_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 21
-[0;32m[SUCCESS][0m Successful: 21
-[0;34m[INFO][0m SAT: 3, UNSAT: 0, UNKNOWN: 18, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 23.04s
-[0;34m[INFO][0m Average time: 1.097s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 0, UNSAT: 4, UNKNOWN: 7, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 2.24s
+[0;34m[INFO][0m Average time: .203s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_maven_ext_ostrich.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_maven_ext_ostrich.log
 Excel report saved to: charts/results_top20_maven_ext_ostrich_analysis.xlsx
 
 Summary Statistics:
-Total files: 21
+Total files: 11
 Results breakdown:
 result
-SUCCESS    21
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-ERROR    18
-SAT       3
+UNKNOWN    7
+UNSAT      4
 
 Timing statistics:
-Average solving time: 1.077s
-Max solving time: 1.370s
-Min solving time: 0.902s
+Average solving time: 1.921s
+Max solving time: 2.212s
+Min solving time: 1.096s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_maven
 [0;34m[INFO][0m Output directory: results
@@ -307,45 +550,66 @@ Min solving time: 0.902s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3-noodler
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_maven...
-[0;34m[INFO][0m Found 21 SMT2 files
-[0;34m[INFO][0m Files per batch: 21
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_maven_ext_z3_noodler_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 21 files (PID: 2977828)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2514243)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2514244)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2514245)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2514247)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2514249)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2514251)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2514253)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2514255)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2514257)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2514258)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2514261)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 21 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_maven_ext_z3_noodler_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 21
-[0;32m[SUCCESS][0m Successful: 21
-[0;34m[INFO][0m SAT: 21, UNSAT: 0, UNKNOWN: 0, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 2.96s
-[0;34m[INFO][0m Average time: .141s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 6, UNSAT: 5, UNKNOWN: 0, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.12s
+[0;34m[INFO][0m Average time: .010s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_maven_ext_z3_noodler.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_maven_ext_z3_noodler.log
 Excel report saved to: charts/results_top20_maven_ext_z3_noodler_analysis.xlsx
 
 Summary Statistics:
-Total files: 21
+Total files: 11
 Results breakdown:
 result
-SUCCESS    21
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-SAT    21
+SAT      6
+UNSAT    5
 
 Timing statistics:
-Average solving time: 0.125s
-Max solving time: 1.490s
-Min solving time: 0.048s
+Average solving time: 0.076s
+Max solving time: 0.095s
+Min solving time: 0.059s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_gh
 [0;34m[INFO][0m Output directory: results
@@ -353,46 +617,66 @@ Min solving time: 0.048s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_gh...
-[0;34m[INFO][0m Found 23 SMT2 files
-[0;34m[INFO][0m Files per batch: 23
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_gh_ext_z3_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 23 files (PID: 2978684)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2514793)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2514794)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2514795)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2514797)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2514799)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2514801)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2514803)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2514806)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2514808)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2514810)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2514813)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 23 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_gh_ext_z3_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 23
-[0;32m[SUCCESS][0m Successful: 23
-[0;34m[INFO][0m SAT: 19, UNSAT: 4, UNKNOWN: 0, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 1.63s
-[0;34m[INFO][0m Average time: .070s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 0, UNSAT: 6, UNKNOWN: 5, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.18s
+[0;34m[INFO][0m Average time: .016s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_gh_ext_z3.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_gh_ext_z3.log
 Excel report saved to: charts/results_top20_gh_ext_z3_analysis.xlsx
 
 Summary Statistics:
-Total files: 23
+Total files: 11
 Results breakdown:
 result
-SUCCESS    23
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-SAT      19
-UNSAT     4
+UNSAT      6
+UNKNOWN    5
 
 Timing statistics:
-Average solving time: 0.054s
-Max solving time: 0.082s
-Min solving time: 0.047s
+Average solving time: 0.076s
+Max solving time: 0.151s
+Min solving time: 0.055s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_gh
 [0;34m[INFO][0m Output directory: results
@@ -400,48 +684,67 @@ Min solving time: 0.047s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-cvc5
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_gh...
-[0;34m[INFO][0m Found 23 SMT2 files
-[0;34m[INFO][0m Files per batch: 23
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_gh_ext_cvc5_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 23 files (PID: 2979549)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2515344)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2515345)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2515347)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2515349)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2515352)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2515355)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2515357)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2515359)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2515361)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2515362)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2515365)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 23 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_gh_ext_cvc5_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 23
-[0;32m[SUCCESS][0m Successful: 23
-[0;34m[INFO][0m SAT: 1, UNSAT: 3, UNKNOWN: 19, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 1.92s
-[0;34m[INFO][0m Average time: .083s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 4, UNSAT: 6, UNKNOWN: 1, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 6.11s
+[0;34m[INFO][0m Average time: .555s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_gh_ext_cvc5.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_gh_ext_cvc5.log
 Excel report saved to: charts/results_top20_gh_ext_cvc5_analysis.xlsx
 
 Summary Statistics:
-Total files: 23
+Total files: 11
 Results breakdown:
 result
-SUCCESS    23
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-ERROR      18
-UNSAT       3
-SAT         1
-UNKNOWN     1
+UNSAT      6
+SAT        4
+UNKNOWN    1
 
 Timing statistics:
-Average solving time: 0.064s
-Max solving time: 0.134s
-Min solving time: 0.038s
+Average solving time: 0.603s
+Max solving time: 6.079s
+Min solving time: 0.043s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_gh
 [0;34m[INFO][0m Output directory: results
@@ -449,48 +752,66 @@ Min solving time: 0.038s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-ostrich
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_gh...
-[0;34m[INFO][0m Found 23 SMT2 files
-[0;34m[INFO][0m Files per batch: 23
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_gh_ext_ostrich_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 23 files (PID: 2980519)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2516296)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2516297)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2516300)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2516301)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2516303)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2516305)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2516307)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2516311)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2516314)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2516318)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2516321)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 23 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_gh_ext_ostrich_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 23
-[0;32m[SUCCESS][0m Successful: 23
-[0;34m[INFO][0m SAT: 1, UNSAT: 3, UNKNOWN: 19, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 25.85s
-[0;34m[INFO][0m Average time: 1.124s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 0, UNSAT: 2, UNKNOWN: 9, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 2.66s
+[0;34m[INFO][0m Average time: .242s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_gh_ext_ostrich.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_gh_ext_ostrich.log
 Excel report saved to: charts/results_top20_gh_ext_ostrich_analysis.xlsx
 
 Summary Statistics:
-Total files: 23
+Total files: 11
 Results breakdown:
 result
-SUCCESS    23
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-ERROR      18
-UNSAT       3
-SAT         1
-UNKNOWN     1
+UNKNOWN    9
+UNSAT      2
 
 Timing statistics:
-Average solving time: 1.104s
-Max solving time: 1.773s
-Min solving time: 0.917s
+Average solving time: 1.795s
+Max solving time: 2.631s
+Min solving time: 1.162s
 [0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
 [0;34m[INFO][0m Input directory: benchmarks/top20_gh
 [0;34m[INFO][0m Output directory: results
@@ -498,43 +819,63 @@ Min solving time: 0.917s
 [0;34m[INFO][0m Solver script: ./run_strprocessor.sh
 [0;34m[INFO][0m Solver type: ext-z3-noodler
 [0;34m[INFO][0m Timeout: 60s
-[0;34m[INFO][0m Parallel processes: 1
+[0;34m[INFO][0m Parallel processes: 20
 [0;34m[INFO][0m Task name: solve
 [0;34m[INFO][0m Creating output directory...
 [0;34m[INFO][0m Scanning for SMT2 files in benchmarks/top20_gh...
-[0;34m[INFO][0m Found 23 SMT2 files
-[0;34m[INFO][0m Files per batch: 23
+[0;34m[INFO][0m Found 11 SMT2 files
+[0;34m[INFO][0m Files per batch: 1
 [0;34m[INFO][0m Created temporary batch directory: results/results_top20_gh_ext_z3_noodler_batches
-[0;34m[INFO][0m Starting parallel processing with 1 processes...
-[0;34m[INFO][0m Started batch 0 with 23 files (PID: 2983783)
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 1 files (PID: 2517668)
+[0;34m[INFO][0m Started batch 1 with 1 files (PID: 2517669)
+[0;34m[INFO][0m Started batch 2 with 1 files (PID: 2517670)
+[0;34m[INFO][0m Started batch 3 with 1 files (PID: 2517672)
+[0;34m[INFO][0m Started batch 4 with 1 files (PID: 2517674)
+[0;34m[INFO][0m Started batch 5 with 1 files (PID: 2517676)
+[0;34m[INFO][0m Started batch 6 with 1 files (PID: 2517678)
+[0;34m[INFO][0m Started batch 7 with 1 files (PID: 2517680)
+[0;34m[INFO][0m Started batch 8 with 1 files (PID: 2517681)
+[0;34m[INFO][0m Started batch 9 with 1 files (PID: 2517684)
+[0;34m[INFO][0m Started batch 10 with 1 files (PID: 2517686)
 [0;34m[INFO][0m Waiting for all batches to complete...
-[0;34m[INFO][0m [Batch 0] Completed: 23 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 1 files processed
 [0;34m[INFO][0m All batches completed. Merging results...
 [0;34m[INFO][0m Cleaning up temporary batch directory: results/results_top20_gh_ext_z3_noodler_batches
 [0;34m[INFO][0m === Parallel Solving Completed ===
-[0;32m[SUCCESS][0m Total files processed: 23
-[0;32m[SUCCESS][0m Successful: 23
-[0;34m[INFO][0m SAT: 19, UNSAT: 4, UNKNOWN: 0, UNCLEAR: 0
-[0;34m[INFO][0m Parallel processes: 1
-[0;34m[INFO][0m Total time: 1.79s
-[0;34m[INFO][0m Average time: .077s per file
+[0;32m[SUCCESS][0m Total files processed: 11
+[0;32m[SUCCESS][0m Successful: 11
+[0;34m[INFO][0m SAT: 5, UNSAT: 6, UNKNOWN: 0, UNCLEAR: 0
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.15s
+[0;34m[INFO][0m Average time: .013s per file
 [0;34m[INFO][0m Results saved in: results/results_top20_gh_ext_z3_noodler.log
 [0;34m[INFO][0m Generating Excel analysis report...
 Analyzing log file: results/results_top20_gh_ext_z3_noodler.log
 Excel report saved to: charts/results_top20_gh_ext_z3_noodler_analysis.xlsx
 
 Summary Statistics:
-Total files: 23
+Total files: 11
 Results breakdown:
 result
-SUCCESS    23
+SUCCESS    11
 
 SAT results breakdown:
 sat_result
-SAT      19
-UNSAT     4
+UNSAT    6
+SAT      5
 
 Timing statistics:
-Average solving time: 0.061s
-Max solving time: 0.100s
-Min solving time: 0.048s
+Average solving time: 0.089s
+Max solving time: 0.128s
+Min solving time: 0.061s

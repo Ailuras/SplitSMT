@@ -326,7 +326,7 @@ void Context::updateDivisions() {
                     delimiter = delimiter.substr(1, delimiter.size() - 2);
                 }
                 
-                int index = std::stoi(arg3->toString());
+                int index = parseInteger(arg3->toString());
                 
                 Division* division = getDivision(variable, delimiter);
                 if (!division) {
@@ -360,7 +360,7 @@ void Context::updateDivisions() {
                     delimiter = delimiter.substr(1, delimiter.size() - 2);
                 }
                 
-                int index = std::stoi(arg3->toString());
+                int index = parseInteger(arg3->toString());
                 
                 Division* division = getDivision(variable, delimiter);
                 if (!division) {

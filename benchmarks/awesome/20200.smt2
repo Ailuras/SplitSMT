@@ -36,7 +36,7 @@
 (declare-sort ClassObject 0)
 (declare-fun <init>/-1890226404 (var3535 var2765 var1102 var348 var348 var348) void)
 (declare-fun cast-from-var3277-to-var3535 (var3277) var3535)
-(declare-fun learningRate/620388015 (var3277) Real)
+(declare-fun learningRate/620388015 (var3277) Float32)
 (declare-fun var24-init () var24)
 (declare-fun <init>/-1553701343 (var24) void)
 (declare-fun featureWeights/620388015 (var3277) var24)

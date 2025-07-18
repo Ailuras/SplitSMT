@@ -47,10 +47,10 @@
 (declare-fun cast-from-var2903-to-var676 (var2903) var676)
 (declare-fun getBiasedDataset/-1766800797 (var3706 var3147 var676 var676) var1835)
 (declare-fun var676_size/127987506 (var676) Int)
-(declare-fun arr-Real-2-init () (Array Int (Array Int Real)))
-(declare-fun getLength-Arr-Real-2 ((Array Int (Array Int Real))) Int)
+(declare-fun arr-Float64-2-init () (Array Int (Array Int Float64)))
+(declare-fun getLength-Arr-Float64-2 ((Array Int (Array Int Float64))) Int)
 (declare-fun confusionMatrix/-179725236 (var1694) String)
-(declare-fun trainSemiSup/448771690 (var3706 var1835 var1835 (Array Int (Array Int Real))) void)
+(declare-fun trainSemiSup/448771690 (var3706 var1835 var1835 (Array Int (Array Int Float64))) void)
 (declare-const null-var3706 var3706)
 (declare-const var1534 var3706) ; Statement: r0 := @this: edu.stanford.nlp.ie.ner.CMMClassifier 
 (assert (not (= var1534 null-var3706)))
@@ -80,10 +80,10 @@
 (define-const var847 var1835 (getBiasedDataset/-1766800797 var1534 var3252 (cast-from-var2903-to-var676 var1105!1) (cast-from-var2903-to-var676 var2297!1))) ; Statement: r11 = virtualinvoke r0.<edu.stanford.nlp.ie.ner.CMMClassifier: edu.stanford.nlp.classify.Dataset getBiasedDataset(edu.stanford.nlp.objectbank.ObjectBank,edu.stanford.nlp.util.Index,edu.stanford.nlp.util.Index)>(r7, $r8, $r9) 
 (define-const var2659 Int (var676_size/127987506 (cast-from-var2903-to-var676 var2297!1))) ; Statement: $i1 = interfaceinvoke $r9.<edu.stanford.nlp.util.Index: int size()>() 
 (define-const var2133 Int (var676_size/127987506 (cast-from-var2903-to-var676 var2297!1))) ; Statement: $i0 = interfaceinvoke $r9.<edu.stanford.nlp.util.Index: int size()>() 
-(define-const var2608 (Array Int (Array Int Real)) arr-Real-2-init) ; Statement: r12 = newmultiarray (double)[$i1][$i0] 
+(define-const var2608 (Array Int (Array Int Float64)) arr-Float64-2-init) ; Statement: r12 = newmultiarray (double)[$i1][$i0] 
 (define-const var454 Int 0) ; Statement: i8 = 0 
 (assert true) ; Non Conditional
-(define-const var2834 Int (getLength-Arr-Real-2 var2608)) ; Statement: $i2 = lengthof r12 
+(define-const var2834 Int (getLength-Arr-Float64-2 var2608)) ; Statement: $i2 = lengthof r12 
  ; Statement: if i8 >= $i2 goto $r13 = r0.<edu.stanford.nlp.ie.ner.CMMClassifier: edu.stanford.nlp.sequences.SeqClassifierFlags flags> 
 (assert (>= var454 var2834)) ; Cond: i8 >= $i2 
 (define-const var2021 var1694 (flags/-865622323 (cast-from-var3706-to-var90 var1534))) ; Statement: $r13 = r0.<edu.stanford.nlp.ie.ner.CMMClassifier: edu.stanford.nlp.sequences.SeqClassifierFlags flags> 
@@ -94,19 +94,19 @@
 (assert true) ; Non Conditional
  ; Statement: if i10 >= i9 goto i11 = lengthof r12 
 (assert (>= var2859 var3742)) ; Cond: i10 >= i9 
-(define-const var1455 Int (getLength-Arr-Real-2 var2608)) ; Statement: i11 = lengthof r12 
+(define-const var1455 Int (getLength-Arr-Float64-2 var2608)) ; Statement: i11 = lengthof r12 
 (define-const var1805 Int 0) ; Statement: i12 = 0 
 (assert true) ; Non Conditional
  ; Statement: if i12 >= i11 goto i13 = 0 
 (assert (>= var1805 var1455)) ; Cond: i12 >= i11 
 (define-const var3842 Int 0) ; Statement: i13 = 0 
 (assert true) ; Non Conditional
-(define-const var1603 Int (getLength-Arr-Real-2 var2608)) ; Statement: $i3 = lengthof r12 
+(define-const var1603 Int (getLength-Arr-Float64-2 var2608)) ; Statement: $i3 = lengthof r12 
  ; Statement: if i13 >= $i3 goto i15 = 0 
 (assert (>= var3842 var1603)) ; Cond: i13 >= $i3 
 (define-const var2385 Int 0) ; Statement: i15 = 0 
 (assert true) ; Non Conditional
-(define-const var949 Int (getLength-Arr-Real-2 var2608)) ; Statement: $i4 = lengthof r12 
+(define-const var949 Int (getLength-Arr-Float64-2 var2608)) ; Statement: $i4 = lengthof r12 
  ; Statement: if i15 >= $i4 goto specialinvoke r0.<edu.stanford.nlp.ie.ner.CMMClassifier: void trainSemiSup(edu.stanford.nlp.classify.Dataset,edu.stanford.nlp.classify.Dataset,double[][])>(r10, r11, r12) 
 (assert (>= var2385 var949)) ; Cond: i15 >= $i4 
 (assert true)
@@ -115,10 +115,10 @@
 (declare-const var1534!1 var3706)
 (declare-const var712!1 var1835)
 (declare-const var847!1 var1835)
-(declare-const var2608!1 (Array Int (Array Int Real)))
+(declare-const var2608!1 (Array Int (Array Int Float64)))
  ; Statement: return 
 (check-sat)
-; {makeReaderAndWriter/-2081966930=([edu.stanford.nlp.ie.AbstractSequenceClassifier], edu.stanford.nlp.sequences.DocumentReaderAndWriter), cast-from-var3706-to-var90=([edu.stanford.nlp.ie.ner.CMMClassifier], edu.stanford.nlp.ie.AbstractSequenceClassifier), flags/-865622323=([edu.stanford.nlp.ie.AbstractSequenceClassifier], edu.stanford.nlp.sequences.SeqClassifierFlags), trainFile/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), biasedTrainFile/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), makeObjectBankFromFile/1614303798=([edu.stanford.nlp.ie.AbstractSequenceClassifier, java.lang.String, edu.stanford.nlp.sequences.DocumentReaderAndWriter], edu.stanford.nlp.objectbank.ObjectBank), var2903-init=([], edu.stanford.nlp.util.HashIndex), <init>/100578090=([edu.stanford.nlp.util.HashIndex], void), getDataset/-980257756=([edu.stanford.nlp.ie.ner.CMMClassifier, java.util.Collection, edu.stanford.nlp.util.Index, edu.stanford.nlp.util.Index], edu.stanford.nlp.classify.Dataset), cast-from-var3147-to-var3564=([edu.stanford.nlp.objectbank.ObjectBank], java.util.Collection), cast-from-var2903-to-var676=([edu.stanford.nlp.util.HashIndex], edu.stanford.nlp.util.Index), getBiasedDataset/-1766800797=([edu.stanford.nlp.ie.ner.CMMClassifier, edu.stanford.nlp.objectbank.ObjectBank, edu.stanford.nlp.util.Index, edu.stanford.nlp.util.Index], edu.stanford.nlp.classify.Dataset), var676_size/127987506=([edu.stanford.nlp.util.Index], int), arr-Real-2-init=([], double[][]), getLength-Arr-Real-2=([double[][]], int), confusionMatrix/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), trainSemiSup/448771690=([edu.stanford.nlp.ie.ner.CMMClassifier, edu.stanford.nlp.classify.Dataset, edu.stanford.nlp.classify.Dataset, double[][]], void)}
+; {makeReaderAndWriter/-2081966930=([edu.stanford.nlp.ie.AbstractSequenceClassifier], edu.stanford.nlp.sequences.DocumentReaderAndWriter), cast-from-var3706-to-var90=([edu.stanford.nlp.ie.ner.CMMClassifier], edu.stanford.nlp.ie.AbstractSequenceClassifier), flags/-865622323=([edu.stanford.nlp.ie.AbstractSequenceClassifier], edu.stanford.nlp.sequences.SeqClassifierFlags), trainFile/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), biasedTrainFile/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), makeObjectBankFromFile/1614303798=([edu.stanford.nlp.ie.AbstractSequenceClassifier, java.lang.String, edu.stanford.nlp.sequences.DocumentReaderAndWriter], edu.stanford.nlp.objectbank.ObjectBank), var2903-init=([], edu.stanford.nlp.util.HashIndex), <init>/100578090=([edu.stanford.nlp.util.HashIndex], void), getDataset/-980257756=([edu.stanford.nlp.ie.ner.CMMClassifier, java.util.Collection, edu.stanford.nlp.util.Index, edu.stanford.nlp.util.Index], edu.stanford.nlp.classify.Dataset), cast-from-var3147-to-var3564=([edu.stanford.nlp.objectbank.ObjectBank], java.util.Collection), cast-from-var2903-to-var676=([edu.stanford.nlp.util.HashIndex], edu.stanford.nlp.util.Index), getBiasedDataset/-1766800797=([edu.stanford.nlp.ie.ner.CMMClassifier, edu.stanford.nlp.objectbank.ObjectBank, edu.stanford.nlp.util.Index, edu.stanford.nlp.util.Index], edu.stanford.nlp.classify.Dataset), var676_size/127987506=([edu.stanford.nlp.util.Index], int), arr-Float64-2-init=([], double[][]), getLength-Arr-Float64-2=([double[][]], int), confusionMatrix/-179725236=([edu.stanford.nlp.sequences.SeqClassifierFlags], java.lang.String), trainSemiSup/448771690=([edu.stanford.nlp.ie.ner.CMMClassifier, edu.stanford.nlp.classify.Dataset, edu.stanford.nlp.classify.Dataset, double[][]], void)}
 ; {var3706=edu.stanford.nlp.ie.ner.CMMClassifier, var1534=r0, var1968=edu.stanford.nlp.sequences.DocumentReaderAndWriter, var90=edu.stanford.nlp.ie.AbstractSequenceClassifier, var1566=r1, var1694=edu.stanford.nlp.sequences.SeqClassifierFlags, var138=$r2, var2321=r3, var2246=$r4, var3182=r5, var3147=edu.stanford.nlp.objectbank.ObjectBank, var3876=r6, var3252=r7, var2903=edu.stanford.nlp.util.HashIndex, var1105=$r8, var2297=$r9, var1835=edu.stanford.nlp.classify.Dataset, var3564=java.util.Collection, var676=edu.stanford.nlp.util.Index, var712=r10, var847=r11, var2659=$i1, var2133=$i0, var2608=r12, var454=i8, var2834=$i2, var2021=$r13, var3831=r40, var2764=r14, var3742=i9, var2859=i10, var1455=i11, var1805=i12, var3842=i13, var1603=$i3, var2385=i15, var949=$i4}
 ; {edu.stanford.nlp.ie.ner.CMMClassifier=var3706, r0=var1534, edu.stanford.nlp.sequences.DocumentReaderAndWriter=var1968, edu.stanford.nlp.ie.AbstractSequenceClassifier=var90, r1=var1566, edu.stanford.nlp.sequences.SeqClassifierFlags=var1694, $r2=var138, r3=var2321, $r4=var2246, r5=var3182, edu.stanford.nlp.objectbank.ObjectBank=var3147, r6=var3876, r7=var3252, edu.stanford.nlp.util.HashIndex=var2903, $r8=var1105, $r9=var2297, edu.stanford.nlp.classify.Dataset=var1835, java.util.Collection=var3564, edu.stanford.nlp.util.Index=var676, r10=var712, r11=var847, $i1=var2659, $i0=var2133, r12=var2608, i8=var454, $i2=var2834, $r13=var2021, r40=var3831, r14=var2764, i9=var3742, i10=var2859, i11=var1455, i12=var1805, i13=var3842, $i3=var1603, i15=var2385, $i4=var949}
 ;seq <java.lang.String: java.lang.String[] split(java.lang.String)>

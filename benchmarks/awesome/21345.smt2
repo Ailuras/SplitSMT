@@ -32,19 +32,19 @@
 (declare-fun getPhrase/-292787131 (var290) String)
 (declare-fun var3031_containsKey/1421819118 (var3031 var1894) Bool)
 (declare-fun cast-from-var290-to-var1894 (var290) var1894)
-(declare-fun var3031_getCount/958668014 (var3031 var1894) Real)
+(declare-fun var3031_getCount/958668014 (var3031 var1894) Float64)
 (declare-const null-var2680 var2680)
 (declare-const null-var3031 var3031)
 (declare-const null-var290 var290)
-(declare-const null-Real Real)
+(declare-const null-Float64 Float64)
 (declare-const var886 var2680) ; Statement: r3 := @this: edu.stanford.nlp.patterns.PhraseScorer 
 (assert (not (= var886 null-var2680)))
 (declare-const var3592 var3031) ; Statement: r6 := @parameter0: edu.stanford.nlp.stats.Counter 
 (assert (not (= var3592 null-var3031)))
 (declare-const var795 var290) ; Statement: r0 := @parameter1: edu.stanford.nlp.patterns.CandidatePhrase 
 (assert (not (= var795 null-var290)))
-(declare-const var1760 Real) ; Statement: d2 := @parameter2: double 
-(assert (not (= var1760 null-Real)))
+(declare-const var1760 Float64) ; Statement: d2 := @parameter2: double 
+(assert (not (= var1760 null-Float64)))
 (assert true)
 (define-const var3246 String (getPhrase/-292787131 var795)) ; Statement: $r1 = virtualinvoke r0.<edu.stanford.nlp.patterns.CandidatePhrase: java.lang.String getPhrase()>() 
 ; split operation: var2202 = var3246.split("\u005cs+") ; Statement: r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+") 
@@ -54,7 +54,7 @@
 (define-const var732 Bool (var3031_containsKey/1421819118 var3592 (cast-from-var290-to-var1894 var795))) ; Statement: $z2 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: boolean containsKey(java.lang.Object)>(r0) 
  ; Statement: if $z2 == 0 goto return d2 
 (assert (not (= (ite var732 1 0) 0))) ; Negate: Cond: $z2 == 0  
-(define-const var120 Real (var3031_getCount/958668014 var3592 (cast-from-var290-to-var1894 var795))) ; Statement: $d3 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: double getCount(java.lang.Object)>(r0) 
+(define-const var120 Float64 (var3031_getCount/958668014 var3592 (cast-from-var290-to-var1894 var795))) ; Statement: $d3 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: double getCount(java.lang.Object)>(r0) 
  ; Statement: return $d3 
 (check-sat)
 ; {getPhrase/-292787131=([edu.stanford.nlp.patterns.CandidatePhrase], java.lang.String), var3031_containsKey/1421819118=([edu.stanford.nlp.stats.Counter, java.lang.Object], boolean), cast-from-var290-to-var1894=([edu.stanford.nlp.patterns.CandidatePhrase], java.lang.Object), var3031_getCount/958668014=([edu.stanford.nlp.stats.Counter, java.lang.Object], double)}

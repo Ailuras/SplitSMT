@@ -1,20 +1,4 @@
 ===========================================================
-FILE: 10022.smt2
-PATH: benchmarks/top20_maven/10022.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 1/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .060540622
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
 FILE: 1489.smt2
 PATH: benchmarks/top20_maven/1489.smt2
 TASK: solve
@@ -22,45 +6,13 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/21
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053674974
+SOLVING_TIME: .063804317
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 17301.smt2
-PATH: benchmarks/top20_maven/17301.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 3/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .058590713
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 17327.smt2
-PATH: benchmarks/top20_maven/17327.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 4/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .049614685
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 1853.smt2
@@ -69,14 +21,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 5/21
+BATCH: 1
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .050954257
+SOLVING_TIME: .084859679
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 1927.smt2
@@ -85,14 +37,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 6/21
+BATCH: 2
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .052048130
+SOLVING_TIME: .057491167
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 325.smt2
@@ -101,94 +53,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 7/21
+BATCH: 3
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051822177
+SOLVING_TIME: .062549168
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 394.smt2
-PATH: benchmarks/top20_maven/394.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 8/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051943318
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4081.smt2
-PATH: benchmarks/top20_maven/4081.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 9/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051855696
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4186.smt2
-PATH: benchmarks/top20_maven/4186.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 10/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .049319516
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4247.smt2
-PATH: benchmarks/top20_maven/4247.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 11/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .056037091
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4323.smt2
-PATH: benchmarks/top20_maven/4323.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 12/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .052809166
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5089.smt2
@@ -197,14 +69,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 13/21
+BATCH: 4
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .047161023
+SOLVING_TIME: .058034256
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5094.smt2
@@ -213,14 +85,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 14/21
+BATCH: 5
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .046066292
+SOLVING_TIME: .063210479
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5095.smt2
@@ -229,14 +101,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 15/21
+BATCH: 6
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .050286661
+SOLVING_TIME: .097505568
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 5096.smt2
@@ -245,14 +117,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 16/21
+BATCH: 7
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .052422048
+SOLVING_TIME: .092825294
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 5097.smt2
@@ -261,14 +133,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 17/21
+BATCH: 8
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .053311236
+SOLVING_TIME: .088237156
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 5098.smt2
@@ -277,14 +149,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 18/21
+BATCH: 9
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .054738323
+SOLVING_TIME: .245462986
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 5516.smt2
@@ -293,44 +165,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 19/21
+BATCH: 10
+INDEX: 1/1
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053947039
+SOLVING_TIME: .066244049
 RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 8947.smt2
-PATH: benchmarks/top20_maven/8947.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 20/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .049845230
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 8989.smt2
-PATH: benchmarks/top20_maven/8989.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-z3
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 21/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: .051301017
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 

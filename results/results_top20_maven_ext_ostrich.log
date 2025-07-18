@@ -1,21 +1,4 @@
 ===========================================================
-FILE: 10022.smt2
-PATH: benchmarks/top20_maven/10022.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 1/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:36] Result: ERROR (1128ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.152874815
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
 FILE: 1489.smt2
 PATH: benchmarks/top20_maven/1489.smt2
 TASK: solve
@@ -23,46 +6,12 @@ SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 2/21
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:37] Result: ERROR (892ms)[0m
+[31m[2025-07-18 15:29:32] Result: ERROR (1068ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .917510797
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 17301.smt2
-PATH: benchmarks/top20_maven/17301.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 3/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:38] Result: ERROR (1028ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.050140437
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 17327.smt2
-PATH: benchmarks/top20_maven/17327.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 4/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:39] Result: ERROR (1125ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.149801624
+SOLVING_TIME: 1.096351032
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -73,13 +22,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 5/21
+BATCH: 1
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:40] Result: ERROR (1104ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (2188ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.128121913
+SOLVING_TIME: 2.212052921
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -90,13 +39,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 6/21
+BATCH: 2
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:41] Result: ERROR (878ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (1963ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .901826461
+SOLVING_TIME: 1.991112140
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -107,99 +56,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 7/21
+BATCH: 3
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:42] Result: ERROR (1072ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: 1.099434629
+SOLVING_TIME: 1.695259865
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 394.smt2
-PATH: benchmarks/top20_maven/394.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 8/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.209623014
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 4081.smt2
-PATH: benchmarks/top20_maven/4081.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 9/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:44] Result: ERROR (1012ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.034906896
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4186.smt2
-PATH: benchmarks/top20_maven/4186.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 10/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:45] Result: ERROR (1111ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.132770981
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4247.smt2
-PATH: benchmarks/top20_maven/4247.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 11/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:47] Result: ERROR (1157ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.179734999
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 4323.smt2
-PATH: benchmarks/top20_maven/4323.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 12/21
------------------------------------------------------------
-[31m[2025-07-16 18:47:48] Result: ERROR (1128ms)[0m
-unknown
------------------------------------------------------------
-SOLVING_TIME: 1.151327467
-RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5089.smt2
@@ -208,15 +72,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 13/21
+BATCH: 4
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:49] Result: ERROR (893ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .915650848
+SOLVING_TIME: 1.924747165
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5094.smt2
@@ -225,15 +88,14 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 14/21
+BATCH: 5
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:50] Result: ERROR (891ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .916840105
+SOLVING_TIME: 1.939056080
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
+SAT_RESULT: UNSAT
 
 ===========================================================
 FILE: 5095.smt2
@@ -242,13 +104,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 15/21
+BATCH: 6
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:51] Result: ERROR (1024ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (2034ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.052141957
+SOLVING_TIME: 2.066389330
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -259,13 +121,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 16/21
+BATCH: 7
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:52] Result: ERROR (1013ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (2121ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 1.043169221
+SOLVING_TIME: 2.150636050
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -276,13 +138,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 17/21
+BATCH: 8
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:53] Result: ERROR (948ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (2071ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .973817118
+SOLVING_TIME: 2.100772642
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -293,13 +155,13 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 18/21
+BATCH: 9
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:54] Result: ERROR (950ms)[0m
+[31m[2025-07-18 15:29:33] Result: ERROR (2147ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .978029176
+SOLVING_TIME: 2.174164652
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -310,45 +172,12 @@ TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-ostrich
 TIMEOUT: 60s
-BATCH: 0
-INDEX: 19/21
+BATCH: 10
+INDEX: 1/1
 -----------------------------------------------------------
-[31m[2025-07-16 18:47:55] Result: ERROR (911ms)[0m
-unknown
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .935467278
+SOLVING_TIME: 1.784754273
 RESULT: SUCCESS
-SAT_RESULT: UNKNOWN
-
-===========================================================
-FILE: 8947.smt2
-PATH: benchmarks/top20_maven/8947.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 20/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.326768099
-RESULT: SUCCESS
-SAT_RESULT: SAT
-
-===========================================================
-FILE: 8989.smt2
-PATH: benchmarks/top20_maven/8989.smt2
-TASK: solve
-SOLVER_SCRIPT: run_strprocessor.sh
-SOLVER_TYPE: ext-ostrich
-TIMEOUT: 60s
-BATCH: 0
-INDEX: 21/21
------------------------------------------------------------
-sat
------------------------------------------------------------
-SOLVING_TIME: 1.370279848
-RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 

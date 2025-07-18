@@ -98,6 +98,10 @@ public:
     bool isVarType() const override { return true; }
     
     void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
+    void deleteSplitNumAppeared(int num) { 
+        splitNumsAppeared.erase(std::remove(splitNumsAppeared.begin(), splitNumsAppeared.end(), num), splitNumsAppeared.end()); 
+        splitEndNumsAppeared.erase(std::remove(splitEndNumsAppeared.begin(), splitEndNumsAppeared.end(), num), splitEndNumsAppeared.end()); 
+    }
     void addSplitEndNumAppeared(int num) { 
         splitNumsAppeared.push_back(num);
         splitEndNumsAppeared.push_back(num);

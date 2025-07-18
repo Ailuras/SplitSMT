@@ -7,6 +7,8 @@
 #include <unordered_map>
 #include <unordered_set>
 
+int parseInteger(const std::string& str);
+
 namespace strp {
 
 class splitSolver {
@@ -32,6 +34,7 @@ public:
     void replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes);
 
     void addAuxiliaryNodes(Context& ctx);
+    void detectInvalidIndex(Context& ctx, Division* division);
     void addAuxiliaryVariables(Context& ctx, const Division* division);
     void addBasicConstraints(Context& ctx, const Division* division);
     void addEquivalenceConstraints(Context& ctx, const Division* division);

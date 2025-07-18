@@ -40,11 +40,11 @@
 (declare-sort ClassObject 0)
 (declare-fun getLocation/-2100520407 (var327) var3933)
 (declare-fun x/-2076290636 (var3933) Int)
-(declare-fun cast-from-Int-to-Real (Int) Real)
-(declare-fun getWidth/489074803 (var327) Real)
-(declare-fun cast-from-Real-to-Int (Real) Int)
+(declare-fun cast-from-Int-to-Float64 (Int) Float64)
+(declare-fun getWidth/489074803 (var327) Float64)
+(declare-fun cast-from-Float64-to-Int (Float64) Int)
 (declare-fun y/-2076290636 (var3933) Int)
-(declare-fun getHeight/714790842 (var327) Real)
+(declare-fun getHeight/714790842 (var327) Float64)
 (declare-fun this$1/-329981954 (var2124) var1164)
 (declare-fun this$0/1045148940 (var1164) var1810)
 (declare-fun var1810_access$300/-62264586 (var1810) var1496)
@@ -62,8 +62,8 @@
 (declare-fun getFont/-1191561058 (var3286) var2633)
 (declare-fun cast-from-var3026-to-var3286 (var3026) var3286)
 (declare-fun getSize/1707555820 (var2633) Int)
-(declare-fun cast-from-Int-to-Real (Int) Real)
-(declare-fun deriveFont/-816435095 (var2633 Real) var2633)
+(declare-fun cast-from-Int-to-Float32 (Int) Float32)
+(declare-fun deriveFont/-816435095 (var2633 Float32) var2633)
 (declare-fun setFont/-1113720754 (var3286 var2633) void)
 (declare-fun setColor/1206064488 (var3286 var2924) void)
 (declare-fun fill/1396239382 (var3026 var2867) void)
@@ -88,21 +88,21 @@
 (assert true)
 (define-const var2066 var3933 (getLocation/-2100520407 var2539)) ; Statement: $r1 = virtualinvoke r0.<java.awt.Rectangle: java.awt.Point getLocation()>() 
 (define-const var509 Int (x/-2076290636 var2066)) ; Statement: $i0 = $r1.<java.awt.Point: int x> 
-(define-const var303 Real (cast-from-Int-to-Real var509)) ; Statement: $d2 = (double) $i0 
+(define-const var303 Float64 (cast-from-Int-to-Float64 var509)) ; Statement: $d2 = (double) $i0 
 (assert true)
-(define-const var3705 Real (getWidth/489074803 var2539)) ; Statement: $d0 = virtualinvoke r0.<java.awt.Rectangle: double getWidth()>() 
-(define-const var2684 Real (/ round var3705 ((_ to_fp 11 53) #x4014000000000000))) ; Statement: $d1 = $d0 / 5.0 
-(define-const var2928 Real (+ round var303 var2684)) ; Statement: $d3 = $d2 + $d1 
-(define-const var1233 Int (cast-from-Real-to-Int var2928)) ; Statement: i1 = (int) $d3 
+(define-const var3705 Float64 (getWidth/489074803 var2539)) ; Statement: $d0 = virtualinvoke r0.<java.awt.Rectangle: double getWidth()>() 
+(define-const var2684 Float64 (fp.div roundNearestTiesToEven var3705 ((_ to_fp 11 53) #x4014000000000000))) ; Statement: $d1 = $d0 / 5.0 
+(define-const var2928 Float64 (fp.add roundNearestTiesToEven var303 var2684)) ; Statement: $d3 = $d2 + $d1 
+(define-const var1233 Int (cast-from-Float64-to-Int var2928)) ; Statement: i1 = (int) $d3 
 (assert true)
 (define-const var418 var3933 (getLocation/-2100520407 var2539)) ; Statement: $r2 = virtualinvoke r0.<java.awt.Rectangle: java.awt.Point getLocation()>() 
 (define-const var2548 Int (y/-2076290636 var418)) ; Statement: $i2 = $r2.<java.awt.Point: int y> 
-(define-const var503 Real (cast-from-Int-to-Real var2548)) ; Statement: $d6 = (double) $i2 
+(define-const var503 Float64 (cast-from-Int-to-Float64 var2548)) ; Statement: $d6 = (double) $i2 
 (assert true)
-(define-const var1118 Real (getHeight/714790842 var2539)) ; Statement: $d4 = virtualinvoke r0.<java.awt.Rectangle: double getHeight()>() 
-(define-const var2509 Real (/ round var1118 ((_ to_fp 11 53) #x4014000000000000))) ; Statement: $d5 = $d4 / 5.0 
-(define-const var528 Real (+ round var503 var2509)) ; Statement: $d7 = $d6 + $d5 
-(define-const var498 Int (cast-from-Real-to-Int var528)) ; Statement: i7 = (int) $d7 
+(define-const var1118 Float64 (getHeight/714790842 var2539)) ; Statement: $d4 = virtualinvoke r0.<java.awt.Rectangle: double getHeight()>() 
+(define-const var2509 Float64 (fp.div roundNearestTiesToEven var1118 ((_ to_fp 11 53) #x4014000000000000))) ; Statement: $d5 = $d4 / 5.0 
+(define-const var528 Float64 (fp.add roundNearestTiesToEven var503 var2509)) ; Statement: $d7 = $d6 + $d5 
+(define-const var498 Int (cast-from-Float64-to-Int var528)) ; Statement: i7 = (int) $d7 
 (define-const var2137 var1164 (this$1/-329981954 var2113)) ; Statement: $r4 = r3.<edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid$Grid: edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid this$1> 
 (define-const var1046 var1810 (this$0/1045148940 var2137)) ; Statement: $r5 = $r4.<edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid: edu.stanford.nlp.util.ConfusionMatrix this$0> 
 (define-const var1388 var1496 (var1810_access$300/-62264586 var1046)) ; Statement: $r9 = staticinvoke <edu.stanford.nlp.util.ConfusionMatrix: java.util.concurrent.ConcurrentHashMap access$300(edu.stanford.nlp.util.ConfusionMatrix)>($r5) 
@@ -151,8 +151,8 @@
 (define-const var2988 var2633 (getFont/-1191561058 (cast-from-var3026-to-var3286 var313))) ; Statement: $r27 = virtualinvoke r20.<java.awt.Graphics2D: java.awt.Font getFont()>() 
 (assert true)
 (define-const var1560 Int (getSize/1707555820 var2988)) ; Statement: $i3 = virtualinvoke $r27.<java.awt.Font: int getSize()>() 
-(define-const var1353 Real (cast-from-Int-to-Real var1560)) ; Statement: $f0 = (float) $i3 
-(define-const var3425 Real (* round var1353 ((_ to_fp 8 24) #x40000000))) ; Statement: $f1 = $f0 * 2.0F 
+(define-const var1353 Float32 (cast-from-Int-to-Float32 var1560)) ; Statement: $f0 = (float) $i3 
+(define-const var3425 Float32 (fp.mul roundNearestTiesToEven var1353 ((_ to_fp 8 24) #x40000000))) ; Statement: $f1 = $f0 * 2.0F 
 (assert true)
 (define-const var1542 var2633 (deriveFont/-816435095 var2988 var3425)) ; Statement: $r21 = virtualinvoke $r27.<java.awt.Font: java.awt.Font deriveFont(float)>($f1) 
 (assert true)
@@ -190,7 +190,7 @@
 (declare-const var2988!1 var2633)
  ; Statement: return 
 (check-sat)
-; {getLocation/-2100520407=([java.awt.Rectangle], java.awt.Point), x/-2076290636=([java.awt.Point], int), cast-from-Int-to-Real=([int], double), getWidth/489074803=([java.awt.Rectangle], double), cast-from-Real-to-Int=([double], int), y/-2076290636=([java.awt.Point], int), getHeight/714790842=([java.awt.Rectangle], double), this$1/-329981954=([edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid$Grid], edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid), this$0/1045148940=([edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid], edu.stanford.nlp.util.ConfusionMatrix), var1810_access$300/-62264586=([edu.stanford.nlp.util.ConfusionMatrix], java.util.concurrent.ConcurrentHashMap), var80_makePair/452216261=([java.lang.Object, java.lang.Object], edu.stanford.nlp.util.Pair), get/791961573=([java.util.concurrent.ConcurrentHashMap, java.lang.Object], java.lang.Object), cast-from-var80-to-var1005=([edu.stanford.nlp.util.Pair], java.lang.Object), cast-from-var1005-to-Int=([java.lang.Object], java.lang.Integer), String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), toString/-522406933=([java.lang.Object], java.lang.String), append/-1031950772=([java.lang.StringBuilder, java.lang.Object], java.lang.StringBuilder), cast-from-Int-to-var1005=([java.lang.Integer], java.lang.Object), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), getFont/-1191561058=([java.awt.Graphics], java.awt.Font), cast-from-var3026-to-var3286=([java.awt.Graphics2D], java.awt.Graphics), getSize/1707555820=([java.awt.Font], int), cast-from-Int-to-Real=([int], float), deriveFont/-816435095=([java.awt.Font, float], java.awt.Font), setFont/-1113720754=([java.awt.Graphics, java.awt.Font], void), setColor/1206064488=([java.awt.Graphics, java.awt.Color], void), fill/1396239382=([java.awt.Graphics2D, java.awt.Shape], void), cast-from-var327-to-var2867=([java.awt.Rectangle], java.awt.Shape)}
+; {getLocation/-2100520407=([java.awt.Rectangle], java.awt.Point), x/-2076290636=([java.awt.Point], int), cast-from-Int-to-Float64=([int], double), getWidth/489074803=([java.awt.Rectangle], double), cast-from-Float64-to-Int=([double], int), y/-2076290636=([java.awt.Point], int), getHeight/714790842=([java.awt.Rectangle], double), this$1/-329981954=([edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid$Grid], edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid), this$0/1045148940=([edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid], edu.stanford.nlp.util.ConfusionMatrix), var1810_access$300/-62264586=([edu.stanford.nlp.util.ConfusionMatrix], java.util.concurrent.ConcurrentHashMap), var80_makePair/452216261=([java.lang.Object, java.lang.Object], edu.stanford.nlp.util.Pair), get/791961573=([java.util.concurrent.ConcurrentHashMap, java.lang.Object], java.lang.Object), cast-from-var80-to-var1005=([edu.stanford.nlp.util.Pair], java.lang.Object), cast-from-var1005-to-Int=([java.lang.Object], java.lang.Integer), String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), toString/-522406933=([java.lang.Object], java.lang.String), append/-1031950772=([java.lang.StringBuilder, java.lang.Object], java.lang.StringBuilder), cast-from-Int-to-var1005=([java.lang.Integer], java.lang.Object), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), getFont/-1191561058=([java.awt.Graphics], java.awt.Font), cast-from-var3026-to-var3286=([java.awt.Graphics2D], java.awt.Graphics), getSize/1707555820=([java.awt.Font], int), cast-from-Int-to-Float32=([int], float), deriveFont/-816435095=([java.awt.Font, float], java.awt.Font), setFont/-1113720754=([java.awt.Graphics, java.awt.Font], void), setColor/1206064488=([java.awt.Graphics, java.awt.Color], void), fill/1396239382=([java.awt.Graphics2D, java.awt.Shape], void), cast-from-var327-to-var2867=([java.awt.Rectangle], java.awt.Shape)}
 ; {var2124=edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid$Grid, var2113=r3, var3026=java.awt.Graphics2D, var313=r20, var327=java.awt.Rectangle, var2539=r0, var1005=java.lang.Object, var1270=r6, var3745=r7, var3933=java.awt.Point, var2066=$r1, var509=$i0, var303=$d2, var3705=$d0, var2684=$d1, var2928=$d3, var1233=i1, var418=$r2, var2548=$i2, var503=$d6, var1118=$d4, var2509=$d5, var528=$d7, var498=i7, var1164=edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid, var2137=$r4, var1810=edu.stanford.nlp.util.ConfusionMatrix, var1046=$r5, var1496=java.util.concurrent.ConcurrentHashMap, var1388=$r9, var80=edu.stanford.nlp.util.Pair, var707=$r8, var1221=$r10, var2897=r29, var1656=$r11, var2056=$r13, var3080=$r12, var3906=$r14, var579=$r16, var2855=$r15, var2681=$r17, var1919=$r18, var2921=$r19, var2043=$r26, var2633=java.awt.Font, var3286=java.awt.Graphics, var2988=$r27, var1560=$i3, var1353=$f0, var3425=$f1, var1542=$r21, var2924=java.awt.Color, var864=$r22, var2867=java.awt.Shape, var2843=$r23, var3522=$r28, var1596=$i6, var888=i8}
 ; {edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid$Grid=var2124, r3=var2113, java.awt.Graphics2D=var3026, r20=var313, java.awt.Rectangle=var327, r0=var2539, java.lang.Object=var1005, r6=var1270, r7=var3745, java.awt.Point=var3933, $r1=var2066, $i0=var509, $d2=var303, $d0=var3705, $d1=var2684, $d3=var2928, i1=var1233, $r2=var418, $i2=var2548, $d6=var503, $d4=var1118, $d5=var2509, $d7=var528, i7=var498, edu.stanford.nlp.util.ConfusionMatrix$ConfusionGrid=var1164, $r4=var2137, edu.stanford.nlp.util.ConfusionMatrix=var1810, $r5=var1046, java.util.concurrent.ConcurrentHashMap=var1496, $r9=var1388, edu.stanford.nlp.util.Pair=var80, $r8=var707, $r10=var1221, r29=var2897, $r11=var1656, $r13=var2056, $r12=var3080, $r14=var3906, $r16=var579, $r15=var2855, $r17=var2681, $r18=var1919, $r19=var2921, $r26=var2043, java.awt.Font=var2633, java.awt.Graphics=var3286, $r27=var2988, $i3=var1560, $f0=var1353, $f1=var3425, $r21=var1542, java.awt.Color=var2924, $r22=var864, java.awt.Shape=var2867, $r23=var2843, $r28=var3522, $i6=var1596, i8=var888}
 ;seq <java.lang.StringBuilder: void <init>()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.Object: java.lang.String toString()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.Object: java.lang.String toString()>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>;	<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>;	<java.lang.StringBuilder: java.lang.String toString()>;	<java.lang.String: java.lang.String[] split(java.lang.String)>
