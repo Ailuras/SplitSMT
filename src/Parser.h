@@ -67,6 +67,7 @@ private:
     Parser& operator=(const Parser&) = delete;
     Parser(Parser&&) = delete;
     Parser& operator=(Parser&&) = delete;
+    bool needDecomposition = false;
 };
 
 } // namespace strp 

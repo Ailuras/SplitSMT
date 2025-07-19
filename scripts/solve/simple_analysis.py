@@ -134,14 +134,29 @@ def create_excel_report(results, output_file, task_name):
                         percentage = f"{count/total_files*100:.1f}%"
                         summary_data.append([f'SAT Result: {sat_result}', count, percentage])
             
-            # Timing statistics
+            # Timing statistics (only for successful SAT/UNSAT results)
             if 'solving_time' in df.columns and df['solving_time'].dtype in ['float64', 'int64']:
-                avg_time = df['solving_time'].mean()
-                max_time = df['solving_time'].max()
-                min_time = df['solving_time'].min()
-                summary_data.append(['Average Solving Time', f'{avg_time:.3f}s', ''])
-                summary_data.append(['Max Solving Time', f'{max_time:.3f}s', ''])
-                summary_data.append(['Min Solving Time', f'{min_time:.3f}s', ''])
+                # Filter for successful results (SAT or UNSAT)
+                if 'sat_result' in df.columns:
+                    successful_results = df[df['sat_result'].str.upper().isin(['SAT', 'UNSAT'])]
+                    if not successful_results.empty:
+                        avg_time = successful_results['solving_time'].mean()
+                        max_time = successful_results['solving_time'].max()
+                        min_time = successful_results['solving_time'].min()
+                        successful_count = len(successful_results)
+                        summary_data.append(['Average Solving Time (SAT/UNSAT)', f'{avg_time:.3f}s', f'{successful_count} cases'])
+                        summary_data.append(['Max Solving Time (SAT/UNSAT)', f'{max_time:.3f}s', ''])
+                        summary_data.append(['Min Solving Time (SAT/UNSAT)', f'{min_time:.3f}s', ''])
+                    else:
+                        summary_data.append(['Average Solving Time (SAT/UNSAT)', 'No successful results', ''])
+                else:
+                    # Fallback to all results if sat_result column doesn't exist
+                    avg_time = df['solving_time'].mean()
+                    max_time = df['solving_time'].max()
+                    min_time = df['solving_time'].min()
+                    summary_data.append(['Average Solving Time', f'{avg_time:.3f}s', ''])
+                    summary_data.append(['Max Solving Time', f'{max_time:.3f}s', ''])
+                    summary_data.append(['Min Solving Time', f'{min_time:.3f}s', ''])
             
             summary_df = pd.DataFrame(summary_data[1:], columns=summary_data[0])
             summary_df.to_excel(writer, index=False, sheet_name='Summary')
@@ -174,9 +189,20 @@ def create_excel_report(results, output_file, task_name):
             print(df['sat_result'].value_counts().to_string())
         if 'solving_time' in df.columns and df['solving_time'].dtype in ['float64', 'int64']:
             print(f"\nTiming statistics:")
-            print(f"Average solving time: {df['solving_time'].mean():.3f}s")
-            print(f"Max solving time: {df['solving_time'].max():.3f}s")
-            print(f"Min solving time: {df['solving_time'].min():.3f}s")
+            # Filter for successful results (SAT or UNSAT)
+            if 'sat_result' in df.columns:
+                successful_results = df[df['sat_result'].str.upper().isin(['SAT', 'UNSAT'])]
+                if not successful_results.empty:
+                    print(f"Average solving time (SAT/UNSAT only): {successful_results['solving_time'].mean():.3f}s ({len(successful_results)} cases)")
+                    print(f"Max solving time (SAT/UNSAT only): {successful_results['solving_time'].max():.3f}s")
+                    print(f"Min solving time (SAT/UNSAT only): {successful_results['solving_time'].min():.3f}s")
+                else:
+                    print("No successful SAT/UNSAT results found for timing analysis")
+            else:
+                # Fallback to all results if sat_result column doesn't exist
+                print(f"Average solving time (all results): {df['solving_time'].mean():.3f}s")
+                print(f"Max solving time: {df['solving_time'].max():.3f}s")
+                print(f"Min solving time: {df['solving_time'].min():.3f}s")
         
     except Exception as e:
         print(f"Error creating Excel file: {e}")

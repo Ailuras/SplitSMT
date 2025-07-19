@@ -28,6 +28,7 @@ bool Parser::parseFile(const std::string& filename, Decomposition& decomposition
         LOG3("  - Split constraints: ", decomposition.splitConstraints.size(), " items");
         LOG3("  - Other constraints: ", decomposition.otherConstraints.size(), " items");
         LOG3("  - Variables: ", decomposition.variables.size());
+        needDecomposition = true;
     } else {
         LOG2("File does not require decomposition, reading directly");
         std::ifstream file(filename);
@@ -444,6 +445,9 @@ std::string Parser::getMergedSMTLIB2(const Decomposition& decomposition) {
     LOG2("Starting to merge SMTLIB2 content");
     
     std::string splitSMTLIB2 = getSMTLIB2(true);
+    if (!needDecomposition) {
+        return splitSMTLIB2;
+    }
     std::vector<std::string> allConstraints = extractAllConstraints(splitSMTLIB2);
     std::vector<std::string> pureConstraints;
     for (const auto& constraint : allConstraints) {
@@ -453,7 +457,6 @@ std::string Parser::getMergedSMTLIB2(const Decomposition& decomposition) {
     }
     
     std::vector<std::string> mergedConstraints = decomposition.otherConstraints;
-    
     for (const auto& var : decomposition.variablesHasDefined) {
         std::string declareStmt = "(declare-fun " + var.first + " () " + var.second + ")";
         bool varFound = false;
@@ -522,6 +525,7 @@ std::string Parser::getMergedSMTLIB2(const Decomposition& decomposition) {
     }
     
     LOG2("Merged SMTLIB2 generation completed, total constraints: ", mergedConstraints.size());
+    LOG4(result.str());
     return result.str();
 }
 

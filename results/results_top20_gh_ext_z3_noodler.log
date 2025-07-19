@@ -1,176 +1,435 @@
 ===========================================================
-FILE: 10287.smt2
-PATH: benchmarks/top20_gh/10287.smt2
+FILE: 10560.smt2
+PATH: benchmarks/top20_gh/10560.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 0
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .062032449
+SOLVING_TIME: .063970625
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 3839.smt2
-PATH: benchmarks/top20_gh/3839.smt2
+FILE: 10596.smt2
+PATH: benchmarks/top20_gh/10596.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 0
+INDEX: 2/2
+-----------------------------------------------------------
+unsat
+-----------------------------------------------------------
+SOLVING_TIME: .057310113
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
+
+===========================================================
+FILE: 10620.smt2
+PATH: benchmarks/top20_gh/10620.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 1
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .062536268
+SOLVING_TIME: .058902216
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 5719.smt2
-PATH: benchmarks/top20_gh/5719.smt2
+FILE: 1118.smt2
+PATH: benchmarks/top20_gh/1118.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 1
+INDEX: 2/2
+-----------------------------------------------------------
+unsat
+-----------------------------------------------------------
+SOLVING_TIME: .075124267
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
+
+===========================================================
+FILE: 11724.smt2
+PATH: benchmarks/top20_gh/11724.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 2
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .069353763
+SOLVING_TIME: .068439129
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
-FILE: 6784.smt2
-PATH: benchmarks/top20_gh/6784.smt2
+FILE: 12319.smt2
+PATH: benchmarks/top20_gh/12319.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 2
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .084077050
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 12328.smt2
+PATH: benchmarks/top20_gh/12328.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 3
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .122453062
+SOLVING_TIME: .090944475
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
 ===========================================================
-FILE: 6804.smt2
-PATH: benchmarks/top20_gh/6804.smt2
+FILE: 12336.smt2
+PATH: benchmarks/top20_gh/12336.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 3
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .086386240
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 12342.smt2
+PATH: benchmarks/top20_gh/12342.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 4
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .107233902
+SOLVING_TIME: .086282112
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
 ===========================================================
-FILE: 6811.smt2
-PATH: benchmarks/top20_gh/6811.smt2
+FILE: 15456.smt2
+PATH: benchmarks/top20_gh/15456.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 4
+INDEX: 2/2
+-----------------------------------------------------------
+[31m[2025-07-18 22:56:27] Result: ERROR (30037ms)[0m
+unknown
+-----------------------------------------------------------
+SOLVING_TIME: 30.092555439
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
+
+===========================================================
+FILE: 16346.smt2
+PATH: benchmarks/top20_gh/16346.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 5
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .116129693
+SOLVING_TIME: .070088524
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
 ===========================================================
-FILE: 6842.smt2
-PATH: benchmarks/top20_gh/6842.smt2
+FILE: 16405.smt2
+PATH: benchmarks/top20_gh/16405.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 5
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .076587366
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 1643.smt2
+PATH: benchmarks/top20_gh/1643.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 6
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
-sat
+unsat
 -----------------------------------------------------------
-SOLVING_TIME: .128367084
+SOLVING_TIME: .062810707
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 9474.smt2
-PATH: benchmarks/top20_gh/9474.smt2
+FILE: 18189.smt2
+PATH: benchmarks/top20_gh/18189.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 6
+INDEX: 2/2
+-----------------------------------------------------------
+[31m[2025-07-18 22:56:27] Result: ERROR (30044ms)[0m
+unknown
+-----------------------------------------------------------
+SOLVING_TIME: 30.069439488
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
+
+===========================================================
+FILE: 18195.smt2
+PATH: benchmarks/top20_gh/18195.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 7
-INDEX: 1/1
+INDEX: 1/2
+-----------------------------------------------------------
+[31m[2025-07-18 22:56:27] Result: ERROR (30041ms)[0m
+unknown
+-----------------------------------------------------------
+SOLVING_TIME: 30.071573210
+RESULT: SUCCESS
+SAT_RESULT: UNKNOWN
+
+===========================================================
+FILE: 2964.smt2
+PATH: benchmarks/top20_gh/2964.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 7
+INDEX: 2/2
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .071904743
+SOLVING_TIME: .073496632
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 9484.smt2
-PATH: benchmarks/top20_gh/9484.smt2
+FILE: 3855.smt2
+PATH: benchmarks/top20_gh/3855.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 8
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .061462583
+SOLVING_TIME: .060446008
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 966.smt2
-PATH: benchmarks/top20_gh/966.smt2
+FILE: 4906.smt2
+PATH: benchmarks/top20_gh/4906.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 8
+INDEX: 2/2
+-----------------------------------------------------------
+unsat
+-----------------------------------------------------------
+SOLVING_TIME: .061550250
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
+
+===========================================================
+FILE: 5647.smt2
+PATH: benchmarks/top20_gh/5647.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 9
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .071383251
+SOLVING_TIME: .065634169
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
 ===========================================================
-FILE: 976.smt2
-PATH: benchmarks/top20_gh/976.smt2
+FILE: 591.smt2
+PATH: benchmarks/top20_gh/591.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 9
+INDEX: 2/2
+-----------------------------------------------------------
+unsat
+-----------------------------------------------------------
+SOLVING_TIME: .063104177
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
+
+===========================================================
+FILE: 6394.smt2
+PATH: benchmarks/top20_gh/6394.smt2
 TASK: solve
 SOLVER_SCRIPT: run_strprocessor.sh
 SOLVER_TYPE: ext-z3-noodler
 TIMEOUT: 60s
 BATCH: 10
-INDEX: 1/1
+INDEX: 1/2
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .103153759
+SOLVING_TIME: .191664216
 RESULT: SUCCESS
 SAT_RESULT: SAT
+
+===========================================================
+FILE: 6812.smt2
+PATH: benchmarks/top20_gh/6812.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 10
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .121171889
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 6840.smt2
+PATH: benchmarks/top20_gh/6840.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 11
+INDEX: 1/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .149853578
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 6863.smt2
+PATH: benchmarks/top20_gh/6863.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 11
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .114340802
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 6892.smt2
+PATH: benchmarks/top20_gh/6892.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 12
+INDEX: 1/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .112584646
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 9690.smt2
+PATH: benchmarks/top20_gh/9690.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 12
+INDEX: 2/2
+-----------------------------------------------------------
+sat
+-----------------------------------------------------------
+SOLVING_TIME: .069257250
+RESULT: SUCCESS
+SAT_RESULT: SAT
+
+===========================================================
+FILE: 9717.smt2
+PATH: benchmarks/top20_gh/9717.smt2
+TASK: solve
+SOLVER_SCRIPT: run_strprocessor.sh
+SOLVER_TYPE: ext-z3-noodler
+TIMEOUT: 60s
+BATCH: 13
+INDEX: 1/1
+-----------------------------------------------------------
+unsat
+-----------------------------------------------------------
+SOLVING_TIME: .070993555
+RESULT: SUCCESS
+SAT_RESULT: UNSAT
 

@@ -261,33 +261,1123 @@ class LLMMutator:
         self.rws_task = {'User Input Validation secnario': ['Email format validation', 'URL parsing', 'phone number formats'],
                          'Configuration File Processing secnario': ['Key-value pairs', 'INI files', 'JSON-like structures'],
                          'Log Analysis secnario': ['Timestamp extraction', 'log level parsing', 'IP address validation'],
-                         'CSV/TSV Parsing secnario': ['Field separation', 'quoted strings', 'escape characters'],
+                         'CSV/TSV Parsing secnario': ['Field separation', 'escape characters'],
                          'Authentication Token Handling secnario': ['JWT parsing', 'API key validation', 'session tokens']}
 
-        self.rws_system_prompt = lambda x: f"""You are an expert in SMT solver constraints and string operations. 
-Your task is to generate SMT-LIB2 constraints and add intelligent split constraints using str.split_at functions, for "{x}" secnario.
-
-Output format: Return all the SMT-LIB2 text, starting with "; --- LLM Generated Split Constraints ---" and ending with "; --- End LLM Generated Constraints ---"
+        self.rws_system_prompt = lambda x: f"""You are an expert in SMT solver constraints and string reasoning.
+Your task is to generate SMT-LIB2 constraints for the "{x}" scenario, incorporating intelligent split constraints using a custom operation called str.split_at. This operation supports the following forms:
+(str.split_at x d k): returns the (k+1)th part of x after splitting it by the delimiter d.
+(str.num_splits x d): returns the number of parts obtained after splitting x by the delimiter.
+(str.split_rest x d k): returns all segments after the (k+1)th part of x when split by the delimiter.
+Note these custom operations may only appear inside assert statements, and please ensure that all variables used are explicitly declared before use.
+Output format:
+Return the complete SMT-LIB2 constraints as plain text, starting with:
+; --- LLM Generated Split Constraints ---
+and ending with:
+; --- End LLM Generated Constraints ---
 """
 
         self.rws_examples = {
-            'Email format validation':[
-                {""}
-            ],
-            'URL parsing':[],
-            'phone number formats':[],
-            'Key-value pairs':[],
-            'INI files':[],
-            'JSON-like structures':[],
-            'Timestamp extraction':[],
-            'log level parsing':[],
-            'IP address validation':[],
-            'Field separation':[],
-            'quoted strings':[],
-            'escape characters':[],
-            'JWT parsing':[],
-            'API key validation':[],
-            'session tokens':[]
+            'Email format validation':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Assume email is a string variable
+(declare-const email String)
+
+; Split email by "@", must get exactly 2 parts (local-part and domain)
+(assert (= (str.num_splits email "@") 2))
+
+; Extract local-part (before @) and domain (after @)
+(define-const local-part String (str.split_at email "@" 0))
+(define-const domain String (str.split_at email "@" 1))
+
+; Ensure local-part is non-empty
+(assert (not (= local-part "")))
+
+; Split domain by ".", must have at least 2 parts (domain name and TLD)
+(assert (>= (str.num_splits domain ".") 2))
+
+; Extract top-level domain (TLD) as the last segment after the last "."
+(define-const tld String 
+  (str.split_at domain "." (- (str.num_splits domain ".") 1)))
+
+; Ensure TLD has at least 2 characters
+(assert (>= (str.len tld) 2))
+
+; Optional: ensure domain name (before TLD) is non-empty
+(define-const domain-name String (str.split_at domain "." 0))
+(assert (not (= domain-name "")))
+
+; Optional: check rest segments of domain after domain-name
+(define-const domain-rest String (str.split_rest domain "." 0))
+; (optional further processing on domain-rest if needed)
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare email address as a string variable
+(declare-const email String)
+
+; Split email by "@", should yield exactly 2 parts
+(assert (= (str.num_splits email "@") 2))
+
+; Extract local and domain parts using str.split_at
+(define-const local-part String (str.split_at email "@" 0))
+(define-const domain-part String (str.split_at email "@" 1))
+
+; Ensure local-part is not empty
+(assert (not (= local-part "")))
+
+; Ensure domain-part contains at least one "."
+(assert (>= (str.num_splits domain-part ".") 2))
+
+; Extract first subdomain (before first ".")
+(define-const subdomain String (str.split_at domain-part "." 0))
+(assert (not (= subdomain "")))
+
+; Extract top-level domain (TLD) as all segments after first subdomain
+(define-const tld-part String (str.split_rest domain-part "." 0))
+
+; Ensure TLD part contains at least one non-empty segment
+(assert (>= (str.len tld-part) 2))
+
+; Optional: Ensure entire email contains no spaces
+(assert (= (str.contains email " ") false))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'URL parsing':[
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; URL variable declaration
+(declare-fun url () String)
+
+; Scheme extraction: e.g., http in "http://example.com"
+(declare-fun scheme () String)
+(assert (= scheme (str.split_at url "://" 0)))
+
+; Host extraction: e.g., example.com in "http://example.com/path"
+(declare-fun host () String)
+(assert (= host (str.split_at url "/" 2))) ; After splitting by '/', the host appears as the 3rd part
+
+; Path extraction: everything after host as raw path
+(declare-fun raw_path () String)
+(assert (= raw_path (str.split_rest url "/" 2))) ; Segments after the host
+
+; Split path further by '/'
+(declare-fun first_path_segment () String)
+(assert (= first_path_segment (str.split_at raw_path "/" 0)))
+
+(declare-fun second_path_segment () String)
+(assert (>= (str.num_splits raw_path "/") 2))
+(assert (= second_path_segment (str.split_at raw_path "/" 1)))
+
+; Enforce example property: scheme must be "https"
+(assert (= scheme "https"))
+
+; Example constraint: host must contain "example.com"
+(assert (str.contains host "example.com"))
+
+; Example constraint: first path segment must not be empty
+(assert (not (= first_path_segment "")))
+
+; --- End LLM Generated Constraints ---
+""",
+"""
+; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare URL variable
+(declare-fun url () String)
+
+; Extract protocol (e.g., "ftp" in "ftp://files.server.com/downloads/file.txt")
+(declare-fun protocol () String)
+(assert (= protocol (str.split_at url "://" 0)))
+
+; Extract authority section (host and optional port)
+(declare-fun authority () String)
+(assert (= authority (str.split_at url "/" 2))) ; After splitting at '/', host is at position 2
+
+; Extract path segments after authority
+(declare-fun full_path () String)
+(assert (= full_path (str.split_rest url "/" 2)))
+
+; Split authority by ":" to separate host and port (if present)
+(declare-fun hostname () String)
+(assert (= hostname (str.split_at authority ":" 0)))
+
+(declare-fun port () String)
+(assert (ite (>= (str.num_splits authority ":") 2)
+             (= port (str.split_at authority ":" 1))
+             (= port ""))) ; No port if no ":" present
+
+; Extract first path segment (e.g., "downloads")
+(declare-fun top_folder () String)
+(assert (>= (str.num_splits full_path "/") 1))
+(assert (= top_folder (str.split_at full_path "/" 0)))
+
+; Example constraint: protocol must be "ftp"
+(assert (= protocol "ftp"))
+
+; Example constraint: hostname must end with ".com"
+(assert (str.suffixof ".com" hostname))
+
+; Example constraint: port must be "21" if present
+(assert (or (= port "") (= port "21")))
+
+; Example constraint: top folder must not be "private"
+(assert (not (= top_folder "private")))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'phone number formats':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; A phone number variable: format examples include "123-456-7890", "123 456 7890", "(123) 456-7890"
+(declare-fun phone_number () String)
+
+; Check that phone_number uses "-" as delimiter and has exactly 3 parts
+(assert (= (str.num_splits phone_number "-") 3))
+
+; Extract the first, second, and third segments
+(declare-fun area_code () String)
+(declare-fun central_office_code () String)
+(declare-fun line_number () String)
+
+(assert (= area_code (str.split_at phone_number "-" 0)))
+(assert (= central_office_code (str.split_at phone_number "-" 1)))
+(assert (= line_number (str.split_at phone_number "-" 2)))
+
+; Constraints on each segment
+(assert (and (>= (str.len area_code) 3)
+              (= (str.len area_code) 3)
+              (str.in.re area_code (re.++ (re.range "0" "9") (re.range "0" "9") (re.range "0" "9")))))
+
+(assert (and (>= (str.len central_office_code) 3)
+              (= (str.len central_office_code) 3)
+              (str.in.re central_office_code (re.++ (re.range "0" "9") (re.range "0" "9") (re.range "0" "9")))))
+
+(assert (and (>= (str.len line_number) 4)
+              (= (str.len line_number) 4)
+              (str.in.re line_number (re.++ (re.range "0" "9") (re.range "0" "9") (re.range "0" "9") (re.range "0" "9")))))
+
+; Example: optionally verify no extra segments exist after third part
+(assert (= (str.split_rest phone_number "-" 2) ""))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; A phone number variable: formats like "86-10-12345678" (country code - area code - local number)
+(declare-fun phone_number () String)
+
+; Ensure phone_number split by "-" has exactly 3 parts
+(assert (= (str.num_splits phone_number "-") 3))
+
+; Extract the segments
+(declare-fun country_code () String)
+(declare-fun area_code () String)
+(declare-fun local_number () String)
+
+(assert (= country_code (str.split_at phone_number "-" 0)))
+(assert (= area_code (str.split_at phone_number "-" 1)))
+(assert (= local_number (str.split_at phone_number "-" 2)))
+
+; Country code: starts with "86"
+(assert (= country_code "86"))
+
+; Area code: at least 2 digits
+(assert (and (>= (str.len area_code) 2)
+              (str.in.re area_code (re.+ (re.range "0" "9")))))
+
+; Local number: between 6 and 8 digits
+(assert (and (>= (str.len local_number) 6)
+              (<= (str.len local_number) 8)
+              (str.in.re local_number (re.+ (re.range "0" "9")))))
+
+; Ensure no remaining parts after third segment
+(assert (= (str.split_rest phone_number "-" 2) ""))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'Key-value pairs':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the input string representing key-value pairs, e.g., "key1:value1;key2:value2;key3:value3"
+(declare-fun kv_string () String)
+
+; Example: Ensure the input contains at least two key-value pairs (i.e., at least two semicolons, leading to at least 3 parts)
+(assert (>= (str.num_splits kv_string ";") 2))
+
+; Extract the first key-value pair (before the first semicolon)
+; Example constraint: first pair must start with key1:
+(assert (str.prefixof "key1:" (str.split_at kv_string ";" 0)))
+
+; Extract the second key-value pair (between first and second semicolon)
+; Example constraint: second pair must contain key2 as the key
+(assert (str.prefixof "key2:" (str.split_at kv_string ";" 1)))
+
+; Extract rest of pairs after the second semicolon, ensure non-empty if exists
+(assert (or 
+    (= (str.num_splits kv_string ";") 2)
+    (not (= (str.split_rest kv_string ";" 1) ""))))
+
+; Additional example: enforce that the total number of key-value pairs does not exceed 5
+(assert (<= (str.num_splits kv_string ";") 5))
+
+; Example: verify that the third key (if present) is not "key0:"
+(assert (or 
+    (<= (str.num_splits kv_string ";") 2)
+    (not (str.prefixof "key0:" (str.split_at kv_string ";" 2)))))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the input string: a sequence of key-value pairs like "id:123;name:John;age:30"
+(declare-fun kv_pairs () String)
+
+; Ensure there are at least 3 key-value pairs (i.e., at least two semicolons)
+(assert (>= (str.num_splits kv_pairs ";") 3))
+
+; Extract first key-value pair and ensure it starts with "id:"
+(assert (str.prefixof "id:" (str.split_at kv_pairs ";" 0)))
+
+; Extract second key-value pair and ensure it contains "name:"
+(assert (str.contains (str.split_at kv_pairs ";" 1) "name:"))
+
+; Extract third key-value pair and ensure it starts with "age:"
+(assert (str.prefixof "age:" (str.split_at kv_pairs ";" 2)))
+
+; Ensure that any remaining pairs after the third are optional but, if present, non-empty
+(assert (or 
+    (= (str.num_splits kv_pairs ";") 3)
+    (not (= (str.split_rest kv_pairs ";" 2) ""))))
+
+; Ensure that total key-value pairs do not exceed 6
+(assert (<= (str.num_splits kv_pairs ";") 6))
+
+; Example constraint: ensure no key called "password:" appears in the fourth position (if exists)
+(assert (or 
+    (<= (str.num_splits kv_pairs ";") 3)
+    (not (str.prefixof "password:" (str.split_at kv_pairs ";" 3)))))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'INI files':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare input variable representing a line from INI file
+(declare-fun line () String)
+
+; Declare constants for known delimiters
+(define-fun delim_equals () String "=")
+(define-fun delim_bracket_open () String "[")
+(define-fun delim_bracket_close () String "]")
+
+; Example scenario: Parse a property line like "key=value"
+
+; Ensure line contains exactly 2 parts when split by "="
+(assert (= (str.num_splits line delim_equals) 2))
+
+; Extract key and value parts
+(define-fun key_part () String (str.split_at line delim_equals 0))
+(define-fun value_part () String (str.split_at line delim_equals 1))
+
+; Example constraints:
+; Key must be non-empty
+(assert (not (= key_part "")))
+
+; Value must be non-empty
+(assert (not (= value_part "")))
+
+; Example of processing section header like "[SectionName]"
+
+; If line starts with "[", handle as section header
+(assert (=> (= (str.at line 0) "[")
+    (and
+        ; Ensure line ends with "]"
+        (= (str.at line (- (str.len line) 1)) "]")
+
+        ; Extract content inside brackets
+        (let ((section_inner (str.substring line 1 (- (str.len line) 2))))
+            ; Section name must be non-empty
+            (not (= section_inner ""))
+        )
+    )
+))
+
+; Example use of str.split_rest: After extracting key and value, ensure no extra parts remain
+; (Here used illustratively, though line only splits into two)
+(assert (= (str.split_rest line delim_equals 1) ""))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare input variable representing an INI configuration line
+(declare-fun ini_line () String)
+
+; Define delimiter as "="
+(define-fun eq_delim () String "=")
+
+; Constraint 1: The line must contain exactly two parts when split by "="
+(assert (= (str.num_splits ini_line eq_delim) 2))
+
+; Extract key and value using str.split_at
+(define-fun ini_key () String (str.split_at ini_line eq_delim 0))
+(define-fun ini_value () String (str.split_at ini_line eq_delim 1))
+
+; Constraint 2: Key must not be empty
+(assert (not (= ini_key "")))
+
+; Constraint 3: Value must not be empty
+(assert (not (= ini_value "")))
+
+; Constraint 4: Forbid spaces in key (illustrative constraint)
+(assert (not (str.contains ini_key " ")))
+
+; Example use of str.split_rest: Ensure no trailing parts after extracting value
+(assert (= (str.split_rest ini_line eq_delim 1) ""))
+
+; Additional example: Prefix condition (if needed)
+; (assert (str.prefixof "config_" ini_key))
+
+; --- End LLM Generated Constraints ---"""],
+            'JSON-like structures':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Variables representing a JSON-like key-value string
+(declare-const json_string String)
+
+; Example: json_string = "key1:value1,key2:value2,key3:value3"
+
+; Split json_string by comma to get individual key-value pairs
+; Ensure there are exactly 3 pairs (can be adjusted as needed)
+(assert (= (str.num_splits json_string ",") 3))
+
+; Extract first key-value pair
+(declare-const pair1 String)
+(assert (= pair1 (str.split_at json_string "," 0)))
+
+; Extract second key-value pair
+(declare-const pair2 String)
+(assert (= pair2 (str.split_at json_string "," 1)))
+
+; Extract third key-value pair
+(declare-const pair3 String)
+(assert (= pair3 (str.split_at json_string "," 2)))
+
+; Extract remaining (none in this example)
+(declare-const remaining_pairs String)
+(assert (= remaining_pairs (str.split_rest json_string "," 3)))
+
+; From each key-value pair, split by colon to separate key and value
+; First pair split
+(declare-const key1 String)
+(declare-const value1 String)
+(assert (= (str.num_splits pair1 ":") 2))
+(assert (= key1 (str.split_at pair1 ":" 0)))
+(assert (= value1 (str.split_at pair1 ":" 1)))
+
+; Second pair split
+(declare-const key2 String)
+(declare-const value2 String)
+(assert (= (str.num_splits pair2 ":") 2))
+(assert (= key2 (str.split_at pair2 ":" 0)))
+(assert (= value2 (str.split_at pair2 ":" 1)))
+
+; Third pair split
+(declare-const key3 String)
+(declare-const value3 String)
+(assert (= (str.num_splits pair3 ":") 2))
+(assert (= key3 (str.split_at pair3 ":" 0)))
+(assert (= value3 (str.split_at pair3 ":" 1)))
+
+; Example constraints: key1 must be equal to "user"
+(assert (= key1 "user"))
+
+; Example constraints: value2 must contain "id"
+(assert (str.contains value2 "id"))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Variable representing a JSON-like array string
+(declare-const json_array String)
+
+; Example: json_array = "[item1,item2,item3]"
+
+; Remove brackets (assume preprocessing or handle brackets separately if needed)
+; For simplicity, assume json_array = "item1,item2,item3"
+
+; Ensure there are exactly 3 items
+(assert (= (str.num_splits json_array ",") 3))
+
+; Extract first item
+(declare-const item1 String)
+(assert (= item1 (str.split_at json_array "," 0)))
+
+; Extract second item
+(declare-const item2 String)
+(assert (= item2 (str.split_at json_array "," 1)))
+
+; Extract third item
+(declare-const item3 String)
+(assert (= item3 (str.split_at json_array "," 2)))
+
+; Collect all remaining items after the third (should be empty)
+(declare-const remaining_items String)
+(assert (= remaining_items (str.split_rest json_array "," 3)))
+
+; Example constraint: item1 must be equal to "apple"
+(assert (= item1 "apple"))
+
+; Example constraint: item3 must not be empty
+(assert (not (= item3 "")))
+
+; Example constraint: item2 must start with "item"
+(assert (str.prefixof "item" item2))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'Timestamp extraction':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Input string variable (a log entry)
+(declare-fun log_entry () String)
+
+; Declare variables for timestamp components
+(declare-fun date_part () String)
+(declare-fun time_part () String)
+(declare-fun hour_part () String)
+(declare-fun minute_part () String)
+(declare-fun second_part () String)
+
+; Example assumption: log_entry format is "YYYY-MM-DD HH:MM:SS - message"
+
+; Split to extract the full timestamp (before the first " - ")
+(assert (= date_part (str.split_at log_entry " " 0)))
+(assert (= time_part (str.split_at log_entry " " 1)))
+
+; Further split time_part by ":" to extract hour, minute, and second
+(assert (= hour_part (str.split_at time_part ":" 0)))
+(assert (= minute_part (str.split_at time_part ":" 1)))
+(assert (= second_part (str.split_at time_part ":" 2)))
+
+; Optional: Example constraints enforcing numeric-like formatting (simplified)
+(assert (str.contains "0123456789" (str.at hour_part 0)))
+(assert (str.contains "0123456789" (str.at minute_part 0)))
+(assert (str.contains "0123456789" (str.at second_part 0)))
+
+; Optional: Constraint that log_entry contains at least 2 parts split by space (date and time)
+(assert (>= (str.num_splits log_entry " ") 2))
+
+; Optional: Constraint that time_part contains exactly 3 parts split by ":"
+(assert (= (str.num_splits time_part ":") 3))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the input log line
+(declare-fun log_line () String)
+
+; Declare variables for extracted timestamp fields
+(declare-fun full_timestamp () String)
+(declare-fun date_field () String)
+(declare-fun time_field () String)
+(declare-fun hour_field () String)
+(declare-fun minute_field () String)
+(declare-fun second_field () String)
+
+; Example format: "2025-07-18T21:45:30Z|INFO|User logged in"
+
+; Extract the full timestamp before the first "|"
+(assert (= full_timestamp (str.split_at log_line "|" 0)))
+
+; Split full_timestamp at "T" to get date and time components
+(assert (= date_field (str.split_at full_timestamp "T" 0)))
+(assert (= time_field (str.split_at full_timestamp "T" 1)))
+
+; Further split time_field at ":" to extract hour, minute, and second
+(assert (= hour_field (str.split_at time_field ":" 0)))
+(assert (= minute_field (str.split_at time_field ":" 1)))
+
+; Split_rest used to handle seconds and potential timezone suffix (like "30Z")
+(assert (= second_field (str.split_rest time_field ":" 2)))
+
+; Constraint: Ensure log_line contains at least 2 "|" splits
+(assert (>= (str.num_splits log_line "|") 2))
+
+; Constraint: time_field contains at least 3 parts when split by ":"
+(assert (>= (str.num_splits time_field ":") 3))
+
+; Optional: Ensure hour, minute, and second fields are non-empty
+(assert (not (= hour_field "")))
+(assert (not (= minute_field "")))
+(assert (not (= second_field "")))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'log level parsing':["""
+; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Log level parsing scenario:
+; Example log string format: "<timestamp>:<log_level>:<message>"
+
+; Declare log string
+(declare-const log_entry String)
+
+; Split log_entry by ":" and extract fields
+; log_level is the second part after splitting
+; timestamp is the first part
+; message is everything after log_level
+
+; Extract timestamp (first field)
+(assert (= (str.split_at log_entry ":" 0) timestamp))
+
+; Extract log_level (second field)
+(declare-const log_level String)
+(assert (= (str.split_at log_entry ":" 1) log_level))
+
+; Extract message (all parts after log_level)
+(declare-const message String)
+(assert (= (str.split_rest log_entry ":" 1) message))
+
+; Ensure log_entry contains exactly 3 parts after splitting
+(assert (= (str.num_splits log_entry ":") 3))
+
+; Example constraint: log_level must be either "INFO", "WARN", or "ERROR"
+(assert (or
+    (= log_level "INFO")
+    (= log_level "WARN")
+    (= log_level "ERROR")
+))
+
+; Example constraint: message is non-empty
+(assert (> (str.len message) 0))
+
+; --- End LLM Generated Constraints ---
+""",
+"""
+; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Log level parsing scenario:
+; Example log entry format: "[log_level] - [component] - [message]"
+
+; Declare the log entry string
+(declare-const log_entry String)
+
+; Split by delimiter " - "
+; Part 0: log_level (without brackets)
+; Part 1: component
+; Part 2 and beyond: message content
+
+; Extract log_level (remove brackets manually if needed downstream)
+(declare-const log_level_raw String)
+(assert (= (str.split_at log_entry " - " 0) log_level_raw))
+
+; Extract component
+(declare-const component String)
+(assert (= (str.split_at log_entry " - " 1) component))
+
+; Extract message (all remaining segments)
+(declare-const message String)
+(assert (= (str.split_rest log_entry " - " 1) message))
+
+; Ensure log entry contains at least 3 parts (log_level, component, message)
+(assert (>= (str.num_splits log_entry " - ") 3))
+
+; Example constraint: log_level_raw must contain "INFO", "DEBUG", or "ERROR"
+(assert (or
+    (= log_level_raw "[INFO]")
+    (= log_level_raw "[DEBUG]")
+    (= log_level_raw "[ERROR]")
+))
+
+; Example constraint: component string length at least 2 characters
+(assert (>= (str.len component) 2))
+
+; Example constraint: message is not empty
+(assert (> (str.len message) 0))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'IP address validation':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the input string (the IP address)
+(declare-const ip String)
+
+; Each IP address must consist of 4 parts separated by "."
+(assert (= (str.num_splits ip ".") 4))
+
+; Declare variables for each segment after splitting
+(declare-const seg0 String)
+(declare-const seg1 String)
+(declare-const seg2 String)
+(declare-const seg3 String)
+
+; Extract each segment using str.split_at
+(assert (= seg0 (str.split_at ip "." 0)))
+(assert (= seg1 (str.split_at ip "." 1)))
+(assert (= seg2 (str.split_at ip "." 2)))
+(assert (= seg3 (str.split_at ip "." 3)))
+
+; Ensure that each segment is non-empty
+(assert (not (= seg0 "")))
+(assert (not (= seg1 "")))
+(assert (not (= seg2 "")))
+(assert (not (= seg3 "")))
+
+; Optional: Ensure no extra parts after the 4th segment
+; This follows from num_splits constraint
+
+; Optional: Basic numeric format checks (simple digit constraints)
+; You may replace with actual regex or numeric conversion if supported
+
+; Example constraints: segments are at most 3 digits long
+(assert (<= (str.len seg0) 3))
+(assert (<= (str.len seg1) 3))
+(assert (<= (str.len seg2) 3))
+(assert (<= (str.len seg3) 3))
+
+; You may further refine this to enforce actual numeric range [0,255]
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the input string representing the IP address
+(declare-const ip String)
+
+; Constraint: IP address must contain exactly 4 parts split by "."
+(assert (= (str.num_splits ip ".") 4))
+
+; Declare the four parts (segments)
+(declare-const part0 String)
+(declare-const part1 String)
+(declare-const part2 String)
+(declare-const part3 String)
+
+; Split extraction using str.split_at
+(assert (= part0 (str.split_at ip "." 0)))
+(assert (= part1 (str.split_at ip "." 1)))
+(assert (= part2 (str.split_at ip "." 2)))
+(assert (= part3 (str.split_at ip "." 3)))
+
+; Ensure each part is non-empty
+(assert (not (= part0 "")))
+(assert (not (= part1 "")))
+(assert (not (= part2 "")))
+(assert (not (= part3 "")))
+
+; Optional numeric constraints: each segment length <= 3 (simplified form)
+(assert (<= (str.len part0) 3))
+(assert (<= (str.len part1) 3))
+(assert (<= (str.len part2) 3))
+(assert (<= (str.len part3) 3))
+
+; Example rest constraint: after the third split, no additional parts should exist
+(declare-const rest String)
+(assert (= rest (str.split_rest ip "." 3)))
+(assert (= rest ""))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'Field separation':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Scenario:
+; Given a log entry formatted as "timestamp|level|module|message",
+; extract and validate its fields using intelligent split constraints.
+
+(declare-const log_entry String)
+(declare-const timestamp String)
+(declare-const level String)
+(declare-const module String)
+(declare-const message String)
+(declare-const rest_of_log String)
+
+; Extract fields using str.split_at
+(assert (= (str.split_at log_entry "|" 0) timestamp))
+(assert (= (str.split_at log_entry "|" 1) level))
+(assert (= (str.split_at log_entry "|" 2) module))
+(assert (= (str.split_at log_entry "|" 3) message))
+
+; Validate that log_entry splits into exactly 4 parts
+(assert (= (str.num_splits log_entry "|") 4))
+
+; Field validations
+(assert (not (= timestamp "")))  ; Timestamp should not be empty
+
+(assert (or                      ; Level should be INFO, WARN, or ERROR
+  (= level "INFO")
+  (= level "WARN")
+  (= level "ERROR")
+))
+
+(assert (not (= module "")))     ; Module name should not be empty
+(assert (> (str.len message) 0)) ; Message must be non-empty
+
+; Example of using split_rest to capture module and message together
+(assert (= (str.split_rest log_entry "|" 1) rest_of_log))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Scenario:
+; Given a product record formatted as "productID#category#price#stock#description",
+; parse and validate each field using split constraints.
+
+(declare-const product_record String)
+(declare-const productID String)
+(declare-const category String)
+(declare-const price String)
+(declare-const stock String)
+(declare-const description String)
+(declare-const remaining_fields String)
+
+; Extract fields using str.split_at
+(assert (= (str.split_at product_record "#" 0) productID))
+(assert (= (str.split_at product_record "#" 1) category))
+(assert (= (str.split_at product_record "#" 2) price))
+(assert (= (str.split_at product_record "#" 3) stock))
+(assert (= (str.split_at product_record "#" 4) description))
+
+; Ensure there are exactly 5 fields
+(assert (= (str.num_splits product_record "#") 5))
+
+; Field validations
+(assert (not (= productID "")))                      ; Product ID must be non-empty
+(assert (> (str.len category) 1))                     ; Category must have at least 2 characters
+(assert (str.in_re price (re.+ (re.range "0" "9"))))  ; Price must be numeric
+(assert (str.in_re stock (re.+ (re.range "0" "9"))))  ; Stock must be numeric
+(assert (> (str.len description) 0))                  ; Description must be non-empty
+
+; Use split_rest to extract description and any following parts (should be empty after description)
+(assert (= (str.split_rest product_record "#" 4) remaining_fields))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'escape characters':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare string variables
+(declare-fun input_str () String)
+(declare-fun delim () String)
+
+; Declare extracted parts
+(declare-fun part0 () String)
+(declare-fun part1 () String)
+(declare-fun escaped_char () String)
+(declare-fun remaining_parts () String)
+
+; Example: The input_str represents a pattern where escape characters are encoded using backslash "\" as delimiter,
+; and the first segment is the command, the second segment is the escaped character, 
+; the rest represents arguments.
+
+; Assume delimiter is backslash
+(assert (= delim "\\"))
+
+; Extract first part (command)
+(assert (= part0 (str.split_at input_str delim 0)))
+
+; Extract second part (escaped character)
+(assert (= part1 (str.split_at input_str delim 1)))
+
+; Treat second part as the escaped character
+(assert (= escaped_char part1))
+
+; Extract remaining parts after the escaped character
+(assert (= remaining_parts (str.split_rest input_str delim 1)))
+
+; Example constraints: input must contain at least 2 parts (command and escaped character)
+(assert (>= (str.num_splits input_str delim) 2))
+
+; Example constraint: escaped_char must be either "n" (newline) or "t" (tab)
+(assert (or (= escaped_char "n") (= escaped_char "t")))
+
+; Example constraint: command should not be empty
+(assert (not (= part0 "")))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare variables
+(declare-fun input_str () String)
+(declare-fun delim () String)
+(declare-fun prefix () String)
+(declare-fun escape_seq () String)
+(declare-fun suffix () String)
+(declare-fun parts_after_escape () String)
+
+; Delimiter is assumed to be backslash
+(assert (= delim "\\"))
+
+; Split: extract prefix (first segment before first backslash)
+(assert (= prefix (str.split_at input_str delim 0)))
+
+; Split: extract escape sequence (second segment after first backslash)
+(assert (= escape_seq (str.split_at input_str delim 1)))
+
+; Split: get all remaining parts after the escape sequence
+(assert (= parts_after_escape (str.split_rest input_str delim 1)))
+
+; Example constraint: total number of splits must be at least 2
+(assert (>= (str.num_splits input_str delim) 2))
+
+; Example constraint: escape sequence should be one of double-quote or backslash itself
+(assert (or (= escape_seq "\") (= escape_seq "\\")))
+
+; Example constraint: prefix must not end with a backslash (prevent accidental escapes)
+(assert (not (str.suffixof "\\" prefix)))
+
+; Optional: suffix must not be empty (ensure something exists after escape sequence)
+(assert (not (= parts_after_escape "")))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'JWT parsing':["""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the JWT token as a string variable
+(declare-fun jwt () String)
+
+; Declare parts of the JWT
+(declare-fun header () String)
+(declare-fun payload () String)
+(declare-fun signature () String)
+
+; Ensure the JWT splits correctly using '.' as the delimiter
+(assert (= header (str.split_at jwt "." 0)))
+(assert (= payload (str.split_at jwt "." 1)))
+(assert (= signature (str.split_at jwt "." 2)))
+
+; Ensure the JWT has exactly 3 parts
+(assert (= (str.num_splits jwt ".") 3))
+
+; Example constraint: header must be non-empty
+(assert (not (= header "")))
+
+; Example constraint: payload must contain "sub"
+(declare-fun sub_present () Bool)
+(assert (= sub_present (str.contains payload "sub")))
+(assert sub_present)
+
+; Example constraint: signature must be non-empty
+(assert (not (= signature "")))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare JWT token variable
+(declare-fun jwt_token () String)
+
+; Declare components of the JWT
+(declare-fun jwt_header () String)
+(declare-fun jwt_payload () String)
+(declare-fun jwt_signature () String)
+
+; Split jwt_token by '.' into 3 parts
+(assert (= jwt_header (str.split_at jwt_token "." 0)))
+(assert (= jwt_payload (str.split_at jwt_token "." 1)))
+(assert (= jwt_signature (str.split_at jwt_token "." 2)))
+
+; Ensure jwt_token has exactly 3 segments
+(assert (= (str.num_splits jwt_token ".") 3))
+
+; Example constraint: header starts with '{'
+(assert (str.prefixof "{" jwt_header))
+
+; Example constraint: payload contains "exp"
+(declare-fun contains_exp () Bool)
+(assert (= contains_exp (str.contains jwt_payload "exp")))
+(assert contains_exp)
+
+; Example constraint: signature is at least 16 characters long
+(assert (<= 16 (str.len jwt_signature)))
+
+; --- End LLM Generated Constraints ---"""],
+            'API key validation':["""smt
+; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the API key as a string variable
+(declare-const api_key String)
+
+; Basic format:
+; API key format: PREFIX-USERID-SECRET
+; Example: ABC-12345-XYZ987
+
+; Split constraints:
+; (str.split_at api_key "-" 0) should be equal to "ABC"
+(assert (= (str.split_at api_key "-" 0) "ABC"))
+
+; Ensure that after splitting, there are exactly 3 parts
+(assert (= (str.num_splits api_key "-") 3))
+
+; Extract USERID (should be a numeric sequence of length >= 3)
+(declare-const userid String)
+(assert (= userid (str.split_at api_key "-" 1)))
+; UserID length constraint: at least 3 characters
+(assert (>= (str.len userid) 3))
+
+; Extract SECRET part
+(declare-const secret String)
+(assert (= secret (str.split_at api_key "-" 2)))
+; SECRET should not be empty
+(assert (> (str.len secret) 0))
+
+; Example of using split_rest for future extension (not strictly necessary here):
+; Optionally ensure no extra parts beyond SECRET
+; (str.split_rest api_key "-" 2) should be empty
+(assert (= (str.split_rest api_key "-" 2) ""))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare API key variable
+(declare-const api_key String)
+
+; Example API key format: KEY-REGION-IDENTIFIER-CHECKSUM
+; Example: X9A-NA-87452-5F7D
+
+; Ensure API key splits into exactly 4 parts
+(assert (= (str.num_splits api_key "-") 4))
+
+; Split 0: KEY part, should be prefix "X9A"
+(assert (= (str.split_at api_key "-" 0) "X9A"))
+
+; Split 1: REGION code (e.g., "NA", "EU", "AP")
+(declare-const region String)
+(assert (= region (str.split_at api_key "-" 1)))
+; REGION length must be exactly 2 characters
+(assert (= (str.len region) 2))
+
+; Split 2: IDENTIFIER, a numeric string
+(declare-const identifier String)
+(assert (= identifier (str.split_at api_key "-" 2)))
+; IDENTIFIER length must be at least 4 characters
+(assert (>= (str.len identifier) 4))
+
+; Split 3: CHECKSUM, a non-empty string
+(declare-const checksum String)
+(assert (= checksum (str.split_at api_key "-" 3)))
+(assert (> (str.len checksum) 0))
+
+; Optional: Ensure nothing remains after split 3
+(assert (= (str.split_rest api_key "-" 3) ""))
+
+; --- End LLM Generated Constraints ---
+"""],
+            'session tokens':["""
+; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the session token variable
+(declare-fun token () String)
+
+; Example token format: "userID-sessionID-timestamp-signature"
+
+; Declare each part after splitting the token by "-"
+(declare-fun userID () String)
+(declare-fun sessionID () String)
+(declare-fun timestamp () String)
+(declare-fun signature () String)
+
+; Ensure the token splits into exactly 4 parts
+(assert (= (str.num_splits token "-") 4))
+
+; Extract and bind each part using str.split_at
+(assert (= userID     (str.split_at token "-" 0)))
+(assert (= sessionID  (str.split_at token "-" 1)))
+(assert (= timestamp  (str.split_at token "-" 2)))
+(assert (= signature  (str.split_at token "-" 3)))
+
+; Example semantic constraints:
+; UserID must not be empty
+(assert (not (= userID "")))
+
+; SessionID must be numeric (simplified check)
+(assert (str.in_re sessionID (re.+ (re.range "0" "9"))))
+
+; Timestamp must be numeric and of length at least 10
+(assert (str.in_re timestamp (re.+ (re.range "0" "9"))))
+(assert (>= (str.len timestamp) 10))
+
+; Signature must be a non-empty string
+(assert (not (= signature "")))
+
+; Optionally, assert that all remaining parts after the third split are empty (since only 4 parts exist)
+(assert (= (str.split_rest token "-" 3) ""))
+
+; --- End LLM Generated Constraints ---
+""",
+"""; --- LLM Generated Split Constraints ---
+(set-logic QF_S)
+
+; Declare the session token variable
+(declare-fun token () String)
+
+; Example token format: "appID:userID:timestamp:hash"
+
+; Declare parts after splitting token by ":"
+(declare-fun appID () String)
+(declare-fun userID () String)
+(declare-fun timestamp () String)
+(declare-fun hash () String)
+
+; Ensure token splits into exactly 4 parts
+(assert (= (str.num_splits token ":") 4))
+
+; Bind each part using str.split_at
+(assert (= appID     (str.split_at token ":" 0)))
+(assert (= userID    (str.split_at token ":" 1)))
+(assert (= timestamp (str.split_at token ":" 2)))
+(assert (= hash      (str.split_at token ":" 3)))
+
+; Semantic constraints:
+; appID must be exactly "APP01"
+(assert (= appID "APP01"))
+
+; userID must not contain the substring "admin"
+(assert (not (str.contains userID "admin")))
+
+; timestamp should be numeric and of fixed length 14 (e.g., YYYYMMDDHHMMSS)
+(assert (str.in_re timestamp (re.+ (re.range "0" "9"))))
+(assert (= (str.len timestamp) 14))
+
+; hash must not be empty and must have at least length 32
+(assert (not (= hash "")))
+(assert (>= (str.len hash) 32))
+
+; Verify that no remaining parts exist after extracting four
+(assert (= (str.split_rest token ":" 3) ""))
+
+; --- End LLM Generated Constraints ---
+"""]
         }
 
         self.sfc_system_prompt = """You are an expert in SMT solver constraints and string operations.
@@ -476,10 +1566,11 @@ Output format: Return ONLY the additional constraints to be inserted, one per li
             scenario = random.sample(list(self.rws_task.keys()), 1)[0]
             task = random.sample(self.rws_task[scenario], 1)[0]
             messages = [{"role": "system", "content": self.rws_system_prompt(task)}]
-            for example in self.rws_examples[task]:
+            for i in range(len(self.rws_examples[task])):
+                example = self.rws_examples[task][i]
                 messages.extend([
-                    {"role": "user", "content": example["input"]},
-                    {"role": "assistant", "content": example["output"]}
+                    {"role": "user", "content": f"example {i}:"},
+                    {"role": "assistant", "content": example}
                 ])
         else:
             if self.method_type == 'sfc':
