@@ -1,6 +1,6 @@
 ; SMT-LIB2 script for configuration file parsing with key-value pairs and INI sections
 ; ; Focuses on key validation, value extraction, and section handling
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const eq_delim String) ; '=' for key-value pairs
@@ -61,25 +61,11 @@
 (assert (= (str.split_at port_line eq_delim 1) "8080"))
 
 ; ; Example 5: Invalid cases (should be unsat)
-(push)
 (assert (= config_line "malformed_key"))
 (assert (not (= (str.num_splits config_line eq_delim) 2))) ; No delimiter found
 (assert (str.contains config_line eq_delim)) ; Contradiction
 (check-sat)
-(pop)
 
-; ; Example 6: Section validation
-(assert (str.prefixof sec_open ini_section))
-(assert (str.suffixof sec_close ini_section))
-(assert (>= (str.len ini_section) 3)) ; Minimum section "[x]"
 
-; ; Example 7: Value extraction from multi-line config
-(declare-const host_line String)
-(assert (= host_line (str.split_at (str.split_at full_config nl_delim 1) nl_delim 0)))
-(assert (= (str.split_at host_line eq_delim 0) "host"))
-(assert (= (str.split_at host_line eq_delim 1) "localhost"))
 
-; ; Final check for satisfiability
-(check-sat)
-(get-model)
 (exit)

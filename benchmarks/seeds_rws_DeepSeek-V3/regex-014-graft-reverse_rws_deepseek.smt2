@@ -1,5 +1,5 @@
 ; ; SMT-LIB2 script for log analysis with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string sort and operations
 (declare-sort String 0)
@@ -109,5 +109,4 @@
 )))
 
 (check-sat)
-(get-model)
 (exit)

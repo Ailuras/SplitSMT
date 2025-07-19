@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for URL parsing constraints
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const protocol_delim String) ; "://"
@@ -77,9 +77,5 @@
 ; ; Check satisfiability
 (check-sat)
 
-; Get model if satisfiable
-(get-value (url protocol host port path query))
-(get-value ((str.num_splits path path_delim)))
-(get-value ((str.num_splits query param_delim)))
 
 (exit)

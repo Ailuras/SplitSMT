@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 file for configuration parsing with key-value pairs and INI file processing
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const equals String)
@@ -62,5 +62,4 @@
 (assert (str.prefixof open_bracket bad_section)) ; This will make it unsatisfiable
 
 (check-sat)
-(get-model)
 (exit)

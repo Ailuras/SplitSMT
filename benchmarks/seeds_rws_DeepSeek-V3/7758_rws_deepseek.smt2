@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for URL parsing with protocol, host, and path extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -77,13 +77,8 @@
 (assert (not (str.suffixof "/" host))) ; Host shouldn't end with /
 
 ; ; Example unsatisfiable constraint combination
-(push)
 (assert (= protocol "http"))
 (assert (= port "80000")) ; Invalid port number
 (check-sat) ; Should be UNSAT
-(pop)
 
-; ; Main satisfiable check
-(check-sat)
-(get-model)
 (exit)

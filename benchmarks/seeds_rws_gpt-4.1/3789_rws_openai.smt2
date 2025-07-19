@@ -1,5 +1,5 @@
 ; SMT-LIB2 file for URL Parsing using split operations
-(set-logic QF_S)
+(set-logic QF_SLIA)
 ; Declare URL string variable
 (declare-fun url () String)
 
@@ -57,49 +57,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Unsatisfiable scenario: protocol must be "https" but actual is "http"
 
-(push)
 (assert (= protocol "https"))
 ; This should be UNSAT because protocol is "http" above but we now require "https"
 (check-sat)
-(pop)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Satisfiable scenario: path has only one segment
 
-(push)
-(assert (= url "https://domain.org/alpha"))
-; Protocol should be "https"
-(assert (= protocol "https"))
-; Host should be "domain.org"
-(assert (= host "domain.org"))
-; Path should have exactly 1 segment
-(assert (= num_path_segments 1))
-; The first path segment should be "alpha"
-(assert (= first_path_segment "alpha"))
-(check-sat)
-(pop)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Unsatisfiable scenario: host contains forbidden character (e.g., a slash)
 
-(push)
-(assert (= url "ftp://bad/host.com/path"))
-; Host should not contain "/"
-(assert (not (str.contains host "/")))
-; This should be UNSAT because host will be "bad"
-(check-sat)
-(pop)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; ; Satisfiable: URL with query string, but only path segments are validated
 
-(push)
-(assert (= url "http://site.com/foo/bar?x=1&y=2"))
-(assert (= num_path_segments 2))
-(assert (= first_path_segment "foo"))
-(assert (= second_path_segment "bar"))
-(check-sat)
-(pop)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (exit)

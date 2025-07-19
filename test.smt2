@@ -1,42 +1,100 @@
-; --- LLM Generated Split Constraints ---
-(set-logic QF_S)
 
-; Declare the session token variable
-(declare-fun token () String)
+; SMT-LIB2 script for URL parsing with protocol validation, host structure, and path segments
+(set-logic QF_S) ; Quantifier-free strings
+(set-info :smt-lib-version 2.6)
 
-; Example token format: "appID:userID:timestamp:hash"
+; Declare string constants for delimiters
+(declare-const protocol_delim String) ; "://"
+(assert (= protocol_delim "://"))
+(declare-const path_delim String) ; "/"
+(assert (= path_delim "/"))
+(declare-const port_delim String) ; ":"
+(assert (= port_delim ":"))
+(declare-const query_delim String) ; "?"
+(assert (= query_delim "?"))
+(declare-const param_delim String) ; "&"
+(assert (= param_delim "&"))
 
-; Declare parts after splitting token by ":"
-(declare-fun appID () String)
-(declare-fun userID () String)
-(declare-fun timestamp () String)
-(declare-fun hash () String)
+; Declare URL variable
+(declare-const url String)
 
-; Ensure token splits into exactly 4 parts
-(assert (= (str.num_splits token ":") 4))
+; Protocol validation constraints
+(assert (str.contains url protocol_delim))
+(assert (>= (str.len url) (+ (str.len protocol_delim) 1)))
 
-; Bind each part using str.split_at
-(assert (= appID     (str.split_at token ":" 0)))
-(assert (= userID    (str.split_at token ":" 1)))
-(assert (= timestamp (str.split_at token ":" 2)))
-(assert (= hash      (str.split_at token ":" 3)))
+; ; Extract protocol (first segment before ://)
+(declare-const protocol String)
+(assert (= protocol (str.split_at url protocol_delim 0)))
 
-; Semantic constraints:
-; appID must be exactly "APP01"
-(assert (= appID "APP01"))
+; Protocol must be one of http, https, ftp
+(assert (or (= protocol "http") 
+ (= protocol "https") 
+ (= protocol "ftp")))
 
-; userID must not contain the substring "admin"
-(assert (not (str.contains userID "admin")))
+; ; Extract host and rest after protocol
+(declare-const host_and_rest String)
+(assert (= host_and_rest (str.split_rest url protocol_delim 1)))
 
-; timestamp should be numeric and of fixed length 14 (e.g., YYYYMMDDHHMMSS)
-(assert (str.in_re timestamp (re.+ (re.range "0" "9"))))
-(assert (= (str.len timestamp) 14))
+; Host may contain port number
+(declare-const host_port String)
+(assert (ite (str.contains host_and_rest port_delim)
+ (= host_port (str.split_at host_and_rest port_delim 0))
+ (= host_port host_and_rest)))
 
-; hash must not be empty and must have at least length 32
-(assert (not (= hash "")))
-(assert (>= (str.len hash) 32))
+; Host must be non-empty and start with alphanumeric
+(assert (>= (str.len host_port) 1))
+(assert (str.is_digit (str.at host_port 0)))
 
-; Verify that no remaining parts exist after extracting four
-(assert (= (str.split_rest token ":" 3) ""))
+; ; Path extraction (after first /)
+(declare-const path_and_query String)
+(assert (ite (str.contains host_and_rest path_delim)
+ (= path_and_query (str.split_rest host_and_rest path_delim 1))
+ (= path_and_query "")))
 
-; --- End LLM Generated Constraints ---
+; Split path segments
+(declare-const num_path_segments Int)
+(assert (= num_path_segments (str.num_splits path_and_query path_delim)))
+
+; Require at least one path segment if path exists
+(assert (=> (not (= path_and_query "")) (> num_path_segments 0)))
+
+; ; Extract first path segment
+(declare-const first_path_seg String)
+(assert (ite (> num_path_segments 0)
+ (= first_path_seg (str.split_at path_and_query path_delim 0))
+ (= first_path_seg "")))
+
+; First path segment must not be empty if path exists
+(assert (=> (> num_path_segments 0) (not (= first_path_seg ""))))
+
+; Query parameters (after ?)
+(declare-const query_part String)
+(assert (ite (str.contains path_and_query query_delim)
+ (= query_part (str.split_rest path_and_query query_delim 1))
+ (= query_part "")))
+
+; Count query parameters
+(declare-const num_params Int)
+(assert (= num_params (str.num_splits query_part param_delim)))
+
+; ; Example constraints for satisfiable case
+(push)
+(assert (= url "https://example.com:8080/path/to/resource?param1=val1&param2=val2"))
+(check-sat)
+(get-model)
+(pop)
+
+; ; Example constraints for unsatisfiable case (invalid protocol)
+(push)
+(assert (= url "invalid://example.com/path"))
+(check-sat)
+(pop)
+
+; ; Example constraints for unsatisfiable case (empty host)
+(push)
+(assert (= url "http:///path"))
+(check-sat)
+(pop)
+
+(check-sat)
+(exit)

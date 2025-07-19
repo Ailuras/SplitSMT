@@ -10,7 +10,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .168530907
+SOLVING_TIME: .179111951
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -26,7 +26,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: ")" missing in line 58.
 -----------------------------------------------------------
-SOLVING_TIME: .018082047
+SOLVING_TIME: .013953382
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -42,7 +42,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .847581020
+SOLVING_TIME: .819915471
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -58,7 +58,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in str_num_splits" in line 4.
 -----------------------------------------------------------
-SOLVING_TIME: .023465296
+SOLVING_TIME: .023464204
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -74,7 +74,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in le" in line 73.
 -----------------------------------------------------------
-SOLVING_TIME: .021725891
+SOLVING_TIME: .019331682
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -90,7 +90,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .099137576
+SOLVING_TIME: .078958881
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -106,7 +106,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .055902476
+SOLVING_TIME: .056821478
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -122,7 +122,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: ")" missing in line 48.
 -----------------------------------------------------------
-SOLVING_TIME: .014703849
+SOLVING_TIME: .016201814
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -138,7 +138,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .021028396
+SOLVING_TIME: .021913181
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -154,7 +154,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .021506821
+SOLVING_TIME: .019943374
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -170,7 +170,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 16.
 -----------------------------------------------------------
-SOLVING_TIME: .021308955
+SOLVING_TIME: .020305146
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -186,7 +186,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .070887357
+SOLVING_TIME: .065968973
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -202,7 +202,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .153659064
+SOLVING_TIME: .156849444
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -216,11 +216,11 @@ TIMEOUT: 60s
 BATCH: 2
 INDEX: 4/5
 -----------------------------------------------------------
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .052341883
+SOLVING_TIME: .053103367
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 15929.corecstrs.readable_rws_openai.smt2
@@ -234,7 +234,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Unknown or unexptected symbol "ALL_SUPPORTED" in line 5.
 -----------------------------------------------------------
-SOLVING_TIME: .020375684
+SOLVING_TIME: .015795274
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -250,7 +250,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .077118150
+SOLVING_TIME: .075258107
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -266,7 +266,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: ")" missing in line 50.
 -----------------------------------------------------------
-SOLVING_TIME: .016194802
+SOLVING_TIME: .018228157
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -282,7 +282,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .123334352
+SOLVING_TIME: .099753138
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -296,13 +296,11 @@ TIMEOUT: 60s
 BATCH: 3
 INDEX: 4/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 114.
-warning: "pop" command is safely ignored in line 117.
-unsat
+sat
 -----------------------------------------------------------
-SOLVING_TIME: .346083886
+SOLVING_TIME: .365386704
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: SAT
 
 ===========================================================
 FILE: 19837.corecstrs.readable_rws_openai.smt2
@@ -314,11 +312,12 @@ TIMEOUT: 60s
 BATCH: 3
 INDEX: 5/5
 -----------------------------------------------------------
-sat
+[31m[2025-07-19 11:43:45] Result: ERROR (30015ms)[0m
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .178151896
+SOLVING_TIME: 30.048783727
 RESULT: SUCCESS
-SAT_RESULT: SAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 1b415777353081399f22c146e473815a5dca078827ae55052c0dcaad_rws_openai.smt2
@@ -332,7 +331,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .109225831
+SOLVING_TIME: .099310958
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -346,17 +345,11 @@ TIMEOUT: 60s
 BATCH: 4
 INDEX: 2/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 45.
-warning: "pop" command is safely ignored in line 49.
-warning: "push" command is safely ignored in line 53.
-warning: "pop" command is safely ignored in line 56.
-warning: "push" command is safely ignored in line 60.
-warning: "pop" command is safely ignored in line 63.
-unsat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .053772626
+SOLVING_TIME: 1.301239664
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 209a7c61bdeaea04f6723684f606699e8a2dac589cf03aa593675c21_rws_openai.smt2
@@ -370,7 +363,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .110353144
+SOLVING_TIME: .084673198
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -386,7 +379,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .023201993
+SOLVING_TIME: .021883398
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -402,7 +395,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .021713325
+SOLVING_TIME: .022000443
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -418,7 +411,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .070858682
+SOLVING_TIME: .073208853
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -434,7 +427,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .019960598
+SOLVING_TIME: .020298806
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -450,7 +443,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053357093
+SOLVING_TIME: .049706072
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -466,7 +459,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .059287040
+SOLVING_TIME: .063574389
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -482,7 +475,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .095457353
+SOLVING_TIME: .120211033
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -498,7 +491,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: ")" missing in line 53.
 -----------------------------------------------------------
-SOLVING_TIME: .019465985
+SOLVING_TIME: .021260535
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -514,7 +507,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .118686490
+SOLVING_TIME: .118503568
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -530,7 +523,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056206481
+SOLVING_TIME: .054169012
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -546,7 +539,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .081692702
+SOLVING_TIME: .077954909
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -562,7 +555,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .019096177
+SOLVING_TIME: .018868382
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -578,7 +571,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .139957269
+SOLVING_TIME: .123217888
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -594,7 +587,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Multiple definitions or keybindings of "String to code on non-single character string" in line 45.
 -----------------------------------------------------------
-SOLVING_TIME: .017717453
+SOLVING_TIME: .017360101
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -610,7 +603,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .258431037
+SOLVING_TIME: .236862716
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -624,14 +617,10 @@ TIMEOUT: 60s
 BATCH: 7
 INDEX: 4/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 92.
-warning: "pop" command is safely ignored in line 99.
-warning: "push" command is safely ignored in line 101.
-warning: "pop" command is safely ignored in line 106.
-[31m[2025-07-19 08:22:29] Result: ERROR (30015ms)[0m
+[31m[2025-07-19 11:43:45] Result: ERROR (30015ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.063073042
+SOLVING_TIME: 30.062459755
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -647,7 +636,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .170817791
+SOLVING_TIME: .182575687
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -663,7 +652,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: ")" missing in line 47.
 -----------------------------------------------------------
-SOLVING_TIME: .018641301
+SOLVING_TIME: .020235292
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -679,7 +668,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .050655669
+SOLVING_TIME: .047666973
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -695,7 +684,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 36.
 -----------------------------------------------------------
-SOLVING_TIME: .013359828
+SOLVING_TIME: .016527523
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -711,7 +700,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in str_split_at" in line 3.
 -----------------------------------------------------------
-SOLVING_TIME: .021663952
+SOLVING_TIME: .020097400
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -727,7 +716,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .120495527
+SOLVING_TIME: .123502431
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -743,7 +732,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: ")" missing in line 52.
 -----------------------------------------------------------
-SOLVING_TIME: .020397799
+SOLVING_TIME: .018971208
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -759,7 +748,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: ")" missing in line 61.
 -----------------------------------------------------------
-SOLVING_TIME: .018816562
+SOLVING_TIME: .016855772
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -773,17 +762,9 @@ TIMEOUT: 60s
 BATCH: 9
 INDEX: 3/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 55.
-warning: "pop" command is safely ignored in line 58.
-warning: "push" command is safely ignored in line 61.
-warning: "pop" command is safely ignored in line 65.
-warning: "push" command is safely ignored in line 68.
-warning: "pop" command is safely ignored in line 74.
-warning: "push" command is safely ignored in line 77.
-warning: "pop" command is safely ignored in line 81.
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .019990843
+SOLVING_TIME: .019240023
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -799,7 +780,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .036427761
+SOLVING_TIME: .030365285
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -815,7 +796,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .043649994
+SOLVING_TIME: .044798813
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -829,13 +810,9 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 1/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 81.
-warning: "pop" command is safely ignored in line 87.
-warning: "push" command is safely ignored in line 90.
-warning: "pop" command is safely ignored in line 96.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .083612590
+SOLVING_TIME: .076570976
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -851,7 +828,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .088878206
+SOLVING_TIME: .076084317
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -865,10 +842,10 @@ TIMEOUT: 60s
 BATCH: 10
 INDEX: 3/5
 -----------------------------------------------------------
-[31m[2025-07-19 08:22:29] Result: ERROR (30036ms)[0m
+[31m[2025-07-19 11:43:44] Result: ERROR (30036ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.068187235
+SOLVING_TIME: 30.074239499
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -884,7 +861,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .079555351
+SOLVING_TIME: .080593892
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -900,7 +877,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .086247353
+SOLVING_TIME: .078602172
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -916,7 +893,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .123293320
+SOLVING_TIME: .112410487
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -930,10 +907,10 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 2/5
 -----------------------------------------------------------
-[31m[2025-07-19 08:22:29] Result: ERROR (30021ms)[0m
+[31m[2025-07-19 11:43:44] Result: ERROR (30019ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.046316997
+SOLVING_TIME: 30.046792187
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -949,7 +926,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .117229351
+SOLVING_TIME: .115726064
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -963,11 +940,9 @@ TIMEOUT: 60s
 BATCH: 11
 INDEX: 4/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 108.
-warning: "pop" command is safely ignored in line 127.
-error: Kind mismatch of command "Type mismatch in lt" in line 1.
+error: Kind mismatch of command "Type mismatch in str_charat" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .028156016
+SOLVING_TIME: .025152845
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -983,7 +958,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .056455868
+SOLVING_TIME: .050761263
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -999,7 +974,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057555815
+SOLVING_TIME: .068804259
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1013,11 +988,11 @@ TIMEOUT: 60s
 BATCH: 12
 INDEX: 2/5
 -----------------------------------------------------------
-unsat
+unknown
 -----------------------------------------------------------
-SOLVING_TIME: .775901062
+SOLVING_TIME: .785465838
 RESULT: SUCCESS
-SAT_RESULT: UNSAT
+SAT_RESULT: UNKNOWN
 
 ===========================================================
 FILE: 840_rws_openai.smt2
@@ -1031,7 +1006,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: Wrong number of parameters of "No parameters for operation" in line 33.
 -----------------------------------------------------------
-SOLVING_TIME: .021320081
+SOLVING_TIME: .019611882
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1047,7 +1022,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Wrong number of parameters of "No parameters for operation" in line 46.
 -----------------------------------------------------------
-SOLVING_TIME: .023124585
+SOLVING_TIME: .021358769
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1063,7 +1038,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Wrong number of parameters of "No parameters for operation" in line 39.
 -----------------------------------------------------------
-SOLVING_TIME: .017519357
+SOLVING_TIME: .019796778
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1079,7 +1054,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: "(" missing in line 27.
 -----------------------------------------------------------
-SOLVING_TIME: .018234147
+SOLVING_TIME: .020597473
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1093,13 +1068,9 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 2/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 81.
-warning: "pop" command is safely ignored in line 84.
-warning: "push" command is safely ignored in line 87.
-warning: "pop" command is safely ignored in line 90.
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .022306407
+SOLVING_TIME: .019707528
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1115,7 +1086,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .019127793
+SOLVING_TIME: .020226663
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1131,7 +1102,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .058365600
+SOLVING_TIME: .050958127
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1145,10 +1116,10 @@ TIMEOUT: 60s
 BATCH: 13
 INDEX: 5/5
 -----------------------------------------------------------
-[31m[2025-07-19 08:21:59] Result: ERROR (27ms)[0m
+[31m[2025-07-19 11:43:14] Result: ERROR (42ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .053681901
+SOLVING_TIME: .072229400
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1164,7 +1135,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .049754976
+SOLVING_TIME: .066966857
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1180,7 +1151,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .462208782
+SOLVING_TIME: .462474948
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1196,7 +1167,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .057759395
+SOLVING_TIME: .058381656
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1212,7 +1183,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .080084816
+SOLVING_TIME: .075823448
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1228,7 +1199,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 error: Unknown or unexptected symbol "ALL_SUPPORTED" in line 6.
 -----------------------------------------------------------
-SOLVING_TIME: .019278069
+SOLVING_TIME: .018879742
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1244,7 +1215,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052689149
+SOLVING_TIME: .054589304
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1260,7 +1231,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .015418173
+SOLVING_TIME: .017796688
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1274,10 +1245,10 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 3/5
 -----------------------------------------------------------
-[31m[2025-07-19 08:22:28] Result: ERROR (30017ms)[0m
+[31m[2025-07-19 11:43:44] Result: ERROR (30015ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.042510792
+SOLVING_TIME: 30.043086850
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1291,10 +1262,10 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 4/5
 -----------------------------------------------------------
-[31m[2025-07-19 08:22:59] Result: ERROR (30018ms)[0m
+[31m[2025-07-19 11:44:14] Result: ERROR (30017ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.043431192
+SOLVING_TIME: 30.048099814
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1308,19 +1279,9 @@ TIMEOUT: 60s
 BATCH: 15
 INDEX: 5/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 104.
-warning: "pop" command is safely ignored in line 107.
-warning: "push" command is safely ignored in line 110.
-warning: "pop" command is safely ignored in line 113.
-warning: "push" command is safely ignored in line 116.
-warning: "pop" command is safely ignored in line 119.
 sat
-(
-  (define-fun url () String
-    "E")
-)
 -----------------------------------------------------------
-SOLVING_TIME: .147898130
+SOLVING_TIME: .088669454
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1336,7 +1297,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .062458239
+SOLVING_TIME: .060892334
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1352,7 +1313,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 14.
 -----------------------------------------------------------
-SOLVING_TIME: .015678778
+SOLVING_TIME: .016707623
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1368,7 +1329,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .073943776
+SOLVING_TIME: .063728576
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1382,11 +1343,9 @@ TIMEOUT: 60s
 BATCH: 16
 INDEX: 4/5
 -----------------------------------------------------------
-warning: "get-value" command is safely ignored in line 63.
-warning: "get-value" command is safely ignored in line 101.
 sat
 -----------------------------------------------------------
-SOLVING_TIME: .193980468
+SOLVING_TIME: .097135273
 RESULT: SUCCESS
 SAT_RESULT: SAT
 
@@ -1402,7 +1361,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .073646754
+SOLVING_TIME: .089430876
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1418,7 +1377,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .092688535
+SOLVING_TIME: .094465992
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1434,7 +1393,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .053604657
+SOLVING_TIME: .052358790
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1450,7 +1409,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .051770077
+SOLVING_TIME: .056131932
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1466,7 +1425,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .027652025
+SOLVING_TIME: .025537139
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1482,7 +1441,7 @@ INDEX: 5/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .050488560
+SOLVING_TIME: .050307591
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1498,7 +1457,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .085866618
+SOLVING_TIME: .069628385
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1514,7 +1473,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .021454519
+SOLVING_TIME: .018547198
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1530,7 +1489,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: ")" missing in line 53.
 -----------------------------------------------------------
-SOLVING_TIME: .019956791
+SOLVING_TIME: .014933497
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1546,7 +1505,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: .156261013
+SOLVING_TIME: .141730752
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1560,11 +1519,10 @@ TIMEOUT: 60s
 BATCH: 18
 INDEX: 5/5
 -----------------------------------------------------------
-warning: "reset" command is safely ignored in line 101.
-[31m[2025-07-19 08:22:29] Result: ERROR (30015ms)[0m
+[31m[2025-07-19 11:43:44] Result: ERROR (30016ms)[0m
 unknown
 -----------------------------------------------------------
-SOLVING_TIME: 30.051126872
+SOLVING_TIME: 30.047682970
 RESULT: SUCCESS
 SAT_RESULT: UNKNOWN
 
@@ -1580,7 +1538,7 @@ INDEX: 1/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .027263338
+SOLVING_TIME: .026508358
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1596,7 +1554,7 @@ INDEX: 2/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 43.
 -----------------------------------------------------------
-SOLVING_TIME: .014161872
+SOLVING_TIME: .022570445
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1612,7 +1570,7 @@ INDEX: 3/5
 -----------------------------------------------------------
 error: Kind mismatch of command "Type mismatch in equality" in line 31.
 -----------------------------------------------------------
-SOLVING_TIME: .020690864
+SOLVING_TIME: .020400672
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 
@@ -1628,7 +1586,7 @@ INDEX: 4/5
 -----------------------------------------------------------
 unsat
 -----------------------------------------------------------
-SOLVING_TIME: .052449886
+SOLVING_TIME: .058081771
 RESULT: SUCCESS
 SAT_RESULT: UNSAT
 
@@ -1642,11 +1600,9 @@ TIMEOUT: 60s
 BATCH: 19
 INDEX: 5/5
 -----------------------------------------------------------
-warning: "push" command is safely ignored in line 88.
-warning: "pop" command is safely ignored in line 91.
 error: Kind mismatch of command "Type mismatch in str_charat" in line 1.
 -----------------------------------------------------------
-SOLVING_TIME: .026687495
+SOLVING_TIME: .020059256
 RESULT: SUCCESS
 SAT_RESULT: UNCLEAR
 

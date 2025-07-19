@@ -1,7 +1,7 @@
 
 ; SMT-LIB2 file for JWT and API key validation
 ; Using delimiters: '.', '-', ':'
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string sort and operations
@@ -79,13 +79,6 @@
 
 ; ; Check satisfiability of valid cases
 (check-sat)
-(get-model)
 
-; ; Check unsatisfiability of invalid JWT
-(push)
-(assert (str.is_base64 (str.split_at bad_jwt "." 0)))
-(assert (str.is_base64 (str.split_at bad_jwt "." 1)))
-(check-sat)
-(pop)
 
 (exit)

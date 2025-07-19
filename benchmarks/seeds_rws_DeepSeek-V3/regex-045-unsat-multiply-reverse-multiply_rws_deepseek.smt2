@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; String declarations
@@ -45,5 +45,4 @@
 (assert (not (= (str.len value2) 4))) ; port length not 4
 
 (check-sat)
-(get-model)
 (exit)

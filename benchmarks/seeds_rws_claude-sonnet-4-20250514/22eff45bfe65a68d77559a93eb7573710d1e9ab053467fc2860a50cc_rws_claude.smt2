@@ -1,5 +1,5 @@
 (set-info :status unknown)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; ; Log Analysis: Log entry parsing with timestamp and level extraction
 ; This SMT-LIB2 file models constraints for parsing log entries with various delimiters

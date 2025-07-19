@@ -1,0 +1,1052 @@
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2665193)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2665194)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2665195)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2665197)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2665199)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2665201)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2665203)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2665205)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2665207)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2665211)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2665213)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2665215)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2665219)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2665222)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2665227)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2665229)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2665234)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2665235)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2665240)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2665244)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 28, UNSAT: 41, UNKNOWN: 6, UNCLEAR: 25
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 30.65s
+[0;34m[INFO][0m Average time: .306s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_DeepSeek-V3_ext_z3.log
+Excel report saved to: charts/results_seeds_cso_DeepSeek-V3_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      41
+SAT        28
+UNCLEAR    25
+UNKNOWN     6
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.181s (69 cases)
+Max solving time (SAT/UNSAT only): 2.910s
+Min solving time (SAT/UNSAT only): 0.046s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2669284)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2669285)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2669286)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2669288)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2669291)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2669292)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2669294)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2669296)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2669299)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2669303)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2669307)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2669310)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2669313)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2669316)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2669318)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2669322)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2669325)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2669328)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2669333)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2669339)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 30, UNSAT: 37, UNKNOWN: 8, UNCLEAR: 25
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 30.73s
+[0;34m[INFO][0m Average time: .307s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_DeepSeek-V3_ext_cvc5.log
+Excel report saved to: charts/results_seeds_cso_DeepSeek-V3_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      37
+SAT        30
+UNCLEAR    25
+UNKNOWN     8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.507s (67 cases)
+Max solving time (SAT/UNSAT only): 22.600s
+Min solving time (SAT/UNSAT only): 0.027s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2673280)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2673281)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2673282)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2673284)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2673287)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2673288)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2673290)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2673292)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2673294)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2673296)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2673300)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2673304)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2673306)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2673309)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2673311)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2673315)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2673320)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2673322)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2673326)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2673329)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 26, UNSAT: 30, UNKNOWN: 19, UNCLEAR: 25
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 41.19s
+[0;34m[INFO][0m Average time: .411s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_DeepSeek-V3_ext_ostrich.log
+Excel report saved to: charts/results_seeds_cso_DeepSeek-V3_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      30
+SAT        26
+UNCLEAR    25
+UNKNOWN    19
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 2.757s (56 cases)
+Max solving time (SAT/UNSAT only): 5.770s
+Min solving time (SAT/UNSAT only): 1.235s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2685849)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2685850)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2685851)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2685853)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2685855)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2685857)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2685859)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2685861)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2685863)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2685866)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2685868)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2685871)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2685873)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2685876)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2685881)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2685886)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2685888)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2685890)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2685894)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2685897)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 27, UNSAT: 39, UNKNOWN: 9, UNCLEAR: 25
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 72.97s
+[0;34m[INFO][0m Average time: .729s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_DeepSeek-V3_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_cso_DeepSeek-V3_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      39
+SAT        27
+UNCLEAR    25
+UNKNOWN     9
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.291s (66 cases)
+Max solving time (SAT/UNSAT only): 12.518s
+Min solving time (SAT/UNSAT only): 0.045s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_DeepSeek-V3...
+[0;34m[INFO][0m Found 96 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2691740)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2691741)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2691742)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2691744)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2691746)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2691748)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2691750)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2691752)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2691754)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2691756)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2691760)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2691763)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2691766)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2691770)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2691773)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2691776)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2691779)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2691782)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2691785)
+[0;34m[INFO][0m Started batch 19 with 1 files (PID: 2691792)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 96
+[0;32m[SUCCESS][0m Successful: 95
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 4, UNSAT: 9, UNKNOWN: 44, UNCLEAR: 38
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 62.52s
+[0;34m[INFO][0m Average time: .651s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_DeepSeek-V3_ext_z3.log
+Excel report saved to: charts/results_seeds_rws_DeepSeek-V3_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 96
+Results breakdown:
+result
+SUCCESS    95
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNKNOWN    44
+UNCLEAR    38
+UNSAT       9
+SAT         4
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.261s (13 cases)
+Max solving time (SAT/UNSAT only): 1.379s
+Min solving time (SAT/UNSAT only): 0.055s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_DeepSeek-V3...
+[0;34m[INFO][0m Found 96 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2698361)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2698362)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2698364)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2698365)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2698367)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2698369)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2698373)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2698375)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2698378)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2698381)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2698385)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2698387)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2698389)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2698393)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2698396)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2698401)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2698404)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2698407)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2698410)
+[0;34m[INFO][0m Started batch 19 with 1 files (PID: 2698413)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 96
+[0;32m[SUCCESS][0m Successful: 95
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 5, UNSAT: 3, UNKNOWN: 49, UNCLEAR: 38
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 92.41s
+[0;34m[INFO][0m Average time: .962s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_DeepSeek-V3_ext_cvc5.log
+Excel report saved to: charts/results_seeds_rws_DeepSeek-V3_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 96
+Results breakdown:
+result
+SUCCESS    95
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNKNOWN    49
+UNCLEAR    38
+SAT         5
+UNSAT       3
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 2.001s (8 cases)
+Max solving time (SAT/UNSAT only): 7.635s
+Min solving time (SAT/UNSAT only): 0.064s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_DeepSeek-V3...
+[0;34m[INFO][0m Found 96 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2705037)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2705038)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2705040)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2705042)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2705043)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2705045)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2705047)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2705049)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2705052)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2705054)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2705057)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2705059)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2705064)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2705066)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2705069)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2705073)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2705077)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2705082)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2705086)
+[0;34m[INFO][0m Started batch 19 with 1 files (PID: 2705089)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 96
+[0;32m[SUCCESS][0m Successful: 95
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 2, UNSAT: 2, UNKNOWN: 53, UNCLEAR: 38
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 64.08s
+[0;34m[INFO][0m Average time: .667s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_DeepSeek-V3_ext_ostrich.log
+Excel report saved to: charts/results_seeds_rws_DeepSeek-V3_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 96
+Results breakdown:
+result
+SUCCESS    95
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNKNOWN    53
+UNCLEAR    38
+UNSAT       2
+SAT         2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 6.081s (4 cases)
+Max solving time (SAT/UNSAT only): 14.369s
+Min solving time (SAT/UNSAT only): 2.309s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_DeepSeek-V3...
+[0;34m[INFO][0m Found 96 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2712753)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2712754)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2712755)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2712757)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2712759)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2712761)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2712763)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2712765)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2712767)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2712770)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2712774)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2712776)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2712779)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2712783)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2712787)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2712790)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2712795)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2712797)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2712802)
+[0;34m[INFO][0m Started batch 19 with 1 files (PID: 2712805)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 1 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 96
+[0;32m[SUCCESS][0m Successful: 95
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 14, UNSAT: 8, UNKNOWN: 35, UNCLEAR: 38
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 150.37s
+[0;34m[INFO][0m Average time: 1.566s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_DeepSeek-V3_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_rws_DeepSeek-V3_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 96
+Results breakdown:
+result
+SUCCESS    95
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNCLEAR    38
+UNKNOWN    35
+SAT        14
+UNSAT       8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 2.179s (22 cases)
+Max solving time (SAT/UNSAT only): 27.739s
+Min solving time (SAT/UNSAT only): 0.057s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2722282)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2722283)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2722285)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2722287)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2722288)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2722291)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2722293)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2722297)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2722300)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2722303)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2722305)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2722310)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2722312)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2722316)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2722320)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2722325)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2722329)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2722331)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2722336)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2722342)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 3, UNSAT: 64, UNKNOWN: 28, UNCLEAR: 5
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.56s
+[0;34m[INFO][0m Average time: .605s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_DeepSeek-V3_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_DeepSeek-V3_ext_z3.log
+Excel report saved to: charts/results_seeds_sfc_DeepSeek-V3_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      64
+UNKNOWN    28
+UNCLEAR     5
+SAT         3
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.136s (67 cases)
+Max solving time (SAT/UNSAT only): 1.836s
+Min solving time (SAT/UNSAT only): 0.055s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2727590)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2727591)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2727592)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2727594)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2727596)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2727598)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2727600)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2727602)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2727604)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2727609)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2727612)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2727614)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2727618)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2727623)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2727626)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2727629)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2727634)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2727638)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2727640)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2727643)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 21, UNSAT: 65, UNKNOWN: 9, UNCLEAR: 5
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 61.50s
+[0;34m[INFO][0m Average time: .615s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_DeepSeek-V3_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_DeepSeek-V3_ext_cvc5.log
+Excel report saved to: charts/results_seeds_sfc_DeepSeek-V3_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      65
+SAT        21
+UNKNOWN     9
+UNCLEAR     5
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.305s (86 cases)
+Max solving time (SAT/UNSAT only): 6.291s
+Min solving time (SAT/UNSAT only): 0.041s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2733085)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2733086)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2733087)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2733089)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2733091)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2733093)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2733095)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2733097)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2733099)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2733103)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2733104)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2733107)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2733110)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2733112)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2733117)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2733119)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2733125)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2733128)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2733130)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2733134)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 19, UNSAT: 61, UNKNOWN: 15, UNCLEAR: 5
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 120.68s
+[0;34m[INFO][0m Average time: 1.206s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_DeepSeek-V3_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_DeepSeek-V3_ext_ostrich.log
+Excel report saved to: charts/results_seeds_sfc_DeepSeek-V3_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      61
+SAT        19
+UNKNOWN    15
+UNCLEAR     5
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 4.627s (80 cases)
+Max solving time (SAT/UNSAT only): 29.822s
+Min solving time (SAT/UNSAT only): 1.368s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_DeepSeek-V3
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_DeepSeek-V3...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2752833)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2752834)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2752835)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2752837)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2752839)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2752841)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2752843)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2752845)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2752847)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2752849)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2752852)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2752856)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2752861)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2752864)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2752868)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2752869)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2752877)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2752878)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2752880)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2752885)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_DeepSeek-V3_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 26, UNSAT: 65, UNKNOWN: 4, UNCLEAR: 5
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.58s
+[0;34m[INFO][0m Average time: .605s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_DeepSeek-V3_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_DeepSeek-V3_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_sfc_DeepSeek-V3_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      65
+SAT        26
+UNCLEAR     5
+UNKNOWN     4
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.303s (91 cases)
+Max solving time (SAT/UNSAT only): 8.197s
+Min solving time (SAT/UNSAT only): 0.050s

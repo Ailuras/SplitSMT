@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for URL parsing with protocol, host, and path extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -91,5 +91,4 @@
 ))
 
 (check-sat)
-(get-model)
 (exit)

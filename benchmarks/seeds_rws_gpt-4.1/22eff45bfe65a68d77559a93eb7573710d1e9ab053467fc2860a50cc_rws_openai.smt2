@@ -2,7 +2,7 @@
 ; Delimiters: '=', ':', '\n', '[', ']'
 ; ; Focus: key validation, value extraction, section handling
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables representing lines and sections in the config
 (declare-fun line1 () String)

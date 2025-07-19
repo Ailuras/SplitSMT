@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string sort and operations
 (declare-fun str.split_at (String String Int) String)
@@ -40,32 +40,10 @@
 (assert (>= (str.len message) 5))
 
 ; Satisfiable case: well-formed log entry
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO: User login successful | ip=192.168.1.1"))
 (check-sat)
-(get-model)
-(pop)
 
-; Unsatisfiable case: malformed timestamp
-(push)
-(assert (= log_entry "[2023-01-15 14:30] INFO: User login failed")) ; Missing seconds
-(check-sat)
-(pop)
 
-; Unsatisfiable case: invalid log level
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] ALERT: System down")) ; Invalid level
-(check-sat)
-(pop)
 
-; Satisfiable case with different delimiters
-(push)
-(assert (= log_entry "[2023-12-31 23:59:59] ERROR: Database connection failed|retry=3"))
-(assert (str.contains message "|"))
-(check-sat)
-(get-model)
-(pop)
 
-; ; Final check with all constraints
-(check-sat)
 (exit)

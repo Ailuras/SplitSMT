@@ -2,7 +2,7 @@
 ; Delimiters: '=', ':', '\n', '[', ']'
 ; ; Focus: key validation, value extraction, section handling
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables representing parts of a config file
 (declare-fun config_line1 () String) ; e.g., "username=admin"

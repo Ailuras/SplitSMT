@@ -3,7 +3,7 @@
 ; Delimiters used: '=', ':', '\n', '[', ']'
 ; Demonstrates use of split operations and realistic constraints
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare a string variable for a configuration line
 (declare-fun conf_line () String)

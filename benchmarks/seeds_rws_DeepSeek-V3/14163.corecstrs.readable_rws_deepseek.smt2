@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Delimiter constants
@@ -47,23 +47,9 @@
 (assert (= (str.len api_secret) 16)) ; Secret must be 16 chars
 
 ; ; Check satisfiable case (valid tokens)
-(push)
 (echo "=== Checking valid token constraints ===")
 (check-sat)
-(get-model)
-(pop)
 
-; ; Example 3: Invalid JWT case (wrong number of segments)
-(declare-const bad_jwt String)
-(assert (= (str.num_splits bad_jwt dot) 2)) ; Missing signature
-(assert (>= (str.len (str.split_at bad_jwt dot 0)) 5))
-(assert (>= (str.len (str.split_at bad_jwt dot 1)) 5))
 
-; ; Check unsatisfiable case
-(push)
-(echo "=== Checking invalid JWT constraints ===")
-(assert (= (str.num_splits bad_jwt dot) 3)) ; Contradicts previous assertion
-(check-sat)
-(pop)
 
 (exit)

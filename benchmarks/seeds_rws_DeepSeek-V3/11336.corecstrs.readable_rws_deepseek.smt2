@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for URL parsing with protocol, host, and path extraction
-(set-logic QF_S) ; Quantifier-free strings
+(set-logic QF_SLIA) ; Quantifier-free strings
 
 ; Declare string constants for delimiters
 (declare-const protocol_delim String)

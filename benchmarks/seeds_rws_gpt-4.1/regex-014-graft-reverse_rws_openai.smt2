@@ -2,7 +2,7 @@
 ; Delimiters used: space (' '), colon (':'), dash ('-'), pipe ('|'), left bracket ('['), right bracket (']')
 ; ; Focus: timestamp format, log level validation, message extraction
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the log entry string variable
 (declare-fun log_entry () String)
@@ -60,44 +60,9 @@
 (assert (= log_entry "[2024-06-01 12:34:56] INFO | User login succeeded: user=alice"))
 
 (check-sat)
-(get-value (log_entry timestamp log_level message))
 
-; ; Unsatisfiable Example: Timestamp format is wrong (missing dash)
-(declare-fun bad_log_entry () String)
 
-; [20240601 12:34:56] WARN | Something happened
-; Timestamp is "20240601 12:34:56" (missing dashes)
-(define-fun bad_seg1_after_lbracket () String (str.split_at bad_log_entry "[" 1))
-(define-fun bad_timestamp () String (str.split_at bad_seg1_after_lbracket "]" 0))
-(define-fun bad_after_rbracket () String (str.split_at bad_log_entry "]" 1))
-(define-fun bad_after_rbracket_trim () String
- (ite (str.prefixof " " bad_after_rbracket)
- (str.substr bad_after_rbracket 1 (- (str.len bad_after_rbracket) 1))
- bad_after_rbracket))
-(define-fun bad_level_and_space () String (str.split_at bad_after_rbracket_trim "|" 0))
-(define-fun bad_log_level () String
- (let ((lvl (str.replace bad_level_and_space " " "")))
- lvl))
-(define-fun bad_message_with_spaces () String (str.split_at bad_log_entry "|" 1))
-(define-fun bad_message () String
- (ite (str.prefixof " " bad_message_with_spaces)
- (str.substr bad_message_with_spaces 1 (- (str.len bad_message_with_spaces) 1))
- bad_message_with_spaces))
 
-(assert (= bad_log_entry "[20240601 12:34:56] WARN | Something happened"))
-(assert (= (str.len bad_timestamp) 19))
-(assert (= (str.at bad_timestamp 4) "-"))
-(assert (= (str.at bad_timestamp 7) "-"))
-(assert (= (str.at bad_timestamp 10) " "))
-(assert (= (str.at bad_timestamp 13) ":"))
-(assert (= (str.at bad_timestamp 16) ":"))
-(assert (or (= bad_log_level "INFO")
- (= bad_log_level "WARN")
- (= bad_log_level "ERROR")
- (= bad_log_level "DEBUG")))
-(assert (> (str.len bad_message) 0))
 
-(check-sat)
-(get-value (bad_log_entry bad_timestamp bad_log_level bad_message))
 
 (exit)

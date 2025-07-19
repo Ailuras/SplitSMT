@@ -87,22 +87,10 @@
 
 (check-sat)
 
-; --- Constraints for unsatisfiable scenario ---
 
-(push)
 
-; Now, require that the log level is both "ERROR" and "INFO", which is impossible
-(assert (= log_level "ERROR"))
-(assert (= log_level "INFO"))
 
-(check-sat)
-(pop)
 
-(push)
-; Now, require the timestamp year_part to be 2 digits, which contradicts the earlier length 4
-(assert (= (str.len year_part) 2))
 
-(check-sat)
-(pop)
 
 (exit)

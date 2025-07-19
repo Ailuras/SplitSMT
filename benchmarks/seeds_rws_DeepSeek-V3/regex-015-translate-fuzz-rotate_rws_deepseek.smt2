@@ -1,7 +1,7 @@
 
 ; SMT-LIB2 script for configuration file parsing
 ; Focus on key-value pairs and INI section handling
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -85,5 +85,4 @@
 (assert (not (str.contains config_content (str.++ close_bracket close_bracket))))
 
 (check-sat)
-(get-model)
 (exit)

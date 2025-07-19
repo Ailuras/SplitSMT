@@ -60,32 +60,11 @@
 
 ; Combined authentication scenario
 ; Case 1: Valid JWT but invalid API key (should be SAT)
-(push)
 (assert (not (= (str.len jwt_signature) 43))) ; Invalid signature length
 (assert (= (str.num_splits api_key dash) 2)) ; Wrong delimiter for API key
 (check-sat)
-(pop)
 
-; Case 2: Both valid (should be SAT)
-(push)
-(assert (= (str.len jwt_signature) 43)) ; Valid signature length
-(assert (str.contains api_secret "S3CR3T")) ; Valid secret pattern
-(check-sat)
-(pop)
 
-; Case 3: Invalid JWT segments (should be UNSAT)
-(push)
-(assert (= (str.num_splits jwt dot) 2)) ; Missing signature segment
-(check-sat)
-(pop)
 
-; Case 4: API key with wrong segment count (should be UNSAT)
-(push)
-(assert (= (str.num_splits api_key colon) 4)) ; Too many segments
-(check-sat)
-(pop)
 
-; ; Final check for main constraints
-(check-sat)
-(get-model)
 (exit)

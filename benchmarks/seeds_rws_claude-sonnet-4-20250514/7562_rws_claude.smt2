@@ -5,7 +5,7 @@
 (set-info :smt-lib-version 2.6)
 (set-info :category "industrial")
 (set-info :status unknown)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for log entries and components
 (declare-fun log_entry () String)

@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; String theory
+(set-logic QF_SLIA) ; String theory
 
 ; Declarations for string operations
 (declare-fun str.split_at (String String Int) String)
@@ -60,5 +60,4 @@
 
 ; ; Check for consistency
 (check-sat)
-(get-model)
 (exit)

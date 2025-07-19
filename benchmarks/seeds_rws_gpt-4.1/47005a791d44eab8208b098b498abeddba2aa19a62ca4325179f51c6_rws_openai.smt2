@@ -52,33 +52,10 @@
 (assert (= section_header "[General]"))
 
 ; Unsatisfiable scenario: try to force the key to be empty while requiring config_line to have a valid assignment
-(push)
  (assert (= key ""))
  (check-sat)
-(pop)
 
-; Unsatisfiable scenario: section name includes an illegal character
-(push)
- (assert (= section_header "[Inv@lid]"))
- (assert (= (str.contains section_name "@") false))
- (check-sat)
-(pop)
 
-; Satisfiable scenario: config_line with colon as delimiter, e.g., "port:8080"
-(push)
- (assert (= config_line "port:8080"))
- (assert (= key (str.split_at config_line ":" 0)))
- (assert (= value (str.split_at config_line ":" 1)))
- (assert (> (str.num_splits config_line ":") 1))
- (check-sat)
-(pop)
 
-; Unsatisfiable scenario: value is empty, but config_line is an assignment
-(push)
- (assert (= config_line "timeout="))
- (assert (= value ""))
- (check-sat)
-(pop)
 
-(check-sat)
 (exit)

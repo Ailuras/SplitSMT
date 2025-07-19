@@ -2,7 +2,7 @@
 ; Focus: protocol validation, host structure, path segments
 ; Delimiters used: '://', '/', ':', '?', '&'
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the URL string variable
 (declare-fun url () String)
@@ -53,26 +53,7 @@
 
 (check-sat)
 
-; ; Unsatisfiable example: protocol is not http/https, but forced to "ftp"
-(push)
-(assert (= url "ftp://example.com/home"))
-(assert (not (or (= protocol "http") (= protocol "https"))))
-(assert (or (= protocol "http") (= protocol "https")))
-(check-sat)
-(pop)
 
-; ; Unsatisfiable example: host is empty after splitting
-(push)
-(assert (= url "http:///home"))
-(assert (= host ""))
-(check-sat)
-(pop)
 
-; ; Unsatisfiable example: host port must be given, but no colon present
-(push)
-(assert (= url "https://example.com/home"))
-(assert (= num_colon_host 2)) ; expects a colon for port, but none present
-(check-sat)
-(pop)
 
 (exit)

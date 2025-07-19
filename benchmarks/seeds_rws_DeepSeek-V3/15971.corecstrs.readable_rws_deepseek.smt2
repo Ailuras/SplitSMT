@@ -1,6 +1,6 @@
 
 ; Configuration parsing with key-value pairs and INI sections
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; String constants for delimiters
 (declare-const eq_delim String)
@@ -70,5 +70,4 @@
 )))
 
 (check-sat)
-(get-model)
 (exit)

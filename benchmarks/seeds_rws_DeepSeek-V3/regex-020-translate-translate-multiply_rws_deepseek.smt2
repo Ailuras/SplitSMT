@@ -1,6 +1,6 @@
 ; ; SMT-LIB2 script for log analysis with timestamp and level extraction
 ; Delimiters: ' ', ':', '-', '|', '[', ']'
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const space String)
@@ -95,5 +95,4 @@
 ; (assert (= log_level "CRITICAL")) ; Invalid log level
 
 (check-sat)
-(get-model)
 (exit)

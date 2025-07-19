@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |Configuration parsing with key-value pairs and INI sections|)
 (set-info :category "industrial")
 

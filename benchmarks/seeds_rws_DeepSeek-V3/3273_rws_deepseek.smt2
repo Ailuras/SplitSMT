@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; String theory
+(set-logic QF_SLIA) ; String theory
 
 ; Declarations for string operations
 (declare-fun str.split_at (String String Int) String)
@@ -54,5 +54,4 @@
 (assert (not (= (str.split_at timestamp "-" 0) "2023"))) ; This makes it unsat
 
 (check-sat)
-(get-model)
 (exit)

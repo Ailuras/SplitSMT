@@ -62,17 +62,8 @@
 ; This should be SAT: key = "user", value = "admin", section_name = "database"
 
 (check-sat)
-(get-model)
 
-; ------------------------------------------
-; ; Unsatisfiable Example: Key contains whitespace
 
-(declare-fun bad_line () String)
-(assert (= bad_line "user name=admin"))
-(assert (= (str.split_at bad_line delim_eq 0) key))
-(assert (str.contains key " "))
 
-; The previous assertions require (not (str.contains key " ")), so this is UNSAT
 
-(check-sat)
 (exit)

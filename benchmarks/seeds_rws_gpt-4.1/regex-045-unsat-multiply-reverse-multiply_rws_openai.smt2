@@ -2,7 +2,7 @@
 ; Delimiters: '=', ':', '\n', '[', ']'
 ; ; Focus: key validation, value extraction, section handling
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for an INI file line and section
 (declare-fun line1 () String)

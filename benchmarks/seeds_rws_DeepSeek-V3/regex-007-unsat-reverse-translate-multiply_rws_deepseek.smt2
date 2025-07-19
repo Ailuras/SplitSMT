@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; Set the string theory
+(set-logic QF_SLIA) ; Set the string theory
 (set-option :produce-models true) ; Enable model generation
 
 ; Declare string constants for delimiters
@@ -47,36 +47,11 @@
 (assert (str.contains log_entry pipe)) ; Must contain |
 
 ; Test case 1: Valid log entry
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started successfully"))
 (check-sat)
-(get-model)
-(pop)
 
-; Test case 2: Invalid timestamp format
-(push)
-(assert (= log_entry "[2023/01/15 14:30:45] INFO | System started successfully"))
-(check-sat) ; Should be unsat due to wrong date separator
-(pop)
 
-; Test case 3: Missing log level
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] | System started successfully"))
-(check-sat) ; Should be unsat due to missing level
-(pop)
 
-; Test case 4: Empty message
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] INFO |"))
-(check-sat) ; Should be unsat due to empty message
-(pop)
 
-; Test case 5: Unknown log level
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] CRITICAL | System failure"))
-(check-sat) ; Should be unsat due to invalid level
-(pop)
 
-(check-sat)
-(get-model)
 (exit)

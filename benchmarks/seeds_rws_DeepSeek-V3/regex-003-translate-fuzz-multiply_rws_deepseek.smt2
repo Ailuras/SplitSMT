@@ -1,6 +1,6 @@
 ; SMT-LIB2 script for configuration file parsing with key-value pairs and INI sections
 ; ; Focuses on key validation, value extraction, and section handling
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const eq_delim String) ; '=' delimiter
@@ -124,5 +124,4 @@
 (assert (not (str.contains ini_section " ")))
 
 (check-sat)
-(get-model)
 (exit)

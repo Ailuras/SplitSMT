@@ -2,7 +2,7 @@
 ; Split delimiters: '://', '/', ':', '?', '&'
 ; Focus: protocol validation, host structure, path segments
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the URL string
 (declare-fun url () String)

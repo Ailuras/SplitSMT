@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; String theory with quantifier-free constraints
+(set-logic QF_SLIA) ; String theory with quantifier-free constraints
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -61,33 +61,12 @@
 (assert (str.contains log_entry colon))
 
 ; Test case 1: Valid log entry
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started successfully"))
 (assert (= log_level "INFO"))
 (assert (= message "System started successfully"))
 (check-sat)
-(get-model)
-(pop)
 
-; Test case 2: Invalid timestamp format (should be UNSAT)
-(push)
-(assert (= log_entry "[2023/01/15 14:30:45] ERROR | Invalid timestamp"))
-(check-sat)
-(pop)
 
-; Test case 3: Missing log level (should be UNSAT)
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] | No level specified"))
-(check-sat)
-(pop)
 
-; Test case 4: Empty message (should be UNSAT)
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] WARN | "))
-(check-sat)
-(pop)
 
-; ; Final check for main constraints
-(check-sat)
-(get-model)
 (exit)

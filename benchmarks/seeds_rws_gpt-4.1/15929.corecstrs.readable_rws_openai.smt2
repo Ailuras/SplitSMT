@@ -46,25 +46,10 @@
 (assert (= (str.indexof section_name "=" 0) -1))
 
 ; ; Satisfiable scenario: Provide concrete examples that satisfy all constraints
-(push)
  (assert (= config_line "username=admin"))
  (assert (= section_header "[UserSettings]"))
  (check-sat)
- (get-model)
-(pop)
 
-; Unsatisfiable scenario: Key contains forbidden character '='
-(push)
- (assert (= config_line "user=name=admin"))
- (assert (= section_header "[Settings]"))
- (check-sat)
-(pop)
 
-; Unsatisfiable scenario: Section name contains ']'
-(push)
- (assert (= config_line "password:12345"))
- (assert (= section_header "[Admin]Panel]"))
- (check-sat)
-(pop)
 
 (exit)

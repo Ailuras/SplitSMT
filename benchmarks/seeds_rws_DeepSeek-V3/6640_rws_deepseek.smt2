@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; String declarations
@@ -72,5 +72,4 @@
 (assert (str.contains auth_section "api_key"))
 
 (check-sat)
-(get-model)
 (exit)

@@ -1,7 +1,7 @@
 ; SMT-LIB2 file for URL Parsing via split constraints
 ; Focus: protocol validation, host structure, path segments
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the URL string variable
 (declare-const url String)
@@ -42,24 +42,9 @@
 
 ; ; Example 1: Satisfiable case
 ; ; URL: "https://example.com/foo/bar"
-(push)
 (assert (= url "https://example.com/foo/bar"))
 (check-sat)
-(get-model)
-(pop)
 
-; ; Example 2: Unsatisfiable case (invalid protocol)
-; ; URL: "ftp://example.com/foo/bar"
-(push)
-(assert (= url "ftp://example.com/foo/bar"))
-(check-sat)
-(pop)
 
-; ; Example 3: Unsatisfiable case (no dot in host)
-; URL: "http://localhost/foo"
-(push)
-(assert (= url "http://localhost/foo"))
-(check-sat)
-(pop)
 
 (exit)

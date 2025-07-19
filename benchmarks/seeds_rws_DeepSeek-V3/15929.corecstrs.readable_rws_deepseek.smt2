@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -72,5 +72,4 @@
 (assert (not (= jwt_sig expected_sig)))
 
 (check-sat)
-(get-model)
 (exit)

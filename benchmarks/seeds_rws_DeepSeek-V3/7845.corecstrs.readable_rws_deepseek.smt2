@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for JWT and API key validation
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants
@@ -52,17 +52,7 @@
 
 ; ; Check satisfiability of valid cases
 (check-sat)
-(get-model)
 
-; ; Check unsatisfiability of invalid cases
-(push)
-(assert (str.contains (str.split_at invalid_jwt dot 2) "sig")) ; should be unsat since invalid_jwt only has 2 parts
-(check-sat)
-(pop)
 
-(push)
-(assert (str.is_digit (str.split_at invalid_api_key colon 1))) ; should be unsat
-(check-sat)
-(pop)
 
 (exit)

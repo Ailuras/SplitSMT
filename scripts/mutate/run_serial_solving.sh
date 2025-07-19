@@ -71,23 +71,41 @@ done
 
 # Define the list of commands to run
 declare -a COMMANDS=(
-    # seeds_cso_gpt-4.1 directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_gpt-4.1 -f results_seeds_cso_gpt-4.1_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_gpt-4.1 -f results_seeds_cso_gpt-4.1_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_gpt-4.1 -f results_seeds_cso_gpt-4.1_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_gpt-4.1 -f results_seeds_cso_gpt-4.1_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # # seeds_cso_claude-sonnet-4-20250514 directory
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_claude-sonnet-4-20250514 -f results_seeds_cso_claude-sonnet-4-20250514_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_claude-sonnet-4-20250514 -f results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_claude-sonnet-4-20250514 -f results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_claude-sonnet-4-20250514 -f results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
     
-    # seeds_rws_gpt-4.1 directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_gpt-4.1 -f results_seeds_rws_gpt-4.1_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_gpt-4.1 -f results_seeds_rws_gpt-4.1_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_gpt-4.1 -f results_seeds_rws_gpt-4.1_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_gpt-4.1 -f results_seeds_rws_gpt-4.1_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # # seeds_rws_claude-sonnet-4-20250514 directory
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_claude-sonnet-4-20250514 -f results_seeds_rws_claude-sonnet-4-20250514_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_claude-sonnet-4-20250514 -f results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_claude-sonnet-4-20250514 -f results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_claude-sonnet-4-20250514 -f results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
     
-    # seeds_sfc_gpt-4.1 directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_gpt-4.1 -f results_seeds_sfc_gpt-4.1_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_gpt-4.1 -f results_seeds_sfc_gpt-4.1_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_gpt-4.1 -f results_seeds_sfc_gpt-4.1_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_gpt-4.1 -f results_seeds_sfc_gpt-4.1_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # # seeds_sfc_claude-sonnet-4-20250514 directory
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_claude-sonnet-4-20250514 -f results_seeds_sfc_claude-sonnet-4-20250514_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_claude-sonnet-4-20250514 -f results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_claude-sonnet-4-20250514 -f results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    # "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_claude-sonnet-4-20250514 -f results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+
+    # # seeds_cso_DeepSeek-V3 directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_DeepSeek-V3 -f results_seeds_cso_DeepSeek-V3_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_DeepSeek-V3 -f results_seeds_cso_DeepSeek-V3_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_DeepSeek-V3 -f results_seeds_cso_DeepSeek-V3_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_cso_DeepSeek-V3 -f results_seeds_cso_DeepSeek-V3_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+
+    # seeds_rws_DeepSeek-V3 directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_DeepSeek-V3 -f results_seeds_rws_DeepSeek-V3_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_DeepSeek-V3 -f results_seeds_rws_DeepSeek-V3_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_DeepSeek-V3 -f results_seeds_rws_DeepSeek-V3_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_rws_DeepSeek-V3 -f results_seeds_rws_DeepSeek-V3_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    
+    # # seeds_sfc_DeepSeek-V3 directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_DeepSeek-V3 -f results_seeds_sfc_DeepSeek-V3_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_DeepSeek-V3 -f results_seeds_sfc_DeepSeek-V3_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_DeepSeek-V3 -f results_seeds_sfc_DeepSeek-V3_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seeds_sfc_DeepSeek-V3 -f results_seeds_sfc_DeepSeek-V3_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
 )
 
 # Create log directory
@@ -105,7 +123,7 @@ run_command() {
     
     # Extract solver and dataset info
     local solver=$(echo "$cmd" | grep -o 'ext-[a-z0-9_-]*' | head -1)
-    local dataset=$(echo "$cmd" | grep -o 'benchmarks/[a-z0-9_]*' | sed 's|benchmarks/||')
+    local dataset=$(echo "$cmd" | grep -o 'benchmarks/[a-zA-Z0-9_-]*' | sed 's|benchmarks/||')
     
     echo "[$cmd_num/$total_cmds] Running $solver on $dataset..."
     log_with_timestamp "Starting [$cmd_num/$total_cmds] $solver on $dataset"

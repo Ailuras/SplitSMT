@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -93,7 +93,6 @@
 ))
 
 ; ; Example constraints for a specific URL structure
-(push)
 (assert (= full_url "https://www.example.com:8080/path/to/resource?param1=value1&param2=value2"))
 
 ; ; Verify protocol extraction
@@ -116,24 +115,7 @@
 (assert (= (str.num_splits query param_delim) 2))
 
 (check-sat)
-(get-model)
-(pop)
 
-; Unsatisfiable case - invalid protocol
-(push)
-(assert (= full_url "ftp://invalid.com"))
-(assert (= protocol "http"))
-(check-sat)
-(pop)
 
-; Satisfiable case - minimal valid URL
-(push)
-(assert (= full_url "http://www.valid.com"))
-(assert (= protocol "http"))
-(assert (= host "www.valid.com"))
-(assert (= path ""))
-(check-sat)
-(get-model)
-(pop)
 
 (exit)

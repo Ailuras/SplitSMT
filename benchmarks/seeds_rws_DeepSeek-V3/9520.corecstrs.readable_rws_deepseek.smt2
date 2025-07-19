@@ -1,6 +1,6 @@
 ; ; SMT-LIB2 script for log analysis with timestamp and level extraction
 ; Delimiters: ' ', ':', '-', '|', '[', ']'
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const space String)
@@ -59,25 +59,9 @@
 (assert (str.contains (str.split_rest log_entry rbracket 1) pipe))
 
 ; ; Satisfiable example
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started successfully"))
 (check-sat)
-(get-model)
-(pop)
 
-; ; Unsatisfiable example (invalid timestamp format)
-(push)
-(assert (= log_entry "[2023/01/15 14:30:45] INFO | System started"))
-(check-sat)
-(pop)
 
-; ; Unsatisfiable example (missing log level)
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] | System started"))
-(check-sat)
-(pop)
 
-; ; Final check with all constraints
-(check-sat)
-(get-model)
 (exit)

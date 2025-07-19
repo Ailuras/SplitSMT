@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string sort and operations
@@ -44,13 +44,7 @@
 (assert (not (str.contains message "failure")))
 
 ; Negative test case (should be unsat)
-(push)
 (assert (str.contains log_level " CRITICAL"))
 (check-sat)
-(pop)
 
-; Positive test case (should be sat)
-(assert (str.contains log_level " INFO"))
-(check-sat)
-(get-model)
 (exit)

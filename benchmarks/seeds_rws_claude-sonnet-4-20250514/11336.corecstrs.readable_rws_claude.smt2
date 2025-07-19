@@ -3,7 +3,7 @@
  Demonstrates string split operations for web URL processing
 |)
 (set-info :status unknown)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; URL string variables
 (declare-fun url1 () String)

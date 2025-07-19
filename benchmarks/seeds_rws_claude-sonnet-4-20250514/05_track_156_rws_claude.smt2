@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |Authentication Token Validation: JWT and API key processing|)
 
 ; Variable declarations for JWT token components

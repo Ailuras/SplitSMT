@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string sort and operations
@@ -83,5 +83,4 @@
 (assert (= (str.num_splits (str.split_rest good_api_key "-" 1) ":") 2))
 
 (check-sat)
-(get-model)
 (exit)

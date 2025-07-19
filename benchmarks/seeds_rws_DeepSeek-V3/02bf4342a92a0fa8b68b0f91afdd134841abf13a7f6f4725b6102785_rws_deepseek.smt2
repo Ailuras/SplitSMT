@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for URL parsing with protocol, host, and path extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -81,32 +81,10 @@
 (assert (not (str.contains host path_delim)))
 
 ; Test case 1: Simple HTTP URL (satisfiable)
-(push)
 (assert (= url "http://example.com/index.html"))
 (check-sat)
-(get-model)
-(pop)
 
-; Test case 2: HTTPS URL with port and query (satisfiable)
-(push)
-(assert (= url "https://localhost:8080/api/users?name=john&age=30"))
-(check-sat)
-(get-model)
-(pop)
 
-; Test case 3: Invalid protocol (unsatisfiable)
-(push)
-(assert (= protocol "ws"))
-(check-sat)
-(pop)
 
-; Test case 4: Missing host (unsatisfiable)
-(push)
-(assert (= host ""))
-(check-sat)
-(pop)
 
-; ; Final check
-(check-sat)
-(get-model)
 (exit)

@@ -2,7 +2,7 @@
 ; ; Focus: key validation, value extraction, section handling
 ; Delimiters used: '=', ':', '\n', '[', ']'
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; ; Declare the configuration string (an example INI segment)
 (declare-fun cfg () String)

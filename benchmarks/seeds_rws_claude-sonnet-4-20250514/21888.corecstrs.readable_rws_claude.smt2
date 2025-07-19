@@ -1,6 +1,6 @@
 (set-info :source |Authentication Token Validation - JWT and API key processing|)
 (set-info :category "industrial")
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Variable declarations for JWT token processing
 (declare-fun jwt_token () String)

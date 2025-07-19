@@ -1,6 +1,6 @@
 
 ; ; SMT-LIB2 script for log entry parsing with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -73,29 +73,10 @@
  (not (str.contains (str.split_at timestamp space 1) "18:"))))
 
 ; Test case 1: Valid log entry (satisfiable)
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started successfully"))
 (check-sat)
-(get-model)
-(pop)
 
-; Test case 2: Invalid timestamp format (unsatisfiable)
-(push)
-(assert (= log_entry "[2023/01/15 14:30:45] INFO | Invalid timestamp format"))
-(check-sat)
-(pop)
 
-; Test case 3: DEBUG message at night (unsatisfiable)
-(push)
-(assert (= log_entry "[2023-01-15 19:30:45] DEBUG | Night debug message"))
-(check-sat)
-(pop)
 
-; Test case 4: ERROR message with insufficient words (unsatisfiable)
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] ERROR | Failed"))
-(check-sat)
-(pop)
 
-(check-sat)
 (exit)

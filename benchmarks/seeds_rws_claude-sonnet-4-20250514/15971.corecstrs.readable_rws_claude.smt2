@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |URL Parsing with Protocol, Host, and Path Extraction|)
 (set-info :category "crafted")
 (set-info :status unknown)

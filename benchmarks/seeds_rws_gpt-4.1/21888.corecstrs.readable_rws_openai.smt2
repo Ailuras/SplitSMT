@@ -3,7 +3,7 @@
 ; Delimiters used: "://", "/", ":", "?", "&"
 ; Operations: str.split_at, str.num_splits, str.split_rest
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the URL string
 (declare-fun url () String)

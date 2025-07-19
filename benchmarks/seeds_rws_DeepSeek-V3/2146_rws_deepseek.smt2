@@ -1,6 +1,6 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
 ; Delimiters: space, colon, hyphen, pipe, square brackets
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const space String)
@@ -67,24 +67,9 @@
 (assert (= (str.to_upper level_part) level_part))
 
 ; ; Example concrete log entry (satisfiable case)
-(push)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started"))
 (check-sat)
-(pop)
 
-; Unsatisfiable case: invalid month
-(push)
-(assert (= log_entry "[2023-13-15 14:30:45] INFO | System started"))
-(check-sat)
-(pop)
 
-; Unsatisfiable case: missing message for ERROR level
-(push)
-(assert (= log_entry "[2023-01-15 14:30:45] ERROR | "))
-(check-sat)
-(pop)
 
-; Main verification
-(check-sat)
-(get-model)
 (exit)

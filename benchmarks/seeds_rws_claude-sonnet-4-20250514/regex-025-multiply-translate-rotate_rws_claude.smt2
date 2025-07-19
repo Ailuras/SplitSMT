@@ -1,6 +1,6 @@
 (set-info :source |URL Parsing with Protocol, Host, and Path Extraction|)
 (set-info :smt-lib-version 2.6)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for URL components
 (declare-fun url () String)

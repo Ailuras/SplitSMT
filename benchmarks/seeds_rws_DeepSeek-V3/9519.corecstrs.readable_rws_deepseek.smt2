@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declarations
@@ -45,5 +45,4 @@
 (assert (not (= signature computed_sig))) ; Makes problem unsat for correct sigs
 
 (check-sat)
-(get-model)
 (exit)

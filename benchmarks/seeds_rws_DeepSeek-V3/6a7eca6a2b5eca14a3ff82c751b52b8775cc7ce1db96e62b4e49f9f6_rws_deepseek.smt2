@@ -3,7 +3,7 @@
 ; Focus: Key-value pair and INI file processing
 ; Delimiters: '=', ':', '\n', '[', ']'
 
-(set-logic QF_S) ; Quantifier-free strings
+(set-logic QF_SLIA) ; Quantifier-free strings
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -128,5 +128,4 @@
 (assert (not (= timeout_value ""))) ; Must not be empty
 
 (check-sat)
-(get-model)
 (exit)

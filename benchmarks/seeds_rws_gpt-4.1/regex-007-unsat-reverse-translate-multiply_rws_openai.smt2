@@ -2,7 +2,7 @@
 ; Delimiters: '://', '/', ':', '?', '&'
 ; Focus: protocol validation, host structure, path segments
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the input URL string
 (declare-fun url () String)
@@ -98,24 +98,8 @@
 ; ; Example: url = "https://my.example.com/api/v1/resource?foo=bar"
 
 (check-sat)
-(get-model)
 
-; UNSAT scenario: Host starts with a dot (invalid)
-(push)
-(assert (= (str.at host 0) "."))
-(check-sat)
-(pop)
 
-; UNSAT scenario: Protocol is invalid (not http/https)
-(push)
-(assert (not valid_protocol))
-(check-sat)
-(pop)
 
-; UNSAT scenario: Path does not start with 'api'
-(push)
-(assert (not (str.prefixof "api" first_path_segment)))
-(check-sat)
-(pop)
 
 (exit)

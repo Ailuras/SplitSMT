@@ -2,7 +2,7 @@
 ; Delimiters: '.', '-', ':'
 ; ; Focus: segment count, base64 validation, signature checking
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declarations for token strings
 (declare-fun jwt_token () String)

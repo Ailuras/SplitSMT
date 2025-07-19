@@ -79,19 +79,9 @@
 (assert (>= (str.len api_secret) 16))
 
 ; Unsatisfiable constraint combinations
-(push)
 ; JWT cannot have 4 parts
 (assert (= (str.num_splits jwt_token dot) 4))
 (check-sat) ; should be unsat
-(pop)
 
-(push)
-; API key with empty secret
-(assert (= (str.len api_secret) 0))
-(check-sat) ; should be unsat
-(pop)
 
-; ; Main satisfiable check
-(check-sat)
-(get-model)
 (exit)

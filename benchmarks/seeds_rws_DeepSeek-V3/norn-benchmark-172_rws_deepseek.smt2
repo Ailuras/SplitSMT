@@ -92,19 +92,8 @@
  (str.contains path "admin"))))
 
 ; ; Satisfiable example constraints
-(push)
 (assert (= full_url "https://example.com:8080/api/users?name=john&age=30"))
 (check-sat)
-(get-model)
-(pop)
 
-; ; Unsatisfiable example (invalid protocol)
-(push)
-(assert (= full_url "invalid://example.com/path"))
-(check-sat)
-(pop)
 
-; ; Final check
-(check-sat)
-(get-model)
 (exit)

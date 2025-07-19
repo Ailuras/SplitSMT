@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for common URL components
@@ -83,5 +83,4 @@
 ;(assert (= protocol "ftp")) ; Uncomment to make unsatisfiable
 
 (check-sat)
-(get-model)
 (exit)

@@ -49,18 +49,5 @@
 
 (check-sat)
 
-; ; Example 2: Unsatisfiable constraints
-(push)
-; Change URL to a non-HTTPS protocol, but require protocol to be "https"
-(assert (= url "ftp://example.org/abc/def"))
-(assert (= protocol "https"))
-; Host must contain at least one "."
-(assert (str.contains host "."))
-; The first path segment should be "abc"
-(assert (= first_path_segment "abc"))
-; There should be exactly 2 path segments ("abc", "def")
-(assert (= num_path_segments 2))
-(check-sat)
-(pop)
 
 (exit)

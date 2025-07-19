@@ -1,5 +1,5 @@
 (set-info :status unknown)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Configuration Parsing: Key-value pair and INI file processing
 ; Delimiters: =, :, \n, [, ]

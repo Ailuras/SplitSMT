@@ -2,7 +2,7 @@
 ; Delimiters used: ' ', ':', '-', '|', '[', ']'
 ; ; Focus: timestamp format, log level validation, message extraction
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; ; Example log entry format:
 ; [2024-06-01 12:34:56] | INFO | Application started
@@ -77,22 +77,6 @@
 
 (check-sat)
 
-; Unsatisfiable instance: log level is invalid
-(push)
-(assert
- (not (= log_entry "[2024-06-01 12:34:56] | DEBUG | Application started"))
-)
-; This should be unsat because "DEBUG" is not a valid log level
-(check-sat)
-(pop)
 
-; Unsatisfiable instance: timestamp format is wrong (missing seconds)
-(push)
-(assert
- (not (= log_entry "[2024-06-01 12:34] | INFO | Application started"))
-)
-; This should be unsat because timestamp is not 19 characters
-(check-sat)
-(pop)
 
 (exit)

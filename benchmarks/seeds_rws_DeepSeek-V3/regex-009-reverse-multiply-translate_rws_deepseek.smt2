@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -89,14 +89,9 @@
 (assert (>= (str.to_int year_str) 2020))
 
 ; Unsatisfiable constraint combination for testing
-(push)
 (assert (= log_level "INFO"))
 (assert (str.contains message "critical error"))
 (assert (not (str.contains message "error"))) ; This makes it unsat
 (check-sat)
-(pop)
 
-; ; Main satisfiable check
-(check-sat)
-(get-model)
 (exit)

@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for JWT and API key validation
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants
 (declare-const jwt String)
@@ -74,5 +74,4 @@
 )))
 
 (check-sat)
-(get-model)
 (exit)

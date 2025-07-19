@@ -1,0 +1,1052 @@
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2417973)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2417974)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2417975)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2417977)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2417979)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2417981)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2417983)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2417985)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2417987)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2417990)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2417992)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2417997)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2418000)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2418003)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2418009)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2418014)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2418019)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2418022)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2418027)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2418034)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 99
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 5, UNSAT: 59, UNKNOWN: 23, UNCLEAR: 12
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 90.04s
+[0;34m[INFO][0m Average time: .900s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_gpt-4.1_ext_z3.log
+Excel report saved to: charts/results_seeds_cso_gpt-4.1_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    99
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNSAT      59
+UNKNOWN    23
+UNCLEAR    12
+SAT         5
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.406s (64 cases)
+Max solving time (SAT/UNSAT only): 15.565s
+Min solving time (SAT/UNSAT only): 0.046s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2425187)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2425188)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2425189)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2425191)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2425193)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2425195)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2425197)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2425199)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2425201)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2425204)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2425206)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2425211)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2425213)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2425215)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2425218)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2425221)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2425225)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2425227)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2425231)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2425234)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 99
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 10, UNSAT: 47, UNKNOWN: 30, UNCLEAR: 12
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 91.83s
+[0;34m[INFO][0m Average time: .918s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_gpt-4.1_ext_cvc5.log
+Excel report saved to: charts/results_seeds_cso_gpt-4.1_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    99
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNSAT      47
+UNKNOWN    30
+UNCLEAR    12
+SAT        10
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 1.059s (57 cases)
+Max solving time (SAT/UNSAT only): 29.294s
+Min solving time (SAT/UNSAT only): 0.034s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2432227)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2432228)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2432229)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2432231)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2432233)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2432235)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2432237)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2432239)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2432241)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2432244)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2432246)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2432250)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2432254)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2432257)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2432260)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2432263)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2432266)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2432273)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2432276)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2432283)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 99
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 5, UNSAT: 41, UNKNOWN: 41, UNCLEAR: 12
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 95.16s
+[0;34m[INFO][0m Average time: .951s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_gpt-4.1_ext_ostrich.log
+Excel report saved to: charts/results_seeds_cso_gpt-4.1_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    99
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNSAT      41
+UNKNOWN    41
+UNCLEAR    12
+SAT         5
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 3.588s (46 cases)
+Max solving time (SAT/UNSAT only): 13.058s
+Min solving time (SAT/UNSAT only): 1.324s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2447971)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2447972)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2447973)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2447975)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2447977)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2447979)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2447981)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2447983)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2447985)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2447987)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2447990)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2447993)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2447996)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2447998)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2448003)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2448005)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2448008)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2448011)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2448014)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2448021)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 99
+[1;33m[WARNING][0m Timeouts: 1
+[0;34m[INFO][0m SAT: 8, UNSAT: 57, UNKNOWN: 22, UNCLEAR: 12
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 91.87s
+[0;34m[INFO][0m Average time: .918s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_gpt-4.1_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_cso_gpt-4.1_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    99
+TIMEOUT     1
+
+SAT results breakdown:
+sat_result
+UNSAT      57
+UNKNOWN    22
+UNCLEAR    12
+SAT         8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.830s (65 cases)
+Max solving time (SAT/UNSAT only): 19.961s
+Min solving time (SAT/UNSAT only): 0.047s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2455016)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2455017)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2455018)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2455020)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2455022)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2455024)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2455026)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2455028)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2455031)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2455032)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2455037)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2455040)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2455043)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2455048)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2455052)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2455054)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2455059)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2455064)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2455068)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2455073)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 13, UNSAT: 20, UNKNOWN: 28, UNCLEAR: 39
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.36s
+[0;34m[INFO][0m Average time: .603s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_gpt-4.1_ext_z3.log
+Excel report saved to: charts/results_seeds_rws_gpt-4.1_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNCLEAR    39
+UNKNOWN    28
+UNSAT      20
+SAT        13
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.100s (33 cases)
+Max solving time (SAT/UNSAT only): 0.820s
+Min solving time (SAT/UNSAT only): 0.045s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2460431)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2460432)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2460433)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2460435)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2460437)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2460439)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2460441)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2460443)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2460447)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2460449)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2460452)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2460455)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2460457)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2460463)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2460466)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2460468)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2460472)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2460476)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2460482)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2460488)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 8, UNSAT: 17, UNKNOWN: 36, UNCLEAR: 39
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 33.26s
+[0;34m[INFO][0m Average time: .332s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_gpt-4.1_ext_cvc5.log
+Excel report saved to: charts/results_seeds_rws_gpt-4.1_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNCLEAR    39
+UNKNOWN    36
+UNSAT      17
+SAT         8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 1.830s (25 cases)
+Max solving time (SAT/UNSAT only): 15.346s
+Min solving time (SAT/UNSAT only): 0.037s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2464433)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2464434)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2464435)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2464437)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2464439)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2464441)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2464443)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2464445)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2464448)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2464449)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2464453)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2464456)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2464461)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2464463)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2464464)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2464468)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2464472)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2464476)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2464478)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2464483)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 2, UNSAT: 14, UNKNOWN: 45, UNCLEAR: 39
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 64.58s
+[0;34m[INFO][0m Average time: .645s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_gpt-4.1_ext_ostrich.log
+Excel report saved to: charts/results_seeds_rws_gpt-4.1_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNKNOWN    45
+UNCLEAR    39
+UNSAT      14
+SAT         2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 2.764s (16 cases)
+Max solving time (SAT/UNSAT only): 7.325s
+Min solving time (SAT/UNSAT only): 1.431s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2474014)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2474015)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2474016)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2474018)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2474020)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2474022)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2474024)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2474026)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2474028)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2474030)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2474033)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2474036)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2474039)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2474042)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2474043)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2474047)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2474050)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2474057)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2474061)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2474066)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 32, UNSAT: 20, UNKNOWN: 9, UNCLEAR: 39
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.60s
+[0;34m[INFO][0m Average time: .605s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_gpt-4.1_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_rws_gpt-4.1_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNCLEAR    39
+SAT        32
+UNSAT      20
+UNKNOWN     9
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.498s (52 cases)
+Max solving time (SAT/UNSAT only): 20.860s
+Min solving time (SAT/UNSAT only): 0.046s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2479352)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2479353)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2479354)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2479356)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2479358)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2479360)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2479362)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2479364)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2479366)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2479368)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2479370)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2479375)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2479377)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2479381)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2479384)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2479385)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2479390)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2479393)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2479395)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2479399)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 2, UNSAT: 62, UNKNOWN: 32, UNCLEAR: 4
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.36s
+[0;34m[INFO][0m Average time: .603s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_gpt-4.1_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_gpt-4.1_ext_z3.log
+Excel report saved to: charts/results_seeds_sfc_gpt-4.1_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      62
+UNKNOWN    32
+UNCLEAR     4
+SAT         2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.399s (64 cases)
+Max solving time (SAT/UNSAT only): 19.935s
+Min solving time (SAT/UNSAT only): 0.046s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2484969)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2484970)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2484972)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2484974)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2484975)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2484977)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2484979)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2484981)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2484983)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2484986)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2484988)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2484991)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2484994)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2484996)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2484998)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2485003)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2485006)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2485010)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2485013)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2485017)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 26, UNSAT: 61, UNKNOWN: 9, UNCLEAR: 4
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 64.65s
+[0;34m[INFO][0m Average time: .646s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_gpt-4.1_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_gpt-4.1_ext_cvc5.log
+Excel report saved to: charts/results_seeds_sfc_gpt-4.1_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      61
+SAT        26
+UNKNOWN     9
+UNCLEAR     4
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.549s (87 cases)
+Max solving time (SAT/UNSAT only): 16.939s
+Min solving time (SAT/UNSAT only): 0.034s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2490665)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2490666)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2490667)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2490669)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2490671)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2490673)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2490675)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2490677)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2490680)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2490683)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2490685)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2490688)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2490690)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2490694)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2490697)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2490700)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2490704)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2490707)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2490710)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2490713)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 22, UNSAT: 59, UNKNOWN: 15, UNCLEAR: 4
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 95.82s
+[0;34m[INFO][0m Average time: .958s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_gpt-4.1_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_gpt-4.1_ext_ostrich.log
+Excel report saved to: charts/results_seeds_sfc_gpt-4.1_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      59
+SAT        22
+UNKNOWN    15
+UNCLEAR     4
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 4.182s (81 cases)
+Max solving time (SAT/UNSAT only): 18.479s
+Min solving time (SAT/UNSAT only): 1.391s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_gpt-4.1
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_gpt-4.1...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2509430)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2509431)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2509432)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2509434)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2509436)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2509438)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2509440)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2509442)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2509444)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2509446)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2509448)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2509453)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2509456)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2509459)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2509463)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2509466)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2509470)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2509475)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2509479)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2509482)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_gpt-4.1_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 31, UNSAT: 63, UNKNOWN: 2, UNCLEAR: 4
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.61s
+[0;34m[INFO][0m Average time: .606s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_gpt-4.1_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_gpt-4.1_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_sfc_gpt-4.1_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      63
+SAT        31
+UNCLEAR     4
+UNKNOWN     2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.360s (94 cases)
+Max solving time (SAT/UNSAT only): 22.991s
+Min solving time (SAT/UNSAT only): 0.044s

@@ -1,6 +1,6 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
 ; ; This example models parsing of log entries with format: [TIMESTAMP] LEVEL: MESSAGE
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const space String)
@@ -71,5 +71,4 @@
 
 ; ; Check satisfiability of constraints
 (check-sat)
-(get-value (log_entry timestamp log_level message))
 (exit)

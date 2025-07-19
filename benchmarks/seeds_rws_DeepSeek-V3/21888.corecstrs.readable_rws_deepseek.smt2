@@ -90,12 +90,6 @@
 (assert (not (= (str.num_splits bad_jwt dot) 3)))
 
 (check-sat)
-(get-model)
 
-; ; Another check for unsatisfiable case
-(push 1)
-(assert (= (str.num_splits api_key dash) 3)) ; Should be 4
-(check-sat)
-(pop 1)
 
 (exit)

@@ -108,12 +108,6 @@
 
 ; ; Satisfiable check for good log entry
 (check-sat)
-(get-model)
 
-; ; Unsatisfiable check for bad log entry (should be unsat, as log level isn't allowed)
-(push)
-(assert (= log_entry_badlevel log_entry))
-(check-sat)
-(pop)
 
 (exit)

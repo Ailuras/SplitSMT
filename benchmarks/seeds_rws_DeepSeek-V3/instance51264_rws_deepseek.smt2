@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 file for JWT and API key validation
-(set-logic QF_S) ; Quantifier-free strings
+(set-logic QF_SLIA) ; Quantifier-free strings
 (set-option :produce-models true)
 
 ; Declare string sort and operations
@@ -44,23 +44,8 @@
 (assert (not (= secret "")))
 
 ; Unsatisfiable case - invalid JWT segment count
-(push)
 (assert (= (str.num_splits token dot) 2)) ; Should be 3
 (check-sat) ; Should be UNSAT
-(pop)
 
-; Satisfiable case - valid JWT and API key
-(push)
-(assert (= (str.num_splits token dot) 3))
-(assert (str.is_base64 (str.split_at token dot 0)))
-(assert (str.is_base64 (str.split_at token dot 1)))
-(assert (> (str.len (str.split_at token dot 2)) 0))
-(assert (= (str.num_splits api_key colon) 3))
-(check-sat) ; Should be SAT
-(get-model)
-(pop)
 
-; ; Final check
-(check-sat)
-(get-model)
 (exit)

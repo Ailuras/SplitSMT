@@ -2,7 +2,7 @@
 ; ; Scenario: Extract timestamp, log level, and message from typical log entries
 ; Delimiters used: space (' '), colon (':'), dash ('-'), pipe ('|'), left bracket ('['), right bracket (']')
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the log entry string variable
 (declare-fun log_entry () String)

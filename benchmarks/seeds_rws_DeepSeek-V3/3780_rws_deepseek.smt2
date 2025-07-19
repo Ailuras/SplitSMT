@@ -62,5 +62,4 @@
 (assert (not (str.contains status delimiter)))
 
 (check-sat)
-(get-model)
 (exit)

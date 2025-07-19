@@ -65,14 +65,8 @@
 (assert (distinct jwt_signature api_key_secret))
 
 ; Unsatisfiable scenario: JWT header and payload are equal (not allowed in real JWTs)
-(push)
  (assert (= jwt_header jwt_payload))
  (check-sat)
-(pop)
 
-; Satisfiable scenario: JWT header and payload are distinct, API key id is "user123"
-(assert (not (= jwt_header jwt_payload)))
-(assert (= api_key_id "user123"))
-(check-sat)
 
 (exit)

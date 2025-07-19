@@ -3,7 +3,7 @@
 ; Focus: key validation, value extraction, section handling
 |)
 (set-info :smt-lib-version 2.6)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for configuration content
 (declare-const config_line string)

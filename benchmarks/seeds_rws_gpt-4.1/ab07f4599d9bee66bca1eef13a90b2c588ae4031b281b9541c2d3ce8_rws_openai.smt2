@@ -77,16 +77,6 @@
 ; ; Check if the constraints are satisfiable (should be SAT)
 (check-sat)
 
-; Unsatisfiable scenario: key contains illegal character ']'
-(push)
-(assert (= line1 "us]ername=admin"))
-(check-sat)
-(pop)
 
-; Unsatisfiable scenario: section name contains space
-(push)
-(assert (= section1 "[my section]\nhost=localhost\n"))
-(check-sat)
-(pop)
 
 (exit)

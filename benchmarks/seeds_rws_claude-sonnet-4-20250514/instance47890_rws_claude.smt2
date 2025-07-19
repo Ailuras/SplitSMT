@@ -1,6 +1,6 @@
 (set-info :source |Configuration Parsing: Key-value pair and INI file processing|)
 (set-info :category "industrial")
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Variable declarations for configuration parsing
 (declare-fun config_line () String)

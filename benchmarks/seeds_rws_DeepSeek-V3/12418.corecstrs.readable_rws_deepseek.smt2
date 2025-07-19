@@ -66,8 +66,5 @@
 ; ; Check if both tokens can satisfy all constraints
 (check-sat)
 
-; If satisfiable, get the model values
-(get-value (jwt_token))
-(get-value (api_key))
 
 (exit)

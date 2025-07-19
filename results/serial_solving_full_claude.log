@@ -1,0 +1,1063 @@
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2524760)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2524761)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2524762)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2524764)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2524766)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2524768)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2524770)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2524772)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2524775)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2524778)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2524781)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2524784)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2524787)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2524790)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2524795)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2524797)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2524799)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2524802)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2524808)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2524811)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 50, UNSAT: 48, UNKNOWN: 0, UNCLEAR: 2
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 1.95s
+[0;34m[INFO][0m Average time: .019s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3.log
+Excel report saved to: charts/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+SAT        50
+UNSAT      48
+UNCLEAR     2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.102s (98 cases)
+Max solving time (SAT/UNSAT only): 1.533s
+Min solving time (SAT/UNSAT only): 0.040s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2527346)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2527347)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2527348)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2527350)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2527352)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2527354)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2527356)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2527358)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2527361)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2527362)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2527365)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2527367)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2527372)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2527375)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2527377)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2527382)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2527385)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2527386)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2527391)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2527395)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 47, UNSAT: 46, UNKNOWN: 5, UNCLEAR: 2
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 30.92s
+[0;34m[INFO][0m Average time: .309s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5.log
+Excel report saved to: charts/results_seeds_cso_claude-sonnet-4-20250514_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+SAT        47
+UNSAT      46
+UNKNOWN     5
+UNCLEAR     2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.067s (93 cases)
+Max solving time (SAT/UNSAT only): 0.635s
+Min solving time (SAT/UNSAT only): 0.028s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2531367)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2531368)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2531369)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2531372)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2531373)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2531375)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2531376)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2531379)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2531381)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2531384)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2531386)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2531389)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2531392)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2531395)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2531397)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2531403)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2531405)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2531410)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2531415)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2531418)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 46, UNSAT: 44, UNKNOWN: 8, UNCLEAR: 2
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 67.77s
+[0;34m[INFO][0m Average time: .677s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich.log
+Excel report saved to: charts/results_seeds_cso_claude-sonnet-4-20250514_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+SAT        46
+UNSAT      44
+UNKNOWN     8
+UNCLEAR     2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 2.518s (90 cases)
+Max solving time (SAT/UNSAT only): 6.602s
+Min solving time (SAT/UNSAT only): 1.047s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_cso_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_cso_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2547304)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2547305)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2547306)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2547308)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2547310)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2547312)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2547314)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2547316)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2547320)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2547323)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2547326)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2547330)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2547332)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2547335)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2547339)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2547343)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2547346)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2547349)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2547351)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2547355)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 50, UNSAT: 48, UNKNOWN: 0, UNCLEAR: 2
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 0.99s
+[0;34m[INFO][0m Average time: .009s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_cso_claude-sonnet-4-20250514_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+SAT        50
+UNSAT      48
+UNCLEAR     2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.084s (98 cases)
+Max solving time (SAT/UNSAT only): 0.645s
+Min solving time (SAT/UNSAT only): 0.040s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 98 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2549800)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2549801)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2549802)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2549804)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2549806)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2549808)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2549810)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2549812)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2549814)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2549816)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2549820)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2549823)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2549825)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2549826)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2549829)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2549834)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2549839)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2549844)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2549848)
+[0;34m[INFO][0m Started batch 19 with 3 files (PID: 2549850)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 3 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+./scripts/solve/solve_batch.sh: line 134: 2553333 Segmentation fault      timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" --solver "$SOLVER_TYPE" > "$temp_output" 2>&1
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 98
+[0;32m[SUCCESS][0m Successful: 94
+[1;33m[WARNING][0m Timeouts: 3
+[1;33m[WARNING][0m Errors: 1
+[0;34m[INFO][0m SAT: 0, UNSAT: 16, UNKNOWN: 37, UNCLEAR: 41
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 102.34s
+[0;34m[INFO][0m Average time: 1.044s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3.log
+Excel report saved to: charts/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 98
+Results breakdown:
+result
+SUCCESS    94
+TIMEOUT     3
+ERROR       1
+
+SAT results breakdown:
+sat_result
+UNCLEAR    41
+UNKNOWN    37
+UNSAT      16
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.085s (16 cases)
+Max solving time (SAT/UNSAT only): 0.177s
+Min solving time (SAT/UNSAT only): 0.056s
+[1;33m[WARNING][0m Completed with 1 errors (1.02% error rate)
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 98 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2557470)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2557471)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2557472)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2557474)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2557476)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2557478)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2557480)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2557482)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2557485)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2557486)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2557490)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2557492)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2557497)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2557499)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2557503)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2557504)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2557510)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2557515)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2557517)
+[0;34m[INFO][0m Started batch 19 with 3 files (PID: 2557522)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 3 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+./scripts/solve/solve_batch.sh: line 134: 2558527 Segmentation fault      timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" --solver "$SOLVER_TYPE" > "$temp_output" 2>&1
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 98
+[0;32m[SUCCESS][0m Successful: 94
+[1;33m[WARNING][0m Timeouts: 3
+[1;33m[WARNING][0m Errors: 1
+[0;34m[INFO][0m SAT: 2, UNSAT: 14, UNKNOWN: 37, UNCLEAR: 41
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 122.28s
+[0;34m[INFO][0m Average time: 1.247s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5.log
+Excel report saved to: charts/results_seeds_rws_claude-sonnet-4-20250514_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 98
+Results breakdown:
+result
+SUCCESS    94
+TIMEOUT     3
+ERROR       1
+
+SAT results breakdown:
+sat_result
+UNCLEAR    41
+UNKNOWN    37
+UNSAT      14
+SAT         2
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 1.565s (16 cases)
+Max solving time (SAT/UNSAT only): 21.468s
+Min solving time (SAT/UNSAT only): 0.056s
+[1;33m[WARNING][0m Completed with 1 errors (1.02% error rate)
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 98 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2565932)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2565933)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2565934)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2565936)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2565938)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2565940)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2565942)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2565944)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2565945)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2565946)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2565950)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2565954)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2565957)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2565959)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2565961)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2565969)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2565972)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2565977)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2565979)
+[0;34m[INFO][0m Started batch 19 with 3 files (PID: 2565982)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 3 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+./scripts/solve/solve_batch.sh: line 134: 2571512 Segmentation fault      timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" --solver "$SOLVER_TYPE" > "$temp_output" 2>&1
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 98
+[0;32m[SUCCESS][0m Successful: 94
+[1;33m[WARNING][0m Timeouts: 3
+[1;33m[WARNING][0m Errors: 1
+[0;34m[INFO][0m SAT: 0, UNSAT: 13, UNKNOWN: 40, UNCLEAR: 41
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 123.95s
+[0;34m[INFO][0m Average time: 1.264s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich.log
+Excel report saved to: charts/results_seeds_rws_claude-sonnet-4-20250514_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 98
+Results breakdown:
+result
+SUCCESS    94
+TIMEOUT     3
+ERROR       1
+
+SAT results breakdown:
+sat_result
+UNCLEAR    41
+UNKNOWN    40
+UNSAT      13
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 3.173s (13 cases)
+Max solving time (SAT/UNSAT only): 5.048s
+Min solving time (SAT/UNSAT only): 1.668s
+[1;33m[WARNING][0m Completed with 1 errors (1.02% error rate)
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_rws_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_rws_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 98 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2578151)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2578152)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2578154)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2578156)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2578158)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2578160)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2578162)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2578164)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2578166)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2578167)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2578171)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2578173)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2578178)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2578181)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2578185)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2578193)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2578197)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2578200)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2578204)
+[0;34m[INFO][0m Started batch 19 with 3 files (PID: 2578207)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 19] Completed: 3 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+./scripts/solve/solve_batch.sh: line 134: 2582950 Segmentation fault      timeout "${TIMEOUT}s" "$SOLVER_SCRIPT" "$file" --solver "$SOLVER_TYPE" > "$temp_output" 2>&1
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 98
+[0;32m[SUCCESS][0m Successful: 94
+[1;33m[WARNING][0m Timeouts: 3
+[1;33m[WARNING][0m Errors: 1
+[0;34m[INFO][0m SAT: 20, UNSAT: 17, UNKNOWN: 16, UNCLEAR: 41
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 92.93s
+[0;34m[INFO][0m Average time: .948s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_rws_claude-sonnet-4-20250514_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 98
+Results breakdown:
+result
+SUCCESS    94
+TIMEOUT     3
+ERROR       1
+
+SAT results breakdown:
+sat_result
+UNCLEAR    41
+SAT        20
+UNSAT      17
+UNKNOWN    16
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 1.540s (37 cases)
+Max solving time (SAT/UNSAT only): 19.043s
+Min solving time (SAT/UNSAT only): 0.059s
+[1;33m[WARNING][0m Completed with 1 errors (1.02% error rate)
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2585082)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2585083)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2585084)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2585086)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2585088)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2585090)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2585092)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2585094)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2585096)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2585098)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2585101)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2585104)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2585107)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2585111)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2585113)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2585116)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2585120)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2585123)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2585127)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2585131)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 0, UNSAT: 67, UNKNOWN: 25, UNCLEAR: 8
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.85s
+[0;34m[INFO][0m Average time: .608s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3.log
+Excel report saved to: charts/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      67
+UNKNOWN    25
+UNCLEAR     8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.250s (67 cases)
+Max solving time (SAT/UNSAT only): 8.515s
+Min solving time (SAT/UNSAT only): 0.050s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-cvc5
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2590557)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2590558)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2590559)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2590561)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2590563)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2590565)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2590567)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2590569)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2590572)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2590573)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2590576)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2590578)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2590580)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2590586)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2590590)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2590592)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2590595)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2590597)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2590600)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2590609)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 13, UNSAT: 67, UNKNOWN: 12, UNCLEAR: 8
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.61s
+[0;34m[INFO][0m Average time: .606s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5.log
+Excel report saved to: charts/results_seeds_sfc_claude-sonnet-4-20250514_ext_cvc5_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      67
+SAT        13
+UNKNOWN    12
+UNCLEAR     8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.603s (80 cases)
+Max solving time (SAT/UNSAT only): 17.077s
+Min solving time (SAT/UNSAT only): 0.037s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-ostrich
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2596173)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2596174)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2596175)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2596177)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2596179)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2596181)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2596183)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2596185)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2596187)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2596189)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2596193)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2596196)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2596200)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2596203)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2596206)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2596210)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2596214)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2596215)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2596220)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2596223)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 12, UNSAT: 61, UNKNOWN: 19, UNCLEAR: 8
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 93.78s
+[0;34m[INFO][0m Average time: .937s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich.log
+Excel report saved to: charts/results_seeds_sfc_claude-sonnet-4-20250514_ext_ostrich_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      61
+UNKNOWN    19
+SAT        12
+UNCLEAR     8
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 4.935s (73 cases)
+Max solving time (SAT/UNSAT only): 25.951s
+Min solving time (SAT/UNSAT only): 1.271s
+[0;34m[INFO][0m === SMT-LIB Files Parallel Solver ===
+[0;34m[INFO][0m Input directory: benchmarks/seeds_sfc_claude-sonnet-4-20250514
+[0;34m[INFO][0m Output directory: results
+[0;34m[INFO][0m Output file: results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Solver script: ./run_strprocessor.sh
+[0;34m[INFO][0m Solver type: ext-z3-noodler
+[0;34m[INFO][0m Timeout: 60s
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Task name: solve
+[0;34m[INFO][0m Creating output directory...
+[0;34m[INFO][0m Scanning for SMT2 files in benchmarks/seeds_sfc_claude-sonnet-4-20250514...
+[0;34m[INFO][0m Found 100 SMT2 files
+[0;34m[INFO][0m Files per batch: 5
+[0;34m[INFO][0m Created temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m Starting parallel processing with 20 processes...
+[0;34m[INFO][0m Started batch 0 with 5 files (PID: 2614938)
+[0;34m[INFO][0m Started batch 1 with 5 files (PID: 2614939)
+[0;34m[INFO][0m Started batch 2 with 5 files (PID: 2614941)
+[0;34m[INFO][0m Started batch 3 with 5 files (PID: 2614943)
+[0;34m[INFO][0m Started batch 4 with 5 files (PID: 2614945)
+[0;34m[INFO][0m Started batch 5 with 5 files (PID: 2614946)
+[0;34m[INFO][0m Started batch 6 with 5 files (PID: 2614949)
+[0;34m[INFO][0m Started batch 7 with 5 files (PID: 2614952)
+[0;34m[INFO][0m Started batch 8 with 5 files (PID: 2614955)
+[0;34m[INFO][0m Started batch 9 with 5 files (PID: 2614957)
+[0;34m[INFO][0m Started batch 10 with 5 files (PID: 2614962)
+[0;34m[INFO][0m Started batch 11 with 5 files (PID: 2614964)
+[0;34m[INFO][0m Started batch 12 with 5 files (PID: 2614970)
+[0;34m[INFO][0m Started batch 13 with 5 files (PID: 2614973)
+[0;34m[INFO][0m Started batch 14 with 5 files (PID: 2614977)
+[0;34m[INFO][0m Started batch 15 with 5 files (PID: 2614981)
+[0;34m[INFO][0m Started batch 16 with 5 files (PID: 2614985)
+[0;34m[INFO][0m Started batch 17 with 5 files (PID: 2614992)
+[0;34m[INFO][0m Started batch 18 with 5 files (PID: 2614995)
+[0;34m[INFO][0m Started batch 19 with 5 files (PID: 2614998)
+[0;34m[INFO][0m Waiting for all batches to complete...
+[0;34m[INFO][0m [Batch 1] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 12] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 7] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 9] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 13] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 11] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 2] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 4] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 5] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 10] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 6] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 8] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 19] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 14] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 16] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 0] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 18] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 15] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 3] Completed: 5 files processed
+[0;34m[INFO][0m [Batch 17] Completed: 5 files processed
+[0;34m[INFO][0m All batches completed. Merging results...
+[0;34m[INFO][0m Cleaning up temporary batch directory: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler_batches
+[0;34m[INFO][0m === Parallel Solving Completed ===
+[0;32m[SUCCESS][0m Total files processed: 100
+[0;32m[SUCCESS][0m Successful: 100
+[0;34m[INFO][0m SAT: 19, UNSAT: 68, UNKNOWN: 5, UNCLEAR: 8
+[0;34m[INFO][0m Parallel processes: 20
+[0;34m[INFO][0m Total time: 60.94s
+[0;34m[INFO][0m Average time: .609s per file
+[0;34m[INFO][0m Results saved in: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler.log
+[0;34m[INFO][0m Generating Excel analysis report...
+Analyzing log file: results/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler.log
+Excel report saved to: charts/results_seeds_sfc_claude-sonnet-4-20250514_ext_z3_noodler_analysis.xlsx
+
+Summary Statistics:
+Total files: 100
+Results breakdown:
+result
+SUCCESS    100
+
+SAT results breakdown:
+sat_result
+UNSAT      68
+SAT        19
+UNCLEAR     8
+UNKNOWN     5
+
+Timing statistics:
+Average solving time (SAT/UNSAT only): 0.391s (87 cases)
+Max solving time (SAT/UNSAT only): 9.760s
+Min solving time (SAT/UNSAT only): 0.053s

@@ -96,45 +96,12 @@
 (assert (= (str.len second) 2))
 
 (check-sat)
-; ---------------------------------------------------------
-; Now, Unsatisfiable Case: log level is not valid
-(reset)
-(set-logic ALL)
 
-(declare-fun log_entry2 () String)
 
-(declare-fun left_bracket_idx2 () Int)
-(declare-fun right_bracket_idx2 () Int)
-(assert (= left_bracket_idx2 (str.indexof log_entry2 "[" 0)))
-(assert (= right_bracket_idx2 (str.indexof log_entry2 "]" 0)))
 
-(declare-fun after_left_bracket2 () String)
-(assert (= after_left_bracket2 (str.split_at log_entry2 "[" 1)))
-(declare-fun timestamp2 () String)
-(assert (= timestamp2 (str.split_at after_left_bracket2 "]" 0)))
 
-(declare-fun after_first_pipe2 () String)
-(assert (= after_first_pipe2 (str.split_at log_entry2 "|" 1)))
-(declare-fun log_level_with_space2 () String)
-(assert (= log_level_with_space2 (str.split_at after_first_pipe2 " " 1)))
-(declare-fun log_level2 () String)
-(assert (= log_level2 (str.split_at log_level_with_space2 " " 0)))
 
-(declare-fun message_with_space2 () String)
-(assert (= message_with_space2 (str.split_at log_entry2 "|" 2)))
-(declare-fun message2 () String)
-(assert (= message2 (str.replace message_with_space2 " " "")))
 
-(define-fun valid_log_level2 () Bool
- (or (= log_level2 "INFO")
- (= log_level2 "WARN")
- (= log_level2 "ERROR")
- (= log_level2 "DEBUG"))
-)
 
-; Unsatisfiable: log level is "TRACE", which is not valid
-(assert (= log_entry2 "[2023-06-15 13:45:22] | TRACE | System started successfully"))
-(assert (not valid_log_level2))
 
-(check-sat)
 (exit)

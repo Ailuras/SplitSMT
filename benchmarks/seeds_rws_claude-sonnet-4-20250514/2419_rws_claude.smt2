@@ -1,6 +1,6 @@
 (set-info :source |URL Parsing with Protocol, Host, and Path Extraction|)
 (set-info :category "industrial")
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Variable declarations for URL components
 (declare-fun url () String)

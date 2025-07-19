@@ -1,6 +1,6 @@
 (set-info :source |Configuration Parsing: Key-value pair and INI file processing|)
 (set-info :smt-lib-version 2.6)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for configuration parsing
 (declare-fun config_line1 () String)

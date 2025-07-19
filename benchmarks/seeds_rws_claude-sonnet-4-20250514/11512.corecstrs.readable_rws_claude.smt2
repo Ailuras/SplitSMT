@@ -1,5 +1,5 @@
 (set-info :smt-lib-version 2.6)
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |Log Analysis: Log entry parsing with timestamp and level extraction|)
 (set-info :category "industrial")
 (set-info :status unknown)

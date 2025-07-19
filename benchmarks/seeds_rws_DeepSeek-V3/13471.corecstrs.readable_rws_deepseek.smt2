@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for URL parsing constraints
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const protocol_delim String) ; "://"
@@ -65,30 +65,10 @@
 
 ; ; Example constraints for testing
 ; Satisfiable case
-(push)
 (assert (= url "https://example.com:8080/path/to/resource?param=value"))
 (check-sat)
-(get-model)
-(pop)
 
-; Unsatisfiable case - invalid protocol
-(push)
-(assert (= url "invalid://example.com/path"))
-(check-sat)
-(pop)
 
-; Unsatisfiable case - empty host
-(push)
-(assert (= url "http:///path"))
-(check-sat)
-(pop)
 
-; Satisfiable case - minimal valid URL
-(push)
-(assert (= url "ftp://host.com"))
-(check-sat)
-(get-model)
-(pop)
 
-(check-sat)
 (exit)

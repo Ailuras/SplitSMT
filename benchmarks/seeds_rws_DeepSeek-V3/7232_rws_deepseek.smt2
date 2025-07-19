@@ -1,6 +1,6 @@
 ; Complete SMT-LIB2 file for URL parsing constraints
 ; Focuses on protocol validation, host structure, and path segments
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for common URL components
 (declare-const url String)
@@ -65,5 +65,4 @@
 ; (assert (str.prefixof "https://" url))
 
 (check-sat)
-(get-model)
 (exit)

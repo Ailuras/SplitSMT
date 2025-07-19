@@ -1,6 +1,6 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
 ; Using standard string operations with fixed delimiters
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const space String)

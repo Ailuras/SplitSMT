@@ -2,7 +2,7 @@
 ; Delimiters used: '://', '/', ':', '?', '&'
 ; Focus: protocol validation, host structure, path segments
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the URL variable
 (declare-fun url () String)
@@ -83,12 +83,5 @@
 
 (check-sat)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Unsatisfiable scenario: Now require that protocol must be 'ftp' (which is not allowed above)
-(push)
-(assert (= protocol "ftp"))
-(check-sat)
-(pop)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (exit)

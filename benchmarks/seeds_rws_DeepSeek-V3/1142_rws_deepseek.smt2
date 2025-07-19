@@ -1,5 +1,5 @@
 ; SMT-LIB2 script for JWT and API key validation with split operations
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants and variables
 (declare-const jwt String)
@@ -57,29 +57,9 @@
 (assert (not (str.contains (str.split_at bad_api_key colon 0) "AKIA")))
 
 ; ; Check satisfiability of valid cases
-(push)
 (echo "Checking valid authentication cases")
 (check-sat)
-(get-model)
-(pop)
 
-; ; Check unsatisfiability of invalid cases
-(push)
-(echo "Checking invalid JWT case")
-(assert (and 
- (= (str.num_splits invalid_jwt dot) 2)
- (str.prefixof "eyJ" (str.split_at invalid_jwt dot 0))
-))
-(check-sat)
-(pop)
 
-(push)
-(echo "Checking invalid API key case")
-(assert (and
- (= (str.num_splits bad_api_key colon) 3)
- (str.contains (str.split_at bad_api_key colon 0) "INVALID")
-))
-(check-sat)
-(pop)
 
 (exit)

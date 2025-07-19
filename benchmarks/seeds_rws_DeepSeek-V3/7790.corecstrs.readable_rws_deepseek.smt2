@@ -1,6 +1,6 @@
 ; Complete SMT-LIB2 file for configuration parsing with key-value pairs and INI sections
 ; ; Focuses on key validation, value extraction, and section handling
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string constants for delimiters
 (declare-const eq_delim String) ; = for key-value pairs

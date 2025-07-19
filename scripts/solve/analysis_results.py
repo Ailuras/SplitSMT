@@ -12,6 +12,7 @@ Examples:
     # Analyze specific task datasets
     python scripts/solve/analysis_results.py --task top20_gh --results-dir results --output-file charts/top20_gh_analysis.xlsx
     python scripts/solve/analysis_results.py --task awesome --results-dir results --output-file charts/awesome_analysis.xlsx
+    python scripts/solve/analysis_results.py --task seeds --results-dir results --output-file charts/seeds_analysis.xlsx
     
     # Analyze all log files
     python scripts/solve/analysis_results.py --task ext --results-dir results --output-file charts/all_analysis.xlsx
@@ -233,21 +234,27 @@ def analyze_split_operations(content):
         "max_const_index": -1
     }
     
-    # Find all get_split_length calls (support both string literals and variables as delimiters)
-    length_pattern = r'\(get_split_length\s+(\S+)\s+("([^"]+)"|([a-zA-Z_]\w*))\s+(-?\d+|[a-zA-Z_]\w*)\)'
-    length_matches = re.findall(length_pattern, content)
-    split_info["get_split_length_count"] = len(length_matches)
+    # Find all str.num_splits calls
+    num_splits_pattern = r'\(str\.num_splits\s+(\S+)\s+("([^"]+)"|([a-zA-Z_]\w*))\)'
+    num_splits_matches = re.findall(num_splits_pattern, content)
+    split_info["get_split_length_count"] = len(num_splits_matches)
     
-    # Find all get_split_element calls (support both string literals and variables as delimiters)
-    element_pattern = r'\(get_split_element\s+(\S+)\s+("([^"]+)"|([a-zA-Z_]\w*))\s+(-?\d+|[a-zA-Z_]\w*)\s+(-?\d+|[a-zA-Z_]\w*)\)'
-    element_matches = re.findall(element_pattern, content)
-    split_info["get_split_element_count"] = len(element_matches)
+    # Find all str.split_at calls
+    split_at_pattern = r'\(str\.split_at\s+(\S+)\s+("([^"]+)"|([a-zA-Z_]\w*))\s+(-?\d+|[a-zA-Z_]\w*)\)'
+    split_at_matches = re.findall(split_at_pattern, content)
+    
+    # Find all str.split_rest calls
+    split_rest_pattern = r'\(str\.split_rest\s+(\S+)\s+("([^"]+)"|([a-zA-Z_]\w*))\s+(-?\d+|[a-zA-Z_]\w*)\)'
+    split_rest_matches = re.findall(split_rest_pattern, content)
+    
+    # Total count for split_at and split_rest
+    split_info["get_split_element_count"] = len(split_at_matches) + len(split_rest_matches)
     
     # Collect split groups and analyze separators
     all_separators = []
-    api_types = []
     
-    for var, delimiter_full, delimiter_str, delimiter_var, limit in length_matches:
+    # Process num_splits matches
+    for var, delimiter_full, delimiter_str, delimiter_var in num_splits_matches:
         # Determine actual delimiter value
         if delimiter_str:  # String literal
             delimiter = delimiter_str
@@ -257,18 +264,9 @@ def analyze_split_operations(content):
         key = (var, delimiter)
         split_info["split_groups"][key] = split_info["split_groups"].get(key, 0) + 1
         all_separators.append((delimiter, delimiter_var is not None and delimiter_var != ''))
-        
-        # Analyze API type
-        try:
-            limit_val = int(limit)
-            if limit_val == -1:
-                api_types.append("Normal")
-            else:  # limit_val >= 0, any non-negative value other than -1
-                api_types.append("Limit")
-        except ValueError:
-            api_types.append("Limit")  # Variable limit is considered as Limit
     
-    for var, delimiter_full, delimiter_str, delimiter_var, limit, index in element_matches:
+    # Process split_at matches
+    for var, delimiter_full, delimiter_str, delimiter_var, index in split_at_matches:
         # Determine actual delimiter value
         if delimiter_str:  # String literal
             delimiter = delimiter_str
@@ -279,15 +277,35 @@ def analyze_split_operations(content):
         split_info["split_groups"][key] = split_info["split_groups"].get(key, 0) + 1
         all_separators.append((delimiter, delimiter_var is not None and delimiter_var != ''))
         
-        # Analyze API type
+        # Analyze index type
         try:
-            limit_val = int(limit)
-            if limit_val == -1:
-                api_types.append("Normal")
-            else:  # limit_val >= 0, any non-negative value other than -1
-                api_types.append("Limit")
+            index_val = int(index)
+            split_info["index_CONST"] = 1
+            if split_info["max_const_index"] == -1 or index_val > split_info["max_const_index"]:
+                split_info["max_const_index"] = index_val
         except ValueError:
-            api_types.append("Limit")
+            split_info["index_VAR"] = 1
+    
+    # Process split_rest matches
+    for var, delimiter_full, delimiter_str, delimiter_var, index in split_rest_matches:
+        # Determine actual delimiter value
+        if delimiter_str:  # String literal
+            delimiter = delimiter_str
+        else:  # Variable
+            delimiter = delimiter_var
+            
+        key = (var, delimiter)
+        split_info["split_groups"][key] = split_info["split_groups"].get(key, 0) + 1
+        all_separators.append((delimiter, delimiter_var is not None and delimiter_var != ''))
+        
+        # Analyze index type
+        try:
+            index_val = int(index)
+            split_info["index_CONST"] = 1
+            if split_info["max_const_index"] == -1 or index_val > split_info["max_const_index"]:
+                split_info["max_const_index"] = index_val
+        except ValueError:
+            split_info["index_VAR"] = 1
     
     # Analyze separator types (set flags for each type found)
     if all_separators:
@@ -304,27 +322,9 @@ def analyze_split_operations(content):
                 if len(sep_value) == 1:
                     split_info["separator_SIN"] = 1
     
-    # Analyze index types and find max constant index
-    const_indices = []
-    
-    for var, delimiter_full, delimiter_str, delimiter_var, limit, index in element_matches:
-        try:
-            index_val = int(index)
-            split_info["index_CONST"] = 1
-            const_indices.append(index_val)
-        except ValueError:
-            split_info["index_VAR"] = 1
-    
-    # Find max constant index
-    if const_indices:
-        split_info["max_const_index"] = max(const_indices)
-    
-    # Analyze API types (set flags for each type found)
-    if api_types:
-        if "Normal" in api_types:
-            split_info["api_Normal"] = 1
-        if "Limit" in api_types:
-            split_info["api_Limit"] = 1
+    # API types are left empty as requested
+    split_info["api_Normal"] = 0
+    split_info["api_Limit"] = 0
     
     return split_info
 

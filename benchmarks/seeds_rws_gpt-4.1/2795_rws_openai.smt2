@@ -2,7 +2,7 @@
 ; Delimiters: ' ', ':', '-', '|', '[', ']'
 ; ; Focus: timestamp format, log level validation, message extraction
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the log entry variable
 (declare-fun log_entry () String)

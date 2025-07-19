@@ -78,5 +78,4 @@
 (assert (= (str.num_splits invalid_token colon) 2))
 
 (check-sat)
-(get-model)
 (exit)

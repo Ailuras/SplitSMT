@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |Configuration Parsing: Key-value pair and INI file processing|)
 (set-info :smt-lib-version 2.6)
 

@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; Set the string theory
+(set-logic QF_SLIA) ; Set the string theory
 
 ; Declare string constants for delimiters
 (declare-const dot String)
@@ -87,7 +87,5 @@
 ; ; Check satisfiability
 (check-sat)
 
-; Get model if satisfiable
-(get-model)
 
 (exit)

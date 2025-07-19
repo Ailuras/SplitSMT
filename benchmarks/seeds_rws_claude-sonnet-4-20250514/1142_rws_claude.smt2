@@ -1,4 +1,4 @@
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-info :source |Authentication Token: JWT and API key validation|)
 (set-info :smt-lib-version 2.6)
 (set-info :category "industrial")

@@ -102,29 +102,6 @@
 
 (check-sat)
 
-; Unsatisfiable scenario:
-; ; Example: protocol is "ftp", or host has no dot, or path has only one segment
 
-(push)
-(assert
- (= url "ftp://localhost:8080/docs?id=7")
-)
-; Protocol must be http/https, but is ftp
-(assert
- (or
- (= protocol "http")
- (= protocol "https")
-)
-)
-; Host must contain a dot, but is "localhost"
-(assert
- (str.contains host_no_port ".")
-)
-; Path must have at least two segments, but is "docs" (1 segment)
-(assert
- (>= num_path_segments 2)
-)
-(pop)
 
-(check-sat)
 (exit)

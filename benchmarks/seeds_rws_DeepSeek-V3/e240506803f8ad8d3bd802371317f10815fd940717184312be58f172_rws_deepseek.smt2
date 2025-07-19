@@ -1,5 +1,5 @@
 ; ; Complete SMT-LIB2 file for log analysis with timestamp and level extraction
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string sort and operations
 (declare-fun str.contains (String String) Bool)
@@ -61,29 +61,10 @@
 (assert (not (str.contains message "]")))
 
 ; Satisfiable case: valid log entry
-(push)
 (assert (= log_entry "[2023-11-15 14:30:45] INFO | main: System started successfully"))
 (check-sat)
-(get-model)
-(pop)
 
-; Unsatisfiable case: missing timestamp
-(push)
-(assert (= log_entry "INFO | main: System started"))
-(check-sat)
-(pop)
 
-; Unsatisfiable case: invalid log level
-(push)
-(assert (= log_entry "[2023-11-15 14:30:45] UNKNOWN | main: System started"))
-(check-sat)
-(pop)
 
-; Satisfiable case with warning level
-(push)
-(assert (= log_entry "[2023-12-01 09:15:22] WARN | network: Connection timeout"))
-(check-sat)
-(get-model)
-(pop)
 
 (exit)

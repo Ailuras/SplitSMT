@@ -112,5 +112,4 @@
 
 ; ; Final checks
 (check-sat)
-(get-model)
 (exit)

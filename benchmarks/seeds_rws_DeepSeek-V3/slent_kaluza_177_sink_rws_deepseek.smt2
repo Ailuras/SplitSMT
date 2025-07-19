@@ -1,6 +1,6 @@
 ; ; SMT-LIB2 script for log analysis with timestamp and level extraction
 ; Delimiters: space, colon, hyphen, pipe, square brackets
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string sort and variables
@@ -48,5 +48,4 @@
 ;(assert (str.contains message "CRITICAL")) ; Would make unsat since log_level can't be CRITICAL
 
 (check-sat)
-(get-model)
 (exit)

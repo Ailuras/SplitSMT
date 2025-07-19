@@ -1,6 +1,6 @@
 ; ; SMT-LIB2 script for log analysis with timestamp and level extraction
 ; Complete standalone file for SMT solvers
-(set-logic QF_S) ; Quantifier-free strings
+(set-logic QF_SLIA) ; Quantifier-free strings
 
 ; Declare string constants for common delimiters
 (declare-const space String)
@@ -64,5 +64,4 @@
 ;(assert (= log_entry "[2023-01-15 14:30:45] CUSTOM | ")) ; Invalid log level
 
 (check-sat)
-(get-model)
 (exit)

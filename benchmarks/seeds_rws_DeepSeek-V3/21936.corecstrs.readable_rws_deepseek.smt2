@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for token validation with split operations
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare delimiters
@@ -36,20 +36,11 @@
 (assert (= (str.len (str.split_at session_token dash 3)) 12)) ; part4 length
 
 ; Combined constraints for valid case
-(push)
 (echo "Checking valid token constraints")
 (assert (= jwt_token "header.payload.signature"))
 (assert (= api_key "AKIA1234:abcdefghijklmnopqrstuvwxyz123456"))
 (assert (= session_token "12345678-90ab-cdef-ghijklmnopqr"))
 (check-sat)
-(get-model)
-(pop)
 
-; Invalid case - JWT with wrong number of parts
-(push)
-(echo "Checking invalid JWT case")
-(assert (= (str.num_splits jwt_token dot) 2)) ; Missing signature
-(check-sat)
-(pop)
 
 (exit)

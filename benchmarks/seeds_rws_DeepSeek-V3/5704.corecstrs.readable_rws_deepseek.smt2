@@ -1,5 +1,5 @@
 
-(set-logic QF_S) ; Set the string theory
+(set-logic QF_SLIA) ; Set the string theory
 
 ; Declare string constants for delimiters
 (declare-const protocol_delim String)
@@ -86,5 +86,4 @@
  true))
 
 (check-sat)
-(get-model)
 (exit)

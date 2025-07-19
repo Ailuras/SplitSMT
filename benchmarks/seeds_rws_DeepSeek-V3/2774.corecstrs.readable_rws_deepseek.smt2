@@ -1,6 +1,6 @@
 
 ; JWT and API key validation with split operations
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare constants for delimiters
 (declare-const dot String)
@@ -72,5 +72,4 @@
 (assert (str.contains jwt_payload api_timestamp))
 
 (check-sat)
-(get-model)
 (exit)

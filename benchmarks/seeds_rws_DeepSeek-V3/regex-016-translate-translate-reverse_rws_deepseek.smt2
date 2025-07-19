@@ -1,5 +1,5 @@
 
-(set-logic QF_S)
+(set-logic QF_SLIA)
 (set-option :produce-models true)
 
 ; Declare string constants for delimiters
@@ -110,6 +110,4 @@
 ;))
 
 (check-sat)
-(get-value (extracted_value found_value current_section))
-(get-value (config_content))
 (exit)

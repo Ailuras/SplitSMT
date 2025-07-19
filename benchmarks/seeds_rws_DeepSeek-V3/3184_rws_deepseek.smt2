@@ -1,6 +1,6 @@
 
 ; SMT-LIB2 script for URL parsing with protocol validation, host structure, and path segments
-(set-logic QF_S) ; Quantifier-free strings
+(set-logic QF_SLIA) ; Quantifier-free strings
 (set-info :smt-lib-version 2.6)
 
 ; Declare string constants for delimiters
@@ -78,23 +78,9 @@
 (assert (= num_params (str.num_splits query_part param_delim)))
 
 ; ; Example constraints for satisfiable case
-(push)
 (assert (= url "https://example.com:8080/path/to/resource?param1=val1&param2=val2"))
 (check-sat)
-(get-model)
-(pop)
 
-; ; Example constraints for unsatisfiable case (invalid protocol)
-(push)
-(assert (= url "invalid://example.com/path"))
-(check-sat)
-(pop)
 
-; ; Example constraints for unsatisfiable case (empty host)
-(push)
-(assert (= url "http:///path"))
-(check-sat)
-(pop)
 
-(check-sat)
 (exit)

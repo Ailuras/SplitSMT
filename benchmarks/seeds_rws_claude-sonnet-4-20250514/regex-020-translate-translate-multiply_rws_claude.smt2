@@ -1,6 +1,6 @@
 (set-info :source |Authentication Token: JWT and API key validation|)
 (set-info :category "industrial")
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare string variables for JWT components
 (declare-fun jwt_token () String)

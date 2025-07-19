@@ -71,23 +71,23 @@ done
 
 # Define the list of commands to run
 declare -a COMMANDS=(
-    # awesome directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/awesome -f results_awesome_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/awesome -f results_awesome_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/awesome -f results_awesome_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/awesome -f results_awesome_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # seed_auto_easy directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_easy -f results_seed_auto_easy_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_easy -f results_seed_auto_easy_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_easy -f results_seed_auto_easy_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_easy -f results_seed_auto_easy_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
     
-    # top20_maven directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # seed_auto_medium directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_medium -f results_seed_auto_medium_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_medium -f results_seed_auto_medium_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_medium -f results_seed_auto_medium_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_medium -f results_seed_auto_medium_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
     
-    # top20_gh directory
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_gh -f results_top20_gh_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_gh -f results_top20_gh_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_gh -f results_top20_gh_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
-    "./scripts/solve/solve_batch.sh -i benchmarks/top20_gh -f results_top20_gh_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
+    # seed_auto_hard directory
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_hard -f results_seed_auto_hard_ext_z3.log --solver ext-z3 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_hard -f results_seed_auto_hard_ext_cvc5.log --solver ext-cvc5 -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_hard -f results_seed_auto_hard_ext_ostrich.log --solver ext-ostrich -t 60 -p $PARALLEL_LIMIT"
+    "./scripts/solve/solve_batch.sh -i benchmarks/seed_auto_hard -f results_seed_auto_hard_ext_z3_noodler.log --solver ext-z3-noodler -t 60 -p $PARALLEL_LIMIT"
 )
 
 # Create log directory

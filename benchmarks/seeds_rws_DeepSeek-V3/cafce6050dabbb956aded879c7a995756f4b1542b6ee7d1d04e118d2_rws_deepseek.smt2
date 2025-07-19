@@ -77,12 +77,6 @@
 
 ; ; Check satisfiability of valid cases
 (check-sat)
-(get-model)
 
-; ; Check unsatisfiability of invalid case
-(push)
-(assert (str.is_base64 (str.split_at invalid_token dot 1))) ; Try to make it valid
-(check-sat) ; Should be unsat
-(pop)
 
 (exit)

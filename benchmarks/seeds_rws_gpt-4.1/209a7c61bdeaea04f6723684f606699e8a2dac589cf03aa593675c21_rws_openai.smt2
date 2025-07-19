@@ -1,5 +1,5 @@
 ; SMT-LIB2 file for URL Parsing using custom split operations
-(set-logic QF_S)
+(set-logic QF_SLIA)
 
 ; Declare the input URL string
 (declare-fun url () String)
