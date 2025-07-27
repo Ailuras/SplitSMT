@@ -403,6 +403,22 @@ namespace SMTParser{
          * @return Sort
          */
         std::shared_ptr<Sort> getSort(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> m);
+        
+        /**
+         * @brief Get kind
+         * 
+         * @param s String
+         * @return NODE_KIND
+         */
+        NODE_KIND getKind(const std::string& s);
+
+        /**
+         * @brief Get kind
+         * 
+         * @param node Node
+         * @return NODE_KIND
+         */
+        NODE_KIND getKind(const std::shared_ptr<DAGNode>& node);
 
         // get result type
         /**
@@ -740,12 +756,28 @@ namespace SMTParser{
         std::shared_ptr<DAGNode> mkConstFp(const std::string &v, const size_t& e, const size_t& s); // CONST_FP
         
         /**
+         * @brief Create a floating-point constant from expression
+         *
+         * @param fp_expr Floating-point expression string
+         * @return Floating-point constant node
+         */
+        std::shared_ptr<DAGNode> mkConstFP(const std::string &fp_expr); // CONST_FP from expression
+        
+        /**
          * @brief Create a regular expression constant
          *
          * @param v Value (string)
          * @return Regular expression constant node
          */
         std::shared_ptr<DAGNode> mkConstReg(const std::string &v); // CONST_REG
+        
+        /**
+         * @brief Create a rounding mode constant
+         *
+         * @param mode Rounding mode string (RNE, RNA, RTP, RTN, RTZ)
+         * @return Rounding mode constant node
+         */
+        std::shared_ptr<DAGNode> mkRoundingMode(const std::string &mode); // ROUNDING_MODE
         
         // VAR
         /**
@@ -2250,6 +2282,7 @@ namespace SMTParser{
          * @param param Parameter
          * @return Floating-point square root node (fp.sqrt(param))
          */
+        std::shared_ptr<DAGNode> mkFpSqrt(std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param); // sqrt(rm, param)
         std::shared_ptr<DAGNode> mkFpSqrt(std::shared_ptr<DAGNode> param); // sqrt(param)
         
         /**
@@ -2258,6 +2291,7 @@ namespace SMTParser{
          * @param param Parameter
          * @return Floating-point round to integral node (fp.roundToIntegral(param))
          */
+        std::shared_ptr<DAGNode> mkFpRoundToIntegral(std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param); // round_to_integral(rm, param)
         std::shared_ptr<DAGNode> mkFpRoundToIntegral(std::shared_ptr<DAGNode> param); // round_to_integral(param)
         
         /**
@@ -2343,7 +2377,7 @@ namespace SMTParser{
          * @param size Size of resulting bitvector
          * @return Floating-point to unsigned bitvector conversion node (fp.to_ubv(param, size))
          */
-        std::shared_ptr<DAGNode> mkFpToUbv(std::shared_ptr<DAGNode> param, std::shared_ptr<DAGNode> size); // to_ubv(param, size)
+        std::shared_ptr<DAGNode> mkFpToUbv(std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param, std::shared_ptr<DAGNode> size); // to_ubv(rm, param, size)
         
         /**
          * @brief Create a floating-point to signed bitvector conversion node
@@ -2354,7 +2388,7 @@ namespace SMTParser{
          * @param size Size of resulting bitvector
          * @return Floating-point to signed bitvector conversion node (fp.to_sbv(param, size))
          */
-        std::shared_ptr<DAGNode> mkFpToSbv(std::shared_ptr<DAGNode> param, std::shared_ptr<DAGNode> size); // to_sbv(param, size)
+        std::shared_ptr<DAGNode> mkFpToSbv(std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param, std::shared_ptr<DAGNode> size); // to_sbv(rm, param, size)
         
         /**
          * @brief Create a floating-point to real conversion node
@@ -2374,7 +2408,10 @@ namespace SMTParser{
          * @param param Value to convert
          * @return Value to floating-point conversion node (to_fp(eb, sb, param))
          */
+        std::shared_ptr<DAGNode> mkToFp(std::shared_ptr<DAGNode> eb, std::shared_ptr<DAGNode> sb, std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param); // to_fp(eb, sb, rm, param)
         std::shared_ptr<DAGNode> mkToFp(std::shared_ptr<DAGNode> eb, std::shared_ptr<DAGNode> sb, std::shared_ptr<DAGNode> param); // to_fp(eb, sb, param)
+        std::shared_ptr<DAGNode> mkToFpUnsigned(std::shared_ptr<DAGNode> eb, std::shared_ptr<DAGNode> sb, std::shared_ptr<DAGNode> rm, std::shared_ptr<DAGNode> param); // to_fp_unsigned(eb, sb, rm, param)
+        std::shared_ptr<DAGNode> mkFpConst(std::shared_ptr<DAGNode> sign, std::shared_ptr<DAGNode> exp, std::shared_ptr<DAGNode> mant); // fp(sign, exp, mant)
         
         // FLOATING POINT PROPERTIES
         /**
@@ -2550,6 +2587,35 @@ namespace SMTParser{
         std::shared_ptr<DAGNode> mkStrReplaceAll(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> v); // str.replace_all(l, r, v)
         
         /**
+         * @brief Create a string replace-regex node
+         * 
+         * @param l String
+         * @param r Regular expression
+         * @param v Replacement string
+         * @return String replace-regex node (str.replace_re(l, r, v))
+         */
+        std::shared_ptr<DAGNode> mkStrReplaceReg(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> v); // str.replace_re(l, r, v)
+        
+        /**
+         * @brief Create a string replace-regex-all node
+         * 
+         * @param l String
+         * @param r Regular expression
+         * @param v Replacement string
+         * @return String replace-regex-all node (str.replace_re_all(l, r, v))
+         */
+        std::shared_ptr<DAGNode> mkStrReplaceRegAll(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> v); // str.replace_re_all(l, r, v)
+        
+        /**
+         * @brief Create a string indexof-regex node
+         * 
+         * @param l String
+         * @param r Regular expression
+         * @return String indexof-regex node (str.indexof_re(l, r))
+         */
+        std::shared_ptr<DAGNode> mkStrIndexofReg(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r); // str.indexof_re(l, r)
+
+        /**
          * @brief Create a string to-lower node
          * 
          * @param param String
@@ -2587,6 +2653,12 @@ namespace SMTParser{
         std::shared_ptr<DAGNode> mkStrSplitRest(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> s); // str.split_rest(l, r, s)
         
         std::shared_ptr<DAGNode> mkStrNumSplits(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r); // str.num_splits(l, r)
+        
+        std::shared_ptr<DAGNode> mkStrSplitAtRe(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> s); // str.split_at_re(l, r, s)
+        
+        std::shared_ptr<DAGNode> mkStrSplitRestRe(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r, std::shared_ptr<DAGNode> s); // str.split_rest_re(l, r, s)
+        
+        std::shared_ptr<DAGNode> mkStrNumSplitsRe(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r); // str.num_splits_re(l, r)
         
         // STRINGS COMP
         /**
@@ -3484,6 +3556,13 @@ namespace SMTParser{
          * @return Number of functions actually removed
          */
         size_t                                  removeFuns(const std::vector<std::string>& funcNames);
+
+        /**
+         * @brief ensure the expression is a number
+         * 
+         * @param expr Expression to ensure
+         */
+        void ensureNumberValue(std::shared_ptr<DAGNode> expr);
     private:
         // parse smt-lib2 file
         std::string	                            getSymbol();
@@ -3499,8 +3578,7 @@ namespace SMTParser{
         std::shared_ptr<Sort>	                parseSort();
         std::shared_ptr<DAGNode>		        parseExpr();
         std::shared_ptr<DAGNode>		        parseConstFunc(const std::string& s);
-        std::shared_ptr<DAGNode>		        parseParamFunc(const std::string& f, const std::vector<std::shared_ptr<DAGNode>> &args, const std::vector<std::shared_ptr<DAGNode>> &params);
-        std::shared_ptr<DAGNode>		        parseOper(const std::string& s, const std::vector<std::shared_ptr<DAGNode>> &params);
+        std::shared_ptr<DAGNode>		        parseOper(const std::string& s, const std::vector<std::shared_ptr<DAGNode>>& func_args, const std::vector<std::shared_ptr<DAGNode>> &oper_params);
         std::vector<std::shared_ptr<DAGNode>>	parseParams();
         std::shared_ptr<DAGNode>		        parsePreservingLet();
         std::shared_ptr<DAGNode>		        parseLet();
@@ -3802,6 +3880,9 @@ namespace SMTParser{
         bool		evaluateStrSplitAt(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateStrSplitRest(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateStrNumSplits(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
+        bool		evaluateStrSplitAtRe(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
+        bool		evaluateStrSplitRestRe(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
+        bool		evaluateStrNumSplitsRe(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
     };
 
 

@@ -490,8 +490,8 @@ void splitSolver::detectInvalidIndex(Context& ctx, Division* division) {
         }
     }
     
-    auto splitEndVarNodes = ctx.getSplitEndVarNodes();
-    for (auto& node : splitEndVarNodes) {
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    for (auto& node : splitRestVarNodes) {
         if (node->getChildrenSize() >= 3) {
             auto arg1 = node->getChild(0);
             auto arg2 = node->getChild(1);
@@ -769,7 +769,7 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
 void splitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
     
-    auto splitEndVarNodes = ctx.getSplitEndVarNodes();
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
     
     const auto& divisions = ctx.getAllDivisions();
     
@@ -817,16 +817,16 @@ void splitSolver::addAuxiliaryLemmas(Context& ctx) {
                 }
             }
             
-            for (auto& splitEndTerm : splitEndVarNodes) {
-                if (splitEndTerm->getChildrenSize() >= 3) {
-                    auto arg1 = splitEndTerm->getChild(0);
-                    auto arg2 = splitEndTerm->getChild(1);
-                    auto arg3 = splitEndTerm->getChild(2);
+            for (auto& splitRestTerm : splitRestVarNodes) {
+                if (splitRestTerm->getChildrenSize() >= 3) {
+                    auto arg1 = splitRestTerm->getChild(0);
+                    auto arg2 = splitRestTerm->getChild(1);
+                    auto arg3 = splitRestTerm->getChild(2);
                     
                     if (arg1->toString() == variable && cleanQuotes(arg2->toString()) == delimiter) {
                         int index = parseInteger(arg3->toString());
                         
-                        auto atoms = ctx.getAtomsForSplitNode(splitEndTerm);
+                        auto atoms = ctx.getAtomsForSplitNode(splitRestTerm);
                         
                         for (auto& atom : atoms) {
                             std::string disjuncts = "";
@@ -969,15 +969,15 @@ void splitSolver::rewriteFormula(Context& ctx) {
     
     auto splitAtConstNodes = ctx.getSplitAtConstNodes();
     replaceSplitAtConstNodes(ctx, splitAtConstNodes);
-    auto splitEndConstNodes = ctx.getSplitEndConstNodes();
-    replaceSplitEndConstNodes(ctx, splitEndConstNodes);
+    auto splitRestConstNodes = ctx.getSplitRestConstNodes();
+    replaceSplitEndConstNodes(ctx, splitRestConstNodes);
     auto numSplitConstNodes = ctx.getNumSplitConstNodes();
     replaceNumSplitConstNodes(ctx, numSplitConstNodes);
     
     auto splitAtVarNodes = ctx.getSplitAtVarNodes();
     replaceSplitAtVarNodes(ctx, splitAtVarNodes);
-    auto splitEndVarNodes = ctx.getSplitEndVarNodes();
-    replaceSplitEndVarNodes(ctx, splitEndVarNodes);
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    replaceSplitEndVarNodes(ctx, splitRestVarNodes);
     auto numSplitVarNodes = ctx.getNumSplitVarNodes();
     replaceNumSplitVarNodes(ctx, numSplitVarNodes);
     

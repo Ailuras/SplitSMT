@@ -374,9 +374,12 @@ namespace SMTParser{
         case NODE_KIND::NT_FP_TO_SBV:
             return "fp.toSbv";
         case NODE_KIND::NT_FP_TO_REAL:
-            return "fp.toReal";
+            return "fp.to_real";
         case NODE_KIND::NT_FP_TO_FP:
             return "to_fp";
+        case NODE_KIND::NT_FP_TO_FP_UNSIGNED:
+            return "to_fp_unsigned";
+
         // FLOATING POINT PROPERTIES
         case NODE_KIND::NT_FP_IS_NORMAL:
             return "fp.isNormal";
@@ -432,6 +435,12 @@ namespace SMTParser{
             return "str.split_rest";
         case NODE_KIND::NT_STR_NUM_SPLITS:
             return "str.num_splits";
+        case NODE_KIND::NT_STR_SPLIT_AT_RE:
+            return "str.split_at_re";
+        case NODE_KIND::NT_STR_SPLIT_REST_RE:
+            return "str.split_rest_re";
+        case NODE_KIND::NT_STR_NUM_SPLITS_RE:
+            return "str.num_splits_re";
         // STRINGS COMP
         case NODE_KIND::NT_STR_LT:
             return "str.<";
@@ -488,11 +497,11 @@ namespace SMTParser{
         case NODE_KIND::NT_REG_COMPLEMENT:
             return "re.comp";
         // STRINGS RE FUNCTIONS
-        case NODE_KIND::NT_REPLACE_REG:
+        case NODE_KIND::NT_STR_REPLACE_REG:
             return "str.replace_re";
-        case NODE_KIND::NT_REPLACE_REG_ALL:
+        case NODE_KIND::NT_STR_REPLACE_REG_ALL:
             return "str.replace_re_all";
-        case NODE_KIND::NT_INDEXOF_REG:
+        case NODE_KIND::NT_STR_INDEXOF_REG:
             return "str.indexof";
         // INTERVAL
         case NODE_KIND::NT_MAX:
@@ -617,5 +626,13 @@ namespace SMTParser{
             default:
                 return NODE_KIND::NT_UNKNOWN;
         }
+    }
+
+    NODE_KIND getOperKind(const std::string& s) {
+        auto it = oper_key_map.find(s);
+        if (it != oper_key_map.end()) {
+            return it->second;
+        }
+        return NODE_KIND::NT_UNKNOWN;
     }
 }

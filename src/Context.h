@@ -32,12 +32,19 @@ public:
     std::vector<SMTParser::NodePtr> getSplitAtVarNodes();
     std::vector<SMTParser::NodePtr> getSplitRestNodes();
     std::vector<SMTParser::NodePtr> getSplitRestNodes(const SMTParser::NodePtr& node);
-    std::vector<SMTParser::NodePtr> getSplitEndConstNodes();
-    std::vector<SMTParser::NodePtr> getSplitEndVarNodes();
+    std::vector<SMTParser::NodePtr> getSplitRestConstNodes();
+    std::vector<SMTParser::NodePtr> getSplitRestVarNodes();
     std::vector<SMTParser::NodePtr> getNumSplitNodes();
     std::vector<SMTParser::NodePtr> getNumSplitNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getNumSplitConstNodes();
     std::vector<SMTParser::NodePtr> getNumSplitVarNodes();
+
+    std::vector<SMTParser::NodePtr> getSplitAtRegNodes();
+    std::vector<SMTParser::NodePtr> getSplitAtRegNodes(const SMTParser::NodePtr& node);
+    std::vector<SMTParser::NodePtr> getSplitRestRegNodes();
+    std::vector<SMTParser::NodePtr> getSplitRestRegNodes(const SMTParser::NodePtr& node);
+    std::vector<SMTParser::NodePtr> getNumSplitRegNodes();
+    std::vector<SMTParser::NodePtr> getNumSplitRegNodes(const SMTParser::NodePtr& node);
 
     void updateDivisions();
     void updateSplitNodeToAtoms();

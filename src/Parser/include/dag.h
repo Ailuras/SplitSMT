@@ -32,6 +32,7 @@
 #include "sort.h"
 #include "util.h"
 #include "value.h"
+#include "timing.h"
 
 #include <iostream>
 #include <fstream>
@@ -76,15 +77,25 @@ namespace SMTParser{
         std::vector<std::shared_ptr<DAGNode>>   children;
 
         std::string                             children_hash;
+        mutable size_t                          cached_hash_code;
+        mutable bool                            hash_computed;
 
     public:
         DAGNode(std::shared_ptr<Sort> sort, NODE_KIND kind, std::string name, std::vector<std::shared_ptr<DAGNode>> children): sort(sort), kind(kind), name(name), value(nullptr), children(children){
             // value is not used for hash
-            children_hash = "";
-            for(auto& child : children){
-                children_hash += child->hashString() + "__";
+            // 使用更快的子节点哈希计算
+            if(children.empty()) {
+                children_hash = "";
+            } else {
+                size_t combined_hash = 0;
+                for(size_t i = 0; i < children.size(); i++) {
+                    size_t child_hash = children[i]->hashCode();
+                    combined_hash ^= child_hash + 0x9e3779b9 + (combined_hash << 6) + (combined_hash >> 2);
+                }
+                children_hash = std::to_string(combined_hash);
             }
-            children_hash = HashUtils::sha256(children_hash);
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 if(TypeChecker::isInt(name)){
@@ -97,6 +108,8 @@ namespace SMTParser{
         }
         DAGNode(std::shared_ptr<Sort> sort, NODE_KIND kind, std::string name): sort(sort), kind(kind), name(name), value(nullptr) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 if(TypeChecker::isInt(name)){
@@ -109,6 +122,8 @@ namespace SMTParser{
         }
         DAGNode(std::shared_ptr<Sort> sort, NODE_KIND kind): sort(sort), kind(kind), name(""), value(nullptr) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 value = newValue(Number());
@@ -116,19 +131,23 @@ namespace SMTParser{
         }
         DAGNode(std::shared_ptr<Sort> sort): sort(sort), kind(NODE_KIND::NT_UNKNOWN), name(""), value(nullptr) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 value = newValue(Number());
             }
         }
-        DAGNode(): sort(NULL_SORT), kind(NODE_KIND::NT_UNKNOWN), name(""), value(nullptr), children_hash("") {
+        DAGNode(): sort(NULL_SORT), kind(NODE_KIND::NT_UNKNOWN), name(""), value(nullptr), children_hash(""), cached_hash_code(0), hash_computed(false) {
             children_hash = "";
         }
-        DAGNode(const DAGNode& other): sort(other.sort), kind(other.kind), name(other.name), value(other.value), children(other.children), children_hash(other.children_hash) {}
+        DAGNode(const DAGNode& other): sort(other.sort), kind(other.kind), name(other.name), value(other.value), children(other.children), children_hash(other.children_hash), cached_hash_code(0), hash_computed(false) {}
 
         // other initialization
         DAGNode(NODE_KIND kind, std::string name): sort(NULL_SORT), kind(kind), name(name), value(nullptr) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 if(TypeChecker::isInt(name)){
@@ -140,6 +159,8 @@ namespace SMTParser{
         }
         DAGNode(NODE_KIND kind): sort(NULL_SORT), kind(kind), name(""), value(nullptr) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
 
             if(kind == NODE_KIND::NT_CONST){
                 value = newValue(Number());
@@ -147,22 +168,32 @@ namespace SMTParser{
         }
         DAGNode(std::shared_ptr<Sort> sort, const Integer& v): sort(sort), kind(NODE_KIND::NT_CONST), name(""), value(newValue(v)) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
             name = v.toString();
         }
         DAGNode(std::shared_ptr<Sort> sort, const Real& v): sort(sort), kind(NODE_KIND::NT_CONST), name(""), value(newValue(v)) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
             name = v.toString();
         }
         DAGNode(std::shared_ptr<Sort> sort, const double& v): sort(sort), kind(NODE_KIND::NT_CONST), name(""), value(newValue(v)) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
             name = std::to_string(v);
         }
         DAGNode(std::shared_ptr<Sort> sort, const int& v): sort(sort), kind(NODE_KIND::NT_CONST), name(""), value(newValue(v)) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
             name = std::to_string(v);
         }
         DAGNode(std::shared_ptr<Sort> sort, const bool& v): sort(sort), kind(NODE_KIND::NT_CONST), name(""), value(newValue(v)) {
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
             name = v ? "true" : "false";
         }
         
@@ -218,6 +249,8 @@ namespace SMTParser{
             }
             name = n;
             children_hash = "";
+            cached_hash_code = 0;
+            hash_computed = false;
         }
         
         void clear(){
@@ -503,7 +536,9 @@ namespace SMTParser{
         bool isFPToSBV() 			const { return (kind == NODE_KIND::NT_FP_TO_SBV); };
         bool isFPToReal() 			const { return (kind == NODE_KIND::NT_FP_TO_REAL); };
         bool isToFP()     		    const { return (kind == NODE_KIND::NT_FP_TO_FP); };
-        bool isFPConv() 			const { return (isFPToUBV() || isFPToSBV() || isFPToReal() || isToFP()); };
+        bool isToFPUnsigned()       const { return (kind == NODE_KIND::NT_FP_TO_FP_UNSIGNED); };
+
+        bool isFPConv() 			const { return (isFPToUBV() || isFPToSBV() || isFPToReal() || isToFP() || isToFPUnsigned()); };
 
         // check floating point properties
         bool isFPIsNormal() 		const { return (kind == NODE_KIND::NT_FP_IS_NORMAL); };
@@ -538,7 +573,10 @@ namespace SMTParser{
         bool isStrSplitAt() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_AT); };
         bool isStrSplitRest() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_REST); };
         bool isStrNumSplits() 		const { return (kind == NODE_KIND::NT_STR_NUM_SPLITS); };
-        bool isStrOp() 				const { return (isStrLen() || isStrConcat() || isStrSubstr() || isStrPrefixof() || isStrSuffixof() || isStrIndexof() || isStrCharat() || isStrUpdate() || isStrReplace() || isStrReplaceAll() || isStrToLower() || isStrToUpper() || isStrRev() || isStrSplit() || isStrSplitAt() || isStrSplitRest() || isStrNumSplits() || (isApplyUF() && sort->isStr())); };
+        bool isStrSplitAtRe() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_AT_RE); };
+        bool isStrSplitRestRe() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_REST_RE); };
+        bool isStrNumSplitsRe() 		const { return (kind == NODE_KIND::NT_STR_NUM_SPLITS_RE); };
+        bool isStrOp() 				const { return (isStrLen() || isStrConcat() || isStrSubstr() || isStrPrefixof() || isStrSuffixof() || isStrIndexof() || isStrCharat() || isStrUpdate() || isStrReplace() || isStrReplaceAll() || isStrToLower() || isStrToUpper() || isStrRev() || isStrSplit() || isStrSplitAt() || isStrSplitRest() || isStrNumSplits() || isStrSplitAtRe() || isStrSplitRestRe() || isStrNumSplitsRe() || (isApplyUF() && sort->isStr())); };
 
         // check strings comparison
         bool isStrLt() 				const { return (kind == NODE_KIND::NT_STR_LT); };
@@ -768,16 +806,30 @@ namespace SMTParser{
          * @return The hash code of the node
          */
         std::size_t hashCode() const{
-            return std::hash<std::string>{}(hashString());
-        }
-
-        /**
-         * @brief Get the hash string of the node
-         * 
-         * @return The hash string of the node
-         */
-        std::string hashString() const {
-            return HashUtils::sha256(sort->toString() + "__" + kindToString(kind) + "__" + name + "__" + std::to_string(children.size()) + "__" + children_hash);
+            if(hash_computed) {
+                return cached_hash_code;
+            }
+            
+            // high quality hash algorithm, reduce conflicts
+            size_t h1 = reinterpret_cast<size_t>(sort.get()); // Sort pointer, avoid string hash
+            size_t h2 = static_cast<size_t>(kind);
+            size_t h3 = name.empty() ? 0 : std::hash<std::string>{}(name);
+            size_t h4 = children.size();
+            size_t h5 = children_hash.empty() ? 0 : std::hash<std::string>{}(children_hash);
+            
+            // use better hash combination algorithm (based on boost::hash_combine)
+            size_t seed = 0;
+            seed ^= h1 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            seed ^= h2 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            seed ^= h3 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            seed ^= h4 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            seed ^= h5 + 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            
+            seed ^= 0x9e3779b9 + (seed << 6) + (seed >> 2);
+            
+            cached_hash_code = seed;
+            hash_computed = true;
+            return cached_hash_code;
         }
 
         /**
@@ -804,19 +856,38 @@ namespace SMTParser{
 
     private:
         bool isEquivalentTo(const DAGNode& other, std::unordered_set<std::pair<const DAGNode*, const DAGNode*>, PairNodePtrHash, PairNodePtrEqual>& visited) const {
+            TIME_FUNC();
+            
+            // fastest check: pointer same
+            if (this == &other) {
+                return true;
+            }
+            
+            // fast structure check (avoid the expensive subsequent comparison)
+            if (kind != other.kind || 
+                children.size() != other.children.size() || 
+                sort.get() != other.sort.get()) {
+                return false;
+            }
+            
+            // name check
+            if (name != other.name) {
+                return false;
+            }
+            
+            // children_hash check (if both are calculated, this is the fastest deep comparison)
+            if (!children_hash.empty() && !other.children_hash.empty() && 
+                children_hash != other.children_hash) {
+                return false;
+            }
+            
             auto p = std::make_pair(this, &other);
             if(visited.find(p) != visited.end()){
                 return true;
             }
             visited.insert(p);
             
-            if(hashString() != other.hashString()) {
-                return false;
-            }
-            
-            if (sort != other.sort || kind != other.kind || name != other.name || children.size() != other.children.size()) {
-                return false;
-            }
+            // most expensive recursive comparison at the end
             for (size_t i = 0; i < children.size(); i++) {
                 if (!children[i]->isEquivalentTo(*other.children[i], visited)) {
                     return false;
@@ -828,12 +899,17 @@ namespace SMTParser{
 
     struct NodeHash {
         size_t operator()(const std::shared_ptr<DAGNode>& node) const {
-            return std::hash<std::string>{}(node->hashString());
+            return node->hashCode();  // directly use the cached hash code
         }
     };
 
     struct NodeEqual {
         bool operator()(const std::shared_ptr<DAGNode>& node1, const std::shared_ptr<DAGNode>& node2) const {
+            // fast path: first compare hash code
+            if(node1->hashCode() != node2->hashCode()) {
+                return false;
+            }
+            // only check the expensive equivalence when the hash is the same
             return node1->isEquivalentTo(*node2);
         }
     };
@@ -842,19 +918,15 @@ namespace SMTParser{
     std::string dumpFuncDef(const std::shared_ptr<DAGNode>& node);
     std::string dumpFuncDec(const std::shared_ptr<DAGNode>& node);
     std::string dumpSMTLIB2(const std::vector<std::shared_ptr<DAGNode>>& assertions);
-    void dumpSMTLIB2(const std::shared_ptr<DAGNode>& node, std::ofstream& ofs);
-    void dumpSMTLIB2(const std::shared_ptr<DAGNode>& node, std::unordered_set<std::shared_ptr<DAGNode>>& visited, std::ofstream& ofs);
-    void dumpSMTLIB2(const std::vector<std::shared_ptr<DAGNode>>& assertions, std::ofstream& ofs);
-    void dumpFuncDef(const std::shared_ptr<DAGNode>& node, std::ofstream& ofs);
-    void dumpFuncDec(const std::shared_ptr<DAGNode>& node, std::ofstream& ofs);
-
+    
     // smart pointer
     typedef std::shared_ptr<DAGNode> NodePtr;
 
     class NodeManager{
         private:
             std::vector<std::shared_ptr<DAGNode>> nodes;
-            std::array<std::unordered_map<std::shared_ptr<DAGNode>, size_t, NodeHash, NodeEqual>, NUM_KINDS> node_buckets;
+            // use secondary hash: Kind -> Hash -> NodeIndex
+            std::array<std::unordered_map<size_t, std::vector<std::pair<std::shared_ptr<DAGNode>, size_t>>>, NUM_KINDS> node_buckets;
         public:
             NodeManager();
             ~NodeManager();

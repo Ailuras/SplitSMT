@@ -1,49 +1,63 @@
-#include "Parser.h"
-#include "Structures.h"
 #include "Context.h"
+#include "Split.h"
+#include "Solver.h"
 #include <iostream>
-#include <regex>
+
+using namespace strp;
 
 int main() {
-    std::cout << "Testing complete parsing and conversion flow..." << std::endl;
+    Context& ctx = Context::getInstance();
     
-    strp::Parser& parser = strp::Parser::getInstance();
+    std::cout << "Testing regular expression delimiter split functionality" << std::endl;
     
-    std::string testFile = "test.smt2";
-    strp::Decomposition decomposition;
-    
-    std::cout << "Parsing file: " << testFile << std::endl;
-    
-    bool success = parser.parseFile(testFile, decomposition);
-    
-    if (success) {
-        std::cout << "Parse successful!" << std::endl;
-        std::cout << "Split constraints: " << decomposition.splitConstraints.size() << std::endl;
-        std::cout << "Other constraints: " << decomposition.otherConstraints.size() << std::endl;
-        std::cout << "Variables: " << decomposition.variables.size() << std::endl;
-        std::cout << "Variables need declare: " << decomposition.variablesNeedDeclare.size() << std::endl;
-        std::cout << "Variables has defined: " << decomposition.variablesHasDefined.size() << std::endl;
-        
-        std::cout << "\nSplit constraints:" << std::endl;
-        for (const auto& constraint : decomposition.splitConstraints) {
-            std::cout << "  - " << constraint << std::endl;
-        }
-        
-        std::cout << "\nVariables that need declaration:" << std::endl;
-        for (const auto& var : decomposition.variablesNeedDeclare) {
-            std::cout << "  - " << var.first << " (" << var.second << ")" << std::endl;
-        }
-        
-        std::cout << "\nVariables that are already defined:" << std::endl;
-        for (const auto& var : decomposition.variablesHasDefined) {
-            std::cout << "  - " << var.first << " (" << var.second << ")" << std::endl;
-        }
-        
-        std::cout << "\nGenerated SMTLIB2:" << std::endl;
-        std::cout << decomposition.splitSMTLIB2 << std::endl;
-    } else {
-        std::cout << "Parse failed!" << std::endl;
+    if (!ctx.parseFile("test/test_re.smt2")) {
+        std::cerr << "Failed to parse test file" << std::endl;
+        return 1;
     }
     
+    std::cout << "Successfully parsed file with const splits" << std::endl;
+    
+    auto splitAtConstNodes = ctx.getSplitAtConstNodes();
+    auto splitRestConstNodes = ctx.getSplitRestConstNodes();
+    auto numSplitConstNodes = ctx.getNumSplitConstNodes();
+    auto splitAtVarNodes = ctx.getSplitAtVarNodes();
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    auto numSplitVarNodes = ctx.getNumSplitVarNodes();
+    auto splitAtRegNodes = ctx.getSplitAtRegNodes();
+    auto splitEndRegNodes = ctx.getSplitRestRegNodes();
+    auto numSplitRegNodes = ctx.getNumSplitRegNodes();
+    
+    std::cout << "Found " << splitAtConstNodes.size() << " split_at const nodes" << std::endl;
+    std::cout << "Found " << splitRestConstNodes.size() << " split_rest const nodes" << std::endl;
+    std::cout << "Found " << numSplitConstNodes.size() << " num_splits const nodes" << std::endl;
+    std::cout << "Found " << splitAtVarNodes.size() << " split_at var nodes" << std::endl;
+    std::cout << "Found " << splitRestVarNodes.size() << " split_rest var nodes" << std::endl;
+    std::cout << "Found " << numSplitVarNodes.size() << " num_splits var nodes" << std::endl;
+    std::cout << "Found " << splitAtRegNodes.size() << " split_at_re nodes" << std::endl;
+    std::cout << "Found " << splitEndRegNodes.size() << " split_rest_re nodes" << std::endl;
+    std::cout << "Found " << numSplitRegNodes.size() << " num_splits_re nodes" << std::endl;
+    
+    const auto& allDivisions = ctx.getAllDivisions();
+    std::cout << "Total divisions created: " << allDivisions.size() << std::endl;
+    
+    for (const auto& pair : allDivisions) {
+        const auto& division = pair.second;
+        std::cout << "Division: " << division->getDivided() << " | " << division->getDelimiter();
+        if (division->isConstType()) {
+            std::cout << " (Const)";
+            const ConstDivision* constDiv = static_cast<const ConstDivision*>(division.get());
+            if (constDiv->hasSplitNum()) {
+                std::cout << " [has split operations]";
+            }
+        } else if (division->isVarType()) {
+            std::cout << " (Var/Reg)";
+        }
+        if (division->isNumSplitsUsed()) {
+            std::cout << " [num_splits used]";
+        }
+        std::cout << std::endl;
+    }
+    
+    std::cout << "Test completed successfully" << std::endl;
     return 0;
 }

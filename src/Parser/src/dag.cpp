@@ -26,6 +26,7 @@
  */
 
 #include "dag.h"
+#include "timing.h"
 #include <stack>
 #include <sstream>
 
@@ -71,11 +72,21 @@ namespace SMTParser{
                 return name;
             }
         }
-        else if(sort->isBool()){}
-        else if(sort->isBv()){}
-        else if(sort->isFp()){}
-        else if(sort->isStr()){}
-        else if(sort->isArray()){}
+        else if(sort->isBool()){
+            return name;
+        }
+        else if(sort->isBv()){
+            return name;
+        }
+        else if(sort->isFp()){
+            return name;
+        }
+        else if(sort->isStr()){
+            return name;
+        }
+        else if(sort->isArray()){
+            return name;
+        }
         return name;
     }
 
@@ -107,6 +118,19 @@ namespace SMTParser{
             kind_cache[NODE_KIND::NT_DIV_REAL] = "/";
             kind_cache[NODE_KIND::NT_NEG] = "-";
             kind_cache[NODE_KIND::NT_DISTINCT] = "distinct";
+            kind_cache[NODE_KIND::NT_FP_ADD] = "fp.add";
+            kind_cache[NODE_KIND::NT_FP_SUB] = "fp.sub";
+            kind_cache[NODE_KIND::NT_FP_MUL] = "fp.mul";
+            kind_cache[NODE_KIND::NT_FP_DIV] = "fp.div";
+            kind_cache[NODE_KIND::NT_FP_ABS] = "fp.abs";
+            kind_cache[NODE_KIND::NT_FP_NEG] = "fp.neg";
+            kind_cache[NODE_KIND::NT_FP_SQRT] = "fp.sqrt";
+            kind_cache[NODE_KIND::NT_FP_LE] = "fp.le";
+            kind_cache[NODE_KIND::NT_FP_LT] = "fp.lt";
+            kind_cache[NODE_KIND::NT_FP_GE] = "fp.ge";
+            kind_cache[NODE_KIND::NT_FP_GT] = "fp.gt";
+            kind_cache[NODE_KIND::NT_FP_EQ] = "fp.eq";
+            kind_cache[NODE_KIND::NT_FP_NE] = "fp.ne";
             cache_initialized = true;
         }
 
@@ -153,7 +177,20 @@ namespace SMTParser{
                 out << "false";
                 break;
             case NODE_KIND::NT_CONST:
-                out << dumpConst(node->getName(), node->getSort());
+                if (node->getName() == "(fp_bit_representation)" && node->getChildrenSize() == 3) {
+                    auto sign = node->getChild(0).get();
+                    auto exp = node->getChild(1).get();
+                    auto mant = node->getChild(2).get();
+                    out << "(fp ";
+                    work_stack.emplace_back(nullptr, 2);  // )
+                    work_stack.emplace_back(mant, 0);     // mant
+                    work_stack.emplace_back(nullptr, 1);  // space
+                    work_stack.emplace_back(exp, 0);      // exp
+                    work_stack.emplace_back(nullptr, 1);  // space
+                    work_stack.emplace_back(sign, 0);     // sign
+                } else {
+                    out << dumpConst(node->getName(), node->getSort());
+                }
                 break;
             case NODE_KIND::NT_VAR:
             case NODE_KIND::NT_TEMP_VAR:
@@ -438,6 +475,126 @@ namespace SMTParser{
                 break;
             }
 
+            // FLOATING POINT OPERATIONS
+            case NODE_KIND::NT_FP_ADD:
+            case NODE_KIND::NT_FP_SUB:
+            case NODE_KIND::NT_FP_MUL:
+            case NODE_KIND::NT_FP_DIV:
+            case NODE_KIND::NT_FP_FMA:
+            case NODE_KIND::NT_FP_MIN:
+            case NODE_KIND::NT_FP_MAX: {
+                std::string kind_str = kindToString(kind);
+                out << "(" << kind_str;
+                work_stack.emplace_back(nullptr, 2);  // )
+                const auto& children = node->getChildren();
+                for (int i = children.size() - 1; i >= 0; i--) {
+                    auto current_child = children[i].get();
+                    work_stack.emplace_back(current_child, 0);
+                    work_stack.emplace_back(nullptr, 1);  // space
+                }
+                break;
+            }
+
+            case NODE_KIND::NT_FP_ABS:
+            case NODE_KIND::NT_FP_NEG:
+            case NODE_KIND::NT_FP_SQRT:
+            case NODE_KIND::NT_FP_ROUND_TO_INTEGRAL:
+            case NODE_KIND::NT_FP_IS_NORMAL:
+            case NODE_KIND::NT_FP_IS_SUBNORMAL:
+            case NODE_KIND::NT_FP_IS_ZERO:
+            case NODE_KIND::NT_FP_IS_INF:
+            case NODE_KIND::NT_FP_IS_NAN:
+            case NODE_KIND::NT_FP_IS_NEG:
+            case NODE_KIND::NT_FP_IS_POS:
+            case NODE_KIND::NT_FP_TO_REAL: {
+                std::string kind_str = kindToString(kind);
+                auto child = node->getChild(0).get();
+                out << "(" << kind_str << " ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(child, 0);    // child
+                break;
+            }
+
+            case NODE_KIND::NT_FP_REM: {
+                auto child0 = node->getChild(0).get();
+                auto child1 = node->getChild(1).get();
+                out << "(fp.rem ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(child1, 0);   // child1
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(child0, 0);   // child0
+                break;
+            }
+
+            case NODE_KIND::NT_FP_LE:
+            case NODE_KIND::NT_FP_LT:
+            case NODE_KIND::NT_FP_GE:
+            case NODE_KIND::NT_FP_GT:
+            case NODE_KIND::NT_FP_EQ:
+            case NODE_KIND::NT_FP_NE: {
+                std::string kind_str = kindToString(kind);
+                auto child0 = node->getChild(0).get();
+                auto child1 = node->getChild(1).get();
+                out << "(" << kind_str << " ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(child1, 0);   // child1
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(child0, 0);   // child0
+                break;
+            }
+
+            case NODE_KIND::NT_FP_TO_UBV:
+            case NODE_KIND::NT_FP_TO_SBV: {
+                std::string kind_str = kindToString(kind);
+                auto rm = node->getChild(0).get();
+                auto fp = node->getChild(1).get();
+                auto size = node->getChild(2).get();
+                out << "(" << kind_str << " ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(size, 0);     // size
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(fp, 0);       // fp
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(rm, 0);       // rm
+                break;
+            }
+
+            case NODE_KIND::NT_FP_TO_FP: {
+                auto eb = node->getChild(0).get();
+                auto sb = node->getChild(1).get();
+                auto rm = node->getChild(2).get();
+                auto param = node->getChild(3).get();
+                out << "((_ to_fp ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(param, 0);    // param
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(rm, 0);       // rm
+                work_stack.emplace_back(nullptr, 3);  // ") "
+                work_stack.emplace_back(sb, 0);       // sb
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(eb, 0);       // eb
+                break;
+            }
+
+            case NODE_KIND::NT_FP_TO_FP_UNSIGNED: {
+                auto eb = node->getChild(0).get();
+                auto sb = node->getChild(1).get();
+                auto rm = node->getChild(2).get();
+                auto param = node->getChild(3).get();
+                out << "((_ to_fp_unsigned ";
+                work_stack.emplace_back(nullptr, 2);  // )
+                work_stack.emplace_back(param, 0);    // param
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(rm, 0);       // rm
+                work_stack.emplace_back(nullptr, 3);  // ") "
+                work_stack.emplace_back(sb, 0);       // sb
+                work_stack.emplace_back(nullptr, 1);  // space
+                work_stack.emplace_back(eb, 0);       // eb
+                break;
+            }
+
+
+
             default: {
                 // Fallback for other cases - iterative version
                 std::string kind_str = kindToString(kind);
@@ -537,7 +694,7 @@ namespace SMTParser{
                 node_buckets[i].reserve(1);
             }
             else{
-                node_buckets[i].reserve(2048);
+                node_buckets[i].reserve(8192);
             }
         }
         // 2. Initialize static constant nodes and insert them into buckets
@@ -553,9 +710,17 @@ namespace SMTParser{
     }
     size_t NodeManager::getIndex(const std::shared_ptr<DAGNode>& node) const{
         auto bucket_index = static_cast<size_t>(node->getKind());
-        auto it = node_buckets[bucket_index].find(node);
-        if(it != node_buckets[bucket_index].end()){
-            return it->second;
+        auto& kind_bucket = node_buckets[bucket_index];
+        size_t node_hash = node->hashCode();
+        
+        auto hash_it = kind_bucket.find(node_hash);
+        if(hash_it != kind_bucket.end()) {
+            for(const auto& pair : hash_it->second) {
+                if(pair.first.get() == node.get() ||
+                   pair.first->isEquivalentTo(*node)) {
+                    return pair.second;
+                }
+            }
         }
         return -1;
     }
@@ -574,12 +739,39 @@ namespace SMTParser{
     }
     
     std::shared_ptr<DAGNode> NodeManager::insertNodeToBucket(const std::shared_ptr<DAGNode>& node) {
+        TIME_FUNC();
         auto bucket_index = static_cast<size_t>(node->getKind());
-        auto it = node_buckets[bucket_index].find(node);
-        if(it != node_buckets[bucket_index].end()){
-            return nodes[it->second];
+        auto& kind_bucket = node_buckets[bucket_index];
+        
+        // pre-calculate hash code to avoid repeated calculation
+        size_t node_hash = node->hashCode();
+        
+        // secondary hash lookup: first use hash code to locate the small bucket
+        auto hash_it = kind_bucket.find(node_hash);
+        if(hash_it != kind_bucket.end()) {
+            TIME_BLOCK("NodeManager::insertNodeToBucket: hash_it != kind_bucket.end()");
+            // linear search in the small bucket
+            for(const auto& pair : hash_it->second) {
+                // optimize comparison order: the most likely different ones are in front, to avoid the expensive isEquivalentTo
+                if(pair.first.get() == node.get()) {
+                    // completely the same pointer, return directly
+                    return nodes[pair.second];
+                }
+                // fast structure comparison (avoid the expensive isEquivalentTo call)
+                if(pair.first->getKind() == node->getKind() &&
+                   pair.first->getChildrenSize() == node->getChildrenSize() &&
+                   pair.first->getName() == node->getName()) {
+                    // only call the expensive isEquivalentTo when the structure matches completely
+                    if(pair.first->isEquivalentTo(*node)) {
+                        return nodes[pair.second];
+                    }
+                }
+            }
         }
-        node_buckets[bucket_index].insert(std::pair<std::shared_ptr<DAGNode>, size_t>(node, nodes.size()));
+        
+        // node does not exist, insert new node
+        size_t new_index = nodes.size();
+        kind_bucket[node_hash].emplace_back(node, new_index);
         nodes.emplace_back(node);
         return node;
     }
@@ -610,66 +802,79 @@ namespace SMTParser{
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, NODE_KIND kind, std::string name, std::vector<std::shared_ptr<DAGNode>> children) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, kind, name, children);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, NODE_KIND kind, std::string name) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, kind, name);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, NODE_KIND kind) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, kind);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode() {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>();
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(NODE_KIND kind, std::string name) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(kind, name);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(NODE_KIND kind) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(kind);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, const Integer& v) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, v);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, const Real& v) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, v);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, const double& v) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, v);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, const int& v) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, v);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(std::shared_ptr<Sort> sort, const bool& v) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(sort, v);
         return insertNodeToBucket(node);
     }
 
     std::shared_ptr<DAGNode> NodeManager::createNode(const std::string& n) {
+        TIME_FUNC();
         auto node = std::make_shared<DAGNode>(n);
         return insertNodeToBucket(node);
     }

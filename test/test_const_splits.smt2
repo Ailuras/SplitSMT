@@ -1,0 +1,8 @@
+(set-logic ALL)
+(declare-fun x () String)
+(declare-fun y () Int)
+(declare-fun z () String)
+(assert (= (str.split_rest "hello-world-test" "-" 1) x))
+(assert (= (str.num_splits "hello-world-test" "-") y))
+(assert (= (str.split_at "hello-world-test" "-" 0) z))
+(check-sat) 

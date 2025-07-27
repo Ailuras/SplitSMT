@@ -128,4 +128,42 @@ private:
     std::vector<int> splitEndNumsAppeared;
 };
 
+class RegDivision : public Division {
+public:
+    RegDivision(const std::string& divided, const std::string& delimiter);
+    
+    bool isConstType() const override { return false; }
+    bool isVarType() const override { return true; }
+
+    void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
+    void deleteSplitNumAppeared(int num) { 
+        splitNumsAppeared.erase(std::remove(splitNumsAppeared.begin(), splitNumsAppeared.end(), num), splitNumsAppeared.end()); 
+        splitEndNumsAppeared.erase(std::remove(splitEndNumsAppeared.begin(), splitEndNumsAppeared.end(), num), splitEndNumsAppeared.end()); 
+    }
+    void addSplitEndNumAppeared(int num) { 
+        splitNumsAppeared.push_back(num);
+        splitEndNumsAppeared.push_back(num);
+    }
+    int getMaxSplitNumAppeared() const { 
+        if (splitNumsAppeared.empty()) {
+            return num_splits_used ? 0 : -1;
+        }
+        return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); 
+    }
+    const std::vector<int>& getSplitNumsAppeared() const { return splitNumsAppeared; }
+    const std::vector<int>& getSplitEndNumsAppeared() const { return splitEndNumsAppeared; }
+    int getSplitNumAppeared(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splitNumsAppeared.size())) {
+            throw std::out_of_range("Split number index out of range");
+        }
+        return splitNumsAppeared[index]; 
+    }
+    bool hasSplitNums() const { return !splitNumsAppeared.empty(); }
+    bool hasSplitEndNums() const { return !splitEndNumsAppeared.empty(); }
+
+private:
+    std::vector<int> splitNumsAppeared;
+    std::vector<int> splitEndNumsAppeared;
+};
+
 } // namespace strp

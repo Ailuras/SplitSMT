@@ -58,6 +58,9 @@ ConstDivision::ConstDivision(const std::string& divided, const std::string& deli
 VarDivision::VarDivision(const std::string& divided, const std::string& delimiter) :
     Division(divided, delimiter) {}
 
+RegDivision::RegDivision(const std::string& divided, const std::string& delimiter) :
+    Division(divided, delimiter) {}
+
 std::string Division::generateKey(const std::string& divided, const std::string& delimiter) {
     return divided + "##" + delimiter;
 }

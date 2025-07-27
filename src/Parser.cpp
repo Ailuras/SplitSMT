@@ -71,14 +71,12 @@ bool Parser::need_decomposition(const std::string& filename) {
     
     bool hasSplitLength = content.find("get_split_length") != std::string::npos;
     bool hasSplitElement = content.find("get_split_element") != std::string::npos;
-    bool hasSplitOperation = content.find("split operation") != std::string::npos;
     
     LOG4("Decomposition check results:");
     LOG4("  - Contains get_split_length: ", hasSplitLength);
     LOG4("  - Contains get_split_element: ", hasSplitElement);
-    LOG4("  - Contains split operation: ", hasSplitOperation);
     
-    bool needsDecomp = hasSplitLength || hasSplitElement || hasSplitOperation;
+    bool needsDecomp = hasSplitLength || hasSplitElement;
     LOG3("File needs decomposition: ", needsDecomp);
     
     return needsDecomp;
@@ -132,7 +130,6 @@ std::string Parser::extractFunctionName(const std::string& functionDef) {
     
     return functionDef.substr(start, end - start);
 }
-
 
 std::pair<std::vector<std::string>, std::vector<std::string>> Parser::extractConstraints(const std::string& content, std::vector<std::string>& splitFunctionNames) {
     LOG4("Extracting and categorizing constraints from content");
