@@ -28,17 +28,17 @@ def parse_args():
 
 def verify_solver_results(row):
     """
-    检查所有求解器是否都能成功求解，并且结果一致
+    Check if all solvers can successfully solve and have consistent results
     """
     solvers = ['cvc5', 'z3', 'SLIA-z3-noodler', 'SLIA-ostrich']
     
-    # 检查所有求解器是否都返回SUCCESS
+    # Check if all solvers return SUCCESS
     for solver in solvers:
         result_col = f'res_{solver}_result'
         if pd.isna(row[result_col]) or row[result_col] != 'SUCCESS':
             return False
     
-    # 获取所有求解器的推理结果
+    # Get reasoning results from all solvers
     solver_reasons = []
     for solver in solvers:
         reason_col = f'res_{solver}_reason'
@@ -47,34 +47,34 @@ def verify_solver_results(row):
             return False
         solver_reasons.append(reason)
     
-    # 检查所有求解器的结果是否一致
+    # Check if all solver results are consistent
     if len(set(solver_reasons)) != 1:
-        return False  # 结果不一致
+        return False  # Results inconsistent
     
     return True
 
 def get_file_source(path):
     """
-    根据文件路径获取文件来源，用于确保多样性
+    Get file source based on file path for ensuring diversity
     """
     path_parts = path.split('/')
     if len(path_parts) >= 3:
-        # 通常格式是 .../QF_SLIA/year-source/...
-        return path_parts[-2]  # 返回倒数第二个路径部分作为来源
+        # Usually format is .../QF_SLIA/year-source/...
+        return path_parts[-2]  # Return second-to-last path part as source
     return 'unknown'
 
 def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max_clauses, 
                 min_file_size, min_vars, min_clauses):
     try:
-        print(f"正在读取Excel文件: {input_file}")
+        print(f"Reading Excel file: {input_file}")
         df = pd.read_excel(input_file)
-        print(f"成功读取 {len(df)} 行数据")
+        print(f"Successfully read {len(df)} rows of data")
         
     except Exception as e:
-        print(f"读取输入文件时出错: {e}")
+        print(f"Error reading input file: {e}")
         return
 
-    # 检查必要的列是否存在
+    # Check if required columns exist
     required_columns = ['path', 'file_size', 'var_count', 'clause_count', 'status']
     solver_columns = ['res_cvc5_result', 'res_z3_result', 'res_SLIA-z3-noodler_result', 'res_SLIA-ostrich_result']
     reason_columns = ['res_cvc5_reason', 'res_z3_reason', 'res_SLIA-z3-noodler_reason', 'res_SLIA-ostrich_reason']
@@ -85,116 +85,116 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
             missing_columns.append(col)
     
     if missing_columns:
-        print(f"警告: 以下列不存在于Excel文件中: {missing_columns}")
+        print(f"Warning: The following columns do not exist in Excel file: {missing_columns}")
         return
 
-    print(f"\n=== 开始高效筛选过程 ===")
+    print(f"\n=== Starting efficient filtering process ===")
     
-    # 创建输出目录（如果存在则先清空）
+    # Create output directory (clear if exists)
     if os.path.exists(output_dir):
-        print(f"清空现有目录: {output_dir}")
+        print(f"Clearing existing directory: {output_dir}")
         shutil.rmtree(output_dir)
     
     os.makedirs(output_dir, exist_ok=True)
-    print(f"输出目录: {output_dir}")
+    print(f"Output directory: {output_dir}")
     
-    # 分步骤分析筛选过程
-    print(f"=== 分步骤筛选分析 ===")
+    # Step-by-step filtering analysis
+    print(f"=== Step-by-step filtering analysis ===")
     
-    # 步骤1：基本数值条件筛选
+    # Step 1: Basic numerical condition filtering
     basic_filter = (
         (df['file_size'] >= min_file_size) & (df['file_size'] <= max_file_size) &
         (df['var_count'] >= min_vars) & (df['var_count'] <= max_vars) &
         (df['clause_count'] >= min_clauses) & (df['clause_count'] <= max_clauses)
     )
     basic_candidates = df[basic_filter].copy()
-    print(f"1. 基本数值筛选后: {len(basic_candidates)} 个文件 ({len(basic_candidates)/len(df)*100:.2f}%)")
+    print(f"1. After basic numerical filtering: {len(basic_candidates)} files ({len(basic_candidates)/len(df)*100:.2f}%)")
     
-    # 步骤2：求解器结果筛选
+    # Step 2: Solver result filtering
     solver_filter = basic_candidates.apply(verify_solver_results, axis=1)
     all_candidates = basic_candidates[solver_filter].copy()
-    print(f"2. 求解器结果筛选后: {len(all_candidates)} 个文件 ({len(all_candidates)/len(df)*100:.2f}%)")
+    print(f"2. After solver result filtering: {len(all_candidates)} files ({len(all_candidates)/len(df)*100:.2f}%)")
     
     if len(all_candidates) == 0:
-        print("错误: 没有文件满足筛选条件!")
-        print("建议: 放宽筛选条件，比如增大文件大小限制或减少求解器要求")
+        print("Error: No files meet the filtering criteria!")
+        print("Suggestion: Relax filtering conditions, such as increasing file size limits or reducing solver requirements")
         return
     
-    # 分析候选文件的结果分布
-    all_candidates['solver_result'] = all_candidates['res_cvc5_reason']  # 使用第一个求解器的结果（已验证一致性）
+    # Analyze result distribution of candidate files
+    all_candidates['solver_result'] = all_candidates['res_cvc5_reason']  # Use first solver result (consistency verified)
     result_counts = all_candidates['solver_result'].value_counts()
     
-    print(f"\n=== 候选文件求解结果分布 ===")
+    print(f"\n=== Candidate file solving result distribution ===")
     for result, count in result_counts.items():
-        print(f"{result}: {count} 个文件 ({count/len(all_candidates)*100:.1f}%)")
+        print(f"{result}: {count} files ({count/len(all_candidates)*100:.1f}%)")
     
-    # 检查是否有足够的sat和unsat文件
+    # Check if there are enough sat and unsat files
     sat_files = all_candidates[all_candidates['solver_result'] == 'sat']
     unsat_files = all_candidates[all_candidates['solver_result'] == 'unsat']
     unknown_files = all_candidates[all_candidates['solver_result'] == 'unknown']
     
-    print(f"\nSAT文件数量: {len(sat_files)}")
-    print(f"UNSAT文件数量: {len(unsat_files)}")
-    print(f"UNKNOWN文件数量: {len(unknown_files)}")
+    print(f"\nSAT file count: {len(sat_files)}")
+    print(f"UNSAT file count: {len(unsat_files)}")
+    print(f"UNKNOWN file count: {len(unknown_files)}")
     
-    # 分析候选文件的来源分布
+    # Analyze source distribution of candidate files
     all_candidates['source'] = all_candidates['path'].apply(get_file_source)
     source_counts = all_candidates['source'].value_counts()
     
-    print(f"\n=== 候选文件来源分布 ===")
+    print(f"\n=== Candidate file source distribution ===")
     for source, count in source_counts.head(10).items():
-        print(f"{source}: {count} 个文件 ({count/len(all_candidates)*100:.1f}%)")
+        print(f"{source}: {count} files ({count/len(all_candidates)*100:.1f}%)")
     
     if len(source_counts) > 10:
-        print(f"... 还有 {len(source_counts)-10} 个其他来源")
+        print(f"... and {len(source_counts)-10} other sources")
     
-    # 分析status分布
+    # Analyze status distribution
     status_counts = all_candidates['status'].value_counts()
-    print(f"\n候选文件Status分布:")
+    print(f"\nCandidate file Status distribution:")
     for status, count in status_counts.items():
         print(f"  {status}: {count} ({count/len(all_candidates)*100:.1f}%)")
     
-    # 50%/50% SAT/UNSAT 分层选择策略
+    # 50%/50% SAT/UNSAT stratified selection strategy
     if len(all_candidates) < num_seeds:
-        print(f"\n警告: 候选文件数量 ({len(all_candidates)}) 少于需要的种子数量 ({num_seeds})")
+        print(f"\nWarning: Candidate file count ({len(all_candidates)}) is less than required seed count ({num_seeds})")
         num_seeds = len(all_candidates)
         selected_candidates = all_candidates
     else:
-        print(f"\n=== SAT/UNSAT 50%/50% 分层选择策略 ===")
+        print(f"\n=== SAT/UNSAT 50%/50% stratified selection strategy ===")
         
-        # 计算每种结果需要选择的数量
+        # Calculate number needed for each result type
         target_sat = num_seeds // 2
         target_unsat = num_seeds - target_sat
         
-        print(f"目标选择: SAT {target_sat} 个, UNSAT {target_unsat} 个")
+        print(f"Target selection: SAT {target_sat}, UNSAT {target_unsat}")
         
         selected_list = []
         
-        # 选择SAT文件
+        # Select SAT files
         if len(sat_files) >= target_sat:
             selected_sat = sat_files.sample(n=target_sat, random_state=42)
             selected_list.append(selected_sat)
-            print(f"成功选择 {target_sat} 个SAT文件")
+            print(f"Successfully selected {target_sat} SAT files")
         else:
             selected_list.append(sat_files)
-            print(f"SAT文件不足，只能选择 {len(sat_files)} 个")
+            print(f"Insufficient SAT files, can only select {len(sat_files)}")
         
-        # 选择UNSAT文件
+        # Select UNSAT files
         if len(unsat_files) >= target_unsat:
             selected_unsat = unsat_files.sample(n=target_unsat, random_state=43)
             selected_list.append(selected_unsat)
-            print(f"成功选择 {target_unsat} 个UNSAT文件")
+            print(f"Successfully selected {target_unsat} UNSAT files")
         else:
             selected_list.append(unsat_files)
-            print(f"UNSAT文件不足，只能选择 {len(unsat_files)} 个")
+            print(f"Insufficient UNSAT files, can only select {len(unsat_files)}")
         
-        # 合并选择的文件
+        # Merge selected files
         if selected_list:
             selected_candidates = pd.concat(selected_list, ignore_index=True)
         else:
             selected_candidates = pd.DataFrame()
         
-        # 如果SAT和UNSAT文件都不够，从UNKNOWN文件中补充
+        # If SAT and UNSAT files are insufficient, supplement from UNKNOWN files
         if len(selected_candidates) < num_seeds and len(unknown_files) > 0:
             remaining_needed = num_seeds - len(selected_candidates)
             additional_unknown = unknown_files.sample(
@@ -202,9 +202,9 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
                 random_state=44
             )
             selected_candidates = pd.concat([selected_candidates, additional_unknown], ignore_index=True)
-            print(f"从UNKNOWN文件中补充选择 {len(additional_unknown)} 个文件")
+            print(f"Supplemented {len(additional_unknown)} files from UNKNOWN files")
         
-        # 如果仍然不够，从所有候选中随机补充
+        # If still insufficient, randomly supplement from all candidates
         if len(selected_candidates) < num_seeds:
             remaining_needed = num_seeds - len(selected_candidates)
             selected_paths = set(selected_candidates['path'])
@@ -216,12 +216,12 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
                     random_state=45
                 )
                 selected_candidates = pd.concat([selected_candidates, additional], ignore_index=True)
-                print(f"随机补充选择 {len(additional)} 个文件")
+                print(f"Randomly supplemented {len(additional)} files")
     
-    print(f"\n最终选择了 {len(selected_candidates)} 个种子文件")
+    print(f"\nFinally selected {len(selected_candidates)} seed files")
     
-    # 复制选中的文件
-    print(f"开始复制文件...")
+    # Copy selected files
+    print(f"Starting file copying...")
     success_count = 0
     failed_files = []
     
@@ -229,7 +229,7 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
         source_path = row['path']
         
         if not os.path.exists(source_path):
-            print(f"警告: 源文件不存在: {source_path}")
+            print(f"Warning: Source file does not exist: {source_path}")
             failed_files.append(source_path)
             continue
         
@@ -241,72 +241,72 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
             success_count += 1
             
             if (idx + 1) % 20 == 0:
-                print(f"已复制 {idx + 1}/{len(selected_candidates)} 个文件...")
+                print(f"Copied {idx + 1}/{len(selected_candidates)} files...")
                 
         except Exception as e:
-            print(f"复制文件时出错 {source_path}: {e}")
+            print(f"Error copying file {source_path}: {e}")
             failed_files.append(source_path)
     
-    # 打印最终总结
-    print(f"\n=== 选择总结 ===")
-    print(f"输入文件总数: {len(df)}")
-    print(f"符合条件的候选文件: {len(all_candidates)} ({len(all_candidates)/len(df)*100:.2f}%)")
-    print(f"成功复制种子文件: {success_count}/{len(selected_candidates)}")
+    # Print final summary
+    print(f"\n=== Selection Summary ===")
+    print(f"Total input files: {len(df)}")
+    print(f"Qualified candidate files: {len(all_candidates)} ({len(all_candidates)/len(df)*100:.2f}%)")
+    print(f"Successfully copied seed files: {success_count}/{len(selected_candidates)}")
     
     if failed_files:
-        print(f"失败文件数: {len(failed_files)}")
+        print(f"Failed file count: {len(failed_files)}")
         if len(failed_files) <= 5:
-            print("失败文件列表:")
+            print("Failed file list:")
             for f in failed_files:
                 print(f"  {os.path.basename(f)}")
     
     if success_count > 0:
-        # 分析最终选择的分布
-        print(f"\n=== 最终选择分析 ===")
+        # Analyze final selection distribution
+        print(f"\n=== Final Selection Analysis ===")
         
-        # 求解结果分布
+        # Solving result distribution
         final_result_counts = selected_candidates['solver_result'].value_counts()
-        print(f"求解结果分布:")
+        print(f"Solving result distribution:")
         for result, count in final_result_counts.items():
             print(f"  {result}: {count} ({count/len(selected_candidates)*100:.1f}%)")
         
-        # 来源分布（确保source列存在）
+        # Source distribution (ensure source column exists)
         if 'source' in selected_candidates.columns:
             final_source_counts = selected_candidates['source'].value_counts()
-            print(f"\n来源分布 (前10个):")
+            print(f"\nSource distribution (top 10):")
             for source, count in final_source_counts.head(10).items():
                 print(f"  {source}: {count} ({count/len(selected_candidates)*100:.1f}%)")
         else:
-            # 重新计算source列
+            # Recalculate source column
             selected_candidates['source'] = selected_candidates['path'].apply(get_file_source)
             final_source_counts = selected_candidates['source'].value_counts()
-            print(f"\n来源分布 (前10个):")
+            print(f"\nSource distribution (top 10):")
             for source, count in final_source_counts.head(10).items():
                 print(f"  {source}: {count} ({count/len(selected_candidates)*100:.1f}%)")
         
-        # Status分布
+        # Status distribution
         final_status_counts = selected_candidates['status'].value_counts()
-        print(f"\nStatus分布:")
+        print(f"\nStatus distribution:")
         for status, count in final_status_counts.items():
             print(f"  {status}: {count} ({count/len(selected_candidates)*100:.1f}%)")
         
-        # 数值分布
-        print(f"\n数值分布:")
-        print(f"文件大小: {selected_candidates['file_size'].min()}-{selected_candidates['file_size'].max()} bytes (平均: {selected_candidates['file_size'].mean():.0f})")
-        print(f"变量数: {selected_candidates['var_count'].min()}-{selected_candidates['var_count'].max()} (平均: {selected_candidates['var_count'].mean():.1f})")
-        print(f"子句数: {selected_candidates['clause_count'].min()}-{selected_candidates['clause_count'].max()} (平均: {selected_candidates['clause_count'].mean():.1f})")
+        # Numerical distribution
+        print(f"\nNumerical distribution:")
+        print(f"File size: {selected_candidates['file_size'].min()}-{selected_candidates['file_size'].max()} bytes (avg: {selected_candidates['file_size'].mean():.0f})")
+        print(f"Variable count: {selected_candidates['var_count'].min()}-{selected_candidates['var_count'].max()} (avg: {selected_candidates['var_count'].mean():.1f})")
+        print(f"Clause count: {selected_candidates['clause_count'].min()}-{selected_candidates['clause_count'].max()} (avg: {selected_candidates['clause_count'].mean():.1f})")
         
-        # 验证求解器结果一致性
-        print(f"\n求解器结果一致性验证:")
+        # Verify solver result consistency
+        print(f"\nSolver result consistency verification:")
         for solver in ['cvc5', 'z3', 'SLIA-z3-noodler', 'SLIA-ostrich']:
             reason_col = f'res_{solver}_reason'
             valid_count = 0
             for _, row in selected_candidates.iterrows():
                 if not pd.isna(row[reason_col]) and row[reason_col] != 'unknown':
                     valid_count += 1
-            print(f"  {solver}: {valid_count}/{len(selected_candidates)} 有效结果")
+            print(f"  {solver}: {valid_count}/{len(selected_candidates)} valid results")
         
-        # 验证所有求解器结果一致性
+        # Verify all solver result consistency
         consistent_results = 0
         for _, row in selected_candidates.iterrows():
             solver_reasons = []
@@ -315,35 +315,35 @@ def select_seeds(input_file, output_dir, num_seeds, max_file_size, max_vars, max
                 solver_reasons.append(row[reason_col])
             if len(set(solver_reasons)) == 1:
                 consistent_results += 1
-        print(f"  所有求解器结果一致: {consistent_results}/{len(selected_candidates)}")
+        print(f"  All solver results consistent: {consistent_results}/{len(selected_candidates)}")
         
-        # 显示求解器结果分布
+        # Show solver result distribution
         if len(selected_candidates) > 0:
             first_solver_results = selected_candidates['res_cvc5_reason'].value_counts()
-            print(f"\n求解器结果分布:")
+            print(f"\nSolver result distribution:")
             for result, count in first_solver_results.items():
                 print(f"  {result}: {count} ({count/len(selected_candidates)*100:.1f}%)")
         
-        # 显示一些选中文件的示例
+        # Show examples of selected files
         if 'file_name' in df.columns:
             sample_names = selected_candidates['file_name'].head(10).tolist()
-            print(f"\n选中文件示例:")
+            print(f"\nSelected file examples:")
             for name in sample_names:
                 print(f"  {name}")
     
-    print(f"\n筛选效率: 在 {len(df)} 行中找到 {len(all_candidates)} 个候选，选择了 {success_count} 个种子")
+    print(f"\nFiltering efficiency: Found {len(all_candidates)} candidates from {len(df)} rows, selected {success_count} seeds")
 
 if __name__ == "__main__":
     args = parse_args()
-    print(f"=== SMT2 种子选择工具 ===")
-    print(f"从 {args.input_file} 选择 {args.num_seeds} 个种子")
-    print(f"筛选条件:")
-    print(f"- 文件大小: {args.min_file_size} - {args.max_file_size} bytes")
-    print(f"- 变量数: {args.min_vars} - {args.max_vars}")
-    print(f"- 子句数: {args.min_clauses} - {args.max_clauses}")
-    print(f"- 所有求解器必须返回SUCCESS")
-    print(f"- 所有求解器结果必须一致")
-    print(f"- 选择策略: SAT和UNSAT各占50%")
+    print(f"=== SMT2 Seed Selection Tool ===")
+    print(f"Select {args.num_seeds} seeds from {args.input_file}")
+    print(f"Filtering conditions:")
+    print(f"- File size: {args.min_file_size} - {args.max_file_size} bytes")
+    print(f"- Variable count: {args.min_vars} - {args.max_vars}")
+    print(f"- Clause count: {args.min_clauses} - {args.max_clauses}")
+    print(f"- All solvers must return SUCCESS")
+    print(f"- All solver results must be consistent")
+    print(f"- Selection strategy: 50% SAT and 50% UNSAT")
     
     select_seeds(
         args.input_file,

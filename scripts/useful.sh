@@ -1,46 +1,46 @@
 #!/bin/bash
 
-# StrProcessor 使用指南
+# StrProcessor Usage Guide
 # 
-# 最新更新：
-# - 添加了多求解器支持（ext-z3, ext-cvc5, ext-ostrich, ext-z3-noodler）
-# - 更新了批量求解脚本支持求解器选择
-# - 重写了分析脚本支持多求解器结果比较
-# - 优化了 split 函数处理性能和模型输出过滤
+# Latest Updates:
+# - Added multi-solver support (ext-z3, ext-cvc5, ext-ostrich, ext-z3-noodler)
+# - Updated batch solving script to support solver selection
+# - Rewrote analysis script to support multi-solver result comparison
+# - Optimized split function processing performance and model output filtering
 #
 # =============================================================================
 
-# 1. 选择种子文件
+# 1. Select seed files
 python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num-seeds 100 --output-dir benchmarks/seeds
 
-# 2. 变异种子文件
+# 2. Mutate seed files
 
-# 自动变异器 (基于规则生成 str.split_at 约束)
+# Auto mutator (rule-based generation of str.split_at constraints)
 ./scripts/mutate/mutate_batch.sh -p auto -j 8
 
-# LLM变异器 - DeepSeek (智能生成 str.split_at 约束)
+# LLM mutator - DeepSeek (intelligent generation of str.split_at constraints)
 ./scripts/mutate/mutate_batch.sh -p deepseek -j 4
 
-# LLM变异器 - OpenAI GPT (智能生成 str.split_at 约束)
+# LLM mutator - OpenAI GPT (intelligent generation of str.split_at constraints)
 ./scripts/mutate/mutate_batch.sh -p openai -j 4
 
-# LLM变异器 - Claude (智能生成 str.split_at 约束)
+# LLM mutator - Claude (intelligent generation of str.split_at constraints)
 ./scripts/mutate/mutate_batch.sh -p claude -j 4
 
-# 指定特定模型的LLM变异
+# Specify specific model for LLM mutation
 ./scripts/mutate/mutate_batch.sh -p deepseek -m deepseek-coder -j 4
 ./scripts/mutate/mutate_batch.sh -p openai -m gpt-4 -j 4
 ./scripts/mutate/mutate_batch.sh -p claude -m claude-3-sonnet-20240229 -j 4
 
-# 3. 使用不同求解器求解文件
+# 3. Solve files using different solvers
 
-# 使用外部求解器求解原始种子文件
+# Solve original seed files using external solvers
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_ext_z3.log --solver ext-z3
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_ext_cvc5.log --solver ext-cvc5
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_ext_ostrich.log --solver ext-ostrich
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_ext_z3_noodler.log --solver ext-z3-noodler
 
-# 使用外部求解器求解变异文件
+# Solve mutated files using external solvers
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_auto -f results_auto_ext_z3.log --solver ext-z3 -t 60
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_auto -f results_auto_ext_cvc5.log --solver ext-cvc5 -t 60
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_auto -f results_auto_ext_ostrich.log --solver ext-ostrich -t 60
@@ -56,11 +56,11 @@ python scripts/mutate/select_seeds.py --input-file charts/QF_SLIA_ALL.xlsx --num
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_openai -f results_openai_ext_ostrich.log --solver ext-ostrich -t 60
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutate_openai -f results_openai_ext_z3_noodler.log --solver ext-z3-noodler -t 60
 
-# 使用内置求解器（如果需要对比）
+# Use built-in solvers (if needed for comparison)
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_z3_api.log --solver z3
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds -f results_seeds_cvc5_api.log --solver cvc5
 
-# 使用外部求解器求解现实例子
+# Solve real-world examples using external solvers
 ./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_cvc5.log --solver ext-cvc5 -t 60 -p 30
 ./scripts/solve/solve_batch.sh -i benchmarks/test -f results_test_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
 python scripts/solve/classify_files.py --excel-file charts/results_test_ext_cvc5_analysis.xlsx --output-dir benchmarks/test_ext_cvc5 --source-dir benchmarks/test
@@ -73,16 +73,16 @@ python scripts/solve/classify_files.py --excel-file charts/results_top20_gh_ext_
 ./scripts/solve/solve_batch.sh -i benchmarks/top20_maven -f results_top20_maven_ext_z3-noodler.log --solver ext-z3-noodler -t 60 -p 30
 python scripts/solve/classify_files.py --excel-file charts/results_top20_maven_ext_z3-noodler_analysis.xlsx --output-dir benchmarks/top20_maven_ext_z3-noodler --source-dir benchmarks/top20_maven
 
-# 4. 多求解器结果分析
+# 4. Multi-solver result analysis
  
-# 分析所有变异类型和求解器组合的完整报告（包含求解器一致性检查）
+# Analyze complete report for all mutation types and solver combinations (including solver consistency check)
 python scripts/solve/analysis_results.py \
     --results-dir results \
     --seeds-dir benchmarks/seeds \
     --mutated-dirs benchmarks/seeds_mutate_auto benchmarks/seeds_mutate_deepseek benchmarks/seeds_mutate_openai \
     --output-file charts/multi_solver_analysis.xlsx
 
-# 分析特定变异类型的多求解器结果
+# Analyze multi-solver results for specific mutation types
 python scripts/solve/analysis_results.py \
     --results-dir results \
     --seeds-dir benchmarks/seeds \
@@ -101,13 +101,13 @@ python scripts/solve/analysis_results.py \
     --mutated-dirs benchmarks/seeds_mutate_openai \
     --output-file charts/openai_multi_solver.xlsx
 
-# 5. 单文件测试示例
+# 5. Single file test examples
 
-# 单个文件变异测试
+# Single file mutation test
 python scripts/mutate/mutate_auto.py --input benchmarks/seeds/example.smt2 --output benchmarks/test_auto.smt2
 python scripts/mutate/mutate_llm.py --input benchmarks/seeds/example.smt2 --output benchmarks/test_llm.smt2 --provider deepseek
 
-# 单个文件求解测试（使用不同求解器）
+# Single file solving test (using different solvers)
 ./run_strprocessor.sh benchmarks/test_auto.smt2 --solver z3
 ./run_strprocessor.sh benchmarks/test_auto.smt2 --solver ext-z3
 ./run_strprocessor.sh benchmarks/test_auto.smt2 --solver ext-cvc5
@@ -115,22 +115,22 @@ python scripts/mutate/mutate_llm.py --input benchmarks/seeds/example.smt2 --outp
 ./run_strprocessor.sh benchmarks/test_auto.smt2 --solver ext-z3-noodler
 
 # =============================================================================
-# 支持的求解器类型：
+# Supported solver types:
 # 
-# 内置求解器（API调用）:
-#   - z3      : Z3 solver (默认)
+# Built-in solvers (API calls):
+#   - z3      : Z3 solver (default)
 #   - cvc5    : CVC5 solver
 #
-# 外部求解器（进程调用）:
-#   - ext-z3        : 外部Z3求解器
-#   - ext-cvc5      : 外部CVC5求解器  
-#   - ext-ostrich   : 外部Ostrich求解器
-#   - ext-z3-noodler: 外部Z3-Noodler求解器
+# External solvers (process calls):
+#   - ext-z3        : External Z3 solver
+#   - ext-cvc5      : External CVC5 solver  
+#   - ext-ostrich   : External Ostrich solver
+#   - ext-z3-noodler: External Z3-Noodler solver
 #
-# 分析报告包含：
-#   - Overview: 所有变异类型×求解器组合的完整概览
-#   - Solver_Performance: 不同求解器的性能统计对比
-#   - Seeds_Cross_Solver: 原始文件在不同求解器间的一致性分析
-#   - 每个变异类型的详细分析Sheet
-#   - solver_consistency列: 检测严重不一致（一个求解器SAT，另一个UNSAT）
+# Analysis report includes:
+#   - Overview: Complete overview of all mutation types × solver combinations
+#   - Solver_Performance: Performance statistics comparison of different solvers
+#   - Seeds_Cross_Solver: Consistency analysis of original files across different solvers
+#   - Detailed analysis sheet for each mutation type
+#   - solver_consistency column: Detects severe inconsistencies (one solver SAT, another UNSAT)
 # =============================================================================

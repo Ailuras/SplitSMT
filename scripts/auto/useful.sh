@@ -1,7 +1,7 @@
-# 生成变异文件
+# Generate mutation files
 python3 scripts/auto/mutate_auto.py --input "benchmarks/seeds/*.smt2" --output "benchmarks/seeds_mutated_auto" --batch
 
-# 分析结果  
+# Analyze results  
 ./scripts/auto/analyze.sh -i benchmarks/seeds_mutated_auto
 
 ./scripts/solve/solve_batch.sh -i benchmarks/seeds_mutated_auto -f results_mutated_auto_ext_z3.log --solver ext-z3 -t 60
