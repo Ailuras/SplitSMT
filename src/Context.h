@@ -19,8 +19,12 @@ public:
     std::string getFormula();
 
     void addDivision(std::unique_ptr<Division> division);
-    Division* getDivision(const std::string& divided, const std::string& delimiter);
-    bool hasDivision(const std::string& divided, const std::string& delimiter) const;
+    Division* getDivision(const std::string& divided, const std::vector<std::string>& delimiters);
+    bool hasDivision(const std::string& divided, const std::vector<std::string>& delimiters) const;
+    std::vector<std::string> getDelimiters(const SMTParser::NodePtr& node);
+    void extractDelimitersFromRegex(const SMTParser::NodePtr& regexNode, std::vector<std::string>& delimiters);
+    void validateDelimiterLengths(const std::vector<std::string>& delimiters);
+    std::vector<SMTParser::NodePtr> getDivisionNodes(const std::string& divided, const std::vector<std::string>& delimiters) const;
     const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
     std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     bool hasTask(TaskType taskType) const;
@@ -39,12 +43,12 @@ public:
     std::vector<SMTParser::NodePtr> getNumSplitConstNodes();
     std::vector<SMTParser::NodePtr> getNumSplitVarNodes();
 
-    std::vector<SMTParser::NodePtr> getSplitAtRegNodes();
-    std::vector<SMTParser::NodePtr> getSplitAtRegNodes(const SMTParser::NodePtr& node);
-    std::vector<SMTParser::NodePtr> getSplitRestRegNodes();
-    std::vector<SMTParser::NodePtr> getSplitRestRegNodes(const SMTParser::NodePtr& node);
-    std::vector<SMTParser::NodePtr> getNumSplitRegNodes();
-    std::vector<SMTParser::NodePtr> getNumSplitRegNodes(const SMTParser::NodePtr& node);
+    bool isSplitAtConstNode(const SMTParser::NodePtr& node);
+    bool isSplitAtVarNode(const SMTParser::NodePtr& node);
+    bool isSplitRestConstNode(const SMTParser::NodePtr& node);
+    bool isSplitRestVarNode(const SMTParser::NodePtr& node);
+    bool isNumSplitConstNode(const SMTParser::NodePtr& node);
+    bool isNumSplitVarNode(const SMTParser::NodePtr& node);
 
     void updateDivisions();
     void updateSplitNodeToAtoms();
@@ -68,6 +72,7 @@ private:
     Decomposition decomposition;
     std::set<TaskType> tasks;
     std::unordered_map<std::string, std::unique_ptr<Division>> divisions;
+    std::unordered_map<std::string, std::vector<SMTParser::NodePtr>> divisionNodes;
     std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;

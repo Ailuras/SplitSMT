@@ -41,23 +41,25 @@ class Context;
 class Division {
 public:
     Division() = default;
-    Division(const std::string& divided, const std::string& delimiter);
+    Division(const std::string& divided, const std::vector<std::string>& delimiters);
     virtual ~Division() = default;
 
     std::string getDivided() const { return divided; }
-    std::string getDelimiter() const { return delimiter; }
+    std::vector<std::string> getDelimiters() const { return delimiters; }
+    std::string getDelimiter(int index) const { return delimiters[index]; }
+    void addDelimiter(const std::string& delimiter) { delimiters.push_back(delimiter); }
+    int getDelimiterSize() const { return delimiters.size(); }
     std::string getHashString() const { return hash_string; }
     virtual bool isConstType() const = 0;
     virtual bool isVarType() const = 0;
     
     bool isNumSplitsUsed() const { return num_splits_used; }
     void setNumSplitsUsed(bool used) { this->num_splits_used = used; }
-    
-    static std::string generateKey(const std::string& divided, const std::string& delimiter);
+    static std::string generateKey(const std::string& divided, const std::vector<std::string>& delimiters);
 
 protected:
     std::string divided;
-    std::string delimiter;
+    std::vector<std::string> delimiters;
     std::string hash_string;
     bool num_splits_used = false;
     
@@ -67,7 +69,7 @@ private:
 
 class ConstDivision : public Division {
 public:
-    ConstDivision(const std::string& divided, const std::string& delimiter);
+    ConstDivision(const std::string& divided, const std::vector<std::string>& delimiters);
     
     bool isConstType() const override { return true; }
     bool isVarType() const override { return false; }
@@ -92,78 +94,52 @@ private:
 
 class VarDivision : public Division {
 public:
-    VarDivision(const std::string& divided, const std::string& delimiter);
+    VarDivision(const std::string& divided, const std::vector<std::string>& delimiters);
     
     bool isConstType() const override { return false; }
     bool isVarType() const override { return true; }
     
-    void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
-    void deleteSplitNumAppeared(int num) { 
-        splitNumsAppeared.erase(std::remove(splitNumsAppeared.begin(), splitNumsAppeared.end(), num), splitNumsAppeared.end()); 
-        splitEndNumsAppeared.erase(std::remove(splitEndNumsAppeared.begin(), splitEndNumsAppeared.end(), num), splitEndNumsAppeared.end()); 
-    }
-    void addSplitEndNumAppeared(int num) { 
-        splitNumsAppeared.push_back(num);
-        splitEndNumsAppeared.push_back(num);
-    }
+    void addSplitAtNumAppeared(int num) { splitAtNumsAppeared.push_back(num); }
+    void deleteSplitAtNumAppeared(int num) { splitAtNumsAppeared.erase(std::remove(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end(), num), splitAtNumsAppeared.end()); }
+    void addSplitRestNumAppeared(int num) { splitRestNumsAppeared.push_back(num); }
+    void deleteSplitRestNumAppeared(int num) { splitRestNumsAppeared.erase(std::remove(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end(), num), splitRestNumsAppeared.end()); }
     int getMaxSplitNumAppeared() const { 
-        if (splitNumsAppeared.empty()) {
-            return num_splits_used ? 0 : -1;
+        if (splitAtNumsAppeared.empty() && splitRestNumsAppeared.empty()) {
+            return 0;
         }
-        return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); 
+        if (splitAtNumsAppeared.empty()) {
+            return *std::max_element(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end());
+        }
+        if (splitRestNumsAppeared.empty()) {
+            return *std::max_element(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end());
+        }
+        return *std::max_element(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end()) + *std::max_element(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end()); 
     }
-    const std::vector<int>& getSplitNumsAppeared() const { return splitNumsAppeared; }
-    const std::vector<int>& getSplitEndNumsAppeared() const { return splitEndNumsAppeared; }
-    int getSplitNumAppeared(int index) const { 
-        if (index < 0 || index >= static_cast<int>(splitNumsAppeared.size())) {
+    const std::vector<int>& getSplitAtNumsAppeared() const { return splitAtNumsAppeared; }
+    const std::vector<int>& getSplitRestNumsAppeared() const { return splitRestNumsAppeared; }
+    const std::vector<int>& getSplitNumsAppeared() const { 
+        std::vector<int> result = splitAtNumsAppeared;
+        result.insert(result.end(), splitRestNumsAppeared.begin(), splitRestNumsAppeared.end());
+        return result;
+    }
+    int getSplitAtNumAppeared(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splitAtNumsAppeared.size())) {
             throw std::out_of_range("Split number index out of range");
         }
-        return splitNumsAppeared[index]; 
+        return splitAtNumsAppeared[index]; 
     }
-    bool hasSplitNums() const { return !splitNumsAppeared.empty(); }
-    bool hasSplitEndNums() const { return !splitEndNumsAppeared.empty(); }
-
-private:
-    std::vector<int> splitNumsAppeared;
-    std::vector<int> splitEndNumsAppeared;
-};
-
-class RegDivision : public Division {
-public:
-    RegDivision(const std::string& divided, const std::string& delimiter);
-    
-    bool isConstType() const override { return false; }
-    bool isVarType() const override { return true; }
-
-    void addSplitNumAppeared(int num) { splitNumsAppeared.push_back(num); }
-    void deleteSplitNumAppeared(int num) { 
-        splitNumsAppeared.erase(std::remove(splitNumsAppeared.begin(), splitNumsAppeared.end(), num), splitNumsAppeared.end()); 
-        splitEndNumsAppeared.erase(std::remove(splitEndNumsAppeared.begin(), splitEndNumsAppeared.end(), num), splitEndNumsAppeared.end()); 
-    }
-    void addSplitEndNumAppeared(int num) { 
-        splitNumsAppeared.push_back(num);
-        splitEndNumsAppeared.push_back(num);
-    }
-    int getMaxSplitNumAppeared() const { 
-        if (splitNumsAppeared.empty()) {
-            return num_splits_used ? 0 : -1;
-        }
-        return *std::max_element(splitNumsAppeared.begin(), splitNumsAppeared.end()); 
-    }
-    const std::vector<int>& getSplitNumsAppeared() const { return splitNumsAppeared; }
-    const std::vector<int>& getSplitEndNumsAppeared() const { return splitEndNumsAppeared; }
-    int getSplitNumAppeared(int index) const { 
-        if (index < 0 || index >= static_cast<int>(splitNumsAppeared.size())) {
+    int getSplitRestNumAppeared(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splitRestNumsAppeared.size())) {
             throw std::out_of_range("Split number index out of range");
         }
-        return splitNumsAppeared[index]; 
+        return splitRestNumsAppeared[index]; 
     }
-    bool hasSplitNums() const { return !splitNumsAppeared.empty(); }
-    bool hasSplitEndNums() const { return !splitEndNumsAppeared.empty(); }
+    bool hasSplitAtNums() const { return !splitAtNumsAppeared.empty(); }
+    bool hasSplitRestNums() const { return !splitRestNumsAppeared.empty(); }
 
 private:
-    std::vector<int> splitNumsAppeared;
-    std::vector<int> splitEndNumsAppeared;
+    std::vector<int> splitAtNumsAppeared;
+    std::vector<int> splitRestNumsAppeared;
 };
 
 } // namespace strp

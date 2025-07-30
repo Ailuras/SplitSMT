@@ -30,9 +30,9 @@ std::vector<std::string> splitString(const std::string& str, const std::string& 
 
 namespace strp {
 
-Division::Division(const std::string& divided, const std::string& delimiter) :
+Division::Division(const std::string& divided, const std::vector<std::string>& delimiters) :
     divided(divided),
-    delimiter(delimiter),
+    delimiters(delimiters),
     num_splits_used(false) {
     hash_string = generateHashString();
 }
@@ -46,23 +46,32 @@ std::string Division::generateHashString() const {
     return ss.str();
 }
 
-ConstDivision::ConstDivision(const std::string& divided, const std::string& delimiter) :
-    Division(divided, delimiter),
+ConstDivision::ConstDivision(const std::string& divided, const std::vector<std::string>& delimiters) :
+    Division(divided, delimiters),
     splitNums(0),
     has_split_num(false) {
     
-    splits = splitString(divided, delimiter);
+    if (delimiters.empty()) {
+        for (char c : divided) {
+            splits.push_back(std::string(1, c));
+        }
+    } else {
+        splits = splitString(divided, delimiters[0]);
+    }
     splitNums = static_cast<int>(splits.size());
 }
 
-VarDivision::VarDivision(const std::string& divided, const std::string& delimiter) :
-    Division(divided, delimiter) {}
+VarDivision::VarDivision(const std::string& divided, const std::vector<std::string>& delimiters) :
+    Division(divided, delimiters) {}
 
-RegDivision::RegDivision(const std::string& divided, const std::string& delimiter) :
-    Division(divided, delimiter) {}
-
-std::string Division::generateKey(const std::string& divided, const std::string& delimiter) {
-    return divided + "##" + delimiter;
+std::string Division::generateKey(const std::string& divided, const std::vector<std::string>& delimiters) {
+    std::stringstream ss;
+    ss << divided << "##";
+    for (size_t i = 0; i < delimiters.size(); ++i) {
+        if (i > 0) ss << ",";
+        ss << delimiters[i];
+    }
+    return ss.str();
 }
 
 } // namespace strp
