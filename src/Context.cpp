@@ -401,6 +401,19 @@ void Context::validateDelimiterLengths(const std::vector<std::string>& delimiter
     }
 }
 
+bool Context::matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::vector<std::string>& delimiters) {
+    if (!node || node->getChildrenSize() < 2) {
+        return false;
+    }
+    auto arg1 = node->getChild(0);
+    if (arg1->toString() != variable) {
+        return false;
+    }
+    std::vector<std::string> nodeDelimiters = getDelimiters(node);
+    bool match = (nodeDelimiters == delimiters);
+    return match;
+}
+
 std::vector<SMTParser::NodePtr> Context::getDivisionNodes(const std::string& divided, const std::vector<std::string>& delimiters) const {
     std::string key = Division::generateKey(divided, delimiters);
     auto it = divisionNodes.find(key);
@@ -426,11 +439,6 @@ void Context::updateDivisions() {
     
     for (auto& node : splitAtConstNodes) {
         try {
-            if (node->isStrSplitAtRe()) {
-                DEBUG("Skipping regex split_at node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);
@@ -459,11 +467,6 @@ void Context::updateDivisions() {
     
     for (auto& node : splitRestConstNodes) {
         try {
-            if (node->isStrSplitRestRe()) {
-                DEBUG("Skipping regex split_rest node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 3) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);
@@ -502,11 +505,6 @@ void Context::updateDivisions() {
     
     for (auto& node : splitAtVarNodes) {
         try {
-            if (node->isStrSplitAtRe()) {
-                DEBUG("Skipping regex split_at var node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 3) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);
@@ -543,11 +541,6 @@ void Context::updateDivisions() {
     
     for (auto& node : splitRestVarNodes) {
         try {
-            if (node->isStrSplitRestRe()) {
-                DEBUG("Skipping regex split_rest var node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 3) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);
@@ -584,11 +577,6 @@ void Context::updateDivisions() {
     
     for (auto& node : numSplitConstNodes) {
         try {
-            if (node->isStrNumSplitsRe()) {
-                DEBUG("Skipping regex num_splits const node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);
@@ -624,11 +612,6 @@ void Context::updateDivisions() {
     
     for (auto& node : numSplitVarNodes) {
         try {
-            if (node->isStrNumSplitsRe()) {
-                DEBUG("Skipping regex num_splits var node for now");
-                continue;
-            }
-            
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 auto arg2 = node->getChild(1);

@@ -83,11 +83,20 @@ public:
         return splits[index]; 
     }
     
+    const std::vector<std::string>& getSplitDelimiters() const { return splitDelimiters; }
+    std::string getSplitDelimiter(int index) const { 
+        if (index < 0 || index >= static_cast<int>(splitDelimiters.size())) {
+            throw std::out_of_range("Split delimiter index out of range");
+        }
+        return splitDelimiters[index]; 
+    }
+    
     bool hasSplitNum() const { return has_split_num; }
     void setHasSplitNum(bool has_split_num) { this->has_split_num = has_split_num; }
 
 private:
     std::vector<std::string> splits;
+    std::vector<std::string> splitDelimiters;
     int splitNums;
     bool has_split_num = false;
 };
@@ -99,9 +108,17 @@ public:
     bool isConstType() const override { return false; }
     bool isVarType() const override { return true; }
     
-    void addSplitAtNumAppeared(int num) { splitAtNumsAppeared.push_back(num); }
+    void addSplitAtNumAppeared(int num) { 
+        splitAtNumsAppeared.push_back(num); 
+        std::sort(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end());
+        splitAtNumsAppeared.erase(std::unique(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end()), splitAtNumsAppeared.end());
+    }
     void deleteSplitAtNumAppeared(int num) { splitAtNumsAppeared.erase(std::remove(splitAtNumsAppeared.begin(), splitAtNumsAppeared.end(), num), splitAtNumsAppeared.end()); }
-    void addSplitRestNumAppeared(int num) { splitRestNumsAppeared.push_back(num); }
+    void addSplitRestNumAppeared(int num) { 
+        splitRestNumsAppeared.push_back(num); 
+        std::sort(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end());
+        splitRestNumsAppeared.erase(std::unique(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end()), splitRestNumsAppeared.end());
+    }
     void deleteSplitRestNumAppeared(int num) { splitRestNumsAppeared.erase(std::remove(splitRestNumsAppeared.begin(), splitRestNumsAppeared.end(), num), splitRestNumsAppeared.end()); }
     int getMaxSplitNumAppeared() const { 
         if (splitAtNumsAppeared.empty() && splitRestNumsAppeared.empty()) {
@@ -117,9 +134,11 @@ public:
     }
     const std::vector<int>& getSplitAtNumsAppeared() const { return splitAtNumsAppeared; }
     const std::vector<int>& getSplitRestNumsAppeared() const { return splitRestNumsAppeared; }
-    const std::vector<int>& getSplitNumsAppeared() const { 
+    std::vector<int> getSplitNumsAppeared() const { 
         std::vector<int> result = splitAtNumsAppeared;
         result.insert(result.end(), splitRestNumsAppeared.begin(), splitRestNumsAppeared.end());
+        std::sort(result.begin(), result.end());
+        result.erase(std::unique(result.begin(), result.end()), result.end());
         return result;
     }
     int getSplitAtNumAppeared(int index) const { 

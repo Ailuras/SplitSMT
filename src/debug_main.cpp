@@ -21,7 +21,7 @@ int main() {
     std::cout << "Split rest nodes: " << splitRestNodes.size() << std::endl;
     std::cout << "Num split nodes: " << numSplitNodes.size() << std::endl;
     
-    auto divisions = ctx.getAllDivisions();
+    const auto& divisions = ctx.getAllDivisions();
     std::cout << "Divisions: " << divisions.size() << std::endl;
     
     for (const auto& [key, division] : divisions) {

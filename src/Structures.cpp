@@ -6,26 +6,60 @@
 #include <functional>
 #include <chrono>
 
-std::vector<std::string> splitString(const std::string& str, const std::string& delimiter) {
-    std::vector<std::string> result;
-    if (delimiter.empty()) {
+struct SplitResult {
+    std::vector<std::string> splits;
+    std::vector<std::string> delimiters;
+};
+
+SplitResult splitStringWithDelimiters(const std::string& str, const std::vector<std::string>& delimiters) {
+    SplitResult result;
+    if (delimiters.empty()) {
         for (char c : str) {
-            result.push_back(std::string(1, c));
+            result.splits.push_back(std::string(1, c));
+            result.delimiters.push_back("");
         }
         return result;
     }
     
-    size_t start = 0;
-    size_t end = str.find(delimiter);
-    
-    while (end != std::string::npos) {
-        result.push_back(str.substr(start, end - start));
-        start = end + delimiter.length();
-        end = str.find(delimiter, start);
+    size_t delimiterLength = delimiters[0].length();
+    for (const auto& delimiter : delimiters) {
+        if (delimiter.length() != delimiterLength) {
+            throw std::invalid_argument("All delimiters must have the same length");
+        }
     }
-    result.push_back(str.substr(start));
+    
+    size_t start = 0;
+    size_t pos = 0;
+    
+    while (pos < str.length()) {
+        bool found = false;
+        for (const auto& delimiter : delimiters) {
+            if (pos + delimiterLength <= str.length() && str.substr(pos, delimiterLength) == delimiter) {
+                result.splits.push_back(str.substr(start, pos - start));
+                result.delimiters.push_back(delimiter);
+                start = pos + delimiterLength;
+                pos = start;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            pos++;
+        }
+    }
+    result.splits.push_back(str.substr(start));
+    result.delimiters.push_back("");
     
     return result;
+}
+
+std::vector<std::string> splitString(const std::string& str, const std::vector<std::string>& delimiters) {
+    auto result = splitStringWithDelimiters(str, delimiters);
+    return result.splits;
+}
+
+std::vector<std::string> splitString(const std::string& str, const std::string& delimiter) {
+    return splitString(str, std::vector<std::string>{delimiter});
 }
 
 namespace strp {
@@ -54,9 +88,12 @@ ConstDivision::ConstDivision(const std::string& divided, const std::vector<std::
     if (delimiters.empty()) {
         for (char c : divided) {
             splits.push_back(std::string(1, c));
+            splitDelimiters.push_back("");
         }
     } else {
-        splits = splitString(divided, delimiters[0]);
+        auto result = splitStringWithDelimiters(divided, delimiters);
+        splits = result.splits;
+        splitDelimiters = result.delimiters;
     }
     splitNums = static_cast<int>(splits.size());
 }
