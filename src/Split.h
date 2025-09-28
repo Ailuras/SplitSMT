@@ -13,7 +13,7 @@ namespace strp {
 
 class splitSolver {
 public:
-    splitSolver(SolverType solverType = SolverType::EXTERNAL_Z3_NOODLER);
+    splitSolver(SolverType solverType = SolverType::Z3_NOODLER);
     ~splitSolver() = default;
 
     void setSolver(SolverType type);

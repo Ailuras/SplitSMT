@@ -1,8 +1,6 @@
 #include "Split.h"
 #include "Logger.h"
 #include "Context.h"
-#include "parser.h"
-#include "kind.h"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
@@ -73,32 +71,24 @@ void splitSolver::initializeSolver() {
     try {
         switch (currentSolverType) {
             case SolverType::Z3:
-                solver = std::make_unique<Z3Solver>();
-                INFO("Initialized Z3 solver");
-                break;
-            case SolverType::CVC5:
-                solver = std::make_unique<CVC5Solver>();
-                INFO("Initialized CVC5 solver");
-                break;
-            case SolverType::EXTERNAL_Z3:
-                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_Z3);
+                solver = std::make_unique<ExternalSolver>(SolverType::Z3);
                 INFO("Initialized external Z3 solver");
                 break;
-            case SolverType::EXTERNAL_CVC5:
-                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_CVC5);
+            case SolverType::CVC5:
+                solver = std::make_unique<ExternalSolver>(SolverType::CVC5);
                 INFO("Initialized external CVC5 solver");
                 break;
-            case SolverType::EXTERNAL_OSTRICH:
-                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_OSTRICH);
+            case SolverType::OSTRICH:
+                solver = std::make_unique<ExternalSolver>(SolverType::OSTRICH);
                 INFO("Initialized external Ostrich solver");
                 break;
-            case SolverType::EXTERNAL_Z3_NOODLER:
-                solver = std::make_unique<ExternalSolver>(SolverType::EXTERNAL_Z3_NOODLER);
+            case SolverType::Z3_NOODLER:
+                solver = std::make_unique<ExternalSolver>(SolverType::Z3_NOODLER);
                 INFO("Initialized external Z3-Noodler solver");
                 break;
             default:
-                ERROR("Unknown solver type");
-                throw std::runtime_error("Unknown solver type");
+                ERROR("Unknown external solver type");
+                throw std::runtime_error("Unknown external solver type");
         }
     } catch (const std::exception& e) {
         ERROR("Failed to initialize solver: ", e.what());

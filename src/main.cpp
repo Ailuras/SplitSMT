@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <fstream>
 #include "Logger.h"
 #include "Context.h"
 #include "Split.h"
@@ -20,15 +19,12 @@ void printUsage() {
     std::cout << "  <input_file>      Input SMT2 file" << std::endl;
     std::cout << "  [output_file]     Output file (optional)" << std::endl;
     std::cout << "  -l, --level       Set logging level (default: 40, error level)" << std::endl;
-    std::cout << "  -s, --solver      Set solver type (default: z3)" << std::endl;
-    std::cout << "                    Built-in solvers:" << std::endl;
-    std::cout << "                      z3      - Z3 solver (API)" << std::endl;
-    std::cout << "                      cvc5    - CVC5 solver (API)" << std::endl;
-    std::cout << "                    External solvers:" << std::endl;
-    std::cout << "                      ext-z3      - External Z3 solver" << std::endl;
-    std::cout << "                      ext-cvc5    - External CVC5 solver" << std::endl;
-    std::cout << "                      ext-ostrich - External Ostrich solver" << std::endl;
-    std::cout << "                      ext-z3-noodler - External Z3-Noodler solver" << std::endl;
+    std::cout << "  -s, --solver      Set solver type (default: z3-noodler)" << std::endl;
+    std::cout << "                    Available solvers:" << std::endl;
+    std::cout << "                      z3          - External Z3 solver" << std::endl;
+    std::cout << "                      cvc5        - External CVC5 solver" << std::endl;
+    std::cout << "                      ostrich     - External Ostrich solver" << std::endl;
+    std::cout << "                      z3-noodler  - External Z3-Noodler solver" << std::endl;
     std::cout << "  -h, --help        Show this help message" << std::endl;
 }
 
@@ -36,7 +32,7 @@ void parseArgs(int argc, char* argv[], Args& args) {
     args.inputFile = "";
     args.outputFile = "";
     args.logLevel = strp::utils::LogLevel::ERROR;
-    args.solverType = strp::SolverType::Z3;
+    args.solverType = strp::SolverType::Z3_NOODLER;
     args.showHelp = false;
     
     if (argc < 2) {
@@ -65,22 +61,24 @@ void parseArgs(int argc, char* argv[], Args& args) {
         } else if (arg == "-s" || arg == "--solver") {
             if (i + 1 < argc) {
                 std::string solver = argv[++i];
+                if (solver.rfind("ext-", 0) == 0) {
+                    std::cerr << "Warning: solver names no longer use the 'ext-' prefix; interpreting '" << solver
+                              << "' as '" << solver.substr(4) << "'." << std::endl;
+                    solver = solver.substr(4);
+                }
+
                 if (solver == "z3") {
                     args.solverType = strp::SolverType::Z3;
                 } else if (solver == "cvc5") {
                     args.solverType = strp::SolverType::CVC5;
-                } else if (solver == "ext-z3") {
-                    args.solverType = strp::SolverType::EXTERNAL_Z3;
-                } else if (solver == "ext-cvc5") {
-                    args.solverType = strp::SolverType::EXTERNAL_CVC5;
-                } else if (solver == "ext-ostrich") {
-                    args.solverType = strp::SolverType::EXTERNAL_OSTRICH;
-                } else if (solver == "ext-z3-noodler") {
-                    args.solverType = strp::SolverType::EXTERNAL_Z3_NOODLER;
+                } else if (solver == "ostrich") {
+                    args.solverType = strp::SolverType::OSTRICH;
+                } else if (solver == "z3-noodler") {
+                    args.solverType = strp::SolverType::Z3_NOODLER;
                 } else {
-                    std::cerr << "Warning: Unknown solver '" << solver << "', using z3" << std::endl;
-                    std::cerr << "Available solvers: z3, cvc5, ext-z3, ext-cvc5, ext-ostrich, ext-z3-noodler" << std::endl;
-                    args.solverType = strp::SolverType::Z3;
+                    std::cerr << "Warning: Unknown solver '" << solver << "', using z3-noodler" << std::endl;
+                    std::cerr << "Available solvers: z3, cvc5, ostrich, z3-noodler" << std::endl;
+                    args.solverType = strp::SolverType::Z3_NOODLER;
                 }
             }
         } else if (args.inputFile.empty()) {
@@ -106,21 +104,15 @@ void setupLogging(const Args& args) {
     std::string solverName;
     switch (args.solverType) {
         case strp::SolverType::Z3:
-            solverName = "Z3 (API)";
-            break;
-        case strp::SolverType::CVC5:
-            solverName = "CVC5 (API)";
-            break;
-        case strp::SolverType::EXTERNAL_Z3:
             solverName = "External Z3";
             break;
-        case strp::SolverType::EXTERNAL_CVC5:
+        case strp::SolverType::CVC5:
             solverName = "External CVC5";
             break;
-        case strp::SolverType::EXTERNAL_OSTRICH:
+        case strp::SolverType::OSTRICH:
             solverName = "External Ostrich";
             break;
-        case strp::SolverType::EXTERNAL_Z3_NOODLER:
+        case strp::SolverType::Z3_NOODLER:
             solverName = "External Z3-Noodler";
             break;
         default:

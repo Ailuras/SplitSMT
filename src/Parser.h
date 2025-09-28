@@ -5,7 +5,7 @@
 #include <unordered_set>
 #include <memory>
 #include <set>
-#include "parser.h"
+#include "SMTParserAPI.h"
 #include "Logger.h"
 #include "Structures.h"
 
