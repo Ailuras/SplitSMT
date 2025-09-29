@@ -11,10 +11,11 @@ int parseInteger(const std::string& str);
 
 namespace strp {
 
-class splitSolver {
+class SplitSolver {
 public:
-    splitSolver(SolverType solverType = SolverType::Z3_NOODLER);
-    ~splitSolver() = default;
+    SplitSolver(SolverType solverType = SolverType::Z3_NOODLER,
+        Context& ctx = Context::getInstance());
+    ~SplitSolver() = default;
 
     void setSolver(SolverType type);
     void initializeSolver();
@@ -45,7 +46,7 @@ public:
 private:
     std::unique_ptr<SolverInterface> solver;
     SolverType currentSolverType;
-    Context& context = Context::getInstance();
+    Context& context;
     std::vector<SMTParser::NodePtr> splitAtTerms;
 };
 } 

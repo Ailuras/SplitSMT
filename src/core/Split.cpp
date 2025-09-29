@@ -1,5 +1,5 @@
 #include "Split.h"
-#include "Logger.h"
+#include "utils/Logger.h"
 #include "Context.h"
 #include <fstream>
 #include <sstream>
@@ -57,17 +57,17 @@ void dumpSMTLIB2(const SMTParser::NodePtr& node, std::stringstream& ss) {
 
 namespace strp {
 
-splitSolver::splitSolver(SolverType solverType)
-    : currentSolverType(solverType), context(Context::getInstance()) {
+SplitSolver::SplitSolver(SolverType solverType, Context& ctx)
+    : currentSolverType(solverType), context(ctx) {
     initializeSolver();
 }
 
-void splitSolver::setSolver(SolverType type) {
+void SplitSolver::setSolver(SolverType type) {
     currentSolverType = type;
     initializeSolver();
 }
 
-void splitSolver::initializeSolver() {
+void SplitSolver::initializeSolver() {
     try {
         switch (currentSolverType) {
             case SolverType::Z3:
@@ -96,28 +96,28 @@ void splitSolver::initializeSolver() {
     }
 }
 
-void splitSolver::resetSolver() {
+void SplitSolver::resetSolver() {
     if (solver) {
         solver->reset();
         DEBUG("Reset solver");
     }
 }
 
-std::string splitSolver::getModel() {
+std::string SplitSolver::getModel() {
     if (solver) {
         return solver->getModel();
     }
     return "";
 }
 
-std::string splitSolver::getUnsatCore() {
+std::string SplitSolver::getUnsatCore() {
     if (solver) {
         return solver->getUnsatCore();
     }
     return "";
 }
 
-void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
+void SplitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
     if (splitAtConstNodes.empty()) {
         DEBUG("No SplitAt const nodes to replace");
         return;
@@ -166,7 +166,7 @@ void splitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
     ctx.getParser().replaceNodes(replacementMap);
 }
 
-void splitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndConstNodes) {
+void SplitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndConstNodes) {
     if (splitEndConstNodes.empty()) {
         DEBUG("No SplitEnd const nodes to replace");
         return;
@@ -226,7 +226,7 @@ void splitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTP
     ctx.getParser().replaceNodes(replacementMap);
 }
 
-void splitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes) {
+void SplitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes) {
     if (numSplitConstNodes.empty()) {
         DEBUG("No NumSplit const nodes to replace");
         return;
@@ -269,7 +269,7 @@ void splitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTP
     ctx.getParser().replaceNodes(replacementMap);
 }
 
-void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes) {
+void SplitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes) {
     if (splitAtVarNodes.empty()) {
         DEBUG("No SplitAt var nodes to replace");
         return;
@@ -340,7 +340,7 @@ void splitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
     }
 }
 
-void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes) {
+void SplitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes) {
     if (splitEndVarNodes.empty()) {
         DEBUG("No SplitEnd var nodes to replace");
         return;
@@ -400,7 +400,7 @@ void splitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
     }
 }
 
-void splitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes) {
+void SplitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes) {
     if (numSplitVarNodes.empty()) {
         DEBUG("No NumSplit var nodes to replace");
         return;
@@ -452,7 +452,7 @@ void splitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTPar
     }
 }
 
-void splitSolver::detectInvalidIndex(Context& ctx, Division* division) {
+void SplitSolver::detectInvalidIndex(Context& ctx, Division* division) {
     std::string variable = division->getDivided();
     std::vector<std::string> delimiters = division->getDelimiters();
     std::vector<SMTParser::NodePtr> divisionNodes = ctx.getDivisionNodes(variable, delimiters);
@@ -506,7 +506,7 @@ void splitSolver::detectInvalidIndex(Context& ctx, Division* division) {
     }
 }
 
-void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) {
+void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
     std::vector<std::string> delimiters = division->getDelimiters();
     std::string hashStr = division->getHashString();
@@ -570,7 +570,7 @@ void splitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
     DEBUG("Declared auxiliary variables for ", variable, " with ", delimiters.size(), " delimiters using hash ", hashStr);
 }
 
-void splitSolver::addBasicConstraints(Context& ctx, const Division* division) {
+void SplitSolver::addBasicConstraints(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
     std::vector<std::string> delimiters = division->getDelimiters();
     std::string hashStr = division->getHashString();
@@ -626,7 +626,7 @@ void splitSolver::addBasicConstraints(Context& ctx, const Division* division) {
     }
 }
 
-void splitSolver::addEquivalenceConstraints(Context& ctx, const Division* division) {
+void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
     std::vector<std::string> delimiters = division->getDelimiters();
     std::string delimiter = delimiters.empty() ? "" : delimiters[0];
@@ -654,7 +654,7 @@ void splitSolver::addEquivalenceConstraints(Context& ctx, const Division* divisi
     }
 }
 
-void splitSolver::addIndexConstraints(Context& ctx, const Division* division) {
+void SplitSolver::addIndexConstraints(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
     std::vector<std::string> delimiters = division->getDelimiters();
     std::string hashStr = division->getHashString();
@@ -744,7 +744,7 @@ void splitSolver::addIndexConstraints(Context& ctx, const Division* division) {
     }
 }
 
-void splitSolver::addNumSplitsConstraints(Context& ctx, const Division* division) {
+void SplitSolver::addNumSplitsConstraints(Context& ctx, const Division* division) {
     if (!division->isNumSplitsUsed()) {
         return;
     }
@@ -779,7 +779,7 @@ void splitSolver::addNumSplitsConstraints(Context& ctx, const Division* division
     ctx.getParser().addAssertion(nonNegConstraint);
 }
 
-void splitSolver::addAuxiliaryNodes(Context& ctx) {
+void SplitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Adding auxiliary nodes for variable splits");
     
     splitAtTerms = ctx.getSplitAtVarNodes();
@@ -802,7 +802,7 @@ void splitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Completed adding auxiliary nodes for ", divisions.size(), " divisions");
 }
 
-void splitSolver::addAuxiliaryLemmas(Context& ctx) {
+void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
     
     auto splitRestVarNodes = ctx.getSplitRestVarNodes();
@@ -917,7 +917,7 @@ std::string nodeToString(const SMTParser::NodePtr& node) {
     return ss.str();
 }
 
-std::string splitSolver::filterModel(const std::string& rawModel) {
+std::string SplitSolver::filterModel(const std::string& rawModel) {
     if (rawModel.empty()) {
         return "";
     }
@@ -996,7 +996,7 @@ std::string splitSolver::filterModel(const std::string& rawModel) {
     return filteredModel.str();
 }
 
-void splitSolver::rewriteFormula(Context& ctx) {
+void SplitSolver::rewriteFormula(Context& ctx) {
     LOG5("\n", ctx.getParser().getSMTLIB2(true));
     resetSolver();
     
@@ -1027,7 +1027,7 @@ void splitSolver::rewriteFormula(Context& ctx) {
     DEBUG("=== End of SMT-LIB ===");
 }
 
-SatResult splitSolver::checkSat() {
+SatResult SplitSolver::checkSat() {
     if (!solver) {
         ERROR("Solver not initialized");
         return SatResult::ERROR;
@@ -1058,7 +1058,7 @@ SatResult splitSolver::checkSat() {
     return result;
 }
 
-SatResult splitSolver::solve() {
+SatResult SplitSolver::solve() {
     INFO("Starting split solver");
 
     rewriteFormula(context);

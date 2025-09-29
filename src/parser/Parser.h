@@ -6,8 +6,8 @@
 #include <memory>
 #include <set>
 #include "SMTParserAPI.h"
-#include "Logger.h"
-#include "Structures.h"
+#include "utils/Logger.h"
+#include "core/Structures.h"
 
 namespace strp {
 

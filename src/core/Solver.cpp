@@ -1,9 +1,11 @@
 #include "Solver.h"
-#include "Logger.h"
+#include "utils/Logger.h"
+#include "utils/Config.h"
 
 #include <array>
 #include <cstdio>
 #include <cstdlib>
+#include <filesystem>
 #include <fstream>
 #include <stdexcept>
 #include <sstream>
@@ -24,19 +26,32 @@ ExternalSolver::ExternalSolver(SolverType type, int timeoutSeconds)
 ExternalSolver::~ExternalSolver() = default;
 
 std::string ExternalSolver::getSolverPath() const {
-    const char* basePath = "/home/hanrui/StrProcessor/solvers";
+    std::filesystem::path scriptPath;
+
     switch (solverType) {
         case SolverType::Z3:
-            return std::string(basePath) + "/z3/run.sh";
+            scriptPath = strp::config::z3ScriptPath();
+            break;
         case SolverType::CVC5:
-            return std::string(basePath) + "/cvc5/run.sh";
+            scriptPath = strp::config::cvc5ScriptPath();
+            break;
         case SolverType::OSTRICH:
-            return std::string(basePath) + "/ostrich/run.sh";
+            scriptPath = strp::config::ostrichScriptPath();
+            break;
         case SolverType::Z3_NOODLER:
-            return std::string(basePath) + "/z3-noodler/run.sh";
+            scriptPath = strp::config::z3NoodlerScriptPath();
+            break;
         default:
-            throw std::runtime_error("Unknown external solver type");
+            throw std::runtime_error("Unknown solver type");
     }
+
+    if (scriptPath.empty() || !std::filesystem::exists(scriptPath)) {
+        std::stringstream ss;
+        ss << "Solver launcher not found at '" << scriptPath.string() << std::endl;
+        throw std::runtime_error(ss.str());
+    }
+
+    return scriptPath.string();
 }
 
 std::string ExternalSolver::createTempFile(const std::string& content) const {

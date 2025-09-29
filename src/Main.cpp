@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include "Logger.h"
-#include "Context.h"
-#include "Split.h"
-// #include "Solver.h"
+#include "utils/Logger.h"
+#include "core/Context.h"
+#include "core/Split.h"
 
 struct Args {
     std::string inputFile;
@@ -21,10 +20,10 @@ void printUsage() {
     std::cout << "  -l, --level       Set logging level (default: 40, error level)" << std::endl;
     std::cout << "  -s, --solver      Set solver type (default: z3-noodler)" << std::endl;
     std::cout << "                    Available solvers:" << std::endl;
-    std::cout << "                      z3          - External Z3 solver" << std::endl;
-    std::cout << "                      cvc5        - External CVC5 solver" << std::endl;
-    std::cout << "                      ostrich     - External Ostrich solver" << std::endl;
-    std::cout << "                      z3-noodler  - External Z3-Noodler solver" << std::endl;
+    std::cout << "                      z3          - Z3 solver" << std::endl;
+    std::cout << "                      cvc5        - CVC5 solver" << std::endl;
+    std::cout << "                      ostrich     - Ostrich solver" << std::endl;
+    std::cout << "                      z3-noodler  - Z3-Noodler solver" << std::endl;
     std::cout << "  -h, --help        Show this help message" << std::endl;
 }
 
@@ -104,16 +103,16 @@ void setupLogging(const Args& args) {
     std::string solverName;
     switch (args.solverType) {
         case strp::SolverType::Z3:
-            solverName = "External Z3";
+            solverName = "Z3";
             break;
         case strp::SolverType::CVC5:
-            solverName = "External CVC5";
+            solverName = "CVC5";
             break;
         case strp::SolverType::OSTRICH:
-            solverName = "External Ostrich";
+            solverName = "Ostrich";
             break;
         case strp::SolverType::Z3_NOODLER:
-            solverName = "External Z3-Noodler";
+            solverName = "Z3-Noodler";
             break;
         default:
             solverName = "Unknown";
@@ -144,7 +143,7 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
-            strp::splitSolver solver(args.solverType);
+            strp::SplitSolver solver(args.solverType);
             solver.solve();
         } else {
             return 1;

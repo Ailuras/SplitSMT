@@ -33,14 +33,19 @@ add_subdirectory(external/SMTParser)
 # Print SMTParser status
 message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include")
 
+# Core sources shared by executables
+set(CORE_SOURCES
+    src/core/Context.cpp
+    src/core/Structures.cpp
+    src/core/Solver.cpp
+    src/core/Split.cpp
+    src/parser/Parser.cpp
+)
+
 # Add our source files
 set(SOURCES
-    src/main.cpp
-    src/Context.cpp
-    src/Parser.cpp
-    src/Structures.cpp
-    src/Solver.cpp
-    src/Split.cpp
+    src/Main.cpp
+    ${CORE_SOURCES}
 )
 
 # Set RPATH defaults
@@ -49,23 +54,19 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Add executable
-add_executable(strprocessor ${SOURCES})
+add_executable(SplitSMT ${SOURCES})
 
 # Add debug executable
-add_executable(debug_strprocessor
-    src/debug_main.cpp
-    src/Context.cpp
-    src/Parser.cpp
-    src/Structures.cpp
-    src/Solver.cpp
-    src/Split.cpp
+add_executable(SplitSMT_debug
+    src/Debug.cpp
+    ${CORE_SOURCES}
 )
 
 # Create compile_commands.json for IDE integration
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set include directories for our project
-target_include_directories(strprocessor PRIVATE
+target_include_directories(SplitSMT PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
     ${GMP_INCLUDE_DIRS}
@@ -73,17 +74,22 @@ target_include_directories(strprocessor PRIVATE
 )
 
 # Link libraries
-target_link_libraries(strprocessor PRIVATE
+target_link_libraries(SplitSMT PRIVATE
     smtparser
 )
 
-target_link_directories(strprocessor PRIVATE
+target_link_directories(SplitSMT PRIVATE
     ${GMP_LIBRARY_DIRS}
     ${MPFR_LIBRARY_DIRS}
 )
 
+target_compile_definitions(SplitSMT PRIVATE
+    STRP_PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
+    STRP_DEFAULT_SOLVER_DIR="${CMAKE_SOURCE_DIR}/solvers"
+)
+
 # Set include directories for debug executable
-target_include_directories(debug_strprocessor PRIVATE
+target_include_directories(SplitSMT_debug PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
     ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
     ${GMP_INCLUDE_DIRS}
@@ -91,20 +97,25 @@ target_include_directories(debug_strprocessor PRIVATE
 )
 
 # Link libraries for debug executable
-target_link_libraries(debug_strprocessor PRIVATE
+target_link_libraries(SplitSMT_debug PRIVATE
     smtparser
 )
 
-target_link_directories(debug_strprocessor PRIVATE
+target_link_directories(SplitSMT_debug PRIVATE
     ${GMP_LIBRARY_DIRS}
     ${MPFR_LIBRARY_DIRS}
 )
 
+target_compile_definitions(SplitSMT_debug PRIVATE
+    STRP_PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
+    STRP_DEFAULT_SOLVER_DIR="${CMAKE_SOURCE_DIR}/solvers"
+)
+
 # Add compile options
 if(MSVC)
-    target_compile_options(strprocessor PRIVATE /W4)
+    target_compile_options(SplitSMT PRIVATE /W4)
 else()
-    target_compile_options(strprocessor PRIVATE 
+    target_compile_options(SplitSMT PRIVATE 
         -Wall 
         -Wextra 
         -Wpedantic
@@ -114,20 +125,20 @@ else()
 endif()
 
 # Install executable
-install(TARGETS strprocessor
+install(TARGETS SplitSMT
     RUNTIME DESTINATION bin
 )
 
 # Generate wrapper script for easy execution
 # configure_file(
-#     "${CMAKE_CURRENT_SOURCE_DIR}/strprocessor_wrapper.sh.in"
-#     "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/strprocessor_wrapper.sh"
+#     "${CMAKE_CURRENT_SOURCE_DIR}/SplitSMT_wrapper.sh.in"
+#     "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SplitSMT_wrapper.sh"
 #     @ONLY
 # )
 
 # Make wrapper script executable
-# add_custom_command(TARGET strprocessor POST_BUILD
-#     COMMAND chmod +x "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/strprocessor_wrapper.sh"
+# add_custom_command(TARGET SplitSMT POST_BUILD
+#     COMMAND chmod +x "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SplitSMT_wrapper.sh"
 #     COMMENT "Making wrapper script executable"
 # )
 
@@ -137,20 +148,20 @@ message(STATUS "  C++ standard: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  Compiler: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "  Build type: ${CMAKE_BUILD_TYPE}")
 message(STATUS "  SMTParser: Static Library")
-message(STATUS "  Binary output: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/strprocessor")
+message(STATUS "  Binary output: ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SplitSMT")
 
 # Add example copy command for testing
-add_custom_command(TARGET strprocessor POST_BUILD
+add_custom_command(TARGET SplitSMT POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E echo "Build completed successfully"
 )
 
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-    target_compile_options(strprocessor PRIVATE -g -O0)
-    target_compile_options(debug_strprocessor PRIVATE -g -O0)
+    target_compile_options(SplitSMT PRIVATE -g -O0)
+    target_compile_options(SplitSMT_debug PRIVATE -g -O0)
 else()
-    target_compile_options(strprocessor PRIVATE -O2)
-    target_compile_options(debug_strprocessor PRIVATE -O2)
+    target_compile_options(SplitSMT PRIVATE -O2)
+    target_compile_options(SplitSMT_debug PRIVATE -O2)
 endif()
 
 # Add simple clean target

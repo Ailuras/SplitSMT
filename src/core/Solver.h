@@ -4,7 +4,7 @@
 #include <memory>
 #include <vector>
 #include <sstream>
-#include "SMTParserAPI.h"
+#include "parser/SMTParserAPI.h"
 
 namespace strp {
 

@@ -7,8 +7,8 @@
 #include <set>
 #include "Structures.h"
 #include "dag.h"
-#include "Logger.h"
-#include "Parser.h"
+#include "utils/Logger.h"
+#include "parser/Parser.h"
 
 namespace strp {
 

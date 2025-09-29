@@ -1,6 +1,6 @@
 #include "Parser.h"
-#include "Structures.h"
-#include "Context.h"
+#include "core/Structures.h"
+#include "core/Context.h"
 #include <fstream>
 #include <sstream>
 #include <regex>
