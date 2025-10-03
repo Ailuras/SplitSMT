@@ -1,9 +1,51 @@
-# solvers/cvc5/lib
-# solvers/cvc5-trace/lib
-
-# solvers/z3/bin/libz3.a
-# solvers/z3/bin/libz3.so
-# solvers/z3/bin/libz3java.so
-
-external/
+# Build artifacts
 build/
+bin/
+cmake-build*/
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+*.ninja
+*.ninja_deps
+*.ninja_log
+compile_commands.json
+
+# Compiled objects
+*.o
+*.obj
+*.lo
+*.la
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+
+# Coverage files
+*.gcda
+*.gcno
+*.gcov
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.iml
+*.swp
+*.swo
+*~
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# External dependencies and solver outputs
+external/
+solvers/**/bin/
+solvers/**/lib/
+solvers/**/target/

@@ -1,0 +1,1098 @@
+#include "Split.h"
+#include "utils/Logger.h"
+#include "Context.h"
+#include <fstream>
+#include <sstream>
+#include <cstdlib>
+#include <filesystem>
+#include <chrono>
+#include <unordered_map>
+#include <iterator>
+#include <iomanip>
+#include <algorithm>
+#include <functional>
+
+std::string cleanQuotes(const std::string& str) {
+    if (str.length() >= 2 && str.front() == '"' && str.back() == '"') {
+        return str.substr(1, str.length() - 2);
+    }
+    return str;
+}
+
+int parseInteger(const std::string& str) {
+    if (str.empty()) {
+        return 0;
+    }
+    
+    if (str[0] == '(' && str.back() == ')') {
+        if (str.substr(1, 2) == "- " && str.length() > 4) {
+            std::string numPart = str.substr(3, str.length() - 4);
+            try {
+                return -std::stoi(numPart);
+            } catch (const std::exception&) {
+                return 0;
+            }
+        }
+    }
+    
+    try {
+        return std::stoi(str);
+    } catch (const std::exception&) {
+        return 0;
+    }
+}
+
+void dumpSMTLIB2(const SMTParser::NodePtr& node, std::stringstream& ss) {
+    if (node->isLeaf()) {
+        ss << node->getName();
+    } else {
+        ss << "(" << SMTParser::kindToString(node->getKind());
+        for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+            ss << " ";
+            dumpSMTLIB2(node->getChild(i), ss);
+        }
+        ss << ")";
+    }
+}
+
+namespace strp {
+
+SplitSolver::SplitSolver(SolverType solverType, Context& ctx)
+    : currentSolverType(solverType), context(ctx) {
+    initializeSolver();
+}
+
+void SplitSolver::setSolver(SolverType type) {
+    currentSolverType = type;
+    initializeSolver();
+}
+
+void SplitSolver::initializeSolver() {
+    try {
+        switch (currentSolverType) {
+            case SolverType::Z3:
+                solver = std::make_unique<ExternalSolver>(SolverType::Z3);
+                INFO("Initialized external Z3 solver");
+                break;
+            case SolverType::CVC5:
+                solver = std::make_unique<ExternalSolver>(SolverType::CVC5);
+                INFO("Initialized external CVC5 solver");
+                break;
+            case SolverType::OSTRICH:
+                solver = std::make_unique<ExternalSolver>(SolverType::OSTRICH);
+                INFO("Initialized external Ostrich solver");
+                break;
+            case SolverType::Z3_NOODLER:
+                solver = std::make_unique<ExternalSolver>(SolverType::Z3_NOODLER);
+                INFO("Initialized external Z3-Noodler solver");
+                break;
+            default:
+                ERROR("Unknown external solver type");
+                throw std::runtime_error("Unknown external solver type");
+        }
+    } catch (const std::exception& e) {
+        ERROR("Failed to initialize solver: ", e.what());
+        throw;
+    }
+}
+
+void SplitSolver::resetSolver() {
+    if (solver) {
+        solver->reset();
+        DEBUG("Reset solver");
+    }
+}
+
+std::string SplitSolver::getModel() {
+    if (solver) {
+        return solver->getModel();
+    }
+    return "";
+}
+
+std::string SplitSolver::getUnsatCore() {
+    if (solver) {
+        return solver->getUnsatCore();
+    }
+    return "";
+}
+
+void SplitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
+    if (splitAtConstNodes.empty()) {
+        DEBUG("No SplitAt const nodes to replace");
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::for_each(splitAtConstNodes.begin(), splitAtConstNodes.end(), [&](const SMTParser::NodePtr& node) {
+                DEBUG("Node: ", ctx.getParser().getString(node));
+                if (node->getChildrenSize() >= 3) {
+                    auto arg1 = node->getChild(0);
+                    auto arg2 = node->getChild(1);
+                    auto arg3 = node->getChild(2);
+                    
+                    std::string str = arg1->toString();
+                    if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
+                        str = str.substr(1, str.size() - 2);
+                    }
+                    
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    
+                    Division* division = ctx.getDivision(str, delimiters);
+                    if (division && division->isConstType()) {
+                        ConstDivision* constDiv = static_cast<ConstDivision*>(division);
+                        int index = parseInteger(arg3->toString());
+                        if (index >= 0 && index < constDiv->getSplitNums()) {
+                            std::string splitValue = constDiv->getSplit(index);
+                            std::string quotedValue = "\"" + splitValue + "\"";
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringConst(quotedValue);
+                            if (replacement) {
+                                DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                            }
+                            replacementMap[node] = replacement;
+                        }
+                    } else {
+                        SMTParser::NodePtr replacement = ctx.getParser().createBoolConst(false);
+                        replacementMap[node] = replacement;
+                        auto atoms = ctx.getAtomsForSplitNode(node);
+                        std::for_each(atoms.begin(), atoms.end(), [&](const SMTParser::NodePtr& atom) {
+                            DEBUG("Atom: ", ctx.getParser().getString(atom));
+                            auto atomReplacement = ctx.getParser().createBoolConst(false);
+                            replacementMap[atom] = atomReplacement;
+                        });
+                    }
+                }
+            });
+    ctx.getParser().replaceNodes(replacementMap);
+}
+
+void SplitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndConstNodes) {
+    if (splitEndConstNodes.empty()) {
+        DEBUG("No SplitEnd const nodes to replace");
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::for_each(splitEndConstNodes.begin(), splitEndConstNodes.end(), [&](const SMTParser::NodePtr& node) {
+                DEBUG("SplitEnd Node: ", ctx.getParser().getString(node));
+                if (node->getChildrenSize() >= 3) {
+                    auto arg1 = node->getChild(0);
+                    auto arg2 = node->getChild(1);
+                    auto arg3 = node->getChild(2);
+                    
+                    std::string str = arg1->toString();
+                    if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
+                        str = str.substr(1, str.size() - 2);
+                    }
+                    
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    
+                    int index = parseInteger(arg3->toString());
+                    Division* division = ctx.getDivision(str, delimiters);
+                    if (division && division->isConstType()) {
+                        ConstDivision* constDiv = static_cast<ConstDivision*>(division);
+                        if (index >= 0 && index < constDiv->getSplitNums()) {
+                            const auto& splits = constDiv->getSplits();
+                            const auto& splitDelimiters = constDiv->getSplitDelimiters();
+                            std::string splitEndValue = "";
+                            for (int i = index; i < static_cast<int>(splits.size()); ++i) {
+                                if (i > index) {
+                                    splitEndValue += splitDelimiters[i-1];
+                                }
+                                splitEndValue += splits[i];
+                            }
+                            std::string quotedValue = "\"" + splitEndValue + "\"";
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringConst(quotedValue);
+                            if (replacement) {
+                                DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                            }
+                            replacementMap[node] = replacement;
+                        } else {
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringConst("\"\"");
+                            replacementMap[node] = replacement;
+                        }
+                    } else {
+                        SMTParser::NodePtr replacement = ctx.getParser().createBoolConst(false);
+                        replacementMap[node] = replacement;
+                        auto atoms = ctx.getAtomsForSplitNode(node);
+                        std::for_each(atoms.begin(), atoms.end(), [&](const SMTParser::NodePtr& atom) {
+                            DEBUG("Atom: ", ctx.getParser().getString(atom));
+                            auto atomReplacement = ctx.getParser().createBoolConst(false);
+                            replacementMap[atom] = atomReplacement;
+                        });
+                    }
+                }
+            });
+    ctx.getParser().replaceNodes(replacementMap);
+}
+
+void SplitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes) {
+    if (numSplitConstNodes.empty()) {
+        DEBUG("No NumSplit const nodes to replace");
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    std::for_each(numSplitConstNodes.begin(), numSplitConstNodes.end(), [&](const SMTParser::NodePtr& node) {
+                DEBUG("NumSplit Node: ", ctx.getParser().getString(node));
+                if (node->getChildrenSize() >= 2) {
+                    auto arg1 = node->getChild(0);
+                    auto arg2 = node->getChild(1);
+                    std::string str = arg1->toString();
+                    if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
+                        str = str.substr(1, str.size() - 2);
+                    }
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    
+                    Division* division = ctx.getDivision(str, delimiters);
+                    int numSplits = 0;
+                    if (division && division->isConstType()) {
+                        ConstDivision* constDiv = static_cast<ConstDivision*>(division);
+                        numSplits = constDiv->getSplitNums();
+                    }
+                    SMTParser::NodePtr replacement = ctx.getParser().createIntConst(numSplits);
+                    if (replacement) {
+                        DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                    }
+                    replacementMap[node] = replacement;
+                } else {
+                    SMTParser::NodePtr replacement = ctx.getParser().createIntConst(0);
+                    replacementMap[node] = replacement;
+                    auto atoms = ctx.getAtomsForSplitNode(node);
+                    std::for_each(atoms.begin(), atoms.end(), [&](const SMTParser::NodePtr& atom) {
+                        DEBUG("Atom: ", ctx.getParser().getString(atom));
+                        auto atomReplacement = ctx.getParser().createBoolConst(false);
+                        replacementMap[atom] = atomReplacement;
+                    });
+                }
+            });
+    ctx.getParser().replaceNodes(replacementMap);
+}
+
+void SplitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtVarNodes) {
+    if (splitAtVarNodes.empty()) {
+        DEBUG("No SplitAt var nodes to replace");
+        return;
+    }
+    
+    DEBUG("Replacing ", splitAtVarNodes.size(), " split_at var nodes with auxiliary variables");
+    if (splitAtVarNodes.empty()) {
+        DEBUG("[replaceSplitAtVarNodes] No split_at var nodes found");
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : splitAtVarNodes) {
+        DEBUG("[replaceSplitAtVarNodes] Processing node: ", ctx.getParser().getString(node));
+        try {
+            if (node && node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                DEBUG("Node: ", ctx.getParser().getString(node));
+                
+                if (arg1->isVar() && arg3->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    DEBUG("[replaceSplitAtVarNodes] Variable: '", variable, "'");
+                    DEBUG("[replaceSplitAtVarNodes] Delimiters: [", delimiters.size(), " items]");
+                    for (const auto& d : delimiters) {
+                        DEBUG("[replaceSplitAtVarNodes]   - '", d, "'");
+                    }
+                    int index = parseInteger(arg3->toString());
+                    DEBUG("[replaceSplitAtVarNodes] Index: ", index);
+                    
+                    Division* division = ctx.getDivision(variable, delimiters);
+                    if (division && division->isVarType()) {
+                        VarDivision* varDiv = static_cast<VarDivision*>(division);
+                        auto splitNums = varDiv->getSplitAtNumsAppeared();
+                        if (std::find(splitNums.begin(), splitNums.end(), index) != splitNums.end()) {
+                            std::string hashStr = division->getHashString();
+                            std::string xi = hashStr + "_split_" + std::to_string(index);
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringVar(xi);
+                            
+                            if (replacement) {
+                                replacementMap[node] = replacement;
+                                DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                            } else {
+                                WARN("Failed to create replacement variable: ", xi);
+                            }
+                        } else {
+                            DEBUG("Index ", index, " not found in division for variable ", variable);
+                        }
+                    } else {
+                        WARN("Division not found for variable ", variable, " with delimiters");
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("About to call replaceNodes with ", replacementMap.size(), " replacements");
+        ctx.getParser().replaceNodes(replacementMap);
+        DEBUG("replaceNodes completed");
+    } else {
+        DEBUG("No replacements to make");
+    }
+}
+
+void SplitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndVarNodes) {
+    if (splitEndVarNodes.empty()) {
+        DEBUG("No SplitEnd var nodes to replace");
+        return;
+    }
+    
+    DEBUG("Replacing ", splitEndVarNodes.size(), " split_rest var nodes with auxiliary variables");
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : splitEndVarNodes) {
+        try {
+            if (node && node->getChildrenSize() >= 3) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                auto arg3 = node->getChild(2);
+                DEBUG("SplitEnd Node: ", ctx.getParser().getString(node));
+                
+                if (arg1->isVar() && arg3->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    int index = parseInteger(arg3->toString());
+                    
+                    Division* division = ctx.getDivision(variable, delimiters);
+                    if (division && division->isVarType()) {
+                        VarDivision* varDiv = static_cast<VarDivision*>(division);
+                        auto splitEndNums = varDiv->getSplitRestNumsAppeared();
+                        if (std::find(splitEndNums.begin(), splitEndNums.end(), index) != splitEndNums.end()) {
+                            std::string hashStr = division->getHashString();
+                            std::string xi = hashStr + "_split_end_" + std::to_string(index);
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringVar(xi);
+                            
+                            if (replacement) {
+                                replacementMap[node] = replacement;
+                                DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                            } else {
+                                WARN("Failed to create replacement variable: ", xi);
+                            }
+                        } else {
+                            DEBUG("Index ", index, " not found in split_rest division for variable ", variable);
+                        }
+                    } else {
+                        WARN("Division not found for variable ", variable, " with delimiters");
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing split_rest node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("About to call replaceNodes with ", replacementMap.size(), " replacements");
+        ctx.getParser().replaceNodes(replacementMap);
+        DEBUG("replaceNodes completed");
+    } else {
+        DEBUG("No replacements to make");
+    }
+}
+
+void SplitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitVarNodes) {
+    if (numSplitVarNodes.empty()) {
+        DEBUG("No NumSplit var nodes to replace");
+        return;
+    }
+    
+    DEBUG("Replacing ", numSplitVarNodes.size(), " num_splits var nodes with length expressions");
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& node : numSplitVarNodes) {
+        try {
+            if (node && node->getChildrenSize() >= 2) {
+                auto arg1 = node->getChild(0);
+                auto arg2 = node->getChild(1);
+                DEBUG("NumSplit Node: ", ctx.getParser().getString(node));
+                
+                if (arg1->isVar() && arg2->isConst()) {
+                    std::string variable = arg1->toString();
+                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    
+                    Division* division = ctx.getDivision(variable, delimiters);
+                    if (division && division->isVarType() && division->isNumSplitsUsed()) {
+                        std::string hashStr = division->getHashString();
+                        std::string numSplitsVar = hashStr + "_num_splits";
+                        SMTParser::NodePtr replacement = ctx.getParser().createIntVar(numSplitsVar);
+                        
+                        if (replacement) {
+                            replacementMap[node] = replacement;
+                            DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
+                        } else {
+                            WARN("Failed to create replacement variable: ", numSplitsVar);
+                        }
+                    } else {
+                        WARN("Division not found or num_splits not used for variable ", variable, " with delimiters");
+                    }
+                }
+            }
+        } catch (const std::exception& e) {
+            DEBUG("Error processing num_splits node: ", e.what());
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("About to call replaceNodes with ", replacementMap.size(), " replacements");
+        ctx.getParser().replaceNodes(replacementMap);
+        DEBUG("replaceNodes completed");
+    } else {
+        DEBUG("No replacements to make");
+    }
+}
+
+void SplitSolver::detectInvalidIndex(Context& ctx, Division* division) {
+    std::string variable = division->getDivided();
+    std::vector<std::string> delimiters = division->getDelimiters();
+    std::vector<SMTParser::NodePtr> divisionNodes = ctx.getDivisionNodes(variable, delimiters);
+    
+    if (divisionNodes.empty()) {
+        DEBUG("No division nodes found for ", variable);
+        return;
+    }
+    
+    VarDivision* varDiv = static_cast<VarDivision*>(division);
+    int maxIndex = varDiv->getMaxSplitNumAppeared();
+    
+    if (maxIndex == -1) {
+        DEBUG("No split indices to validate for ", variable);
+        return;
+    }
+    
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
+    
+    for (auto& divisionNode : divisionNodes) {
+        if (ctx.isSplitAtVarNode(divisionNode)) {
+            if (divisionNode->getChildrenSize() >= 3) {
+                auto arg3 = divisionNode->getChild(2);
+                int index = parseInteger(arg3->toString());
+                if (index < 0 || index > maxIndex) {
+                    DEBUG("Invalid split_at index ", index, " for ", variable, " with delimiters");
+                    SMTParser::NodePtr replacement = ctx.getParser().createStringConst("\"\"");
+                    replacementMap[divisionNode] = replacement;
+                    varDiv->deleteSplitAtNumAppeared(index);
+                }
+            }
+        }
+        
+        if (ctx.isSplitRestVarNode(divisionNode)) {
+            if (divisionNode->getChildrenSize() >= 3) {
+                auto arg3 = divisionNode->getChild(2);
+                int index = parseInteger(arg3->toString());
+                if (index < 0 || index > maxIndex) {
+                    DEBUG("Invalid split_rest index ", index, " for ", variable, " with delimiters");
+                    SMTParser::NodePtr replacement = ctx.getParser().createStringConst("\"\"");
+                    replacementMap[divisionNode] = replacement;
+                    varDiv->deleteSplitRestNumAppeared(index);
+                }
+            }
+        }
+    }
+    
+    if (!replacementMap.empty()) {
+        DEBUG("Replacing ", replacementMap.size(), " invalid split nodes with empty string");
+        ctx.getParser().replaceNodes(replacementMap);
+    }
+}
+
+void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) {
+    std::string variable = division->getDivided();
+    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string hashStr = division->getHashString();
+    const VarDivision* varDiv = static_cast<const VarDivision*>(division);
+    int maxIndex = varDiv->getMaxSplitNumAppeared();
+    
+    if (maxIndex == -1 && !division->isNumSplitsUsed()) {
+        DEBUG("Skipping auxiliary variables for ", variable, " - no split_at, split_rest or num_splits usage");
+        return;
+    }
+    
+    if (!delimiters.empty()) {
+        for (int i = 0; i <= maxIndex; ++i) {
+            std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(i);
+            ctx.getParser().declareStringVar(delimiterVar);
+            DEBUG("Declared delimiter variable: ", delimiterVar);
+        }
+    }
+    
+    if (division->isNumSplitsUsed()) {
+        std::string numSplitsVar = hashStr + "_num_splits";
+        ctx.getParser().declareIntVar(numSplitsVar);
+        DEBUG("Declared num_splits variable: ", numSplitsVar);
+    }
+    
+    if (maxIndex == -1) {
+        DEBUG("Only num_splits used for ", variable, " - skipping split variables");
+        return;
+    }
+    
+    std::string x_split = hashStr + "_split";
+    std::string x_last = hashStr + "_last";
+    
+    ctx.getParser().declareStringVar(x_split);
+    ctx.getParser().declareStringVar(x_last);
+    
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string xi = hashStr + "_split_" + std::to_string(i);
+        ctx.getParser().declareStringVar(xi);
+    }
+    
+    for (int idx : varDiv->getSplitNumsAppeared()) {
+        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+        ctx.getParser().declareBoolVar(si);
+    }
+    
+    for (int idx : varDiv->getSplitRestNumsAppeared()) {
+        std::string xi = hashStr + "_split_end_" + std::to_string(idx);
+        ctx.getParser().declareStringVar(xi);
+    }
+    
+    if (!delimiters.empty() && delimiters[0].length() != 1) {
+        for (int i = 0; i <= maxIndex; ++i) {
+            std::string bi = "b_" + hashStr + "_split_index_" + std::to_string(i);
+            std::string xi = hashStr + "_split_index_" + std::to_string(i);
+            ctx.getParser().declareBoolVar(bi);
+            ctx.getParser().declareIntVar(xi);
+        }
+    }
+    
+    DEBUG("Declared auxiliary variables for ", variable, " with ", delimiters.size(), " delimiters using hash ", hashStr);
+}
+
+void SplitSolver::addBasicConstraints(Context& ctx, const Division* division) {
+    std::string variable = division->getDivided();
+    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string hashStr = division->getHashString();
+    const VarDivision* varDiv = static_cast<const VarDivision*>(division);
+    int maxIndex = varDiv->getMaxSplitNumAppeared();
+    
+    if (maxIndex == -1) {
+        DEBUG("Skipping basic constraints for ", variable, " - no split_at usage");
+        return;
+    }
+    
+    std::string x_split = hashStr + "_split";
+    std::string x_last = hashStr + "_last";
+    
+    std::string constraint1 = "(= " + variable + " (str.++ " + x_split + " " + x_last + "))";
+    DEBUG("[addBasicConstraints] Adding constraint: ", constraint1);
+    ctx.getParser().addAssertion(constraint1);
+    
+    if (!delimiters.empty()) {
+        for (int i = 0; i <= maxIndex; ++i) {
+            std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(i);
+            
+            if (delimiters.size() == 1) {
+                std::string delimiterConstraint = "(= " + delimiterVar + " \"" + delimiters[0] + "\")";
+                DEBUG("[addBasicConstraints] Adding delimiter constraint: ", delimiterConstraint);
+                ctx.getParser().addAssertion(delimiterConstraint);
+            } else {
+                std::string delimiterConstraint = "(or";
+                for (size_t j = 0; j < delimiters.size(); ++j) {
+                    delimiterConstraint += " (= " + delimiterVar + " \"" + delimiters[j] + "\")";
+                }
+                delimiterConstraint += ")";
+                DEBUG("[addBasicConstraints] Adding delimiter constraint: ", delimiterConstraint);
+                ctx.getParser().addAssertion(delimiterConstraint);
+            }
+        }
+        
+        std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(maxIndex);
+        std::string constraint2 = "(or (= " + x_last + " \"\") (str.prefixof " + delimiterVar + " " + x_last + "))";
+        DEBUG("[addBasicConstraints] Adding constraint: ", constraint2);
+        ctx.getParser().addAssertion(constraint2);
+        
+        for (int i = 0; i <= maxIndex; ++i) {
+            std::string xi = hashStr + "_split_" + std::to_string(i);
+            std::string notContains = "(not (or";
+            for (size_t j = 0; j < delimiters.size(); ++j) {
+                notContains += " (str.contains " + xi + " \"" + delimiters[j] + "\")";
+            }
+            notContains += "))";
+            DEBUG("[addBasicConstraints] Adding constraint: ", notContains);
+            ctx.getParser().addAssertion(notContains);
+        }
+    }
+}
+
+void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* division) {
+    std::string variable = division->getDivided();
+    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string delimiter = delimiters.empty() ? "" : delimiters[0];
+    std::string hashStr = division->getHashString();
+    std::string x_split = hashStr + "_split";
+    const VarDivision* varDiv = static_cast<const VarDivision*>(division);
+    
+    for (int idx : varDiv->getSplitNumsAppeared()) {
+        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+        std::string equiv;
+        
+        if (idx == 0) {
+            equiv = "(= " + si + " (= " + x_split + " " + hashStr + "_split_0))";
+        } else {
+            equiv = "(= " + si + " (= " + x_split + " (str.++";
+            for (int j = 0; j < idx; ++j) {
+                std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(j);
+                equiv += " " + hashStr + "_split_" + std::to_string(j) + " " + delimiterVar;
+            }
+            equiv += " " + hashStr + "_split_" + std::to_string(idx) + ")))";
+        }
+        
+        DEBUG("[addEquivalenceConstraints] Adding constraint: ", equiv);
+        ctx.getParser().addAssertion(equiv);
+    }
+}
+
+void SplitSolver::addIndexConstraints(Context& ctx, const Division* division) {
+    std::string variable = division->getDivided();
+    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string hashStr = division->getHashString();
+    const VarDivision* varDiv = static_cast<const VarDivision*>(division);
+    int maxIndex = varDiv->getMaxSplitNumAppeared();
+    
+    if (maxIndex == -1) {
+        DEBUG("Skipping index constraints for ", variable, " - no split_at usage");
+        return;
+    }
+    
+    if (delimiters.empty() || delimiters[0].length() == 1) {
+        return;
+    }
+    
+    std::string x_split = hashStr + "_split";
+
+    int delimiterLen = static_cast<int>(delimiters[0].length());
+    
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string xi = hashStr + "_split_index_" + std::to_string(i);
+        std::string constraint;
+        
+        if (delimiters.size() == 1) {
+            if (i == 0) {
+                constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiters[0] + "\" 0))";
+            } else {
+                std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
+                constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiters[0] + "\" (+ " + prevXi + " " + std::to_string(delimiterLen) + ")))";
+            }
+        } else {
+            std::string minExpr = "(min";
+            for (const std::string& delimiter : delimiters) {
+                if (delimiter.length() > 1) {
+                    if (i == 0) {
+                        minExpr += " (str.indexof " + x_split + " \"" + delimiter + "\" 0)";
+                    } else {
+                        std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
+                        minExpr += " (str.indexof " + x_split + " \"" + delimiter + "\" (+ " + prevXi + " " + std::to_string(delimiterLen) + "))";
+                    }
+                }
+            }
+            minExpr += ")";
+            constraint = "(= " + xi + " " + minExpr + ")";
+        }
+        
+        DEBUG("[addIndexConstraints] Adding constraint: ", constraint);
+        ctx.getParser().addAssertion(constraint);
+    }
+    
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string bi = "b_" + hashStr + "_split_index_" + std::to_string(i);
+        std::string xi = hashStr + "_split_index_" + std::to_string(i);
+        std::string splitVar = hashStr + "_split_" + std::to_string(i);
+        std::string constraint;
+        
+        if (i == 0) {
+            constraint = "(=> " + bi + " (or (= " + xi + " (str.len " + splitVar + ")) (= " + xi + " -1)))";
+        } else {
+            std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
+            constraint = "(=> " + bi + " (or (= (- " + xi + " " + prevXi + " " + std::to_string(delimiterLen) + ") (str.len " + splitVar + ")) (= " + xi + " -1)))";
+        }
+        
+        DEBUG("[addIndexConstraints] Adding constraint: ", constraint);
+        ctx.getParser().addAssertion(constraint);
+    }
+    
+    auto splitNums = varDiv->getSplitAtNumsAppeared();
+    
+    for (int idx : splitNums) {
+        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+        
+        if (idx == 0) {
+            std::string bi = "b_" + hashStr + "_split_index_0";
+            std::string constraint = "(=> " + si + " " + bi + ")";
+            DEBUG("[addIndexConstraints] Adding lemma constraint: ", constraint);
+            ctx.getParser().addAssertion(constraint);
+        } else {
+            std::string constraint = "(=> " + si + " (and";
+            for (int i = 0; i <= idx; ++i) {
+                constraint += " b_" + hashStr + "_split_index_" + std::to_string(i);
+            }
+            constraint += "))";
+            DEBUG("[addIndexConstraints] Adding lemma constraint: ", constraint);
+            ctx.getParser().addAssertion(constraint);
+        }
+    }
+}
+
+void SplitSolver::addNumSplitsConstraints(Context& ctx, const Division* division) {
+    if (!division->isNumSplitsUsed()) {
+        return;
+    }
+    
+    std::string variable = division->getDivided();
+    std::string delimiter = division->getDelimiter(0);
+    std::string hashStr = division->getHashString();
+    std::string numSplitsVar = hashStr + "_num_splits";
+    
+    std::string lengthBefore = hashStr + "_length_before";
+    std::string lengthAfter = hashStr + "_length_after";
+    
+    ctx.getParser().declareIntVar(lengthBefore);
+    ctx.getParser().declareIntVar(lengthAfter);
+    
+    std::string constraint1 = "(= (str.len " + variable + ") " + lengthBefore + ")";
+    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint1);
+    ctx.getParser().addAssertion(constraint1);
+    
+    std::string constraint2 = "(= (str.len (str.replace_all " + variable + " \"" + delimiter + "\" \"\")) " + lengthAfter + ")";
+    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint2);
+    ctx.getParser().addAssertion(constraint2);
+    
+    std::string constraint3;
+    int delimiterLen = static_cast<int>(delimiter.length());
+    constraint3 = "(= " + numSplitsVar + " (div (- " + lengthBefore + " " + lengthAfter + ") " + std::to_string(delimiterLen) + "))";
+    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint3);
+    ctx.getParser().addAssertion(constraint3);
+    
+    std::string nonNegConstraint = "(>= " + numSplitsVar + " 1)";
+    DEBUG("[addNumSplitsConstraints] Adding constraint: ", nonNegConstraint);
+    ctx.getParser().addAssertion(nonNegConstraint);
+}
+
+void SplitSolver::addAuxiliaryNodes(Context& ctx) {
+    DEBUG("Adding auxiliary nodes for variable splits");
+    
+    splitAtTerms = ctx.getSplitAtVarNodes();
+    
+    const auto& divisions = ctx.getAllDivisions();
+    
+    for (const auto& [key, divisionPtr] : divisions) {
+        if (divisionPtr->isVarType()) {
+            DEBUG("Processing var division: ", divisionPtr->getDivided(), " with ", divisionPtr->getDelimiterSize(), " delimiters");
+            
+            detectInvalidIndex(ctx, divisionPtr.get());
+            addAuxiliaryVariables(ctx, divisionPtr.get());
+            addBasicConstraints(ctx, divisionPtr.get());
+            addEquivalenceConstraints(ctx, divisionPtr.get());
+            addIndexConstraints(ctx, divisionPtr.get());
+            addNumSplitsConstraints(ctx, divisionPtr.get());
+        }
+    }
+    
+    DEBUG("Completed adding auxiliary nodes for ", divisions.size(), " divisions");
+}
+
+void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
+    DEBUG("Adding auxiliary lemmas for variable splits");
+    
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    
+    const auto& divisions = ctx.getAllDivisions();
+    
+    for (const auto& [key, divisionPtr] : divisions) {
+        if (divisionPtr->isVarType()) {
+            std::string variable = divisionPtr->getDivided();
+            std::vector<std::string> delimiters = divisionPtr->getDelimiters();
+            std::string delimiter = delimiters.empty() ? "" : delimiters[0];
+            std::string hashStr = divisionPtr->getHashString();
+            const VarDivision* varDiv = static_cast<const VarDivision*>(divisionPtr.get());
+            auto allIndices = varDiv->getSplitNumsAppeared();
+            
+            for (auto& splitAtTerm : ctx.getSplitAtVarNodes()) {
+                if (splitAtTerm->getChildrenSize() >= 3) {
+                    auto arg3 = splitAtTerm->getChild(2);
+                    
+                    if (ctx.matchesDivision(splitAtTerm, variable, delimiters)) {
+                        int index = parseInteger(arg3->toString());
+                        
+                        auto atoms = ctx.getAtomsForSplitNode(splitAtTerm);
+                        
+                        for (auto& atom : atoms) {
+                            std::string disjuncts = "";
+                            bool first = true;
+                            for (int idx : allIndices) {
+                                if (idx >= index) {
+                                    if (!first) disjuncts += " ";
+                                    disjuncts += "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                                    first = false;
+                                }
+                            }
+                            
+                            if (!disjuncts.empty()) {
+                                std::string lemma;
+                                if (disjuncts.find(" ") != std::string::npos) {
+                                    lemma = "(=> " + ctx.getParser().getString(atom) + " (or " + disjuncts + "))";
+                                } else {
+                                    lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
+                                }
+                                
+                                DEBUG("[addAuxiliaryLemmas] Adding lemma: ", lemma);
+                                ctx.getParser().addAssertion(lemma);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (auto& splitRestTerm : splitRestVarNodes) {
+                if (splitRestTerm->getChildrenSize() >= 3) {
+                    auto arg3 = splitRestTerm->getChild(2);
+                    
+                    if (ctx.matchesDivision(splitRestTerm, variable, delimiters)) {
+                        int index = parseInteger(arg3->toString());
+                        
+                        auto atoms = ctx.getAtomsForSplitNode(splitRestTerm);
+                        
+                        for (auto& atom : atoms) {
+                            std::string disjuncts = "";
+                            bool first = true;
+                            for (int idx : allIndices) {
+                                if (idx >= index) {
+                                    if (!first) disjuncts += " ";
+                                    disjuncts += "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                                    first = false;
+                                }
+                            }
+                            
+                            if (!disjuncts.empty()) {
+                                std::string lemma;
+                                if (disjuncts.find(" ") != std::string::npos) {
+                                    lemma = "(=> " + ctx.getParser().getString(atom) + " (or " + disjuncts + "))";
+                                } else {
+                                    lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
+                                }
+                                
+                                DEBUG("[addAuxiliaryLemmas] Adding lemma: ", lemma);
+                                ctx.getParser().addAssertion(lemma);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (int idx : allIndices) {
+                std::string bSplitNum = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                
+                for (int endIdx : varDiv->getSplitRestNumsAppeared()) {
+                    if (endIdx <= idx) {
+                        std::string splitEndVar = hashStr + "_split_end_" + std::to_string(endIdx);
+                        std::string splitVar = hashStr + "_split_" + std::to_string(idx);
+                        std::string lastVar = hashStr + "_last";
+                        
+                        std::string lemma = "(=> " + bSplitNum + " (= (str.++ " + splitVar + " " + lastVar + ") " + splitEndVar + "))";
+                        DEBUG("[addAuxiliaryLemmas] Adding lemma for idx=", idx, " endIdx=", endIdx, ": ", lemma);
+                        ctx.getParser().addAssertion(lemma);
+                    }
+                }
+            }
+        }
+    }
+}
+
+std::string nodeToString(const SMTParser::NodePtr& node) {
+    if (!node) return "";
+    
+    std::stringstream ss;
+    dumpSMTLIB2(node, ss);
+    return ss.str();
+}
+
+std::string SplitSolver::filterModel(const std::string& rawModel) {
+    if (rawModel.empty()) {
+        return "";
+    }
+    
+    std::stringstream filteredModel;
+    std::stringstream ss(rawModel);
+    std::string line;
+    bool inFilteredFunction = false;
+    int parenCount = 0;
+    bool modelStarted = false;
+    
+    while (std::getline(ss, line)) {
+        if (line == "(" && !modelStarted) {
+            filteredModel << line << "\n";
+            modelStarted = true;
+        } else if (line == ")" && modelStarted) {
+            filteredModel << line;
+        } else if (line.find("(define-fun") != std::string::npos) {
+            bool isAuxiliaryVar = false;
+            
+            std::size_t definePos = line.find("(define-fun ");
+            if (definePos != std::string::npos) {
+                std::size_t nameStart = definePos + 12;
+                std::size_t spacePos = line.find(" ", nameStart);
+                if (spacePos != std::string::npos) {
+                    std::string varName = line.substr(nameStart, spacePos - nameStart);
+                    
+                    if (varName.find("div") == 0 || varName.find("b_div") == 0) {
+                        isAuxiliaryVar = true;
+                    }
+                }
+            }
+            
+            if (!isAuxiliaryVar) {
+                inFilteredFunction = true;
+                filteredModel << line << "\n";
+                parenCount = 1;
+                for (char c : line.substr(line.find("(define-fun"))) {
+                    if (c == '(') parenCount++;
+                    else if (c == ')') parenCount--;
+                }
+                if (parenCount == 0) {
+                    inFilteredFunction = false;
+                }
+            } else {
+                inFilteredFunction = false;
+                parenCount = 1;
+                for (char c : line.substr(line.find("(define-fun"))) {
+                    if (c == '(') parenCount++;
+                    else if (c == ')') parenCount--;
+                }
+                if (parenCount > 0) {
+                    inFilteredFunction = false;
+                }
+            }
+        } else if (inFilteredFunction) {
+            filteredModel << line << "\n";
+            for (char c : line) {
+                if (c == '(') parenCount++;
+                else if (c == ')') parenCount--;
+            }
+            if (parenCount == 0) {
+                inFilteredFunction = false;
+            }
+        } else if (!inFilteredFunction && parenCount > 0) {
+            for (char c : line) {
+                if (c == '(') parenCount++;
+                else if (c == ')') parenCount--;
+            }
+            if (parenCount == 0) {
+                inFilteredFunction = false;
+            }
+        }
+    }
+    
+    return filteredModel.str();
+}
+
+void SplitSolver::rewriteFormula(Context& ctx) {
+    LOG5("\n", ctx.getParser().getSMTLIB2(true));
+    resetSolver();
+    
+    ctx.updateDivisions();
+    addAuxiliaryNodes(ctx);
+    addAuxiliaryLemmas(ctx);
+    
+    auto splitAtConstNodes = ctx.getSplitAtConstNodes();
+    replaceSplitAtConstNodes(ctx, splitAtConstNodes);
+    auto splitRestConstNodes = ctx.getSplitRestConstNodes();
+    replaceSplitEndConstNodes(ctx, splitRestConstNodes);
+    auto numSplitConstNodes = ctx.getNumSplitConstNodes();
+    replaceNumSplitConstNodes(ctx, numSplitConstNodes);
+    
+    auto splitAtVarNodes = ctx.getSplitAtVarNodes();
+    replaceSplitAtVarNodes(ctx, splitAtVarNodes);
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    replaceSplitEndVarNodes(ctx, splitRestVarNodes);
+    auto numSplitVarNodes = ctx.getNumSplitVarNodes();
+    replaceNumSplitVarNodes(ctx, numSplitVarNodes);
+    
+    // Note: getSplitRelatedFunctionNames and removeFunDef methods need to be implemented in Parser class
+    // std::vector<std::string> splitFuncNames = ctx.getParser().getSplitRelatedFunctionNames();
+    // ctx.getParser().removeFunDef(splitFuncNames);
+    
+    DEBUG("=== Final SMT-LIB after rewriting ===");
+    LOG5("\n", ctx.getParser().getSMTLIB2(true));
+    DEBUG("=== End of SMT-LIB ===");
+}
+
+SatResult SplitSolver::checkSat() {
+    if (!solver) {
+        ERROR("Solver not initialized");
+        return SatResult::ERROR;
+    }
+    DEBUG("Checking satisfiability...");
+    auto start = std::chrono::high_resolution_clock::now();
+    
+    std::string smtFormula = context.getFormula();
+    SatResult result = solver->checkSat(smtFormula);
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+    
+    switch (result) {
+        case SatResult::SAT:
+            INFO("Result: SAT (", duration.count(), "ms)");
+            break;
+        case SatResult::UNSAT:
+            INFO("Result: UNSAT (", duration.count(), "ms)");
+            break;
+        case SatResult::UNKNOWN:
+            WARN("Result: UNKNOWN (", duration.count(), "ms)");
+            break;
+        case SatResult::ERROR:
+            ERROR("Result: ERROR (", duration.count(), "ms)");
+            break;
+    }
+    return result;
+}
+
+SatResult SplitSolver::solve() {
+    INFO("Starting split solver");
+
+    rewriteFormula(context);
+    SatResult result = checkSat();
+    
+    INFO("Final result: ", 
+         result == SatResult::SAT ? "SAT" : 
+         result == SatResult::UNSAT ? "UNSAT" : 
+         result == SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
+
+    if (context.hasTask(strp::TaskType::CHECK_SAT)) {
+        if (result == SatResult::SAT) {
+            std::cout << "sat" << std::endl;
+        } else if (result == SatResult::UNSAT) {
+            std::cout << "unsat" << std::endl;
+        } else {
+            std::cout << "unknown" << std::endl;
+        }
+    }
+    
+    if (result == SatResult::SAT && context.hasTask(strp::TaskType::GET_MODEL)) {
+        std::string rawModel = getModel();
+        if (!rawModel.empty()) {
+            std::string filteredModel = filterModel(rawModel);
+            if (!filteredModel.empty()) {
+                std::cout << filteredModel << std::endl;
+            } else {
+                DEBUG("No original variables found in model");
+            }
+        } else {
+            DEBUG("No model available from solver");
+        }
+    }
+    
+    return result;
+}
+}
