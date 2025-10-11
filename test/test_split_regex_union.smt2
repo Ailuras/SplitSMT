@@ -1,0 +1,8 @@
+(set-logic ALL)
+(define-fun delimiter () (RegLan String)
+  (re.union (str.to_re "--") (str.to_re "++") (str.to_re "==")))
+(assert (= (str.split_at_re "one--two++three==four" (delimiter) 2) "three"))
+(assert (= (str.split_rest_re "one--two++three==four" (delimiter) 2) "three==four"))
+(assert (= (str.num_splits_re "one--two++three==four" (delimiter)) 4))
+(check-sat)
+(get-model)

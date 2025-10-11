@@ -19,13 +19,11 @@ public:
     std::string getFormula();
 
     void addDivision(std::unique_ptr<Division> division);
-    Division* getDivision(const std::string& divided, const std::vector<std::string>& delimiters);
-    bool hasDivision(const std::string& divided, const std::vector<std::string>& delimiters) const;
-    std::vector<std::string> getDelimiters(const SMTParser::NodePtr& node);
-    void extractDelimitersFromRegex(const SMTParser::NodePtr& regexNode, std::vector<std::string>& delimiters);
-    void validateDelimiterLengths(const std::vector<std::string>& delimiters);
-    bool matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::vector<std::string>& delimiters);
-    std::vector<SMTParser::NodePtr> getDivisionNodes(const std::string& divided, const std::vector<std::string>& delimiters) const;
+    Division* getDivision(const std::string& divided, const std::string& delimiter_regex);
+    bool hasDivision(const std::string& divided, const std::string& delimiter_regex) const;
+    std::string getDelimiterRegex(const SMTParser::NodePtr& node);
+    bool matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::string& delimiter_regex);
+    std::vector<SMTParser::NodePtr> getDivisionNodes(const std::string& divided, const std::string& delimiter_regex) const;
     const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
     std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     bool hasTask(TaskType taskType) const;

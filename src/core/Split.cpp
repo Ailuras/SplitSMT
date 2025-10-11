@@ -136,9 +136,9 @@ void SplitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
                         str = str.substr(1, str.size() - 2);
                     }
                     
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     
-                    Division* division = ctx.getDivision(str, delimiters);
+                    Division* division = ctx.getDivision(str, delimiter_regex);
                     if (division && division->isConstType()) {
                         ConstDivision* constDiv = static_cast<ConstDivision*>(division);
                         int index = parseInteger(arg3->toString());
@@ -185,10 +185,10 @@ void SplitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTP
                         str = str.substr(1, str.size() - 2);
                     }
                     
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     
                     int index = parseInteger(arg3->toString());
-                    Division* division = ctx.getDivision(str, delimiters);
+                    Division* division = ctx.getDivision(str, delimiter_regex);
                     if (division && division->isConstType()) {
                         ConstDivision* constDiv = static_cast<ConstDivision*>(division);
                         if (index >= 0 && index < constDiv->getSplitNums()) {
@@ -242,9 +242,9 @@ void SplitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTP
                     if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
                         str = str.substr(1, str.size() - 2);
                     }
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     
-                    Division* division = ctx.getDivision(str, delimiters);
+                    Division* division = ctx.getDivision(str, delimiter_regex);
                     int numSplits = 0;
                     if (division && division->isConstType()) {
                         ConstDivision* constDiv = static_cast<ConstDivision*>(division);
@@ -294,22 +294,19 @@ void SplitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
                 
                 if (arg1->isVar() && arg3->isConst()) {
                     std::string variable = arg1->toString();
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     DEBUG("[replaceSplitAtVarNodes] Variable: '", variable, "'");
-                    DEBUG("[replaceSplitAtVarNodes] Delimiters: [", delimiters.size(), " items]");
-                    for (const auto& d : delimiters) {
-                        DEBUG("[replaceSplitAtVarNodes]   - '", d, "'");
-                    }
+                    DEBUG("[replaceSplitAtVarNodes] Delimiter regex: ", delimiter_regex);
                     int index = parseInteger(arg3->toString());
                     DEBUG("[replaceSplitAtVarNodes] Index: ", index);
                     
-                    Division* division = ctx.getDivision(variable, delimiters);
+                    Division* division = ctx.getDivision(variable, delimiter_regex);
                     if (division && division->isVarType()) {
                         VarDivision* varDiv = static_cast<VarDivision*>(division);
                         auto splitNums = varDiv->getSplitAtNumsAppeared();
                         if (std::find(splitNums.begin(), splitNums.end(), index) != splitNums.end()) {
                             std::string hashStr = division->getHashString();
-                            std::string xi = hashStr + "_split_" + std::to_string(index);
+                            std::string xi = hashStr + "_x_" + std::to_string(index);
                             SMTParser::NodePtr replacement = ctx.getParser().createStringVar(xi);
                             
                             if (replacement) {
@@ -322,7 +319,7 @@ void SplitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
                             DEBUG("Index ", index, " not found in division for variable ", variable);
                         }
                     } else {
-                        WARN("Division not found for variable ", variable, " with delimiters");
+                        WARN("Division not found for variable ", variable, " with delimiter regex: ", delimiter_regex);
                     }
                 }
             }
@@ -360,29 +357,29 @@ void SplitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
                 
                 if (arg1->isVar() && arg3->isConst()) {
                     std::string variable = arg1->toString();
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     int index = parseInteger(arg3->toString());
                     
-                    Division* division = ctx.getDivision(variable, delimiters);
+                    Division* division = ctx.getDivision(variable, delimiter_regex);
                     if (division && division->isVarType()) {
                         VarDivision* varDiv = static_cast<VarDivision*>(division);
                         auto splitEndNums = varDiv->getSplitRestNumsAppeared();
                         if (std::find(splitEndNums.begin(), splitEndNums.end(), index) != splitEndNums.end()) {
                             std::string hashStr = division->getHashString();
-                            std::string xi = hashStr + "_split_end_" + std::to_string(index);
-                            SMTParser::NodePtr replacement = ctx.getParser().createStringVar(xi);
+                            std::string ri = hashStr + "_r_" + std::to_string(index);
+                            SMTParser::NodePtr replacement = ctx.getParser().createStringVar(ri);
                             
                             if (replacement) {
                                 replacementMap[node] = replacement;
                                 DEBUG("Replaced ", ctx.getParser().getString(node), " with ", ctx.getParser().getString(replacement));
                             } else {
-                                WARN("Failed to create replacement variable: ", xi);
+                                WARN("Failed to create replacement variable: ", ri);
                             }
                         } else {
                             DEBUG("Index ", index, " not found in split_rest division for variable ", variable);
                         }
                     } else {
-                        WARN("Division not found for variable ", variable, " with delimiters");
+                        WARN("Division not found for variable ", variable, " with delimiter regex: ", delimiter_regex);
                     }
                 }
             }
@@ -419,9 +416,9 @@ void SplitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTPar
                 
                 if (arg1->isVar() && arg2->isConst()) {
                     std::string variable = arg1->toString();
-                    std::vector<std::string> delimiters = ctx.getDelimiters(node);
+                    std::string delimiter_regex = ctx.getDelimiterRegex(node);
                     
-                    Division* division = ctx.getDivision(variable, delimiters);
+                    Division* division = ctx.getDivision(variable, delimiter_regex);
                     if (division && division->isVarType() && division->isNumSplitsUsed()) {
                         std::string hashStr = division->getHashString();
                         std::string numSplitsVar = hashStr + "_num_splits";
@@ -454,8 +451,8 @@ void SplitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTPar
 
 void SplitSolver::detectInvalidIndex(Context& ctx, Division* division) {
     std::string variable = division->getDivided();
-    std::vector<std::string> delimiters = division->getDelimiters();
-    std::vector<SMTParser::NodePtr> divisionNodes = ctx.getDivisionNodes(variable, delimiters);
+    std::string delimiter_regex = division->getDelimiterRegex();
+    std::vector<SMTParser::NodePtr> divisionNodes = ctx.getDivisionNodes(variable, delimiter_regex);
     
     if (divisionNodes.empty()) {
         DEBUG("No division nodes found for ", variable);
@@ -508,7 +505,7 @@ void SplitSolver::detectInvalidIndex(Context& ctx, Division* division) {
 
 void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
-    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string delimiter_regex = division->getDelimiterRegex();
     std::string hashStr = division->getHashString();
     const VarDivision* varDiv = static_cast<const VarDivision*>(division);
     int maxIndex = varDiv->getMaxSplitNumAppeared();
@@ -517,6 +514,7 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
         DEBUG("Skipping auxiliary variables for ", variable, " - no split_at, split_rest or num_splits usage");
         return;
     }
+    
     
     if (division->isNumSplitsUsed()) {
         std::string numSplitsVar = hashStr + "_num_splits";
@@ -529,44 +527,47 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
         return;
     }
     
+    std::string variable_split = variable + "_" + hashStr;
     std::string x_split = hashStr + "_split";
     std::string x_last = hashStr + "_last";
+    std::string x_num = hashStr + "_num";
     
+    ctx.getParser().declareStringVar(variable_split);
     ctx.getParser().declareStringVar(x_split);
     ctx.getParser().declareStringVar(x_last);
+    ctx.getParser().declareIntVar(x_num);
     
     for (int i = 0; i <= maxIndex; ++i) {
-        std::string xi = hashStr + "_split_" + std::to_string(i);
+        std::string xi = hashStr + "_x_" + std::to_string(i);
         ctx.getParser().declareStringVar(xi);
     }
     
     for (int idx : varDiv->getSplitNumsAppeared()) {
-        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
-        ctx.getParser().declareBoolVar(si);
+        std::string bi = hashStr + "_b_" + std::to_string(idx);
+        ctx.getParser().declareBoolVar(bi);
     }
     
     for (int idx : varDiv->getSplitRestNumsAppeared()) {
-        std::string xi = hashStr + "_split_end_" + std::to_string(idx);
-        ctx.getParser().declareStringVar(xi);
+        std::string ri = hashStr + "_r_" + std::to_string(idx);
+        ctx.getParser().declareStringVar(ri);
     }
     
-    if (!delimiters.empty() && delimiters[0].length() != 1) {
-        for (int i = 0; i < maxIndex; ++i) {
-            std::string gi = "g_" + hashStr + "_gap_" + std::to_string(i);
-            ctx.getParser().declareBoolVar(gi);
-        }
-        for (int i = 0; i <= maxIndex; ++i) {
-            std::string pi = "p_" + hashStr + "_gap_" + std::to_string(i);
-            ctx.getParser().declareIntVar(pi);
-        }
+    for (int i = 0; i <= maxIndex; ++i) {
+        std::string gi = hashStr + "_g_" + std::to_string(i);
+        ctx.getParser().declareBoolVar(gi);
+    }
+    for (int i = 0; i <= maxIndex+1; ++i) {
+        std::string pi = hashStr + "_p_" + std::to_string(i);
+        ctx.getParser().declareIntVar(pi);
     }
     
-    DEBUG("Declared auxiliary variables for ", variable, " with ", delimiters.size(), " delimiters using hash ", hashStr);
+    DEBUG("Declared auxiliary variables for ", variable, " with delimiter regex ", delimiter_regex, " using hash ", hashStr);
 }
 
 void SplitSolver::addBasicConstraints(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
-    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string delimiter_regex = division->getDelimiterRegex();
+    std::string delimiter = "\"\\u{2FFFF}\"";
     std::string hashStr = division->getHashString();
     const VarDivision* varDiv = static_cast<const VarDivision*>(division);
     int maxIndex = varDiv->getMaxSplitNumAppeared();
@@ -576,73 +577,41 @@ void SplitSolver::addBasicConstraints(Context& ctx, const Division* division) {
         return;
     }
     
+    std::string variable_split = variable + "_" + hashStr;
     std::string x_split = hashStr + "_split";
     std::string x_last = hashStr + "_last";
     
-    std::string constraint1 = "(= " + variable + " (str.++ " + x_split + " " + x_last + "))";
+    std::string constraint1 = "(= " + variable_split + " (str.replace_re_all " + variable + " " + delimiter_regex + " " + delimiter + "))";
     DEBUG("[addBasicConstraints] Adding constraint: ", constraint1);
     ctx.getParser().addAssertion(constraint1);
-    
-    if (!delimiters.empty()) {
-        for (int i = 0; i <= maxIndex; ++i) {
-            std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(i);
-            
-            if (delimiters.size() == 1) {
-                std::string delimiterConstraint = "(= " + delimiterVar + " \"" + delimiters[0] + "\")";
-                DEBUG("[addBasicConstraints] Adding delimiter constraint: ", delimiterConstraint);
-                ctx.getParser().addAssertion(delimiterConstraint);
-            } else {
-                std::string delimiterConstraint = "(or";
-                for (size_t j = 0; j < delimiters.size(); ++j) {
-                    delimiterConstraint += " (= " + delimiterVar + " \"" + delimiters[j] + "\")";
-                }
-                delimiterConstraint += ")";
-                DEBUG("[addBasicConstraints] Adding delimiter constraint: ", delimiterConstraint);
-                ctx.getParser().addAssertion(delimiterConstraint);
-            }
-        }
-        
-        std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(maxIndex);
-        std::string constraint2 = "(or (= " + x_last + " \"\") (str.prefixof " + delimiterVar + " " + x_last + "))";
-        DEBUG("[addBasicConstraints] Adding constraint: ", constraint2);
-        ctx.getParser().addAssertion(constraint2);
-        
-        for (int i = 0; i <= maxIndex; ++i) {
-            std::string xi = hashStr + "_split_" + std::to_string(i);
-            std::string notContains = "(not (or";
-            for (size_t j = 0; j < delimiters.size(); ++j) {
-                notContains += " (str.contains " + xi + " \"" + delimiters[j] + "\")";
-            }
-            notContains += "))";
-            DEBUG("[addBasicConstraints] Adding constraint: ", notContains);
-            ctx.getParser().addAssertion(notContains);
-        }
-    }
+
+    std::string constraint2 = "(= " + variable_split + " (str.++ " + x_split + " " + x_last + "))";
+    DEBUG("[addBasicConstraints] Adding constraint: ", constraint2);
+    ctx.getParser().addAssertion(constraint2);
+    std::string constraint3 = "(or (= " + x_last + " \"\") (str.prefixof " + delimiter + " " + x_last + "))";
+    DEBUG("[addBasicConstraints] Adding constraint: ", constraint3);
+    ctx.getParser().addAssertion(constraint3);
 }
 
 void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* division) {
-    std::string variable = division->getDivided();
-    std::vector<std::string> delimiters = division->getDelimiters();
-    std::string delimiter = delimiters.empty() ? "" : delimiters[0];
+    std::string delimiter = "\"\\u{2FFFF}\"";
     std::string hashStr = division->getHashString();
     std::string x_split = hashStr + "_split";
     const VarDivision* varDiv = static_cast<const VarDivision*>(division);
     
     for (int idx : varDiv->getSplitNumsAppeared()) {
-        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+        std::string bi = hashStr + "_b_" + std::to_string(idx);
         std::string equiv;
         
         if (idx == 0) {
-            equiv = "(= " + si + " (= " + x_split + " " + hashStr + "_split_0))";
+            equiv = "(= " + bi + " (= " + x_split + " " + hashStr + "_x_0))";
         } else {
-            equiv = "(= " + si + " (= " + x_split + " (str.++";
+            equiv = "(= " + bi + " (= " + x_split + " (str.++";
             for (int j = 0; j < idx; ++j) {
-                std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(j);
-                equiv += " " + hashStr + "_split_" + std::to_string(j) + " " + delimiterVar;
+                equiv += " " + hashStr + "_x_" + std::to_string(j) + " " + delimiter;
             }
-            equiv += " " + hashStr + "_split_" + std::to_string(idx) + ")))";
+            equiv += " " + hashStr + "_x_" + std::to_string(idx) + ")))";
         }
-        
         DEBUG("[addEquivalenceConstraints] Adding constraint: ", equiv);
         ctx.getParser().addAssertion(equiv);
     }
@@ -650,7 +619,7 @@ void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* divisi
 
 void SplitSolver::addIndexConstraints(Context& ctx, const Division* division) {
     std::string variable = division->getDivided();
-    std::vector<std::string> delimiters = division->getDelimiters();
+    std::string delimiter = "\"\\u{2FFFF}\"";
     std::string hashStr = division->getHashString();
     const VarDivision* varDiv = static_cast<const VarDivision*>(division);
     int maxIndex = varDiv->getMaxSplitNumAppeared();
@@ -660,81 +629,37 @@ void SplitSolver::addIndexConstraints(Context& ctx, const Division* division) {
         return;
     }
     
-    if (delimiters.empty() || delimiters[0].length() == 1) {
-        return;
-    }
-    
     std::string x_split = hashStr + "_split";
+    
+    std::string constraint = "(= " + hashStr + "_p_0 -1)";
+    ctx.getParser().addAssertion(constraint);
 
-    int delimiterLen = static_cast<int>(delimiters[0].length());
-    
-    for (int i = 0; i <= maxIndex; ++i) {
-        std::string xi = hashStr + "_split_index_" + std::to_string(i);
+    for (int i = 1; i <= maxIndex; ++i) {
+        std::string prevPi = hashStr + "_p_" + std::to_string(i - 1);
+        std::string pi = hashStr + "_p_" + std::to_string(i);
+        std::string gi = hashStr + "_g_" + std::to_string(i);
+        std::string xi = hashStr + "_x_" + std::to_string(i);
+        std::string bi = hashStr + "_b_" + std::to_string(i);
         std::string constraint;
-        
-        if (delimiters.size() == 1) {
-            if (i == 0) {
-                constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiters[0] + "\" 0))";
-            } else {
-                std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
-                constraint = "(= " + xi + " (str.indexof " + x_split + " \"" + delimiters[0] + "\" (+ " + prevXi + " " + std::to_string(delimiterLen) + ")))";
-            }
-        } else {
-            std::string minExpr = "(min";
-            for (const std::string& delimiter : delimiters) {
-                if (delimiter.length() > 1) {
-                    if (i == 0) {
-                        minExpr += " (str.indexof " + x_split + " \"" + delimiter + "\" 0)";
-                    } else {
-                        std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
-                        minExpr += " (str.indexof " + x_split + " \"" + delimiter + "\" (+ " + prevXi + " " + std::to_string(delimiterLen) + "))";
-                    }
-                }
-            }
-            minExpr += ")";
-            constraint = "(= " + xi + " " + minExpr + ")";
-        }
-        
+
+        constraint = "(= " + pi + " (str.indexof " + x_split + " " + delimiter + " (+ " + prevPi + " 1)))";
         DEBUG("[addIndexConstraints] Adding constraint: ", constraint);
         ctx.getParser().addAssertion(constraint);
+        std::string gConstraint = "(= " + gi + " (or (= " + pi + " (- 0 1)) (= (- (- " + pi + " " + prevPi + ") 1) (str.len " + xi + "))))";
+        DEBUG("[addIndexConstraints] Adding constraint: ", gConstraint);
+        ctx.getParser().addAssertion(gConstraint);
     }
     
-    for (int i = 0; i <= maxIndex; ++i) {
-        std::string bi = "b_" + hashStr + "_split_index_" + std::to_string(i);
-        std::string xi = hashStr + "_split_index_" + std::to_string(i);
-        std::string splitVar = hashStr + "_split_" + std::to_string(i);
-        std::string constraint;
-        
-        if (i == 0) {
-            constraint = "(=> " + bi + " (or (= " + xi + " (str.len " + splitVar + ")) (= " + xi + " -1)))";
-        } else {
-            std::string prevXi = hashStr + "_split_index_" + std::to_string(i - 1);
-            constraint = "(=> " + bi + " (or (= (- " + xi + " " + prevXi + " " + std::to_string(delimiterLen) + ") (str.len " + splitVar + ")) (= " + xi + " -1)))";
+    for (int idx : varDiv->getSplitNumsAppeared()) {
+        std::string bi = hashStr + "_b_" + std::to_string(idx);
+        std::string equiv = "(=> " + bi + " (and";
+        for (int i = 0; i <= idx; ++i) {
+            std::string gi = hashStr + "_g_" + std::to_string(i);
+            equiv += " " + gi;
         }
-        
-        DEBUG("[addIndexConstraints] Adding constraint: ", constraint);
-        ctx.getParser().addAssertion(constraint);
-    }
-    
-    auto splitNums = varDiv->getSplitAtNumsAppeared();
-    
-    for (int idx : splitNums) {
-        std::string si = "b_" + hashStr + "_split_num_" + std::to_string(idx);
-        
-        if (idx == 0) {
-            std::string bi = "b_" + hashStr + "_split_index_0";
-            std::string constraint = "(=> " + si + " " + bi + ")";
-            DEBUG("[addIndexConstraints] Adding lemma constraint: ", constraint);
-            ctx.getParser().addAssertion(constraint);
-        } else {
-            std::string constraint = "(=> " + si + " (and";
-            for (int i = 0; i <= idx; ++i) {
-                constraint += " b_" + hashStr + "_split_index_" + std::to_string(i);
-            }
-            constraint += "))";
-            DEBUG("[addIndexConstraints] Adding lemma constraint: ", constraint);
-            ctx.getParser().addAssertion(constraint);
-        }
+        equiv += "))";
+        DEBUG("[addIndexConstraints] Adding constraint: ", equiv);
+        ctx.getParser().addAssertion(equiv);
     }
 }
 
@@ -744,33 +669,15 @@ void SplitSolver::addNumSplitsConstraints(Context& ctx, const Division* division
     }
     
     std::string variable = division->getDivided();
-    std::string delimiter = division->getDelimiter(0);
+    std::string delimiter = "\"\\u{2FFFF}\"";
     std::string hashStr = division->getHashString();
-    std::string numSplitsVar = hashStr + "_num_splits";
+    std::string numSplitsVar = hashStr + "_num";
+    std::string variable_split = variable + "_" + hashStr;
+    std::string x_num = hashStr + "_num";
     
-    std::string lengthBefore = hashStr + "_length_before";
-    std::string lengthAfter = hashStr + "_length_after";
-    
-    ctx.getParser().declareIntVar(lengthBefore);
-    ctx.getParser().declareIntVar(lengthAfter);
-    
-    std::string constraint1 = "(= (str.len " + variable + ") " + lengthBefore + ")";
-    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint1);
-    ctx.getParser().addAssertion(constraint1);
-    
-    std::string constraint2 = "(= (str.len (str.replace_all " + variable + " \"" + delimiter + "\" \"\")) " + lengthAfter + ")";
-    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint2);
-    ctx.getParser().addAssertion(constraint2);
-    
-    std::string constraint3;
-    int delimiterLen = static_cast<int>(delimiter.length());
-    constraint3 = "(= " + numSplitsVar + " (div (- " + lengthBefore + " " + lengthAfter + ") " + std::to_string(delimiterLen) + "))";
-    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint3);
-    ctx.getParser().addAssertion(constraint3);
-    
-    std::string nonNegConstraint = "(>= " + numSplitsVar + " 1)";
-    DEBUG("[addNumSplitsConstraints] Adding constraint: ", nonNegConstraint);
-    ctx.getParser().addAssertion(nonNegConstraint);
+    std::string constraint = "(= " + x_num + " (- (str.len " + variable_split + ") (str.len (str.replace_all " + variable_split + " " + delimiter + " \"\"))))";
+    DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint);
+    ctx.getParser().addAssertion(constraint);
 }
 
 void SplitSolver::addAuxiliaryNodes(Context& ctx) {
@@ -780,7 +687,8 @@ void SplitSolver::addAuxiliaryNodes(Context& ctx) {
     const auto& divisions = ctx.getAllDivisions();
     for (const auto& [key, divisionPtr] : divisions) {
         if (divisionPtr->isVarType()) {
-            DEBUG("Processing var division: ", divisionPtr->getDivided(), " with ", divisionPtr->getDelimiterSize(), " delimiters");
+            const Division* div = divisionPtr.get();
+            DEBUG("Processing var division: ", div->getDivided(), " with delimiter regex ", div->getDelimiterRegex());
             detectInvalidIndex(ctx, divisionPtr.get());
             addAuxiliaryVariables(ctx, divisionPtr.get());
             addBasicConstraints(ctx, divisionPtr.get());
@@ -796,35 +704,36 @@ void SplitSolver::addAuxiliaryNodes(Context& ctx) {
 void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
     DEBUG("Adding auxiliary lemmas for variable splits");
     
+    auto splitAtVarNodes = ctx.getSplitAtVarNodes();
     auto splitRestVarNodes = ctx.getSplitRestVarNodes();
-    
     const auto& divisions = ctx.getAllDivisions();
     
     for (const auto& [key, divisionPtr] : divisions) {
         if (divisionPtr->isVarType()) {
             std::string variable = divisionPtr->getDivided();
-            std::vector<std::string> delimiters = divisionPtr->getDelimiters();
-            std::string delimiter = delimiters.empty() ? "" : delimiters[0];
+            std::string delimiter_regex = divisionPtr->getDelimiterRegex();
             std::string hashStr = divisionPtr->getHashString();
             const VarDivision* varDiv = static_cast<const VarDivision*>(divisionPtr.get());
+            auto splitAtIndices = varDiv->getSplitAtNumsAppeared();
+            auto splitRestIndices = varDiv->getSplitRestNumsAppeared();
             auto allIndices = varDiv->getSplitNumsAppeared();
             
-            for (auto& splitAtTerm : ctx.getSplitAtVarNodes()) {
-                if (splitAtTerm->getChildrenSize() >= 3) {
-                    auto arg3 = splitAtTerm->getChild(2);
+            for (auto& node : splitAtVarNodes) {
+                if (node->getChildrenSize() >= 3) {
+                    auto arg3 = node->getChild(2);
                     
-                    if (ctx.matchesDivision(splitAtTerm, variable, delimiters)) {
+                    if (ctx.matchesDivision(node, variable, delimiter_regex)) {
                         int index = parseInteger(arg3->toString());
-                        
-                        auto atoms = ctx.getAtomsForSplitNode(splitAtTerm);
+                        auto atoms = ctx.getAtomsForSplitNode(node);
                         
                         for (auto& atom : atoms) {
                             std::string disjuncts = "";
                             bool first = true;
-                            for (int idx : allIndices) {
-                                if (idx >= index) {
+                            for (int i : allIndices) {
+                                if (i >= index) {
                                     if (!first) disjuncts += " ";
-                                    disjuncts += "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                                    std::string bi = hashStr + "_b_" + std::to_string(i);
+                                    disjuncts += bi;
                                     first = false;
                                 }
                             }
@@ -837,7 +746,7 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                                     lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
                                 }
                                 
-                                DEBUG("[addAuxiliaryLemmas] Adding lemma: ", lemma);
+                                DEBUG("[addAuxiliaryLemmas] Adding split_at lemma: ", lemma);
                                 ctx.getParser().addAssertion(lemma);
                             }
                         }
@@ -845,22 +754,22 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                 }
             }
             
-            for (auto& splitRestTerm : splitRestVarNodes) {
-                if (splitRestTerm->getChildrenSize() >= 3) {
-                    auto arg3 = splitRestTerm->getChild(2);
+            for (auto& node : splitRestVarNodes) {
+                if (node->getChildrenSize() >= 3) {
+                    auto arg3 = node->getChild(2);
                     
-                    if (ctx.matchesDivision(splitRestTerm, variable, delimiters)) {
+                    if (ctx.matchesDivision(node, variable, delimiter_regex)) {
                         int index = parseInteger(arg3->toString());
-                        
-                        auto atoms = ctx.getAtomsForSplitNode(splitRestTerm);
+                        auto atoms = ctx.getAtomsForSplitNode(node);
                         
                         for (auto& atom : atoms) {
                             std::string disjuncts = "";
                             bool first = true;
-                            for (int idx : allIndices) {
-                                if (idx >= index) {
+                            for (int i : allIndices) {
+                                if (i >= index) {
                                     if (!first) disjuncts += " ";
-                                    disjuncts += "b_" + hashStr + "_split_num_" + std::to_string(idx);
+                                    std::string bi = hashStr + "_b_" + std::to_string(i);
+                                    disjuncts += bi;
                                     first = false;
                                 }
                             }
@@ -873,7 +782,7 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                                     lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
                                 }
                                 
-                                DEBUG("[addAuxiliaryLemmas] Adding lemma: ", lemma);
+                                DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma: ", lemma);
                                 ctx.getParser().addAssertion(lemma);
                             }
                         }
@@ -881,17 +790,17 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                 }
             }
             
-            for (int idx : allIndices) {
-                std::string bSplitNum = "b_" + hashStr + "_split_num_" + std::to_string(idx);
+            for (int i : allIndices) {
+                std::string bi = hashStr + "_b_" + std::to_string(i);
+                std::string xi = hashStr + "_x_" + std::to_string(i);
+                std::string x_last = hashStr + "_last";
                 
-                for (int endIdx : varDiv->getSplitRestNumsAppeared()) {
-                    if (endIdx <= idx) {
-                        std::string splitEndVar = hashStr + "_split_end_" + std::to_string(endIdx);
-                        std::string splitVar = hashStr + "_split_" + std::to_string(idx);
-                        std::string lastVar = hashStr + "_last";
+                for (int j : splitRestIndices) {
+                    if (j <= i) {
+                        std::string rj = hashStr + "_r_" + std::to_string(j);
                         
-                        std::string lemma = "(=> " + bSplitNum + " (= (str.++ " + splitVar + " " + lastVar + ") " + splitEndVar + "))";
-                        DEBUG("[addAuxiliaryLemmas] Adding lemma for idx=", idx, " endIdx=", endIdx, ": ", lemma);
+                        std::string lemma = "(=> " + bi + " (= (str.++ " + xi + " " + x_last + ") " + rj + "))";
+                        DEBUG("[addAuxiliaryLemmas] Adding split_at/split_rest relation lemma for i=", i, " j=", j, ": ", lemma);
                         ctx.getParser().addAssertion(lemma);
                     }
                 }

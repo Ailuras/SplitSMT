@@ -26,9 +26,7 @@ int main() {
     
     for (const auto& [key, division] : divisions) {
         std::cout << "Division: " << division->getDivided() << " | ";
-        if (division->getDelimiterSize() > 0) {
-            std::cout << division->getDelimiter(0);
-        }
+        std::cout << division->getDelimiterRegex();
         std::cout << std::endl;
     }
     

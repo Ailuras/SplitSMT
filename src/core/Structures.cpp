@@ -11,6 +11,54 @@ struct SplitResult {
     std::vector<std::string> delimiters;
 };
 
+std::vector<std::string> parseDelimiterRegexToList(const std::string& delimiter_regex) {
+    std::vector<std::string> delimiters;
+    if (delimiter_regex.empty()) {
+        return delimiters;
+    }
+    if (delimiter_regex.find("(re.union") == 0) {
+        size_t pos = 10;
+        int depth = 1;
+        std::string current;
+        while (pos < delimiter_regex.length() && depth > 0) {
+            if (delimiter_regex[pos] == '(') {
+                depth++;
+                current += delimiter_regex[pos];
+            } else if (delimiter_regex[pos] == ')') {
+                depth--;
+                if (depth > 0) {
+                    current += delimiter_regex[pos];
+                } else if (!current.empty()) {
+                    size_t start = current.find('"');
+                    size_t end = current.rfind('"');
+                    if (start != std::string::npos && end != std::string::npos && start < end) {
+                        delimiters.push_back(current.substr(start + 1, end - start - 1));
+                    }
+                }
+            } else if (delimiter_regex[pos] == ' ' && depth == 1) {
+                if (!current.empty()) {
+                    size_t start = current.find('"');
+                    size_t end = current.rfind('"');
+                    if (start != std::string::npos && end != std::string::npos && start < end) {
+                        delimiters.push_back(current.substr(start + 1, end - start - 1));
+                    }
+                    current.clear();
+                }
+            } else {
+                current += delimiter_regex[pos];
+            }
+            pos++;
+        }
+    } else if (delimiter_regex.find("(str.to_re") == 0) {
+        size_t start = delimiter_regex.find('"');
+        size_t end = delimiter_regex.rfind('"');
+        if (start != std::string::npos && end != std::string::npos && start < end) {
+            delimiters.push_back(delimiter_regex.substr(start + 1, end - start - 1));
+        }
+    }
+    return delimiters;
+}
+
 SplitResult splitStringWithDelimiters(const std::string& str, const std::vector<std::string>& delimiters) {
     SplitResult result;
     if (delimiters.empty()) {
@@ -59,9 +107,9 @@ std::vector<std::string> splitString(const std::string& str, const std::string& 
 
 namespace strp {
 
-Division::Division(const std::string& divided, const std::vector<std::string>& delimiters) :
+Division::Division(const std::string& divided, const std::string& delimiter_regex) :
     divided(divided),
-    delimiters(delimiters),
+    delimiter_regex(delimiter_regex),
     num_splits_used(false) {
     hash_string = generateHashString();
 }
@@ -75,10 +123,12 @@ std::string Division::generateHashString() const {
     return ss.str();
 }
 
-ConstDivision::ConstDivision(const std::string& divided, const std::vector<std::string>& delimiters) :
-    Division(divided, delimiters),
+ConstDivision::ConstDivision(const std::string& divided, const std::string& delimiter_regex) :
+    Division(divided, delimiter_regex),
     splitNums(0),
     has_split_num(false) {
+    
+    std::vector<std::string> delimiters = parseDelimiterRegexToList(delimiter_regex);
     
     if (delimiters.empty()) {
         for (char c : divided) {
@@ -93,16 +143,12 @@ ConstDivision::ConstDivision(const std::string& divided, const std::vector<std::
     splitNums = static_cast<int>(splits.size());
 }
 
-VarDivision::VarDivision(const std::string& divided, const std::vector<std::string>& delimiters) :
-    Division(divided, delimiters) {}
+VarDivision::VarDivision(const std::string& divided, const std::string& delimiter_regex) :
+    Division(divided, delimiter_regex) {}
 
-std::string Division::generateKey(const std::string& divided, const std::vector<std::string>& delimiters) {
+std::string Division::generateKey(const std::string& divided, const std::string& delimiter_regex) {
     std::stringstream ss;
-    ss << divided << "##";
-    for (size_t i = 0; i < delimiters.size(); ++i) {
-        if (i > 0) ss << ",";
-        ss << delimiters[i];
-    }
+    ss << divided << "##" << delimiter_regex;
     return ss.str();
 }
 

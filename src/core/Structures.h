@@ -41,25 +41,22 @@ class Context;
 class Division {
 public:
     Division() = default;
-    Division(const std::string& divided, const std::vector<std::string>& delimiters);
+    Division(const std::string& divided, const std::string& delimiter_regex);
     virtual ~Division() = default;
 
     std::string getDivided() const { return divided; }
-    std::vector<std::string> getDelimiters() const { return delimiters; }
-    std::string getDelimiter(int index) const { return delimiters[index]; }
-    void addDelimiter(const std::string& delimiter) { delimiters.push_back(delimiter); }
-    int getDelimiterSize() const { return delimiters.size(); }
+    std::string getDelimiterRegex() const { return delimiter_regex; }
     std::string getHashString() const { return hash_string; }
     virtual bool isConstType() const = 0;
     virtual bool isVarType() const = 0;
     
     bool isNumSplitsUsed() const { return num_splits_used; }
     void setNumSplitsUsed(bool used) { this->num_splits_used = used; }
-    static std::string generateKey(const std::string& divided, const std::vector<std::string>& delimiters);
+    static std::string generateKey(const std::string& divided, const std::string& delimiter_regex);
 
 protected:
     std::string divided;
-    std::vector<std::string> delimiters;
+    std::string delimiter_regex;
     std::string hash_string;
     bool num_splits_used = false;
     
@@ -69,7 +66,7 @@ private:
 
 class ConstDivision : public Division {
 public:
-    ConstDivision(const std::string& divided, const std::vector<std::string>& delimiters);
+    ConstDivision(const std::string& divided, const std::string& delimiter_regex);
     
     bool isConstType() const override { return true; }
     bool isVarType() const override { return false; }
@@ -103,7 +100,7 @@ private:
 
 class VarDivision : public Division {
 public:
-    VarDivision(const std::string& divided, const std::vector<std::string>& delimiters);
+    VarDivision(const std::string& divided, const std::string& delimiter_regex);
     
     bool isConstType() const override { return false; }
     bool isVarType() const override { return true; }
