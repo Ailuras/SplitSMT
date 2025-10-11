@@ -789,7 +789,6 @@ void SplitSolver::addAuxiliaryNodes(Context& ctx) {
     for (const auto& [key, divisionPtr] : divisions) {
         if (divisionPtr->isVarType()) {
             DEBUG("Processing var division: ", divisionPtr->getDivided(), " with ", divisionPtr->getDelimiterSize(), " delimiters");
-            
             detectInvalidIndex(ctx, divisionPtr.get());
             addAuxiliaryVariables(ctx, divisionPtr.get());
             addBasicConstraints(ctx, divisionPtr.get());
@@ -1017,10 +1016,6 @@ void SplitSolver::rewriteFormula(Context& ctx) {
     replaceSplitEndVarNodes(ctx, splitRestVarNodes);
     auto numSplitVarNodes = ctx.getNumSplitVarNodes();
     replaceNumSplitVarNodes(ctx, numSplitVarNodes);
-    
-    // Note: getSplitRelatedFunctionNames and removeFunDef methods need to be implemented in Parser class
-    // std::vector<std::string> splitFuncNames = ctx.getParser().getSplitRelatedFunctionNames();
-    // ctx.getParser().removeFunDef(splitFuncNames);
     
     DEBUG("=== Final SMT-LIB after rewriting ===");
     LOG5("\n", ctx.getParser().getSMTLIB2(true));

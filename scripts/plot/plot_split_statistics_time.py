@@ -155,7 +155,7 @@ def create_comprehensive_plot(split_df, solver_df, output_file, font_offset=0):
     
     # Define colors for consistency
     bar_colors = ['#3498db', '#e67e22', '#2ecc71']  # Different colors for each category group
-    bar_labels = ['#Division', 'Separator', 'API']  # Labels for bar categories
+    bar_labels = ['#Partition', 'Separator', 'API']  # Labels for bar categories
     solver_colors = {
         'ext-cvc5': '#e74c3c',
         'ext-ostrich': '#2ecc71', 
@@ -239,7 +239,7 @@ def create_comprehensive_plot(split_df, solver_df, output_file, font_offset=0):
     # Create bars for each category group with proper labels
     start_idx = 0
     for group_idx, (color, label) in enumerate(zip(bar_colors, bar_labels)):
-        if group_idx == 0:  # #Division group (3 bars)
+        if group_idx == 0:  # Partition group (3 bars)
             end_idx = start_idx + 3
         elif group_idx == 1:  # Separator group (4 bars)
             end_idx = start_idx + 4
@@ -393,13 +393,13 @@ def print_summary_statistics(split_df, solver_df):
 def main():
     parser = argparse.ArgumentParser(description='Plot split operation statistics and solver average solving time')
     parser.add_argument('--benchmark-dirs', nargs='+', 
-                       default=['benchmarks/awesome', 'benchmarks/top20_gh', 'benchmarks/top20_maven'],
+                       default=['benchmarks/Java/awesome', 'benchmarks/Java/top20_gh', 'benchmarks/Java/top20_maven'],
                        help='Benchmark directories to analyze')
     parser.add_argument('--solver-results', 
-                       default='charts/all_analysis.xlsx',
+                       default='charts/Excel/all_analysis.xlsx',
                        help='Excel file with solver results')
     parser.add_argument('--output', 
-                       default='charts/split_statistics_time_plot.pdf',
+                       default='charts/PDF/split_statistics_time_plot.pdf',
                        help='Output plot file')
     parser.add_argument('--font-offset', type=int, default=0,
                        help='Font size offset (default: 0, positive for larger fonts)')

@@ -1,22 +1,22 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-Core C++ sources live in `src/` (paired `.h`/`.cpp` files for context, parser, solver, and CLI entry points). Supporting solvers and parsers are vendored under `external/` (notably `SMTParser/` and language bindings). Benchmark workloads reside in `benchmarks/`, while reproducible experiment outputs land in `results/` and visualization assets in `charts/`. SMT-LIB scenarios for quick regression checks are stored in `test/`. Helper automation lives in `scripts/` (Python utilities grouped by task) and top-level shell scripts (`run_strprocessor.sh`, `run_debug.sh`) wrap binaries in `build/`.
+Core C++ sources live in `src/`, paired `.h` and `.cpp` files for the context, parser, solver, and CLI layers. External parsers and solver bindings are vendored under `external/` (notably `SMTParser/`). Benchmark inputs sit in `benchmarks/`, quick SMT-LIB checks in `test/`, reproducible experiment logs in `results/`, and visualization artifacts in `charts/`. Helper automation scripts are collected in `scripts/`, while `run_strprocessor.sh` and `run_debug.sh` wrap binaries generated into `build/bin/`.
 
 ## Build, Test, and Development Commands
-- `make build` — runs `build.sh`; installs missing system deps, configures CMake, and builds release binaries into `build/bin/`.
-- `./run_strprocessor.sh test/simple_test.smt2` — executes the release binary with solver defaults; accepts `-s ext-z3-noodler` or other solver flags.
-- `./run_debug.sh -s ext-z3 test/debug_variables.smt2` — launches the debug build with the same CLI options for tracing.
-- `cmake --build build --target clean` — optional: clean specific targets without deleting the full tree.
+- `make build` — installs missing deps, configures CMake, and emits release binaries into `build/bin/`.
+- `./run_strprocessor.sh test/simple_test.smt2` — run the release solver with default configuration; pass `-s ext-z3-noodler` to try other engines.
+- `./run_debug.sh -s ext-z3 test/debug_variables.smt2` — launch the debug build with tracing enabled for targeted investigation.
+- `cmake --build build --target clean` — clean configured targets without deleting the entire build tree.
 
 ## Coding Style & Naming Conventions
-Follow the existing C++ style: 4-space indentation, brace-on-same-line (`void foo() {`). Types and singletons use PascalCase (`Context`, `Division`), functions and methods are camelCase (`parseArgs`, `getDivisionNodes`), and constants/macros stay uppercase (`LOGGER`). Keep headers protected via `#pragma once`, prefer `std::` types, and organize includes from local to external. Place new solvers or utilities alongside peers (e.g., `src/SolverX.cpp`, `src/SolverX.h`).
+Use 4-space indentation, braces on the same line (`void foo() {}`). Types and singletons use PascalCase, methods camelCase, and constants uppercase (`LOGGER`). Prefer `std::` containers, guard headers with `#pragma once`, and order includes from local to external. Keep comments purposeful; describe intent over mechanics.
 
 ## Testing Guidelines
-Add new SMT-LIB fixtures to `test/` using descriptive snake_case filenames (e.g., `test_multi_delimiters_complex.smt2`). Validate behavior by running `./run_strprocessor.sh` against the scenario with the intended solver flag and inspecting the log level via `-l`. For regression or performance checks, re-run representative subsets from `benchmarks/` and capture outputs in `results/`.
+Add SMT-LIB fixtures in `test/` using snake_case names (`test_multi_delimiters_complex.smt2`). Validate changes via `./run_strprocessor.sh` with the relevant solver flag and adjust `-l` for log verbosity. For regressions or performance snapshots, rerun representative `benchmarks/` inputs and capture outputs in `results/`.
 
 ## Commit & Pull Request Guidelines
-Match the repository’s commit prefix style: `[fix]: ...`, `[mod]: ...`, `[add]: ...` followed by a concise imperative summary. Squash incidental commits before opening a PR. PR descriptions should outline the problem, summarize the solution, list added tests or benchmark sets, and call out solver or dependency impacts. Attach log excerpts or screenshots when behavior changes are user-visible, and link related issues or benchmark IDs where possible.
+Prefix commits with `[fix]:`, `[mod]:`, or `[add]:` followed by an imperative summary. PRs should explain the motivating problem, outline the solution, note added tests or benchmarks, and call out solver or dependency impacts. Attach log excerpts or screenshots when behavior is user-visible, and link issues or benchmark IDs when available.
 
 ## Solver & Environment Tips
-`build.sh` attempts to apt-install dependencies; on non-Debian systems install `libgmp`, `libmpfr`, `boost-system`, and `cmake` manually before running it. Ensure `LD_LIBRARY_PATH` includes `external/cvc5/build/deps/lib` and `external/z3/build` when executing binaries outside the helper scripts.
+On non-Debian systems install `libgmp`, `libmpfr`, `boost-system`, and `cmake` before running `build.sh`. When executing binaries manually, ensure `LD_LIBRARY_PATH` covers `external/cvc5/build/deps/lib` and `external/z3/build` so solver backends load correctly.
