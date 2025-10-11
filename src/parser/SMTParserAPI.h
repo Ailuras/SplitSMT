@@ -1,4 +1,4 @@
 #pragma once
 
-#include "../external/SMTLIBParser/include/parser.h"
-#include "../external/SMTLIBParser/include/kind.h"
+#include "../external/SMTParser/include/parser.h"
+#include "../external/SMTParser/include/kind.h"

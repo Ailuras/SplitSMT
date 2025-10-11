@@ -28,10 +28,10 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
 set(BUILD_BOTH_LIBS OFF CACHE BOOL "Build both static and shared libraries" FORCE)
 
 # Add SMTParser as a subdirectory
-add_subdirectory(external/SMTLIBParser)
+add_subdirectory(external/SMTParser)
 
 # Print SMTParser status
-message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include")
+message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include")
 
 # Core sources shared by executables
 set(CORE_SOURCES
@@ -68,7 +68,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Set include directories for our project
 target_include_directories(SplitSMT PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )
@@ -91,7 +91,7 @@ target_compile_definitions(SplitSMT PRIVATE
 # Set include directories for debug executable
 target_include_directories(SplitSMT_debug PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTLIBParser/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )

@@ -15,19 +15,19 @@ inline std::filesystem::path projectRoot() {
 }
 
 inline std::filesystem::path z3ScriptPath() {
-    return projectRoot() / "external" / "z3-4.15.3-arm64-osx-13.7.6" / "run.sh";
+    return projectRoot() / "solvers" / "z3" / "run.sh";
 }
 
 inline std::filesystem::path cvc5ScriptPath() {
-    return projectRoot() / "external" / "cvc5-macOS-arm64-static-gpl" / "run.sh";
+    return projectRoot() / "solvers" / "cvc5" / "run.sh";
 }
 
 inline std::filesystem::path ostrichScriptPath() {
-    return {};
+    return projectRoot() / "solvers" / "ostrich" / "run.sh";
 }
 
 inline std::filesystem::path z3NoodlerScriptPath() {
-    return {};
+    return projectRoot() / "solvers" / "z3-noodler" / "run.sh";
 }
 
 } // namespace strp::config

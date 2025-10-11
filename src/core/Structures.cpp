@@ -20,36 +20,31 @@ SplitResult splitStringWithDelimiters(const std::string& str, const std::vector<
         }
         return result;
     }
-    
-    size_t delimiterLength = delimiters[0].length();
-    for (const auto& delimiter : delimiters) {
-        if (delimiter.length() != delimiterLength) {
-            throw std::invalid_argument("All delimiters must have the same length");
-        }
-    }
-    
     size_t start = 0;
     size_t pos = 0;
-    
     while (pos < str.length()) {
-        bool found = false;
+        std::string longestMatch;
+        size_t maxLength = 0;
         for (const auto& delimiter : delimiters) {
-            if (pos + delimiterLength <= str.length() && str.substr(pos, delimiterLength) == delimiter) {
-                result.splits.push_back(str.substr(start, pos - start));
-                result.delimiters.push_back(delimiter);
-                start = pos + delimiterLength;
-                pos = start;
-                found = true;
-                break;
+            size_t delimLen = delimiter.length();
+            if (pos + delimLen <= str.length() && str.substr(pos, delimLen) == delimiter) {
+                if (delimLen > maxLength) {
+                    maxLength = delimLen;
+                    longestMatch = delimiter;
+                }
             }
         }
-        if (!found) {
+        if (maxLength > 0) {
+            result.splits.push_back(str.substr(start, pos - start));
+            result.delimiters.push_back(longestMatch);
+            start = pos + maxLength;
+            pos = start;
+        } else {
             pos++;
         }
     }
     result.splits.push_back(str.substr(start));
     result.delimiters.push_back("");
-    
     return result;
 }
 

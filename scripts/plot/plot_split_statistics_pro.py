@@ -160,12 +160,8 @@ def get_average_solving_time(solver_df, filenames, solver_name):
     return 0.1  # Small positive value for log scale to handle zero/empty cases
 
 def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
-    """Create a 3x3 grid with pie charts in the left column and performance line plots in the middle/right columns."""
+    """Create separate charts for each component."""
     import matplotlib.ticker as mtick
-
-    # Create 3x3 grid with custom width ratios (1:1.5:1.5 for ~25%:37.5%:37.5%)
-    fig, axes = plt.subplots(3, 3, figsize=(28, 22), gridspec_kw={'width_ratios': [1, 1.5, 1.5]})
-    plt.subplots_adjust(wspace=0.4, hspace=0.5)  # Increased spacing for alignment
 
     # Base setup for line plots
     solver_colors = {
@@ -190,28 +186,36 @@ def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
         2: ("API", ['Normal', 'Limit'], 'primary_api_type')
     }
 
-    # Pie charts (left column)
+    # Pie charts data
     pie_data = {
         0: ("Partition", split_df['split_groups_category'].value_counts().reindex(['1', '2', '≥3'], fill_value=0)),
         1: ("Separator", split_df['primary_separator_merged'].value_counts().reindex(['VAR', 'MUL/REG', 'SIN'], fill_value=0)),
         2: ("API", split_df['primary_api_type'].value_counts().reindex(['Normal', 'Limit'], fill_value=0))
     }
 
+    output_dir = os.path.dirname(output_file)
+    os.makedirs(output_dir, exist_ok=True)
+    pie_colors = plt.cm.tab20.colors  # Consistent colors for pies
+
+    # Create pie charts
     for idx, (title, counts) in pie_data.items():
-        ax = axes[idx, 0]
+        fig, ax = plt.subplots(figsize=(9, 9))
         labels = [f"{cat} ({n})" for cat, n in counts.items()]
         wedges, texts, autotexts = ax.pie(
             counts, labels=labels, autopct='%1.1f%%',
-            startangle=140, colors=plt.cm.tab20.colors[:len(counts)]
+            startangle=140, colors=pie_colors[:len(counts)]
         )
-        ax.set_title(f"{title} Distribution", fontweight='bold', fontsize=20+font_offset)
         for t in autotexts:
-            t.set_fontsize(14+font_offset)
+            t.set_fontsize(14 + font_offset)
+        pie_filename = os.path.join(output_dir, f"{title.lower()}_distribution.pdf")
+        fig.savefig(pie_filename, format='pdf', dpi=300, bbox_inches='tight')
+        plt.close(fig)
+        print(f"Chart saved to: {pie_filename}")
 
-    # Performance plots (middle and right columns)
+    # Create line plots
     for idx, (title, categories, category_col) in line_data.items():
-        # Middle: Success Ratio
-        ax_ratio = axes[idx, 1]
+        # Success Ratio
+        fig_ratio, ax_ratio = plt.subplots(figsize=(12, 9))
         for solver in solvers:
             ratios = []
             for cat in categories:
@@ -225,19 +229,22 @@ def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
                 marker=solver_markers[solver],
                 linewidth=3,
                 markersize=10,
-                alpha=0.8,  # Slight transparency
+                alpha=0.8,
                 label=solver.replace('ext-', '')
             )
-        ax_ratio.set_title(f"{title}: Solver Success Ratio", fontweight='bold', fontsize=20+font_offset)
-        ax_ratio.set_xlabel("Category", fontsize=18+font_offset)
-        ax_ratio.set_ylabel("Solved Ratio (%)", fontsize=18+font_offset)
+        ax_ratio.set_xlabel("Category", fontsize=18 + font_offset)
+        ax_ratio.set_ylabel("Solved Ratio (%)", fontsize=18 + font_offset)
         ax_ratio.yaxis.set_major_formatter(mtick.PercentFormatter())
         ax_ratio.grid(True, alpha=0.3, linestyle='--')
-        ax_ratio.set_ylim(-5, 105)  # Padding to prevent clipping
-        ax_ratio.legend(fontsize=14+font_offset, bbox_to_anchor=(1.05, 1), loc='upper left')
+        ax_ratio.set_ylim(-5, 105)
+        ax_ratio.legend(fontsize=14 + font_offset, loc='upper right')
+        ratio_filename = os.path.join(output_dir, f"{title.lower()}_success_ratio.pdf")
+        fig_ratio.savefig(ratio_filename, format='pdf', dpi=300, bbox_inches='tight')
+        plt.close(fig_ratio)
+        print(f"Chart saved to: {ratio_filename}")
 
-        # Right: Avg Time (log)
-        ax_time = axes[idx, 2]
+        # Avg Time (log)
+        fig_time, ax_time = plt.subplots(figsize=(12, 9))
         max_time = 0
         for solver in solvers:
             times = []
@@ -255,19 +262,16 @@ def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
                 alpha=0.8,
                 label=solver.replace('ext-', '')
             )
-        ax_time.set_title(f"{title}: Avg Solve Time (log)", fontweight='bold', fontsize=20+font_offset)
-        ax_time.set_xlabel("Category", fontsize=18+font_offset)
-        ax_time.set_ylabel("Time (milliseconds)", fontsize=18+font_offset)
+        ax_time.set_xlabel("Category", fontsize=18 + font_offset)
+        ax_time.set_ylabel("Time (milliseconds)", fontsize=18 + font_offset)
         ax_time.set_yscale('log')
-        ax_time.set_ylim(0.1, max_time * 2 or 1000)  # Dynamic upper limit with padding
+        ax_time.set_ylim(0.1, max_time * 2 or 1000)
         ax_time.grid(True, alpha=0.3, linestyle='--')
-        ax_time.legend(fontsize=14+font_offset, bbox_to_anchor=(1.05, 1), loc='upper left')
-
-    plt.tight_layout()
-    if not output_file.endswith('.pdf'):
-        output_file = output_file.replace('.png', '.pdf')
-    plt.savefig(output_file, format='pdf', dpi=300, bbox_inches='tight')
-    print(f"Combined chart saved to: {output_file}")
+        ax_time.legend(fontsize=14 + font_offset, loc='upper right')
+        time_filename = os.path.join(output_dir, f"{title.lower()}_avg_solve_time.pdf")
+        fig_time.savefig(time_filename, format='pdf', dpi=300, bbox_inches='tight')
+        plt.close(fig_time)
+        print(f"Chart saved to: {time_filename}")
 
 def print_summary_statistics(split_df, solver_df):
     """Print summary statistics."""
@@ -362,7 +366,7 @@ def main():
                        default='charts/Excel/all_analysis.xlsx',
                        help='Excel file with solver results')
     parser.add_argument('--output', 
-                       default='charts/PDF/split_statistics_pro_plot.pdf',
+                       default='charts/PDF/split_statistics_pro_max_plot.pdf',
                        help='Output plot file')
     parser.add_argument('--font-offset', type=int, default=0,
                        help='Font size offset (default: 0, positive for larger fonts)')
@@ -396,7 +400,6 @@ def main():
     
     print_summary_statistics(split_files, solver_df)
     
-    print(f"\nCombined chart saved to: {args.output}")
 
 if __name__ == "__main__":
     main()

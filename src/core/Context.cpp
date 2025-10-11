@@ -357,7 +357,6 @@ std::vector<std::string> Context::getDelimiters(const SMTParser::NodePtr& node) 
         }
     } else if (node->isStrSplitAtRe() || node->isStrSplitRestRe() || node->isStrNumSplitsRe()) {
         extractDelimitersFromRegex(delimiterNode, delimiters);
-        validateDelimiterLengths(delimiters);
     }
     
     return delimiters;
@@ -382,21 +381,6 @@ void Context::extractDelimitersFromRegex(const SMTParser::NodePtr& regexNode, st
     } else if (regexNode->isRegUnion()) {
         for (size_t i = 0; i < regexNode->getChildrenSize(); ++i) {
             extractDelimitersFromRegex(regexNode->getChild(i), delimiters);
-        }
-    }
-}
-
-void Context::validateDelimiterLengths(const std::vector<std::string>& delimiters) {
-    if (delimiters.empty()) {
-        return;
-    }
-    
-    size_t expectedLength = delimiters[0].length();
-    for (const auto& delimiter : delimiters) {
-        if (delimiter.length() != expectedLength) {
-            ERROR("Delimiter length mismatch: expected ", expectedLength, 
-                  " but got ", delimiter.length(), " for delimiter '", delimiter, "'");
-            throw std::runtime_error("All delimiters must have the same length");
         }
     }
 }
@@ -449,12 +433,14 @@ void Context::updateDivisions() {
                 }
                 
                 std::vector<std::string> delimiters = getDelimiters(node);
-                
                 if (!hasDivision(divided, delimiters)) {
                     addDivision(std::make_unique<ConstDivision>(divided, delimiters));
                     std::string key = Division::generateKey(divided, delimiters);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new const division for: '", divided, "' with delimiters");
+                    DEBUG("Created new const division for: '", divided, "' with delimiters: [", delimiters.size(), " items]");
+                    for (const auto& d : delimiters) {
+                        DEBUG("  - '", d, "'");
+                    }
                 } else {
                     std::string key = Division::generateKey(divided, delimiters);
                     divisionNodes[key].push_back(node);
@@ -478,7 +464,6 @@ void Context::updateDivisions() {
                 }
                 
                 std::vector<std::string> delimiters = getDelimiters(node);
-                
                 int index = parseInteger(arg3->toString());
                 
                 if (!hasDivision(divided, delimiters)) {

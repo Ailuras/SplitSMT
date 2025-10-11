@@ -518,14 +518,6 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
         return;
     }
     
-    if (!delimiters.empty()) {
-        for (int i = 0; i <= maxIndex; ++i) {
-            std::string delimiterVar = hashStr + "_delimiter_" + std::to_string(i);
-            ctx.getParser().declareStringVar(delimiterVar);
-            DEBUG("Declared delimiter variable: ", delimiterVar);
-        }
-    }
-    
     if (division->isNumSplitsUsed()) {
         std::string numSplitsVar = hashStr + "_num_splits";
         ctx.getParser().declareIntVar(numSplitsVar);
@@ -559,11 +551,13 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
     }
     
     if (!delimiters.empty() && delimiters[0].length() != 1) {
+        for (int i = 0; i < maxIndex; ++i) {
+            std::string gi = "g_" + hashStr + "_gap_" + std::to_string(i);
+            ctx.getParser().declareBoolVar(gi);
+        }
         for (int i = 0; i <= maxIndex; ++i) {
-            std::string bi = "b_" + hashStr + "_split_index_" + std::to_string(i);
-            std::string xi = hashStr + "_split_index_" + std::to_string(i);
-            ctx.getParser().declareBoolVar(bi);
-            ctx.getParser().declareIntVar(xi);
+            std::string pi = "p_" + hashStr + "_gap_" + std::to_string(i);
+            ctx.getParser().declareIntVar(pi);
         }
     }
     
@@ -783,9 +777,7 @@ void SplitSolver::addAuxiliaryNodes(Context& ctx) {
     DEBUG("Adding auxiliary nodes for variable splits");
     
     splitAtTerms = ctx.getSplitAtVarNodes();
-    
     const auto& divisions = ctx.getAllDivisions();
-    
     for (const auto& [key, divisionPtr] : divisions) {
         if (divisionPtr->isVarType()) {
             DEBUG("Processing var division: ", divisionPtr->getDivided(), " with ", divisionPtr->getDelimiterSize(), " delimiters");
