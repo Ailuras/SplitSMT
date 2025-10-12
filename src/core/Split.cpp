@@ -855,8 +855,24 @@ std::string SplitSolver::filterModel(const std::string& rawModel) {
                 if (spacePos != std::string::npos) {
                     std::string varName = line.substr(nameStart, spacePos - nameStart);
                     
-                    if (varName.find("div") == 0 || varName.find("b_div") == 0) {
-                        isAuxiliaryVar = true;
+                    if (varName.find("div") != std::string::npos) {
+                        std::size_t divPos = varName.find("div");
+                        if (divPos != std::string::npos) {
+                            std::size_t afterDiv = divPos + 3;
+                            if (afterDiv < varName.length()) {
+                                char nextChar = varName[afterDiv];
+                                if (std::isdigit(nextChar)) {
+                                    std::size_t numEnd = afterDiv;
+                                    while (numEnd < varName.length() && std::isdigit(varName[numEnd])) {
+                                        numEnd++;
+                                    }
+                                    if (numEnd == varName.length() || 
+                                        varName[numEnd] == '_') {
+                                        isAuxiliaryVar = true;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
