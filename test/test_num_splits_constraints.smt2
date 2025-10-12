@@ -8,4 +8,4 @@
              false))
 (assert (= (str.split_rest payload ";" 1) "prod;active"))
 (check-sat)
-(get-value (payload parts))
+(get-model)
