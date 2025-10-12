@@ -40,6 +40,7 @@ set(CORE_SOURCES
     src/core/Solver.cpp
     src/core/Split.cpp
     src/parser/Parser.cpp
+    src/utils/RegexHelper.cpp
 )
 
 # Add our source files

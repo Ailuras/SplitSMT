@@ -321,12 +321,12 @@ void Context::clear() {
 }
 
 void Context::addDivision(std::unique_ptr<Division> division) {
-    std::string key = Division::generateKey(division->getDivided(), division->getDelimiterRegex());
+    std::string key = Division::generateKey(division->getDivided(), division->getDelimiter());
     divisions[key] = std::move(division);
 }
 
-Division* Context::getDivision(const std::string& divided, const std::string& delimiter_regex) {
-    std::string key = Division::generateKey(divided, delimiter_regex);
+Division* Context::getDivision(const std::string& divided, const std::string& delimiter) {
+    std::string key = Division::generateKey(divided, delimiter);
     auto it = divisions.find(key);
     if (it != divisions.end()) {
         return it->second.get();
@@ -334,31 +334,22 @@ Division* Context::getDivision(const std::string& divided, const std::string& de
     return nullptr;
 }
 
-bool Context::hasDivision(const std::string& divided, const std::string& delimiter_regex) const {
-    std::string key = Division::generateKey(divided, delimiter_regex);
+bool Context::hasDivision(const std::string& divided, const std::string& delimiter) const {
+    std::string key = Division::generateKey(divided, delimiter);
     return divisions.find(key) != divisions.end();
 }
 
-std::string Context::getDelimiterRegex(const SMTParser::NodePtr& node) {
-    if (!node || node->getChildrenSize() < 2) {
-        return "";
+bool Context::isDelimiterStringType(const std::string& delimiter) {
+    if (delimiter.empty()) {
+        return true;
     }
-    
-    auto delimiterNode = node->getChild(1);
-    
-    if (node->isStrSplitAt() || node->isStrSplitRest() || node->isStrNumSplits()) {
-        if (delimiterNode->isConst()) {
-            std::string delimiter = parser.getString(delimiterNode);
-            return "(str.to_re " + delimiter + ")";
-        }
-    } else if (node->isStrSplitAtRe() || node->isStrSplitRestRe() || node->isStrNumSplitsRe()) {
-        return parser.getString(delimiterNode);
+    if (delimiter[0] == '(') {
+        return false;
     }
-    
-    return "";
+    return true;
 }
 
-bool Context::matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::string& delimiter_regex) {
+bool Context::matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::string& delimiter) {
     if (!node || node->getChildrenSize() < 2) {
         return false;
     }
@@ -366,13 +357,13 @@ bool Context::matchesDivision(const SMTParser::NodePtr& node, const std::string&
     if (arg1->toString() != variable) {
         return false;
     }
-    std::string nodeDelimiterRegex = getDelimiterRegex(node);
-    bool match = (nodeDelimiterRegex == delimiter_regex);
+    std::string nodeDelimiter = parser.getString(node->getChild(1));
+    bool match = (nodeDelimiter == delimiter);
     return match;
 }
 
-std::vector<SMTParser::NodePtr> Context::getDivisionNodes(const std::string& divided, const std::string& delimiter_regex) const {
-    std::string key = Division::generateKey(divided, delimiter_regex);
+std::vector<SMTParser::NodePtr> Context::getDivisionNodes(const std::string& divided, const std::string& delimiter) const {
+    std::string key = Division::generateKey(divided, delimiter);
     auto it = divisionNodes.find(key);
     if (it != divisionNodes.end()) {
         return it->second;
@@ -404,14 +395,14 @@ void Context::updateDivisions() {
                     divided = divided.substr(1, divided.size() - 2);
                 }
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
-                if (!hasDivision(divided, delimiter_regex)) {
-                    addDivision(std::make_unique<ConstDivision>(divided, delimiter_regex));
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                std::string delimiter = parser.getString(node->getChild(1));
+                if (!hasDivision(divided, delimiter)) {
+                    addDivision(std::make_unique<ConstDivision>(divided, delimiter));
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new const division for: '", divided, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new const division for: '", divided, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
                 }
             }
@@ -431,20 +422,20 @@ void Context::updateDivisions() {
                     divided = divided.substr(1, divided.size() - 2);
                 }
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
+                std::string delimiter = parser.getString(node->getChild(1));
                 int index = parseInteger(arg3->toString());
                 
-                if (!hasDivision(divided, delimiter_regex)) {
-                    addDivision(std::make_unique<ConstDivision>(divided, delimiter_regex));
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                if (!hasDivision(divided, delimiter)) {
+                    addDivision(std::make_unique<ConstDivision>(divided, delimiter));
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new const division for split_rest: '", divided, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new const division for split_rest: '", divided, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
                 }
                 
-                Division* division = getDivision(divided, delimiter_regex);
+                Division* division = getDivision(divided, delimiter);
                 if (division && division->isConstType()) {
                     ConstDivision* constDiv = static_cast<ConstDivision*>(division);
                     constDiv->setHasSplitNum(true);
@@ -464,19 +455,19 @@ void Context::updateDivisions() {
                 
                 std::string variable = arg1->toString();
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
+                std::string delimiter = parser.getString(node->getChild(1));
                 
                 int index = parseInteger(arg3->toString());
                 
-                Division* division = getDivision(variable, delimiter_regex);
+                Division* division = getDivision(variable, delimiter);
                 if (!division) {
-                    addDivision(std::make_unique<VarDivision>(variable, delimiter_regex));
-                    division = getDivision(variable, delimiter_regex);
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    addDivision(std::make_unique<VarDivision>(variable, delimiter));
+                    division = getDivision(variable, delimiter);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new var division for: '", variable, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new var division for: '", variable, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
                 }
                 
@@ -499,19 +490,19 @@ void Context::updateDivisions() {
                 
                 std::string variable = arg1->toString();
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
+                std::string delimiter = parser.getString(node->getChild(1));
                 
                 int index = parseInteger(arg3->toString());
                 
-                Division* division = getDivision(variable, delimiter_regex);
+                Division* division = getDivision(variable, delimiter);
                 if (!division) {
-                    addDivision(std::make_unique<VarDivision>(variable, delimiter_regex));
-                    division = getDivision(variable, delimiter_regex);
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    addDivision(std::make_unique<VarDivision>(variable, delimiter));
+                    division = getDivision(variable, delimiter);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new var division for split_rest: '", variable, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new var division for split_rest: '", variable, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
                 }
                 
@@ -536,19 +527,19 @@ void Context::updateDivisions() {
                     divided = divided.substr(1, divided.size() - 2);
                 }
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
+                std::string delimiter = parser.getString(node->getChild(1));
                 
-                if (!hasDivision(divided, delimiter_regex)) {
-                    addDivision(std::make_unique<ConstDivision>(divided, delimiter_regex));
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                if (!hasDivision(divided, delimiter)) {
+                    addDivision(std::make_unique<ConstDivision>(divided, delimiter));
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new const division for num_splits: '", divided, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new const division for num_splits: '", divided, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(divided, delimiter_regex);
+                    std::string key = Division::generateKey(divided, delimiter);
                     divisionNodes[key].push_back(node);
                 }
                 
-                Division* division = getDivision(divided, delimiter_regex);
+                Division* division = getDivision(divided, delimiter);
                 if (division && division->isConstType()) {
                     ConstDivision* constDiv = static_cast<ConstDivision*>(division);
                     constDiv->setHasSplitNum(true);
@@ -567,17 +558,17 @@ void Context::updateDivisions() {
                 
                 std::string variable = arg1->toString();
                 
-                std::string delimiter_regex = getDelimiterRegex(node);
+                std::string delimiter = parser.getString(node->getChild(1));
                 
-                Division* division = getDivision(variable, delimiter_regex);
+                Division* division = getDivision(variable, delimiter);
                 if (!division) {
-                    addDivision(std::make_unique<VarDivision>(variable, delimiter_regex));
-                    division = getDivision(variable, delimiter_regex);
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    addDivision(std::make_unique<VarDivision>(variable, delimiter));
+                    division = getDivision(variable, delimiter);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
-                    DEBUG("Created new var division for num_splits: '", variable, "' with delimiter regex: ", delimiter_regex);
+                    DEBUG("Created new var division for num_splits: '", variable, "' with delimiter regex: ", delimiter);
                 } else {
-                    std::string key = Division::generateKey(variable, delimiter_regex);
+                    std::string key = Division::generateKey(variable, delimiter);
                     divisionNodes[key].push_back(node);
                 }
                 

@@ -41,22 +41,22 @@ class Context;
 class Division {
 public:
     Division() = default;
-    Division(const std::string& divided, const std::string& delimiter_regex);
+    Division(const std::string& divided, const std::string& delimiter);
     virtual ~Division() = default;
 
     std::string getDivided() const { return divided; }
-    std::string getDelimiterRegex() const { return delimiter_regex; }
+    std::string getDelimiter() const { return delimiter; }
     std::string getHashString() const { return hash_string; }
     virtual bool isConstType() const = 0;
     virtual bool isVarType() const = 0;
     
     bool isNumSplitsUsed() const { return num_splits_used; }
     void setNumSplitsUsed(bool used) { this->num_splits_used = used; }
-    static std::string generateKey(const std::string& divided, const std::string& delimiter_regex);
+    static std::string generateKey(const std::string& divided, const std::string& delimiter);
 
 protected:
     std::string divided;
-    std::string delimiter_regex;
+    std::string delimiter;
     std::string hash_string;
     bool num_splits_used = false;
     
@@ -66,7 +66,7 @@ private:
 
 class ConstDivision : public Division {
 public:
-    ConstDivision(const std::string& divided, const std::string& delimiter_regex);
+    ConstDivision(const std::string& divided, const std::string& delimiter);
     
     bool isConstType() const override { return true; }
     bool isVarType() const override { return false; }
@@ -100,7 +100,7 @@ private:
 
 class VarDivision : public Division {
 public:
-    VarDivision(const std::string& divided, const std::string& delimiter_regex);
+    VarDivision(const std::string& divided, const std::string& delimiter);
     
     bool isConstType() const override { return false; }
     bool isVarType() const override { return true; }

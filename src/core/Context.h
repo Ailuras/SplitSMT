@@ -19,11 +19,11 @@ public:
     std::string getFormula();
 
     void addDivision(std::unique_ptr<Division> division);
-    Division* getDivision(const std::string& divided, const std::string& delimiter_regex);
-    bool hasDivision(const std::string& divided, const std::string& delimiter_regex) const;
-    std::string getDelimiterRegex(const SMTParser::NodePtr& node);
-    bool matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::string& delimiter_regex);
-    std::vector<SMTParser::NodePtr> getDivisionNodes(const std::string& divided, const std::string& delimiter_regex) const;
+    Division* getDivision(const std::string& divided, const std::string& delimiter);
+    bool hasDivision(const std::string& divided, const std::string& delimiter) const;
+    bool matchesDivision(const SMTParser::NodePtr& node, const std::string& variable, const std::string& delimiter);
+    std::vector<SMTParser::NodePtr> getDivisionNodes(const std::string& divided, const std::string& delimiter) const;
+    bool isDelimiterStringType(const std::string& delimiter);
     const std::unordered_map<std::string, std::unique_ptr<Division>>& getAllDivisions() const;
     std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     bool hasTask(TaskType taskType) const;
