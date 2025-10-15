@@ -75,7 +75,7 @@
 (declare-fun section_content () String)
 (assert (= section_content "[app]\ndebug=true\nversion=1.0"))
 (assert (= (str.num_splits section_content "\n") 3))
-(assert (str.prefixes section_content "[app]"))
+(assert (str.prefixof section_content "[app]"))
 
 ; Key normalization - ensure no leading/trailing spaces
 (declare-fun raw_key () String)

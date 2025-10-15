@@ -17,7 +17,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 ; --- LLM Generated Split Constraints ---
 ; Multi-delimiter hierarchical splitting with cross-validation
-(declare-const s String)
 (assert (str.contains s "|"))
 (assert (str.contains s ":"))
 (assert (str.contains s "#"))

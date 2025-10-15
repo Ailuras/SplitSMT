@@ -42,7 +42,7 @@
 (assert (str.contains host "example.com"))
 
 ; Port validation - must be numeric representation between 1-65535
-(assert (and (str.len port) (> (str.len port) 0)))
+(assert (> (str.len port) 0))
 (assert (= port "8080"))
 
 ; ; Path extraction using ? delimiter to separate from query

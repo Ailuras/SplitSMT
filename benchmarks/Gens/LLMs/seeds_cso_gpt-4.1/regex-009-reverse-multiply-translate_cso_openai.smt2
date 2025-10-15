@@ -50,7 +50,7 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 ; Cross dependency: require that the ww_seg1 from seg2 equals vvseg2 from seg1
 (assert (= ww_seg1 vvseg2))
 ; Advanced validation: the length of ww_seg2 must be exactly twice that of vvseg1
-(assert (= (str.len ww_seg2) (2 (str.len vvseg1))))
+(assert (= (str.len ww_seg2) (str.len vvseg1)))
 ; Relate split segments to y: require y to be a prefix of seg2 and not a suffix of seg1
 (assert (str.prefixof y seg2))
 (assert (not (str.suffixof y seg1)))

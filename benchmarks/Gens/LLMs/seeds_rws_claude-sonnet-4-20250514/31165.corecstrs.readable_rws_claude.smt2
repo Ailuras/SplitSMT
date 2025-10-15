@@ -86,8 +86,8 @@
 ; Key validation rules
 (assert (not (str.contains key1 "=")))
 (assert (not (str.contains key2 ":")))
-(assert (not (str.prefix key1 " ")))
-(assert (not (str.suffix key1 " ")))
+(assert (not (str.prefixof key1 " ")))
+(assert (not (str.suffixof  key1 " ")))
 
 ; ; Value extraction constraints
 (assert (not (str.contains value1 "\n")))
@@ -105,8 +105,8 @@
 
 ; ; Constraint: section must be properly bracketed
 (assert (and 
- (str.prefix ini_section "[")
- (str.suffix ini_section "]")
+ (str.prefixof ini_section "[")
+ (str.suffixof  ini_section "]")
  (= (str.num_splits ini_section "[") 2)
  (= (str.num_splits ini_section "]") 2)))
 

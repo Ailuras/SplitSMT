@@ -42,7 +42,6 @@
 ; First field must start with letter
 (declare-const pipe_first String)
 (assert (= pipe_first (str.split_at pipe_row "|" 0)))
-(assert (str.prefixof "A" (str.to_upper pipe_first)))
 
 ; Field content validation - no field contains the delimiter
 (assert (not (str.contains (str.split_at pipe_row "|" 0) "|")))

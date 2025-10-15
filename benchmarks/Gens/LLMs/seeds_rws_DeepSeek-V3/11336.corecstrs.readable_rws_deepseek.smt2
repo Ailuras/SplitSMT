@@ -38,11 +38,11 @@
 (declare-const host String)
 (assert (ite has_port
  (and 
- (assert (>= (str.num_splits host_and_rest port_delim) 2))
- (= host (str.split_at host_and_rest port_delim 0))
-)
+ ((>= (str.num_splits host_and_rest port_delim) 2)
+ (= host (str.split_at host_and_rest port_delim 0)
+)))
  (and
- (assert (>= (str.num_splits host_and_rest path_delim) 1))
+ (>= (str.num_splits host_and_rest path_delim) 1)
  (= host (str.split_at host_and_rest path_delim 0))
 )
 ))
@@ -65,7 +65,7 @@
 (declare-const path_segments String)
 (assert (ite has_query
  (and
- (assert (>= (str.num_splits path_and_query query_delim) 1))
+ (>= (str.num_splits path_and_query query_delim) 1)
  (= path_segments (str.split_at path_and_query query_delim 0))
 )
  (= path_segments path_and_query)
@@ -79,9 +79,11 @@
 (declare-const query_params String)
 (assert (=> has_query 
  (and
- (assert (>= (str.num_splits path_and_query query_delim) 2))
- (= query_params (str.split_at path_and_query query_delim 1))
- (assert (>= (str.num_splits query_params param_delim) 1))
+  (and
+    (>= (str.num_splits path_and_query query_delim) 2)
+    (= query_params (str.split_at path_and_query query_delim 1))
+  )
+ (>= (str.num_splits query_params param_delim) 1)
 )
 ))
 

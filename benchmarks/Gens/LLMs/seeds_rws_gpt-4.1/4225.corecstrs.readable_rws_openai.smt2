@@ -1,10 +1,6 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
- SMT-LIB2 file for realistic CSV/TSV processing constraints:
- Focus on field count, escape handling, and empty fields.
- Delimiters: ',', '\t', ';', '|'
-|)
+
 
 ; Declare a TSV line (tab-separated values)
 (declare-const tsv_line String)

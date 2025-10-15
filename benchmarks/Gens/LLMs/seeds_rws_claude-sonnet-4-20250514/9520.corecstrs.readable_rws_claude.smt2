@@ -71,13 +71,13 @@
 ; Base64 validation constraints for JWT components
 ; Header should decode to valid JSON starting with '{'
 (assert (str.prefixof "{" header_decoded))
-(assert (str.contains header_decoded "\"alg\""))
-(assert (str.contains header_decoded "\"typ\""))
+(assert (str.contains header_decoded "alg"))
+(assert (str.contains header_decoded "typ"))
 
 ; Payload should decode to valid JSON starting with '{'
 (assert (str.prefixof "{" payload_decoded))
-(assert (str.contains payload_decoded "\"iat\""))
-(assert (str.contains payload_decoded "\"exp\""))
+(assert (str.contains payload_decoded "iat"))
+(assert (str.contains payload_decoded "exp"))
 
 ; Signature verification constraints
 ; Signature input is header + '.' + payload

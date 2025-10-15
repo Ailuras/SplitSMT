@@ -32,9 +32,9 @@ Focus: Field validation with multiple delimiters
 
 ; Additional constraints for escaped fields
 (declare-const escaped_line String)
-(assert (str.contains escaped_line "\\\"")) ; Must contain escaped quote
+(assert (str.contains escaped_line "\""")) ; Must contain escaped quote
 (assert (>= (str.num_splits escaped_line ",") 2))
-(assert (str.contains (str.split_at escaped_line "," 1) "\\\"")) ; Second field has escaped quote
+(assert (str.contains (str.split_at escaped_line "," 1) "\""")) ; Second field has escaped quote
 
 ; Mixed delimiter validation
 (declare-const mixed_line String)

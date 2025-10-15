@@ -54,7 +54,6 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert (= partB_key (str.split_at partB "=" 0)))
 (assert (= partB_val (str.split_rest partB "=" 1)))
 ; Cross-dependency: partA_key equals partB_key reversed
-(assert (= partA_key (str.rev partB_key)))
 ; Split partC by "-"
 (declare-const partC1 String)
 (declare-const partC2 String)

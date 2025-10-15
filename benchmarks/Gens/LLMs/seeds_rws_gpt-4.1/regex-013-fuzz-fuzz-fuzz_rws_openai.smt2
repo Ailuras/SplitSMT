@@ -6,7 +6,9 @@
 
 ; Declare the log entry string
 (declare-fun log_entry () String)
-
+(declare-fun level () String)
+(declare-fun message () String)
+(declare-fun after_bracket () String)
 ; ; Example log entry format:
 ; [2024-06-25 14:23:11] | INFO | User login successful
 
@@ -23,11 +25,10 @@
 
 ; ; Split segment1 by '|' (with whitespace as delimiter) to extract log level
 ; First, remove leading space after ']'
-(define-fun after_bracket () String (str.trim segment1))
+
 
 ; Split by '|' to get: ["INFO", "User login successful"]
-(define-fun level () String (str.trim (str.split_at after_bracket "|" 1)))
-(define-fun message () String (str.trim (str.split_at after_bracket "|" 2)))
+
 
 ; Satisfiable scenario: well-formed log entry
 (assert (= log_entry "[2024-06-25 14:23:11] | INFO | User login successful"))

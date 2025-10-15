@@ -43,7 +43,6 @@
 (assert (or (= api_prefix "sk") (= api_prefix "pk")))
 ; Client ID must be exactly 8 hex characters
 (assert (= (str.len api_client) 8))
-(assert (str.is_hex_digit api_client))
 ; Timestamp must be exactly 10 digits
 (assert (= (str.len api_timestamp) 10))
 (assert (str.is_digit api_timestamp))
@@ -61,7 +60,6 @@
  (= (str.num_splits api_key dash) 4)
  (or (= api_prefix "sk") (= api_prefix "pk"))
  (= (str.len api_client) 8)
- (str.is_hex_digit api_client)
  (= (str.len api_timestamp) 10)
  (str.is_digit api_timestamp)
  (= (str.num_splits jwt_token dot) 0) ; No JWT when using API key

@@ -49,7 +49,7 @@
 ; ; Section handling: extract section name from section1
 ; Assume section1 is of the form "[section]\nkey=val\n..."
 ; The section name appears between '[' and ']'
-(assert (= "[" (str.at section1 0 1)))
+(assert (= "[" (str.at section1 0)))
 (assert (= section_name (str.split_at (str.split_at section1 "]" 0) "[" 1)))
 ; Above: split at ']' to get "[section", then split at '[' to get "section"
 

@@ -17,15 +17,15 @@ from pathlib import Path
 # Set font to handle special characters and increase font sizes
 plt.rcParams['font.family'] = 'DejaVu Sans'
 plt.rcParams['axes.unicode_minus'] = False
-plt.rcParams['font.size'] = 16          # Base font size
-plt.rcParams['axes.labelsize'] = 18     # Axis label font size
+plt.rcParams['font.size'] = 20          # Base font size
+plt.rcParams['axes.labelsize'] = 20     # Axis label font size
 plt.rcParams['axes.titlesize'] = 20     # Title font size
-plt.rcParams['xtick.labelsize'] = 16    # X-axis tick labels
-plt.rcParams['ytick.labelsize'] = 16    # Y-axis tick labels
-plt.rcParams['legend.fontsize'] = 16    # Legend font size
+plt.rcParams['xtick.labelsize'] =20    # X-axis tick labels
+plt.rcParams['ytick.labelsize'] = 20    # Y-axis tick labels
+plt.rcParams['legend.fontsize'] = 20    # Legend font size
 
 # Add the solve script path
-sys.path.append('scripts/solve')
+sys.path.append('scripts/solver')
 from analysis_results import analyze_smt2_file
 
 def collect_data_from_benchmarks(benchmark_dirs):
@@ -85,11 +85,11 @@ def categorize_split_groups(count):
         return "≥3"
 
 def get_separator_type(row):
-    """Get the primary separator type based on priority: VAR > RE > MUL > SIN."""
+    """Get the primary separator type based on priority: VAR > REG > MUL > SIN."""
     if row.get('separator_VAR', 0):
         return 'VAR'
     elif row.get('separator_RE', 0):
-        return 'RE'
+        return 'REG'
     elif row.get('separator_MUL', 0):
         return 'MUL'
     elif row.get('separator_SIN', 0):
@@ -159,11 +159,32 @@ def get_average_solving_time(solver_df, filenames, solver_name):
     
     return 0.1  # Small positive value for log scale to handle zero/empty cases
 
-def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
-    """Create separate charts for each component."""
-    import matplotlib.ticker as mtick
+def calculate_par2(solver_df, filenames, solver_name, timeout=100.0):
+    if solver_df is None or not filenames:
+        return np.nan
+    filtered_df = solver_df[solver_df['filename'].isin(filenames)]
+    result_col = f'{solver_name}_result'
+    time_col = f'{solver_name}_time'
+    if result_col not in filtered_df.columns or time_col not in filtered_df.columns:
+        return np.nan
+    par2_values = []
+    for _, row in filtered_df.iterrows():
+        time_val = timeout
+        result_val = row.get(result_col)
+        raw_time = row.get(time_col)
+        if result_val in ('SAT', 'UNSAT'):
+            try:
+                if pd.notna(raw_time) and raw_time != '' and raw_time != 'N/A':
+                    time_val = float(raw_time)
+            except (ValueError, TypeError):
+                time_val = timeout
+        par2_values.append(time_val)
+    if par2_values:
+        return sum(par2_values) / len(par2_values)
+    return np.nan
 
-    # Base setup for line plots
+def create_combined_charts(split_df, solver_df, output_dir, font_offset=0):
+    """Create separate charts for each component."""
     solver_colors = {
         'ext-cvc5': '#e74c3c',
         'ext-ostrich': '#2ecc71',
@@ -173,105 +194,75 @@ def create_combined_charts(split_df, solver_df, output_file, font_offset=0):
     solver_markers = {'ext-cvc5': 'o', 'ext-ostrich': 's', 'ext-z3': '^', 'ext-z3-noodler': 'D'}
     solvers = list(solver_colors.keys())
 
-    # Data preprocessing
     split_df['split_groups_category'] = split_df['split_groups_count'].apply(categorize_split_groups)
     split_df['primary_separator_type'] = split_df.apply(get_separator_type, axis=1)
     split_df['primary_api_type'] = split_df.apply(get_api_type, axis=1)
-    split_df['primary_separator_merged'] = split_df['primary_separator_type'].replace({'RE': 'MUL/REG', 'MUL': 'MUL/REG'})
 
-    # Categories for plots
-    line_data = {
-        0: ("Partition", ['1', '2', '≥3'], 'split_groups_category'),
-        1: ("Separator", ['VAR', 'MUL/REG', 'SIN'], 'primary_separator_merged'),
-        2: ("API", ['Normal', 'Limit'], 'primary_api_type')
-    }
-
-    # Pie charts data
-    pie_data = {
-        0: ("Partition", split_df['split_groups_category'].value_counts().reindex(['1', '2', '≥3'], fill_value=0)),
-        1: ("Separator", split_df['primary_separator_merged'].value_counts().reindex(['VAR', 'MUL/REG', 'SIN'], fill_value=0)),
-        2: ("API", split_df['primary_api_type'].value_counts().reindex(['Normal', 'Limit'], fill_value=0))
-    }
-
-    output_dir = os.path.dirname(output_file)
     os.makedirs(output_dir, exist_ok=True)
-    pie_colors = plt.cm.tab20.colors  # Consistent colors for pies
 
-    # Create pie charts
-    for idx, (title, counts) in pie_data.items():
-        fig, ax = plt.subplots(figsize=(9, 9))
-        labels = [f"{cat} ({n})" for cat, n in counts.items()]
-        wedges, texts, autotexts = ax.pie(
-            counts, labels=labels, autopct='%1.1f%%',
-            startangle=140, colors=pie_colors[:len(counts)]
-        )
-        for t in autotexts:
-            t.set_fontsize(14 + font_offset)
-        pie_filename = os.path.join(output_dir, f"{title.lower()}_distribution.pdf")
-        fig.savefig(pie_filename, format='pdf', dpi=300, bbox_inches='tight')
+    categories_config = [
+        ("Partition", ['1', '2', '≥3'], 'split_groups_category'),
+        ("Separator", ['SIN', 'MUL', 'VAR', 'REG'], 'primary_separator_type'),
+        ("API", ['Normal', 'Limit'], 'primary_api_type')
+    ]
+
+    for title, categories, category_col in categories_config:
+        fig, ax_count = plt.subplots(figsize=(11, 9))
+        counts = []
+        files_by_category = {}
+        bar_colors = []
+        palette = ['#3498db', '#e67e22', '#9b59b6', '#34495e', '#f1c40f', '#7f8c8d']
+        for cat in categories:
+            cat_files = split_df[split_df[category_col] == cat]['filename'].tolist()
+            files_by_category[cat] = cat_files
+            counts.append(len(cat_files))
+            color_index = categories.index(cat) % len(palette)
+            bar_colors.append(palette[color_index])
+        max_count = max(counts) if counts else 0
+        bars = ax_count.bar(categories, counts, color=bar_colors, width=0.5, edgecolor='#2c3e50')
+        label_offset = max(1, max_count * 0.02) if max_count else 0.5
+        for bar, count in zip(bars, counts):
+            height = bar.get_height()
+            ax_count.text(
+                bar.get_x() + bar.get_width() / 2,
+                height + label_offset,
+                f"{count}",
+                ha='center',
+                va='bottom',
+                fontsize=14 + font_offset
+            )
+        ax_count.set_xlabel("Category", fontsize=18 + font_offset)
+        ax_count.set_ylabel("Number of Examples", fontsize=18 + font_offset)
+        if max_count == 0:
+            ax_count.set_ylim(0, 1)
+        else:
+            ax_count.set_ylim(0, max_count * 1.2)
+        ax_par2 = ax_count.twinx()
+        for solver in solvers:
+            par2_values = []
+            for cat in categories:
+                par2_values.append(calculate_par2(solver_df, files_by_category[cat], solver))
+            ax_par2.plot(
+                categories,
+                par2_values,
+                color=solver_colors[solver],
+                marker=solver_markers[solver],
+                linewidth=3,
+                markersize=10,
+                alpha=0.8,
+                label=solver.replace('ext-', '')
+            )
+        ax_par2.set_ylabel("Average PAR-2 (s)", fontsize=18 + font_offset)
+        ax_par2.grid(True, axis='y', alpha=0.3, linestyle='--')
+        ax_count.tick_params(axis='x', labelsize=16 + font_offset)
+        ax_count.tick_params(axis='y', labelsize=16 + font_offset)
+        ax_par2.tick_params(axis='y', labelsize=16 + font_offset)
+        ax_par2.legend(fontsize=14 + font_offset, loc='upper right')
+        fig.tight_layout()
+        performance_filename = os.path.join(output_dir, f"{title.lower()}_performance.pdf")
+        fig.savefig(performance_filename, format='pdf', dpi=300, bbox_inches='tight')
         plt.close(fig)
-        print(f"Chart saved to: {pie_filename}")
-
-    # Create line plots
-    for idx, (title, categories, category_col) in line_data.items():
-        # Success Ratio
-        fig_ratio, ax_ratio = plt.subplots(figsize=(12, 9))
-        for solver in solvers:
-            ratios = []
-            for cat in categories:
-                cat_files = split_df[split_df[category_col] == cat]['filename'].tolist()
-                solved = count_solved_by_solver(solver_df, cat_files, solver)
-                ratio = solved / len(cat_files) * 100 if len(cat_files) > 0 else np.nan
-                ratios.append(ratio)
-            ax_ratio.plot(
-                categories, ratios,
-                color=solver_colors[solver],
-                marker=solver_markers[solver],
-                linewidth=3,
-                markersize=10,
-                alpha=0.8,
-                label=solver.replace('ext-', '')
-            )
-        ax_ratio.set_xlabel("Category", fontsize=18 + font_offset)
-        ax_ratio.set_ylabel("Solved Ratio (%)", fontsize=18 + font_offset)
-        ax_ratio.yaxis.set_major_formatter(mtick.PercentFormatter())
-        ax_ratio.grid(True, alpha=0.3, linestyle='--')
-        ax_ratio.set_ylim(-5, 105)
-        ax_ratio.legend(fontsize=14 + font_offset, loc='upper right')
-        ratio_filename = os.path.join(output_dir, f"{title.lower()}_success_ratio.pdf")
-        fig_ratio.savefig(ratio_filename, format='pdf', dpi=300, bbox_inches='tight')
-        plt.close(fig_ratio)
-        print(f"Chart saved to: {ratio_filename}")
-
-        # Avg Time (log)
-        fig_time, ax_time = plt.subplots(figsize=(12, 9))
-        max_time = 0
-        for solver in solvers:
-            times = []
-            for cat in categories:
-                cat_files = split_df[split_df[category_col] == cat]['filename'].tolist()
-                avg_time = get_average_solving_time(solver_df, cat_files, solver)
-                times.append(avg_time)
-                max_time = max(max_time, avg_time)
-            ax_time.plot(
-                categories, times,
-                color=solver_colors[solver],
-                marker=solver_markers[solver],
-                linewidth=3,
-                markersize=10,
-                alpha=0.8,
-                label=solver.replace('ext-', '')
-            )
-        ax_time.set_xlabel("Category", fontsize=18 + font_offset)
-        ax_time.set_ylabel("Time (milliseconds)", fontsize=18 + font_offset)
-        ax_time.set_yscale('log')
-        ax_time.set_ylim(0.1, max_time * 2 or 1000)
-        ax_time.grid(True, alpha=0.3, linestyle='--')
-        ax_time.legend(fontsize=14 + font_offset, loc='upper right')
-        time_filename = os.path.join(output_dir, f"{title.lower()}_avg_solve_time.pdf")
-        fig_time.savefig(time_filename, format='pdf', dpi=300, bbox_inches='tight')
-        plt.close(fig_time)
-        print(f"Chart saved to: {time_filename}")
+        print(f"Chart saved to: {performance_filename}")
 
 def print_summary_statistics(split_df, solver_df):
     """Print summary statistics."""
@@ -366,8 +357,8 @@ def main():
                        default='charts/Excel/all_analysis.xlsx',
                        help='Excel file with solver results')
     parser.add_argument('--output', 
-                       default='charts/PDF/split_statistics_pro_max_plot.pdf',
-                       help='Output plot file')
+                       default='charts/PDF',
+                       help='Output directory for plots')
     parser.add_argument('--font-offset', type=int, default=0,
                        help='Font size offset (default: 0, positive for larger fonts)')
     
@@ -395,7 +386,6 @@ def main():
     print(f"Found {len(split_files)} files with split operations")
     
     print("Creating combined charts...")
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
     create_combined_charts(split_files, solver_df, args.output, font_offset=args.font_offset)
     
     print_summary_statistics(split_files, solver_df)

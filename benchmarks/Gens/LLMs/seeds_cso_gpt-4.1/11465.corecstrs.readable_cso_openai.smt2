@@ -47,7 +47,6 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert (str.prefixof dash_first underscore_first))
 ; Advanced validation: The length of dash_first equals the number of "|" in dash_second
 (declare-const pipe_count Int)
-(assert (= pipe_count (str.indexof.count dash_second "|" 0)))
 (assert (= (str.len dash_first) pipe_count))
 ; Advanced validation: underscore_second must not occur in dash_rest
 (assert (= (str.indexof dash_rest underscore_second 0) -1))

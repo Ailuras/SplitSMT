@@ -5,7 +5,6 @@
 
 ; Declare string sort and necessary functions
 (declare-sort Char 0)
-(declare-sort String 0)
 
 (declare-fun str.++ (String String) String)
 (declare-fun str.len (String) Int)

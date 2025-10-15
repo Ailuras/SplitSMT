@@ -28,7 +28,6 @@
 (define-fun after_close_bracket () String (str.substr rest_after_open (+ idx_close_bracket 2) (- (str.len rest_after_open) (+ idx_close_bracket 2))))
 ; Now, split at " |" to separate log level and message
 (define-fun idx_pipe () Int (str.indexof after_close_bracket "|" 0))
-(assert (= log_level (str.trim (str.substr after_close_bracket 0 (- idx_pipe 1)))))
 
 ; ; Step 3: Extract the message
 ; The message is after the " |" delimiter

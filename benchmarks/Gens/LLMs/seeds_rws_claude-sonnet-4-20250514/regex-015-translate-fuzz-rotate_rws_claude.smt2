@@ -48,8 +48,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (>= (str.len status_field) 0))
 
 ; Escape handling - ensure no unescaped quotes in fields
-(assert (not (str.contains name_field "\"")))
-(assert (not (str.contains email_field "\"")))
+(assert (not (str.contains name_field """")))
+(assert (not (str.contains email_field """")))
 
 ; Additional constraint - if using tab delimiter, record length has limits
 (assert (=> (= delimiter "\t") (<= (str.len input_record) 200)))

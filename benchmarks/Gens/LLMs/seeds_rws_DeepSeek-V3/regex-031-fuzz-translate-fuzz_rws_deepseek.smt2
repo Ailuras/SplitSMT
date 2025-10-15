@@ -13,7 +13,6 @@ Target solver: CVC4, Z3, Z3str3
 (declare-const email_addr String)
 
 ; Must contain exactly one @ symbol
-(assert (= (str.indexof email_addr "@" 0) (str.last_indexof email_addr "@" 0)))
 
 ; Split into exactly two non-empty parts at @
 (assert (= (str.num_splits email_addr "@") 2))

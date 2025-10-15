@@ -95,15 +95,15 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (declare-fun T1_segments_count () Int)
 (assert (= T1_segments_count (str.num_splits T1_5 ";")))
 (assert (>= T1_segments_count 3)) ; At least 3 segments after split by ';'
-(declare-fun seg0 String)
-(declare-fun seg1 String)
-(declare-fun seg2 String)
+(declare-fun seg0 () String)
+(declare-fun seg1 () String)
+(declare-fun seg2 () String)
 (assert (= seg0 (str.split_at T1_5 ";" 0)))
 (assert (= seg1 (str.split_at T1_5 ";" 1)))
 (assert (= seg2 (str.split_at T1_5 ";" 2)))
 ; Nested split: Split seg1 by '|', must have at least 2 parts
-(declare-fun seg1_sub0 String)
-(declare-fun seg1_sub1 String)
+(declare-fun seg1_sub0 () String)
+(declare-fun seg1_sub1 () String)
 (declare-fun seg1_sub_count () Int)
 (assert (= seg1_sub_count (str.num_splits seg1 "|")))
 (assert (>= seg1_sub_count 2))
@@ -114,8 +114,8 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 ; Advanced validation: seg2 must be equal to the concatenation of seg1_sub0 and seg0
 (assert (= seg2 (str.++ seg1_sub0 seg0)))
 ; Additional partition: split seg2 by '.'
-(declare-fun seg2_dot0 String)
-(declare-fun seg2_dot1 String)
+(declare-fun seg2_dot0 () String)
+(declare-fun seg2_dot1 () String)
 (assert (= seg2_dot0 (str.split_at seg2 "." 0)))
 (assert (= seg2_dot1 (str.split_rest seg2 "." 1)))
 ; ; Constraint: Length of seg2_dot0 must be less than seg2_dot1, both non-empty

@@ -42,7 +42,6 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert (= subseg0 (str.split_at seg2_rest ":" 0)))
 (assert (= subseg1 (str.split_at seg2_rest ":" 1)))
 ; Cross-dependency: seg1 equals subseg1 reversed
-(assert (= seg1 (str.rev subseg1)))
 ; Advanced validation: seg0 and subseg0 must be different and have similar lengths
 (assert (not (= seg0 subseg0)))
 (assert (<= (str.len seg0) (+ 1 (str.len subseg0))))

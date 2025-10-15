@@ -165,7 +165,7 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (str.suffixof value part3)) ; part3 must end with value from part1
 ; Nested splitting with length constraints
 (declare-const subparts (Seq String))
-(assert (= subparts (str.split part3 ",")))
+(assert (= subparts (str.split_rest part3 "," 1)))
 (assert (>= (seq.len subparts) 2))
 (assert (<= (seq.len subparts) 4))
 (assert (str.contains (seq.nth subparts 0) "item"))

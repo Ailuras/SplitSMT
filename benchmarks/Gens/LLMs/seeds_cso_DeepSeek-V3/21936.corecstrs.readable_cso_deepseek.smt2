@@ -100,20 +100,16 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (declare-const part1 String)
 (declare-const part2 String)
 (declare-const part3 String)
-(assert (= part1 (str.at input (str.indexof input "#" 0) 0)))
-(assert (= part2 (str.at input (str.indexof input "#" 0) (+ (str.indexof input "#" 0) 1))))
-(assert (= part3 (str.at input (str.indexof input "#" (+ (str.indexof input "#" 0) 1)) (- (str.len input) (+ (str.indexof input "#" (+ (str.indexof input "#" 0) 1)) 1)))))
+(assert (= part1 (str.split_at input (str.indexof input "#" 0) 0)))
+(assert (= part2 (str.split_at input (str.indexof input "#" 0) (+ (str.indexof input "#" 0) 1))))
 ; Split part2 by ":" into exactly 2 segments
 (declare-const part2a String)
 (declare-const part2b String)
-(assert (= part2a (str.at part2 (str.indexof part2 ":" 0) 0)))
-(assert (= part2b (str.at part2 (str.indexof part2 ":" 0) (- (str.len part2) (str.indexof part2 ":" 0) 1))))
 ; Split part3 by "," - must have at least 2 segments
 (assert (>= (str.num_splits part3 ",") 2))
 (declare-const part3a String)
 (declare-const part3rest String)
-(assert (= part3a (str.at part3 (str.indexof part3 "," 0) 0)))
-(assert (= part3rest (str.at part3 (str.indexof part3 "," 0) (- (str.len part3) (str.indexof part3 "," 0) 1))))
+(assert (= part3a (str.split_at part3 (str.indexof part3 "," 0) 0)))
 ; Cross-validation constraints
 (assert (str.contains part1 part2a)) ; part1 must contain part2a's key
 (assert (not (str.contains part3a part2b))) ; part3a must not contain part2b's value

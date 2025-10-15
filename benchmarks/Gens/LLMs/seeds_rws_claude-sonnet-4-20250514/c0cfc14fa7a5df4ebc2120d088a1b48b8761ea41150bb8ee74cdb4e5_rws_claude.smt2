@@ -62,8 +62,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
  (= status_field "")))
 
 ; Escape sequence handling - no unescaped quotes in fields
-(assert (not (str.contains name_field "\"")))
-(assert (not (str.contains email_field "\"")))
+(assert (not (str.contains name_field "")))
+(assert (not (str.contains email_field "")))
 
 ; Empty field detection - at most one empty field allowed
 (declare-const empty_count Int)

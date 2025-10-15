@@ -73,10 +73,10 @@
 ; Security constraint - ensure no malicious characters in tokens
 (assert (not (str.contains jwt_token "<")))
 (assert (not (str.contains jwt_token ">")))
-(assert (not (str.contains jwt_token "\"")))
+(assert (not (str.contains jwt_token """")))
 (assert (not (str.contains api_key "<")))
 (assert (not (str.contains api_key ">")))
-(assert (not (str.contains api_key "\"")))
+(assert (not (str.contains api_key """")))
 
 ; Cross-validation constraint - JWT and API key should not be identical
 (assert (not (= jwt_token api_key)))

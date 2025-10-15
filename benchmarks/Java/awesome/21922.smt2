@@ -46,6 +46,7 @@
 (define-const var2212 String (trim/-847153721 var1202)) ; Statement: $r1 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>() 
 ; split operation: var1214 = var2212.split("\u005cs*,\u005cs*") ; Statement: $r33 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s*,\\s*") 
 (assert true) ; Non Conditional
+(declare-const var1214 (Array Int String))
 (define-const var2299 (Array Int String) var1214) ; Statement: r2 = $r33 
 (define-const var1252 Int (get_split_length var2212 "\u005cs*,\u005cs*" -1)) ; Statement: $i1 = lengthof $r33 
 (define-const var661 Int 0) ; Statement: i2 = 0 

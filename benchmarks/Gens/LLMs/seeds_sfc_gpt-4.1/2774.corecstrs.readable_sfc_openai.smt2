@@ -31,10 +31,9 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert T_2)
 
 ; --- LLM Generated Split Constraints ---
-(declare-fun split0 String)
-(declare-fun split1 String)
-(declare-fun split2 String)
-(declare-fun n_splits Int)
+(declare-fun split0 () String)
+(declare-fun split1 () String)
+(declare-fun split2 () String)
 (assert (= split0 (str.split_at var_0xINPUT_15379 "__gads=" 0)))
 (assert (= split1 (str.split_at var_0xINPUT_15379 "__gads=" 1)))
 (assert (= split2 (str.split_at var_0xINPUT_15379 "__gads=" 2)))

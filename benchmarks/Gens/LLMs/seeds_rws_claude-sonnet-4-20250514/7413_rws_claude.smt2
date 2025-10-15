@@ -100,8 +100,8 @@
 
 ; Ensure JWT payload contains standard claims structure
 (declare-const payload_decoded String)
-(assert (str.contains payload_decoded "\"iat\":"))
-(assert (str.contains payload_decoded "\"exp\":"))
+(assert (str.contains payload_decoded "iat:"))
+(assert (str.contains payload_decoded "exp:"))
 
 ; Cross-validation between different token types
 (assert (not (= jwt_token api_key)))

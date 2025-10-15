@@ -3,22 +3,22 @@
 (set-info :smt-lib-version 2.6)
 
 ; Declare string variables for configuration parsing
-(declare-const config_line string)
-(declare-const ini_content string)
-(declare-const section_header string)
-(declare-const key_value_pair string)
-(declare-const extracted_key string)
-(declare-const extracted_value string)
-(declare-const section_name string)
-(declare-const full_config string)
-(declare-const processed_line string)
+(declare-fun config_line () String)
+(declare-fun ini_content () String)
+(declare-fun section_header () String)
+(declare-fun key_value_pair () String)
+(declare-fun extracted_key () String)
+(declare-fun extracted_value () String)
+(declare-fun section_name () String)
+(declare-fun full_config () String)
+(declare-fun processed_line () String)
 
 ; Declare integer variables for split operations
-(declare-const num_equals_splits int)
-(declare-const num_colon_splits int)
-(declare-const num_newline_splits int)
-(declare-const num_bracket_splits int)
-(declare-const section_count int)
+(declare-const num_equals_splits Int)
+(declare-const num_colon_splits Int)
+(declare-const num_newline_splits Int)
+(declare-const num_bracket_splits Int)
+(declare-const section_count Int)
 
 ; Configuration line parsing with equals delimiter
 (assert (= config_line "database_host=localhost"))
@@ -33,9 +33,9 @@
 (assert (str.prefixof "database" extracted_key))
 
 ; Alternative configuration with colon delimiter
-(declare-const alt_config string)
-(declare-const alt_key string)
-(declare-const alt_value string)
+(declare-fun alt_config () String)
+(declare-fun alt_key () String)
+(declare-fun alt_value () String)
 (assert (= alt_config "port:3306"))
 (assert (= (str.num_splits alt_config ":") 2))
 (assert (= alt_key (str.split_at alt_config ":" 0)))
@@ -58,61 +58,61 @@
 (assert (> section_count 5))
 
 ; ; Extract first line after splitting by newline
-(declare-const first_line string)
+(declare-fun first_line () String)
 (assert (= first_line (str.split_at ini_content "\n" 0)))
 (assert (= first_line "[server]"))
 
 ; ; Extract and validate a key-value pair from the configuration
-(declare-const server_host_line string)
+(declare-fun server_host_line () String)
 (assert (= server_host_line (str.split_at ini_content "\n" 1)))
 (assert (= server_host_line "host=example.com"))
 
 ; Parse the host configuration line
-(declare-const host_key string)
-(declare-const host_value string)
+(declare-fun host_key () String)
+(declare-fun host_value () String)
 (assert (= host_key (str.split_at server_host_line "=" 0)))
 (assert (= host_value (str.split_at server_host_line "=" 1)))
 (assert (= host_key "host"))
 (assert (= host_value "example.com"))
 
 ; Section bracket validation
-(declare-const bracket_test string)
+(declare-fun bracket_test () String)
 (assert (= bracket_test "[network]"))
 (assert (str.prefixof "[" bracket_test))
 (assert (str.suffixof "]" bracket_test))
 
 ; ; Complex section extraction with multiple brackets
-(declare-const complex_section string)
-(declare-const inner_content string)
+(declare-fun complex_section () String)
+(declare-fun inner_content () String)
 (assert (= complex_section "[logging[debug]]"))
 (assert (= (str.num_splits complex_section "[") 3))
 (assert (= inner_content (str.split_at complex_section "[" 1)))
 
-; Key validation constraints - keys cannot contain special characters
-(declare-const invalid_key string)
+; Key validation funraints - keys cannot contain special characters
+(declare-fun invalid_key () String)
 (assert (= invalid_key "data base"))
 (assert (str.contains invalid_key " "))
 
-; This should make the constraint unsatisfiable if we require no spaces in keys
-(declare-const valid_key_check string)
+; This should make the funraint unsatisfiable if we require no spaces in keys
+(declare-fun valid_key_check () String)
 (assert (= valid_key_check extracted_key))
 (assert (not (str.contains valid_key_check " ")))
 
 ; Value processing with multiple delimiters
-(declare-const multi_value string)
-(declare-const processed_value string)
+(declare-fun multi_value () String)
+(declare-fun processed_value () String)
 (assert (= multi_value "user:admin:password"))
 (assert (= (str.num_splits multi_value ":") 3))
 (assert (= processed_value (str.split_at multi_value ":" 1)))
 (assert (= processed_value "admin"))
 
 ; Configuration validation - ensure proper format
-(declare-const config_format_check string)
+(declare-fun config_format_check () String)
 (assert (= config_format_check key_value_pair))
 (assert (or (str.contains config_format_check "=") (str.contains config_format_check ":")))
 
 ; ; Rest extraction for remaining configuration after first section
-(declare-const remaining_config string)
+(declare-fun remaining_config () String)
 (assert (= remaining_config (str.split_rest ini_content "\n" 3)))
 (assert (str.contains remaining_config "[database]"))
 

@@ -73,6 +73,7 @@ private:
     std::unordered_map<std::string, std::unique_ptr<Division>> divisions;
     std::unordered_map<std::string, std::vector<SMTParser::NodePtr>> divisionNodes;
     std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
+    std::unordered_map<std::string, SMTParser::NodePtr> varToNode;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
     

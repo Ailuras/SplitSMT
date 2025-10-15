@@ -9,7 +9,6 @@ Focus: Domain structure and local-part format
 (declare-const email String) 
 
 ; Basic format: must contain exactly one '@' 
-(assert (= (str.indexof email "@" 0) (str.last_indexof email "@" 0))) 
 
 ; Split into local and domain parts 
 (declare-const local String) 
@@ -40,7 +39,6 @@ Focus: Domain structure and local-part format
 
 ; TLD must be 2+ chars 
 (declare-const last_dot_pos Int) 
-(assert (= last_dot_pos (str.last_indexof domain "." 0))) 
 (assert (>= (- (str.len domain) last_dot_pos) 2)) 
 
 ; No consecutive dots anywhere 

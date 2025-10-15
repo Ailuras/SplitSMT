@@ -13,7 +13,6 @@ Target solver: CVC4, Z3, Z3str3
 (declare-const email_addr String)
 
 ; Must contain exactly one @ character
-(assert (= (str.indexof email_addr "@" 0) (str.last_indexof email_addr "@" 0)))
 (assert (> (str.indexof email_addr "@" 0) 0))
 
 ; Split into local and domain parts
@@ -54,7 +53,6 @@ Target solver: CVC4, Z3, Z3str3
 ))
 
 ; Top-level domain must be alphabetic
-(assert (str.is_alpha subdomain2))
 
 ; No consecutive dots in domain
 (assert (not (str.contains domain "..")))

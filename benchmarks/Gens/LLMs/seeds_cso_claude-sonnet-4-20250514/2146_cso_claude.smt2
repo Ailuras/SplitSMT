@@ -506,7 +506,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (> (str.len second_dot_part) (str.len first_dot_part)))
 (assert (< (str.len nested_split2) (str.len second_comma_seg)))
 ; ; Advanced validation: palindrome check on specific segment
-(assert (= nested_split1 (str.rev nested_split1)))
 ; Arithmetic constraints on segment lengths
 ; --- End LLM Generated Constraints ---
 

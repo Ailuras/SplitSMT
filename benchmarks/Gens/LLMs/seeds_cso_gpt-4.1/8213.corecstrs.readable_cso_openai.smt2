@@ -48,7 +48,6 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 (assert (= mid_b (str.split_rest mid "-" 1)))
 ; Advanced cross-dependency: left_k equals mid_b reversed
 (declare-const mid_b_rev String)
-(assert (= mid_b_rev (str.rev mid_b)))
 (assert (= left_k mid_b_rev))
 ; Nested split: right part split on "+"
 (declare-const right_x String)

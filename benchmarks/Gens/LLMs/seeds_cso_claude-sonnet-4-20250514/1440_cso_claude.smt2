@@ -321,7 +321,7 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 (assert ( <= ( - ( - ( - ( str.len s  ) 1  ) ( + ( + 1 1  ) 1  )  ) ( + ( + 1 1  ) 1  )  ) 3  ))
 
-(assert ( > ( - ( - ( - ( str.len s  ) 1  ) ( + ( + 1 1  ) 1  )  ) ( + ( + 1 1  ) 1  )  ) 0  ))
+(assert (> (- (str.len s) 6) 0))
 
 (assert ( = ( str.at ( str.substr s 1 ( - ( + 1 ( + ( + 1 1  ) 1  )  ) 1  )  ) 0  ) "0"  ))
 

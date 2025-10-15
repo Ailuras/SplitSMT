@@ -12,7 +12,6 @@ Scenario: Email validation with split operations and different constraints
 (declare-const email String)
 
 ; The email string must contain exactly one "@"
-(assert (= (str.indexof email "@" 0) (str.lastIndexof email "@" 0)))
 (assert (not (= (str.indexof email "@" 0) -1)))
 
 ; Split email into user and domain portions

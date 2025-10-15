@@ -1,4 +1,6 @@
 (set-logic ALL)
 (declare-fun x () String)
-(assert (= (str.split_at_re "hello" (re.union (str.to_re "l") (str.to_re "ll")) 0) x))
+(assert (= (str.replace_re_all "hello" (re.union (str.to_re "l") (str.to_re "ll")) "#") x))
+(assert (= x "he#o"))
 (check-sat)
+(get-model)

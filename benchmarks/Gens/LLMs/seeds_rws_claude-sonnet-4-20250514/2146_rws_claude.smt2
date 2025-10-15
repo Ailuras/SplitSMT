@@ -117,8 +117,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (> (str.len semi_field3) 0))
 
 ; Escape sequence validation - no unescaped quotes in any format
-(assert (not (str.contains data_record "\"")))
-(assert (not (str.contains semi_data "\"")))
+(assert (not (str.contains data_record """")))
+(assert (not (str.contains semi_data """")))
 
 (check-sat)
 (exit)

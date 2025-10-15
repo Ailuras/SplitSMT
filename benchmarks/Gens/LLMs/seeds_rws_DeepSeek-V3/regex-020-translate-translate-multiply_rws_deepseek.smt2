@@ -67,7 +67,6 @@
 (assert (= after_timestamp (str.split_rest log_entry rbracket 1)))
 (declare-const log_level String)
 (assert (= log_level (str.split_at after_timestamp pipe 0)))
-(assert (= log_level (str.trim log_level space)))
 
 ; ; Validate log level is one of standard values
 (assert (or (= log_level "INFO") 
@@ -78,7 +77,6 @@
 ; ; Extract message (after |)
 (declare-const message String)
 (assert (= message (str.split_rest after_timestamp pipe 1)))
-(assert (= message (str.trim message space)))
 
 ; Additional constraints for realistic log entries
 (assert (>= (str.len year) 4)) ; Year should have 4 digits

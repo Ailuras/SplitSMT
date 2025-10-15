@@ -12,8 +12,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 ; Email validation with stricter constraints
 (declare-const email_addr String)
 
-; Must contain exactly one @ symbol
-(assert (= (str.indexof email_addr "@" 0) (str.last_indexof email_addr "@" 0)))
 
 ; Split into local and domain parts
 (declare-const local String)
@@ -43,7 +41,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (= domain_seg1 (str.split_at domain "." 0)))
 (assert (= domain_seg2 (str.split_at domain "." 1)))
 (assert (str.is_digit domain_seg1)) ; First segment must be numeric
-(assert (str.is_alphanum domain_seg2)) ; Second segment must be alphanumeric
 
 ; TLD must be 2-6 characters
 (declare-const tld String)

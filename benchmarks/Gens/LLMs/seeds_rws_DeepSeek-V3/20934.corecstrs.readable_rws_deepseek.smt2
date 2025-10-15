@@ -4,7 +4,6 @@
 (set-option :produce-models true)
 
 ; Declare string sort and variables
-(declare-sort String 0)
 (declare-fun str.++ (String String) String)
 (declare-fun str.len (String) Int)
 (declare-fun str.contains (String String) Bool)

@@ -56,6 +56,7 @@
  ; Statement: if $i1 != 1 goto r15 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(":") 
 (assert (not (= var2378 1))) ; Cond: $i1 != 1 
 ; split operation: var1833 = var2901.split(":") ; Statement: r15 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(":") 
+(declare-const var1833 (Array Int String))
 (define-const var2368 Int (get_split_length var2901 ":" -1)) ; Statement: $i2 = lengthof r15 
  ; Statement: if $i2 <= 0 goto $r8 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("=") 
 (assert (not (<= var2368 0))) ; Negate: Cond: $i2 <= 0  

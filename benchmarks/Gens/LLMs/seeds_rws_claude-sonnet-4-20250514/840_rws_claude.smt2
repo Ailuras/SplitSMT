@@ -90,8 +90,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
  (> (str.len pipe_data) 5))))
 
 ; Escape sequence handling - no unescaped quotes in critical fields
-(assert (not (str.contains tsv_name "\"")))
-(assert (not (str.contains pipe_id "\"")))
+(assert (not (str.contains tsv_name """")))
+(assert (not (str.contains pipe_id """")))
 
 ; Field length boundaries
 (assert (<= (str.len tsv_name) 50))

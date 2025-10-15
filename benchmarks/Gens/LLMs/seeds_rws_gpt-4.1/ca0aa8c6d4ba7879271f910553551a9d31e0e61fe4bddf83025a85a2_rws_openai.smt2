@@ -1,10 +1,6 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-CSV/TSV field separation and validation using split operations
-Delimiters: ',', '\t', ';', '|'
-Focus: field count, escape handling, empty fields
-|)
+
 (set-info :license "https://creativecommons.org/licenses/by/4.0/")
 (set-info :category "industrial")
 (set-info :status unknown)

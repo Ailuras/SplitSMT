@@ -13,7 +13,6 @@ Delimiters: '@' and '.'
 (declare-const input_email String)
 
 ; There must be exactly one "@" in the email
-(assert (= (str.indexof input_email "@" 0) (str.lastIndexof input_email "@" 0)))
 (assert (not (= (str.indexof input_email "@" 0) -1)))
 (assert (= (str.num_splits input_email "@") 2))
 

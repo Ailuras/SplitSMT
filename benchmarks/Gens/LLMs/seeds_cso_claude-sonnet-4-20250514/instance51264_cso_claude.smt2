@@ -23,8 +23,8 @@ Description: The instance consists of:
 ; --- LLM Generated Split Constraints ---
 ; ; Extract the SSN pattern from the ValidationExpression string
 (declare-const ssn_part String)
-(assert (str.contains X "\""))
-(assert (= ssn_part (str.split_at (str.split_rest X "\"" 1) "\"" 0)))
+(assert (str.contains X """"))
+(assert (= ssn_part (str.split_at (str.split_rest X """" 1) """" 0)))
 ; Split SSN by hyphens to get three segments
 (declare-const ssn_segments_count Int)
 (assert (= ssn_segments_count (str.num_splits ssn_part "-")))
@@ -47,8 +47,8 @@ Description: The instance consists of:
 ; Nested split on expression part to isolate pattern components
 (declare-const pattern_start String)
 (declare-const pattern_end String)
-(assert (= pattern_start (str.split_rest expression_part "\"" 0)))
-(assert (= pattern_end (str.split_at expression_part "\"" 2)))
+(assert (= pattern_start (str.split_rest expression_part """" 0)))
+(assert (= pattern_end (str.split_at expression_part """" 2)))
 ; Cross-dependency: area code cannot be "000" or "666"
 (assert (not (= area_code "000")))
 (assert (not (= area_code "666")))

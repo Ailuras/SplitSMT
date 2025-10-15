@@ -38,7 +38,6 @@
 (declare-const tld String)
 (assert (= tld (str.split_at domain "." (- (str.num_splits domain ".") 1))))
 (assert (>= (str.len tld) 2))
-(assert (= tld (str.to_lower tld)))
 
 ; ; Unsatisfiable constraint: force the entire email to contain a space
 (assert (str.contains email_addr " "))

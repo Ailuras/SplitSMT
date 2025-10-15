@@ -76,7 +76,7 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 ))
 
 ; Escape sequence handling - no unescaped quotes in any format
-(assert (not (str.contains data_record "\"")))
+(assert (not (str.contains data_record """")))
 
 ; Length constraints for data integrity
 (assert (and (>= (str.len data_record) 5) (<= (str.len data_record) 1000)))

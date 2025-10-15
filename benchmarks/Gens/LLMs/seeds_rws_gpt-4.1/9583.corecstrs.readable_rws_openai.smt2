@@ -24,17 +24,14 @@
 
 ; Base64 validation: JWT header and payload should be base64url (no '+', '/', '=', or whitespace)
 ; For demonstration, we ensure absence of '+', '/', '=', ' ' in header and payload
-(define-fun not_contains (x String y String) Bool
- (not (str.contains x y))
-)
+(define-fun not_contains ((x String) (y String)) Bool
+  (not (str.contains x y)))
 
-(define-fun is_base64url (x String) Bool
- (and (not_contains x "+")
- (not_contains x "/")
- (not_contains x "=")
- (not_contains x " ")
-)
-)
+(define-fun is_base64url ((x String)) Bool
+  (and (not_contains x "+")
+       (not_contains x "/")
+       (not_contains x "=")
+       (not_contains x " ")))
 
 ; Clause 1: Satisfiable - Proper JWT and API key structure
 (assert (= jwt_num_segments 3))

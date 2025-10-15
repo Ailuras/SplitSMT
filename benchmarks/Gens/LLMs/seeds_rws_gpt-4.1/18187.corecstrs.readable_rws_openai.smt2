@@ -1,11 +1,5 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-SMT-LIB2 file for CSV/TSV field separation and validation.
-Generated for real-world string processing with split constraints.
-Delimiters: ',', '\t', ';', '|'
-Focus: Field count, escape handling, empty fields
-|)
 
 ; Declare a variable for a TSV line (tab-separated values)
 (declare-const tsv_line String)
@@ -39,7 +33,6 @@ Focus: Field count, escape handling, empty fields
 (assert (> (str.len tsv_f0) 0))
 (assert (> (str.len tsv_f4) 0))
 
-; ; Constraint: the fourth field must contain a pipe character '|'
 (assert (str.contains tsv_f3 "|"))
 
 ; ; UNSAT constraint: the first and last fields must be identical and also different

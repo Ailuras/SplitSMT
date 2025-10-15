@@ -40,7 +40,6 @@
 ; After the ']' delimiter, first split at '|', get segment 1: " INFO | System started successfully"
 (assert (= (str.split_at log_entry "]" 1) (str.++ " |" log_level " | System started successfully")))
 ; Now, split at '|' and get segment 1, then trim leading space
-(assert (= (str.trim (str.split_at (str.split_at log_entry "]" 1) "|" 1)) log_level))
 
 ; ; Step 4: Validate log level (must be one of INFO, WARN, ERROR, DEBUG)
 (assert (or (= log_level "INFO")
@@ -50,7 +49,6 @@
 
 ; ; Step 5: Extract message
 ; The message comes after the second '|'
-(assert (= message (str.trim (str.split_rest (str.split_at log_entry "|" 2) "|" 0))))
 
 ; Practical relationship: The message must not be empty
 (assert (> (str.len message) 0))

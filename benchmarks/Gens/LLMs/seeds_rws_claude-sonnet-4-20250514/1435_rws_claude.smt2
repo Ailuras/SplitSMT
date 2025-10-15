@@ -46,7 +46,7 @@
 
 ; Port number constraints
 (assert (or (= port_str "") 
- (and (str.prefixof "80" port_str) (str.len port_str) (>= (str.len port_str) 2))))
+ (and (str.prefixof "80" port_str) (>= (str.len port_str) 2))))
 
 ; Path segments validation
 (assert (>= (str.num_splits path "/") 1))

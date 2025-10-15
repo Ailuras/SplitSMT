@@ -1,10 +1,5 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-CSV/TSV field separation and validation scenario.
-Delimiters: ',', '\t', ';', '|'.
-Focus: field count, escape handling, empty fields.
-|)
 (set-info :category "industrial")
 (set-info :status unknown)
 

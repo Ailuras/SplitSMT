@@ -12,7 +12,7 @@
 ; section_header could be "[UserSettings]"
 
 ; Key validation: Ensure the key part of the config_line is non-empty and contains only alphanumerics
-(define-fun key_part () String (str.trim (str.split_at config_line "=" 0)))
+(define-fun key_part () String (str.split_at config_line "=" 0))
 (define-fun value_part () String (str.split_rest config_line "=" 1))
 
 ; Assert that the delimiter '=' exists in the config_line

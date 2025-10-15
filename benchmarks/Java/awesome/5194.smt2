@@ -55,6 +55,7 @@
 ; split operation: var3464 = var3067.split(",\u005cs*") ; Statement: $r11 = virtualinvoke $r10.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*") 
  ; Statement: goto [?= r7 = $r11] 
 (assert true) ; Non Conditional
+(declare-const var3464 (Array Int String))
 (define-const var2670 (Array Int String) var3464) ; Statement: r7 = $r11 
 (define-const var2774 Int (get_split_length var3067 ",\u005cs*" -1)) ; Statement: $i0 = lengthof $r11 
 (define-const var87 Int 0) ; Statement: i1 = 0 

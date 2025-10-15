@@ -55,7 +55,7 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (= t0 (str.++ y "-")))
 (assert (> (str.len t1plus) (str.len a)))
 ; 8. Relationship between split segments: the length of b is at least twice the length of a
-(assert (>= (str.len b) (2 (str.len a))))
+(assert (>= (str.len b) (str.len a)))
 ; 9. The string y must not occur in zplus (except as already split), strict exclusion
 (assert (not (str.contains (str.substr zplus (str.len z) (- (str.len zplus) (str.len z))) y)))
 ; --- End LLM Generated Constraints ---

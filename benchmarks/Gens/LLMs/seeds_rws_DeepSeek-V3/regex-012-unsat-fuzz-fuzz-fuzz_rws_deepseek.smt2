@@ -7,8 +7,10 @@ Focus: Valid TLDs, minimum segment lengths
 
 ; Declare email variable and common delimiters
 (declare-const email_addr String)
-(declare-const at String "@")
-(declare-const dot String ".")
+(declare-const at String)
+(declare-const dot String)
+(assert (= at "@"))
+(assert (= dot "."))
 
 ; Basic email structure constraints
 (assert (= (str.num_splits email_addr at) 2)) ; Exactly one @
@@ -41,7 +43,6 @@ Focus: Valid TLDs, minimum segment lengths
 (declare-const tld String)
 (assert (= tld (str.split_at domain dot (- domain_segments 1))))
 (assert (>= (str.len tld) 2))
-(assert (str.is_alpha tld))
 
 ; No consecutive dots
 (assert (not (str.contains domain "..")))

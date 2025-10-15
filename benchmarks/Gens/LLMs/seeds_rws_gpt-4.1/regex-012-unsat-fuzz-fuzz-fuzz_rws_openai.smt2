@@ -11,7 +11,6 @@ Target: SMT solvers supporting extended string splits
 (declare-const e String)
 
 ; ; Constraint: The email must contain exactly one '@'
-(assert (= (str.indexof e "@" 0) (str.lastindexof e "@" 0)))
 (assert (not (= (str.indexof e "@" 0) -1)))
 
 ; Split local and domain parts by '@'

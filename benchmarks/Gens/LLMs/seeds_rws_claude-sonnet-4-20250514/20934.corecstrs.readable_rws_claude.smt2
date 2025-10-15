@@ -102,8 +102,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (not (str.contains semicolon_record "|")))
 
 ; Escape sequence handling - no unescaped quotes in fields
-(assert (not (str.contains product_name "\"")))
-(assert (not (str.contains config_value "\"")))
+(assert (not (str.contains product_name """")))
+(assert (not (str.contains config_value """")))
 
 (check-sat)
 (exit)

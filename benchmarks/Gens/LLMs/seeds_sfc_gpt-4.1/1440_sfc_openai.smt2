@@ -383,7 +383,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (= s_seg0 (str.split_at s "0" 0)))
 (assert (= s_seg1 (str.split_at s "0" 1)))
 (assert (= s_rest (str.split_rest s "0" 1)))
-(assert (= (str.concat s_seg0 "0" s_seg1 s_rest) s))
 ; Count the number of segments when splitting by "0"
 (declare-const s_num_splits Int)
 (assert (= s_num_splits (str.num_splits s "0")))

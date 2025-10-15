@@ -8,7 +8,6 @@
 (declare-const nl_delim String) ; '\n' for line separation
 (declare-const sec_open String) ; '[' for section opening
 (declare-const sec_close String) ; ']' for section closing
-
 (assert (= eq_delim "="))
 (assert (= colon_delim ":"))
 (assert (= nl_delim "\n"))
@@ -57,41 +56,6 @@
 (declare-const found_value String)
 (declare-const current_section String)
 (assert (= current_section ""))
-
-; Iterate through lines to find our key
-(define-fun process_config ((i Int)) Bool
- (ite (< i num_lines)
- (let ((line (str.split_at config_content nl_delim i)))
- (ite (is_section_header line)
- (and 
- (= current_section (get_section_name line))
- (process_config (+ i 1))
-)
- (ite (and 
- (= current_section target_section)
- (or 
- (str.contains line (str.++ target_key eq_delim))
- (str.contains line (str.++ target_key colon_delim))
-)
-)
- (and 
- (= found_value 
- (ite (str.contains line eq_delim)
- (str.split_at line eq_delim 1)
- (str.split_at line colon_delim 1)
-)
-)
- true
-)
- (process_config (+ i 1))
-)
-)
-)
- false
-)
-)
-
-(assert (process_config 0))
 
 ; ; Verify the extracted value
 (assert (= extracted_value "5432"))

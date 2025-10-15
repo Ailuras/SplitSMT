@@ -6,21 +6,21 @@
 ; ; Focus: key validation, value extraction, section handling
 
 ; Declare string variables for configuration content
-(declare-const config_line string)
-(declare-const ini_content string)
-(declare-const section_header string)
-(declare-const key_value_pair string)
-(declare-const extracted_key string)
-(declare-const extracted_value string)
-(declare-const section_name string)
-(declare-const full_config string)
+(declare-fun config_line () String)
+(declare-fun ini_content () String)
+(declare-fun section_header () String)
+(declare-fun key_value_pair () String)
+(declare-fun extracted_key () String)
+(declare-fun extracted_value () String)
+(declare-fun section_name () String)
+(declare-fun full_config () String)
 
 ; Declare integer variables for split operations
-(declare-const num_equals_splits int)
-(declare-const num_colon_splits int)
-(declare-const num_newline_splits int)
-(declare-const num_bracket_splits int)
-(declare-const line_count int)
+(declare-const num_equals_splits Int)
+(declare-const num_colon_splits Int)
+(declare-const num_newline_splits Int)
+(declare-const num_bracket_splits Int)
+(declare-const line_count Int)
 
 ; Configuration line parsing with equals delimiter
 (assert (= config_line "database_host=localhost"))
@@ -46,8 +46,8 @@
 (assert (= num_colon_splits 2))
 
 ; ; Extract from colon-separated format
-(declare-const colon_key string)
-(declare-const colon_value string)
+(declare-fun colon_key () String)
+(declare-fun colon_value () String)
 (assert (= colon_key (str.split_at key_value_pair ":" 0)))
 (assert (= colon_value (str.split_at key_value_pair ":" 1)))
 (assert (= colon_key "port"))
@@ -59,9 +59,9 @@
 (assert (= num_bracket_splits 2))
 
 ; ; Extract section name between brackets
-(declare-const after_open_bracket string)
+(declare-fun after_open_bracket () String)
 (assert (= after_open_bracket (str.split_at section_header "[" 1)))
-(declare-const bracket_close_splits int)
+(declare-const bracket_close_splits Int)
 (assert (= bracket_close_splits (str.num_splits after_open_bracket "]")))
 (assert (= bracket_close_splits 2))
 (assert (= section_name (str.split_at after_open_bracket "]" 0)))
@@ -73,9 +73,9 @@
 (assert (= line_count 7))
 
 ; ; Extract specific lines
-(declare-const first_line string)
-(declare-const second_line string)
-(declare-const third_line string)
+(declare-fun first_line () String)
+(declare-fun second_line () String)
+(declare-fun third_line () String)
 (assert (= first_line (str.split_at ini_content "\n" 0)))
 (assert (= second_line (str.split_at ini_content "\n" 1)))
 (assert (= third_line (str.split_at ini_content "\n" 2)))
@@ -88,9 +88,9 @@
 (assert (str.suffixof "]" first_line))
 
 ; ; Extract and validate key-value from second line
-(declare-const line2_key string)
-(declare-const line2_value string)
-(declare-const line2_splits int)
+(declare-const line2_key () String)
+(declare-const line2_value () String)
+(declare-const line2_splits Int)
 (assert (= line2_splits (str.num_splits second_line "=")))
 (assert (= line2_splits 2))
 (assert (= line2_key (str.split_at second_line "=" 0)))
@@ -109,26 +109,26 @@
 (assert (not (str.contains line2_value "\n")))
 
 ; Complex configuration with multiple sections
-(declare-const complex_config string)
+(declare-fun complex_config () String)
 (assert (= complex_config "[app]\nname=MyApp\nversion=1.0\n[logging]\nlevel=INFO\nfile=app.log"))
 
 ; Count sections by counting opening brackets
-(declare-const section_count int)
+(declare-const section_count Int)
 (assert (= section_count (str.num_splits complex_config "[")))
 (assert (= section_count 3))
 
 ; ; Extract configuration remainder after first section
-(declare-const config_rest string)
+(declare-fun config_rest () String)
 (assert (= config_rest (str.split_rest complex_config "[" 1)))
 (assert (str.contains config_rest "app]\nname=MyApp\nversion=1.0\n[logging]\nlevel=INFO\nfile=app.log"))
 
 ; ; Validate no empty keys in configuration
-(declare-const empty_key_config string)
+(declare-fun empty_key_config () String)
 (assert (= empty_key_config "=invalid"))
-(declare-const empty_key_splits int)
+(declare-const empty_key_splits Int)
 (assert (= empty_key_splits (str.num_splits empty_key_config "=")))
 (assert (= empty_key_splits 2))
-(declare-const empty_key string)
+(declare-fun empty_key () String)
 (assert (= empty_key (str.split_at empty_key_config "=" 0)))
 (assert (= (str.len empty_key) 0))
 
@@ -136,15 +136,15 @@
 (assert (> (str.len empty_key) 0))
 
 ; Additional validation for proper section nesting
-(declare-const nested_check string)
+(declare-fun nested_check () String)
 (assert (= nested_check "[section1]\nkey1=value1\n[section2]\nkey2=value2"))
-(declare-const nested_lines int)
+(declare-const nested_lines Int)
 (assert (= nested_lines (str.num_splits nested_check "\n")))
 (assert (= nested_lines 5))
 
 ; Ensure sections are properly formatted
-(declare-const section1_line string)
-(declare-const section2_line string)
+(declare-fun section1_line () String)
+(declare-fun section2_line () String)
 (assert (= section1_line (str.split_at nested_check "\n" 0)))
 (assert (= section2_line (str.split_at nested_check "\n" 2)))
 (assert (str.prefixof "[" section1_line))

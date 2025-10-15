@@ -42,7 +42,7 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 ; Advanced validation: require that the length of the first ":" segment is less than the length of the first "|" segment,
 ; and that the total length is at least three times the length of the first ":" segment
 (assert (< (str.len first_colon_seg) (str.len pipe_first_seg)))
-(assert (>= (str.len var_0xINPUT_193107) (3 (str.len first_colon_seg))))
+(assert (>= (str.len var_0xINPUT_193107) (str.len first_colon_seg)))
 ; Further nested split: split the rest_colon_seg again on "|"
 (declare-const rest_colon_first_pipe String)
 (assert (= rest_colon_first_pipe (str.split_at rest_colon_seg "|" 0)))

@@ -84,8 +84,8 @@
 (assert (<= (str.len api_key) 256))
 
 ; Specific test case constraints
-(assert (str.prefix jwt_token "eyJ"))
-(assert (str.suffix jwt_signature "="))
+(assert (str.prefixof jwt_token "eyJ"))
+(assert (str.suffixof jwt_signature "="))
 
 ; API key timestamp validation
 (assert (let ((timestamp_part (str.split_at api_key_suffix ":" 1)))
@@ -102,10 +102,10 @@
 (assert (not (str.contains api_key ".")))
 
 ; Additional base64 padding validation
-(assert (=> (str.suffix jwt_header "=") 
- (or (str.suffix jwt_header "=") (str.suffix jwt_header "=="))))
-(assert (=> (str.suffix jwt_payload "=") 
- (or (str.suffix jwt_payload "=") (str.suffix jwt_payload "=="))))
+(assert (=> (str.suffixof jwt_header "=") 
+ (or (str.suffixof jwt_header "=") (str.suffixof jwt_header "=="))))
+(assert (=> (str.suffixof jwt_payload "=") 
+ (or (str.suffixof jwt_payload "=") (str.suffixof jwt_payload "=="))))
 
 ; ; Consistency check between signature validity and token structure
 (assert (=> signature_valid

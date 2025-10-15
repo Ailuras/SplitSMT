@@ -93,11 +93,11 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (not (str.contains semicolon_record "\t")))
 
 ; Escape sequence handling - no unescaped quotes in fields
-(assert (not (str.contains product_desc "\"")))
-(assert (not (str.contains tsv_notes "\"")))
-(assert (not (str.contains config_value "\"")))
+(assert (not (str.contains product_desc """")))
+(assert (not (str.contains tsv_notes """")))
+(assert (not (str.contains config_value """")))
 
-; ; Field length consistency checks
+; Field length consistency checks
 (assert (< (str.len tsv_name) 50))
 (assert (< (str.len product_desc) 200))
 (assert (< (str.len config_key) 30))

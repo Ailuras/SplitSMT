@@ -1,10 +1,6 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-CSV/TSV field separation and validation using str.split_at, str.num_splits, and str.split_rest
-Delimiters: ',', '\t', ';', '|'
-Focus: field count, escape handling, empty fields
-|)
+
 
 ; Declare a TSV (tab-separated) line variable
 (declare-const tsv_line String)

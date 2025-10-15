@@ -196,7 +196,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 (assert (= pre0_1_b (str.split_rest pre0 "1" 1)))
 ; Nested splits: split last part (after last "1") by "0"
 (declare-const last1_index Int)
-(assert (= last1_index (str.last_indexof s "1" (- (str.len s) 1))))
 (declare-const after_last1 String)
 (assert (= after_last1 (str.substr s (+ last1_index 1) (- (str.len s) (+ last1_index 1)))))
 (declare-const after_last1_0_a String)

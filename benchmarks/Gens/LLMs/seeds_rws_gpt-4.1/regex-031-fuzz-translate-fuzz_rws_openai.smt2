@@ -1,11 +1,5 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-CSV/TSV field separation and validation
-Delimiters: ',', '\t', ';', '|'
-Constraints: field count, escape handling, empty fields
-Generated for SMT solver by LLM
-|)
 (set-info :category "industrial")
 (set-info :status unknown)
 
@@ -42,7 +36,6 @@ Generated for SMT solver by LLM
 (assert (not (str.contains tsv_field4 "\t")))
 
 ; ; Constraint: The fifth field may contain a semicolon, but not a pipe
-(assert (implies (str.contains tsv_field4 ";") true))
 (assert (not (str.contains tsv_field4 "|")))
 
 ; ; Unsatisfiable constraint: The first field is both empty and not empty

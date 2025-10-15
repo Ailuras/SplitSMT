@@ -45,7 +45,7 @@ Focus: Field validation and delimiter handling
 (assert (= p_remaining (str.split_rest csv_pipe "|" 2)))
 
 ; ; Constraint: Remaining pipe fields must contain at least one non-empty field
-(assert (str.contains p_remaining "||" false)) ; No empty consecutive fields
+(assert (not (str.contains p_remaining "||"))) ; No empty consecutive fields
 
 ; ; Additional constraint: No field in any format contains the delimiter
 (assert (not (str.contains c_field1 ",")))

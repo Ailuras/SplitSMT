@@ -109,7 +109,6 @@ Target solver: CVC4, Z3, Z3str3, Z3-Trau
 
 ; --- LLM Generated Split Constraints ---
 ; Multi-delimiter splitting with nested dependencies
-(declare-const s String)
 (assert (str.contains s "|"))
 (assert (str.contains s ":"))
 (assert (> (str.len s) 15))

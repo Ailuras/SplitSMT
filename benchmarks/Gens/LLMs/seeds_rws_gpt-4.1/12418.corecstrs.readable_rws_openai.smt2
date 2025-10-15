@@ -45,14 +45,6 @@ Application: CSV/TSV/PSV field separation and validation
 
 ; Assert that none of the fields contain unescaped double quotes
 (declare-fun no_unescaped_quote (String) Bool)
-(define-fun no_unescaped_quote ((s String))
- (not (str.contains s "\""))
-)
-(assert (no_unescaped_quote tsv_field0))
-(assert (no_unescaped_quote tsv_field1))
-(assert (no_unescaped_quote tsv_field2))
-(assert (no_unescaped_quote tsv_field3))
-(assert (no_unescaped_quote tsv_field4))
 
 ; UNSAT variant: require the second field to equal the delimiter (impossible since field separators are removed by split)
 (assert (= tsv_field1 tab_delim))

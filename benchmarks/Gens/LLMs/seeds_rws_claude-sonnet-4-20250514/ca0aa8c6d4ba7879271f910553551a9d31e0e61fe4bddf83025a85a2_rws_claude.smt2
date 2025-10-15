@@ -58,16 +58,16 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 ; Additional constraints for valid email format
 (assert (not (str.contains user_email "..")))
 (assert (not (str.contains backup_email "..")))
-(assert (not (str.prefix username ".")))
-(assert (not (str.prefix backup_user ".")))
-(assert (not (str.suffix username ".")))
-(assert (not (str.suffix backup_user ".")))
+(assert (not (str.prefixof username ".")))
+(assert (not (str.prefixof backup_user ".")))
+(assert (not (str.suffixof username ".")))
+(assert (not (str.suffixof backup_user ".")))
 
 ; Domain names should not start or end with hyphen
-(assert (not (str.prefix main_domain_name "-")))
-(assert (not (str.suffix main_domain_name "-")))
-(assert (not (str.prefix backup_domain_name "-")))
-(assert (not (str.suffix backup_domain_name "-")))
+(assert (not (str.prefixof main_domain_name "-")))
+(assert (not (str.suffixof main_domain_name "-")))
+(assert (not (str.prefixof backup_domain_name "-")))
+(assert (not (str.suffixof backup_domain_name "-")))
 
 ; Ensure emails are different
 (assert (not (= user_email backup_email)))

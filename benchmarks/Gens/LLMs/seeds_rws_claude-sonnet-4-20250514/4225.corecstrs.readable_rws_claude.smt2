@@ -93,6 +93,7 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 ; ; Extract first two fields
 (declare-const key_field String)
 (declare-const value_field String)
+(declare-const csv_line String)
 (assert (= key_field (str.split_at semicolon_record ";" 0)))
 (assert (= value_field (str.split_at semicolon_record ";" 1)))
 

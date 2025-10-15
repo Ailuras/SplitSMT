@@ -33,7 +33,6 @@
 
 ; Remove leading/trailing spaces from log level segment
 (declare-fun log_level () String)
-(assert (= log_level (str.trim level_segment)))
 
 ; The message is the segment after the second "|"
 (declare-fun message_segment () String)
@@ -41,7 +40,6 @@
 
 ; Remove leading/trailing spaces from message segment
 (declare-fun message () String)
-(assert (= message (str.trim message_segment)))
 
 ; Split the timestamp into date and time at the first space
 (declare-fun date_part () String)

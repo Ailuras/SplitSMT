@@ -29,7 +29,7 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 ; Advanced validation: n_yy_splits = (str.len x) div 2 + 1
 (assert (= n_yy_splits (+ (div (str.len x) 2) 1)))
 ; Cross-dependency: number of "Y" splits is twice number of "YY" splits minus 1
-(assert (= n_splits (- (2 n_yy_splits) 1)))
+(assert (= n_splits (- n_yy_splits 1)))
 ; ; Extract first segment after splitting by "Y" (should be empty)
 (declare-const first_y_split String)
 (assert (= first_y_split (str.split_at x "Y" 0)))

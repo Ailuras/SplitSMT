@@ -1,10 +1,5 @@
 (set-info :smt-lib-version 2.6)
 (set-logic QF_SLIA)
-(set-info :source |
-; SMT-LIB2 example for CSV/TSV field separation and validation
- Delimiters: ',', '\t', ';', '|'
- Scenario: field count, escape handling, empty fields
-|)
 
 ; Declare a line in TSV format (tab-separated)
 (declare-const tsv_line String)
@@ -31,9 +26,9 @@
 ; Fourth field (tsv_f3) may be quoted, and if so, must start and end with a double quote
 ; We express: if the field starts with a quote, it ends with a quote and is at least length 2
 (assert (=> 
- (= (str.at tsv_f3 0) "\"")
+ (= (str.at tsv_f3 0) """")
  (and 
- (= (str.at tsv_f3 (- (str.len tsv_f3) 1)) "\"")
+ (= (str.at tsv_f3 (- (str.len tsv_f3) 1)) """")
  (>= (str.len tsv_f3) 2)
 )
 ))

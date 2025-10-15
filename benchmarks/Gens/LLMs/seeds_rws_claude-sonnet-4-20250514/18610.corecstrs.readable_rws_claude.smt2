@@ -3,14 +3,14 @@
 (set-info :category "industrial")
 
 ; Declare string variables for configuration parsing
-(declare-const config_line string)
-(declare-const ini_section string)
-(declare-const multi_line_config string)
-(declare-const key_part string)
-(declare-const value_part string)
-(declare-const section_name string)
-(declare-const database_config string)
-(declare-const server_settings string)
+(declare-fun config_line () String)
+(declare-fun ini_section () String)
+(declare-fun multi_line_config () String)
+(declare-fun key_part () String)
+(declare-fun value_part () String)
+(declare-fun section_name () String)
+(declare-fun database_config () String)
+(declare-fun server_settings () String)
 
 ; Configuration line parsing with equals delimiter
 (assert (= config_line "database_host=localhost"))
@@ -43,13 +43,13 @@
 (assert (= (str.split_at multi_line_config "\n" 2) "user=admin"))
 
 ; Parse individual key-value pairs from multi-line config
-(declare-const host_line string)
-(declare-const port_line string)
-(declare-const user_line string)
-(declare-const host_key string)
-(declare-const host_value string)
-(declare-const port_key string)
-(declare-const port_value string)
+(declare-fun host_line () String)
+(declare-fun port_line () String)
+(declare-fun user_line () String)
+(declare-fun host_key () String)
+(declare-fun host_value () String)
+(declare-fun port_key () String)
+(declare-fun port_value () String)
 
 (assert (= host_line (str.split_at multi_line_config "\n" 0)))
 (assert (= port_line (str.split_at multi_line_config "\n" 1)))
@@ -78,29 +78,29 @@
 (assert (= (str.split_at server_settings "\n" 0) "[server]"))
 
 ; ; Extract section header and validate
-(declare-const server_header string)
-(declare-const server_section_name string)
+(declare-fun server_header () String)
+(declare-fun server_section_name () String)
 (assert (= server_header (str.split_at server_settings "\n" 0)))
 (assert (= server_section_name (str.split_at (str.split_at server_header "[" 1) "]" 0)))
 (assert (= server_section_name "server"))
 
 ; Parse server configuration entries
-(declare-const address_line string)
-(declare-const ssl_line string)
+(declare-fun address_line () String)
+(declare-fun ssl_line () String)
 (assert (= address_line (str.split_at server_settings "\n" 1)))
 (assert (= ssl_line (str.split_at server_settings "\n" 2)))
 
 ; ; Validate address configuration
-(declare-const address_key string)
-(declare-const address_value string)
+(declare-fun address_key () String)
+(declare-fun address_value () String)
 (assert (= address_key (str.split_at address_line "=" 0)))
 (assert (= address_value (str.split_at address_line "=" 1)))
 (assert (= address_key "address"))
 (assert (= address_value "0.0.0.0"))
 
 ; ; Validate SSL configuration
-(declare-const ssl_key string)
-(declare-const ssl_value string)
+(declare-fun ssl_key () String)
+(declare-fun ssl_value () String)
 (assert (= ssl_key (str.split_at ssl_line "=" 0)))
 (assert (= ssl_value (str.split_at ssl_line "=" 1)))
 (assert (= ssl_key "ssl"))
@@ -127,7 +127,7 @@
 (assert (not (str.contains server_section_name "]")))
 
 ; ; Test remaining content extraction
-(declare-const remaining_config string)
+(declare-fun remaining_config () String)
 (assert (= remaining_config (str.split_rest server_settings "\n" 1)))
 (assert (str.contains remaining_config "address=0.0.0.0"))
 (assert (str.contains remaining_config "ssl=true"))

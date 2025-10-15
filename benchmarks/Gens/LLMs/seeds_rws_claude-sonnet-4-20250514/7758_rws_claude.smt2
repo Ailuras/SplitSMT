@@ -6,13 +6,13 @@
 (set-logic QF_SLIA)
 
 ; Declare string variables for configuration content
-(declare-const config_line string)
-(declare-const ini_content string)
-(declare-const section_header string)
-(declare-const key_value_pair string)
-(declare-const extracted_key string)
-(declare-const extracted_value string)
-(declare-const section_name string)
+(declare-fun config_line () String)
+(declare-fun ini_content () String)
+(declare-fun section_header () String)
+(declare-fun key_value_pair () String)
+(declare-fun extracted_key () String)
+(declare-fun extracted_value () String)
+(declare-fun section_name () String)
 
 ; Configuration line parsing with equals delimiter
 ; Format: key=value
@@ -58,16 +58,16 @@
 (assert (= (str.split_at ini_content "\n" 0) "[server]"))
 
 ; ; Extract second line (should be key-value pair)
-(declare-const second_line string)
+(declare-fun second_line () String)
 (assert (= second_line (str.split_at ini_content "\n" 1)))
 
 ; Verify second line is a valid key-value pair with equals
 (assert (= (str.num_splits second_line "=") 2))
 
 ; Alternative delimiter handling - colon separator
-(declare-const colon_config string)
-(declare-const colon_key string)
-(declare-const colon_value string)
+(declare-fun colon_config () String)
+(declare-fun colon_key () String)
+(declare-fun colon_value () String)
 
 (assert (= colon_config "timeout:30"))
 (assert (= colon_key (str.split_at colon_config ":" 0)))
@@ -79,11 +79,11 @@
 (assert (> (str.len colon_value) 0))
 
 ; Complex section processing
-(declare-const complex_section string)
+(declare-fun complex_section () String)
 (assert (= complex_section "[network]\nip=192.168.1.1\nport=443\nssl=true"))
 
 ; ; Extract section header from complex section
-(declare-const complex_header string)
+(declare-fun complex_header () String)
 (assert (= complex_header (str.split_at complex_section "\n" 0)))
 
 ; Verify it's a proper section header
@@ -91,7 +91,7 @@
 (assert (str.suffix complex_header "]"))
 
 ; ; Extract configuration entries after section header
-(declare-const remaining_config string)
+(declare-fun remaining_config () String)
 (assert (= remaining_config (str.split_rest complex_section "\n" 1)))
 
 ; Verify remaining config contains key-value pairs
@@ -99,7 +99,7 @@
 (assert (> (str.num_splits remaining_config "\n") 1))
 
 ; Edge case: empty section handling
-(declare-const empty_section string)
+(declare-fun empty_section () String)
 (assert (= empty_section "[empty]"))
 
 ; Verify empty section structure
@@ -107,7 +107,7 @@
 (assert (= (str.num_splits empty_section "]") 2))
 
 ; Invalid configuration detection
-(declare-const invalid_config string)
+(declare-fun invalid_config () String)
 (assert (= invalid_config "invalid_line_without_delimiter"))
 
 ; This should have no valid key-value separator
@@ -115,27 +115,27 @@
 (assert (= (str.num_splits invalid_config ":") 1))
 
 ; Multi-value handling with same key
-(declare-const multi_value string)
+(declare-fun multi_value () String)
 (assert (= multi_value "colors=red,blue,green"))
 
 ; ; Extract the values part
-(declare-const values_part string)
+(declare-fun values_part () String)
 (assert (= values_part (str.split_at multi_value "=" 1)))
 
 ; Nested section validation
-(declare-const nested_content string)
+(declare-fun nested_content () String)
 (assert (= nested_content "[parent]\nchild_key=value\n[parent.child]\ndeep_key=deep_value"))
 
 ; Count sections by counting opening brackets
 (assert (= (str.num_splits nested_content "[") 3))
 
 ; Whitespace handling in keys and values
-(declare-const whitespace_config string)
+(declare-fun whitespace_config () String)
 (assert (= whitespace_config "key = value with spaces"))
 
 ; ; Extract parts with potential whitespace
-(declare-const ws_key string)
-(declare-const ws_value string)
+(declare-fun ws_key () String)
+(declare-fun ws_value () String)
 (assert (= ws_key (str.split_at whitespace_config "=" 0)))
 (assert (= ws_value (str.split_at whitespace_config "=" 1)))
 

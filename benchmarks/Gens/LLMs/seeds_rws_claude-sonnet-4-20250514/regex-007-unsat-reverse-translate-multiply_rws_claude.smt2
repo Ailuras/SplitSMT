@@ -41,14 +41,14 @@
 (assert (= value2 (str.split_at config_line2 ":" 1)))
 
 ; Key validation constraints
-(assert (str.len key1 > 0))
-(assert (str.len key2 > 0))
+(assert (> (str.len key1) 0))
+(assert (> (str.len key2) 0))
 (assert (not (str.contains key1 " ")))
 (assert (not (str.contains key2 " ")))
 
 ; ; Value extraction constraints
-(assert (str.len value1 > 0))
-(assert (str.len value2 > 0))
+(assert (> (str.len value1) 0))
+(assert (> (str.len value2) 0))
 
 ; Ensure proper number of splits for key-value pairs
 (assert (= (str.num_splits config_line1 "=") 2))
@@ -59,7 +59,7 @@
 (assert (= section_name (str.split_at (str.split_at section_header "[" 1) "]" 0)))
 
 ; Section validation
-(assert (str.len section_name > 0))
+(assert (> (str.len section_name) 0))
 (assert (not (str.contains section_name "[")))
 (assert (not (str.contains section_name "]")))
 
@@ -113,8 +113,8 @@
 ; Validation constraints for database configuration
 (assert (= db_host_key "host"))
 (assert (= db_port_key "port"))
-(assert (str.len db_host_value > 0))
-(assert (str.len db_port_value > 0))
+(assert (> (str.len db_host_value) 0))
+(assert (> (str.len db_port_value) 0))
 
 ; ; Port value should be numeric (simplified check)
 (assert (not (str.contains db_port_value "a")))
@@ -139,7 +139,7 @@
 ; Constraint that makes this unsatisfiable for invalid configs
 (declare-fun valid_key_from_invalid () String)
 (assert (= valid_key_from_invalid (str.split_at invalid_config "=" 0)))
-(assert (and (str.len valid_key_from_invalid > 0)
+(assert (and (> (str.len valid_key_from_invalid) 0)
  (not (str.contains valid_key_from_invalid "="))))
 
 ; This creates a contradiction since the key from double equals will be valid

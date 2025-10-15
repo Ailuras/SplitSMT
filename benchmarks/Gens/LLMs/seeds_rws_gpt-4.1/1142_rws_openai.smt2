@@ -70,7 +70,7 @@
 (assert (forall ((c String))
  (=> (and (<= 0 (str.len api_id)) (<= (str.len api_id) 10))
  (let ((first_char (str.at api_id 0)))
- (or (= api_id "") (and (<= (str.code first_char) 57) (<= 48 (str.code first_char))))
+ (or (= api_id "") (and (<= (str.to_code first_char) 57) (<= 48 (str.to_code first_char))))
 )
 )
 ))

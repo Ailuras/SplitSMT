@@ -55,8 +55,8 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (< (str.len final1) (str.len final2)))
 (assert (= (str.len input) (+ (str.len left_part) (str.len right_part) 1)))
 ; Validation constraints (without regex)
-(assert (= (str.at final1 0) #\p))
-(assert (= (str.at final2 1) #\a))
+(assert (= (str.at final1 0) "#\p"))
+(assert (= (str.at final2 1) "#\a"))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

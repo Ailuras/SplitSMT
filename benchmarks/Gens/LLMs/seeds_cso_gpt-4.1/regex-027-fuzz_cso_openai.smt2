@@ -33,12 +33,12 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= x_second (str.split_at x "C" 1)))
 ; Nested split: split x_second by '"' (quote character)
 (declare-const x_second_quote_count Int)
-(assert (= x_second_quote_count (str.num_splits x_second "\"")))
+(assert (= x_second_quote_count (str.num_splits x_second """")))c
 (assert (>= x_second_quote_count 2))
 (declare-const x_second_first String)
 (declare-const x_second_rest String)
-(assert (= x_second_first (str.split_at x_second "\"" 0)))
-(assert (= x_second_rest (str.split_rest x_second "\"" 1)))
+(assert (= x_second_first (str.split_at x_second """" 0)))
+(assert (= x_second_rest (str.split_rest x_second """" 1)))
 ; Cross-dependency: relate x_first and x_second_first
 (assert (not (= x_first x_second_first)))
 (assert (str.contains x_second_first x_first))

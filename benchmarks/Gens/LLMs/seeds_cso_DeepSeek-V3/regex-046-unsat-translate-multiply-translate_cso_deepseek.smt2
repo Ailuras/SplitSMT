@@ -46,7 +46,7 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (str.prefixof version body_part1))
 (assert (not (str.contains metadata body_rest)))
 ; Length relationships with arithmetic
-(assert (> (str.len body) (2 (str.len header))))
+(assert (> (str.len body) (str.len header)))
 (assert (< (str.len version) (str.len metadata)))
 (assert (= (str.len body_rest) (+ (str.len body_part1) 5)))
 ; --- End LLM Generated Constraints ---

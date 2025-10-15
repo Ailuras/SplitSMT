@@ -74,8 +74,8 @@ Target solver: CVC4, Z3, Z3str3, Z3-Noodler
 (assert (=> (= tsv_name pipe_status) (> (str.len pipe_tail) 10)))
 
 ; Escape handling: no unescaped quotes in any field
-(assert (not (str.contains tsv_name "\"")))
-(assert (not (str.contains pipe_status "\"")))
+(assert (not (str.contains tsv_name """")))
+(assert (not (str.contains pipe_status """")))
 
 ; Empty field handling: at most one empty field per record
 (declare-const empty_count_tsv Int)

@@ -53,6 +53,7 @@
 (declare-const var191 String) ; Statement: r0 := @parameter0: java.lang.String 
 (assert (not (= var191 null-String)))
 ; split operation: var1011 = var191.split("\n") ; Statement: $r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n") 
+(declare-const var1011 (Array Int String))
 (define-const var43 var2132 (var419_asList/1779083644 (cast-from-__Array__Int__String__-to-__Array__Int__var2903__ var1011))) ; Statement: $r3 = staticinvoke <java.util.Arrays: java.util.List asList(java.lang.Object[])>($r1) 
 (define-const var2858 var221 var1633_bootstrap$/-666929012) ; Statement: $r2 = staticinvoke <edu.stanford.nlp.neural.NeuralUtils$lambda_convertTextMatrix_0__282: java.util.function.Predicate bootstrap$()>() 
 (define-const var2002 var2132 (var3360_filterAsList/-1582513876 (cast-from-var2132-to-var2247 var43) var2858)) ; Statement: r4 = staticinvoke <edu.stanford.nlp.util.CollectionUtils: java.util.List filterAsList(java.util.Collection,java.util.function.Predicate)>($r3, $r2) 

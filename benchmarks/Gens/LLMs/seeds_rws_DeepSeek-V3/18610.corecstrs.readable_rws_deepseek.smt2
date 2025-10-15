@@ -45,7 +45,7 @@ Target solver: CVC4, Z3, Z3str3
 ; Field content constraints
 (assert (forall ((i Int))
  (=> (and (>= i 0) (< i (str.num_splits mixed_data ",")))
- (not (str.contains (str.split_at mixed_data "," i) "\""))
+ (not (str.contains (str.split_at mixed_data "," i) """"))
 )))
 
 (check-sat)

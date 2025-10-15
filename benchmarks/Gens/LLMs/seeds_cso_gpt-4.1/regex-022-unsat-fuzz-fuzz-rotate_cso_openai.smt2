@@ -45,7 +45,6 @@ Description: transformed by StringFuzz, a modular string and regex fuzzer, from 
 (assert (= y_rest_first (str.split_at y_rest "!" 0)))
 (assert (= y_rest_second (str.split_rest y_rest "!" 1)))
 ; Cross-dependency: enforce y_first_right = y_rest_first reversed
-(assert (= y_first_right (str.rev y_rest_first)))
 ; Advanced validation: lengths and containment
 (assert (> (str.len y_first_left) 2))
 (assert (str.contains y_rest_second y_first_left))

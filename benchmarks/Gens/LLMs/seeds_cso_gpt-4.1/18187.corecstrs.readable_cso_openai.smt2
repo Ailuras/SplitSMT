@@ -93,7 +93,7 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 ; Cross-dependency: cookie1_value must be a prefix of cookie2_value
 (assert (str.prefixof cookie1_value cookie2_value))
 ; ; Length constraint: cookie2_value is at least twice as long as cookie1_value
-(assert (>= (str.len cookie2_value) (2 (str.len cookie1_value))))
+(assert (>= (str.len cookie2_value) (str.len cookie1_value)))
 ; Split cookie2_value by "-" and require exactly 3 segments
 (declare-const c2v_piece_count Int)
 (assert (= c2v_piece_count (str.num_splits cookie2_value "-")))

@@ -75,9 +75,9 @@
 (assert (= tld "com"))
 
 ; Additional constraints for URL structure validation
-(assert (str.len protocol > 0))
-(assert (str.len host > 0))
-(assert (str.len path > 0))
+(assert (> (str.len protocol) 0))
+(assert (> (str.len host) 0))
+(assert (> (str.len path) 0))
 
 ; Ensure protocol is followed by correct separator
 (assert (str.contains url (str.++ protocol "://")))

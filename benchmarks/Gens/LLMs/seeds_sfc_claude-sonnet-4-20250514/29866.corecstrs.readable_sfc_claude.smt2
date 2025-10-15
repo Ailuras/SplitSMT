@@ -26,8 +26,6 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 ; --- LLM Generated Split Constraints ---
 (declare-fun split_0 () String)
 (declare-fun split_1 () String)
-(declare-fun split_rest () String)
-(declare-fun num_splits () Int)
 (assert (= split_0 (str.split_at var_0xINPUT_355061 " " 0)))
 (assert (= split_1 (str.split_at var_0xINPUT_355061 " " 1)))
 (assert (= split_rest (str.split_rest var_0xINPUT_355061 " " 1)))

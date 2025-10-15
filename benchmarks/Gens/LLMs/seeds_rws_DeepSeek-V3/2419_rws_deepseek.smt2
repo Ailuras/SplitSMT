@@ -25,7 +25,6 @@
 ; ; Example 1: Simple key-value pair with '=' delimiter
 (assert (= config-line "timeout=30"))
 (assert (= key (str.split_at config-line eq-delimiter 0)))
-(assert (= value (str.split_at config_line eq-delimiter 1)))
 (assert (str.contains "abcdefghijklmnopqrstuvwxyz" (str.at key 0))) ; First char must be letter
 
 ; ; Example 2: Alternative key-value pair with ':' delimiter

@@ -3,20 +3,20 @@
 (set-info :category "industrial")
 
 ; Declare string variables for configuration content
-(declare-const config_line string)
-(declare-const ini_content string)
-(declare-const section_content string)
-(declare-const key_part string)
-(declare-const value_part string)
-(declare-const section_name string)
-(declare-const full_key string)
+(declare-fun config_line () String)
+(declare-fun ini_content () String)
+(declare-fun section_content () String)
+(declare-fun key_part () String)
+(declare-fun value_part () String)
+(declare-fun section_name () String)
+(declare-fun full_key () String)
 
 ; Declare integer variables for split operations
-(declare-const num_equals_splits int)
-(declare-const num_colon_splits int)
-(declare-const num_newline_splits int)
-(declare-const num_bracket_splits int)
-(declare-const line_count int)
+(declare-const num_equals_splits Int)
+(declare-const num_colon_splits Int)
+(declare-const num_newline_splits Int)
+(declare-const num_bracket_splits Int)
+(declare-const line_count Int)
 
 ; Configuration line parsing constraints
 ; A valid key-value line should have exactly one equals sign
@@ -39,9 +39,9 @@
 (assert (not (= value_part "")))
 
 ; Alternative colon-based configuration format
-(declare-const colon_config string)
-(declare-const colon_key string)
-(declare-const colon_value string)
+(declare-fun colon_config () String)
+(declare-fun colon_key () String)
+(declare-fun colon_value () String)
 
 (assert (= colon_config "port:8080"))
 (assert (= num_colon_splits (str.num_splits colon_config ":")))
@@ -53,12 +53,12 @@
 (assert (= ini_content "[database]\nhost=localhost\nport=5432\n[web]\nport=8080\ndebug=true"))
 
 ; Count sections by counting opening brackets
-(declare-const section_count int)
+(declare-const section_count Int)
 (assert (= section_count (str.num_splits ini_content "[")))
 (assert (> section_count 1))
 
 ; ; Extract section name from bracket-delimited content
-(declare-const section_header string)
+(declare-fun section_header () String)
 (assert (= section_header "[database]"))
 (assert (= (str.split_at section_header "[" 0) ""))
 (assert (= section_name (str.split_at (str.split_at section_header "]" 0) "[" 1)))
@@ -68,9 +68,9 @@
 (assert (> line_count 3))
 
 ; ; Extract specific configuration lines
-(declare-const first_line string)
-(declare-const second_line string)
-(declare-const third_line string)
+(declare-fun first_line () String)
+(declare-fun second_line () String)
+(declare-fun third_line () String)
 
 (assert (= first_line (str.split_at ini_content "\n" 0)))
 (assert (= second_line (str.split_at ini_content "\n" 1)))
@@ -85,10 +85,10 @@
 (assert (str.contains third_line "="))
 
 ; ; Extract keys and values from section lines
-(declare-const host_key string)
-(declare-const host_value string)
-(declare-const port_key string)
-(declare-const port_value string)
+(declare-fun host_key () String)
+(declare-fun host_value () String)
+(declare-fun port_key () String)
+(declare-fun port_value () String)
 
 (assert (= host_key (str.split_at second_line "=" 0)))
 (assert (= host_value (str.split_at second_line "=" 1)))
@@ -99,9 +99,9 @@
 (assert (not (= host_key port_key)))
 
 ; Complex section processing with nested structure
-(declare-const complex_ini string)
-(declare-const web_section_start int)
-(declare-const remaining_content string)
+(declare-fun complex_ini () String)
+(declare-const web_section_start Int)
+(declare-fun remaining_content () String)
 
 (assert (= complex_ini "[app]\nname=myapp\n[database]\nhost=db.example.com\nport=5432\n[web]\nport=8080"))
 
@@ -110,7 +110,7 @@
 (assert (str.prefixof "[web]" remaining_content))
 
 ; ; Validate configuration completeness
-(declare-const required_keys_found bool)
+(declare-const required_keys_found Bool)
 (assert (= required_keys_found 
  (and (str.contains complex_ini "name=")
  (str.contains complex_ini "host=")
@@ -118,15 +118,15 @@
 (assert required_keys_found)
 
 ; Error case: malformed section header
-(declare-const malformed_section string)
-(declare-const bracket_balance int)
+(declare-fun malformed_section () String)
+(declare-const bracket_balance Int)
 
 (assert (= malformed_section "[incomplete"))
 (assert (= bracket_balance (- (str.num_splits malformed_section "[") (str.num_splits malformed_section "]"))))
 (assert (> bracket_balance 0))
 
 ; Configuration validation rules
-(declare-const valid_config bool)
+(declare-const valid_config Bool)
 (assert (= valid_config 
  (and (> (str.len key_part) 0)
  (> (str.len value_part) 0)
@@ -135,23 +135,23 @@
 (assert valid_config)
 
 ; Nested configuration structure
-(declare-const nested_key string)
-(declare-const section_qualified_key string)
+(declare-fun nested_key () String)
+(declare-fun section_qualified_key () String)
 
 (assert (= nested_key "database.host"))
 (assert (= section_qualified_key (str.++ section_name "." host_key)))
 (assert (str.contains nested_key "."))
 
 ; Value type validation for numeric ports
-(declare-const port_is_numeric bool)
+(declare-const port_is_numeric Bool)
 (assert (= port_is_numeric (and (not (str.contains port_value "a"))
  (not (str.contains port_value "b"))
  (not (str.contains port_value "c")))))
 
 ; Configuration merging constraints
-(declare-const merged_config string)
-(declare-const base_config string)
-(declare-const override_config string)
+(declare-fun merged_config () String)
+(declare-fun base_config () String)
+(declare-fun override_config () String)
 
 (assert (= base_config "timeout=30"))
 (assert (= override_config "timeout=60"))

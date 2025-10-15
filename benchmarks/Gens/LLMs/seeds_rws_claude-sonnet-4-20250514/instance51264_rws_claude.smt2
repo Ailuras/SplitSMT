@@ -61,7 +61,7 @@
 (assert (= api_key_id (str.split_at api_key_prefix "-" 1)))
 
 ; API key validation constraints
-(assert (str.prefixes api_key_prefix "ak"))
+(assert (str.prefixof api_key_prefix "ak"))
 (assert (= (str.len api_key_id) 8))
 
 ; API key secret validation
@@ -89,7 +89,7 @@
 (assert (>= (str.len jwt_token) 100))
 
 ; API key format validation
-(assert (str.prefixes api_key "ak"))
+(assert (str.prefixof api_key "ak"))
 (assert (str.contains api_key ":"))
 (assert (not (str.contains api_key " ")))
 

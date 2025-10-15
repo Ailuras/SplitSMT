@@ -34,7 +34,7 @@
 (assert (= (str.split_at config_line2 ":" 1) "8080"))
 
 ; ; Value extraction validation
-(assert (> (str.len (str.split_at config_line2 ":") 0)))
+(assert (> (str.len (str.split_at config_line2 ":" 0)) 0))
 (assert (str.is_digit (str.split_at config_line2 ":" 1)))
 
 ; INI section header parsing

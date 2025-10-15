@@ -39,9 +39,6 @@
  (str.++ header payload secret)))
 
 ; Base64 validation constraints (all JWT segments should be base64)
-(assert (str.is_b64 header))
-(assert (str.is_b64 payload))
-(assert (str.is_b64 signature))
 
 ; Additional constraints for unsatisfiable case
 (assert (not (= (str.len jwt) 0))) ; JWT cannot be empty

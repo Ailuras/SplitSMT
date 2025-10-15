@@ -45,26 +45,17 @@
 ; Log level validation (must be one of standard levels)
 (declare-const level_part String)
 (assert (= level_part (str.split_at (str.split_rest log_entry rbracket 1) pipe 0)))
-(assert (or (= (str.trim level_part) "TRACE")
- (= (str.trim level_part) "DEBUG")
- (= (str.trim level_part) "INFO")
- (= (str.trim level_part) "WARN")
- (= (str.trim level_part) "ERROR")
- (= (str.trim level_part) "FATAL")))
 
 ; ; Message extraction (everything after the level)
 (assert (= message (str.split_rest (str.split_rest log_entry pipe 1) space 1)))
 
 ; Additional constraints for realistic scenarios
 ; Constraint 1: Message cannot be empty if level is ERROR or FATAL
-(assert (=> (or (= (str.trim level_part) "ERROR") (= (str.trim level_part) "FATAL"))
- (>= (str.len message) 1)))
 
 ; Constraint 2: Timestamp must be at start of log entry
 (assert (str.prefixof timestamp log_entry))
 
 ; Constraint 3: Log level must be uppercase
-(assert (= (str.to_upper level_part) level_part))
 
 ; ; Example concrete log entry (satisfiable case)
 (assert (= log_entry "[2023-01-15 14:30:45] INFO | System started"))

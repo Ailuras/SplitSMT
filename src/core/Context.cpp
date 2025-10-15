@@ -453,10 +453,8 @@ void Context::updateDivisions() {
                 auto arg1 = node->getChild(0);
                 auto arg3 = node->getChild(2);
                 
-                std::string variable = arg1->toString();
-                
+                std::string variable = parser.getString(arg1);
                 std::string delimiter = parser.getString(node->getChild(1));
-                
                 int index = parseInteger(arg3->toString());
                 
                 Division* division = getDivision(variable, delimiter);

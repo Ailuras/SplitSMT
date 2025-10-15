@@ -56,7 +56,7 @@ Publications: "A symbolic execution framework for JavaScript" by P. Saxena, D. A
 ; Advanced validation: The first comma segment must be a prefix of the second colon segment
 (assert (str.prefixof comma0 colon1))
 ; Ensure the lengths of nested segments have a nontrivial relationship
-(assert (> (str.len colon1) (2 (str.len comma1))))
+(assert (> (str.len colon1) (str.len comma1)))
 ; --- End LLM Generated Constraints ---
 
 (check-sat)

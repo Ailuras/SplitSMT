@@ -3,16 +3,16 @@
 (set-info :status unknown)
 
 ; Declare string variables for configuration parsing
-(declare-fun config_line string)
-(declare-fun ini_content string)
-(declare-fun section_line string)
-(declare-fun key_name string)
-(declare-fun value_content string)
-(declare-fun section_name string)
-(declare-fun full_config string)
-(declare-fun extracted_key string)
-(declare-fun extracted_value string)
-(declare-fun section_header string)
+(declare-fun config_line () String)
+(declare-fun ini_content () String)
+(declare-fun section_line () String)
+(declare-fun key_name () String)
+(declare-fun value_content () String)
+(declare-fun section_name () String)
+(declare-fun full_config () String)
+(declare-fun extracted_key () String)
+(declare-fun extracted_value () String)
+(declare-fun section_header () String)
 
 ; Configuration line parsing with equals delimiter
 (assert (= config_line "database_host=localhost"))
@@ -25,7 +25,7 @@
 (assert (> (str.len (str.split_at config_line "=" 0)) 3))
 
 ; ; Value extraction with colon delimiter for alternative format
-(declare-fun alt_config string)
+(declare-fun alt_config () String)
 (assert (= alt_config "port: 5432"))
 (assert (= (str.num_splits alt_config ":") 2))
 (assert (= (str.split_at alt_config ":" 0) "port"))
@@ -54,7 +54,7 @@
 (assert (= (str.split_at (str.split_at ini_content "\n" 1) "=" 1) "example.com"))
 
 ; Section validation - ensure proper bracket format
-(declare-fun invalid_section string)
+(declare-fun invalid_section () String)
 (assert (= invalid_section "[incomplete"))
 (assert (= (str.num_splits invalid_section "[") 2))
 (assert (= (str.num_splits invalid_section "]") 1))
@@ -94,13 +94,13 @@
 (assert (= (str.len (str.split_at (str.split_at section_header "[" 1) "]" 0)) 16))
 
 ; ; Multi-segment value extraction
-(declare-fun complex_value string)
+(declare-fun complex_value () String)
 (assert (= complex_value "url=http://api.example.com:8080/v1"))
 (assert (= (str.num_splits complex_value "=") 2))
 (assert (= (str.num_splits (str.split_at complex_value "=" 1) ":") 3))
 
 ; Ensure proper configuration structure
-(declare-fun config_block string)
+(declare-fun config_block () String)
 (assert (= config_block "[main]\nversion=2.0\nname=app"))
 (assert (= (str.num_splits config_block "\n") 3))
 (assert (str.prefixof "[" (str.split_at config_block "\n" 0)))
@@ -108,7 +108,7 @@
 (assert (str.contains (str.split_at config_block "\n" 2) "="))
 
 ; Key validation - no special characters in keys
-(declare-fun test_key string)
+(declare-fun test_key () String)
 (assert (= test_key "valid_key_123"))
 (assert (not (str.contains test_key "[")))
 (assert (not (str.contains test_key "]")))
@@ -116,13 +116,13 @@
 (assert (> (str.len test_key) 5))
 
 ; Value validation - handle empty values
-(declare-fun empty_value_line string)
+(declare-fun empty_value_line () String)
 (assert (= empty_value_line "optional_setting="))
 (assert (= (str.num_splits empty_value_line "=") 2))
 (assert (= (str.len (str.split_at empty_value_line "=" 1)) 0))
 
 ; Conflicting constraints for unsatisfiable case
-(declare-fun conflict_line string)
+(declare-fun conflict_line () String)
 (assert (= conflict_line "test=value"))
 (assert (= (str.num_splits conflict_line "=") 2))
 (assert (= (str.split_at conflict_line "=" 0) "test"))

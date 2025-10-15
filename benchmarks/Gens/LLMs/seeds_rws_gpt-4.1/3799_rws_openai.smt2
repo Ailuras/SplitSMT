@@ -13,7 +13,6 @@ Different constraints and variable choices
 (declare-const candidate_email String)
 
 ; The email must have exactly one '@' symbol
-(assert (= (str.indexof candidate_email "@" 0) (str.lastindexof candidate_email "@" 0)))
 (assert (not (= (str.indexof candidate_email "@" 0) -1)))
 
 ; The '@' cannot be the first or last character

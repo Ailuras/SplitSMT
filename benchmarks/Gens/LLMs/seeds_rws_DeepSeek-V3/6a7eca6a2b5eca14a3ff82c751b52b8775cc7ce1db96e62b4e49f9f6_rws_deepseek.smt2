@@ -8,6 +8,7 @@
 
 ; Declare string constants for delimiters
 (declare-const eq_delimiter String)
+(declare-const is_valid_key String)
 (assert (= eq_delimiter "="))
 (declare-const colon_delimiter String)
 (assert (= colon_delimiter ":"))
@@ -38,7 +39,7 @@
  (> (str.len k) 0)
  (forall ((i Int))
  (=> (and (>= i 0) (< i (str.len k)))
- (contains valid_key_chars (str.at k i))))))
+ (str.contains valid_key_chars (str.at k i))))))
 
 ; Section handling
 (declare-const section_header String)
