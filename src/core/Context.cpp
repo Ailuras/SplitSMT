@@ -9,6 +9,7 @@
 #include <chrono>
 #include <algorithm>
 #include <iterator>
+#include <unordered_set>
 
 namespace strp {
 
@@ -308,6 +309,8 @@ void Context::clearTasks() {
 void Context::clearDivisions() {
     divisions.clear();
     divisionNodes.clear();
+    nodeToVar.clear();
+    varList.clear();
 }
 
 void Context::clearSplitNodeToAtoms() {
@@ -318,6 +321,11 @@ void Context::clear() {
     clearTasks();
     clearDivisions();
     clearSplitNodeToAtoms();
+}
+
+std::string Context::getVarName(const SMTParser::NodePtr& node) {
+    std::string hash = std::to_string(node->hashCode());
+    return "var_" + hash;
 }
 
 void Context::addDivision(std::unique_ptr<Division> division) {
@@ -354,7 +362,7 @@ bool Context::matchesDivision(const SMTParser::NodePtr& node, const std::string&
         return false;
     }
     auto arg1 = node->getChild(0);
-    if (arg1->toString() != variable) {
+    if (parser.getString(arg1) != variable) {
         return false;
     }
     std::string nodeDelimiter = parser.getString(node->getChild(1));
@@ -390,7 +398,7 @@ void Context::updateDivisions() {
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 
-                std::string divided = arg1->toString();
+                std::string divided = parser.getString(arg1);
                 if (divided.size() >= 2 && divided.front() == '"' && divided.back() == '"') {
                     divided = divided.substr(1, divided.size() - 2);
                 }
@@ -417,13 +425,13 @@ void Context::updateDivisions() {
                 auto arg1 = node->getChild(0);
                 auto arg3 = node->getChild(2);
                 
-                std::string divided = arg1->toString();
+                std::string divided = parser.getString(arg1);
                 if (divided.size() >= 2 && divided.front() == '"' && divided.back() == '"') {
                     divided = divided.substr(1, divided.size() - 2);
                 }
                 
                 std::string delimiter = parser.getString(node->getChild(1));
-                int index = parseInteger(arg3->toString());
+                int index = parseInteger(parser.getString(arg3));
                 
                 if (!hasDivision(divided, delimiter)) {
                     addDivision(std::make_unique<ConstDivision>(divided, delimiter));
@@ -453,9 +461,17 @@ void Context::updateDivisions() {
                 auto arg1 = node->getChild(0);
                 auto arg3 = node->getChild(2);
                 
-                std::string variable = parser.getString(arg1);
+                std::string variable;
+                if (arg1->isVar()) {
+                    variable = parser.getString(arg1);
+                } else {
+                    if (nodeToVar.find(arg1) == nodeToVar.end()) {
+                        nodeToVar[arg1] = getVarName(arg1);
+                    }
+                    variable = nodeToVar[arg1];
+                }
                 std::string delimiter = parser.getString(node->getChild(1));
-                int index = parseInteger(arg3->toString());
+                int index = parseInteger(parser.getString(arg3));
                 
                 Division* division = getDivision(variable, delimiter);
                 if (!division) {
@@ -486,11 +502,17 @@ void Context::updateDivisions() {
                 auto arg1 = node->getChild(0);
                 auto arg3 = node->getChild(2);
                 
-                std::string variable = arg1->toString();
-                
+                std::string variable;
+                if (arg1->isVar()) {
+                    variable = parser.getString(arg1);
+                } else {
+                    if (nodeToVar.find(arg1) == nodeToVar.end()) {
+                        nodeToVar[arg1] = getVarName(arg1);
+                    }
+                    variable = nodeToVar[arg1];
+                }
                 std::string delimiter = parser.getString(node->getChild(1));
-                
-                int index = parseInteger(arg3->toString());
+                int index = parseInteger(parser.getString(arg3));
                 
                 Division* division = getDivision(variable, delimiter);
                 if (!division) {
@@ -520,7 +542,7 @@ void Context::updateDivisions() {
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 
-                std::string divided = arg1->toString();
+                std::string divided = parser.getString(arg1);
                 if (divided.size() >= 2 && divided.front() == '"' && divided.back() == '"') {
                     divided = divided.substr(1, divided.size() - 2);
                 }
@@ -554,11 +576,18 @@ void Context::updateDivisions() {
             if (node->getChildrenSize() >= 2) {
                 auto arg1 = node->getChild(0);
                 
-                std::string variable = arg1->toString();
-                
+                std::string variable;
+                if (arg1->isVar()) {
+                    variable = parser.getString(arg1);
+                } else {
+                    if (nodeToVar.find(arg1) == nodeToVar.end()) {
+                        nodeToVar[arg1] = getVarName(arg1);
+                    }
+                    variable = nodeToVar[arg1];
+                }
                 std::string delimiter = parser.getString(node->getChild(1));
-                
                 Division* division = getDivision(variable, delimiter);
+                
                 if (!division) {
                     addDivision(std::make_unique<VarDivision>(variable, delimiter));
                     division = getDivision(variable, delimiter);
@@ -580,7 +609,55 @@ void Context::updateDivisions() {
         }
     }
     
+    updateSplitNodeWithVar();
     updateSplitNodeToAtoms();
+}
+
+void Context::updateSplitNodeWithVar() {
+    if (nodeToVar.empty()) {
+        return;
+    }
+
+    std::unordered_set<std::string> processed(varList.begin(), varList.end());
+    std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacements;
+
+    auto handleNode = [&](const SMTParser::NodePtr& candidate) {
+        auto it = nodeToVar.find(candidate);
+        if (it == nodeToVar.end()) {
+            return;
+        }
+
+        const std::string& varName = it->second;
+        if (processed.insert(varName).second) {
+            parser.declareStringVar(varName);
+            varList.push_back(varName);
+            std::string equality = "(= " + varName + " " + parser.getString(candidate) + ")";
+            parser.addAssertion(equality);
+        }
+        SMTParser::NodePtr varNode = parser.createStringVar(varName);
+        if (!varNode) {
+            return;
+        }
+
+        replacements[candidate] = varNode;
+    };
+
+    auto collectNodes = [&](const std::vector<SMTParser::NodePtr>& nodes) {
+        for (const auto& node : nodes) {
+            if (!node || node->getChildrenSize() == 0) {
+                continue;
+            }
+            handleNode(node->getChild(0));
+        }
+    };
+
+    collectNodes(getSplitAtVarNodes());
+    collectNodes(getSplitRestVarNodes());
+    collectNodes(getNumSplitVarNodes());
+
+    if (!replacements.empty()) {
+        parser.replaceNodes(replacements);
+    }
 }
 
 void Context::updateSplitNodeToAtoms() {
