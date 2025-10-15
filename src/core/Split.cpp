@@ -519,7 +519,6 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
         return;
     }
     
-    
     if (division->isNumSplitsUsed()) {
         std::string num_splits = hashStr + "_num";
         ctx.getParser().declareIntVar(num_splits);

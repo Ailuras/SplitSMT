@@ -28,6 +28,7 @@ public:
     std::unordered_set<SMTParser::NodePtr> getAtomsForSplitNode(const SMTParser::NodePtr& splitNode) const;
     bool hasTask(TaskType taskType) const;
     std::set<TaskType> getAllTasks() const;
+    std::string getVarName(const SMTParser::NodePtr& node);
     
     std::vector<SMTParser::NodePtr> getSplitAtNodes();
     std::vector<SMTParser::NodePtr> getSplitAtNodes(const SMTParser::NodePtr& node);
@@ -41,6 +42,7 @@ public:
     std::vector<SMTParser::NodePtr> getNumSplitNodes(const SMTParser::NodePtr& node);
     std::vector<SMTParser::NodePtr> getNumSplitConstNodes();
     std::vector<SMTParser::NodePtr> getNumSplitVarNodes();
+    std::unordered_map<SMTParser::NodePtr, std::string> getNodeToVar() { return nodeToVar; };
 
     bool isSplitAtConstNode(const SMTParser::NodePtr& node);
     bool isSplitAtVarNode(const SMTParser::NodePtr& node);
@@ -56,6 +58,7 @@ public:
     void clear();
     void clearDivisions();
     void clearSplitNodeToAtoms();
+    void updateSplitNodeWithVar();
     
     Parser& getParser() { return parser; }
     const Parser& getParser() const { return parser; }
@@ -73,7 +76,8 @@ private:
     std::unordered_map<std::string, std::unique_ptr<Division>> divisions;
     std::unordered_map<std::string, std::vector<SMTParser::NodePtr>> divisionNodes;
     std::unordered_map<SMTParser::NodePtr, std::unordered_set<SMTParser::NodePtr>> splitNodeToAtoms;
-    std::unordered_map<std::string, SMTParser::NodePtr> varToNode;
+    std::unordered_map<SMTParser::NodePtr, std::string> nodeToVar;
+    std::vector<std::string> varList;
     std::vector<SMTParser::NodePtr> tempAssertions;
     std::vector<SMTParser::NodePtr> tempVariables;
     
