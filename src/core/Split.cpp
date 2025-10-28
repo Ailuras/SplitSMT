@@ -970,10 +970,10 @@ SatResult SplitSolver::checkSat() {
             INFO("Result: UNSAT (", duration.count(), "ms)");
             break;
         case SatResult::UNKNOWN:
-            WARN("Result: UNKNOWN (", duration.count(), "ms)");
+            INFO("Result: UNKNOWN (", duration.count(), "ms)");
             break;
         case SatResult::ERROR:
-            ERROR("Result: ERROR (", duration.count(), "ms)");
+            INFO("Result: ERROR (", duration.count(), "ms)");
             break;
     }
     return result;

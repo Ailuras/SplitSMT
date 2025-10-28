@@ -2,9 +2,12 @@
 #include "utils/Logger.h"
 #include "utils/Config.h"
 
+#include <algorithm>
 #include <array>
+#include <cctype>
 #include <cstdio>
 #include <cstdlib>
+#include <csignal>
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
@@ -106,23 +109,57 @@ SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) con
         result += buffer.data();
     }
 
-    int exitCode = pclose(pipe);
-
-    DEBUG("External solver output: ", result);
-    DEBUG("External solver exit code: ", exitCode);
-
-    if (result.find("sat\n") != std::string::npos && result.find("unsat\n") == std::string::npos) {
-        return SatResult::SAT;
-    } else if (result.find("unsat\n") != std::string::npos) {
-        return SatResult::UNSAT;
-    } else if (result.find("unknown\n") != std::string::npos) {
-        return SatResult::UNKNOWN;
-    } else if (exitCode == 124) {
-        WARN("External solver timeout");
-        return SatResult::UNKNOWN;
-    } else {
+    int waitStatus = pclose(pipe);
+    if (waitStatus == -1) {
+        ERROR("Failed to retrieve external solver status");
         return SatResult::ERROR;
     }
+
+    int exitCode = -1;
+    int signalNumber = 0;
+    if (WIFEXITED(waitStatus)) {
+        exitCode = WEXITSTATUS(waitStatus);
+    }
+    if (WIFSIGNALED(waitStatus)) {
+        signalNumber = WTERMSIG(waitStatus);
+    }
+
+    DEBUG("External solver output: ", result);
+    DEBUG("External solver wait status: ", waitStatus, " exit code: ", exitCode, " signal: ", signalNumber);
+
+    std::string normalizedResult = result;
+    std::transform(normalizedResult.begin(), normalizedResult.end(), normalizedResult.begin(), [](unsigned char ch) {
+        return static_cast<char>(std::tolower(ch));
+    });
+
+    auto containsToken = [&](const std::string& token) {
+        return normalizedResult.find(token) != std::string::npos;
+    };
+
+    bool timeoutDetected = false;
+    if (exitCode == 124 || exitCode == 137 || exitCode == 143) {
+        timeoutDetected = true;
+    }
+    if (signalNumber == SIGTERM || signalNumber == SIGKILL) {
+        timeoutDetected = true;
+    }
+
+    if (timeoutDetected) {
+        WARN("External solver timeout");
+        return SatResult::UNKNOWN;
+    }
+
+    if (containsToken("unsat")) {
+        return SatResult::UNSAT;
+    }
+    if (containsToken("sat")) {
+        return SatResult::SAT;
+    }
+    if (containsToken("unknown")) {
+        return SatResult::UNKNOWN;
+    }
+
+    return SatResult::ERROR;
 }
 
 std::string ExternalSolver::buildCurrentFormula() const {

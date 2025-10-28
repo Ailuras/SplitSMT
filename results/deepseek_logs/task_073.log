@@ -1,0 +1,33 @@
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_sfc_DeepSeek-V3/18187.corecstrs.readable_sfc_deepseek.smt2
+START: 2025-10-28 16:56:43
+END: 2025-10-28 16:56:43
+DURATION_SEC: 0.411
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_sfc_DeepSeek-V3/18610.corecstrs.readable_sfc_deepseek.smt2
+START: 2025-10-28 16:56:43
+END: 2025-10-28 16:56:47
+DURATION_SEC: 3.572
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+timeout: the monitored command dumped core
+/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 4107964 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
+[31m[2025-10-28 16:56:47] Result: ERROR (3129ms)[0m
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_sfc_DeepSeek-V3/195_sfc_deepseek.smt2
+START: 2025-10-28 16:56:47
+END: 2025-10-28 16:56:47
+DURATION_SEC: 0.343
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
