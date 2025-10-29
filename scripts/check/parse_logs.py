@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+import argparse
 import os
 import sys
 import re
 import glob
-from pathlib import Path
+import shutil
+from pathlib import Path, PurePath
 try:
     import openpyxl
     from openpyxl.styles import Font, Alignment, PatternFill
@@ -143,6 +145,87 @@ def extract_main_and_sub_category(file_path):
         sub_category = '/'.join(path_parts[1:])
         return (main_category, sub_category)
 
+
+def normalize_relative_path(path_str, fallback_name):
+    pure_path = PurePath(path_str)
+    components = []
+    for part in pure_path.parts:
+        if part in ('', '.', os.path.sep, '/', '\\'):
+            continue
+        if len(part) == 2 and part[1] == ':' and part[0].isalpha():
+            # Skip drive letters like C:
+            continue
+        if part == '..':
+            if components:
+                components.pop()
+            continue
+        components.append(part)
+    if not components:
+        return Path(fallback_name)
+    return Path(*components)
+
+
+def resolve_source_file(file_path_str, candidate_roots):
+    expanded = os.path.expanduser(file_path_str.strip())
+    path_candidate = Path(expanded)
+    if path_candidate.is_absolute() and path_candidate.exists():
+        return path_candidate.resolve(), None
+    resolved_roots = [root.resolve() for root in candidate_roots]
+    for root in resolved_roots:
+        candidate = (root / path_candidate).resolve()
+        if candidate.exists():
+            return candidate, root
+    fallback = (Path.cwd() / path_candidate).resolve()
+    if fallback.exists():
+        return fallback, Path.cwd().resolve()
+    return None, None
+
+
+def save_error_files(all_results, dest_dir, candidate_roots, relative_bases):
+    dest_path = Path(dest_dir).resolve()
+    dest_path.mkdir(parents=True, exist_ok=True)
+    copied_targets = set()
+    missing_files = []
+    copied_count = 0
+    resolved_bases = []
+    for base in relative_bases:
+        base_path = base.resolve()
+        if base_path not in resolved_bases:
+            resolved_bases.append(base_path)
+    for result in all_results:
+        if result['result'] != 'Error':
+            continue
+        source_path, matched_root = resolve_source_file(result['file_path'], candidate_roots)
+        if not source_path:
+            missing_files.append(result['file_path'])
+            continue
+        relative_path = None
+        for base in resolved_bases:
+            try:
+                relative_path = source_path.relative_to(base)
+                break
+            except ValueError:
+                continue
+        if relative_path is None and matched_root is not None:
+            try:
+                relative_path = source_path.relative_to(matched_root.resolve())
+            except ValueError:
+                relative_path = None
+        if relative_path is None:
+            relative_path = normalize_relative_path(result['file_path'], source_path.name)
+        target_path = dest_path / relative_path
+        if target_path in copied_targets:
+            continue
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, target_path)
+        copied_targets.add(target_path)
+        copied_count += 1
+    print(f"Saved {copied_count} error file(s) under {dest_path}")
+    if missing_files:
+        print("Warning: unable to locate the following error inputs:")
+        for missing in missing_files:
+            print(f"  {missing}")
+
 def write_to_excel(all_results, output_path):
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -243,41 +326,96 @@ def write_to_excel(all_results, output_path):
     wb.save(output_path)
     print(f"Excel file saved to: {output_path}")
 
+def parse_arguments():
+    parser = argparse.ArgumentParser(
+        description="Parse SplitSMT batch logs and compile results into an Excel workbook."
+    )
+    parser.add_argument(
+        "log_directory",
+        help="Directory containing log files (e.g., results/awesome_logs)",
+    )
+    parser.add_argument(
+        "output_excel",
+        nargs="?",
+        help="Optional path to the generated Excel file (default: <log_directory>/../analysis.xlsx)",
+    )
+    parser.add_argument(
+        "--save-errors-dir",
+        dest="save_errors_dir",
+        help="If set, copy all error-case SMT2 inputs into this directory while preserving structure.",
+    )
+    parser.add_argument(
+        "--source-root",
+        dest="source_root",
+        help="Override the root directory used to resolve relative SMT2 paths (default: repository root).",
+    )
+    return parser.parse_args()
+
+
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: parse_logs.py <log_directory> [output_excel_path]")
-        print("Example: parse_logs.py results/all_logs results/analysis.xlsx")
-        sys.exit(1)
-    log_dir = sys.argv[1]
-    if len(sys.argv) >= 3:
-        output_excel = sys.argv[2]
+    args = parse_arguments()
+    log_dir = args.log_directory
+    if args.output_excel:
+        output_excel = args.output_excel
     else:
-        output_excel = os.path.join(os.path.dirname(log_dir) if os.path.dirname(log_dir) else '.', 'analysis.xlsx')
+        normalized_log_dir = log_dir.rstrip(os.sep)
+        parent_dir = os.path.dirname(normalized_log_dir) if os.path.dirname(normalized_log_dir) else '.'
+        output_excel = os.path.join(parent_dir, 'analysis.xlsx')
+
     if not os.path.isdir(log_dir):
         print(f"Error: Directory not found: {log_dir}")
         sys.exit(1)
+
     log_files = sorted(glob.glob(os.path.join(log_dir, '*.log')))
     if not log_files:
         print(f"No log files found in {log_dir}")
         sys.exit(1)
+
     print(f"Found {len(log_files)} log files in {log_dir}")
     all_results = []
     for log_file in log_files:
         print(f"Processing {os.path.basename(log_file)}...")
         results = parse_log_file(log_file)
         all_results.extend(results)
+
     print(f"\nTotal entries parsed: {len(all_results)}")
     result_counts = {'SAT': 0, 'UNSAT': 0, 'Unknown': 0, 'Error': 0}
     for result in all_results:
         result_counts[result['result']] += 1
+
     print("\nResult Summary:")
+    total_entries = len(all_results)
     for result_type in ['SAT', 'UNSAT', 'Unknown', 'Error']:
         count = result_counts[result_type]
-        percentage = (count / len(all_results) * 100) if len(all_results) > 0 else 0
+        percentage = (count / total_entries * 100) if total_entries > 0 else 0
         print(f"  {result_type}: {count} ({percentage:.2f}%)")
+
     write_to_excel(all_results, output_excel)
+
+    if args.save_errors_dir:
+        repo_root = Path(__file__).resolve().parents[2]
+        candidate_roots = []
+
+        def add_candidate(root):
+            if root is None:
+                return
+            resolved_root = root.resolve()
+            if resolved_root not in candidate_roots:
+                candidate_roots.append(resolved_root)
+
+        if args.source_root:
+            add_candidate(Path(args.source_root))
+        add_candidate(Path.cwd())
+        add_candidate(repo_root)
+
+        relative_bases = []
+        if args.source_root:
+            relative_bases.append(Path(args.source_root))
+        relative_bases.append(repo_root)
+
+        save_error_files(all_results, args.save_errors_dir, candidate_roots, relative_bases)
+
     print("\nDone!")
 
 if __name__ == '__main__':
     main()
-

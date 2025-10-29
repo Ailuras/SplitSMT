@@ -667,6 +667,55 @@ SMTParser::NodePtr Parser::replaceNodes(const SMTParser::NodePtr& expr, const st
     
     std::vector<SMTParser::NodePtr> newChildren;
     bool hasChanges = false;
+    auto rebuildNode = [this](const SMTParser::NodePtr& original,
+                              const std::vector<SMTParser::NodePtr>& children) -> SMTParser::NodePtr {
+        if (!original) {
+            return nullptr;
+        }
+        
+        // Preserve names for function-related nodes while rebuilding them with updated children.
+        if (original->isFuncDef() || original->isFuncRec()) {
+            std::vector<SMTParser::NodePtr> params;
+            for (size_t i = 1; i < children.size(); ++i) {
+                params.emplace_back(children[i]);
+            }
+            SMTParser::NodePtr body = children.empty() ? nullptr : children.front();
+            if (!body) {
+                body = original->getFuncBody();
+            }
+            auto outSort = body ? body->getSort() : original->getFuncBody()->getSort();
+            original->updateFuncDef(outSort, body, params, original->isFuncRec());
+            return original;
+        }
+        
+        if (original->isFuncDec()) {
+            std::vector<std::shared_ptr<SMTParser::Sort>> paramSorts;
+            for (size_t i = 1; i < original->getChildrenSize(); ++i) {
+                paramSorts.emplace_back(original->getChild(i)->getSort());
+            }
+            auto outSort = original->getChild(0)->getSort();
+            return SMTParser.mkFuncDec(original->getName(), paramSorts, outSort);
+        }
+        
+        if (original->isFuncApplication() || original->isFuncRecApplication()) {
+            if (children.empty()) {
+                return SMTParser.mkOper(original->getSort(), original->getKind(), children);
+            }
+            SMTParser::NodePtr func = children.front();
+            std::vector<SMTParser::NodePtr> args;
+            for (size_t i = 1; i < children.size(); ++i) {
+                args.emplace_back(children[i]);
+            }
+            original->updateApplyFunc(original->getSort(), func, args, original->isFuncRecApplication());
+            return original;
+        }
+        
+        if (original->isUFApplication()) {
+            return SMTParser.mkApplyUF(original->getSort(), original->getName(), children);
+        }
+        
+        return SMTParser.mkOper(original->getSort(), original->getKind(), children);
+    };
     
     for (size_t i = 0; i < expr->getChildrenSize(); ++i) {
         SMTParser::NodePtr child = expr->getChild(i);
@@ -681,7 +730,7 @@ SMTParser::NodePtr Parser::replaceNodes(const SMTParser::NodePtr& expr, const st
         return expr;
     }
     
-    return SMTParser.mkOper(expr->getSort(), expr->getKind(), newChildren);
+    return rebuildNode(expr, newChildren);
 }
 
 void Parser::replaceNodes(const std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr>& nodeMap) {

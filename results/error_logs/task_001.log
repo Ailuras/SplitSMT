@@ -1,0 +1,52 @@
+===========================================================
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5751.corecstrs.readable_cso_openai.smt2
+START: 2025-10-29 16:06:18
+END: 2025-10-29 16:06:19
+DURATION_SEC: 1.647
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Transducers cannot be used with counter automata solving
+/Users/macbookpro/WorkSpace/StrProcessor/solvers/z3-noodler/run.sh: line 46: 50068 Abort trap: 6           timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/regex-027-fuzz_cso_openai.smt2
+START: 2025-10-29 16:06:19
+END: 2025-10-29 16:06:19
+DURATION_SEC: 0.025
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Unknown or unexptected symbol "\" in line 1.
+
+===========================================================
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/1094_rws_openai.smt2
+START: 2025-10-29 16:06:19
+END: 2025-10-29 16:06:19
+DURATION_SEC: 0.143
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/1142_rws_openai.smt2
+START: 2025-10-29 16:06:19
+END: 2025-10-29 16:06:19
+DURATION_SEC: 0.039
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Unknown or unexptected symbol "first_char" in line 1.
+
+===========================================================
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/11465.corecstrs.readable_rws_openai.smt2
+START: 2025-10-29 16:06:20
+END: 2025-10-29 16:06:50
+DURATION_SEC: 30.082
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
