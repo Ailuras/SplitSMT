@@ -756,9 +756,10 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                                 } else {
                                     lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
                                 }
-                                
-                                DEBUG("[addAuxiliaryLemmas] Adding split_at lemma: ", lemma);
-                                ctx.getParser().addAssertion(lemma);
+
+                                std::string normalizedLemma = Parser::postProcessSMTLIB(lemma);
+                                DEBUG("[addAuxiliaryLemmas] Adding split_at lemma: ", normalizedLemma);
+                                ctx.getParser().addAssertion(normalizedLemma);
                             }
                         }
                     }
@@ -793,8 +794,9 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                                     lemma = "(=> " + ctx.getParser().getString(atom) + " " + disjuncts + ")";
                                 }
                                 
-                                DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma: ", lemma);
-                                ctx.getParser().addAssertion(lemma);
+                                std::string normalizedLemma = Parser::postProcessSMTLIB(lemma);
+                                DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma: ", normalizedLemma);
+                                ctx.getParser().addAssertion(normalizedLemma);
                             }
                         }
                     }
@@ -818,8 +820,9 @@ void SplitSolver::addAuxiliaryLemmas(Context& ctx) {
                         } else {
                             lemma = "(=> " + bi + " (= (str.++ " + xi + " " + last + ") (str.replace_re_all " + rj + " " + delimiter + " " INTERNAL_DELIMITER ")))";
                         }
-                        DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma for i=", i, " j=", j, ": ", lemma);
-                        ctx.getParser().addAssertion(lemma);
+                        std::string normalizedLemma = Parser::postProcessSMTLIB(lemma);
+                        DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma for i=", i, " j=", j, ": ", normalizedLemma);
+                        ctx.getParser().addAssertion(normalizedLemma);
                     }
                 }
             }

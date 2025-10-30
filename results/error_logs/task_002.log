@@ -1,50 +1,12 @@
 ===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/13196.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 22:08:26
-END: 2025-10-29 22:08:26
-DURATION_SEC: 0.082
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5751.corecstrs.readable_cso_openai.smt2
+START: 2025-10-30 14:27:40
+END: 2025-10-30 14:27:42
+DURATION_SEC: 1.884
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/1435_rws_openai.smt2
-START: 2025-10-29 22:08:26
-END: 2025-10-29 22:08:26
-DURATION_SEC: 0.078
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/15929.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 22:08:26
-END: 2025-10-29 22:08:26
-DURATION_SEC: 0.040
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-error: Unknown or unexptected symbol "ALL_SUPPORTED" in line 5.
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/195_rws_openai.smt2
-START: 2025-10-29 22:08:26
-END: 2025-10-29 22:08:56
-DURATION_SEC: 30.073
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/19837.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 22:08:56
-END: 2025-10-29 22:09:26
-DURATION_SEC: 30.055
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
+libc++abi: terminating due to uncaught exception of type std::runtime_error: Transducers cannot be used with counter automata solving
+/Users/macbookpro/WorkSpace/StrProcessor/solvers/z3-noodler/run.sh: line 46: 55875 Abort trap: 6           timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 unknown
 

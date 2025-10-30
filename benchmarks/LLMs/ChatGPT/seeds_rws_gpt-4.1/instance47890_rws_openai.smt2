@@ -3,7 +3,7 @@
 ; Delimiters: '.', '-', ':'
 ; ; Author: SMT String Split Reasoning Example
 
-(set-logic ALL_SUPPORTED)
+(set-logic ALL)
 
 ; Declare variables representing tokens
 (declare-fun jwt_token () String)

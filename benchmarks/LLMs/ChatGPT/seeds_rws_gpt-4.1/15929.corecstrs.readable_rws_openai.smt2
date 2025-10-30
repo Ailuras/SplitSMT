@@ -2,7 +2,7 @@
 ; Delimiters used: '=', ':', '\n', '[', ']'
 ; ; Focus: key validation, value extraction, section handling
 
-(set-logic ALL_SUPPORTED)
+(set-logic ALL)
 
 ; Declare string variables
 (declare-fun config_line () String) ; A single line from a config file

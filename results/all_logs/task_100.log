@@ -1,8 +1,8 @@
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/1440_sfc_claude.smt2
-START: 2025-10-28 20:14:12
-END: 2025-10-28 20:14:12
-DURATION_SEC: 0.187
+START: 2025-10-30 13:49:30
+END: 2025-10-30 13:49:30
+DURATION_SEC: 0.622
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -10,9 +10,9 @@ unsat
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/14593.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:13
-END: 2025-10-28 20:14:24
-DURATION_SEC: 11.150
+START: 2025-10-30 13:49:30
+END: 2025-10-30 13:49:49
+DURATION_SEC: 18.325
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -20,9 +20,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/15929.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:24
-END: 2025-10-28 20:14:24
-DURATION_SEC: 0.131
+START: 2025-10-30 13:49:49
+END: 2025-10-30 13:49:50
+DURATION_SEC: 0.958
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,9 +30,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/15971.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:24
-END: 2025-10-28 20:14:24
-DURATION_SEC: 0.094
+START: 2025-10-30 13:49:50
+END: 2025-10-30 13:49:50
+DURATION_SEC: 0.460
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -40,21 +40,21 @@ unsat
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/18187.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:24
-END: 2025-10-28 20:14:25
-DURATION_SEC: 1.474
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2025-10-30 13:49:51
+END: 2025-10-30 13:49:53
+DURATION_SEC: 2.023
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
 timeout: the monitored command dumped core
-/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 2129459 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
+/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 1548605 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
 unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/18610.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:26
-END: 2025-10-28 20:14:56
-DURATION_SEC: 30.115
+START: 2025-10-30 13:49:53
+END: 2025-10-30 13:50:23
+DURATION_SEC: 30.342
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,9 +62,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/195_sfc_claude.smt2
-START: 2025-10-28 20:14:56
-END: 2025-10-28 20:14:56
-DURATION_SEC: 0.237
+START: 2025-10-30 13:50:23
+END: 2025-10-30 13:50:24
+DURATION_SEC: 0.359
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,9 +72,9 @@ unsat
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/19837.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:56
-END: 2025-10-28 20:14:56
-DURATION_SEC: 0.097
+START: 2025-10-30 13:50:24
+END: 2025-10-30 13:50:24
+DURATION_SEC: 0.516
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -82,9 +82,9 @@ unsat
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/1b415777353081399f22c146e473815a5dca078827ae55052c0dcaad_sfc_claude.smt2
-START: 2025-10-28 20:14:56
-END: 2025-10-28 20:14:56
-DURATION_SEC: 0.107
+START: 2025-10-30 13:50:24
+END: 2025-10-30 13:50:25
+DURATION_SEC: 0.463
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -92,9 +92,9 @@ unsat
 
 ===========================================================
 FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/20934.corecstrs.readable_sfc_claude.smt2
-START: 2025-10-28 20:14:56
-END: 2025-10-28 20:14:56
-DURATION_SEC: 0.072
+START: 2025-10-30 13:50:25
+END: 2025-10-30 13:50:25
+DURATION_SEC: 0.301
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

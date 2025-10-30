@@ -1,52 +1,10 @@
 ===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5751.corecstrs.readable_cso_openai.smt2
-START: 2025-10-29 22:08:26
-END: 2025-10-29 22:08:29
-DURATION_SEC: 2.857
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-libc++abi: terminating due to uncaught exception of type std::runtime_error: Transducers cannot be used with counter automata solving
-/Users/macbookpro/WorkSpace/StrProcessor/solvers/z3-noodler/run.sh: line 46:  2562 Abort trap: 6           timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-unknown
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/regex-027-fuzz_cso_openai.smt2
-START: 2025-10-29 22:08:29
-END: 2025-10-29 22:08:59
-DURATION_SEC: 30.065
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/1094_rws_openai.smt2
-START: 2025-10-29 22:08:59
-END: 2025-10-29 22:08:59
-DURATION_SEC: 0.057
+FILE: scripts/check/benchmarks/Auto/easy/regex-015-translate-fuzz-rotate_easy.smt2
+START: 2025-10-30 14:27:40
+END: 2025-10-30 14:27:40
+DURATION_SEC: 0.075
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/1142_rws_openai.smt2
-START: 2025-10-29 22:08:59
-END: 2025-10-29 22:08:59
-DURATION_SEC: 0.118
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/11465.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 22:08:59
-END: 2025-10-29 22:09:29
-DURATION_SEC: 30.037
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
 

@@ -175,21 +175,48 @@ std::string Parser::normalizeStringLiteral(const std::string& literal) {
 std::string Parser::postProcessSMTLIB(const std::string& content) {
     std::string result;
     result.reserve(content.size());
-    bool inString = false;
 
-    for (size_t i = 0; i < content.size(); ++i) {
+    size_t i = 0;
+    while (i < content.size()) {
         char c = content[i];
-        if (inString && c == '\\' && i + 1 < content.size() && content[i + 1] == '"') {
-            result.append("\"\"");
+        if (c != '"') {
+            result.push_back(c);
             ++i;
             continue;
         }
-        if (c == '"') {
-            inString = !inString;
-            result.push_back(c);
-            continue;
+
+        // We are at the start of a string literal. Extract it, normalise, and append.
+        size_t start = i;
+        ++i;  // skip the opening quote
+        bool closed = false;
+        while (i < content.size()) {
+            char current = content[i];
+            if (current == '\\' && i + 1 < content.size()) {
+                // Skip escaped character.
+                i += 2;
+                continue;
+            }
+            if (current == '"') {
+                if (i + 1 < content.size() && content[i + 1] == '"') {
+                    // SMT-LIB encodes a quote inside a string as "".
+                    i += 2;
+                    continue;
+                }
+                ++i;  // include the closing quote
+                closed = true;
+                break;
+            }
+            ++i;
         }
-        result.push_back(c);
+
+        if (!closed) {
+            // Unterminated literal, append the remainder as-is.
+            result.append(content.substr(start));
+            break;
+        }
+
+        std::string literal = content.substr(start, i - start);
+        result.append(Parser::normalizeStringLiteral(literal));
     }
 
     return result;
@@ -205,7 +232,10 @@ bool Parser::containsUnsupportedSyntax(const std::string& content, std::string& 
     const std::vector<std::pair<std::string, std::string>> patterns = {
         {"(forall", "quantifier"},
         {"(exists", "quantifier"},
-        {"(let", "let-binding"}
+        {"(let", "let-binding"},
+        {"(seq.", "sequence feature"},
+        {"(seq ", "sequence feature"},
+        {" seq.", "sequence feature"}
     };
 
     for (const auto& [token, description] : patterns) {

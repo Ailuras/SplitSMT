@@ -132,7 +132,7 @@ std::string buildFallbackFormula(const std::string& raw) {
     std::string formula = ensureFallbackLogic(raw);
     formula = rewriteSplitFunctions(formula);
     formula = injectFallbackDefinitions(formula);
-    return strp::Parser::postProcessSMTLIB(formula);
+    return formula;
 }
 
 std::string solverName(strp::SolverType type) {
@@ -845,6 +845,7 @@ void Context::updateSplitNodeWithVar() {
         const std::string& varName = equality.first;
         const std::string& nodeStr = equality.second;
         std::string assertion = "(= " + varName + " " + nodeStr + ")";
+        assertion = Parser::postProcessSMTLIB(assertion);
         parser.addAssertion(assertion);
     }
 }
