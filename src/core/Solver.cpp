@@ -13,6 +13,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <string>
+#include <string_view>
 #include <vector>
 
 #include <sys/wait.h>
@@ -85,6 +86,12 @@ std::string ExternalSolver::createTempFile(const std::string& content) const {
 }
 
 void ExternalSolver::deleteTempFile(const std::string& filename) const {
+    const char* keepEnv = std::getenv("STRP_KEEP_TEMP_SMT");
+    if (keepEnv && std::string_view(keepEnv) == "1") {
+        DEBUG("Skipping deletion of temporary SMT file due to STRP_KEEP_TEMP_SMT=1: ", filename);
+        return;
+    }
+
     if (std::remove(filename.c_str()) != 0) {
         WARN("Failed to delete temporary file: ", filename);
     } else {

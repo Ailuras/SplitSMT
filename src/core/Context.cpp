@@ -25,10 +25,12 @@ bool Context::parseFile(const std::string& filename) {
     
     if (!parser.parseFile(filename, decomposition)) {
         ERROR("Failed to parse file: ", filename);
+        currentFilename.clear();
         return false;
     }
     updateTasks(filename);
     updateDivisions();
+    currentFilename = filename;
     return true;
 }
 
@@ -726,6 +728,15 @@ std::unordered_set<SMTParser::NodePtr> Context::getAtomsForSplitNode(const SMTPa
 std::string Context::getFormula() {
     DEBUG("Getting formula");
     return parser.getMergedSMTLIB2(decomposition);
+}
+
+bool Context::reloadCurrentFile() {
+    if (currentFilename.empty()) {
+        ERROR("No previously loaded SMT-LIB file to reload");
+        return false;
+    }
+    INFO("Reloading original SMT-LIB file: ", currentFilename);
+    return parseFile(currentFilename);
 }
 
 } // namespace strp

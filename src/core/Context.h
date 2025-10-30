@@ -63,6 +63,9 @@ public:
     Parser& getParser() { return parser; }
     const Parser& getParser() const { return parser; }
 
+    bool reloadCurrentFile();
+    const std::string& getCurrentFilename() const { return currentFilename; }
+
 private:
     Context();
     ~Context() = default;
@@ -83,6 +86,7 @@ private:
     
     utils::Logger& logger = utils::Logger::getInstance();
     Parser& parser = Parser::getInstance();
+    std::string currentFilename;
 };
 
 } // namespace strp

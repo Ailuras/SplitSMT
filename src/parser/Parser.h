@@ -38,6 +38,7 @@ public:
     static TaskType parseTaskCommand(const std::string& command);
     std::set<TaskType> getTask(const std::string& filename) const;
     std::string getString(const SMTParser::NodePtr& node);
+    void resetParser();
 
     // for decomposition
     bool need_decomposition(const std::string& filename);

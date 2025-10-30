@@ -17,21 +17,34 @@ Parser& Parser::getInstance() {
 
 Parser::Parser() {}
 
+void Parser::resetParser() {
+    SMTParser = SMTParser::Parser();
+    needDecomposition = false;
+}
+
 bool Parser::parseFile(const std::string& filename, Decomposition& decomposition) {
     LOG1("Starting to parse file: ", filename);
     
-    std::string smt_content;
-    if (need_decomposition(filename)) {
+    decomposition = Decomposition{};
+    resetParser();
+
+    bool requiresDecomposition = need_decomposition(filename);
+    needDecomposition = requiresDecomposition;
+
+    if (requiresDecomposition) {
         LOG2("File requires decomposition, processing with split logic");
         decomposition = getDecomposition(filename);
         LOG3("Decomposition completed:");
         LOG3("  - Split constraints: ", decomposition.splitConstraints.size(), " items");
         LOG3("  - Other constraints: ", decomposition.otherConstraints.size(), " items");
         LOG3("  - Variables: ", decomposition.variables.size());
-        needDecomposition = true;
     } else {
         LOG2("File does not require decomposition, reading directly");
         std::ifstream file(filename);
+        if (!file.is_open()) {
+            ERROR("Failed to open file: ", filename);
+            return false;
+        }
         std::stringstream buffer;
         buffer << file.rdbuf();
         decomposition.splitSMTLIB2 = buffer.str();

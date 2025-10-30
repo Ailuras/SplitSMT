@@ -1,8 +1,8 @@
 ===========================================================
 FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/5751.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 16:06:18
-END: 2025-10-29 16:06:48
-DURATION_SEC: 30.058
+START: 2025-10-29 21:42:02
+END: 2025-10-29 21:42:33
+DURATION_SEC: 31.038
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -10,9 +10,9 @@ unknown
 
 ===========================================================
 FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/5965_rws_openai.smt2
-START: 2025-10-29 16:06:48
-END: 2025-10-29 16:07:18
-DURATION_SEC: 30.078
+START: 2025-10-29 21:42:33
+END: 2025-10-29 21:43:03
+DURATION_SEC: 30.048
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -20,19 +20,24 @@ unknown
 
 ===========================================================
 FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7413_rws_openai.smt2
-START: 2025-10-29 16:07:18
-END: 2025-10-29 16:07:48
-DURATION_SEC: 30.091
+START: 2025-10-29 21:43:03
+END: 2025-10-29 21:43:08
+DURATION_SEC: 5.191
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
+ASSERTION VIOLATION
+File: /Users/macbookpro/WorkSpace/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
+Line: 905
+solution.length_sensitive_vars.contains(output_var)
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
 unknown
 
 ===========================================================
 FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7758_rws_openai.smt2
-START: 2025-10-29 16:07:48
-END: 2025-10-29 16:08:18
-DURATION_SEC: 30.041
+START: 2025-10-29 21:43:08
+END: 2025-10-29 21:43:38
+DURATION_SEC: 30.039
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -40,11 +45,11 @@ unknown
 
 ===========================================================
 FILE: scripts/check/benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7790.corecstrs.readable_rws_openai.smt2
-START: 2025-10-29 16:08:18
-END: 2025-10-29 16:08:18
-DURATION_SEC: 0.017
+START: 2025-10-29 21:43:38
+END: 2025-10-29 21:43:38
+DURATION_SEC: 0.055
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-error: Unknown or unexptected symbol "i" in line 1.
+unsat
 
