@@ -1,100 +1,52 @@
 ===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/6605_rws_deepseek.smt2
-START: 2025-10-30 13:49:57
-END: 2025-10-30 13:49:57
-DURATION_SEC: 0.742
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/6640_rws_deepseek.smt2
-START: 2025-10-30 13:49:57
-END: 2025-10-30 13:50:28
-DURATION_SEC: 30.316
+FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/30902.corecstrs.readable_rws_openai.smt2
+START: 2025-10-30 14:46:48
+END: 2025-10-30 14:46:49
+DURATION_SEC: 0.536
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 
 ===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/6a7eca6a2b5eca14a3ff82c751b52b8775cc7ce1db96e62b4e49f9f6_rws_deepseek.smt2
-START: 2025-10-30 13:50:28
-END: 2025-10-30 13:50:28
-DURATION_SEC: 0.319
+FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/31165.corecstrs.readable_rws_openai.smt2
+START: 2025-10-30 14:46:49
+END: 2025-10-30 14:47:19
+DURATION_SEC: 30.232
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/3184_rws_openai.smt2
+START: 2025-10-30 14:47:19
+END: 2025-10-30 14:47:20
+DURATION_SEC: 0.738
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+timeout: the monitored command dumped core
+/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 2327534 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/3273_rws_openai.smt2
+START: 2025-10-30 14:47:20
+END: 2025-10-30 14:47:50
+DURATION_SEC: 30.206
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/3345_rws_openai.smt2
+START: 2025-10-30 14:47:50
+END: 2025-10-30 14:47:50
+DURATION_SEC: 0.118
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7232_rws_deepseek.smt2
-START: 2025-10-30 13:50:28
-END: 2025-10-30 13:50:58
-DURATION_SEC: 30.201
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7413_rws_deepseek.smt2
-START: 2025-10-30 13:50:58
-END: 2025-10-30 13:50:59
-DURATION_SEC: 0.328
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7562_rws_deepseek.smt2
-START: 2025-10-30 13:50:59
-END: 2025-10-30 13:51:29
-DURATION_SEC: 30.077
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7758_rws_deepseek.smt2
-START: 2025-10-30 13:51:29
-END: 2025-10-30 13:51:29
-DURATION_SEC: 0.109
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7790.corecstrs.readable_rws_deepseek.smt2
-START: 2025-10-30 13:51:29
-END: 2025-10-30 13:51:59
-DURATION_SEC: 30.083
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3_rws_deepseek.smt2
-START: 2025-10-30 13:51:59
-END: 2025-10-30 13:52:29
-DURATION_SEC: 30.127
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/7845.corecstrs.readable_rws_deepseek.smt2
-START: 2025-10-30 13:52:29
-END: 2025-10-30 13:52:59
-DURATION_SEC: 30.121
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
 

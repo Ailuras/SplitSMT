@@ -1,0 +1,8 @@
+(declare-fun split_at_re (String RegLan Int) String)
+(declare-fun split_rest_re (String RegLan Int) String)
+(declare-fun num_splits_re (String RegLan) Int)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-const -1 Int)
+(assert (= -1 (- 1)))

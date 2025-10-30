@@ -1,0 +1,52 @@
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/2774.corecstrs.readable_sfc_claude.smt2
+START: 2025-10-30 14:47:25
+END: 2025-10-30 14:47:26
+DURATION_SEC: 0.965
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+timeout: the monitored command dumped core
+/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 2331028 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/2795_sfc_claude.smt2
+START: 2025-10-30 14:47:26
+END: 2025-10-30 14:47:26
+DURATION_SEC: 0.160
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/2832_sfc_claude.smt2
+START: 2025-10-30 14:47:26
+END: 2025-10-30 14:47:27
+DURATION_SEC: 0.240
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/28371.corecstrs.readable_sfc_claude.smt2
+START: 2025-10-30 14:47:27
+END: 2025-10-30 14:47:27
+DURATION_SEC: 0.107
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/29866.corecstrs.readable_sfc_claude.smt2
+START: 2025-10-30 14:47:27
+END: 2025-10-30 14:47:27
+DURATION_SEC: 0.111
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
