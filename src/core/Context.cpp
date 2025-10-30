@@ -406,6 +406,9 @@ void Context::updateDivisions() {
                 }
                 
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 if (!hasDivision(divided, delimiter)) {
                     addDivision(std::make_unique<ConstDivision>(divided, delimiter));
                     std::string key = Division::generateKey(divided, delimiter);
@@ -433,6 +436,9 @@ void Context::updateDivisions() {
                 }
                 
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 int index = parseInteger(parser.getString(arg3));
                 
                 if (!hasDivision(divided, delimiter)) {
@@ -473,6 +479,9 @@ void Context::updateDivisions() {
                     variable = nodeToVar[arg1];
                 }
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 int index = parseInteger(parser.getString(arg3));
                 
                 Division* division = getDivision(variable, delimiter);
@@ -514,6 +523,9 @@ void Context::updateDivisions() {
                     variable = nodeToVar[arg1];
                 }
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 int index = parseInteger(parser.getString(arg3));
                 
                 Division* division = getDivision(variable, delimiter);
@@ -550,6 +562,9 @@ void Context::updateDivisions() {
                 }
                 
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 
                 if (!hasDivision(divided, delimiter)) {
                     addDivision(std::make_unique<ConstDivision>(divided, delimiter));
@@ -588,6 +603,9 @@ void Context::updateDivisions() {
                     variable = nodeToVar[arg1];
                 }
                 std::string delimiter = parser.getString(node->getChild(1));
+                if (isDelimiterStringType(delimiter)) {
+                    delimiter = Parser::normalizeStringLiteral(delimiter);
+                }
                 Division* division = getDivision(variable, delimiter);
                 
                 if (!division) {

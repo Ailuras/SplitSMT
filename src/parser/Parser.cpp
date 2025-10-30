@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <filesystem>
 #include <queue>
+#include <iomanip>
+#include <cstdlib>
 
 namespace strp {
 
@@ -20,6 +22,174 @@ Parser::Parser() {}
 void Parser::resetParser() {
     SMTParser = SMTParser::Parser();
     needDecomposition = false;
+}
+
+std::string Parser::decodeStringLiteral(const std::string& literal) {
+    if (literal.size() < 2 || literal.front() != '"' || literal.back() != '"') {
+        return literal;
+    }
+
+    std::string inner = literal.substr(1, literal.size() - 2);
+    std::string result;
+    result.reserve(inner.size());
+
+    for (size_t i = 0; i < inner.size(); ++i) {
+        char c = inner[i];
+        if (c == '"') {
+            if (i + 1 < inner.size() && inner[i + 1] == '"') {
+                result.push_back('"');
+                ++i;
+            } else {
+                result.push_back('"');
+            }
+        } else if (c == '\\') {
+            if (i + 1 < inner.size()) {
+                char next = inner[++i];
+                switch (next) {
+                    case '\\':
+                        result.push_back('\\');
+                        break;
+                    case '"':
+                        result.push_back('"');
+                        break;
+                    case 'n':
+                        result.push_back('\n');
+                        break;
+                    case 'r':
+                        result.push_back('\r');
+                        break;
+                    case 't':
+                        result.push_back('\t');
+                        break;
+                    case 'u': {
+                        std::string hex;
+                        if (i + 1 < inner.size() && inner[i + 1] == '{') {
+                            size_t end = inner.find('}', i + 2);
+                            if (end != std::string::npos) {
+                                hex = inner.substr(i + 2, end - (i + 2));
+                                i = end;
+                            }
+                        } else if (i + 4 < inner.size()) {
+                            hex = inner.substr(i + 1, 4);
+                            i += 4;
+                        }
+                        if (!hex.empty()) {
+                            char32_t code = static_cast<char32_t>(std::strtoul(hex.c_str(), nullptr, 16));
+                            if (code <= 0x7F) {
+                                result.push_back(static_cast<char>(code));
+                            } else if (code <= 0x7FF) {
+                                result.push_back(static_cast<char>(0xC0 | ((code >> 6) & 0x1F)));
+                                result.push_back(static_cast<char>(0x80 | (code & 0x3F)));
+                            } else if (code <= 0xFFFF) {
+                                result.push_back(static_cast<char>(0xE0 | ((code >> 12) & 0x0F)));
+                                result.push_back(static_cast<char>(0x80 | ((code >> 6) & 0x3F)));
+                                result.push_back(static_cast<char>(0x80 | (code & 0x3F)));
+                            } else {
+                                result.push_back(static_cast<char>(0xF0 | ((code >> 18) & 0x07)));
+                                result.push_back(static_cast<char>(0x80 | ((code >> 12) & 0x3F)));
+                                result.push_back(static_cast<char>(0x80 | ((code >> 6) & 0x3F)));
+                                result.push_back(static_cast<char>(0x80 | (code & 0x3F)));
+                            }
+                        }
+                        break;
+                    }
+                    default:
+                        result.push_back(next);
+                        break;
+                }
+            } else {
+                result.push_back('\\');
+            }
+        } else {
+            result.push_back(c);
+        }
+    }
+
+    return result;
+}
+
+std::string Parser::encodeStringLiteral(const std::string& value) {
+    std::ostringstream oss;
+    oss << '"';
+    for (unsigned char c : value) {
+        switch (c) {
+            case '"':
+                oss << "\"\"";
+                break;
+            case '\\':
+                oss << "\\\\";
+                break;
+            case '\n':
+                oss << "\\n";
+                break;
+            case '\r':
+                oss << "\\r";
+                break;
+            case '\t':
+                oss << "\\t";
+                break;
+            default:
+                if (c < 0x20 || c == 0x7F) {
+                    oss << "\\u" << std::uppercase << std::setw(4) << std::setfill('0')
+                        << std::hex << static_cast<int>(c)
+                        << std::nouppercase << std::dec;
+                } else {
+                    oss << static_cast<char>(c);
+                }
+                break;
+        }
+    }
+    oss << '"';
+    return oss.str();
+}
+
+std::string Parser::normalizeStringLiteral(const std::string& literal) {
+    if (literal.empty()) {
+        return literal;
+    }
+
+    if (literal.front() == '"' && literal.back() == '"') {
+        return encodeStringLiteral(decodeStringLiteral(literal));
+    }
+
+    if (literal.front() == '\\') {
+        std::string decoded;
+        decoded.reserve(literal.size());
+        for (size_t i = 0; i < literal.size(); ++i) {
+            char c = literal[i];
+            if (c == '\\' && i + 1 < literal.size()) {
+                decoded.push_back(literal[++i]);
+            } else {
+                decoded.push_back(c);
+            }
+        }
+        return encodeStringLiteral(decoded);
+    }
+
+    return literal;
+}
+
+std::string Parser::postProcessSMTLIB(const std::string& content) {
+    std::string result;
+    result.reserve(content.size());
+    bool inString = false;
+
+    for (size_t i = 0; i < content.size(); ++i) {
+        char c = content[i];
+        if (inString && c == '\\' && i + 1 < content.size() && content[i + 1] == '"') {
+            result.append("\"\"");
+            ++i;
+            continue;
+        }
+        if (c == '"') {
+            inString = !inString;
+            result.push_back(c);
+            continue;
+        }
+        result.push_back(c);
+    }
+
+    return result;
 }
 
 bool Parser::parseFile(const std::string& filename, Decomposition& decomposition) {
@@ -534,9 +704,11 @@ std::string Parser::getMergedSMTLIB2(const Decomposition& decomposition) {
         result << constraint << std::endl;
     }
     
+    std::string merged = result.str();
+    std::string processed = postProcessSMTLIB(merged);
     LOG2("Merged SMTLIB2 generation completed, total constraints: ", mergedConstraints.size());
-    LOG4(result.str());
-    return result.str();
+    LOG4(processed);
+    return processed;
 }
 
 TaskType Parser::parseTaskCommand(const std::string& command) {
@@ -651,7 +823,7 @@ std::string Parser::getString(const SMTParser::NodePtr& node) {
 
 std::string Parser::getSMTLIB2(bool from_parser) {
     if (from_parser) {
-        return SMTParser.dumpSMT2();
+        return postProcessSMTLIB(SMTParser.dumpSMT2());
     } else {
         std::stringstream ss;
         ss << "(set-logic ALL)" << std::endl;
@@ -666,7 +838,7 @@ std::string Parser::getSMTLIB2(bool from_parser) {
             ss << "(assert " << getString(assertion) << ")" << std::endl;
         }
         ss << "(check-sat)" << std::endl;
-        return ss.str();
+        return postProcessSMTLIB(ss.str());
     }
 }
 

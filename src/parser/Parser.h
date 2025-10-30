@@ -39,6 +39,10 @@ public:
     std::set<TaskType> getTask(const std::string& filename) const;
     std::string getString(const SMTParser::NodePtr& node);
     void resetParser();
+    static std::string decodeStringLiteral(const std::string& literal);
+    static std::string encodeStringLiteral(const std::string& value);
+    static std::string normalizeStringLiteral(const std::string& literal);
+    static std::string postProcessSMTLIB(const std::string& content);
 
     // for decomposition
     bool need_decomposition(const std::string& filename);

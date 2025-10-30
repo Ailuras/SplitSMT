@@ -87,6 +87,13 @@ bool hasUnsupportedScopeNode(const SMTParser::NodePtr& node) {
     }
     return false;
 }
+
+std::string normalizeDelimiterLiteral(const std::string& literal) {
+    if (!literal.empty() && literal.front() == '"') {
+        return strp::Parser::normalizeStringLiteral(literal);
+    }
+    return literal;
+}
 } // namespace
 
 namespace strp {
@@ -352,7 +359,7 @@ void SplitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTPa
                         str = str.substr(1, str.size() - 2);
                     }
                     
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     
                     Division* division = ctx.getDivision(str, delimiter);
                     if (division && division->isConstType()) {
@@ -401,7 +408,7 @@ void SplitSolver::replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTP
                         str = str.substr(1, str.size() - 2);
                     }
                     
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     
                     int index = parseInteger(arg3->toString());
                     Division* division = ctx.getDivision(str, delimiter);
@@ -458,7 +465,7 @@ void SplitSolver::replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTP
                     if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
                         str = str.substr(1, str.size() - 2);
                     }
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     
                     Division* division = ctx.getDivision(str, delimiter);
                     int numSplits = 0;
@@ -510,7 +517,7 @@ void SplitSolver::replaceSplitAtVarNodes(Context& ctx, const std::vector<SMTPars
                 
                 if (arg1->isVar() && arg3->isConst()) {
                     std::string variable = arg1->toString();
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     DEBUG("[replaceSplitAtVarNodes] Variable: '", variable, "'");
                     DEBUG("[replaceSplitAtVarNodes] Delimiter regex: ", delimiter);
                     int index = parseInteger(arg3->toString());
@@ -573,7 +580,7 @@ void SplitSolver::replaceSplitEndVarNodes(Context& ctx, const std::vector<SMTPar
                 
                 if (arg1->isVar() && arg3->isConst()) {
                     std::string variable = arg1->toString();
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     int index = parseInteger(arg3->toString());
                     
                     Division* division = ctx.getDivision(variable, delimiter);
@@ -632,7 +639,7 @@ void SplitSolver::replaceNumSplitVarNodes(Context& ctx, const std::vector<SMTPar
                 
                 if (arg1->isVar() && arg2->isConst()) {
                     std::string variable = arg1->toString();
-                    std::string delimiter = ctx.getParser().getString(node->getChild(1));
+                    std::string delimiter = normalizeDelimiterLiteral(ctx.getParser().getString(node->getChild(1)));
                     
                     Division* division = ctx.getDivision(variable, delimiter);
                     if (division && division->isVarType() && division->isNumSplitsUsed()) {
