@@ -1,11 +1,9 @@
 #include "Split.h"
 #include "utils/Logger.h"
 #include "Context.h"
-#include "utils/Config.h"
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
-#include <filesystem>
 #include <chrono>
 #include <unordered_map>
 #include <iterator>
@@ -13,9 +11,6 @@
 #include <algorithm>
 #include <functional>
 #include <exception>
-#include <cctype>
-#include <string_view>
-#include <utility>
 
 // Internal delimiter used for splitting operations
 #define INTERNAL_DELIMITER "\"#\""
@@ -65,29 +60,6 @@ void dumpSMTLIB2(const SMTParser::NodePtr& node, std::stringstream& ss) {
 }
 
 namespace {
-bool hasUnsupportedScopeNode(const SMTParser::NodePtr& node) {
-    if (!node) {
-        return false;
-    }
-
-    using SMTParser::NODE_KIND;
-    auto kind = node->getKind();
-    if (kind == NODE_KIND::NT_FORALL ||
-        kind == NODE_KIND::NT_EXISTS ||
-        kind == NODE_KIND::NT_LET ||
-        kind == NODE_KIND::NT_LET_CHAIN ||
-        kind == NODE_KIND::NT_LET_BIND_VAR_LIST) {
-        return true;
-    }
-
-    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
-        if (hasUnsupportedScopeNode(node->getChild(i))) {
-            return true;
-        }
-    }
-    return false;
-}
-
 std::string normalizeDelimiterLiteral(const std::string& literal) {
     if (!literal.empty() && literal.front() == '"') {
         return strp::Parser::normalizeStringLiteral(literal);
@@ -156,188 +128,6 @@ std::string SplitSolver::getUnsatCore() {
         return solver->getUnsatCore();
     }
     return "";
-}
-
-bool SplitSolver::containsUnsupportedScopes(Context& ctx) {
-    auto assertions = ctx.getParser().getAssertions();
-    for (const auto& assertion : assertions) {
-        if (hasUnsupportedScopeNode(assertion)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-const std::string& SplitSolver::getFallbackDefinitions() const {
-    static std::string cachedDefinitions;
-    static bool loaded = false;
-
-    if (!loaded) {
-        loaded = true;
-        try {
-            auto path = config::projectRoot() / "src" / "utils" / "RA.txt";
-            std::ifstream file(path);
-            if (!file.is_open()) {
-                ERROR("Failed to open fallback definition file: ", path.string());
-            } else {
-                std::stringstream buffer;
-                buffer << file.rdbuf();
-                cachedDefinitions = buffer.str();
-                DEBUG("Loaded fallback split definitions from ", path.string());
-            }
-        } catch (const std::exception& e) {
-            ERROR("Error loading fallback definition file: ", e.what());
-        }
-    }
-
-    return cachedDefinitions;
-}
-
-std::string SplitSolver::injectFallbackDefinitions(const std::string& formula) const {
-    const std::string& definitions = getFallbackDefinitions();
-    if (definitions.empty()) {
-        WARN("Fallback definitions are empty; returning original formula");
-        return formula;
-    }
-
-    if (formula.find("(define-fun split_at ") != std::string::npos ||
-        formula.find("(define-fun split_rest ") != std::string::npos ||
-        formula.find("(define-fun split_at_re ") != std::string::npos ||
-        formula.find("(define-fun split_rest_re ") != std::string::npos) {
-        return formula;
-    }
-
-    auto isInsertionLine = [](std::string_view line) {
-        while (!line.empty() && std::isspace(static_cast<unsigned char>(line.front()))) {
-            line.remove_prefix(1);
-        }
-        if (line.empty()) {
-            return false;
-        }
-        return line.rfind("(declare", 0) == 0 ||
-               line.rfind("(define", 0) == 0 ||
-               line.rfind("(assert", 0) == 0;
-    };
-
-    size_t insertPos = formula.size();
-    size_t pos = 0;
-    while (pos < formula.size()) {
-        size_t lineEnd = formula.find('\n', pos);
-        size_t nextPos = (lineEnd == std::string::npos) ? formula.size() : lineEnd + 1;
-        std::string_view line(formula.c_str() + pos,
-                              (lineEnd == std::string::npos ? formula.size() : lineEnd) - pos);
-        if (isInsertionLine(line)) {
-            insertPos = pos;
-            break;
-        }
-        pos = nextPos;
-    }
-
-    std::string result;
-    std::string definitionsWithNewline = definitions;
-    if (!definitionsWithNewline.empty() && definitionsWithNewline.back() != '\n') {
-        definitionsWithNewline.push_back('\n');
-    }
-
-    result.reserve(formula.size() + definitionsWithNewline.size() + 2);
-    result.append(formula.substr(0, insertPos));
-    if (!result.empty() && result.back() != '\n') {
-        result.push_back('\n');
-    }
-    result.append(definitionsWithNewline);
-    if (insertPos < formula.size() && result.back() != '\n') {
-        result.push_back('\n');
-    }
-    result.append(formula.substr(insertPos));
-    return result;
-}
-
-std::string SplitSolver::buildFormulaForSolver() const {
-    std::string formula = context.getFormula();
-    if (fallbackActive) {
-        formula = ensureFallbackLogic(formula);
-        formula = rewriteFallbackFunctionCalls(formula);
-        formula = injectFallbackDefinitions(formula);
-    }
-    return formula;
-}
-
-std::string SplitSolver::ensureFallbackLogic(const std::string& formula) const {
-    std::istringstream input(formula);
-    std::ostringstream body;
-    std::string line;
-    bool firstLine = true;
-
-    while (std::getline(input, line)) {
-        std::string trimmed = line;
-        trimmed.erase(0, trimmed.find_first_not_of(" \t"));
-        if (trimmed.rfind("(set-logic", 0) == 0) {
-            continue;
-        }
-        if (!firstLine) {
-            body << '\n';
-        }
-        body << line;
-        firstLine = false;
-    }
-
-    std::ostringstream result;
-    result << "(set-logic ALL)";
-    if (!body.str().empty()) {
-        result << '\n' << body.str();
-    }
-    return result.str();
-}
-
-std::string SplitSolver::rewriteFallbackFunctionCalls(const std::string& formula) const {
-    std::string result = formula;
-    const std::pair<std::string_view, std::string_view> replacements[] = {
-        {"(str.split_at", "(split_at"},
-        {"(str.split_rest", "(split_rest"},
-        {"(str.num_splits", "(num_splits"},
-        {"(str.split_at_re", "(split_at_re"},
-        {"(str.split_rest_re", "(split_rest_re"},
-        {"(str.num_splits_re", "(num_splits_re"}
-    };
-
-    for (const auto& [from, to] : replacements) {
-        size_t pos = 0;
-        while ((pos = result.find(from, pos)) != std::string::npos) {
-            result.replace(pos, from.size(), to);
-            pos += to.size();
-        }
-    }
-    return result;
-}
-
-bool SplitSolver::prepareFallback() {
-    if (fallbackAttempted) {
-        return fallbackReady;
-    }
-
-    fallbackAttempted = true;
-    INFO("Activating fallback split handling pipeline");
-    resetSolver();
-    fallbackReady = context.reloadCurrentFile();
-    fallbackActive = fallbackReady;
-    if (!fallbackReady) {
-        ERROR("Failed to reload original SMT-LIB input for fallback mode");
-    } else {
-        DEBUG("Fallback SMT-LIB reloaded; alternative definitions will be injected");
-        if (currentSolverType == SolverType::Z3_NOODLER && !solverSwitchedForFallback) {
-            auto z3Script = config::z3ScriptPath();
-            auto z3Binary = z3Script.parent_path() / "bin" / "z3";
-            if (std::filesystem::exists(z3Binary)) {
-                INFO("Switching solver to plain Z3 for fallback handling");
-                setSolver(SolverType::Z3);
-                solverSwitchedForFallback = true;
-            } else {
-                WARN("Fallback detected but plain Z3 binary not found at ", z3Binary.string(),
-                     "; proceeding with current solver, recursive definitions may yield warnings");
-            }
-        }
-    }
-    return fallbackReady;
 }
 
 void SplitSolver::replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes) {
@@ -1140,52 +930,31 @@ std::string SplitSolver::filterModel(const std::string& rawModel) {
     return filteredModel.str();
 }
 
-bool SplitSolver::rewriteFormula(Context& ctx) {
-    if (fallbackActive) {
-        DEBUG("Fallback mode already active; skipping rewrite pipeline");
-        return false;
-    }
+void SplitSolver::rewriteFormula(Context& ctx) {
+    LOG5("\n", ctx.getParser().getSMTLIB2(true));
+    resetSolver();
 
-    if (containsUnsupportedScopes(ctx)) {
-        INFO("Detected unsupported quantifiers or LET constructs; switching to fallback mode");
-        prepareFallback();
-        return false;
-    }
+    ctx.updateDivisions();
+    addAuxiliaryNodes(ctx);
+    addAuxiliaryLemmas(ctx);
 
-    try {
-        LOG5("\n", ctx.getParser().getSMTLIB2(true));
-        resetSolver();
-        
-        ctx.updateDivisions();
-        addAuxiliaryNodes(ctx);
-        addAuxiliaryLemmas(ctx);
-        
-        auto splitAtConstNodes = ctx.getSplitAtConstNodes();
-        replaceSplitAtConstNodes(ctx, splitAtConstNodes);
-        auto splitRestConstNodes = ctx.getSplitRestConstNodes();
-        replaceSplitEndConstNodes(ctx, splitRestConstNodes);
-        auto numSplitConstNodes = ctx.getNumSplitConstNodes();
-        replaceNumSplitConstNodes(ctx, numSplitConstNodes);
-        
-        auto splitAtVarNodes = ctx.getSplitAtVarNodes();
-        replaceSplitAtVarNodes(ctx, splitAtVarNodes);
-        auto splitRestVarNodes = ctx.getSplitRestVarNodes();
-        replaceSplitEndVarNodes(ctx, splitRestVarNodes);
-        auto numSplitVarNodes = ctx.getNumSplitVarNodes();
-        replaceNumSplitVarNodes(ctx, numSplitVarNodes);
-        
-        DEBUG("=== Final SMT-LIB after rewriting ===");
-        LOG5("\n", ctx.getParser().getSMTLIB2(true));
-        DEBUG("=== End of SMT-LIB ===");
-        return true;
-    } catch (const std::exception& e) {
-        ERROR("Rewrite pipeline failed: ", e.what());
-    } catch (...) {
-        ERROR("Rewrite pipeline failed due to an unknown error");
-    }
+    auto splitAtConstNodes = ctx.getSplitAtConstNodes();
+    replaceSplitAtConstNodes(ctx, splitAtConstNodes);
+    auto splitRestConstNodes = ctx.getSplitRestConstNodes();
+    replaceSplitEndConstNodes(ctx, splitRestConstNodes);
+    auto numSplitConstNodes = ctx.getNumSplitConstNodes();
+    replaceNumSplitConstNodes(ctx, numSplitConstNodes);
 
-    prepareFallback();
-    return false;
+    auto splitAtVarNodes = ctx.getSplitAtVarNodes();
+    replaceSplitAtVarNodes(ctx, splitAtVarNodes);
+    auto splitRestVarNodes = ctx.getSplitRestVarNodes();
+    replaceSplitEndVarNodes(ctx, splitRestVarNodes);
+    auto numSplitVarNodes = ctx.getNumSplitVarNodes();
+    replaceNumSplitVarNodes(ctx, numSplitVarNodes);
+
+    DEBUG("=== Final SMT-LIB after rewriting ===");
+    LOG5("\n", ctx.getParser().getSMTLIB2(true));
+    DEBUG("=== End of SMT-LIB ===");
 }
 
 SatResult SplitSolver::checkSat() {
@@ -1196,7 +965,7 @@ SatResult SplitSolver::checkSat() {
     DEBUG("Checking satisfiability...");
     auto start = std::chrono::high_resolution_clock::now();
     
-    std::string smtFormula = buildFormulaForSolver();
+    std::string smtFormula = context.getFormula();
     SatResult result = solver->checkSat(smtFormula);
     
     auto end = std::chrono::high_resolution_clock::now();
@@ -1221,26 +990,10 @@ SatResult SplitSolver::checkSat() {
 
 SatResult SplitSolver::solve() {
     INFO("Starting split solver");
-
-    fallbackAttempted = false;
-    fallbackReady = false;
-    fallbackActive = false;
-
-    bool rewriteSuccessful = rewriteFormula(context);
-    if (!rewriteSuccessful && !fallbackActive && !fallbackReady) {
-        ERROR("Failed to rewrite formula and fallback preparation was unsuccessful");
-        return SatResult::ERROR;
-    }
+    rewriteFormula(context);
 
     SatResult result = checkSat();
     
-    if (result == SatResult::ERROR && !fallbackActive) {
-        WARN("Initial solver invocation returned ERROR; attempting fallback pipeline");
-        if (prepareFallback()) {
-            result = checkSat();
-        }
-    }
-
     INFO("Final result: ", 
          result == SatResult::SAT ? "SAT" : 
          result == SatResult::UNSAT ? "UNSAT" : 

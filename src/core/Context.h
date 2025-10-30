@@ -9,6 +9,7 @@
 #include "dag.h"
 #include "utils/Logger.h"
 #include "parser/Parser.h"
+#include "Solver.h"
 
 namespace strp {
 
@@ -65,6 +66,9 @@ public:
 
     bool reloadCurrentFile();
     const std::string& getCurrentFilename() const { return currentFilename; }
+    bool isFallbackRequired() const { return fallbackRequired; }
+    const std::string& getFallbackReason() const { return fallbackReason; }
+    SatResult executeFallback(SolverType preferredSolverType);
 
 private:
     Context();
@@ -87,6 +91,11 @@ private:
     utils::Logger& logger = utils::Logger::getInstance();
     Parser& parser = Parser::getInstance();
     std::string currentFilename;
+    bool fallbackRequired = false;
+    std::string fallbackReason;
+    std::string fallbackRawInput;
+    bool fallbackFormulaPrepared = false;
+    std::string fallbackPreparedFormula;
 };
 
 } // namespace strp

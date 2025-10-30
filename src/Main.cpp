@@ -143,8 +143,30 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
+            if (context.isFallbackRequired()) {
+                INFO("Executing fallback pipeline for input: ", args.inputFile);
+                strp::SatResult result = context.executeFallback(args.solverType);
+                INFO("Final result: ",
+                     result == strp::SatResult::SAT ? "SAT" :
+                     result == strp::SatResult::UNSAT ? "UNSAT" :
+                     result == strp::SatResult::UNKNOWN ? "UNKNOWN" : "ERROR");
+
+                if (context.hasTask(strp::TaskType::CHECK_SAT)) {
+                    if (result == strp::SatResult::SAT) {
+                        std::cout << "sat" << std::endl;
+                    } else if (result == strp::SatResult::UNSAT) {
+                        std::cout << "unsat" << std::endl;
+                    } else {
+                        std::cout << "unknown" << std::endl;
+                    }
+                }
+
+                return result == strp::SatResult::ERROR ? 1 : 0;
+            }
+
             strp::SplitSolver solver(args.solverType);
-            solver.solve();
+            strp::SatResult result = solver.solve();
+            return result == strp::SatResult::ERROR ? 1 : 0;
         } else {
             return 1;
         }

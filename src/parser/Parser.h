@@ -43,6 +43,9 @@ public:
     static std::string encodeStringLiteral(const std::string& value);
     static std::string normalizeStringLiteral(const std::string& literal);
     static std::string postProcessSMTLIB(const std::string& content);
+    bool isFallbackRequired() const { return fallbackRequired; }
+    const std::string& getFallbackReason() const { return fallbackReason; }
+    const std::string& getRawContent() const { return rawContent; }
 
     // for decomposition
     bool need_decomposition(const std::string& filename);
@@ -73,6 +76,11 @@ private:
     Parser(Parser&&) = delete;
     Parser& operator=(Parser&&) = delete;
     bool needDecomposition = false;
+    bool fallbackRequired = false;
+    std::string fallbackReason;
+    std::string rawContent;
+
+    bool containsUnsupportedSyntax(const std::string& content, std::string& reason) const;
 };
 
 } // namespace strp 

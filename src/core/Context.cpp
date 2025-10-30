@@ -2,6 +2,7 @@
 #include "Context.h"
 #include "Structures.h"
 #include "Split.h"
+#include "utils/Config.h"
 #include <sstream>
 #include <fstream>
 #include <filesystem>
@@ -10,6 +11,163 @@
 #include <algorithm>
 #include <iterator>
 #include <unordered_set>
+
+namespace {
+const std::string& loadFallbackDefinitions() {
+    static std::string definitions;
+    static bool loaded = false;
+    if (!loaded) {
+        loaded = true;
+        try {
+            auto path = strp::config::projectRoot() / "src" / "utils" / "RA.txt";
+            std::ifstream file(path);
+            if (!file.is_open()) {
+                LOGGER.ERROR("Failed to open fallback definition file: ", path.string());
+            } else {
+                std::stringstream buffer;
+                buffer << file.rdbuf();
+                definitions = buffer.str();
+                LOGGER.DEBUG("Loaded fallback split definitions from ", path.string());
+            }
+        } catch (const std::exception& e) {
+            LOGGER.ERROR("Error loading fallback definition file: ", e.what());
+        }
+    }
+    return definitions;
+}
+
+std::string ensureFallbackLogic(const std::string& formula) {
+    std::istringstream input(formula);
+    std::ostringstream body;
+    std::string line;
+    bool firstLine = true;
+
+    while (std::getline(input, line)) {
+        std::string trimmed = line;
+        trimmed.erase(0, trimmed.find_first_not_of(" \t"));
+        if (trimmed.rfind("(set-logic", 0) == 0) {
+            continue;
+        }
+        if (!firstLine) {
+            body << '\n';
+        }
+        body << line;
+        firstLine = false;
+    }
+
+    std::ostringstream result;
+    result << "(set-logic ALL)";
+    if (!body.str().empty()) {
+        result << '\n' << body.str();
+    }
+    return result.str();
+}
+
+std::string rewriteSplitFunctions(const std::string& formula) {
+    std::string result = formula;
+    const std::vector<std::pair<std::string, std::string>> replacements = {
+        {"(str.split_at", "(split_at"},
+        {"(str.split_rest", "(split_rest"},
+        {"(str.num_splits", "(num_splits"},
+        {"(str.split_at_re", "(split_at_re"},
+        {"(str.split_rest_re", "(split_rest_re"},
+        {"(str.num_splits_re", "(num_splits_re"}
+    };
+
+    for (const auto& repl : replacements) {
+        size_t pos = 0;
+        while ((pos = result.find(repl.first, pos)) != std::string::npos) {
+            result.replace(pos, repl.first.size(), repl.second);
+            pos += repl.second.size();
+        }
+    }
+    return result;
+}
+
+std::string injectFallbackDefinitions(const std::string& formula) {
+    const std::string& definitions = loadFallbackDefinitions();
+    if (definitions.empty()) {
+        return formula;
+    }
+
+    if (formula.find("(define-fun split_at ") != std::string::npos) {
+        return formula;
+    }
+
+    size_t insertPos = formula.size();
+    size_t pos = 0;
+    while (pos < formula.size()) {
+        size_t lineEnd = formula.find('\n', pos);
+        size_t nextPos = (lineEnd == std::string::npos) ? formula.size() : lineEnd + 1;
+        std::string_view line(formula.c_str() + pos,
+                              (lineEnd == std::string::npos ? formula.size() : lineEnd) - pos);
+        std::string trimmed(line);
+        trimmed.erase(0, trimmed.find_first_not_of(" \t"));
+        if (!trimmed.empty() && (trimmed.rfind("(declare", 0) == 0 || trimmed.rfind("(define", 0) == 0 || trimmed.rfind("(assert", 0) == 0)) {
+            insertPos = pos;
+            break;
+        }
+        pos = nextPos;
+    }
+
+    std::string result;
+    std::string defs = definitions;
+    if (!defs.empty() && defs.back() != '\n') {
+        defs.push_back('\n');
+    }
+    result.reserve(formula.size() + defs.size() + 2);
+    result.append(formula.substr(0, insertPos));
+    if (!result.empty() && result.back() != '\n') {
+        result.push_back('\n');
+    }
+    result.append(defs);
+    if (insertPos < formula.size() && result.back() != '\n') {
+        result.push_back('\n');
+    }
+    result.append(formula.substr(insertPos));
+    return result;
+}
+
+std::string buildFallbackFormula(const std::string& raw) {
+    std::string formula = ensureFallbackLogic(raw);
+    formula = rewriteSplitFunctions(formula);
+    formula = injectFallbackDefinitions(formula);
+    return strp::Parser::postProcessSMTLIB(formula);
+}
+
+std::string solverName(strp::SolverType type) {
+    switch (type) {
+        case strp::SolverType::Z3: return "Z3";
+        case strp::SolverType::CVC5: return "CVC5";
+        case strp::SolverType::OSTRICH: return "Ostrich";
+        case strp::SolverType::Z3_NOODLER: return "Z3-Noodler";
+        default: return "Unknown";
+    }
+}
+
+bool solverExecutableExists(strp::SolverType type) {
+    using namespace strp::config;
+    std::filesystem::path script;
+    switch (type) {
+        case strp::SolverType::Z3:
+            script = projectRoot() / "solvers" / "z3" / "run.sh";
+            break;
+        case strp::SolverType::CVC5:
+            script = projectRoot() / "solvers" / "cvc5" / "run.sh";
+            break;
+        case strp::SolverType::OSTRICH:
+            script = projectRoot() / "solvers" / "ostrich" / "run.sh";
+            break;
+        case strp::SolverType::Z3_NOODLER:
+            script = projectRoot() / "solvers" / "z3-noodler" / "run.sh";
+            break;
+        default:
+            return false;
+    }
+    return std::filesystem::exists(script);
+}
+
+} // namespace
 
 namespace strp {
 
@@ -29,8 +187,18 @@ bool Context::parseFile(const std::string& filename) {
         return false;
     }
     updateTasks(filename);
-    updateDivisions();
     currentFilename = filename;
+
+    if (parser.isFallbackRequired()) {
+        fallbackRequired = true;
+        fallbackReason = parser.getFallbackReason();
+        fallbackRawInput = parser.getRawContent();
+        fallbackFormulaPrepared = false;
+        LOGGER.INFO("Switching to fallback processing: ", fallbackReason);
+        return true;
+    }
+
+    updateDivisions();
     return true;
 }
 
@@ -323,6 +491,11 @@ void Context::clear() {
     clearTasks();
     clearDivisions();
     clearSplitNodeToAtoms();
+    fallbackRequired = false;
+    fallbackReason.clear();
+    fallbackRawInput.clear();
+    fallbackFormulaPrepared = false;
+    fallbackPreparedFormula.clear();
 }
 
 std::string Context::getVarName(const SMTParser::NodePtr& node) {
@@ -746,6 +919,81 @@ std::unordered_set<SMTParser::NodePtr> Context::getAtomsForSplitNode(const SMTPa
 std::string Context::getFormula() {
     DEBUG("Getting formula");
     return parser.getMergedSMTLIB2(decomposition);
+}
+
+SatResult Context::executeFallback(SolverType preferredSolverType) {
+    if (!fallbackRequired) {
+        ERROR("Fallback requested but no fallback condition was detected");
+        return SatResult::ERROR;
+    }
+
+    if (!fallbackFormulaPrepared) {
+        if (fallbackRawInput.empty()) {
+            ERROR("Fallback raw input is empty; cannot proceed");
+            return SatResult::ERROR;
+        }
+        fallbackPreparedFormula = buildFallbackFormula(fallbackRawInput);
+        fallbackFormulaPrepared = true;
+    }
+
+    std::vector<SolverType> candidates;
+    auto addCandidate = [&](SolverType type) {
+        if (std::find(candidates.begin(), candidates.end(), type) == candidates.end()) {
+            candidates.push_back(type);
+        }
+    };
+
+    addCandidate(preferredSolverType);
+    if (preferredSolverType != SolverType::Z3) {
+        addCandidate(SolverType::Z3);
+    }
+    if (preferredSolverType != SolverType::Z3_NOODLER) {
+        addCandidate(SolverType::Z3_NOODLER);
+    }
+
+    DEBUG("Fallback solver candidates count: ", candidates.size());
+
+    for (SolverType type : candidates) {
+        if (!solverExecutableExists(type)) {
+            WARN("Solver script not found for ", solverName(type), "; skipping");
+            continue;
+        }
+
+        try {
+            INFO("Executing fallback via ", solverName(type));
+            ExternalSolver solver(type);
+            auto start = std::chrono::high_resolution_clock::now();
+            SatResult result = solver.checkSat(fallbackPreparedFormula);
+            auto end = std::chrono::high_resolution_clock::now();
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+            if (result == SatResult::ERROR) {
+                WARN("Fallback solver ", solverName(type), " returned ERROR (", duration.count(), "ms)");
+                continue;
+            }
+
+            switch (result) {
+                case SatResult::SAT:
+                    INFO("Fallback result: SAT (", duration.count(), "ms)");
+                    break;
+                case SatResult::UNSAT:
+                    INFO("Fallback result: UNSAT (", duration.count(), "ms)");
+                    break;
+                case SatResult::UNKNOWN:
+                    INFO("Fallback result: UNKNOWN (", duration.count(), "ms)");
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        } catch (const std::exception& e) {
+            WARN("Failed to run fallback solver ", solverName(type), ": ", e.what());
+        }
+    }
+
+    ERROR("All fallback solver candidates failed to execute");
+    return SatResult::ERROR;
 }
 
 bool Context::reloadCurrentFile() {

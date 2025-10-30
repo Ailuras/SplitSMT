@@ -26,7 +26,7 @@ public:
     std::string getUnsatCore();
     std::string filterModel(const std::string& rawModel);
 
-    bool rewriteFormula(Context& ctx);
+    void rewriteFormula(Context& ctx);
     void replaceSplitAtConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitAtConstNodes);
     void replaceSplitEndConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& splitEndConstNodes);
     void replaceNumSplitConstNodes(Context& ctx, const std::vector<SMTParser::NodePtr>& numSplitConstNodes);
@@ -48,17 +48,5 @@ private:
     SolverType currentSolverType;
     Context& context;
     std::vector<SMTParser::NodePtr> splitAtTerms;
-    bool fallbackAttempted = false;
-    bool fallbackReady = false;
-    bool fallbackActive = false;
-    bool solverSwitchedForFallback = false;
-
-    bool containsUnsupportedScopes(Context& ctx);
-    bool prepareFallback();
-    std::string buildFormulaForSolver() const;
-    std::string injectFallbackDefinitions(const std::string& formula) const;
-    const std::string& getFallbackDefinitions() const;
-    std::string ensureFallbackLogic(const std::string& formula) const;
-    std::string rewriteFallbackFunctionCalls(const std::string& formula) const;
 };
 } 

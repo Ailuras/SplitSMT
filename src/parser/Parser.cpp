@@ -22,6 +22,9 @@ Parser::Parser() {}
 void Parser::resetParser() {
     SMTParser = SMTParser::Parser();
     needDecomposition = false;
+    fallbackRequired = false;
+    fallbackReason.clear();
+    rawContent.clear();
 }
 
 std::string Parser::decodeStringLiteral(const std::string& literal) {
@@ -192,6 +195,29 @@ std::string Parser::postProcessSMTLIB(const std::string& content) {
     return result;
 }
 
+bool Parser::containsUnsupportedSyntax(const std::string& content, std::string& reason) const {
+    std::string lowered;
+    lowered.reserve(content.size());
+    for (char ch : content) {
+        lowered.push_back(static_cast<char>(std::tolower(static_cast<unsigned char>(ch))));
+    }
+
+    const std::vector<std::pair<std::string, std::string>> patterns = {
+        {"(forall", "quantifier"},
+        {"(exists", "quantifier"},
+        {"(let", "let-binding"}
+    };
+
+    for (const auto& [token, description] : patterns) {
+        if (lowered.find(token) != std::string::npos) {
+            reason = "Detected unsupported " + description + " construct";
+            return true;
+        }
+    }
+
+    return false;
+}
+
 bool Parser::parseFile(const std::string& filename, Decomposition& decomposition) {
     LOG1("Starting to parse file: ", filename);
     
@@ -221,21 +247,36 @@ bool Parser::parseFile(const std::string& filename, Decomposition& decomposition
         LOG3("Read ", decomposition.splitSMTLIB2.length(), " characters from file");
     }
     
+    rawContent = decomposition.splitSMTLIB2;
+
+    std::string fallbackDesc;
+    if (containsUnsupportedSyntax(rawContent, fallbackDesc)) {
+        fallbackRequired = true;
+        fallbackReason = fallbackDesc;
+        INFO("Input contains unsupported constructs (", fallbackReason, "); skipping rewrite pipeline");
+        return true;
+    }
+
     LOG2("Attempting to parse SMTLIB2 content with SMTParser");
     bool success = SMTParser.parseStr(decomposition.splitSMTLIB2);
     
-    if (success) {
-        INFO("Successfully parsed file: ", filename);
-        LOG2("Parse result details:");
-        LOG2("  - Total assertions: ", SMTParser.assertions.size());
-        LOG2("  - Total variables: ", SMTParser.getVariables().size());
-        LOG3("  - SMTLIB2 content length: ", decomposition.splitSMTLIB2.length());
-    } else {
+    if (!success) {
         ERROR("Failed to parse file: ", filename);
         LOG1("Parse failure details:");
         LOG1("  - SMTLIB2 content preview: ", decomposition.splitSMTLIB2.substr(0, 200), "...");
+        if (!fallbackRequired) {
+            fallbackRequired = true;
+            fallbackReason = "Internal SMT parser failed to read input";
+        }
+        INFO("Switching to fallback processing due to parser failure");
+        return true;
     }
-    
+
+    INFO("Successfully parsed file: ", filename);
+    LOG2("Parse result details:");
+    LOG2("  - Total assertions: ", SMTParser.assertions.size());
+    LOG2("  - Total variables: ", SMTParser.getVariables().size());
+    LOG3("  - SMTLIB2 content length: ", decomposition.splitSMTLIB2.length());
     DEBUG("Found ", SMTParser.assertions.size(), " assertions and ", SMTParser.getVariables().size(), " variables");
     return success;
 }
