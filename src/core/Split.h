@@ -21,6 +21,7 @@ public:
     void initializeSolver();
     void resetSolver();
     SatResult solve();
+    bool generateOnly(const std::string& outputFile);
     SatResult checkSat();
     std::string getModel();
     std::string getUnsatCore();

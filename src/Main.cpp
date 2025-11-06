@@ -8,13 +8,15 @@
 struct Args {
     std::string inputFile;
     std::string outputFile;
+    std::string genOutputFile;
     strp::utils::LogLevel logLevel;
     strp::SolverType solverType;
     bool showHelp;
+    bool genOnly;
 };
 
 void printUsage() {
-    std::cout << "Usage: strprocessor <input_file> [output_file] [-l <log_level>] [-s <solver>] [-h]" << std::endl;
+    std::cout << "Usage: strprocessor <input_file> [output_file] [-l <log_level>] [-s <solver>] [--gen <gen_output>] [-h]" << std::endl;
     std::cout << "  <input_file>      Input SMT2 file" << std::endl;
     std::cout << "  [output_file]     Output file (optional)" << std::endl;
     std::cout << "  -l, --level       Set logging level (default: 40, error level)" << std::endl;
@@ -24,15 +26,18 @@ void printUsage() {
     std::cout << "                      cvc5        - CVC5 solver" << std::endl;
     std::cout << "                      ostrich     - Ostrich solver" << std::endl;
     std::cout << "                      z3-noodler  - Z3-Noodler solver" << std::endl;
+    std::cout << "  --gen             Generate rewritten SMT2 file without solving" << std::endl;
     std::cout << "  -h, --help        Show this help message" << std::endl;
 }
 
 void parseArgs(int argc, char* argv[], Args& args) {
     args.inputFile = "";
     args.outputFile = "";
+    args.genOutputFile = "";
     args.logLevel = strp::utils::LogLevel::ERROR;
     args.solverType = strp::SolverType::Z3_NOODLER;
     args.showHelp = false;
+    args.genOnly = false;
     
     if (argc < 2) {
         args.showHelp = true;
@@ -80,6 +85,11 @@ void parseArgs(int argc, char* argv[], Args& args) {
                     args.solverType = strp::SolverType::Z3_NOODLER;
                 }
             }
+        } else if (arg == "--gen") {
+            args.genOnly = true;
+            if (i + 1 < argc) {
+                args.genOutputFile = argv[++i];
+            }
         } else if (args.inputFile.empty()) {
             args.inputFile = arg;
         } else if (args.outputFile.empty()) {
@@ -89,6 +99,11 @@ void parseArgs(int argc, char* argv[], Args& args) {
     
     if (args.inputFile.empty() && !args.showHelp) {
         std::cerr << "Error: Input file required" << std::endl;
+        args.showHelp = true;
+    }
+    
+    if (args.genOnly && args.genOutputFile.empty()) {
+        std::cerr << "Error: Output file required for --gen option" << std::endl;
         args.showHelp = true;
     }
 }
@@ -143,6 +158,16 @@ int main(int argc, char* argv[]) {
     try {
         auto& context = strp::Context::getInstance();
         if (parseInputFile(args.inputFile, context)) {
+            if (args.genOnly) {
+                if (context.isFallbackRequired()) {
+                    ERROR("Cannot generate output for fallback cases");
+                    return 1;
+                }
+                strp::SplitSolver solver(args.solverType);
+                bool success = solver.generateOnly(args.genOutputFile);
+                return success ? 0 : 1;
+            }
+            
             if (context.isFallbackRequired()) {
                 INFO("Executing fallback pipeline for input: ", args.inputFile);
                 strp::SatResult result = context.executeFallback(args.solverType);

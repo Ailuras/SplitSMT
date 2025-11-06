@@ -991,6 +991,20 @@ SatResult SplitSolver::checkSat() {
     return result;
 }
 
+bool SplitSolver::generateOnly(const std::string& outputFile) {
+    INFO("Starting formula generation without solving");
+    rewriteFormula(context);
+    std::string smtFormula = context.getFormula();
+    std::ofstream outFile(outputFile);
+    if (!outFile.is_open()) {
+        ERROR("Failed to open output file: ", outputFile);
+        return false;
+    }
+    outFile << smtFormula;
+    outFile.close();
+    INFO("Successfully generated SMT formula to: ", outputFile);
+    return true;
+}
 SatResult SplitSolver::solve() {
     INFO("Starting split solver");
     rewriteFormula(context);
