@@ -34,7 +34,24 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run cvc5 with the specified timeout and enable model generation
-# --preserve-status: preserve the exit status of the command
-# --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
-timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/cvc5" --produce-models "$SMT_FILE"
+if [ -z "$Z3_NOODLER_BIN" ]; then
+    Z3_NOODLER_BIN=~/WorkSpace/z3-noodler/build/z3
+fi
+
+if [ ! -x "$Z3_NOODLER_BIN" ]; then
+    echo "Error: z3-noodler binary not found or not executable at '$Z3_NOODLER_BIN'"
+    exit 1
+fi
+
+# Detect timeout command (prefer gtimeout for macOS, fallback to timeout)
+if command -v gtimeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="gtimeout"
+elif command -v timeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="timeout"
+else
+    echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
+    echo "  brew install coreutils" >&2
+    exit 1
+fi
+
+"$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"

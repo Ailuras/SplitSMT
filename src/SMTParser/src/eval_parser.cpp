@@ -425,8 +425,8 @@ namespace SMTParser{
         else if(expr->isFPIsInf()){
             return evaluateFpIsInf(expr, model, result);
         }
-        else if(expr->isFPIsNan()){
-            return evaluateFpIsNan(expr, model, result);
+        else if(expr->isFPIsNaN()){
+            return evaluateFpIsNaN(expr, model, result);
         }
         else if(expr->isFPIsNeg()){
             return evaluateFpIsNeg(expr, model, result);
@@ -560,7 +560,7 @@ namespace SMTParser{
         else if(expr->isRegComplement()){
             return evaluateRegComplement(expr, model, result);
         }
-        else if(expr->isFuncApply()){
+        else if(expr->isFuncApplication()){
             return evaluateApplyFun(expr, model, result);
         }
         else if(expr->isLet()){
@@ -1597,7 +1597,7 @@ namespace SMTParser{
 	}
     bool Parser::evaluateFpLe(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.le");
+		not_implemented_warning("fp.leq");
         result = expr;
         return false;
 	}
@@ -1609,7 +1609,7 @@ namespace SMTParser{
 	}
     bool Parser::evaluateFpGe(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.ge");
+		not_implemented_warning("fp.geq");
         result = expr;
         return false;
 	}
@@ -1627,25 +1627,25 @@ namespace SMTParser{
 	}
     bool Parser::evaluateFpToUbv(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.toUbv");
+		not_implemented_warning("fp.to_ubv");
         result = expr;
         return false;
 	}
     bool Parser::evaluateFpToSbv(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.toSbv");
+		not_implemented_warning("fp.to_sbv");
         result = expr;
         return false;
 	}
     bool Parser::evaluateFpToReal(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.toReal");
+		not_implemented_warning("fp.to_real");
         result = expr;
         return false;
 	}   
     bool Parser::evaluateToFp(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.toFp");
+		not_implemented_warning("to_fp");
         result = expr;
         return false;
 	}
@@ -1669,25 +1669,25 @@ namespace SMTParser{
 	}
     bool Parser::evaluateFpIsInf(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.isInf");
+		not_implemented_warning("fp.isInfinite");
         result = expr;
         return false;
 	}
-    bool Parser::evaluateFpIsNan(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
+    bool Parser::evaluateFpIsNaN(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.isNan");
+		not_implemented_warning("fp.isNaN");
         result = expr;
         return false;
 	}
     bool Parser::evaluateFpIsNeg(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.isNeg");
+		not_implemented_warning("fp.isNegative");
         result = expr;
         return false;
 	}
     bool Parser::evaluateFpIsPos(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result){
         (void)model;
-		not_implemented_warning("fp.isPos");
+		not_implemented_warning("fp.isPositive");
         result = expr;
         return false;
 	}

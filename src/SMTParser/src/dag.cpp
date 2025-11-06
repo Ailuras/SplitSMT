@@ -33,7 +33,7 @@
 
 namespace SMTParser{
 
-    void DAGNode::updateFuncDef(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params){
+    void DAGNode::updateFuncDef(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params, bool is_rec){
         condAssert(out_sort == sort, "updateFuncDef: out_sort != sort");
         (void)out_sort;
         children.clear();
@@ -41,11 +41,11 @@ namespace SMTParser{
         for(auto& p : params){
             children.emplace_back(p);
         }
-        kind = NODE_KIND::NT_FUNC_DEF;
+        kind = is_rec ? NODE_KIND::NT_FUNC_REC : NODE_KIND::NT_FUNC_DEF;
     }
 
     
-    void DAGNode::updateApplyFunc(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params){
+    void DAGNode::updateApplyFunc(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params, bool is_rec){
         condAssert(out_sort == sort, "updateApplyFunc: out_sort != sort");
         (void)out_sort;
         children.clear();
@@ -53,7 +53,7 @@ namespace SMTParser{
         for(auto& p : params){
             children.emplace_back(p);
         }
-        kind = NODE_KIND::NT_FUNC_APPLY;
+        kind = is_rec ? NODE_KIND::NT_FUNC_REC_APPLY : NODE_KIND::NT_FUNC_APPLY;
     }
 
     std::string dumpConst(const std::string& name, const std::shared_ptr<Sort>& sort){
@@ -126,12 +126,11 @@ namespace SMTParser{
             kind_cache[NODE_KIND::NT_FP_ABS] = "fp.abs";
             kind_cache[NODE_KIND::NT_FP_NEG] = "fp.neg";
             kind_cache[NODE_KIND::NT_FP_SQRT] = "fp.sqrt";
-            kind_cache[NODE_KIND::NT_FP_LE] = "fp.le";
+            kind_cache[NODE_KIND::NT_FP_LE] = "fp.leq";
             kind_cache[NODE_KIND::NT_FP_LT] = "fp.lt";
-            kind_cache[NODE_KIND::NT_FP_GE] = "fp.ge";
+            kind_cache[NODE_KIND::NT_FP_GE] = "fp.geq";
             kind_cache[NODE_KIND::NT_FP_GT] = "fp.gt";
             kind_cache[NODE_KIND::NT_FP_EQ] = "fp.eq";
-            kind_cache[NODE_KIND::NT_FP_NE] = "fp.ne";
             cache_initialized = true;
         }
 
@@ -348,16 +347,36 @@ namespace SMTParser{
                 out << "e";
                 break;
             case NODE_KIND::NT_INFINITY:
-                out << "inf";
+                // If node has a name (e.g., "(_ +oo eb sb)"), use it; otherwise use default
+                if (!node->getName().empty() && node->getName()[0] == '(') {
+                    out << node->getName();
+                } else {
+                    out << "inf";
+                }
                 break;
             case NODE_KIND::NT_POS_INFINITY:
-                out << "+inf";
+                // If node has a name (e.g., "(_ +oo eb sb)"), use it; otherwise use default
+                if (!node->getName().empty() && node->getName()[0] == '(') {
+                    out << node->getName();
+                } else {
+                    out << "+inf";
+                }
                 break;
             case NODE_KIND::NT_NEG_INFINITY:
-                out << "-inf";
+                // If node has a name (e.g., "(_ -oo eb sb)"), use it; otherwise use default
+                if (!node->getName().empty() && node->getName()[0] == '(') {
+                    out << node->getName();
+                } else {
+                    out << "-inf";
+                }
                 break;
             case NODE_KIND::NT_NAN:
-                out << "NaN";
+                // If node has a name (e.g., "(_ NaN eb sb)"), use it; otherwise use default
+                if (!node->getName().empty() && node->getName()[0] == '(') {
+                    out << node->getName();
+                } else {
+                    out << "NaN";
+                }
                 break;
             case NODE_KIND::NT_EPSILON:
                 out << "epsilon";
@@ -404,18 +423,25 @@ namespace SMTParser{
             // Function related
             case NODE_KIND::NT_FUNC_DEC:
             case NODE_KIND::NT_FUNC_DEF:
+            case NODE_KIND::NT_FUNC_REC:
             case NODE_KIND::NT_FUNC_PARAM:
                 out << node->getName();
                 break;
 
             // Function applications
             case NODE_KIND::NT_FUNC_APPLY: {
-                out << "(" << node->getName();
-                work_stack.emplace_back(nullptr, 2);  // )
-                for (int i = node->getChildrenSize() - 1; i >= 1; i--) {
-                    auto current_child = node->getChild(i).get();
-                    work_stack.emplace_back(current_child, 0);
-                    work_stack.emplace_back(nullptr, 1);  // space
+                // For NT_FUNC_APPLY, children[0] is function, children[1..] are parameters
+                // If no parameters (size <= 1), output just the name without parentheses
+                if (node->getChildrenSize() <= 1) {
+                    out << node->getName();
+                } else {
+                    out << "(" << node->getName();
+                    work_stack.emplace_back(nullptr, 2);  // )
+                    for (int i = node->getChildrenSize() - 1; i >= 1; i--) {
+                        auto current_child = node->getChild(i).get();
+                        work_stack.emplace_back(current_child, 0);
+                        work_stack.emplace_back(nullptr, 1);  // space
+                    }
                 }
                 break;
             }
@@ -509,14 +535,39 @@ namespace SMTParser{
                 break;
             }
 
-            case NODE_KIND::NT_APPLY_UF: {
-                out << "(" << node->getName();
-                work_stack.emplace_back(nullptr, 2);  // )
+            case NODE_KIND::NT_UF_APPLY: {
+                // For UF applications, all children are parameters (no function definition in children)
+                // If no parameters (size == 0), output just the name without parentheses
                 const auto& children = node->getChildren();
-                for (int i = children.size() - 1; i >= 0; i--) {
-                    auto current_child = children[i].get();
-                    work_stack.emplace_back(current_child, 0);
-                    work_stack.emplace_back(nullptr, 1);  // space
+                if (children.empty()) {
+                    out << node->getName();
+                } else {
+                    out << "(" << node->getName();
+                    work_stack.emplace_back(nullptr, 2);  // )
+                    for (int i = children.size() - 1; i >= 0; i--) {  // Start from 0
+                        auto current_child = children[i].get();
+                        work_stack.emplace_back(current_child, 0);
+                        work_stack.emplace_back(nullptr, 1);  // space
+                    }
+                }
+                break;
+            }
+            
+            case NODE_KIND::NT_FUNC_REC_APPLY: {
+                // For recursive function applications, children[0] is the function definition, children[1..] are parameters
+                // Only output the parameters, not the function definition
+                // If no parameters (size <= 1), output just the name without parentheses
+                const auto& children = node->getChildren();
+                if (children.size() <= 1) {
+                    out << node->getName();
+                } else {
+                    out << "(" << node->getName();
+                    work_stack.emplace_back(nullptr, 2);  // )
+                    for (int i = children.size() - 1; i >= 1; i--) {  // Start from 1, not 0
+                        auto current_child = children[i].get();
+                        work_stack.emplace_back(current_child, 0);
+                        work_stack.emplace_back(nullptr, 1);  // space
+                    }
                 }
                 break;
             }
@@ -541,10 +592,23 @@ namespace SMTParser{
                 break;
             }
 
+            case NODE_KIND::NT_FP_SQRT:
+            case NODE_KIND::NT_FP_ROUND_TO_INTEGRAL: {
+                // fp.sqrt and fp.roundToIntegral require rounding mode and input: (fp.sqrt <rm> <arg>)
+                std::string kind_str = kindToString(kind);
+                out << "(" << kind_str;
+                work_stack.emplace_back(nullptr, 2);  // )
+                const auto& children = node->getChildren();
+                for (int i = children.size() - 1; i >= 0; i--) {
+                    auto current_child = children[i].get();
+                    work_stack.emplace_back(current_child, 0);
+                    work_stack.emplace_back(nullptr, 1);  // space
+                }
+                break;
+            }
+
             case NODE_KIND::NT_FP_ABS:
             case NODE_KIND::NT_FP_NEG:
-            case NODE_KIND::NT_FP_SQRT:
-            case NODE_KIND::NT_FP_ROUND_TO_INTEGRAL:
             case NODE_KIND::NT_FP_IS_NORMAL:
             case NODE_KIND::NT_FP_IS_SUBNORMAL:
             case NODE_KIND::NT_FP_IS_ZERO:
@@ -576,8 +640,7 @@ namespace SMTParser{
             case NODE_KIND::NT_FP_LT:
             case NODE_KIND::NT_FP_GE:
             case NODE_KIND::NT_FP_GT:
-            case NODE_KIND::NT_FP_EQ:
-            case NODE_KIND::NT_FP_NE: {
+            case NODE_KIND::NT_FP_EQ: {
                 std::string kind_str = kindToString(kind);
                 auto child0 = node->getChild(0).get();
                 auto child1 = node->getChild(1).get();
@@ -591,17 +654,18 @@ namespace SMTParser{
 
             case NODE_KIND::NT_FP_TO_UBV:
             case NODE_KIND::NT_FP_TO_SBV: {
+                // Format: ((_ fp.to_ubv size) rm fp) or ((_ fp.to_sbv size) rm fp)
                 std::string kind_str = kindToString(kind);
                 auto rm = node->getChild(0).get();
                 auto fp = node->getChild(1).get();
                 auto size = node->getChild(2).get();
-                out << "(" << kind_str << " ";
+                out << "((_ " << kind_str << " ";
                 work_stack.emplace_back(nullptr, 2);  // )
-                work_stack.emplace_back(size, 0);     // size
-                work_stack.emplace_back(nullptr, 1);  // space
                 work_stack.emplace_back(fp, 0);       // fp
                 work_stack.emplace_back(nullptr, 1);  // space
                 work_stack.emplace_back(rm, 0);       // rm
+                work_stack.emplace_back(nullptr, 3);  // ") "
+                work_stack.emplace_back(size, 0);     // size
                 break;
             }
 
@@ -736,21 +800,37 @@ namespace SMTParser{
     
     std::string dumpFuncDef(const std::shared_ptr<DAGNode>& node){
         std::string res = "(define-fun " + node->getName() + " (";
+        // For NT_FUNC_DEF, children[0] is body, children[1..n] are parameters
         for(size_t i=1;i<node->getChildrenSize();i++){
             if(i==1) res += "(" + node->getChild(i)->getName() +" " + node->getChild(i)->getSort()->toString() +")";
             else res += " (" + node->getChild(i)->getName() +" " + node->getChild(i)->getSort()->toString() +")";
         }
-        res += ") " + node->getChild(0)->getSort()->toString() + " ";
+        // Use node's declared sort, not body's inferred sort (which may be widened to IntOrReal)
+        res += ") " + node->getSort()->toString() + " ";
+        res += dumpSMTLIB2(node->getChild(0)) +  ")";
+        return res;
+    }
+    std::string dumpFuncRec(const std::shared_ptr<DAGNode>& node){
+        std::string res = "(define-fun-rec " + node->getName() + " (";
+        // For NT_FUNC_REC, children[0] is body, children[1..n] are parameters
+        for(size_t i=1;i<node->getChildrenSize();i++){
+            if(i==1) res += "(" + node->getChild(i)->getName() +" " + node->getChild(i)->getSort()->toString() +")";
+            else res += " (" + node->getChild(i)->getName() +" " + node->getChild(i)->getSort()->toString() +")";
+        }
+        // Use node's declared sort, not body's inferred sort (which may be widened to IntOrReal)
+        res += ") " + node->getSort()->toString() + " ";
         res += dumpSMTLIB2(node->getChild(0)) +  ")";
         return res;
     }
     std::string dumpFuncDec(const std::shared_ptr<DAGNode>& node){
         std::string res = "(declare-fun " + node->getName() + " (";
+        // For NT_FUNC_DEC, children[0] is NULL_NODE, children[1..n] are parameter type nodes
         for(size_t i=1;i<node->getChildrenSize();i++){
             if(i==1) res += node->getChild(i)->getSort()->toString();
             else res += " " + node->getChild(i)->getSort()->toString();
         }
-        res += ") " + node->getChild(0)->getSort()->toString() + ")";
+        // The return type is stored in the node's sort, not in children[0]
+        res += ") " + node->getSort()->toString() + ")";
         return res;
     }
 

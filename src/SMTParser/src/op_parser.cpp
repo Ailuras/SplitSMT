@@ -202,7 +202,19 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_PARAM_MIS, "No parameters for operation", line_number);
             return mkUnknown();
         }
-        auto res = simp_oper(t, p);
+        std::shared_ptr<DAGNode> res = nullptr;
+        if(p.size() == 1){
+            res = simp_oper(t, p[0]);
+        }
+        else if(p.size() == 2){
+            res = simp_oper(t, p[0], p[1]);
+        }
+        else if(p.size() == 3){
+            res = simp_oper(t, p[0], p[1], p[2]);
+        }
+        else{
+            res = simp_oper(t, p);
+        }
         if(!res->isUnknown()){
             return res;
         }
@@ -278,6 +290,39 @@ namespace SMTParser{
         }
     }
 
+    std::shared_ptr<DAGNode> Parser::mkFuncRec(const std::string &name, const std::vector<std::shared_ptr<DAGNode>> &params, std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body){
+        std::shared_ptr<DAGNode> func = nullptr;
+        if(fun_key_map.find(name)!=fun_key_map.end()){
+            func = fun_key_map[name];
+            condAssert(func->getKind() == NODE_KIND::NT_FUNC_DEC, "mkFuncRec: func is not a function declaration");
+            // NOTE: we still check it, even if it is not necessary.
+            if(func->getKind() == NODE_KIND::NT_FUNC_DEC){
+                // update the function to recursive function
+                func = fun_key_map[name];
+                func->updateFuncDef(out_sort, body, params, true);
+                return func;
+            }
+            else{
+                // multiple definitions
+                err_all(ERROR_TYPE::ERR_MUL_DEF, "Multiple definitions of recursive function", line_number);
+                return mkUnknown();
+            }
+        }
+        else{
+            // create a new recursive function
+            // children: params
+            // out_sort: return sort
+            // body: function body
+            std::vector<std::shared_ptr<DAGNode>> children;
+            children.emplace_back(body);
+            for(auto &param: params){
+                children.emplace_back(param);
+            }
+            std::shared_ptr<DAGNode> func = node_manager->createNode(out_sort, NODE_KIND::NT_FUNC_REC, name, children);
+            fun_key_map.insert(std::pair<std::string, std::shared_ptr<DAGNode>>(name, func));
+            return func;
+        }
+    }
 
     std::shared_ptr<Sort> Parser::mkSortDec(const std::string &name, const size_t &arity){
         return sort_manager->createSortDec(name, arity);
@@ -723,6 +768,11 @@ namespace SMTParser{
     }
     std::shared_ptr<DAGNode> Parser::mkVarReg(const std::string &name){
         return mkVar(SortManager::REG_SORT, name);
+    }
+    std::shared_ptr<DAGNode> Parser::mkVarRoundingMode(const std::string &name){
+        // Create a special sort for rounding mode
+        std::shared_ptr<Sort> rounding_mode_sort = std::make_shared<Sort>(SORT_KIND::SK_ROUNDING_MODE, "RoundingMode", 0);
+        return mkVar(rounding_mode_sort, name);
     }
     std::shared_ptr<DAGNode> Parser::mkFunParamVar(std::shared_ptr<Sort> sort, const std::string &name){
         std::shared_ptr<DAGNode> newvar = node_manager->createNode(sort, NODE_KIND::NT_FUNC_PARAM, name);
@@ -1943,7 +1993,17 @@ namespace SMTParser{
         }
     }
     std::shared_ptr<DAGNode> Parser::mkPosInfinity(std::shared_ptr<Sort> sort){
-        if(sort->isEqTo(SortManager::STR_SORT)){
+        if(!sort){
+            return NodeManager::REAL_POS_INF_NODE;
+        }
+        else if(sort->isFp()){
+            // For floating point, create a node with full name including eb and sb
+            size_t eb = sort->getExponentWidth();
+            size_t sb = sort->getSignificandWidth();
+            std::string const_name = "(_ +oo " + std::to_string(eb) + " " + std::to_string(sb) + ")";
+            return node_manager->createNode(sort, NODE_KIND::NT_POS_INFINITY, const_name);
+        }
+        else if(sort->isEqTo(SortManager::STR_SORT)){
             return NodeManager::STR_POS_INF_NODE;
         }
         else if(sort->isEqTo(SortManager::INT_SORT)){
@@ -1958,7 +2018,17 @@ namespace SMTParser{
         }
     }
     std::shared_ptr<DAGNode> Parser::mkNegInfinity(std::shared_ptr<Sort> sort){
-        if(sort->isEqTo(SortManager::STR_SORT)){
+        if(!sort){
+            return NodeManager::REAL_NEG_INF_NODE;
+        }
+        else if(sort->isFp()){
+            // For floating point, create a node with full name including eb and sb
+            size_t eb = sort->getExponentWidth();
+            size_t sb = sort->getSignificandWidth();
+            std::string const_name = "(_ -oo " + std::to_string(eb) + " " + std::to_string(sb) + ")";
+            return node_manager->createNode(sort, NODE_KIND::NT_NEG_INFINITY, const_name);
+        }
+        else if(sort->isEqTo(SortManager::STR_SORT)){
             return NodeManager::STR_NEG_INF_NODE;
         }
         else if(sort->isEqTo(SortManager::INT_SORT)){
@@ -1972,8 +2042,20 @@ namespace SMTParser{
             return mkUnknown();
         }
     }
-    std::shared_ptr<DAGNode> Parser::mkNan(){
-        return NodeManager::NAN_NODE;
+    std::shared_ptr<DAGNode> Parser::mkNaN(std::shared_ptr<Sort> sort){
+        if(!sort){
+            return NodeManager::NAN_NODE;
+        }
+        else if(sort->isFp()){
+            // For floating point, create a node with full name including eb and sb
+            size_t eb = sort->getExponentWidth();
+            size_t sb = sort->getSignificandWidth();
+            std::string const_name = "(_ NaN " + std::to_string(eb) + " " + std::to_string(sb) + ")";
+            return node_manager->createNode(sort, NODE_KIND::NT_NAN, const_name);
+        }
+        else{
+            return NodeManager::NAN_NODE;
+        }
     }
     std::shared_ptr<DAGNode> Parser::mkEpsilon(){
         return NodeManager::EPSILON_NODE;
@@ -3160,9 +3242,7 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_le", line_number);
             return mkUnknown();
         }
-        else if(l == r){
-            return mkTrue();
-        }
+        // Note: Cannot simplify (fp.le x x) to true because x might be NaN, and (NaN <= NaN) is false
 
         return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_LE, l, r);
     }
@@ -3175,9 +3255,8 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_lt", line_number);
             return mkUnknown();
         }
-        else if(l == r){
-            return mkFalse();
-        }
+        // Note: Cannot simplify (fp.lt x x) to false without knowing if x is NaN
+        // While the result is always false, we should not simplify at parse time
 
         return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_LT, l, r);
     }
@@ -3190,9 +3269,7 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_ge", line_number);
             return mkUnknown();
         }
-        else if(l == r){
-            return mkTrue();
-        }
+        // Note: Cannot simplify (fp.ge x x) to true because x might be NaN, and (NaN >= NaN) is false
 
         return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_GE, l, r);
     }
@@ -3205,9 +3282,8 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_gt", line_number);
             return mkUnknown();
         }
-        else if(l == r){
-            return mkFalse();
-        }
+        // Note: Cannot simplify (fp.gt x x) to false without knowing if x is NaN
+        // While the result is always false, we should not simplify at parse time
 
         return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_GT, l, r);
     }
@@ -3220,25 +3296,9 @@ namespace SMTParser{
             err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_eq", line_number);
             return mkUnknown();
         }
-        else if(l == r){
-            return mkTrue();
-        }
+        // Note: Cannot simplify (fp.eq x x) to true because x might be NaN, and (NaN == NaN) is false per IEEE-754
 
         return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_EQ, l, r);
-    }
-    /*
-    (fp.ne Fp Fp), return Bool
-    */
-    std::shared_ptr<DAGNode> Parser::mkFpNe(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r){
-        if(!isFpParam(l) || !isFpParam(r)) {
-            err_all(ERROR_TYPE::ERR_TYPE_MIS, "Type mismatch in fp_ne", line_number);
-            return mkUnknown();
-        }
-        else if(l == r){
-            return mkFalse();
-        }
-
-        return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_FP_NE, l, r);
     }
     // FLOATING POINT CONVERSION
     /*
@@ -3457,7 +3517,7 @@ namespace SMTParser{
     /*
     (fp.isNaN Fp), return Bool
     */
-    std::shared_ptr<DAGNode> Parser::mkFpIsNan(std::shared_ptr<DAGNode> param){
+    std::shared_ptr<DAGNode> Parser::mkFpIsNaN(std::shared_ptr<DAGNode> param){
         if(!isFpParam(param)) {
             err_all(param, "Expected floating-point parameter", line_number);
             return mkUnknown();
@@ -4306,10 +4366,9 @@ namespace SMTParser{
         }
 
         if(atom->isFPComp()){
-            if(atom->isFPEq()){
-                return mkFpNe(atom->getChild(0), atom->getChild(1));
-            }
-            else if(atom->isFPGt()){
+            // Note: fp.eq cannot be negated to fp.ne (which doesn't exist in SMT-LIB)
+            // So for fp.eq, we cannot simplify (not (fp.eq x y))
+            if(atom->isFPGt()){
                 return mkFpLe(atom->getChild(0), atom->getChild(1));
             }
             else if(atom->isFPLt()){
@@ -4321,11 +4380,9 @@ namespace SMTParser{
             else if(atom->isFPLe()){
                 return mkFpGt(atom->getChild(0), atom->getChild(1));
             }
-            else if(atom->isFPNe()){
-                return mkFpEq(atom->getChild(0), atom->getChild(1));
-            }
             else{
-                condAssert(false, "negateComp: unknown floating-point comparison operator");
+                // fp.eq cannot be negated, directly create NOT node to avoid infinite recursion
+                return mkOper(SortManager::BOOL_SORT, NODE_KIND::NT_NOT, atom);
             }
         }
 
@@ -4454,8 +4511,6 @@ namespace SMTParser{
             case NODE_KIND::NT_BV_NEGO:
             case NODE_KIND::NT_FP_ABS:
             case NODE_KIND::NT_FP_NEG:
-            case NODE_KIND::NT_FP_SQRT:
-            case NODE_KIND::NT_FP_ROUND_TO_INTEGRAL:
             case NODE_KIND::NT_FP_IS_NORMAL:
             case NODE_KIND::NT_FP_IS_SUBNORMAL:
             case NODE_KIND::NT_FP_IS_ZERO:
@@ -4463,8 +4518,6 @@ namespace SMTParser{
             case NODE_KIND::NT_FP_IS_NAN:
             case NODE_KIND::NT_FP_IS_NEG:
             case NODE_KIND::NT_FP_IS_POS:
-            case NODE_KIND::NT_FP_TO_UBV:
-            case NODE_KIND::NT_FP_TO_SBV:
             case NODE_KIND::NT_FP_TO_REAL:
             case NODE_KIND::NT_STR_LEN:
             case NODE_KIND::NT_STR_TO_LOWER:
@@ -4525,14 +4578,14 @@ namespace SMTParser{
             case NODE_KIND::NT_BV_SGE:
             case NODE_KIND::NT_NAT_TO_BV:
             case NODE_KIND::NT_INT_TO_BV:
-            case NODE_KIND::NT_FP_DIV:
             case NODE_KIND::NT_FP_REM:
+            case NODE_KIND::NT_FP_SQRT:
+            case NODE_KIND::NT_FP_ROUND_TO_INTEGRAL:
             case NODE_KIND::NT_FP_LE:
             case NODE_KIND::NT_FP_LT:
             case NODE_KIND::NT_FP_GE:
             case NODE_KIND::NT_FP_GT:
             case NODE_KIND::NT_FP_EQ:
-            case NODE_KIND::NT_FP_NE:
             case NODE_KIND::NT_SELECT:
             case NODE_KIND::NT_STR_PREFIXOF:
             case NODE_KIND::NT_STR_SUFFIXOF:
@@ -4556,7 +4609,12 @@ namespace SMTParser{
 
             // ternary
             case NODE_KIND::NT_ITE:
-            case NODE_KIND::NT_FP_FMA:
+            case NODE_KIND::NT_FP_ADD:
+            case NODE_KIND::NT_FP_SUB:
+            case NODE_KIND::NT_FP_MUL:
+            case NODE_KIND::NT_FP_DIV:
+            case NODE_KIND::NT_FP_TO_UBV:
+            case NODE_KIND::NT_FP_TO_SBV:
             case NODE_KIND::NT_STORE:
             case NODE_KIND::NT_STR_SUBSTR:
             case NODE_KIND::NT_STR_INDEXOF:
@@ -4575,6 +4633,7 @@ namespace SMTParser{
                 return 3;
 
             // 4-ary
+            case NODE_KIND::NT_FP_FMA:
             case NODE_KIND::NT_FP_TO_FP:
                 return 4;
 
@@ -4607,9 +4666,6 @@ namespace SMTParser{
             case NODE_KIND::NT_BV_SMULO:
             case NODE_KIND::NT_BV_UMULO:
             case NODE_KIND::NT_BV_CONCAT:
-            case NODE_KIND::NT_FP_ADD:
-            case NODE_KIND::NT_FP_SUB:
-            case NODE_KIND::NT_FP_MUL:
             case NODE_KIND::NT_FP_MIN:
             case NODE_KIND::NT_FP_MAX:
             case NODE_KIND::NT_STR_CONCAT:

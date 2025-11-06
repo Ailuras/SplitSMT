@@ -229,7 +229,7 @@ namespace SMTParser{
             } else if (n == "inf") {
                 sort = SortManager::REAL_SORT;
                 kind = NODE_KIND::NT_INFINITY;
-            } else if (n == "NaN") {
+            } else if (n == "NaN" || n == "+NaN" || n == "-NaN") {
                 sort = SortManager::EXT_SORT;
                 kind = NODE_KIND::NT_NAN;
             } else if (n == "epsilon") {
@@ -294,12 +294,16 @@ namespace SMTParser{
         bool isFalse() 			    const { return kind == NODE_KIND::NT_CONST_FALSE && sort->isBool(); };
         bool isConst() 				const { return  kind == NODE_KIND::NT_CONST || 
                                                     kind == NODE_KIND::NT_CONST_TRUE || kind == NODE_KIND::NT_CONST_FALSE ||
-                                                    kind == NODE_KIND::NT_CONST_PI || kind == NODE_KIND::NT_CONST_E; };
+                                                    kind == NODE_KIND::NT_CONST_PI || kind == NODE_KIND::NT_CONST_E ||
+                                                    kind == NODE_KIND::NT_INFINITY || kind == NODE_KIND::NT_POS_INFINITY || kind == NODE_KIND::NT_NEG_INFINITY ||
+                                                    kind == NODE_KIND::NT_NAN || kind == NODE_KIND::NT_EPSILON || 
+                                                    kind == NODE_KIND::NT_POS_EPSILON || kind == NODE_KIND::NT_NEG_EPSILON; };
         bool isNumeral() 			const { return isCInt() || isCReal(); };
         bool isCInt()       		const { return isConst() && (sort->isInt() || sort->isIntOrReal()); };
         bool isCReal()      		const { return isConst() && (sort->isReal() || sort->isIntOrReal()); };
         bool isCBV()        		const { return isConst() && sort->isBv(); };
         bool isCFP()        		const { return isConst() && sort->isFp(); };
+        bool isCRoundingMode()      const { return isConst() && sort->isRoundingMode(); };
         bool isCStr()       		const { return isConst() && sort->isStr(); };
 
         // check var
@@ -309,12 +313,13 @@ namespace SMTParser{
         bool isVReal() 				const { return (kind == NODE_KIND::NT_VAR || kind == NODE_KIND::NT_TEMP_VAR || kind == NODE_KIND::NT_QUANT_VAR || kind == NODE_KIND::NT_LET_BIND_VAR || kind == NODE_KIND::NT_PLACEHOLDER_VAR) && sort->isReal(); };
         bool isVBV() 				const { return (kind == NODE_KIND::NT_VAR || kind == NODE_KIND::NT_TEMP_VAR || kind == NODE_KIND::NT_QUANT_VAR || kind == NODE_KIND::NT_LET_BIND_VAR || kind == NODE_KIND::NT_PLACEHOLDER_VAR) && sort->isBv(); };
         bool isVFP() 				const { return (kind == NODE_KIND::NT_VAR || kind == NODE_KIND::NT_TEMP_VAR || kind == NODE_KIND::NT_QUANT_VAR || kind == NODE_KIND::NT_LET_BIND_VAR || kind == NODE_KIND::NT_PLACEHOLDER_VAR) && sort->isFp(); };
+        bool isVRoundingMode()      const { return (kind == NODE_KIND::NT_VAR || kind == NODE_KIND::NT_TEMP_VAR || kind == NODE_KIND::NT_QUANT_VAR || kind == NODE_KIND::NT_LET_BIND_VAR || kind == NODE_KIND::NT_PLACEHOLDER_VAR) && sort->isRoundingMode(); };
         bool isVStr() 				const { return (kind == NODE_KIND::NT_VAR || kind == NODE_KIND::NT_TEMP_VAR || kind == NODE_KIND::NT_QUANT_VAR || kind == NODE_KIND::NT_LET_BIND_VAR || kind == NODE_KIND::NT_PLACEHOLDER_VAR) && sort->isStr(); };
         bool isTempVar() 			const { return kind == NODE_KIND::NT_TEMP_VAR; };
         bool isQuantVar() 			const { return kind == NODE_KIND::NT_QUANT_VAR; };
         bool isLetBindVar() 		const { return kind == NODE_KIND::NT_LET_BIND_VAR; };
         bool isPlaceholderVar() 	const { return kind == NODE_KIND::NT_PLACEHOLDER_VAR; };
-        bool isVar() 				const { return (isVBool() || isVInt() || isVReal() || isVBV() || isVFP() || isVStr() || isTempVar() || isQuantVar() || isLetBindVar() || isPlaceholderVar()); };
+        bool isVar() 				const { return (isVBool() || isVInt() || isVReal() || isVBV() || isVFP() || isVRoundingMode() || isVStr() || isTempVar() || isQuantVar() || isLetBindVar() || isPlaceholderVar()); };
         
         // interval
         bool isMax() 				const { return kind == NODE_KIND::NT_MAX; };
@@ -341,7 +346,7 @@ namespace SMTParser{
         bool isNeq() 				const { return isDistinct(); };
 
         // check UF
-        bool isApplyUF() 			const { return (kind == NODE_KIND::NT_APPLY_UF); };
+        bool isUFApplication() 			const { return (kind == NODE_KIND::NT_UF_APPLY); };
 
         // check arithmetic operations
         bool isAdd() 				const { return (kind == NODE_KIND::NT_ADD); };
@@ -404,7 +409,7 @@ namespace SMTParser{
         bool isArithTerm() 			const { return (isArithOp() || isArithConv() || isRealNonlinearOp() || isTranscendentalOp() || 
                                                     (isVar() && (isVInt() || isVReal())) ||
                                                     (isConst() && (isCInt() || isCReal())) ||
-                                                    ((isIte() || isMax() || isMin() || isApplyUF()) && (sort->isInt() || sort->isReal()))); };
+                                                    ((isIte() || isMax() || isMin() || isUFApplication()) && (sort->isInt() || sort->isReal()))); };
         bool isArithComp() 			const { return ((isEq() && getChild(0)->isArithTerm())|| 
                                                     (isDistinct() && getChild(0)->isArithTerm()) || 
                                                     isLe() || isLt() || isGe() || isGt()); };
@@ -428,7 +433,7 @@ namespace SMTParser{
         bool isInfinity() 			const { return (kind == NODE_KIND::NT_INFINITY || kind == NODE_KIND::NT_POS_INFINITY || kind == NODE_KIND::NT_NEG_INFINITY); };
         bool isPosInfinity() 		const { return (kind == NODE_KIND::NT_POS_INFINITY); };
         bool isNegInfinity() 		const { return (kind == NODE_KIND::NT_NEG_INFINITY); };
-        bool isNan() 				const { return (kind == NODE_KIND::NT_NAN); };
+        bool isNaN() 				const { return (kind == NODE_KIND::NT_NAN); };
         bool isEpsilon() 			const { return (kind == NODE_KIND::NT_EPSILON || kind == NODE_KIND::NT_POS_EPSILON || kind == NODE_KIND::NT_NEG_EPSILON ); };
         bool isPosEpsilon() 		const { return (kind == NODE_KIND::NT_POS_EPSILON); };
         bool isNegEpsilon() 		const { return (kind == NODE_KIND::NT_NEG_EPSILON); };
@@ -499,7 +504,7 @@ namespace SMTParser{
                                                     (isIte() && getChild(1)->isBVTerm() && getChild(2)->isBVTerm()) ||
                                                     (isMax() && getChild(0)->isBVTerm() && getChild(1)->isBVTerm()) ||
                                                     (isMin() && getChild(0)->isBVTerm() && getChild(1)->isBVTerm()) ||
-                                                    (isApplyUF() && sort->isBv())); };
+                                                    (isUFApplication() && sort->isBv())); };
         bool isBVCompOp()     		const { return ((isEq() && getChild(0)->isBVTerm()) ||
                                                     (isDistinct() && getChild(0)->isBVTerm()) ||
                                                     isBVUlt() || isBVUle() || isBVUgt() || isBVUge() || isBVSlt() || isBVSle() || isBVSgt() || isBVSge()); };
@@ -526,7 +531,7 @@ namespace SMTParser{
         bool isFPRoToInt()  		const { return (kind == NODE_KIND::NT_FP_ROUND_TO_INTEGRAL); };
         bool isFPMin() 				const { return (kind == NODE_KIND::NT_FP_MIN); };
         bool isFPMax() 				const { return (kind == NODE_KIND::NT_FP_MAX); };
-        bool isFPOp() 				const { return (isFPAdd() || isFPSub() || isFPMul() || isFPDiv() || isFPAbs() || isFPNeg() || isFPRem() || isFPFMA() || isFPSqrt() || isFPRoToInt() || isFPMin() || isFPMax() || (isApplyUF() && sort->isFp())); };
+        bool isFPOp() 				const { return (isFPAdd() || isFPSub() || isFPMul() || isFPDiv() || isFPAbs() || isFPNeg() || isFPRem() || isFPFMA() || isFPSqrt() || isFPRoToInt() || isFPMin() || isFPMax() || (isUFApplication() && sort->isFp())); };
 
         // check floating point comparison
         bool isFPLe() 				const { return (kind == NODE_KIND::NT_FP_LE); };
@@ -534,8 +539,7 @@ namespace SMTParser{
         bool isFPGe() 				const { return (kind == NODE_KIND::NT_FP_GE); };
         bool isFPGt() 				const { return (kind == NODE_KIND::NT_FP_GT); };
         bool isFPEq() 				const { return (kind == NODE_KIND::NT_FP_EQ); };
-        bool isFPNe() 				const { return (kind == NODE_KIND::NT_FP_NE); };
-        bool isFPComp() 			const { return (isFPLe() || isFPLt() || isFPGe() || isFPGt() || isFPEq() || isFPNe()); };
+        bool isFPComp() 			const { return (isFPLe() || isFPLt() || isFPGe() || isFPGt() || isFPEq()); };
 
         // check floating point conversion
         bool isFPToUBV() 			const { return (kind == NODE_KIND::NT_FP_TO_UBV); };
@@ -551,15 +555,15 @@ namespace SMTParser{
         bool isFPIsSubnormal() 		const { return (kind == NODE_KIND::NT_FP_IS_SUBNORMAL); };
         bool isFPIsZero() 			const { return (kind == NODE_KIND::NT_FP_IS_ZERO); };
         bool isFPIsInf() 			const { return (kind == NODE_KIND::NT_FP_IS_INF); };
-        bool isFPIsNan() 			const { return (kind == NODE_KIND::NT_FP_IS_NAN); };
+        bool isFPIsNaN() 			const { return (kind == NODE_KIND::NT_FP_IS_NAN); };
         bool isFPIsNeg() 			const { return (kind == NODE_KIND::NT_FP_IS_NEG); };
         bool isFPIsPos() 			const { return (kind == NODE_KIND::NT_FP_IS_POS); };
-        bool isFPProp() 			const { return isFPIsNormal() || isFPIsSubnormal() || isFPIsZero() || isFPIsInf() || isFPIsNan() || isFPIsNeg() || isFPIsPos(); }
+        bool isFPProp() 			const { return isFPIsNormal() || isFPIsSubnormal() || isFPIsZero() || isFPIsInf() || isFPIsNaN() || isFPIsNeg() || isFPIsPos(); }
 
         // check array
         bool isSelect() 			const { return (kind == NODE_KIND::NT_SELECT); };
         bool isStore() 				const { return (kind == NODE_KIND::NT_STORE); };
-        bool isArrayOp() 			const { return (isSelect() || isStore() || (isApplyUF() && sort->isArray())); };
+        bool isArrayOp() 			const { return (isSelect() || isStore() || (isUFApplication() && sort->isArray())); };
 
         // check strings common operators
         bool isStrLen() 			const { return (kind == NODE_KIND::NT_STR_LEN); };
@@ -582,7 +586,7 @@ namespace SMTParser{
         bool isStrSplitAtRe() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_AT_RE); };
         bool isStrSplitRestRe() 		const { return (kind == NODE_KIND::NT_STR_SPLIT_REST_RE); };
         bool isStrNumSplitsRe() 		const { return (kind == NODE_KIND::NT_STR_NUM_SPLITS_RE); };
-        bool isStrOp() 				const { return (isStrLen() || isStrConcat() || isStrSubstr() || isStrPrefixof() || isStrSuffixof() || isStrIndexof() || isStrCharat() || isStrUpdate() || isStrReplace() || isStrReplaceAll() || isStrToLower() || isStrToUpper() || isStrRev() || isStrSplit() || isStrSplitAt() || isStrSplitRest() || isStrNumSplits() || isStrSplitAtRe() || isStrSplitRestRe() || isStrNumSplitsRe() || (isApplyUF() && sort->isStr())); };
+        bool isStrOp() 				const { return (isStrLen() || isStrConcat() || isStrSubstr() || isStrPrefixof() || isStrSuffixof() || isStrIndexof() || isStrCharat() || isStrUpdate() || isStrReplace() || isStrReplaceAll() || isStrToLower() || isStrToUpper() || isStrRev() || isStrSplit() || isStrSplitAt() || isStrSplitRest() || isStrNumSplits() || isStrSplitAtRe() || isStrSplitRestRe() || isStrNumSplitsRe() || (isUFApplication() && sort->isStr())); };
 
         // check strings comparison
         bool isStrLt() 				const { return (kind == NODE_KIND::NT_STR_LT); };
@@ -626,7 +630,7 @@ namespace SMTParser{
                                                     isBVCompOp() || 
                                                     isFPComp() || isFPProp() ||
                                                     isStrComp() || isStrProp() ||
-                                                    (isApplyUF() && sort->isBool())); };
+                                                    (isUFApplication() && sort->isBool())); };
         // check let
         bool isLet()				const { return kind == NODE_KIND::NT_LET; };
         bool isLetChain()			const { return kind == NODE_KIND::NT_LET_CHAIN; };
@@ -638,8 +642,10 @@ namespace SMTParser{
         // check function
         bool isFuncDec()            const { return (kind == NODE_KIND::NT_FUNC_DEC); };
         bool isFuncDef()			const { return (kind == NODE_KIND::NT_FUNC_DEF); };
+        bool isFuncRec()			const { return (kind == NODE_KIND::NT_FUNC_REC); };
         bool isFuncParam()			const { return (kind == NODE_KIND::NT_FUNC_PARAM); };
-        bool isFuncApply()          const { return (kind == NODE_KIND::NT_FUNC_APPLY); };
+        bool isFuncApplication()          const { return (kind == NODE_KIND::NT_FUNC_APPLY); };
+        bool isFuncRecApplication()       const { return (kind == NODE_KIND::NT_FUNC_REC_APPLY); };
 
         // count the use of the node
         size_t getUseCount() const { return _use_count; };
@@ -852,7 +858,7 @@ namespace SMTParser{
          * @param body The body of the function
          * @param params The parameters of the function
          */
-        void updateFuncDef(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params);
+        void updateFuncDef(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params, bool is_rec = false);
 
         /**
          * @brief Update the function application
@@ -863,7 +869,7 @@ namespace SMTParser{
          * @param body The body of the function
          * @param params The parameters of the function
          */
-        void updateApplyFunc(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params);
+        void updateApplyFunc(std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body, const std::vector<std::shared_ptr<DAGNode>> &params, bool is_rec = false);
 
     private:
         bool isEquivalentTo(const DAGNode& other, std::unordered_set<std::pair<const DAGNode*, const DAGNode*>, PairNodePtrHash, PairNodePtrEqual>& visited) const {
@@ -927,6 +933,7 @@ namespace SMTParser{
 
     std::string dumpSMTLIB2(const std::shared_ptr<DAGNode>& node);
     std::string dumpFuncDef(const std::shared_ptr<DAGNode>& node);
+    std::string dumpFuncRec(const std::shared_ptr<DAGNode>& node);
     std::string dumpFuncDec(const std::shared_ptr<DAGNode>& node);
     
     // smart pointer

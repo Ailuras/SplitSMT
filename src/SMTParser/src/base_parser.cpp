@@ -1015,7 +1015,7 @@ namespace SMTParser{
 			
 			// Now parse the function body (which can reference the function itself)
 			std::shared_ptr<DAGNode> func_body = parseExpr();
-			std::shared_ptr<DAGNode> res = mkFuncDef(name, params, out_sort, func_body);
+			std::shared_ptr<DAGNode> res = mkFuncRec(name, params, out_sort, func_body);
 			skipToRpar();
 
 			//remove key bindings: for let uses local variables. 
@@ -1102,7 +1102,7 @@ namespace SMTParser{
 				
 				// Parse function body
 				std::shared_ptr<DAGNode> func_body = parseExpr();
-				std::shared_ptr<DAGNode> res = mkFuncDef(func_names[i], all_params[i], return_sorts[i], func_body);
+				std::shared_ptr<DAGNode> res = mkFuncRec(func_names[i], all_params[i], return_sorts[i], func_body);
 				
 				// Remove parameter bindings for this function
 				for(const auto& key : all_key_lists[i]) {
@@ -1832,29 +1832,54 @@ namespace SMTParser{
 		// For declare-fun (uninterpreted functions), create a function application node
 		if(fun->getFuncBody()->isNull()){
 			// Create a function application node with proper structure
-			std::shared_ptr<DAGNode> result = node_manager->createNode(fun->getSort(), NODE_KIND::NT_APPLY_UF, fun->getName(), params);
+			std::shared_ptr<DAGNode> result = node_manager->createNode(fun->getSort(), NODE_KIND::NT_UF_APPLY, fun->getName(), params);
 			return result;
 		}
 
-		if(fun->getFuncBody()->isErr()){
-			return fun->getFuncBody();
+	// For recursive functions (define-fun-rec), behavior depends on expand_recursive_functions option
+	// If expand_recursive_functions is true, expand it like define-fun
+	// If false (default), create a recursive function application node to avoid infinite recursion
+	if(fun->isFuncRec()){
+		if(!options->getExpandRecursiveFunctions()){
+			// Don't expand recursive functions (default behavior)
+			return mkApplyRecFunc(fun, params);
 		}
-		
-		// variable map for local variables
-		std::unordered_map<std::string, std::shared_ptr<DAGNode>> new_params_map;
-		std::vector<std::shared_ptr<DAGNode>> func_params = fun->getFuncParams();
-		for (size_t i = 0; i < func_params.size(); i++) {
-			if(params[i]->isErr()){
-				return params[i];
-			}
-			new_params_map.insert(std::pair<std::string, std::shared_ptr<DAGNode>>(func_params[i]->getName(), params[i]));
-		}
-		
-		// function content
-		std::shared_ptr<DAGNode> formula = fun->getFuncBody();
+		// Otherwise, fall through to expand it like define-fun
+	}
+	else if(fun->isFuncDec()){
+		// a only declared function, i.e., uninterpreted function
+		return mkApplyUF(fun->getSort(), fun->getName(), params);
+	}
 
-		// Iterative implementation to replace recursive applyFunPostOrder
-		return applyFunPostOrder(formula, new_params_map);
+	// For regular functions (define-fun), check expand_functions option
+	if(fun->isFuncDef()){
+		if(!options->getExpandFunctions()){
+			// Don't expand functions, create a function application node
+			return mkApplyFunc(fun, params);
+		}
+		// Otherwise, fall through to expand the function
+	}
+
+	if(fun->getFuncBody()->isErr()){
+		return fun->getFuncBody();
+	}
+	
+	// Expand the function: replace parameters with actual arguments
+	// variable map for local variables
+	std::unordered_map<std::string, std::shared_ptr<DAGNode>> new_params_map;
+	std::vector<std::shared_ptr<DAGNode>> func_params = fun->getFuncParams();
+	for (size_t i = 0; i < func_params.size(); i++) {
+		if(params[i]->isErr()){
+			return params[i];
+		}
+		new_params_map.insert(std::pair<std::string, std::shared_ptr<DAGNode>>(func_params[i]->getName(), params[i]));
+	}
+	
+	// function content
+	std::shared_ptr<DAGNode> formula = fun->getFuncBody();
+
+	// Iterative implementation to replace recursive applyFunPostOrder
+	return applyFunPostOrder(formula, new_params_map);
 	}
 
 	// Iterative version of post-order traversal function application
@@ -1883,9 +1908,28 @@ namespace SMTParser{
 				for (size_t i = 0; i < current->getChildrenSize(); i++) {
 					childResults.emplace_back(results[current->getChild(i)]);
 				}
-				
+					
 				// Create a new node with processed children
-				std::shared_ptr<DAGNode> result = mkOper(current->getSort(), current->getKind(), childResults);
+				std::shared_ptr<DAGNode> result;
+				if (current->isUFApplication()) {
+					// NT_UF_APPLY: Must preserve function name when recreating node
+					result = mkApplyUF(current->getSort(), current->getName(), childResults);
+				} else if (current->isFuncRecApplication() && !options->getExpandRecursiveFunctions()) {
+					// NT_FUNC_REC_APPLY: Recursive function call when not expanding
+					// Must preserve function name when recreating node
+					result = mkApplyRecFunc(current, childResults);
+				} else if (current->isFuncApplication() || (current->isFuncRecApplication() && options->getExpandRecursiveFunctions())) {
+					// NT_FUNC_APPLY or NT_FUNC_REC_APPLY (when expanding)
+					// Parameters have been processed, now expand the function
+					std::vector<std::shared_ptr<DAGNode>> funcParams;
+					for (size_t i = 1; i < childResults.size(); i++) {
+						funcParams.emplace_back(childResults[i]);
+					}
+					result = applyFun(current->getFuncBody(), funcParams);
+				} else {
+					// For all other cases: regular operators
+					result = mkOper(current->getSort(), current->getKind(), childResults);
+				}
 				results[current] = result;
 			} else {
 				// First visit to this node
@@ -1901,27 +1945,19 @@ namespace SMTParser{
 				} else if (current->isConst()) {
 					// Constants remain unchanged
 					results[current] = current;
-				} else if (current->isFuncApply()) {
-					// Function application node
-					std::vector<std::shared_ptr<DAGNode>> funcParams;
-					
-					// First, mark the node for revisit after processing children
-					todo.push(std::make_pair(current, true));
-					
-					// Process the function body and parameters
-					for (size_t i = 1; i < current->getChildrenSize(); i++) {
-						todo.push(std::make_pair(current->getChild(i), false));
-						funcParams.emplace_back(current->getChild(i));
-					}
-					
-					// Apply the function to its parameters
-					results[current] = applyFun(current->getFuncBody(), funcParams);
 				} else {
-					// Operator node - process all children first
+					// All other cases: operators, function applications, UF applications, etc.
+					// Mark the node for revisit after processing children
 					todo.push(std::make_pair(current, true));
+					
+					// For function applications that will be expanded, skip the first child (function definition itself)
+					// For all other nodes, process all children
+					bool isFuncAppToExpand = current->isFuncApplication() || 
+					                        (current->isFuncRecApplication() && options->getExpandRecursiveFunctions());
+					int startIdx = isFuncAppToExpand ? 1 : 0;
 					
 					// Push all children onto the stack in reverse order
-					for (int i = current->getChildrenSize() - 1; i >= 0; i--) {
+					for (int i = current->getChildrenSize() - 1; i >= startIdx; i--) {
 						todo.push(std::make_pair(current->getChild(i), false));
 					}
 				}
@@ -1937,6 +1973,21 @@ namespace SMTParser{
 		static_functions.emplace_back(res);
 		return res;
 	}
+
+	
+    std::shared_ptr<DAGNode> Parser::mkApplyRecFunc(std::shared_ptr<DAGNode> fun, const std::vector<std::shared_ptr<DAGNode>> &params){
+        // Create a recursive function application node (similar to mkApplyFunc)
+        // Store function definition in children[0] and params in children[1..]
+        std::shared_ptr<DAGNode> res = std::shared_ptr<DAGNode>(new DAGNode(fun->getSort(), NODE_KIND::NT_FUNC_REC_APPLY, fun->getName()));
+        res->updateApplyFunc(fun->getSort(), fun, params, true);
+        static_functions.emplace_back(res);
+        return res;
+    }
+
+    std::shared_ptr<DAGNode> Parser::mkApplyUF(const std::shared_ptr<Sort>& sort, const std::string &name, const std::vector<std::shared_ptr<DAGNode>> &params){
+        return node_manager->createNode(sort, NODE_KIND::NT_UF_APPLY, name, params);
+    }
+
 
 	// QUANTIFIERS
 	// (quantifier ((<identifier> <sort>)+） <expr>)
@@ -2029,20 +2080,32 @@ namespace SMTParser{
 				continue;
 			}
 
-			if(processed){
-				/*
-					All children have been processed – build the new node using the
-					(possibly substituted) child results that are now stored in
-					`visited`.
-				*/
-				std::vector<std::shared_ptr<DAGNode>> newChildren;
-				newChildren.reserve(current->getChildrenSize());
-				for(size_t i = 0; i < current->getChildrenSize(); ++i){
-					newChildren.emplace_back(visited[current->getChild(i)]);
-				}
-				std::shared_ptr<DAGNode> newNode = mkOper(current->getSort(), current->getKind(), newChildren);
-				visited[current] = newNode;
+		if(processed){
+			/*
+				All children have been processed – build the new node using the
+				(possibly substituted) child results that are now stored in
+				`visited`.
+			*/
+			std::vector<std::shared_ptr<DAGNode>> newChildren;
+			newChildren.reserve(current->getChildrenSize());
+			for(size_t i = 0; i < current->getChildrenSize(); ++i){
+				newChildren.emplace_back(visited[current->getChild(i)]);
 			}
+			std::shared_ptr<DAGNode> newNode;
+			// For nodes with meaningful names (UF applications, function applications, etc.),
+			// preserve the original name instead of using kindToString
+			if(current->isUFApplication() || 
+			   current->isFuncApplication() || 
+			   current->isFuncRecApplication() ||
+			   current->isArray()) {
+				// Create node with original name preserved
+				newNode = node_manager->createNode(current->getSort(), current->getKind(), current->getName(), newChildren);
+			} else {
+				// Use standard mkOper for other node types
+				newNode = mkOper(current->getSort(), current->getKind(), newChildren);
+			}
+			visited[current] = newNode;
+		}
 			else{
 				/* First visit */
 				if(current->isVar()){
@@ -2103,52 +2166,67 @@ namespace SMTParser{
 			// If already processed, skip
 			if(result_map.find(node) != result_map.end()) continue;
 
-			if(processed){
-				/* Second visit: all children have been processed, can construct the current node */
-				if(node->isConst() || node->isVar() || node->isArithTerm() || node->isErr()){
-					result_map[node]  = node;
-					changed_map[node] = false;
-					continue;
+		if(processed){
+			/* Second visit: all children have been processed, can construct the current node */
+			if(node->isConst() || node->isVar() || node->isArithTerm() || node->isErr()){
+				result_map[node]  = node;
+				changed_map[node] = false;
+				continue;
+			}
+
+			if(node->isArithComp()){
+				condAssert(node->getChildrenSize()==2, "ArithComp should have two children");
+				std::shared_ptr<DAGNode> leftN  = result_map[node->getChild(0)];
+				std::shared_ptr<DAGNode> rightN = result_map[node->getChild(1)];
+				bool child_changed = changed_map[node->getChild(0)] || changed_map[node->getChild(1)];
+
+				bool cur_changed = child_changed;
+				std::shared_ptr<DAGNode> new_node = node; // default to keep unchanged
+
+				if(!rightN->isConst()){
+					cur_changed = true;
+					auto left_sub = mkOper(leftN->getSort(), NODE_KIND::NT_SUB, {leftN, rightN});
+					auto zero     = getZero(leftN->getSort());
+					new_node      = mkOper(SortManager::BOOL_SORT, node->getKind(), {left_sub, zero});
+				}else if(child_changed){
+					new_node = mkOper(node->getSort(), node->getKind(), {leftN, rightN});
 				}
-
-				if(node->isArithComp()){
-					condAssert(node->getChildrenSize()==2, "ArithComp should have two children");
-					std::shared_ptr<DAGNode> leftN  = result_map[node->getChild(0)];
-					std::shared_ptr<DAGNode> rightN = result_map[node->getChild(1)];
-					bool child_changed = changed_map[node->getChild(0)] || changed_map[node->getChild(1)];
-
-					bool cur_changed = child_changed;
-					std::shared_ptr<DAGNode> new_node = node; // default to keep unchanged
-
-					if(!rightN->isConst()){
-						cur_changed = true;
-						auto left_sub = mkOper(leftN->getSort(), NODE_KIND::NT_SUB, {leftN, rightN});
-						auto zero     = getZero(leftN->getSort());
-						new_node      = mkOper(SortManager::BOOL_SORT, node->getKind(), {left_sub, zero});
-					}else if(child_changed){
-						new_node = mkOper(node->getSort(), node->getKind(), {leftN, rightN});
-					}
-
-					result_map[node]  = new_node;
-					changed_map[node] = cur_changed;
-					continue;
-				}
-
-				/* General operator */
-				std::vector<std::shared_ptr<DAGNode>> new_children;
-				bool any_changed = false;
-				new_children.reserve(node->getChildrenSize());
-				for(size_t i=0;i<node->getChildrenSize();++i){
-					auto child = node->getChild(i);
-					new_children.emplace_back(result_map[child]);
-					any_changed = any_changed || changed_map[child];
-				}
-
-				std::shared_ptr<DAGNode> new_node = any_changed ?
-					mkOper(node->getSort(), node->getKind(), new_children) : node;
 
 				result_map[node]  = new_node;
-				changed_map[node] = any_changed;
+				changed_map[node] = cur_changed;
+				continue;
+			}
+
+			/* General operator */
+			std::vector<std::shared_ptr<DAGNode>> new_children;
+			bool any_changed = false;
+			new_children.reserve(node->getChildrenSize());
+			for(size_t i=0;i<node->getChildrenSize();++i){
+				auto child = node->getChild(i);
+				new_children.emplace_back(result_map[child]);
+				any_changed = any_changed || changed_map[child];
+			}
+
+			std::shared_ptr<DAGNode> new_node;
+			if(any_changed){
+				// For nodes with meaningful names (UF applications, function applications, etc.),
+				// preserve the original name instead of using kindToString
+				if(	node->isUFApplication() || 
+					node->isFuncApplication() || 
+					node->isFuncRecApplication() ||
+					node->isArray()) {
+					// Create node with original name preserved
+					new_node = node_manager->createNode(node->getSort(), node->getKind(), node->getName(), new_children);
+				} else {
+					// Use standard mkOper for other node types
+					new_node = mkOper(node->getSort(), node->getKind(), new_children);
+				}
+			} else {
+				new_node = node;
+			}
+
+			result_map[node]  = new_node;
+			changed_map[node] = any_changed;
 			}else{
 				/* First visit */
 				// Leaf node directly processed
@@ -2229,122 +2307,7 @@ namespace SMTParser{
 	ModelPtr Parser::parseModel(const std::string& model, bool only_declared){
 		std::shared_ptr<Model> model_ptr = std::make_shared<Model>();
 		
-		// Parse model string
-		std::string model_content = model;
-		
-		// Find all define-fun definitions
-		size_t pos = 0;
-		while (pos < model_content.length()) {
-			// Find next define-fun
-			size_t define_pos = model_content.find("(define-fun", pos);
-			if (define_pos == std::string::npos) {
-				break;
-			}
-			
-			// Find matching right parenthesis
-			size_t start = define_pos;
-			if (start >= model_content.length() || model_content[start] != '(') {
-				break;
-			}
-			
-			int count = 1;
-			size_t end_pos = start + 1;
-			
-			while (end_pos < model_content.length() && count > 0) {
-				if (model_content[end_pos] == '(') {
-					count++;
-				} else if (model_content[end_pos] == ')') {
-					count--;
-				}
-				end_pos++;
-			}
-			
-			if (count != 0) {
-				break; // No matching right parenthesis found
-			}
-			
-			size_t end = end_pos - 1;
-			
-			// Extract define-fun definition
-			std::string define_fun = model_content.substr(start, end - start + 1);
-			
-			// Parse each define-fun definition
-			if (parseEachModel(define_fun, model_ptr, only_declared)) {
-				// Parsing successful
-			}
-			
-			pos = end + 1;
-		}
-		
-		return model_ptr;
-	}
-
-	// Parse each define-fun definition
-	bool Parser::parseEachModel(const std::string& define_fun, ModelPtr model_ptr, bool only_declared) {
-		// Format: (define-fun name (params) type value) or (define-fun name () type value)
-		// Remove outer parentheses
-		std::string content = define_fun;
-		if (content.front() == '(' && content.back() == ')') {
-			content = content.substr(1, content.length() - 2);
-		}
-		
-		// Split content into tokens
-		std::vector<std::string> tokens;
-		size_t pos = 0;
-		while (pos < content.length()) {
-			// Skip whitespace
-			while (pos < content.length() && std::isspace(content[pos])) {
-				pos++;
-			}
-			if (pos >= content.length()) break;
-			
-			// Extract next token
-			if (content[pos] == '(') {
-				// Find matching right parenthesis
-				int count = 1;
-				size_t start = pos;
-				pos++;
-				while (pos < content.length() && count > 0) {
-					if (content[pos] == '(') count++;
-					else if (content[pos] == ')') count--;
-					pos++;
-				}
-				tokens.push_back(content.substr(start, pos - start));
-			} else {
-				// Extract regular token
-				size_t start = pos;
-				while (pos < content.length() && !std::isspace(content[pos]) && content[pos] != '(' && content[pos] != ')') {
-					pos++;
-				}
-				tokens.push_back(content.substr(start, pos - start));
-			}
-		}
-		
-		// Validate token count
-		if (tokens.size() < 4) {
-			return false; // At least need: define-fun, name, (), type, value
-		}
-		
-		// Parse each part
-		if (tokens[0] != "define-fun") {
-			return false;
-		}
-		
-		std::string var_name = tokens[1];
-		std::string param_list = tokens[2]; // Could be () or ((x!0 Real) (x!1 Real))
-		std::string type_str = tokens[3];
-		std::string value_str = tokens[4];
-		
-		// Check if this is a function definition with parameters
-		if (param_list != "()") {
-			// TODO
-			// This is a function definition, not a simple variable assignment
-			// We should skip function definitions in model parsing as they are not variable assignments
-			return true; // Skip function definitions silently
-		}
-		
-		// Parse type - use existing parseSort function
-		// Need to temporarily set parser state to parse type string
+		// Save original parser state
 		char* original_buffer = buffer;
 		char* original_bufptr = bufptr;
 		size_t original_buflen = buflen;
@@ -2352,46 +2315,201 @@ namespace SMTParser{
 		
 		// Set temporary parsing state
 		parsing_file = false;
-		buffer = safe_strdup(type_str);
+		buffer = safe_strdup(model);
 		if (!buffer) {
-			return false;
+			return model_ptr;
 		}
-		buflen = type_str.length();
+		buflen = model.length();
 		bufptr = buffer;
 		scanToNextSymbol();
 		
-		std::shared_ptr<Sort> var_sort = parseSort();
+		try {
+			// Check if wrapped with (model ...) or just (...)
+			char* start_pos = bufptr;
+			if (*bufptr == '(') {
+				char* lookahead = bufptr + 1;
+				while (*lookahead && (*lookahead == ' ' || *lookahead == '\t' || *lookahead == '\n' || *lookahead == '\r')) {
+					lookahead++;
+				}
+				
+				// Check if next symbol is "model"
+				if (strncmp(lookahead, "model", 5) == 0 && 
+				    (lookahead[5] == ' ' || lookahead[5] == '\t' || lookahead[5] == '\n' || lookahead[5] == '\r' || lookahead[5] == '(')) {
+					// Skip outer (model ...)
+					parseLpar();
+					std::string keyword = getSymbol();
+					// Now we're inside (model ...) or just (...), continue parsing define-fun
+				} else {
+					// Just a plain ( wrapping the define-funs, skip it
+					parseLpar();
+				}
+			}
+			start_pos = bufptr;
+			
+			// FIRST PASS: Declare all functions (including parameterized ones)
+			// This allows forward references in expressions
+			while (*bufptr && *bufptr != 0) {
+				// Skip whitespace
+				while (*bufptr && (*bufptr == ' ' || *bufptr == '\t' || *bufptr == '\n' || *bufptr == '\r')) {
+					bufptr++;
+					if (*bufptr == '\n') line_number++;
+				}
+				
+				if (*bufptr == 0 || *bufptr == ')') break;
+				
+				if (*bufptr != '(') break;
+				
+				// Parse one define-fun
+				parseLpar();
+				std::string keyword = getSymbol();
+				
+				if (keyword != "define-fun") {
+					// Not a define-fun, skip it
+					skipToRpar();
+					parseRpar();
+					continue;
+				}
+				
+				// Parse function name
+				std::string func_name;
+				if (*bufptr == '(') {
+					func_name = "||";
+				} else {
+					func_name = getSymbol();
+				}
+				
+				// Parse parameter list
+				parseLpar();
+				std::vector<std::shared_ptr<Sort>> param_sorts;
+				while (*bufptr != ')') {
+					parseLpar();
+					getSymbol(); // parameter name (ignored)
+					std::shared_ptr<Sort> param_sort = parseSort();
+					param_sorts.push_back(param_sort);
+					parseRpar();
+				}
+				parseRpar();
+				
+				// Parse return type
+				std::shared_ptr<Sort> return_sort = parseSort();
+				
+				// Declare the function so it can be referenced
+				if (!param_sorts.empty()) {
+					// Function with parameters - declare it
+					mkFuncDec(func_name, param_sorts, return_sort);
+					if (fun_key_map.find(func_name) == fun_key_map.end() || 
+					    std::find(function_names.begin(), function_names.end(), func_name) == function_names.end()) {
+						function_names.emplace_back(func_name);
+					}
+				}
+				
+				// Skip the function body for now
+				skipToRpar();
+				parseRpar();
+			}
+			
+			// SECOND PASS: Parse variable values (only for 0-parameter functions)
+			// Reset to start position
+			bufptr = start_pos;
+			line_number = 1;
+			
+			while (*bufptr && *bufptr != 0) {
+				// Skip whitespace
+				while (*bufptr && (*bufptr == ' ' || *bufptr == '\t' || *bufptr == '\n' || *bufptr == '\r')) {
+					bufptr++;
+					if (*bufptr == '\n') line_number++;
+				}
+				
+				if (*bufptr == 0 || *bufptr == ')') break;
+				
+				if (*bufptr != '(') break;
+				
+				// Parse one define-fun
+				parseLpar();
+				std::string keyword = getSymbol();
+				
+				if (keyword != "define-fun") {
+					// Not a define-fun, skip it
+					skipToRpar();
+					parseRpar();
+					continue;
+				}
+				
+				// Parse variable name (can be any symbol including | | or ||)
+				// Note: In SMT-LIB, | | means a symbol containing a space, || means an empty symbol
+				std::string var_name;
+				
+				// Check if next token is a parameter list instead of a name
+				if (*bufptr == '(') {
+					// No variable name provided, treat it as empty symbol ||
+					var_name = "||"; // "" -> "||"
+				} else {
+					var_name = getSymbol();
+				}
+				
+				// Parse parameter list
+				parseLpar();
+				bool has_params = (*bufptr != ')');
+				
+				// Skip parameters
+				while (*bufptr != ')') {
+					parseLpar();
+					getSymbol(); // parameter name
+					parseSort(); // parameter type
+					parseRpar();
+				}
+				parseRpar();
+				
+				// If has parameters, skip this function definition in second pass
+				if (has_params) {
+					skipToRpar();
+					parseRpar();
+					continue;
+				}
+				
+				// Parse type
+				std::shared_ptr<Sort> var_sort = parseSort();
+				if (!var_sort) {
+					skipToRpar();
+					parseRpar();
+					continue;
+				}
+				
+				// Check if only declared variables
+				if (only_declared && !isDeclaredVariable(var_name)) {
+					skipToRpar();
+					parseRpar();
+					continue;
+				}
+				
+				// Define variable first
+				std::shared_ptr<DAGNode> var_node = mkVar(var_sort, var_name);
+				
+				// Parse value expression
+				std::shared_ptr<DAGNode> value = parseExpr();
+				
+				if (value && !value->isErr()) {
+					model_ptr->add(var_node, value);
+				}
+				
+				// Close the define-fun
+				parseRpar();
+			}
+			
+		} catch (...) {
+			// Ignore errors and return what we have
+		}
 		
 		// Restore original state
-		bufptr = nullptr;
 		delete[] buffer;
 		buffer = original_buffer;
 		bufptr = original_bufptr;
 		buflen = original_buflen;
 		parsing_file = original_parsing_file;
 		
-		if (!var_sort) {
-			return false;
-		}
-
-		if(only_declared && !isDeclaredVariable(var_name)){
-			return true;
-		}
-		
-		// Define variable first (so it exists when parsing the value)
-		std::shared_ptr<DAGNode> var_node = mkVar(var_sort, var_name);
-		
-		// Parse value (now variable is defined, can parse correctly)
-		std::shared_ptr<DAGNode> value = mkExpr(value_str);
-		if (!value || value->isErr()) {
-			return false;
-		}
-		
-		// Add to model
-		model_ptr->add(var_node, value);
-		
-		return true;
+		return model_ptr;
 	}
+
 	ModelPtr Parser::newEmptyModel(){
 		// new empty model
 		std::shared_ptr<Model> model = std::make_shared<Model>();
@@ -2605,6 +2723,10 @@ namespace SMTParser{
 		return kindToString(kind);
 	}
 
+	std::string Parser::optionToString(){
+		return options->toString();
+	}
+
 	std::string Parser::dumpSMT2(){
 		std::stringstream ss;
 		ss << "(set-logic " << options->getLogic() << ")" << std::endl;
@@ -2619,10 +2741,21 @@ namespace SMTParser{
 		for(auto& var : vars){
 			ss << "(declare-fun " << var->getName() << " () " << var->getSort()->toString() << ")" << std::endl;
 		}
-		std::vector<std::shared_ptr<DAGNode>> functions = getFunctions();
-		for(auto& func : functions){
+	std::vector<std::shared_ptr<DAGNode>> functions = getFunctions();
+	for(auto& func : functions){
+		if(func->isFuncDec()){
+			// NT_FUNC_DEC: Uninterpreted function declaration (declare-fun)
+			ss << dumpFuncDec(func) << std::endl;
+		}
+		else if(func->isFuncRec()){
+			// NT_FUNC_REC: Recursive function definition (define-fun-rec)
+			ss << dumpFuncRec(func) << std::endl;
+		}
+		else{
+			// NT_FUNC_DEF: Regular function definition (define-fun)
 			ss << dumpFuncDef(func) << std::endl;
 		}
+	}
 		// constraints
 		for(auto& constraint : assertions){
 			ss << "(assert " << dumpSMTLIB2(constraint) << ")" << std::endl;

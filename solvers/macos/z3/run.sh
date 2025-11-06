@@ -3,6 +3,14 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+SOLVER_PATH=~/WorkSpace/z3/build/z3
+
+# Ensure solver binary exists and is executable
+if [ ! -x "$SOLVER_PATH" ]; then
+    echo "Error: Solver binary '$SOLVER_PATH' not found or not executable"
+    exit 1
+fi
+
 # Function to kill all child processes
 cleanup() {
     pkill -P $$
@@ -34,7 +42,18 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run ostrich with the specified timeout, enable incremental mode for model support, and filter verbose output
+# Detect timeout command (prefer gtimeout for macOS, fallback to timeout)
+if command -v gtimeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="gtimeout"
+elif command -v timeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="timeout"
+else
+    echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
+    echo "  brew install coreutils" >&2
+    exit 1
+fi
+
+# Run z3 with the specified timeout and enable model generation
 # --preserve-status: preserve the exit status of the command
 # --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
-timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/ostrich" +incremental -quiet -logo -runtime "$SMT_FILE" 2>&1 | grep -v -E "Loading|OSTRICH|Matthew|For more|contributions|Running|Considered|Warning|^\s*$|^\s*\.\.\." | grep -E "sat|unsat|unknown|model|define-fun|\(|\)|^$"
+"$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$SOLVER_PATH" model=true "$SMT_FILE"

@@ -225,15 +225,36 @@ namespace SMTParser{
                             frame.state = FrameState::Finish;
                         }
                         // Handle floating point special constants: (_ +zero eb sb), (_ -zero eb sb), (_ +oo eb sb), (_ -oo eb sb), (_ NaN eb sb)
-                        else if(second == "+zero" || second == "-zero" || second == "+oo" || second == "-oo" || second == "NaN"){
+                        else if(second == "+zero" || second == "-zero" || second == "+oo" || second == "-oo" || second == "NaN" || second == "+NaN" || second == "-NaN"){
                             std::string eb_str = getSymbol();
                             std::string sb_str = getSymbol();
                             size_t eb = std::stoul(eb_str);
                             size_t sb = std::stoul(sb_str);
                             
                             std::shared_ptr<Sort> fp_sort = sort_manager->createFPSort(eb, sb);
-                            std::string const_name = "(_ " + second + " " + eb_str + " " + sb_str + ")";
-                            frame.result = node_manager->createNode(fp_sort, NODE_KIND::NT_CONST, const_name);
+                            
+                            // Use the appropriate mk* function which will create nodes with full names
+                            if (second == "NaN" || second == "+NaN" || second == "-NaN") {
+                                frame.result = mkNaN(fp_sort);
+                            } else if (second == "+oo") {
+                                frame.result = mkPosInfinity(fp_sort);
+                            } else if (second == "-oo") {
+                                frame.result = mkNegInfinity(fp_sort);
+                            } else {
+                                // For +zero and -zero, create as NT_CONST with full name
+                                std::string const_name = "(_ " + second + " " + eb_str + " " + sb_str + ")";
+                                frame.result = node_manager->createNode(fp_sort, NODE_KIND::NT_CONST, const_name);
+                            }
+                            
+                            parseRpar();
+                            frame.state = FrameState::Finish;
+                        }
+                        // Handle as-array: (_ as-array k!name)
+                        else if(second == "as-array"){
+                            std::string func_name = getSymbol();
+                            // Create a placeholder variable for the array represented by the function
+                            // The function will be defined elsewhere in the model
+                            frame.result = mkPlaceholderVar(func_name);
                             parseRpar();
                             frame.state = FrameState::Finish;
                         }
@@ -600,8 +621,8 @@ namespace SMTParser{
 		else if(s == "-epsilon"){
 			return mkNegEpsilon();
 		}
-		else if(s == "NaN"){
-			return mkNan();
+		else if(s == "NaN" || s == "+NaN" || s == "-NaN"){
+			return mkNaN();
 		}
 		// support -3 (before only - 3)
 		else if(TypeChecker::isInt(s)){
@@ -690,7 +711,9 @@ namespace SMTParser{
 	std::shared_ptr<DAGNode> Parser::parseOper(const std::string& s, const std::vector<std::shared_ptr<DAGNode>>& func_args, const std::vector<std::shared_ptr<DAGNode>> &oper_params){
 		TIME_FUNC();
         if(fun_key_map.find(s) != fun_key_map.end()){
-            return fun_key_map[s];
+            // Found a function definition or declaration, apply it with parameters
+            auto func = fun_key_map[s];
+            return applyFun(func, oper_params);
         }
         
         // Special handling for root-obj
@@ -1062,13 +1085,13 @@ namespace SMTParser{
                 condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.max");
                 return mkFpMax(oper_params);
             case NODE_KIND::NT_FP_LE:
-                condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.le");
+                condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.leq");
                 return mkFpLe(oper_params[0], oper_params[1]);
             case NODE_KIND::NT_FP_LT:
                 condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.lt");
                 return mkFpLt(oper_params[0], oper_params[1]);
             case NODE_KIND::NT_FP_GE:
-                condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.ge");
+                condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.geq");
                 return mkFpGe(oper_params[0], oper_params[1]);
             case NODE_KIND::NT_FP_GT:
                 condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.gt");
@@ -1076,9 +1099,6 @@ namespace SMTParser{
             case NODE_KIND::NT_FP_EQ:
                 condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.eq");
                 return mkFpEq(oper_params[0], oper_params[1]);
-            case NODE_KIND::NT_FP_NE:
-                condAssert(oper_params.size() == 2, "Invalid number of parameters for fp.ne");
-                return mkFpNe(oper_params[0], oper_params[1]);
             case NODE_KIND::NT_FP_TO_UBV:
                 condAssert(func_args.size() == 1 && oper_params.size() == 2, "Invalid number of parameters for fp.to_ubv");
                 return mkFpToUbv(oper_params[0], oper_params[1], func_args[0]);
@@ -1135,7 +1155,7 @@ namespace SMTParser{
                 return mkFpIsInf(oper_params[0]);
             case NODE_KIND::NT_FP_IS_NAN:
                 condAssert(oper_params.size() == 1, "Invalid number of parameters for fp.isNaN");
-                return mkFpIsNan(oper_params[0]);
+                return mkFpIsNaN(oper_params[0]);
             case NODE_KIND::NT_FP_IS_NEG:
                 condAssert(oper_params.size() == 1, "Invalid number of parameters for fp.isNegative");
                 return mkFpIsNeg(oper_params[0]);

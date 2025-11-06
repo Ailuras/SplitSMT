@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <string>
+#include <string_view>
 
 namespace strp::config {
 
@@ -14,20 +15,74 @@ inline std::filesystem::path projectRoot() {
 #endif
 }
 
+inline std::filesystem::path solversBase() {
+#ifdef STRP_DEFAULT_SOLVER_DIR
+    return std::filesystem::path(STRP_DEFAULT_SOLVER_DIR);
+#else
+    return projectRoot() / "solvers";
+#endif
+}
+
+inline std::filesystem::path solversRoot() {
+    const auto base = solversBase();
+
+#ifdef STRP_SOLVER_PLATFORM_SUBDIR
+    constexpr std::string_view configured{STRP_SOLVER_PLATFORM_SUBDIR};
+#else
+    constexpr std::string_view configured{};
+#endif
+
+    if (!configured.empty()) {
+        const auto candidate = base / std::string(configured);
+        if (std::filesystem::exists(candidate)) {
+            return candidate;
+        }
+    }
+
+#if defined(__APPLE__) && defined(__MACH__)
+    const auto macosDir = base / "macos";
+    if (std::filesystem::exists(macosDir)) {
+        return macosDir;
+    }
+#elif defined(_WIN32) || defined(_WIN64)
+    const auto windowsDir = base / "windows";
+    if (std::filesystem::exists(windowsDir)) {
+        return windowsDir;
+    }
+#else
+    const auto linuxDir = base / "linux";
+    if (std::filesystem::exists(linuxDir)) {
+        return linuxDir;
+    }
+#endif
+
+    return base;
+}
+
+inline std::filesystem::path solverScriptPath(std::string_view solverFolder) {
+    const auto solverName = std::string(solverFolder);
+    const auto primary = solversRoot() / solverName / "run.sh";
+    if (std::filesystem::exists(primary)) {
+        return primary;
+    }
+
+    return solversBase() / solverName / "run.sh";
+}
+
 inline std::filesystem::path z3ScriptPath() {
-    return projectRoot() / "solvers" / "z3" / "run.sh";
+    return solverScriptPath("z3");
 }
 
 inline std::filesystem::path cvc5ScriptPath() {
-    return projectRoot() / "solvers" / "cvc5" / "run.sh";
+    return solverScriptPath("cvc5");
 }
 
 inline std::filesystem::path ostrichScriptPath() {
-    return projectRoot() / "solvers" / "ostrich" / "run.sh";
+    return solverScriptPath("ostrich");
 }
 
 inline std::filesystem::path z3NoodlerScriptPath() {
-    return projectRoot() / "solvers" / "z3-noodler" / "run.sh";
+    return solverScriptPath("z3-noodler");
 }
 
 } // namespace strp::config

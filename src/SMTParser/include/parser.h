@@ -597,6 +597,38 @@ namespace SMTParser{
          */
         std::shared_ptr<DAGNode> mkFuncDef(const std::string &name, const std::vector<std::shared_ptr<DAGNode>> &params, std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body);
 
+        /**
+         * @brief Create a recursive function definition
+         * 
+         * @param name Function name
+         * @param params Parameters
+         * @param out_sort Output sort
+         * @param body Body
+         * @return Recursive function definition node
+         */
+        std::shared_ptr<DAGNode> mkFuncRec(const std::string &name, const std::vector<std::shared_ptr<DAGNode>> &params, std::shared_ptr<Sort> out_sort, std::shared_ptr<DAGNode> body);
+
+        /**
+         * @brief Create a recursive function application
+         * 
+         * @param sort Sort
+         * @param name Function name
+         * @param params Parameters
+         * @return Recursive function application node
+         */
+        std::shared_ptr<DAGNode> mkApplyRecFunc(std::shared_ptr<DAGNode> fun, const std::vector<std::shared_ptr<DAGNode>> &params);
+
+
+        /**
+         * @brief Apply an uninterpreted function
+         * 
+         * @param sort Sort
+         * @param name Function name
+         * @param params Parameters
+         * @return Uninterpreted function application node
+         */
+        std::shared_ptr<DAGNode> mkApplyUF(const std::shared_ptr<Sort>& sort, const std::string &name, const std::vector<std::shared_ptr<DAGNode>> &params);
+
         // mk sort
         /**
          * @brief Create a sort declaration
@@ -875,11 +907,19 @@ namespace SMTParser{
         
         /**
          * @brief Create a rounding mode constant
-         *
+         * 
          * @param mode Rounding mode string (RNE, RNA, RTP, RTN, RTZ)
          * @return Rounding mode constant node
          */
         std::shared_ptr<DAGNode> mkRoundingMode(const std::string &mode); // ROUNDING_MODE
+        
+        /**
+         * @brief Create a rounding mode variable
+         * 
+         * @param name Variable name
+         * @return Rounding mode variable node
+         */
+        std::shared_ptr<DAGNode> mkVarRoundingMode(const std::string &name); // VAR_ROUNDING_MODE
         
         // VAR
         /**
@@ -1782,23 +1822,26 @@ namespace SMTParser{
         /**
          * @brief Create a positive infinity node
          * 
+         * @param sort Optional sort (for FP types, will include eb sb in name)
          * @return Positive infinity node (+infinity)
          */
-        std::shared_ptr<DAGNode> mkPosInfinity(std::shared_ptr<Sort> sort); // +infinity
+        std::shared_ptr<DAGNode> mkPosInfinity(std::shared_ptr<Sort> sort = nullptr); // +infinity
 
         /**
          * @brief Create a negative infinity node
          * 
+         * @param sort Optional sort (for FP types, will include eb sb in name)
          * @return Negative infinity node (-infinity)
          */
-        std::shared_ptr<DAGNode> mkNegInfinity(std::shared_ptr<Sort> sort); // -infinity
+        std::shared_ptr<DAGNode> mkNegInfinity(std::shared_ptr<Sort> sort = nullptr); // -infinity
 
         /**
-         * @brief Create a nan node
+         * @brief Create a NaN node
          * 
+         * @param sort Optional sort (for FP types, will include eb sb in name)
          * @return NaN node (nan, i.e., Not a Number)
          */
-        std::shared_ptr<DAGNode> mkNan(); // nan
+        std::shared_ptr<DAGNode> mkNaN(std::shared_ptr<Sort> sort = nullptr); // nan
 
         /**
          * @brief Create a epsilon node
@@ -2424,15 +2467,6 @@ namespace SMTParser{
         
         // FLOATING POINT COMP
         /**
-         * @brief Create a floating-point not equal node
-         * 
-         * @param l Left parameter
-         * @param r Right parameter
-         * @return Floating-point not equal node (fp.ne(l, r))
-         */
-        std::shared_ptr<DAGNode> mkFpNe(std::shared_ptr<DAGNode> l, std::shared_ptr<DAGNode> r); // l != r
-
-        /**
          * @brief Create a floating-point less than or equal node
          * 
          * @param l Left parameter
@@ -2568,7 +2602,7 @@ namespace SMTParser{
          * @param param Parameter to check
          * @return Is-NaN check node (fp.isNaN(param))
          */
-        std::shared_ptr<DAGNode> mkFpIsNan(std::shared_ptr<DAGNode> param); // is_nan(param)
+        std::shared_ptr<DAGNode> mkFpIsNaN(std::shared_ptr<DAGNode> param); // is_nan(param)
         
         /**
          * @brief Create a floating-point is-negative check node
@@ -3651,6 +3685,13 @@ namespace SMTParser{
         std::string                             toString(std::shared_ptr<Sort> sort);
 
         /**
+         * @brief Print the options
+         * 
+         * @return String representation of the options
+         */
+        std::string                             optionToString();
+
+        /**
          * @brief Dump the SMT2 representation of the parsed expressions
          * 
          * @return String representation of the SMT2
@@ -3803,9 +3844,6 @@ namespace SMTParser{
                                                         std::unordered_map<std::shared_ptr<DAGNode>, std::shared_ptr<DAGNode>>& visited);
         
         std::shared_ptr<DAGNode>                remove(std::shared_ptr<DAGNode> expr, const std::unordered_set<std::shared_ptr<DAGNode>>& nodes, std::unordered_map<std::shared_ptr<DAGNode>, std::shared_ptr<DAGNode>>& visited);
-        
-        // Helper function: parse each define-fun definition
-        bool                                    parseEachModel(const std::string& define_fun, ModelPtr model_ptr, bool only_declared = false);
         
         //errors & warnings
         // mk errror node
@@ -3967,7 +4005,7 @@ namespace SMTParser{
         bool		evaluateFpIsSubnormal(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateFpIsZero(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateFpIsInf(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
-        bool		evaluateFpIsNan(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
+        bool		evaluateFpIsNaN(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateFpIsNeg(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateFpIsPos(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);
         bool		evaluateSelect(const std::shared_ptr<DAGNode>& expr, const std::shared_ptr<Model>& model, std::shared_ptr<DAGNode> &result);

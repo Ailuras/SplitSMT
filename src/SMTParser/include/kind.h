@@ -78,7 +78,7 @@ namespace SMTParser{
         
         // FLOATING POINT OPERATORS (in parseOper)
         NT_FP_ADD,NT_FP_SUB,NT_FP_MUL,NT_FP_DIV,NT_FP_ABS,NT_FP_NEG,NT_FP_REM,NT_FP_FMA,NT_FP_SQRT,NT_FP_ROUND_TO_INTEGRAL,NT_FP_MIN,NT_FP_MAX,
-        NT_FP_LE,NT_FP_LT,NT_FP_GE,NT_FP_GT,NT_FP_EQ,NT_FP_NE,
+        NT_FP_LE,NT_FP_LT,NT_FP_GE,NT_FP_GT,NT_FP_EQ,
         NT_FP_TO_UBV,NT_FP_TO_SBV,NT_FP_TO_REAL,NT_FP_TO_FP,NT_FP_TO_FP_UNSIGNED,
         NT_FP_IS_NORMAL,NT_FP_IS_SUBNORMAL,NT_FP_IS_ZERO,NT_FP_IS_INF,NT_FP_IS_NAN,NT_FP_IS_NEG,NT_FP_IS_POS,
 
@@ -104,13 +104,16 @@ namespace SMTParser{
         // FUNCTION OPERATORS (in parseOper)
         NT_FUNC_APPLY,NT_FUNC_DEC,NT_FUNC_DEF,
         
+        // FUNCTION RECURSION OPERATORS (in parseOper)
+        NT_FUNC_REC,NT_FUNC_REC_APPLY,
+        
         // === END OF PARSEOPER CONTINUOUS SECTION ===
         // BITVECTOR OVERFLOW OPERATIONS
         NT_BV_NEGO,NT_BV_UADDO,NT_BV_SADDO,NT_BV_UMULO,NT_BV_SMULO,NT_BV_UDIVO,NT_BV_SDIVO,NT_BV_UREMO,NT_BV_SREMO,NT_BV_UMODO,NT_BV_SMODO,
         
         // TYPES NOT IN PARSEOPER
         NT_EQ_BOOL,NT_EQ_OTHER,NT_DISTINCT_BOOL,NT_DISTINCT_OTHER,
-        NT_APPLY_UF,
+        NT_UF_APPLY,
         
         // ARITHMETIC CONSTANTS
         NT_CONST_PI,NT_CONST_E,NT_INFINITY,NT_NAN,NT_EPSILON,NT_POS_INFINITY,NT_NEG_INFINITY,NT_POS_EPSILON,NT_NEG_EPSILON,
@@ -198,9 +201,11 @@ namespace SMTParser{
         {"^", NODE_KIND::NT_POW},
         {"div", NODE_KIND::NT_DIV_INT},
         {"/", NODE_KIND::NT_DIV_REAL},
+        {"%", NODE_KIND::NT_MOD},
         {"mod", NODE_KIND::NT_MOD},
         {"abs", NODE_KIND::NT_ABS},
         {"sqrt", NODE_KIND::NT_SQRT},
+        {"safesqrt", NODE_KIND::NT_SAFESQRT},
         {"safeSqrt", NODE_KIND::NT_SAFESQRT},
         {"ceil", NODE_KIND::NT_CEIL},
         {"floor", NODE_KIND::NT_FLOOR},
@@ -283,6 +288,7 @@ namespace SMTParser{
         {"bvurem", NODE_KIND::NT_BV_UREM},
         {"bvsdiv", NODE_KIND::NT_BV_SDIV},
         {"bvsrem", NODE_KIND::NT_BV_SREM},
+        {"bvumod", NODE_KIND::NT_BV_UMOD},
         {"bvsmod", NODE_KIND::NT_BV_SMOD},
         {"bvshl", NODE_KIND::NT_BV_SHL},
         {"bvlshr", NODE_KIND::NT_BV_LSHR},
@@ -318,28 +324,32 @@ namespace SMTParser{
         {"fp.roundToIntegral", NODE_KIND::NT_FP_ROUND_TO_INTEGRAL},
         {"fp.min", NODE_KIND::NT_FP_MIN},
         {"fp.max", NODE_KIND::NT_FP_MAX},
+        {"fp.le", NODE_KIND::NT_FP_LE},
         {"fp.leq", NODE_KIND::NT_FP_LE},
         {"fp.lt", NODE_KIND::NT_FP_LT},
+        {"fp.ge", NODE_KIND::NT_FP_GE},
         {"fp.geq", NODE_KIND::NT_FP_GE},
         {"fp.gt", NODE_KIND::NT_FP_GT},
         {"fp.eq", NODE_KIND::NT_FP_EQ},
         {"fp.=", NODE_KIND::NT_FP_EQ},
         {"fp.==", NODE_KIND::NT_FP_EQ},
-        {"fp.ne", NODE_KIND::NT_FP_NE},
-        {"fp.!=", NODE_KIND::NT_FP_NE},
-        {"fp.neq", NODE_KIND::NT_FP_NE},
         {"fp.to_ubv", NODE_KIND::NT_FP_TO_UBV},
+        {"fp.toUbv", NODE_KIND::NT_FP_TO_UBV},
         {"fp.to_sbv", NODE_KIND::NT_FP_TO_SBV},
+        {"fp.toSbv", NODE_KIND::NT_FP_TO_SBV},
         {"fp.to_real", NODE_KIND::NT_FP_TO_REAL},
         {"to_fp", NODE_KIND::NT_FP_TO_FP},
         {"to_fp_unsigned", NODE_KIND::NT_FP_TO_FP_UNSIGNED},
-
         {"fp.isNormal", NODE_KIND::NT_FP_IS_NORMAL},
         {"fp.isSubnormal", NODE_KIND::NT_FP_IS_SUBNORMAL},
         {"fp.isZero", NODE_KIND::NT_FP_IS_ZERO},
+        {"fp.isInf", NODE_KIND::NT_FP_IS_INF},
         {"fp.isInfinite", NODE_KIND::NT_FP_IS_INF},
+        {"fp.isNan", NODE_KIND::NT_FP_IS_NAN},
         {"fp.isNaN", NODE_KIND::NT_FP_IS_NAN},
+        {"fp.isNeg", NODE_KIND::NT_FP_IS_NEG},
         {"fp.isNegative", NODE_KIND::NT_FP_IS_NEG},
+        {"fp.isPos", NODE_KIND::NT_FP_IS_POS},
         {"fp.isPositive", NODE_KIND::NT_FP_IS_POS},
         {"select", NODE_KIND::NT_SELECT},
         {"store", NODE_KIND::NT_STORE},
@@ -387,7 +397,9 @@ namespace SMTParser{
         {"re.?", NODE_KIND::NT_REG_OPT},
         {"re.opt", NODE_KIND::NT_REG_OPT},
         {"re.range", NODE_KIND::NT_REG_RANGE},
+        {"re.^", NODE_KIND::NT_REG_REPEAT},
         {"re.repeat", NODE_KIND::NT_REG_REPEAT},
+        {"re.loop", NODE_KIND::NT_REG_LOOP},
         {"re.comp", NODE_KIND::NT_REG_COMPLEMENT},
         {"root-obj", NODE_KIND::NT_ROOT_OBJ},
         {"root-of-with-interval", NODE_KIND::NT_ROOT_OF_WITH_INTERVAL}

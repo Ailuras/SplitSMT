@@ -3,6 +3,14 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+SOLVER_PATH=~/WorkSpace/cvc5/build/bin/cvc5
+
+# Ensure solver binary exists and is executable
+if [ ! -x "$SOLVER_PATH" ]; then
+    echo "Error: Solver binary '$SOLVER_PATH' not found or not executable"
+    exit 1
+fi
+
 # Function to kill all child processes
 cleanup() {
     pkill -P $$
@@ -34,7 +42,18 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run z3 with the specified timeout and enable model generation
+# Detect timeout command (prefer gtimeout for macOS, fallback to timeout)
+if command -v gtimeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="gtimeout"
+elif command -v timeout >/dev/null 2>&1; then
+    TIMEOUT_CMD="timeout"
+else
+    echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
+    echo "  brew install coreutils" >&2
+    exit 1
+fi
+
+# Run cvc5 with the specified timeout, enable model generation, and turn on regex support
 # --preserve-status: preserve the exit status of the command
 # --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
-timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
+"$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$SOLVER_PATH" --lang smt2.6 --strings-exp --produce-models "$SMT_FILE"

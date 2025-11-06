@@ -27,11 +27,27 @@ list(REMOVE_DUPLICATES MPFR_LIBRARY_DIRS)
 set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build shared libraries" FORCE)
 set(BUILD_BOTH_LIBS OFF CACHE BOOL "Build both static and shared libraries" FORCE)
 
+# Determine solver platform subdirectory
+set(STRP_SOLVER_PLATFORM_SUBDIR "")
+if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    set(STRP_SOLVER_PLATFORM_SUBDIR "macos")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(STRP_SOLVER_PLATFORM_SUBDIR "linux")
+elseif(WIN32)
+    set(STRP_SOLVER_PLATFORM_SUBDIR "windows")
+endif()
+
+if(STRP_SOLVER_PLATFORM_SUBDIR)
+    message(STATUS "Configuring solver directory for platform: ${STRP_SOLVER_PLATFORM_SUBDIR}")
+endif()
+
+set(STRP_SOLVER_BASE_DIR "${CMAKE_SOURCE_DIR}/solvers")
+
 # Add SMTParser as a subdirectory
-add_subdirectory(external/SMTParser)
+add_subdirectory(src/SMTParser)
 
 # Print SMTParser status
-message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include")
+message(STATUS "SMTParser include dirs: ${CMAKE_CURRENT_SOURCE_DIR}/src/SMTParser/include")
 
 # Core sources shared by executables
 set(CORE_SOURCES
@@ -69,7 +85,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Set include directories for our project
 target_include_directories(SplitSMT PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/SMTParser/include
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )
@@ -86,13 +102,19 @@ target_link_directories(SplitSMT PRIVATE
 
 target_compile_definitions(SplitSMT PRIVATE
     STRP_PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
-    STRP_DEFAULT_SOLVER_DIR="${CMAKE_SOURCE_DIR}/solvers"
+    STRP_DEFAULT_SOLVER_DIR="${STRP_SOLVER_BASE_DIR}"
 )
+
+if(STRP_SOLVER_PLATFORM_SUBDIR)
+    target_compile_definitions(SplitSMT PRIVATE
+        STRP_SOLVER_PLATFORM_SUBDIR="${STRP_SOLVER_PLATFORM_SUBDIR}"
+    )
+endif()
 
 # Set include directories for debug executable
 target_include_directories(SplitSMT_debug PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/SMTParser/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/SMTParser/include
     ${GMP_INCLUDE_DIRS}
     ${MPFR_INCLUDE_DIRS}
 )
@@ -109,8 +131,14 @@ target_link_directories(SplitSMT_debug PRIVATE
 
 target_compile_definitions(SplitSMT_debug PRIVATE
     STRP_PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
-    STRP_DEFAULT_SOLVER_DIR="${CMAKE_SOURCE_DIR}/solvers"
+    STRP_DEFAULT_SOLVER_DIR="${STRP_SOLVER_BASE_DIR}"
 )
+
+if(STRP_SOLVER_PLATFORM_SUBDIR)
+    target_compile_definitions(SplitSMT_debug PRIVATE
+        STRP_SOLVER_PLATFORM_SUBDIR="${STRP_SOLVER_PLATFORM_SUBDIR}"
+    )
+endif()
 
 # Add compile options
 if(MSVC)
