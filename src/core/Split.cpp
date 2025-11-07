@@ -562,15 +562,6 @@ void SplitSolver::addAuxiliaryVariables(Context& ctx, const Division* division) 
         ctx.getParser().declareStringVar(ri);
     }
     
-    for (int i = 0; i <= maxIndex; ++i) {
-        std::string gi = hashStr + "_g_" + std::to_string(i);
-        ctx.getParser().declareBoolVar(gi);
-    }
-    for (int i = 0; i <= maxIndex+1; ++i) {
-        std::string pi = hashStr + "_p_" + std::to_string(i);
-        ctx.getParser().declareIntVar(pi);
-    }
-    
     DEBUG("Declared auxiliary variables for ", variable, " with delimiter regex ", delimiter, " using hash ", hashStr);
 }
 
@@ -606,6 +597,10 @@ void SplitSolver::addBasicConstraints(Context& ctx, const Division* division) {
     std::string constraint3 = "(or (= " + last + " \"\") (str.prefixof " INTERNAL_DELIMITER " " + last + "))";
     DEBUG("[addBasicConstraints] Adding constraint: ", constraint3);
     ctx.getParser().addAssertion(constraint3);
+    
+    std::string constraint4 = "(not (str.contains " + variable + " " INTERNAL_DELIMITER "))";
+    DEBUG("[addBasicConstraints] Adding constraint: ", constraint4);
+    ctx.getParser().addAssertion(constraint4);
 }
 
 void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* division) {
@@ -627,51 +622,6 @@ void SplitSolver::addEquivalenceConstraints(Context& ctx, const Division* divisi
             equiv += " " + hashStr + "_x_" + std::to_string(idx) + ")))";
         }
         DEBUG("[addEquivalenceConstraints] Adding constraint: ", equiv);
-        ctx.getParser().addAssertion(equiv);
-    }
-}
-
-void SplitSolver::addIndexConstraints(Context& ctx, const Division* division) {
-    std::string variable = division->getDivided();
-    std::string hashStr = division->getHashString();
-    const VarDivision* varDiv = static_cast<const VarDivision*>(division);
-    int maxIndex = varDiv->getMaxSplitNumAppeared();
-    
-    if (maxIndex == -1) {
-        DEBUG("Skipping index constraints for ", variable, " - no split_at usage");
-        return;
-    }
-    
-    std::string split = hashStr + "_split";
-    
-    std::string constraint = "(= " + hashStr + "_p_0 -1)";
-    ctx.getParser().addAssertion(constraint);
-
-    for (int i = 0; i <= maxIndex; ++i) {
-        std::string prevPi = hashStr + "_p_" + std::to_string(i);
-        std::string pi = hashStr + "_p_" + std::to_string(i+1);
-        std::string gi = hashStr + "_g_" + std::to_string(i);
-        std::string xi = hashStr + "_x_" + std::to_string(i);
-        std::string bi = hashStr + "_b_" + std::to_string(i);
-        std::string constraint;
-
-        constraint = "(= " + pi + " (str.indexof " + split + " " INTERNAL_DELIMITER " (+ " + prevPi + " 1)))";
-        DEBUG("[addIndexConstraints] Adding constraint: ", constraint);
-        ctx.getParser().addAssertion(constraint);
-        std::string gConstraint = "(= " + gi + " (or (= " + pi + " (- 0 1)) (= (- (- " + pi + " " + prevPi + ") 1) (str.len " + xi + "))))";
-        DEBUG("[addIndexConstraints] Adding constraint: ", gConstraint);
-        ctx.getParser().addAssertion(gConstraint);
-    }
-    
-    for (int idx : varDiv->getSplitNumsAppeared()) {
-        std::string bi = hashStr + "_b_" + std::to_string(idx);
-        std::string equiv = "(=> " + bi + " (and";
-        for (int i = 0; i <= idx; ++i) {
-            std::string gi = hashStr + "_g_" + std::to_string(i);
-            equiv += " " + gi;
-        }
-        equiv += "))";
-        DEBUG("[addIndexConstraints] Adding constraint: ", equiv);
         ctx.getParser().addAssertion(equiv);
     }
 }
@@ -704,7 +654,6 @@ void SplitSolver::addAuxiliaryNodes(Context& ctx) {
             addAuxiliaryVariables(ctx, divisionPtr.get());
             addBasicConstraints(ctx, divisionPtr.get());
             addEquivalenceConstraints(ctx, divisionPtr.get());
-            addIndexConstraints(ctx, divisionPtr.get());
             addNumSplitsConstraints(ctx, divisionPtr.get());
         }
     }

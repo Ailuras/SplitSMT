@@ -40,7 +40,6 @@ public:
     void addAuxiliaryVariables(Context& ctx, const Division* division);
     void addBasicConstraints(Context& ctx, const Division* division);
     void addEquivalenceConstraints(Context& ctx, const Division* division);
-    void addIndexConstraints(Context& ctx, const Division* division);
     void addNumSplitsConstraints(Context& ctx, const Division* division);
     void addAuxiliaryLemmas(Context& ctx);
 
