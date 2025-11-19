@@ -1,52 +1,100 @@
 ===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7758_rws_openai.smt2
-START: 2025-10-30 14:46:52
-END: 2025-10-30 14:46:54
-DURATION_SEC: 1.712
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-timeout: the monitored command dumped core
-/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 2312106 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7790.corecstrs.readable_rws_openai.smt2
-START: 2025-10-30 14:46:54
-END: 2025-10-30 14:46:54
-DURATION_SEC: 0.343
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/77b31c343ab0f76826c9bb8a2cbcd5a84df9c3e9a76751d71089e1b3_rws_openai.smt2
-START: 2025-10-30 14:46:54
-END: 2025-10-30 14:46:55
-DURATION_SEC: 0.372
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/7845.corecstrs.readable_rws_openai.smt2
-START: 2025-10-30 14:46:55
-END: 2025-10-30 14:46:55
-DURATION_SEC: 0.299
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_rws_gpt-4.1/8213.corecstrs.readable_rws_openai.smt2
-START: 2025-10-30 14:46:55
-END: 2025-10-30 14:46:56
-DURATION_SEC: 0.953
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-031-fuzz-translate-fuzz_rws_deepseek.smt2
+START: 2025-11-19 15:28:02
+END: 2025-11-19 15:28:33
+DURATION_SEC: 30.095
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-045-unsat-multiply-reverse-multiply_rws_deepseek.smt2
+START: 2025-11-19 15:28:33
+END: 2025-11-19 15:28:33
+DURATION_SEC: 0.172
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-046-unsat-translate-multiply-translate_rws_deepseek.smt2
+START: 2025-11-19 15:28:33
+END: 2025-11-19 15:28:34
+DURATION_SEC: 1.257
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-deep-00008-13_rws_deepseek.smt2
+START: 2025-11-19 15:28:34
+END: 2025-11-19 15:28:34
+DURATION_SEC: 0.201
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-pair-00011-12_rws_deepseek.smt2
+START: 2025-11-19 15:28:34
+END: 2025-11-19 15:28:35
+DURATION_SEC: 0.303
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-small-00053-10_rws_deepseek.smt2
+START: 2025-11-19 15:28:35
+END: 2025-11-19 15:28:38
+DURATION_SEC: 3.768
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/slent_kaluza_177_sink_rws_deepseek.smt2
+START: 2025-11-19 15:28:38
+END: 2025-11-19 15:28:46
+DURATION_SEC: 7.790
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/z3-regex-2-negative-reverse-rotate-graft_rws_deepseek.smt2
+START: 2025-11-19 15:28:46
+END: 2025-11-19 15:28:46
+DURATION_SEC: 0.052
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_sfc_DeepSeek-V3/02bf4342a92a0fa8b68b0f91afdd134841abf13a7f6f4725b6102785_sfc_deepseek.smt2
+START: 2025-11-19 15:28:46
+END: 2025-11-19 15:28:46
+DURATION_SEC: 0.172
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/DeepSeek/seeds_sfc_DeepSeek-V3/05_track_156_sfc_deepseek.smt2
+START: 2025-11-19 15:28:46
+END: 2025-11-19 15:28:47
+DURATION_SEC: 0.383
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

@@ -993,8 +993,8 @@ SatResult Context::executeFallback(SolverType preferredSolverType) {
         }
     }
 
-    ERROR("All fallback solver candidates failed to execute");
-    return SatResult::ERROR;
+    INFO("All fallback solver candidates failed to execute");
+    return SatResult::UNKNOWN;
 }
 
 bool Context::reloadCurrentFile() {

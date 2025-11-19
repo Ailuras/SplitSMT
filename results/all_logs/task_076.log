@@ -1,50 +1,104 @@
 ===========================================================
-FILE: benchmarks/Java/awesome/35414.smt2
-START: 2025-10-30 14:46:23
-END: 2025-10-30 14:46:24
-DURATION_SEC: 0.558
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/Java/awesome/356.smt2
-START: 2025-10-30 14:46:24
-END: 2025-10-30 14:46:24
-DURATION_SEC: 0.475
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/e240506803f8ad8d3bd802371317f10815fd940717184312be58f172_sfc_openai.smt2
+START: 2025-11-19 15:27:30
+END: 2025-11-19 15:27:30
+DURATION_SEC: 0.096
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 
 ===========================================================
-FILE: benchmarks/Java/awesome/3751.smt2
-START: 2025-10-30 14:46:24
-END: 2025-10-30 14:46:55
-DURATION_SEC: 30.349
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c_sfc_openai.smt2
+START: 2025-11-19 15:27:30
+END: 2025-11-19 15:27:30
+DURATION_SEC: 0.135
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/instance47890_sfc_openai.smt2
+START: 2025-11-19 15:27:30
+END: 2025-11-19 15:27:31
+DURATION_SEC: 0.743
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/instance51264_sfc_openai.smt2
+START: 2025-11-19 15:27:31
+END: 2025-11-19 15:27:31
+DURATION_SEC: 0.165
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/norn-benchmark-172_sfc_openai.smt2
+START: 2025-11-19 15:27:31
+END: 2025-11-19 15:27:31
+DURATION_SEC: 0.089
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/regex-002-unsat-graft-graft-translate_sfc_openai.smt2
+START: 2025-11-19 15:27:31
+END: 2025-11-19 15:27:32
+DURATION_SEC: 0.084
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/regex-003-translate-fuzz-multiply_sfc_openai.smt2
+START: 2025-11-19 15:27:32
+END: 2025-11-19 15:27:32
+DURATION_SEC: 0.087
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/regex-007-unsat-reverse-translate-multiply_sfc_openai.smt2
+START: 2025-11-19 15:27:32
+END: 2025-11-19 15:27:32
+DURATION_SEC: 0.122
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/regex-009-reverse-multiply-translate_sfc_openai.smt2
+START: 2025-11-19 15:27:32
+END: 2025-11-19 15:27:33
+DURATION_SEC: 1.322
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::out_of_range'
+  what():  map::at
+timeout: the monitored command dumped core
+/home/hanrui/StrProcessor/solvers/linux/z3-noodler/run.sh: line 46: 1107107 Aborted                 timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 unknown
 
 ===========================================================
-FILE: benchmarks/Java/awesome/3766.smt2
-START: 2025-10-30 14:46:55
-END: 2025-10-30 14:46:56
-DURATION_SEC: 1.549
+FILE: benchmarks/LLMs/ChatGPT/seeds_sfc_gpt-4.1/regex-012-unsat-fuzz-fuzz-fuzz_sfc_openai.smt2
+START: 2025-11-19 15:27:33
+END: 2025-11-19 15:27:33
+DURATION_SEC: 0.195
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/Java/awesome/3776.smt2
-START: 2025-10-30 14:46:56
-END: 2025-10-30 14:46:57
-DURATION_SEC: 0.524
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+unsat
 

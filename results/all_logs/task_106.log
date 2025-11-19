@@ -1,50 +1,98 @@
 ===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/47005a791d44eab8208b098b498abeddba2aa19a62ca4325179f51c6_cso_openai.smt2
-START: 2025-10-30 14:46:36
-END: 2025-10-30 14:46:37
-DURATION_SEC: 0.613
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5704.corecstrs.readable_cso_openai.smt2
-START: 2025-10-30 14:46:37
-END: 2025-10-30 14:46:37
-DURATION_SEC: 0.503
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5751.corecstrs.readable_cso_openai.smt2
-START: 2025-10-30 14:46:38
-END: 2025-10-30 14:46:44
-DURATION_SEC: 6.416
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-timeout: the monitored command dumped core
-/home/hanrui/StrProcessor/solvers/z3-noodler/run.sh: line 47: 2302796 Segmentation fault      timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SCRIPT_DIR/bin/z3" model=true "$SMT_FILE"
-unknown
-
-===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/5965_cso_openai.smt2
-START: 2025-10-30 14:46:44
-END: 2025-10-30 14:46:45
-DURATION_SEC: 0.372
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/e240506803f8ad8d3bd802371317f10815fd940717184312be58f172_sfc_claude.smt2
+START: 2025-11-19 15:27:37
+END: 2025-11-19 15:27:38
+DURATION_SEC: 0.093
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 
 ===========================================================
-FILE: benchmarks/LLMs/ChatGPT/seeds_cso_gpt-4.1/6605_cso_openai.smt2
-START: 2025-10-30 14:46:45
-END: 2025-10-30 14:46:45
-DURATION_SEC: 0.454
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/edc27f3a0987b61dca59f8d687bc3e1a0f4285cdf518469b2c32fc5c_sfc_claude.smt2
+START: 2025-11-19 15:27:38
+END: 2025-11-19 15:27:38
+DURATION_SEC: 0.091
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/instance47890_sfc_claude.smt2
+START: 2025-11-19 15:27:38
+END: 2025-11-19 15:27:40
+DURATION_SEC: 2.633
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/instance51264_sfc_claude.smt2
+START: 2025-11-19 15:27:40
+END: 2025-11-19 15:27:41
+DURATION_SEC: 1.007
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/norn-benchmark-172_sfc_claude.smt2
+START: 2025-11-19 15:27:41
+END: 2025-11-19 15:27:42
+DURATION_SEC: 0.672
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/regex-002-unsat-graft-graft-translate_sfc_claude.smt2
+START: 2025-11-19 15:27:42
+END: 2025-11-19 15:27:42
+DURATION_SEC: 0.087
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/regex-003-translate-fuzz-multiply_sfc_claude.smt2
+START: 2025-11-19 15:27:42
+END: 2025-11-19 15:27:42
+DURATION_SEC: 0.087
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/regex-007-unsat-reverse-translate-multiply_sfc_claude.smt2
+START: 2025-11-19 15:27:42
+END: 2025-11-19 15:27:43
+DURATION_SEC: 0.572
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/regex-009-reverse-multiply-translate_sfc_claude.smt2
+START: 2025-11-19 15:27:43
+END: 2025-11-19 15:28:13
+DURATION_SEC: 30.094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+FILE: benchmarks/LLMs/Claude/seeds_sfc_claude-sonnet-4-20250514/regex-012-unsat-fuzz-fuzz-fuzz_sfc_claude.smt2
+START: 2025-11-19 15:28:13
+END: 2025-11-19 15:28:13
+DURATION_SEC: 0.272
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
