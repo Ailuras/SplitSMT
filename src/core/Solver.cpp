@@ -156,6 +156,11 @@ SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) con
         return SatResult::UNKNOWN;
     }
 
+    if (containsToken("(error") || containsToken("error:") || containsToken("Error:")) {
+        ERROR("External solver reported errors in output");
+        return SatResult::ERROR;
+    }
+
     if (containsToken("unsat")) {
         return SatResult::UNSAT;
     }

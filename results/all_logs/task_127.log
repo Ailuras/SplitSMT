@@ -1,8 +1,8 @@
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-013-fuzz-fuzz-fuzz_rws_deepseek.smt2
-START: 2025-11-19 15:28:02
-END: 2025-11-19 15:28:02
-DURATION_SEC: 0.057
+START: 2025-11-21 16:55:06
+END: 2025-11-21 16:55:06
+DURATION_SEC: 0.089
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -10,9 +10,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-014-graft-reverse_rws_deepseek.smt2
-START: 2025-11-19 15:28:02
-END: 2025-11-19 15:28:32
-DURATION_SEC: 30.083
+START: 2025-11-21 16:55:06
+END: 2025-11-21 16:55:36
+DURATION_SEC: 30.379
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -20,9 +20,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-014-reverse-graft-multiply_rws_deepseek.smt2
-START: 2025-11-19 15:28:32
-END: 2025-11-19 15:29:02
-DURATION_SEC: 30.067
+START: 2025-11-21 16:55:37
+END: 2025-11-21 16:56:07
+DURATION_SEC: 30.102
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,9 +30,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-015-multiply-fuzz_rws_deepseek.smt2
-START: 2025-11-19 15:29:02
-END: 2025-11-19 15:29:33
-DURATION_SEC: 30.810
+START: 2025-11-21 16:56:07
+END: 2025-11-21 16:56:37
+DURATION_SEC: 30.589
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -40,9 +40,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-015-translate-fuzz-rotate_rws_deepseek.smt2
-START: 2025-11-19 15:29:33
-END: 2025-11-19 15:29:33
-DURATION_SEC: 0.044
+START: 2025-11-21 16:56:37
+END: 2025-11-21 16:56:37
+DURATION_SEC: 0.050
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +50,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-016-translate-translate-reverse_rws_deepseek.smt2
-START: 2025-11-19 15:29:33
-END: 2025-11-19 15:29:33
-DURATION_SEC: 0.085
+START: 2025-11-21 16:56:37
+END: 2025-11-21 16:56:38
+DURATION_SEC: 0.092
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,9 +60,9 @@ sat
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-020-translate-translate-multiply_rws_deepseek.smt2
-START: 2025-11-19 15:29:33
-END: 2025-11-19 15:30:04
-DURATION_SEC: 30.073
+START: 2025-11-21 16:56:38
+END: 2025-11-21 16:57:08
+DURATION_SEC: 30.067
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -70,9 +70,9 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-022-unsat-fuzz-fuzz-rotate_rws_deepseek.smt2
-START: 2025-11-19 15:30:04
-END: 2025-11-19 15:30:04
-DURATION_SEC: 0.135
+START: 2025-11-21 16:57:08
+END: 2025-11-21 16:57:08
+DURATION_SEC: 0.140
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -80,9 +80,9 @@ sat
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-025-multiply-translate-rotate_rws_deepseek.smt2
-START: 2025-11-19 15:30:04
-END: 2025-11-19 15:30:34
-DURATION_SEC: 30.094
+START: 2025-11-21 16:57:08
+END: 2025-11-21 16:57:38
+DURATION_SEC: 30.089
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -90,15 +90,15 @@ unknown
 
 ===========================================================
 FILE: benchmarks/LLMs/DeepSeek/seeds_rws_DeepSeek-V3/regex-027-fuzz_rws_deepseek.smt2
-START: 2025-11-19 15:30:34
-END: 2025-11-19 15:30:59
-DURATION_SEC: 24.792
+START: 2025-11-21 16:57:38
+END: 2025-11-21 16:58:04
+DURATION_SEC: 25.827
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::out_of_range'
   what():  map::at
 timeout: the monitored command dumped core
-/home/hanrui/StrProcessor/solvers/linux/z3-noodler/run.sh: line 46: 1150371 Aborted                 timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/StrProcessor/solvers/linux/z3-noodler/run.sh: line 46: 3340414 Aborted                 timeout --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 unknown
 
