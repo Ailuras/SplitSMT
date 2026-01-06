@@ -11,6 +11,7 @@ all: build
 configure:
 	@echo "Configuring StrProcessor (${BUILD_TYPE})..."
 	@$(CMAKE) -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
+	@ln -sf $(BUILD_DIR)/compile_commands.json .
 
 build: configure
 	@echo "Building StrProcessor (${BUILD_TYPE})..."

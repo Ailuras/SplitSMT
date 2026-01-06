@@ -1,0 +1,7 @@
+(set-logic QF_SLIA)
+(declare-fun x () String)
+(assert (= x "key1::value1::key2::value2"))
+(assert (= (str.split_at x "::" 0) "key1"))
+(assert (= (str.split_at x "::" 2) "key2"))
+(assert (> (str.num_splits x "::") 3))
+(check-sat)

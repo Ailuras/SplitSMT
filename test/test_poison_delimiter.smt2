@@ -1,0 +1,5 @@
+(set-logic QF_SLIA)
+(declare-fun x () String)
+(assert (= (str.split_at x "#" 0) "data"))
+(assert (= x "data#rest"))
+(check-sat)
