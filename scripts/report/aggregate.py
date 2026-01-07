@@ -32,7 +32,7 @@ from openpyxl import Workbook
 from openpyxl.cell.cell import TYPE_STRING, TYPE_NUMERIC
 from openpyxl.styles import PatternFill, Font
 
-BLOCK_SEPARATOR = "=" * 59
+BLOCK_SEPARATOR = "=" * 59  # Standard separator for both batch.sh and batch_splitsmt.sh
 OUTPUT_SEPARATOR = "-" * 59
 
 VALID_RESULTS = {"SAT", "UNSAT", "UNKNOWN"}
@@ -191,12 +191,33 @@ def parse_block(block: str, default_solver: Optional[str]) -> Optional[LogEntry]
 
 
 def derive_metadata(file_path: Path) -> tuple[str, str]:
-    """Return (suite, category) where category is the file's parent folder and suite is its parent."""
-
-    parent = file_path.parent
-    category = parent.name
-    suite = parent.parent.name if parent != parent.parent else ""
-    return suite, category
+    """Return (suite, category) extracted from file path.
+    
+    Handles various path structures:
+    - benchmarks/Suite/Category/file.smt2 -> (Suite, Category)
+    - test/Category/file.smt2 -> (test, Category)  
+    - some/dir/file.smt2 -> (dir, -)
+    - file.smt2 -> (-, -)
+    """
+    parts = file_path.parts
+    
+    # Need at least a filename
+    if len(parts) < 1:
+        return "-", "-"
+    
+    # Single file with no directory: (-, -)
+    if len(parts) == 1:
+        return "-", "-"
+    
+    # Only one parent directory: (parent, -)
+    if len(parts) == 2:
+        return parts[0], "-"
+    
+    # Two or more parent directories: (grandparent, parent)
+    parent = parts[-2]  # Immediate parent directory
+    suite = parts[-3]   # Grandparent directory
+    
+    return suite, parent
 
 
 def classify_result(raw_output: str, status: str) -> str:

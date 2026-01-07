@@ -71,8 +71,8 @@ std::string normalizeDelimiterLiteral(const std::string &literal) {
 
 namespace strp {
 
-SplitSolver::SplitSolver(SolverType solverType, Context &ctx)
-    : currentSolverType(solverType), context(ctx) {
+SplitSolver::SplitSolver(SolverType solverType, Context &ctx, int timeout)
+    : currentSolverType(solverType), context(ctx), timeout(timeout) {
   initializeSolver();
 }
 
@@ -85,20 +85,21 @@ void SplitSolver::initializeSolver() {
   try {
     switch (currentSolverType) {
     case SolverType::Z3:
-      solver = std::make_unique<ExternalSolver>(SolverType::Z3);
-      INFO("Initialized external Z3 solver");
+      solver = std::make_unique<ExternalSolver>(SolverType::Z3, timeout);
+      INFO("Initialized external Z3 solver with timeout: ", timeout);
       break;
     case SolverType::CVC5:
-      solver = std::make_unique<ExternalSolver>(SolverType::CVC5);
-      INFO("Initialized external CVC5 solver");
+      solver = std::make_unique<ExternalSolver>(SolverType::CVC5, timeout);
+      INFO("Initialized external CVC5 solver with timeout: ", timeout);
       break;
     case SolverType::OSTRICH:
-      solver = std::make_unique<ExternalSolver>(SolverType::OSTRICH);
-      INFO("Initialized external Ostrich solver");
+      solver = std::make_unique<ExternalSolver>(SolverType::OSTRICH, timeout);
+      INFO("Initialized external Ostrich solver with timeout: ", timeout);
       break;
     case SolverType::Z3_NOODLER:
-      solver = std::make_unique<ExternalSolver>(SolverType::Z3_NOODLER);
-      INFO("Initialized external Z3-Noodler solver");
+      solver =
+          std::make_unique<ExternalSolver>(SolverType::Z3_NOODLER, timeout);
+      INFO("Initialized external Z3-Noodler solver with timeout: ", timeout);
       break;
     default:
       ERROR("Unknown external solver type");

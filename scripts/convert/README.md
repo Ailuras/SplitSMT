@@ -18,18 +18,18 @@ python3 scripts/convert/convert.py test/2015-Norn test/2015-Norn-Converted
 # 使用 Python 版本的转换器
 python3 scripts/convert/convert.py test/Timeout test/Timeout_REG_python --version python
 
-# 指定超时与 REG-Split 选项
-python3 scripts/convert/convert.py cases/ converted/ --timeout 120 --tree --log-level 10
+# 指定超时与 SplitSMT 选项
+python3 scripts/convert/convert.py cases/ converted/ --timeout 120 --gen --log-level 10
 ```
 
 ## 参数
 
 - `input_path`：待转换的文件或文件夹。
 - `output_path`：输出文件或文件夹。目录输入时会镜像相对路径；文件输入时可给文件路径或目录路径。不存在会自动创建。
-- `--version`：选择转换器版本：`cplus`（默认，`build/REG-Split`）或 `python`（`python/REG-Split.py`）。
+- `--version`：选择转换器版本：`cplus`（默认，`build/SplitSMT`）或 `python`（`python/SplitSMT.py`）。
 - `--clear`：处理前清空输出路径（文件则删除，目录则递归删除）。
 - `--timeout`：单个文件的超时时间（秒），默认 60。超时会视为失败但继续处理后续文件。
-- `--tree`：传递 `--tree` 给转换器，输出树状格式。
+- `--gen`：传递 `--gen` 给转换器，输出树状格式。
 - `--log-level`：传递 `-l/--level` 给转换器，调整日志级别。
 - `--verbose`：打印每个文件的输入/输出路径，默认不打印逐文件信息。
 - `--quiet`：强制安静模式（默认即安静），仅在失败或汇总时打印。

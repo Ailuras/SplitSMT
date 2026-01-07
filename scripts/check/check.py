@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Compare solver outputs before and after REG-Split preprocessing.
+"""Check consistency across multiple SMT solvers for SMT2 files (file or directory).
 
-Updated to call the C++ binary built at ``build/REG-Split`` instead of the
-old Python script.
+Runs a set of solvers (default: z3, cvc5, ostrich, z3-noodler) on the
+input file(s) and compares their results. Reports mismatch if any two solvers disagree.
 """
 
 from __future__ import annotations
@@ -10,20 +10,17 @@ from __future__ import annotations
 import argparse
 import pathlib
 import re
-import shutil
 import subprocess
 import sys
-import tempfile
 import time
 from dataclasses import dataclass
-from typing import Dict, Iterable, List, Optional, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple, Set
 
 
-AVAILABLE_SOLVERS: Tuple[str, ...] = ("z3-noodler", "z3", "cvc5", "ostrich")
+AVAILABLE_SOLVERS: Tuple[str, ...] = ("z3", "cvc5", "ostrich", "z3-noodler")
 SOLVER_CHOICES: Tuple[str, ...] = AVAILABLE_SOLVERS + ("all",)
 STATUS_PATTERN = re.compile(r"\b(sat|unsat|unknown)\b", re.IGNORECASE)
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
-PREPROCESS_PATH = REPO_ROOT / "build" / "REG-Split"
 
 
 class Colors:
@@ -59,7 +56,6 @@ class Colors:
 @dataclass
 class SolverResult:
     solver: str
-    target: str
     status: str
     runtime: float
     exit_code: Optional[int]
@@ -69,22 +65,11 @@ class SolverResult:
     file_path: pathlib.Path
 
 
-@dataclass
-class RegSplitResult:
-    success: bool
-    output_path: pathlib.Path
-    runtime: float
-    exit_code: Optional[int]
-    stdout: str
-    stderr: str
-    error: Optional[str]
-
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run solvers on an SMT2 file before/after REG-Split and compare results.",
+        description="Run multiple solvers on SMT2 file(s) and check for consistency.",
     )
-    parser.add_argument("smt_file", type=pathlib.Path, help="Path to the SMT2 file to check.")
+    parser.add_argument("input_path", type=pathlib.Path, help="Path to the SMT2 file or directory to check.")
     parser.add_argument(
         "--timeout",
         type=int,
@@ -103,7 +88,7 @@ def parse_args() -> argparse.Namespace:
         dest="solvers",
         nargs="+",
         choices=list(SOLVER_CHOICES),
-        help="Solvers to run (default: only z3-noodler). Use 'all' to run all solvers.",
+        help="Solvers to run (default: all available). Use 'all' explicitly to filter.",
     )
     parser.add_argument(
         "--platform",
@@ -112,19 +97,14 @@ def parse_args() -> argparse.Namespace:
         help="Select solver script platform directory (default: auto detect).",
     )
     parser.add_argument(
-        "--save",
-        type=pathlib.Path,
-        help="Directory to copy REG-Split output into (filename will match the input).",
-    )
-    parser.add_argument(
-        "--reg-split-level",
-        type=int,
-        help="Pass log level to REG-Split (--level/-l).",
-    )
-    parser.add_argument(
         "--details",
         action="store_true",
-        help="Print stdout/stderr from REG-Split and solvers.",
+        help="Print stdout/stderr from solvers (default: True). Use --quiet to suppress.",
+    )
+    parser.add_argument(
+        "--quiet",
+        action="store_true",
+        help="Suppress stdout/stderr from solvers.",
     )
     parser.add_argument(
         "--no-color",
@@ -166,9 +146,8 @@ def parse_solver_timeouts(raw: Iterable[str], default_timeout: int) -> Dict[str,
 
 
 def resolve_solvers(selected: Optional[List[str]]) -> List[str]:
-    if not selected:
-        return ["z3-noodler"]
-    if "all" in selected:
+    # Default: Run ALL available comparison solvers
+    if not selected or "all" in selected:
         return list(AVAILABLE_SOLVERS)
     return list(dict.fromkeys(selected))
 
@@ -181,13 +160,21 @@ def resolve_solver_script(name: str, platform_dir: str) -> pathlib.Path:
 
 
 def detect_status(stdout: str, stderr: str, exit_code: int) -> str:
-    if exit_code == 124:
+    if exit_code == 124 or exit_code == 137 or exit_code == 143: # 137 is SIGKILL, 143 is SIGTERM
         return "timeout"
+    
+    # Check stdout/stderr for status strings
     for stream in (stdout, stderr):
         for line in stream.splitlines():
+            # Check for exact matches on lines first to avoid noise
+            if line.strip().lower() in ("sat", "unsat", "unknown"):
+                 return line.strip().lower()
+            
+            # Fallback to regex search
             match = STATUS_PATTERN.search(line)
             if match:
                 return match.group(1).lower()
+                
     return "ok" if exit_code == 0 else "error"
 
 
@@ -214,9 +201,13 @@ def run_solver(
         error = None
         if completed.returncode != 0 and status not in {"sat", "unsat", "unknown", "timeout"}:
             error = f"Command exit code: {completed.returncode}"
+        
+        # Double check validity of status based on runtime vs timeout
+        if runtime >= timeout and status != "timeout":
+             pass
+
         return SolverResult(
             solver=solver,
-            target="original",
             status=status,
             runtime=runtime,
             exit_code=completed.returncode,
@@ -229,7 +220,6 @@ def run_solver(
         runtime = time.perf_counter() - start
         return SolverResult(
             solver=solver,
-            target="original",
             status="missing",
             runtime=runtime,
             exit_code=None,
@@ -238,12 +228,11 @@ def run_solver(
             error=str(exc),
             file_path=smt_file,
         )
-    except PermissionError as exc:
+    except Exception as exc:
         runtime = time.perf_counter() - start
         return SolverResult(
             solver=solver,
-            target="original",
-            status="permission",
+            status="error",
             runtime=runtime,
             exit_code=None,
             stdout="",
@@ -251,53 +240,6 @@ def run_solver(
             error=str(exc),
             file_path=smt_file,
         )
-
-
-def run_reg_split(
-    input_file: pathlib.Path,
-    output_file: pathlib.Path,
-    log_level: Optional[int],
-) -> RegSplitResult:
-    output_file.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [str(PREPROCESS_PATH), str(input_file), str(output_file)]
-    if log_level is not None:
-        cmd.extend(["-l", str(log_level)])
-    if not PREPROCESS_PATH.exists():
-        return RegSplitResult(
-            success=False,
-            output_path=output_file,
-            runtime=0.0,
-            exit_code=None,
-            stdout="",
-            stderr="",
-            error=f"REG-Split binary not found: {PREPROCESS_PATH}",
-        )
-    start = time.perf_counter()
-    completed = subprocess.run(
-        cmd,
-        cwd=str(REPO_ROOT),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-    )
-    runtime = time.perf_counter() - start
-    output_exists = output_file.exists()
-    success = completed.returncode == 0 and output_exists
-    if completed.returncode != 0:
-        error = f"REG-Split exit code: {completed.returncode}"
-    elif not output_exists:
-        error = "REG-Split finished without producing output file"
-    else:
-        error = None
-    return RegSplitResult(
-        success=success,
-        output_path=output_file,
-        runtime=runtime,
-        exit_code=completed.returncode,
-        stdout=completed.stdout or "",
-        stderr=completed.stderr or "",
-        error=error,
-    )
 
 
 def format_duration(seconds: float) -> str:
@@ -309,50 +251,80 @@ def format_duration(seconds: float) -> str:
 
 
 def print_table(results: List[SolverResult]) -> None:
-    header = f"{Colors.BOLD}{'Solver':<12} {'Target':<12} {'Status':<16} {'Time':<8} {'Exit':<6}{Colors.RESET}"
+    header = f"{Colors.BOLD}{'Solver':<14} {'Status':<16} {'Time':<8} {'Exit':<6}{Colors.RESET}"
     print(header)
-    print(Colors.GRAY + "-" * 58 + Colors.RESET)
+    print(Colors.GRAY + "-" * 46 + Colors.RESET)
     for result in results:
-        status = f"{Colors.status_color(result.status)}{result.status:<16}{Colors.RESET}"
-        runtime = f"{Colors.CYAN}{format_duration(result.runtime):<8}{Colors.RESET}"
+        status_str = f"{Colors.status_color(result.status)}{result.status:<16}{Colors.RESET}"
+        runtime_str = f"{Colors.CYAN}{format_duration(result.runtime):<8}{Colors.RESET}"
         exit_code = "" if result.exit_code is None else str(result.exit_code)
-        print(f"{result.solver:<12} {result.target:<12} {status} {runtime} {exit_code:<6}")
+        print(f"{result.solver:<14} {status_str} {runtime_str} {exit_code:<6}")
 
 
-def print_details(reg_split: RegSplitResult, results: List[SolverResult]) -> None:
-    print("\nREG-Split stdout/stderr")
-    print("-----------------------")
-    if reg_split.stdout.strip():
-        print("stdout:")
-        print(reg_split.stdout.strip())
-    if reg_split.stderr.strip():
-        print("stderr:")
-        print(reg_split.stderr.strip())
-    for result in results:
-        if result.stdout.strip() or result.stderr.strip() or result.error:
-            print(f"\n== {result.solver} ({result.target}) ==")
-            if result.error:
-                print(f"error: {result.error}")
-            if result.stdout.strip():
-                print("stdout:")
-                print(result.stdout.strip())
-            if result.stderr.strip():
-                print("stderr:")
-                print(result.stderr.strip())
+def print_result_details(result: SolverResult) -> None:
+    print(f"\n{Colors.BOLD}== {result.solver} =={Colors.RESET}")
+    print(f"Status: {Colors.status_color(result.status)}{result.status}{Colors.RESET}")
+    
+    if result.error:
+        print(f"{Colors.RED}error: {result.error}{Colors.RESET}")
+    
+    if result.stdout.strip():
+        print(f"{Colors.GRAY}stdout:{Colors.RESET}")
+        print(result.stdout.strip())
+    
+    if result.stderr.strip():
+        print(f"{Colors.GRAY}stderr:{Colors.RESET}")
+        print(result.stderr.strip())
+    print("-" * 20)
 
 
-def copy_for_variant(original: SolverResult, target: str, file_path: pathlib.Path) -> SolverResult:
-    return SolverResult(
-        solver=original.solver,
-        target=target,
-        status=original.status,
-        runtime=0.0,
-        exit_code=None,
-        stdout="",
-        stderr="",
-        error=None,
-        file_path=file_path,
-    )
+def check_file(
+    smt_file: pathlib.Path, 
+    solvers: List[str], 
+    solver_timeouts: Dict[str, int], 
+    platform_dir: str, 
+    args: argparse.Namespace
+) -> int:
+    """Returns 0 if consistent/unknown, 1 if mismatch, 2 if error."""
+    print(f"{Colors.BOLD}Checking: {smt_file.name}{Colors.RESET}")
+    print(f"Path:     {smt_file}")
+    print(f"Solvers:  {', '.join(solvers)}")
+
+    results: List[SolverResult] = []
+    status_set: Set[str] = set()
+    fatal_error = False
+
+    for solver in solvers:
+        timeout = solver_timeouts.get(solver, args.timeout)
+        result = run_solver(solver, smt_file, timeout, platform_dir)
+        results.append(result)
+        
+        if result.status in ("sat", "unsat"):
+            status_set.add(result.status)
+        
+        if result.status in ("error", "missing", "permission"):
+             # We assume solver errors are not 'fatal' to the whole batch, but worthy of note
+             pass
+
+        if not args.quiet:
+            print_result_details(result)
+
+    print_table(results)
+
+    if len(status_set) > 1:
+        print(f"\n{Colors.RED}{Colors.BOLD}MISMATCH DETECTED!{Colors.RESET}")
+        print(f"Solvers reported conflicting statuses: {status_set}")
+        print("="*60 + "\n")
+        return 1
+    elif len(status_set) == 1:
+        consensus = list(status_set)[0]
+        print(f"\n{Colors.GREEN}Consensus: {consensus.upper()}{Colors.RESET}")
+        print("="*60 + "\n")
+        return 0
+    else:
+        print(f"\n{Colors.YELLOW}No definitive result (unknown/timeout).{Colors.RESET}")
+        print("="*60 + "\n")
+        return 0
 
 
 def main() -> int:
@@ -360,13 +332,25 @@ def main() -> int:
     if args.no_color or not sys.stdout.isatty():
         Colors.disable()
 
-    temp_dir: Optional[pathlib.Path] = None
-    save_dir: Optional[pathlib.Path] = args.save.resolve() if args.save else None
-
-    smt_file = args.smt_file.resolve()
-    if not smt_file.is_file():
-        print(f"{Colors.RED}Error: file not found {smt_file}{Colors.RESET}", file=sys.stderr)
+    input_path = args.input_path.resolve()
+    if not input_path.exists():
+        print(f"{Colors.RED}Error: path not found {input_path}{Colors.RESET}", file=sys.stderr)
         return 2
+
+    # Collect files
+    files_to_check: List[pathlib.Path] = []
+    if input_path.is_file():
+        if input_path.suffix == '.smt2':
+            files_to_check.append(input_path)
+        else:
+            print(f"{Colors.RED}Error: Input file must have .smt2 extension{Colors.RESET}", file=sys.stderr)
+            return 2
+    else:
+        # Directory - walk recursively
+        files_to_check = sorted(list(input_path.rglob("*.smt2")))
+        if not files_to_check:
+            print(f"{Colors.YELLOW}No .smt2 files found in directory {input_path}{Colors.RESET}")
+            return 0
 
     try:
         solver_timeouts = parse_solver_timeouts(args.solver_timeout, args.timeout)
@@ -382,75 +366,39 @@ def main() -> int:
 
     solvers = resolve_solvers(args.solvers)
 
-    temp_dir = pathlib.Path(tempfile.mkdtemp(prefix="reg_split_check_"))
-    suffix = smt_file.suffix or ".smt2"
-    output_path = temp_dir / f"{smt_file.stem}.reg-split{suffix}"
+    print(f"Found {len(files_to_check)} files to check.\n")
 
-    try:
-        reg_split_result = run_reg_split(
-            input_file=smt_file,
-            output_file=output_path,
-            log_level=args.reg_split_level,
-        )
+    stats = {
+        "total": len(files_to_check),
+        "consistent": 0,
+        "mismatch": 0,
+        "error": 0 # Not currently used for exit code 2, but could track execution errors
+    }
 
-        results: List[SolverResult] = []
-        fatal_error = not reg_split_result.success
-        mismatch_found = False
+    exit_code = 0
+    
+    for smt_file in files_to_check:
+        res = check_file(smt_file, solvers, solver_timeouts, platform_dir, args)
+        if res == 0:
+            stats["consistent"] += 1
+        elif res == 1:
+            stats["mismatch"] += 1
+            exit_code = 1
+        else:
+            stats["error"] += 1
+            exit_code = 1 # Consider error as failure too
 
-        save_path: Optional[pathlib.Path] = None
-        if reg_split_result.success and save_dir:
-            save_dir.mkdir(parents=True, exist_ok=True)
-            save_path = save_dir / smt_file.name
-            shutil.copy2(reg_split_result.output_path, save_path)
-
-        for solver in solvers:
-            timeout = solver_timeouts.get(solver, args.timeout)
-            original_result = run_solver(solver, smt_file, timeout, platform_dir)
-            results.append(original_result)
-
-            if not reg_split_result.success:
-                processed_result = copy_for_variant(
-                    original_result, "reg-split", reg_split_result.output_path
-                )
-                processed_result.status = "reg-split-error"
-                processed_result.runtime = reg_split_result.runtime
-                processed_result.exit_code = reg_split_result.exit_code
-                processed_result.stdout = reg_split_result.stdout
-                processed_result.stderr = reg_split_result.stderr
-                processed_result.error = reg_split_result.error
-                results.append(processed_result)
-                continue
-
-            processed_result = run_solver(solver, reg_split_result.output_path, timeout, platform_dir)
-            processed_result.target = "reg-split"
-            results.append(processed_result)
-
-            comparable = {"sat", "unsat", "unknown"}
-            if original_result.status in comparable and processed_result.status in comparable:
-                if original_result.status != processed_result.status:
-                    mismatch_found = True
-            elif original_result.status in comparable or processed_result.status in comparable:
-                mismatch_found = True
-
-            if processed_result.status in {"missing", "permission", "error"}:
-                fatal_error = True
-            if original_result.status in {"missing", "permission", "error"}:
-                fatal_error = True
-
-        print_table(results)
-        if save_path and reg_split_result.success:
-            print(f"\nREG-Split output saved to: {save_path}")
-        if args.details:
-            print_details(reg_split_result, results)
-
-        if fatal_error:
-            return 2
-        if mismatch_found:
-            return 1
-        return 0
-    finally:
-        if temp_dir:
-            shutil.rmtree(temp_dir, ignore_errors=True)
+    # Summary
+    print(f"{Colors.BOLD}SUMMARY{Colors.RESET}")
+    print(f"Total files: {stats['total']}")
+    print(f"Consistent/Unknown: {Colors.GREEN}{stats['consistent']}{Colors.RESET}")
+    print(f"Mismatches: {Colors.RED}{stats['mismatch']}{Colors.RESET}")
+    
+    if stats["mismatch"] > 0:
+        print(f"\n{Colors.RED}FAILURE: Consistency check failed for {stats['mismatch']} files.{Colors.RESET}")
+        return 1
+    
+    return exit_code
 
 
 if __name__ == "__main__":

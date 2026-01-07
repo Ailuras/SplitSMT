@@ -1,53 +1,74 @@
 # check.py
 
-`scripts/check/check.py` 用于校验同一求解器在正则分裂前后的求解结果是否一致。流程如下：
-- 调用 `src/REG-Split.py` 对输入 SMT2 进行转换（默认使用临时文件且执行结束后清理）。
-- 在原始文件与转换文件上分别调用指定求解器脚本（位于 `solvers/<platform>/<solver>/run.sh`）。
-- 打印结果对比表格，标出差异、超时或执行错误。
+`scripts/check/check.py` 用于对 SMT2 文件或目录进行多求解器一致性检查。它可以运行指定的多个求解器（包括 SplitSMT）并比较它们的结果，以发现求解器之间的结果冲突（如 SAT vs UNSAT）。
+
+## 功能
+
+- 支持同时运行多个求解器（默认为：z3, cvc5, ostrich, z3-noodler, splitsmt）。
+- 自动检测并报告结果冲突。
+- 支持单独设置超时时间。
+- 清晰的表格输出结果。
 
 ## 平台与求解器
+
 - macOS 使用 `solvers/macos/`；Linux 使用 `solvers/linux/`；`--platform auto` 会自动选择。
-- 默认仅运行 `z3-noodler`，可选求解器：`z3-noodler`、`z3`、`cvc5`、`ostrich`，或使用 `all` 运行全部求解器。
-- 求解器脚本接口统一为：`run.sh <timeout> <smt_file>`，超时时间单位为秒。
+- 默认运行所有已配置的求解器。
+- 求解器脚本接口统一为：`run.sh <timeout> <smt_file>`。
 
 ## 用法
+
 ```bash
-python3 scripts/check/check.py <smt_file> [选项]
+python3 scripts/check/check.py <input_path> [选项]
 ```
 
 常用选项：
-- `--solver <names...>`：选择求解器（默认 z3-noodler），传入 `all` 等价于全部求解器。
+
+- `--solver <names...>`：选择要运行的求解器（如 `z3 cvc5`）。不传此参数默认运行所有可用求解器。使用 `all` 也可以运行全部。
 - `--timeout <seconds>`：默认的单次求解超时时间，默认 300 秒。
 - `--solver-timeout name=seconds`：为特定求解器单独设定超时，可重复传入。
 - `--platform auto|macos|linux`：强制选择求解器脚本平台目录。
-- `--save <dir>`：将 REG-Split 的输出复制到指定目录下，文件名与原始输入文件一致；默认不保留转换结果。
-- `--reg-split-level <int>` / `--reg-split-tree`：透传给 `src/REG-Split.py` 的日志级别与树形输出。
-- `--details`：打印 REG-Split 与求解器的 stdout/stderr。
+- `--details`：打印求解器的 stdout/stderr。
 - `--no-color`：禁用彩色输出。
 
 ## 示例
-- 默认检查（z3-noodler，300 秒超时）：
+
+- 默认检查（运行所有求解器）：
+
   ```bash
   python3 scripts/check/check.py benchmarks/example.smt2
+
+  # 或者输入目录（递归检查目录下的所有 .smt2 文件）
+  python3 scripts/check/check.py benchmarks/
   ```
-- 同时检查多个求解器并单独设置超时：
+
+- 指定求解器并设置超时：
+
   ```bash
   python3 scripts/check/check.py benchmarks/example.smt2 \
-    --solver z3-noodler z3 cvc5 \
-    --solver-timeout z3=120 --solver-timeout cvc5=90
+    --solver z3 cvc5 splitsmt \
+    --timeout 60
   ```
-- 保存转换后的 SMT2 文件并查看详情：
+
+- 单独设置超时：
+
   ```bash
   python3 scripts/check/check.py benchmarks/example.smt2 \
-    --save /tmp/reg-split-out --details
+    --solver-timeout splitsmt=120
   ```
 
 ## 输出与返回值
-- 表格列含义：`Solver`（求解器）、`Target`（original/reg-split）、`Status`、`Time`、`Exit`。
-- 状态会尝试从求解器输出中识别 `sat`/`unsat`/`unknown`，若超时返回 `timeout`，缺失脚本返回 `missing`，权限问题返回 `permission`。
-- 返回码：`0`（未发现可比较结果差异且无致命错误）、`1`（可比较结果不一致），`2`（参数错误、REG-Split 失败、求解器脚本缺失/无权限或其他执行错误）。
+
+- 表格列含义：`Solver`（求解器）、`Status`（状态）、`Time`（时间）、`Exit`（退出码）。
+- 状态识别：`sat`, `unsat`, `unknown`, `timeout`。
+- 结果摘要：
+  - **Consensus**: 所有有结论的求解器结果一致。
+  - **MISMATCH**: 存在冲突结果（如 SAT 和 UNSAT 同时出现）。
+  - **No definitive result**: 所有求解器都返回 unknown 或 timeout。
+- 返回码：
+  - `0`: 一致或无结论。
+  - `1`: 检测到结果冲突 (MISMATCH)。
+  - `2`: 参数错误或执行错误。
 
 ## 注意事项
-- 求解器脚本路径需存在且可执行；其内部依赖的二进制需自行配置。
-- 未指定 `--save` 时，转换文件会在脚本结束后清理。
-- `--solver` 接受多个值，会持续读取后续位置参数；若要把 `--solver` 写在文件路径之前，请使用 `--solver ... -- <smt_file>` 或直接将 `<smt_file>` 放在命令最前。
+
+- 求解器脚本路径需存在且可执行。

@@ -59,6 +59,7 @@
 ### 求解器脚本要求
 
 求解器脚本必须：
+
 - 位于 `solvers/{platform}/{solver}/run.sh`
 - 可执行权限
 - 接受两个参数：`<timeout> <smt_file>`
@@ -83,6 +84,7 @@
 
 - 如果指定了 `-g`，使用指定的组大小
 - 如果未指定 `-g`，根据总文件数和并发任务数自动计算：
+
   ```
   group_size = ceil(total_files / jobs)
   ```
@@ -146,3 +148,74 @@
 - 根据文件大小和复杂度调整超时时间，避免任务过早超时
 - 磁盘 I/O 可能成为瓶颈，建议将输出目录放在快速存储设备上
 
+## batch_splitsmt.sh
+
+该脚本专门用于通过 SplitSMT 批量处理 SMT-LIB 文件。与 `batch.sh` 不同，此脚本直接调用 SplitSMT 二进制文件，由 SplitSMT 内部处理求解逻辑。
+
+### 功能特性
+
+- **内部求解**: 直接使用 SplitSMT 二进制文件处理文件
+- **可配置求解器**: 通过 `--solver` 参数指定 SplitSMT 使用的底层求解器
+- **并行处理**: 支持多任务并行，自动检测 CPU 核心数
+- **完整日志**: 每个任务组生成独立的日志文件
+- **超时控制**: 通过 SplitSMT 的 `-t` 参数控制超时
+
+### 使用方法
+
+基本用法：
+
+```bash
+./scripts/batch/batch_splitsmt.sh -s z3 -i test/top20_maven -o results/splitsmt_z3
+```
+
+完整示例：
+
+```bash
+./scripts/batch/batch_splitsmt.sh \
+  -s cvc5 \
+  -t 90 \
+  -i benchmarks/Java \
+  -o results/splitsmt_cvc5 \
+  -g 5 \
+  -j 4
+```
+
+### 参数说明
+
+- `-s, --solver <SOLVER>`: 指定 SplitSMT 使用的底层求解器，默认为 `z3-noodler`。可选值：`z3`、`cvc5`、`ostrich`、`z3-noodler`
+- `-t, --timeout <SEC>`: 每个文件的超时时间（秒），默认为 60
+- `-i, --input-dir <DIR>`: 包含 SMT-LIB 文件的输入目录，默认为 `benchmarks`
+- `-o, --output-dir <DIR>`: 存储任务日志的输出目录，默认为 `results`
+- `-g, --group-size <NUM>`: 每个任务组包含的文件数量（自动计算）
+- `-j, --jobs <NUM>`: 最大并发任务数（自动检测 CPU 核心数）
+- `-h, --help`: 显示帮助信息
+
+### 与 batch.sh 的区别
+
+| 特性 | batch.sh | batch_splitsmt.sh |
+|------|----------|-------------------|
+| 求解方式 | 直接调用外部求解器脚本 | 通过 SplitSMT 内部求解 |
+| 适用场景 | 测试原始 SMT2 文件 | 测试 SplitSMT 处理后的结果 |
+| 求解器选择 | `-s` 选择求解器脚本 | `-s` 选择 SplitSMT 的底层求解器 |
+| 依赖 | 需要 `solvers/{platform}/` 下的脚本 | 只需要 SplitSMT 二进制文件 |
+
+### 使用示例
+
+使用 z3 求解器处理测试数据：
+
+```bash
+./scripts/batch/batch_splitsmt.sh \
+  -s z3 \
+  -i test/top20_maven \
+  -o results/splitsmt_z3
+```
+
+使用 cvc5 求解器，设置 120 秒超时：
+
+```bash
+./scripts/batch/batch_splitsmt.sh \
+  -s cvc5 \
+  -t 120 \
+  -i benchmarks/Auto/easy \
+  -o results/splitsmt_cvc5_easy
+```

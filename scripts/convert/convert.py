@@ -16,9 +16,9 @@ from pathlib import Path
 import shutil
 from typing import Iterable, List, Sequence
 
+# REPO_ROOT = Path(__file__).resolve().parents[2]
 REPO_ROOT = Path(__file__).resolve().parents[2]
-CPP_PREPROCESS_PATH = REPO_ROOT / "build" / "REG-Split"
-PY_PREPROCESS_PATH = REPO_ROOT / "python" / "REG-Split.py"
+CPP_PREPROCESS_PATH = REPO_ROOT / "build" / "bin" / "SplitSMT"
 
 
 @dataclass
@@ -32,7 +32,7 @@ class ProcessResult:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run REG-Split (C++ or Python) on a file or directory of files."
+        description="Run SplitSMT on a file or directory of files."
     )
     parser.add_argument("input_path", type=Path, help="待转换的文件或文件夹。")
     parser.add_argument(
@@ -40,12 +40,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         help="输出文件或文件夹。目录输入时会镜像原有相对路径。",
     )
-    parser.add_argument(
-        "--version",
-        choices=("cplus", "python"),
-        default="cplus",
-        help="选择转化器版本：cplus（默认）或 python。",
-    )
+    # parser.add_argument(
+    #     "--version",
+    #     choices=("cplus", "python"),
+    #     default="cplus",
+    #     help="选择转化器版本：cplus（默认）或 python。",
+    # )
     parser.add_argument(
         "--clear",
         action="store_true",
@@ -58,15 +58,15 @@ def parse_args() -> argparse.Namespace:
         help="单个文件的超时时间（秒），默认 60。",
     )
     parser.add_argument(
-        "--tree",
+        "--gen",
         action="store_true",
-        help="传递 --tree 给 regsplit，生成树状格式的 SMT2。",
+        help="传递 --gen 给 SplitSMT，生成分割后的 SMT2。",
     )
     parser.add_argument(
         "--log-level",
         type=int,
         default=4,  # Silent mode (NONE) for batch processing
-        help="传递 -l/--level 给 regsplit，用于调节日志级别。0=DEBUG, 1=INFO, 2=WARN, 3=ERROR, 4=NONE",
+        help="传递 -l/--level 给 SplitSMT，用于调节日志级别。0=DEBUG, 1=INFO, 2=WARN, 3=ERROR, 4=NONE",
     )
     parser.add_argument(
         "--verbose",
@@ -107,25 +107,25 @@ def run_preprocess(
     input_file: Path,
     output_file: Path,
     timeout: int,
-    tree: bool,
+    gen: bool,
     log_level: int | None,
-    version: str,
     converter_path: Path,
 ) -> ProcessResult:
     start = time.time()
     try:
         output_file.parent.mkdir(parents=True, exist_ok=True)
         # Converter usage:
-        # - C++ binary: regsplit <input> [output] [options]
-        # - Python script: python REG-Split.py <input> [output] [options]
-        if version == "python":
-            cmd: list[str] = [sys.executable, str(converter_path), str(input_file), str(output_file)]
+        # - C++ binary with --gen: SplitSMT <input> --gen <output> [options]
+        # - C++ binary without --gen: SplitSMT <input> [output] [options]
+        cmd = [str(converter_path), str(input_file)]
+        
+        if gen:
+            cmd.extend(["--gen", str(output_file)])
         else:
-            cmd = [str(converter_path), str(input_file), str(output_file)]
+            cmd.append(str(output_file))
+            
         if log_level is not None:
             cmd.extend(["-l", str(log_level)])
-        if tree:
-            cmd.append("--tree")
 
         completed = subprocess.run(
             cmd,
@@ -168,10 +168,10 @@ def main() -> None:
     if args.timeout <= 0:
         print("error: --timeout must be positive seconds", file=sys.stderr)
         sys.exit(1)
-    if args.version == "python":
-        converter_path = PY_PREPROCESS_PATH
-    else:
-        converter_path = CPP_PREPROCESS_PATH
+    # if args.version == "python":
+    #     converter_path = PY_PREPROCESS_PATH
+    # else:
+    converter_path = CPP_PREPROCESS_PATH
     if not converter_path.exists():
         print(f"error: converter not found: {converter_path}", file=sys.stderr)
         sys.exit(1)
@@ -216,9 +216,8 @@ def main() -> None:
                 file_path,
                 target_path,
                 args.timeout,
-                args.tree,
+                args.gen,
                 args.log_level,
-                args.version,
                 converter_path,
             )
         except Exception as exc:  # noqa: BLE001 - defensive: keep batch running
