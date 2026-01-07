@@ -396,6 +396,33 @@ src/core/Structures.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/core/Structures.cpp.s
 .PHONY : src/core/Structures.cpp.s
 
+src/core/check.o: src/core/check.cpp.o
+.PHONY : src/core/check.o
+
+# target to build an object file
+src/core/check.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/core/check.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/core/check.cpp.o
+.PHONY : src/core/check.cpp.o
+
+src/core/check.i: src/core/check.cpp.i
+.PHONY : src/core/check.i
+
+# target to preprocess a source file
+src/core/check.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/core/check.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/core/check.cpp.i
+.PHONY : src/core/check.cpp.i
+
+src/core/check.s: src/core/check.cpp.s
+.PHONY : src/core/check.s
+
+# target to generate assembly for a file
+src/core/check.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/core/check.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/core/check.cpp.s
+.PHONY : src/core/check.cpp.s
+
 src/parser/Parser.o: src/parser/Parser.cpp.o
 .PHONY : src/parser/Parser.o
 
@@ -487,6 +514,9 @@ help:
 	@echo "... src/core/Structures.o"
 	@echo "... src/core/Structures.i"
 	@echo "... src/core/Structures.s"
+	@echo "... src/core/check.o"
+	@echo "... src/core/check.i"
+	@echo "... src/core/check.s"
 	@echo "... src/parser/Parser.o"
 	@echo "... src/parser/Parser.i"
 	@echo "... src/parser/Parser.s"

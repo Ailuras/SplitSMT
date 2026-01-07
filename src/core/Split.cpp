@@ -1,4 +1,5 @@
 #include "Split.h"
+#include "check.h"
 #include "Context.h"
 #include "utils/Config.h"
 
@@ -7,14 +8,17 @@
 // #define INTERNAL_DELIMITER "\"#\""
 #include <algorithm>
 #include <chrono>
+#include <cctype>
 #include <cstdlib>
 #include <exception>
 #include <fstream>
 #include <functional>
 #include <iomanip>
 #include <iterator>
+#include <optional>
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 
 // Internal delimiter used for splitting operations
 // Internal delimiter used for splitting operations
@@ -74,8 +78,10 @@ std::string normalizeDelimiterLiteral(const std::string &literal) {
 
 namespace strp {
 
-SplitSolver::SplitSolver(SolverType solverType, Context &ctx, int timeout)
-    : currentSolverType(solverType), context(ctx), timeout(timeout) {
+SplitSolver::SplitSolver(SolverType solverType, Context &ctx, int timeout,
+                         bool enableCheck)
+    : currentSolverType(solverType), context(ctx), timeout(timeout),
+      checkEnabled(enableCheck) {
   initializeSolver();
 }
 
@@ -718,7 +724,9 @@ void SplitSolver::addNumSplitsConstraints(Context &ctx,
 void SplitSolver::addAuxiliaryNodes(Context &ctx) {
   DEBUG("Adding auxiliary nodes for variable splits");
 
-  splitAtTerms = ctx.getSplitAtVarNodes();
+  splitAtTerms = ctx.getSplitAtNodes();
+  splitRestTerms = ctx.getSplitRestNodes();
+  numSplitTerms = ctx.getNumSplitNodes();
   const auto &divisions = ctx.getAllDivisions();
   for (const auto &[key, divisionPtr] : divisions) {
     if (divisionPtr->isVarType()) {
@@ -981,6 +989,19 @@ std::string SplitSolver::filterModel(const std::string &rawModel) {
   return filteredModel.str();
 }
 
+bool SplitSolver::checkSatModel() {
+  if (!solver) {
+    ERROR("Solver not initialized");
+    return false;
+  }
+
+  const std::string rawInput = context.getParser().getRawContent();
+  std::string modelText = solver->getModel();
+  return runSplitModelCheck(context, currentSolverType, timeout, rawInput,
+                            modelText, splitAtTerms, splitRestTerms,
+                            numSplitTerms);
+}
+
 void SplitSolver::rewriteFormula(Context &ctx) {
   LOG5("\n", ctx.getParser().getSMTLIB2(true));
   resetSolver();
@@ -1017,6 +1038,7 @@ SatResult SplitSolver::checkSat() {
   auto start = std::chrono::high_resolution_clock::now();
 
   std::string smtFormula = context.getFormula();
+  rewrittenFormula = smtFormula;
   SatResult result = solver->checkSat(smtFormula);
 
   auto end = std::chrono::high_resolution_clock::now();
@@ -1059,6 +1081,16 @@ SatResult SplitSolver::solve() {
   rewriteFormula(context);
 
   SatResult result = checkSat();
+
+  if (result == SatResult::SAT && checkEnabled) {
+    INFO("Running SAT model check (--check)");
+    if (!checkSatModel()) {
+      ERROR("SAT model check failed");
+      result = SatResult::ERROR;
+    } else {
+      INFO("SAT model check passed");
+    }
+  }
 
   INFO("Final result: ", result == SatResult::SAT       ? "SAT"
                          : result == SatResult::UNSAT   ? "UNSAT"

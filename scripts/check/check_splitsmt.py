@@ -105,6 +105,12 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable colored output.",
     )
+    parser.add_argument(
+        "--splitsmt-args",
+        nargs=argparse.REMAINDER,
+        default=[],
+        help="Additional arguments to pass to SplitSMT (e.g., --splitsmt-args --check --verbose).",
+    )
     return parser.parse_args()
 
 
@@ -156,6 +162,7 @@ def run_solver(
     solver: str,
     timeout: int,
     show_details: bool,
+    extra_args: List[str] = None,
 ) -> SolverResult:
     """Run SplitSMT with the specified underlying solver."""
     if not SPLITSMT_BINARY.exists():
@@ -176,6 +183,10 @@ def run_solver(
         "-s", solver,
         "-t", str(timeout),
     ]
+    
+    # Add extra arguments if provided
+    if extra_args:
+        cmd.extend(extra_args)
 
     if show_details:
         print(f"    {Colors.GRAY}Running: {' '.join(cmd)}{Colors.RESET}")
@@ -245,6 +256,7 @@ def check_file(
     solver_timeouts: Dict[str, int],
     default_timeout: int,
     show_details: bool,
+    extra_args: List[str] = None,
 ) -> Tuple[str, List[SolverResult]]:
     """Check a single file with all specified solvers."""
     print(f"\n{Colors.BOLD}Checking: {file_path.name}{Colors.RESET}")
@@ -255,7 +267,7 @@ def check_file(
     
     for solver in solvers:
         timeout = solver_timeouts.get(solver, default_timeout)
-        result = run_solver(file_path, solver, timeout, show_details)
+        result = run_solver(file_path, solver, timeout, show_details, extra_args)
         results.append(result)
     
     # Determine consistency
@@ -370,6 +382,7 @@ def main() -> int:
             solver_timeouts,
             args.timeout,
             show_details,
+            args.splitsmt_args,
         )
         
         print_results(consistency, results, show_details)

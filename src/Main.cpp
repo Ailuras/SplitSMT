@@ -15,12 +15,13 @@ struct Args {
   int timeout;
   bool showHelp;
   bool genOnly;
+  bool check;
 };
 
 void printUsage() {
   std::cout
       << "Usage: strprocessor <input_file> [output_file] [-l <log_level>] [-s "
-         "<solver>] [-t <timeout>] [--gen <gen_output>] [-h]"
+         "<solver>] [-t <timeout>] [--gen <gen_output>] [--check] [-h]"
       << std::endl;
   std::cout << "  <input_file>      Input SMT2 file" << std::endl;
   std::cout << "  [output_file]     Output file (optional)" << std::endl;
@@ -41,6 +42,9 @@ void printUsage() {
   std::cout
       << "  --gen             Generate rewritten SMT2 file without solving"
       << std::endl;
+  std::cout
+      << "  --check           When SAT, validate model against original split terms"
+      << std::endl;
   std::cout << "  -h, --help        Show this help message" << std::endl;
 }
 
@@ -53,6 +57,7 @@ void parseArgs(int argc, char *argv[], Args &args) {
   args.timeout = 30; // Default timeout
   args.showHelp = false;
   args.genOnly = false;
+  args.check = false;
 
   if (argc < 2) {
     args.showHelp = true;
@@ -122,6 +127,8 @@ void parseArgs(int argc, char *argv[], Args &args) {
       if (i + 1 < argc) {
         args.genOutputFile = argv[++i];
       }
+    } else if (arg == "--check") {
+      args.check = true;
     } else if (args.inputFile.empty()) {
       args.inputFile = arg;
     } else if (args.outputFile.empty()) {
@@ -146,6 +153,7 @@ void setupLogging(const Args &args) {
   if (!args.outputFile.empty()) {
     DEBUG("Output file: ", args.outputFile);
   }
+  DEBUG("Check: ", args.check ? "enabled" : "disabled");
 
   std::string solverName;
   switch (args.solverType) {
@@ -199,7 +207,7 @@ int main(int argc, char *argv[]) {
           return 1;
         }
         strp::SplitSolver solver(args.solverType, strp::Context::getInstance(),
-                                 args.timeout);
+                                 args.timeout, false);
         bool success = solver.generateOnly(args.genOutputFile);
         return success ? 0 : 1;
       }
@@ -227,7 +235,7 @@ int main(int argc, char *argv[]) {
       }
 
       strp::SplitSolver solver(args.solverType, strp::Context::getInstance(),
-                               args.timeout);
+                               args.timeout, args.check);
       strp::SatResult result = solver.solve();
       return result == strp::SatResult::ERROR ? 1 : 0;
     } else {

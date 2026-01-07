@@ -14,7 +14,8 @@ namespace strp {
 class SplitSolver {
 public:
   SplitSolver(SolverType solverType = SolverType::Z3_NOODLER,
-              Context &ctx = Context::getInstance(), int timeout = 30);
+              Context &ctx = Context::getInstance(), int timeout = 30,
+              bool enableCheck = false);
   ~SplitSolver() = default;
 
   void setSolver(SolverType type);
@@ -26,6 +27,7 @@ public:
   std::string getModel();
   std::string getUnsatCore();
   std::string filterModel(const std::string &rawModel);
+  bool checkSatModel();
 
   void rewriteFormula(Context &ctx);
   void replaceSplitAtConstNodes(
@@ -54,6 +56,10 @@ private:
   SolverType currentSolverType;
   Context &context;
   int timeout;
+  bool checkEnabled;
   std::vector<SMTParser::NodePtr> splitAtTerms;
+  std::vector<SMTParser::NodePtr> splitRestTerms;
+  std::vector<SMTParser::NodePtr> numSplitTerms;
+  std::string rewrittenFormula;
 };
 } // namespace strp

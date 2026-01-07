@@ -58,6 +58,7 @@ set(CORE_SOURCES
     src/core/Structures.cpp
     src/core/Solver.cpp
     src/core/Split.cpp
+    src/core/check.cpp
     src/core/Fallback.cpp
     src/parser/Parser.cpp
     src/utils/RegexHelper.cpp
