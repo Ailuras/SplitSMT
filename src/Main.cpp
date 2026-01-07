@@ -1,4 +1,5 @@
 #include "core/Context.h"
+#include "core/Fallback.h"
 #include "core/Split.h"
 #include "utils/Logger.h"
 #include <cstdlib>
@@ -190,8 +191,10 @@ int main(int argc, char *argv[]) {
   try {
     auto &context = strp::Context::getInstance();
     if (parseInputFile(args.inputFile, context)) {
+      auto &fallbackMgr = strp::FallbackManager::getInstance();
+
       if (args.genOnly) {
-        if (context.isFallbackRequired()) {
+        if (fallbackMgr.isFallbackRequired()) {
           ERROR("Cannot generate output for fallback cases");
           return 1;
         }
@@ -201,9 +204,10 @@ int main(int argc, char *argv[]) {
         return success ? 0 : 1;
       }
 
-      if (context.isFallbackRequired()) {
+      if (fallbackMgr.isFallbackRequired()) {
         INFO("Executing fallback pipeline for input: ", args.inputFile);
-        strp::SatResult result = context.executeFallback(args.solverType);
+        strp::SatResult result =
+            fallbackMgr.executeFallback(args.solverType, args.timeout);
         INFO("Final result: ", result == strp::SatResult::SAT       ? "SAT"
                                : result == strp::SatResult::UNSAT   ? "UNSAT"
                                : result == strp::SatResult::UNKNOWN ? "UNKNOWN"

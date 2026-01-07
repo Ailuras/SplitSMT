@@ -4,10 +4,12 @@
 
 #include <algorithm>
 #include <array>
+#include <cerrno>
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
 #include <csignal>
+#include <cstring>
 #include <filesystem>
 #include <fstream>
 #include <stdexcept>
@@ -20,6 +22,97 @@
 #include <unistd.h>
 
 namespace strp {
+
+namespace {
+struct ExternalProcessResult {
+    std::string output;
+    int waitStatus = -1;
+    int exitCode = -1;
+    int signalNumber = 0;
+};
+
+ExternalProcessResult runExternalProcess(const std::vector<std::string>& argv) {
+    if (argv.empty()) {
+        throw std::runtime_error("runExternalProcess: empty argv");
+    }
+
+    int pipefd[2];
+    if (pipe(pipefd) != 0) {
+        throw std::runtime_error("Failed to create pipe for external solver");
+    }
+
+    pid_t pid = fork();
+    if (pid < 0) {
+        close(pipefd[0]);
+        close(pipefd[1]);
+        throw std::runtime_error("Failed to fork for external solver");
+    }
+
+    if (pid == 0) {
+        // Child process: redirect stdout/stderr to pipe, then exec.
+        dup2(pipefd[1], STDOUT_FILENO);
+        dup2(pipefd[1], STDERR_FILENO);
+        close(pipefd[0]);
+        close(pipefd[1]);
+
+        std::vector<char*> args;
+        args.reserve(argv.size() + 1);
+        for (const auto& arg : argv) {
+            args.push_back(const_cast<char*>(arg.c_str()));
+        }
+        args.push_back(nullptr);
+
+        execv(args[0], args.data());
+
+        // If execv fails, write a short message to the redirected stderr and exit.
+        const char* err = std::strerror(errno);
+        std::string msg = "Failed to exec external solver: ";
+        msg += (err ? err : "unknown error");
+        msg += "\n";
+        (void)write(STDERR_FILENO, msg.c_str(), msg.size());
+        _exit(127);
+    }
+
+    // Parent process: read combined stdout/stderr from pipe.
+    close(pipefd[1]);
+
+    std::string output;
+    std::array<char, 4096> buffer;
+    while (true) {
+        ssize_t n = read(pipefd[0], buffer.data(), buffer.size());
+        if (n > 0) {
+            output.append(buffer.data(), static_cast<size_t>(n));
+            continue;
+        }
+        if (n == 0) {
+            break;
+        }
+        if (errno == EINTR) {
+            continue;
+        }
+        break;
+    }
+    close(pipefd[0]);
+
+    int status = -1;
+    if (waitpid(pid, &status, 0) < 0) {
+        status = -1;
+    }
+
+    ExternalProcessResult result;
+    result.output = std::move(output);
+    result.waitStatus = status;
+    if (status != -1) {
+        if (WIFEXITED(status)) {
+            result.exitCode = WEXITSTATUS(status);
+        }
+        if (WIFSIGNALED(status)) {
+            result.signalNumber = WTERMSIG(status);
+        }
+    }
+    return result;
+}
+} // namespace
 
 ExternalSolver::ExternalSolver(SolverType type, int timeoutSeconds)
     : solverType(type), timeout(timeoutSeconds) {
@@ -59,27 +152,32 @@ std::string ExternalSolver::getSolverPath() const {
 }
 
 std::string ExternalSolver::createTempFile(const std::string& content) const {
-    char tempTemplate[] = "/tmp/smt2_XXXXXX";
-    int fd = mkstemp(tempTemplate);
+    char tempTemplate[] = "/tmp/smt2_XXXXXX.smt2";
+    int fd = mkstemps(tempTemplate, 5);
     if (fd == -1) {
         ERROR("Failed to create temporary file");
         throw std::runtime_error("Failed to create temporary file");
     }
 
     std::string tempFile(tempTemplate);
-    tempFile += ".smt2";
 
-    close(fd);
-    unlink(tempTemplate);
-
-    std::ofstream file(tempFile);
-    if (!file.is_open()) {
-        ERROR("Failed to open temporary file: ", tempFile);
-        throw std::runtime_error("Failed to open temporary file");
+    const char* data = content.data();
+    size_t remaining = content.size();
+    while (remaining > 0) {
+        ssize_t written = write(fd, data, remaining);
+        if (written < 0) {
+            if (errno == EINTR) {
+                continue;
+            }
+            close(fd);
+            ERROR("Failed to write to temporary file: ", tempFile);
+            throw std::runtime_error("Failed to write to temporary file");
+        }
+        data += written;
+        remaining -= static_cast<size_t>(written);
     }
 
-    file << content;
-    file.close();
+    close(fd);
 
     DEBUG("Created temporary file: ", tempFile);
     return tempFile;
@@ -100,41 +198,21 @@ void ExternalSolver::deleteTempFile(const std::string& filename) const {
 }
 
 SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) const {
-    std::string command = solverPath + " " + std::to_string(timeout) + " " + tempFile;
-    DEBUG("Executing command: ", command);
+    std::vector<std::string> argv = {solverPath, std::to_string(timeout), tempFile};
+    DEBUG("Executing external solver: ", solverPath, " ", timeout, " ", tempFile);
 
-    std::array<char, 128> buffer;
-    std::string result;
-
-    FILE* pipe = popen(command.c_str(), "r");
-    if (!pipe) {
-        ERROR("Failed to execute external solver");
+    ExternalProcessResult procResult;
+    try {
+        procResult = runExternalProcess(argv);
+    } catch (const std::exception& e) {
+        ERROR("Failed to execute external solver: ", e.what());
         return SatResult::ERROR;
     }
 
-    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
-        result += buffer.data();
-    }
+    DEBUG("External solver output: ", procResult.output);
+    DEBUG("External solver wait status: ", procResult.waitStatus, " exit code: ", procResult.exitCode, " signal: ", procResult.signalNumber);
 
-    int waitStatus = pclose(pipe);
-    if (waitStatus == -1) {
-        ERROR("Failed to retrieve external solver status");
-        return SatResult::ERROR;
-    }
-
-    int exitCode = -1;
-    int signalNumber = 0;
-    if (WIFEXITED(waitStatus)) {
-        exitCode = WEXITSTATUS(waitStatus);
-    }
-    if (WIFSIGNALED(waitStatus)) {
-        signalNumber = WTERMSIG(waitStatus);
-    }
-
-    DEBUG("External solver output: ", result);
-    DEBUG("External solver wait status: ", waitStatus, " exit code: ", exitCode, " signal: ", signalNumber);
-
-    std::string normalizedResult = result;
+    std::string normalizedResult = procResult.output;
     std::transform(normalizedResult.begin(), normalizedResult.end(), normalizedResult.begin(), [](unsigned char ch) {
         return static_cast<char>(std::tolower(ch));
     });
@@ -144,10 +222,10 @@ SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) con
     };
 
     bool timeoutDetected = false;
-    if (exitCode == 124 || exitCode == 137 || exitCode == 143) {
+    if (procResult.exitCode == 124 || procResult.exitCode == 137 || procResult.exitCode == 143) {
         timeoutDetected = true;
     }
-    if (signalNumber == SIGTERM || signalNumber == SIGKILL) {
+    if (procResult.signalNumber == SIGTERM || procResult.signalNumber == SIGKILL) {
         timeoutDetected = true;
     }
 
@@ -156,7 +234,7 @@ SatResult ExternalSolver::executeExternalSolver(const std::string& tempFile) con
         return SatResult::UNKNOWN;
     }
 
-    if (containsToken("(error") || containsToken("error:") || containsToken("Error:")) {
+    if (containsToken("(error") || containsToken("error:")) {
         ERROR("External solver reported errors in output");
         return SatResult::ERROR;
     }
@@ -253,26 +331,21 @@ std::string ExternalSolver::getModel() {
 
     std::string tempFile = createTempFile(fullFormula);
 
-    std::string command = solverPath + " " + std::to_string(timeout) + " " + tempFile;
-    DEBUG("Executing command for model: ", command);
+    std::vector<std::string> argv = {solverPath, std::to_string(timeout), tempFile};
+    DEBUG("Executing external solver for model: ", solverPath, " ", timeout, " ", tempFile);
 
-    std::array<char, 128> buffer;
-    std::string result;
-
-    FILE* pipe = popen(command.c_str(), "r");
-    if (!pipe) {
-        ERROR("Failed to execute external solver for model");
+    ExternalProcessResult procResult;
+    try {
+        procResult = runExternalProcess(argv);
+    } catch (const std::exception& e) {
+        ERROR("Failed to execute external solver for model: ", e.what());
         deleteTempFile(tempFile);
         return "";
     }
 
-    while (fgets(buffer.data(), buffer.size(), pipe) != nullptr) {
-        result += buffer.data();
-    }
-
-    pclose(pipe);
     deleteTempFile(tempFile);
 
+    std::string result = std::move(procResult.output);
     DEBUG("Raw solver output for model: ", result);
 
     // Extract model from various output formats

@@ -223,28 +223,121 @@ std::string Parser::postProcessSMTLIB(const std::string& content) {
 }
 
 bool Parser::containsUnsupportedSyntax(const std::string& content, std::string& reason) const {
-    std::string lowered;
-    lowered.reserve(content.size());
-    for (char ch : content) {
-        lowered.push_back(static_cast<char>(std::tolower(static_cast<unsigned char>(ch))));
+    // Removed forall/exists/let/seq. detection - now handled by AST-based precise detection
+    // This function is kept for potential future string-level checks
+    return false;
+}
+
+// AST-based detection: check if node contains split operations
+bool Parser::containsSplitOperation(const SMTParser::NodePtr& node) const {
+    if (!node) return false;
+
+    SMTParser::NODE_KIND kind = node->getKind();
+
+    // Check if this is a split operation
+    if (kind == SMTParser::NODE_KIND::NT_STR_SPLIT_AT ||
+        kind == SMTParser::NODE_KIND::NT_STR_SPLIT_REST ||
+        kind == SMTParser::NODE_KIND::NT_STR_NUM_SPLITS ||
+        kind == SMTParser::NODE_KIND::NT_STR_SPLIT_AT_RE ||
+        kind == SMTParser::NODE_KIND::NT_STR_SPLIT_REST_RE ||
+        kind == SMTParser::NODE_KIND::NT_STR_NUM_SPLITS_RE) {
+        return true;
     }
 
-    const std::vector<std::pair<std::string, std::string>> patterns = {
-        {"(forall", "quantifier"},
-        {"(exists", "quantifier"},
-        {"(let", "let-binding"},
-        {"(seq.", "sequence feature"},
-        {"(seq ", "sequence feature"},
-        {" seq.", "sequence feature"}
-    };
-
-    for (const auto& [token, description] : patterns) {
-        if (lowered.find(token) != std::string::npos) {
-            reason = "Detected unsupported " + description + " construct";
+    // Recursively check children
+    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+        if (containsSplitOperation(node->getChild(i))) {
             return true;
         }
     }
 
+    return false;
+}
+
+// AST-based detection: check if quantifier/let contains split operations
+bool Parser::hasQuantifierOrLetWithSplit(const SMTParser::NodePtr& node, std::string& reason) const {
+    if (!node) return false;
+
+    SMTParser::NODE_KIND kind = node->getKind();
+
+    // Check if current node is forall/exists/let
+    if (kind == SMTParser::NODE_KIND::NT_FORALL ||
+        kind == SMTParser::NODE_KIND::NT_EXISTS ||
+        kind == SMTParser::NODE_KIND::NT_LET) {
+
+        // Check if the body contains split operations
+        if (containsSplitOperation(node)) {
+            std::string kindName = (kind == SMTParser::NODE_KIND::NT_FORALL) ? "forall" :
+                                   (kind == SMTParser::NODE_KIND::NT_EXISTS) ? "exists" : "let";
+            reason = "Detected " + kindName + " construct containing split operations";
+            return true;
+        }
+    }
+
+    // Recursively check children
+    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+        if (hasQuantifierOrLetWithSplit(node->getChild(i), reason)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// AST-based detection: check if specific split node has variable index
+bool Parser::isSplitIndexVariable(const SMTParser::NodePtr& splitNode) const {
+    if (!splitNode) return false;
+
+    SMTParser::NODE_KIND kind = splitNode->getKind();
+
+    // Only split_at and split_rest have index parameter
+    if (kind != SMTParser::NODE_KIND::NT_STR_SPLIT_AT &&
+        kind != SMTParser::NODE_KIND::NT_STR_SPLIT_REST &&
+        kind != SMTParser::NODE_KIND::NT_STR_SPLIT_AT_RE &&
+        kind != SMTParser::NODE_KIND::NT_STR_SPLIT_REST_RE) {
+        return false;
+    }
+
+    // Index is child[2]
+    if (splitNode->getChildrenSize() < 3) {
+        return false;
+    }
+
+    auto indexArg = splitNode->getChild(2);
+
+    // Check if it's a constant (NT_CONST)
+    // If not NT_CONST, it's a variable or expression
+    return indexArg->getKind() != SMTParser::NODE_KIND::NT_CONST;
+}
+
+// AST-based detection: check if any split has variable index
+bool Parser::hasSplitWithVariableIndex(const SMTParser::NodePtr& node) const {
+    if (!node) return false;
+
+    // Check current node
+    if (isSplitIndexVariable(node)) {
+        return true;
+    }
+
+    // Recursively check children
+    for (size_t i = 0; i < node->getChildrenSize(); ++i) {
+        if (hasSplitWithVariableIndex(node->getChild(i))) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// AST-based detection: main entry point for precise fallback checking
+bool Parser::containsUnsupportedSplitPattern(std::string& reason) {
+    // Traverse all assertions
+    auto assertions = getAssertions();
+    for (const auto& assertion : assertions) {
+        if (hasQuantifierOrLetWithSplit(assertion, reason)) {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -300,6 +393,28 @@ bool Parser::parseFile(const std::string& filename, Decomposition& decomposition
         }
         INFO("Switching to fallback processing due to parser failure");
         return true;
+    }
+
+    // PHASE 2: AST-based precise detection (after successful parsing)
+    std::string patternReason;
+
+    // Check for quantifier/let with split operations
+    if (containsUnsupportedSplitPattern(patternReason)) {
+        fallbackRequired = true;
+        fallbackReason = patternReason;
+        INFO("Detected unsupported pattern: ", fallbackReason);
+        return true;
+    }
+
+    // Check for split with variable index (applies to ALL splits)
+    auto assertions = getAssertions();
+    for (const auto& assertion : assertions) {
+        if (hasSplitWithVariableIndex(assertion)) {
+            fallbackRequired = true;
+            fallbackReason = "Split operation with variable index detected";
+            INFO("Detected split with variable index; switching to fallback");
+            return true;
+        }
     }
 
     INFO("Successfully parsed file: ", filename);

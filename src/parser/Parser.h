@@ -81,6 +81,13 @@ private:
     std::string rawContent;
 
     bool containsUnsupportedSyntax(const std::string& content, std::string& reason) const;
+
+    // AST-based detection methods for precise fallback checking
+    bool containsUnsupportedSplitPattern(std::string& reason);
+    bool hasQuantifierOrLetWithSplit(const SMTParser::NodePtr& node, std::string& reason) const;
+    bool containsSplitOperation(const SMTParser::NodePtr& node) const;
+    bool hasSplitWithVariableIndex(const SMTParser::NodePtr& node) const;
+    bool isSplitIndexVariable(const SMTParser::NodePtr& splitNode) const;
 };
 
 } // namespace strp 

@@ -262,14 +262,15 @@ def check_file(
     if show_details:
         print()
     
-    statuses = {r.status for r in results if r.status not in ("error", "timeout")}
+    # Filter strictly definitive results
+    definitive_statuses = {r.status for r in results if r.status in ("sat", "unsat")}
     
-    if len(statuses) == 0:
-        consistency = "no_result"
-    elif len(statuses) == 1:
+    if "sat" in definitive_statuses and "unsat" in definitive_statuses:
+        consistency = "mismatch"
+    elif definitive_statuses:
         consistency = "consistent"
     else:
-        consistency = "mismatch"
+        consistency = "no_result"
     
     return consistency, results
 

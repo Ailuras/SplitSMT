@@ -71,10 +71,10 @@ public:
     bool isConstType() const override { return true; }
     bool isVarType() const override { return false; }
     
-    int getSplitNums() const { return splitNums; }
+    size_t getSplitNums() const { return splitNums; }
     const std::vector<std::string>& getSplits() const { return splits; }
     std::string getSplit(int index) const { 
-        if (index < 0 || index >= static_cast<int>(splits.size())) {
+        if (index < 0 || static_cast<size_t>(index) >= splits.size()) {
             throw std::out_of_range("Split index out of range");
         }
         return splits[index]; 
@@ -82,7 +82,7 @@ public:
     
     const std::vector<std::string>& getSplitDelimiters() const { return splitDelimiters; }
     std::string getSplitDelimiter(int index) const { 
-        if (index < 0 || index >= static_cast<int>(splitDelimiters.size())) {
+        if (index < 0 || static_cast<size_t>(index) >= splitDelimiters.size()) {
             throw std::out_of_range("Split delimiter index out of range");
         }
         return splitDelimiters[index]; 
@@ -94,7 +94,7 @@ public:
 private:
     std::vector<std::string> splits;
     std::vector<std::string> splitDelimiters;
-    int splitNums;
+    size_t splitNums;
     bool has_split_num = false;
 };
 

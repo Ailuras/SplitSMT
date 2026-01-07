@@ -1,6 +1,10 @@
 #include "Split.h"
 #include "Context.h"
-#include "utils/Logger.h"
+#include "utils/Config.h"
+
+// Internal delimiter used for splitting operations
+// Internal delimiter used for splitting operations
+// #define INTERNAL_DELIMITER "\"#\""
 #include <algorithm>
 #include <chrono>
 #include <cstdlib>
@@ -14,8 +18,7 @@
 
 // Internal delimiter used for splitting operations
 // Internal delimiter used for splitting operations
-// #define INTERNAL_DELIMITER "\"#\""
-#define INTERNAL_DELIMITER "\"\\u{2FFFF}\""
+#define INTERNAL_DELIMITER strp::config::INTERNAL_DELIMITER
 
 std::string cleanQuotes(const std::string &str) {
   if (str.length() >= 2 && str.front() == '"' && str.back() == '"') {
@@ -149,10 +152,7 @@ void SplitSolver::replaceSplitAtConstNodes(
           auto arg2 = node->getChild(1);
           auto arg3 = node->getChild(2);
 
-          std::string str = arg1->toString();
-          if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
-            str = str.substr(1, str.size() - 2);
-          }
+          std::string str = cleanQuotes(arg1->toString());
 
           std::string delimiter = normalizeDelimiterLiteral(
               ctx.getParser().getString(node->getChild(1)));
@@ -161,7 +161,8 @@ void SplitSolver::replaceSplitAtConstNodes(
           if (division && division->isConstType()) {
             ConstDivision *constDiv = static_cast<ConstDivision *>(division);
             int index = parseInteger(arg3->toString());
-            if (index >= 0 && index < constDiv->getSplitNums()) {
+            if (index >= 0 &&
+                static_cast<size_t>(index) < constDiv->getSplitNums()) {
               std::string splitValue = constDiv->getSplit(index);
               std::string quotedValue = "\"" + splitValue + "\"";
               SMTParser::NodePtr replacement =
@@ -207,10 +208,7 @@ void SplitSolver::replaceSplitEndConstNodes(
           auto arg2 = node->getChild(1);
           auto arg3 = node->getChild(2);
 
-          std::string str = arg1->toString();
-          if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
-            str = str.substr(1, str.size() - 2);
-          }
+          std::string str = cleanQuotes(arg1->toString());
 
           std::string delimiter = normalizeDelimiterLiteral(
               ctx.getParser().getString(node->getChild(1)));
@@ -219,7 +217,8 @@ void SplitSolver::replaceSplitEndConstNodes(
           Division *division = ctx.getDivision(str, delimiter);
           if (division && division->isConstType()) {
             ConstDivision *constDiv = static_cast<ConstDivision *>(division);
-            if (index >= 0 && index < constDiv->getSplitNums()) {
+            if (index >= 0 &&
+                static_cast<size_t>(index) < constDiv->getSplitNums()) {
               const auto &splits = constDiv->getSplits();
               const auto &splitDelimiters = constDiv->getSplitDelimiters();
               std::string splitEndValue = "";
@@ -275,10 +274,7 @@ void SplitSolver::replaceNumSplitConstNodes(
         if (node->getChildrenSize() >= 2) {
           auto arg1 = node->getChild(0);
           auto arg2 = node->getChild(1);
-          std::string str = arg1->toString();
-          if (str.size() >= 2 && str.front() == '"' && str.back() == '"') {
-            str = str.substr(1, str.size() - 2);
-          }
+          std::string str = cleanQuotes(arg1->toString());
           std::string delimiter = normalizeDelimiterLiteral(
               ctx.getParser().getString(node->getChild(1)));
 
@@ -650,10 +646,12 @@ void SplitSolver::addBasicConstraints(Context &ctx, const Division *division) {
   std::string constraint1;
   if (isStringType) {
     constraint1 = "(= " + variable_split + " (str.replace_all " + variable +
-                  " " + delimiter + " " INTERNAL_DELIMITER "))";
+                  " " + delimiter + " " + std::string(INTERNAL_DELIMITER) +
+                  "))";
   } else {
     constraint1 = "(= " + variable_split + " (str.replace_re_all " + variable +
-                  " " + delimiter + " " INTERNAL_DELIMITER "))";
+                  " " + delimiter + " " + std::string(INTERNAL_DELIMITER) +
+                  "))";
   }
   DEBUG("[addBasicConstraints] Adding constraint: ", constraint1);
   ctx.getParser().addAssertion(constraint1);
@@ -662,14 +660,13 @@ void SplitSolver::addBasicConstraints(Context &ctx, const Division *division) {
       "(= " + variable_split + " (str.++ " + split + " " + last + "))";
   DEBUG("[addBasicConstraints] Adding constraint: ", constraint2);
   ctx.getParser().addAssertion(constraint2);
-  std::string constraint3 = "(or (= " + last +
-                            " \"\") (str.prefixof " INTERNAL_DELIMITER " " +
-                            last + "))";
+  std::string constraint3 = "(or (= " + last + " \"\") (str.prefixof " +
+                            std::string(INTERNAL_DELIMITER) + " " + last + "))";
   DEBUG("[addBasicConstraints] Adding constraint: ", constraint3);
   ctx.getParser().addAssertion(constraint3);
 
-  std::string constraint4 =
-      "(not (str.contains " + variable + " " INTERNAL_DELIMITER "))";
+  std::string constraint4 = "(not (str.contains " + variable + " " +
+                            std::string(INTERNAL_DELIMITER) + "))";
   DEBUG("[addBasicConstraints] Adding constraint: ", constraint4);
   ctx.getParser().addAssertion(constraint4);
 }
@@ -689,8 +686,8 @@ void SplitSolver::addEquivalenceConstraints(Context &ctx,
     } else {
       equiv = "(= " + bi + " (= " + split + " (str.++";
       for (int j = 0; j < idx; ++j) {
-        equiv +=
-            " " + hashStr + "_x_" + std::to_string(j) + " " INTERNAL_DELIMITER;
+        equiv += " " + hashStr + "_x_" + std::to_string(j) + " " +
+                 std::string(INTERNAL_DELIMITER);
       }
       equiv += " " + hashStr + "_x_" + std::to_string(idx) + ")))";
     }
@@ -712,7 +709,8 @@ void SplitSolver::addNumSplitsConstraints(Context &ctx,
 
   std::string constraint = "(= " + num_splits + " (- (str.len " +
                            variable_split + ") (str.len (str.replace_all " +
-                           variable_split + " " INTERNAL_DELIMITER " \"\"))))";
+                           variable_split + " " +
+                           std::string(INTERNAL_DELIMITER) + " \"\"))))";
   DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint);
   ctx.getParser().addAssertion(constraint);
 }
@@ -853,12 +851,12 @@ void SplitSolver::addAuxiliaryLemmas(Context &ctx) {
             std::string lemma;
             if (isStringType) {
               lemma = "(=> " + bi + " (= (str.++ " + xi + " " + last +
-                      ") (str.replace_all " + rj + " " + delimiter +
-                      " " INTERNAL_DELIMITER ")))";
+                      ") (str.replace_all " + rj + " " + delimiter + " " +
+                      std::string(INTERNAL_DELIMITER) + ")))";
             } else {
               lemma = "(=> " + bi + " (= (str.++ " + xi + " " + last +
-                      ") (str.replace_re_all " + rj + " " + delimiter +
-                      " " INTERNAL_DELIMITER ")))";
+                      ") (str.replace_re_all " + rj + " " + delimiter + " " +
+                      std::string(INTERNAL_DELIMITER) + ")))";
             }
             std::string normalizedLemma = Parser::postProcessSMTLIB(lemma);
             DEBUG("[addAuxiliaryLemmas] Adding split_rest lemma for i=", i,

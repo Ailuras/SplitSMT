@@ -3,7 +3,26 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-SOLVER_PATH=~/WorkSpace/cvc5/build/bin/cvc5
+# Detect OS and set paths/commands
+OS="$(uname -s)"
+if [ "$OS" = "Darwin" ]; then
+    SOLVER_PATH=~/WorkSpace/cvc5/build/bin/cvc5
+    if command -v gtimeout >/dev/null 2>&1; then
+        TIMEOUT_CMD="gtimeout"
+    elif command -v timeout >/dev/null 2>&1; then
+        TIMEOUT_CMD="timeout"
+    else
+        echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
+        echo "  brew install coreutils" >&2
+        exit 1
+    fi
+elif [ "$OS" = "Linux" ]; then
+    SOLVER_PATH=/home/hanrui/cvc5/build/bin/cvc5
+    TIMEOUT_CMD="timeout"
+else
+    echo "Error: Unsupported OS '$OS'"
+    exit 1
+fi
 
 # Ensure solver binary exists and is executable
 if [ ! -x "$SOLVER_PATH" ]; then
@@ -42,18 +61,8 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Detect timeout command (prefer gtimeout for macOS, fallback to timeout)
-if command -v gtimeout >/dev/null 2>&1; then
-    TIMEOUT_CMD="gtimeout"
-elif command -v timeout >/dev/null 2>&1; then
-    TIMEOUT_CMD="timeout"
-else
-    echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
-    echo "  brew install coreutils" >&2
-    exit 1
-fi
-
-# Run cvc5 with the specified timeout, enable model generation, and turn on regex support
+# Run cvc5 with the specified timeout, enable model generation
 # --preserve-status: preserve the exit status of the command
 # --kill-after=1: send SIGKILL after 1 second if the process doesn't terminate
+# Note: Added --lang smt2.6 --strings-exp based on MacOS version, assuming valid for Linux too or harmless
 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$SOLVER_PATH" --lang smt2.6 --strings-exp --produce-models "$SMT_FILE"

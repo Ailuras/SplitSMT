@@ -58,6 +58,7 @@ set(CORE_SOURCES
     src/core/Structures.cpp
     src/core/Solver.cpp
     src/core/Split.cpp
+    src/core/Fallback.cpp
     src/parser/Parser.cpp
     src/utils/RegexHelper.cpp
 )
@@ -159,18 +160,7 @@ install(TARGETS SplitSMT
     RUNTIME DESTINATION bin
 )
 
-# Generate wrapper script for easy execution
-# configure_file(
-#     "${CMAKE_CURRENT_SOURCE_DIR}/SplitSMT_wrapper.sh.in"
-#     "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SplitSMT_wrapper.sh"
-#     @ONLY
-# )
 
-# Make wrapper script executable
-# add_custom_command(TARGET SplitSMT POST_BUILD
-#     COMMAND chmod +x "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/SplitSMT_wrapper.sh"
-#     COMMENT "Making wrapper script executable"
-# )
 
 # Print summary
 message(STATUS "Build configuration:")
