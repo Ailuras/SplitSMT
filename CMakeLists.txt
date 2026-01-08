@@ -62,6 +62,7 @@ set(CORE_SOURCES
     src/core/Fallback.cpp
     src/parser/Parser.cpp
     src/utils/RegexHelper.cpp
+    src/utils/StringHelper.cpp
 )
 
 # Add our source files

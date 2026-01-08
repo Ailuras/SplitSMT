@@ -8,8 +8,6 @@
 #include <unordered_set>
 #include <vector>
 
-std::optional<int> parseInteger(const std::string &str);
-
 namespace strp {
 
 class SplitSolver {

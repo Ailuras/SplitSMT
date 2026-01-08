@@ -4,6 +4,7 @@
 #include "Split.h"
 #include "Structures.h"
 #include "utils/Config.h"
+#include "utils/StringHelper.h"
 #include <algorithm>
 #include <chrono>
 #include <filesystem>
@@ -87,35 +88,13 @@ Context::getSplitAtNodes(const SMTParser::NodePtr &node) {
 }
 
 std::vector<SMTParser::NodePtr> Context::getSplitAtConstNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto splitAtNodes = getSplitAtNodes();
-  for (const auto &node : splitAtNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getSplitAtNodes(),
+                                 [](const auto &n) { return n->isConst(); });
 }
 
 std::vector<SMTParser::NodePtr> Context::getSplitAtVarNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto splitAtNodes = getSplitAtNodes();
-  for (const auto &node : splitAtNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (!arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getSplitAtNodes(),
+                                 [](const auto &n) { return !n->isConst(); });
 }
 
 std::vector<SMTParser::NodePtr> Context::getSplitRestNodes() {
@@ -156,35 +135,13 @@ Context::getSplitRestNodes(const SMTParser::NodePtr &node) {
 }
 
 std::vector<SMTParser::NodePtr> Context::getSplitRestConstNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto splitRestNodes = getSplitRestNodes();
-  for (const auto &node : splitRestNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getSplitRestNodes(),
+                                 [](const auto &n) { return n->isConst(); });
 }
 
 std::vector<SMTParser::NodePtr> Context::getSplitRestVarNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto splitRestNodes = getSplitRestNodes();
-  for (const auto &node : splitRestNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (!arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getSplitRestNodes(),
+                                 [](const auto &n) { return !n->isConst(); });
 }
 
 std::vector<SMTParser::NodePtr> Context::getNumSplitNodes() {
@@ -225,35 +182,13 @@ Context::getNumSplitNodes(const SMTParser::NodePtr &node) {
 }
 
 std::vector<SMTParser::NodePtr> Context::getNumSplitConstNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto numSplitNodes = getNumSplitNodes();
-  for (const auto &node : numSplitNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getNumSplitNodes(),
+                                 [](const auto &n) { return n->isConst(); });
 }
 
 std::vector<SMTParser::NodePtr> Context::getNumSplitVarNodes() {
-  std::unordered_set<SMTParser::NodePtr> result;
-
-  auto numSplitNodes = getNumSplitNodes();
-  for (const auto &node : numSplitNodes) {
-    if (node->getChildrenSize() >= 1) {
-      auto arg1 = node->getChild(0);
-      if (!arg1->isConst()) {
-        result.insert(node);
-      }
-    }
-  }
-
-  return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  return filterNodesByFirstChild(getNumSplitNodes(),
+                                 [](const auto &n) { return !n->isConst(); });
 }
 
 bool Context::isSplitAtConstNode(const SMTParser::NodePtr &node) {
@@ -427,13 +362,13 @@ void Context::updateDivisions() {
       [&](const SMTParser::NodePtr &indexNode,
           const char *opName) -> std::optional<int> {
     const std::string rawIndex = parser.getString(indexNode);
-    auto index = parseInteger(rawIndex);
+    auto index = utils::parseInteger(rawIndex);
     if (!index) {
       const std::string reason =
           std::string("Split operation with unsupported index literal (") +
           opName + "): '" + rawIndex + "'";
-      FallbackManager::getInstance().setFallbackRequired(true, reason,
-                                                         parser.getRawContent());
+      FallbackManager::getInstance().setFallbackRequired(
+          true, reason, parser.getRawContent());
       LOGGER.INFO("Switching to fallback processing: ", reason);
     }
     return index;

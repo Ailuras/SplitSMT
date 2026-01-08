@@ -88,6 +88,23 @@ private:
   Context(Context &&) = delete;
   Context &operator=(Context &&) = delete;
 
+  // Template helper for filtering nodes by first child predicate
+  template <typename Predicate>
+  std::vector<SMTParser::NodePtr>
+  filterNodesByFirstChild(const std::vector<SMTParser::NodePtr> &nodes,
+                          Predicate pred) {
+    std::unordered_set<SMTParser::NodePtr> result;
+    for (const auto &node : nodes) {
+      if (node->getChildrenSize() >= 1) {
+        auto arg1 = node->getChild(0);
+        if (pred(arg1)) {
+          result.insert(node);
+        }
+      }
+    }
+    return std::vector<SMTParser::NodePtr>(result.begin(), result.end());
+  }
+
   Decomposition decomposition;
   std::set<TaskType> tasks;
   std::unordered_map<std::string, std::unique_ptr<Division>> divisions;

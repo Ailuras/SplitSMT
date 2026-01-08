@@ -2,6 +2,7 @@
 
 #include "parser/Parser.h"
 #include "utils/Logger.h"
+#include "utils/StringHelper.h"
 
 #include <algorithm>
 #include <cctype>
@@ -18,29 +19,6 @@ std::string cleanQuotes(const std::string &str) {
     return str.substr(1, str.length() - 2);
   }
   return str;
-}
-
-int parseInteger(const std::string &str) {
-  if (str.empty()) {
-    return 0;
-  }
-
-  if (str[0] == '(' && str.back() == ')') {
-    if (str.substr(1, 2) == "- " && str.length() > 4) {
-      std::string numPart = str.substr(3, str.length() - 4);
-      try {
-        return -std::stoi(numPart);
-      } catch (const std::exception &) {
-        return 0;
-      }
-    }
-  }
-
-  try {
-    return std::stoi(str);
-  } catch (const std::exception &) {
-    return 0;
-  }
 }
 
 std::string normalizeDelimiterLiteral(const std::string &literal) {
@@ -176,14 +154,14 @@ bool parseDefineFunConst(const std::string &expr, std::string &name,
   }
 
   size_t i = pos + marker.size();
-  while (i < expr.size() &&
-         std::isspace(static_cast<unsigned char>(expr[i]))) {
+  while (i < expr.size() && std::isspace(static_cast<unsigned char>(expr[i]))) {
     ++i;
   }
 
   size_t nameStart = i;
-  while (i < expr.size() && !std::isspace(static_cast<unsigned char>(expr[i])) &&
-         expr[i] != '(' && expr[i] != ')') {
+  while (i < expr.size() &&
+         !std::isspace(static_cast<unsigned char>(expr[i])) && expr[i] != '(' &&
+         expr[i] != ')') {
     ++i;
   }
   name = expr.substr(nameStart, i - nameStart);
@@ -191,8 +169,7 @@ bool parseDefineFunConst(const std::string &expr, std::string &name,
     return false;
   }
 
-  while (i < expr.size() &&
-         std::isspace(static_cast<unsigned char>(expr[i]))) {
+  while (i < expr.size() && std::isspace(static_cast<unsigned char>(expr[i]))) {
     ++i;
   }
 
@@ -210,8 +187,7 @@ bool parseDefineFunConst(const std::string &expr, std::string &name,
   }
   i = argsEnd;
 
-  while (i < expr.size() &&
-         std::isspace(static_cast<unsigned char>(expr[i]))) {
+  while (i < expr.size() && std::isspace(static_cast<unsigned char>(expr[i]))) {
     ++i;
   }
 
@@ -230,8 +206,7 @@ bool parseDefineFunConst(const std::string &expr, std::string &name,
     }
   }
 
-  while (i < expr.size() &&
-         std::isspace(static_cast<unsigned char>(expr[i]))) {
+  while (i < expr.size() && std::isspace(static_cast<unsigned char>(expr[i]))) {
     ++i;
   }
 
@@ -300,8 +275,8 @@ extractDeclaredConstantSymbols(const std::string &smt2) {
 
     size_t headStart = i;
     while (i < expr.size() &&
-           !std::isspace(static_cast<unsigned char>(expr[i])) && expr[i] != '(' &&
-           expr[i] != ')') {
+           !std::isspace(static_cast<unsigned char>(expr[i])) &&
+           expr[i] != '(' && expr[i] != ')') {
       ++i;
     }
     const std::string head = expr.substr(headStart, i - headStart);
@@ -355,7 +330,7 @@ extractDeclaredConstantSymbols(const std::string &smt2) {
 }
 
 std::string injectAssertionsBeforeCheckSat(const std::string &formula,
-                                          const std::string &assertions) {
+                                           const std::string &assertions) {
   if (assertions.empty()) {
     return formula;
   }
@@ -396,12 +371,12 @@ std::string injectAssertionsBeforeCheckSat(const std::string &formula,
 
 namespace strp {
 
-bool runSplitModelCheck(
-    Context &context, SolverType solverType, int timeoutSeconds,
-    const std::string &rawInput, const std::string &modelText,
-    const std::vector<SMTParser::NodePtr> &splitAtTerms,
-    const std::vector<SMTParser::NodePtr> &splitRestTerms,
-    const std::vector<SMTParser::NodePtr> &numSplitTerms) {
+bool runSplitModelCheck(Context &context, SolverType solverType,
+                        int timeoutSeconds, const std::string &rawInput,
+                        const std::string &modelText,
+                        const std::vector<SMTParser::NodePtr> &splitAtTerms,
+                        const std::vector<SMTParser::NodePtr> &splitRestTerms,
+                        const std::vector<SMTParser::NodePtr> &numSplitTerms) {
   if (rawInput.empty()) {
     ERROR("Original SMT-LIB content is empty; cannot check model");
     return false;
@@ -420,8 +395,8 @@ bool runSplitModelCheck(
 
   std::string checkFormula = Parser::postProcessSMTLIB(rawInput);
 
-  auto getAssignment = [&](const std::string &name)
-      -> std::optional<std::string> {
+  auto getAssignment =
+      [&](const std::string &name) -> std::optional<std::string> {
     auto it = assignments.find(name);
     if (it == assignments.end()) {
       return std::nullopt;
@@ -441,7 +416,8 @@ bool runSplitModelCheck(
 
     auto arg1 = node->getChild(0);
     auto arg3 = node->getChild(2);
-    const int index = parseInteger(arg3 ? arg3->toString() : "");
+    const int index =
+        utils::parseInteger(arg3 ? arg3->toString() : "").value_or(0);
 
     std::string replacement = emptyString();
 
@@ -455,7 +431,8 @@ bool runSplitModelCheck(
           auto *constDiv = static_cast<ConstDivision *>(division);
           if (index >= 0 &&
               static_cast<size_t>(index) < constDiv->getSplitNums()) {
-            replacement = Parser::encodeStringLiteral(constDiv->getSplit(index));
+            replacement =
+                Parser::encodeStringLiteral(constDiv->getSplit(index));
           }
         }
       }
@@ -468,7 +445,8 @@ bool runSplitModelCheck(
         if (division->isVarType()) {
           auto *varDiv = static_cast<VarDivision *>(division);
           const auto &indices = varDiv->getSplitAtNumsAppeared();
-          if (std::find(indices.begin(), indices.end(), index) != indices.end()) {
+          if (std::find(indices.begin(), indices.end(), index) !=
+              indices.end()) {
             const std::string xi =
                 division->getHashString() + "_x_" + std::to_string(index);
             auto value = getAssignment(xi);
@@ -499,7 +477,8 @@ bool runSplitModelCheck(
 
     auto arg1 = node->getChild(0);
     auto arg3 = node->getChild(2);
-    const int index = parseInteger(arg3 ? arg3->toString() : "");
+    const int index =
+        utils::parseInteger(arg3 ? arg3->toString() : "").value_or(0);
 
     std::string replacement = emptyString();
 
@@ -535,7 +514,8 @@ bool runSplitModelCheck(
         if (division->isVarType()) {
           auto *varDiv = static_cast<VarDivision *>(division);
           const auto &indices = varDiv->getSplitRestNumsAppeared();
-          if (std::find(indices.begin(), indices.end(), index) != indices.end()) {
+          if (std::find(indices.begin(), indices.end(), index) !=
+              indices.end()) {
             const std::string ri =
                 division->getHashString() + "_r_" + std::to_string(index);
             auto value = getAssignment(ri);
@@ -616,7 +596,8 @@ bool runSplitModelCheck(
   if (checkFormula.find("str.split_at") != std::string::npos ||
       checkFormula.find("str.split_rest") != std::string::npos ||
       checkFormula.find("str.num_splits") != std::string::npos) {
-    ERROR("Check formula still contains unsupported split functions after replacement");
+    ERROR("Check formula still contains unsupported split functions after "
+          "replacement");
     ok = false;
   }
 
@@ -648,10 +629,10 @@ bool runSplitModelCheck(
   }
 
   if (checkResult != SatResult::SAT) {
-    ERROR("Model check returned ",
-          checkResult == SatResult::UNSAT     ? "UNSAT"
-          : checkResult == SatResult::UNKNOWN ? "UNKNOWN"
-                                              : "ERROR");
+    ERROR("Model check returned ", checkResult == SatResult::UNSAT ? "UNSAT"
+                                   : checkResult == SatResult::UNKNOWN
+                                       ? "UNKNOWN"
+                                       : "ERROR");
     ok = false;
   }
 

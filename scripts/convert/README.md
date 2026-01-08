@@ -1,317 +1,239 @@
-# Convert Scripts
+# SMT-LIB Format Conversion Scripts
 
-该目录提供用于批量准备 SMT-LIB 基准文件的转换工具，主要用于在运行求解器前统一输入格式与配置。
+This directory contains conversion scripts for transforming SMT-LIB files between different formats.
 
-## 📋 目录结构
+## 📋 Overview
+
+The conversion workflow supports bidirectional transformations:
 
 ```
-scripts/convert/
-├── README.md              # 本文档
-├── prepare_option.py      # SMT 文件准备工具
-└── configs/               # 求解器配置片段
-    ├── UF/                # Uninterpreted Functions 模式
-    │   ├── z3.txt
-    │   ├── z3-noodler.txt
-    │   ├── ostrich.txt
-    │   └── cvc5.txt
-    ├── RA/                # Regular Automaton 模式
-    │   └── ...
-    └── REC/               # Recursive 模式
-        └── ...
+Original SMT-LIB ────────────────────────────────────-──┐
+                                                        │
+                  ┌───  convert_splitsmt2uf.py  ────┐   │
+                  │                                 ▼   │
+                  │                            UF Format│
+                  │                                 │   │
+                  └───  convert_uf2others.py ───────┤   │
+                                                    │   │
+                        ┌───────────────────────────┘   │
+                        │                               │
+                    ┌───▼─-──┐    ┌─────────┐    ┌──────▼──┐
+                    │SplitSMT│    │ Generic │    │ Ostrich │
+                    └────────┘    └─────────┘    └─────────┘
 ```
 
----
+## 🔧 Scripts
 
-## 🔧 prepare_option.py
+### 1. `convert_splitsmt2uf.py`
 
-批量转换 SMT-LIB 文件，为不同求解器生成适配版本，支持双输出模式（MODEL/NOM）。
+Converts original SMT-LIB files to UF (Uninterpreted Functions) format.
 
-### ✨ 核心功能
+**Features:**
 
-#### 1️⃣ **标准化处理**
+- Inserts UF function declarations for string split operations
+- Changes logic to `ALL`
+- Removes `str.` prefix from function calls
+- Removes `(exit)` statements
+- **Preserves all comments**
+- Independent execution (no external config files needed)
 
-- 统一设置 `(set-logic ALL)`，避免原始基准缺失逻辑声明
-- 自动清理注释行（以 `;` 开头）
-- 移除 `(exit)` 语句
-- 移除原有的 `(get-model)` 以便统一管理
-
-#### 2️⃣ **求解器适配**
-
-- 自动注入 `configs/{mode}/{solver}.txt` 中的求解器特定配置
-- 支持回退机制：若特定求解器配置缺失，回退到 `default.txt`
-- 重写函数名：`(str.split ...)` → `(split ...)`，`(str.num_splits ...)` → `(num_splits ...)`
-
-#### 3️⃣ **双版本输出**
-
-**MODEL 版本**（包含模型生成支持）：
-
-- 添加 `(get-model)` 命令
-- 强制添加以下必需选项（如果原文件中缺失）：
-
-  ```smt2
-  (set-option :produce-assertions true)
-  (set-option :produce-assignments true)
-  (set-option :produce-models true)
-  (set-option :produce-proofs true)
-  (set-option :produce-unsat-assumptions true)
-  (set-option :produce-unsat-cores true)
-  (set-option :random-seed 42)
-  ```
-
-**NOM 版本**（仅求解，无模型）：
-
-- **不包含** `(get-model)`
-- **移除所有** `set-option` 语句
-- 适用于纯求解性能测试
-
-#### 4️⃣ **多模式支持**
-
-- `UF` - Uninterpreted Functions
-- `RA` - Regular Automaton  
-- `REC` - Recursive
-
-#### 5️⃣ **多求解器支持**
-
-- `z3`
-- `z3-noodler`
-- `ostrich`
-- `cvc5`
-- `bitwuzla`
-
----
-
-### 📖 基本用法
+**Usage:**
 
 ```bash
-# 1. 处理单个目录（使用默认设置）
-python scripts/convert/prepare_option.py --input benchmarks/strings
+# Single file
+python3 convert_splitsmt2uf.py --input file.smt2 --output file_uf.smt2
 
-# 2. 指定输出目录和模式
-python scripts/convert/prepare_option.py \
-  --input benchmarks/strings \
-  --output results/prepared \
-  --modes UF,RA
+# Directory
+python3 convert_splitsmt2uf.py --input input_dir/ --output output_dir/
 
-# 3. 自定义求解器列表
-python scripts/convert/prepare_option.py \
-  --input benchmarks/strings \
-  --output results/prepared \
-  --solvers z3,cvc5
-
-# 4. Dry Run（验证输入和配置，不实际写文件）
-python scripts/convert/prepare_option.py \
-  --input benchmarks/strings \
-  --dry-run
+# Dry run
+python3 convert_splitsmt2uf.py --input input_dir/ --dry-run
 ```
 
----
+**Transformations:**
 
-### 🎯 参数说明
+```smt2
+# Input
+(set-logic QF_SLIA)
+(assert (= (str.split_at y "-" 2) x))
 
-| 参数 | 说明 | 默认值 |
-|------|------|--------|
-| `-i, --input <路径>` | **必需**，输入文件或目录（支持单个 `.smt2` 文件或目录） | - |
-| `-o, --output <目录>` | 输出根目录 | 输入目录 |
-| `--modes <列表>` | 逗号分隔的处理模式 | `UF,RA,REC` |
-| `--solvers <列表>` | 逗号分隔的求解器列表 | `z3,z3-noodler,ostrich,cvc5,bitwuzla` |
-| `--dry-run` | 仅验证输入与配置，不生成输出文件 | False |
-
----
-
-### 📁 输出目录结构
-
-```
-output_root/
-├── z3/
-│   ├── model/           # MODEL 版本
-│   │   ├── UF/
-│   │   │   └── file.smt2
-│   │   ├── RA/
-│   │   └── REC/
-│   └── nom/             # NOM 版本
-│       ├── UF/
-│       ├── RA/
-│       └── REC/
-├── cvc5/
-│   ├── model/
-│   └── nom/
-└── ...
+# Output
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(assert (= (split_at y "-" 2) x))
 ```
 
-**目录层级说明**：
+### 2. `convert_uf2others.py`
 
-- 第一层：**求解器名称**（z3, cvc5, etc.）
-- 第二层：**版本类型**（model / nom）
-- 第三层：**模式名称**（UF, RA, REC）
-- 第四层：**SMT 文件**（保持原有相对路径）
+Converts UF format files to three different formats simultaneously.
 
----
+**Features:**
 
-### 🔍 使用场景
+- Generates three output formats from one input
+- Supports both single file and batch directory conversion
+- Independent processing for each format
 
-#### 场景 1: 标准转换流程
+**Usage:**
 
 ```bash
-# Step 1: Dry Run 验证
-python scripts/convert/prepare_option.py \
-  --input benchmarks/round1 \
-  --dry-run
+# Single file → 3 outputs
+python3 convert_uf2others.py --input file_uf.smt2 --output output_dir/
 
-# Step 2: 执行转换
-python scripts/convert/prepare_option.py \
-  --input benchmarks/round1 \
-  --output results/converted
+# Directory → 3 subdirectories
+python3 convert_uf2others.py --input uf_dir/ --output output_dir/
+
+# Dry run
+python3 convert_uf2others.py --input uf_dir/ --dry-run
 ```
 
-#### 场景 2: 针对特定求解器
+**Output Formats:**
+
+#### Format 1: `splitsmt/`
+
+- **Purpose**: For SplitSMT solver
+- **Changes**:
+  - Removes UF declarations
+  - Adds `str.` prefix back: `split_at` → `str.split_at`
+  
+```smt2
+(set-logic ALL)
+(assert (= (str.split_at y "-" 2) x))
+```
+
+#### Format 2: `generic/`
+
+- **Purpose**: For cvc5, z3, z3-noodler
+- **Changes**:
+  - Keeps UF declarations as-is
+  
+```smt2
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(assert (= (split_at y "-" 2) x))
+```
+
+#### Format 3: `ostrich/`
+
+- **Purpose**: For Ostrich solver
+- **Changes**:
+  - Keeps UF declarations
+  - Adds special constant `-1`
+  
+```smt2
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-const -1 Int)
+(assert (= -1 (- 1)))
+(assert (= (split_at y "-" 2) x))
+```
+
+## 🔄 Complete Workflow Example
+
+### Step 1: Convert to UF format
 
 ```bash
-# 仅为 z3 和 cvc5 生成文件
-python scripts/convert/prepare_option.py \
-  --input benchmarks/round1 \
-  --solvers z3,cvc5 \
-  --output results/z3_cvc5_only
+python3 convert_splitsmt2uf.py \
+  --input benchmarks/original/ \
+  --output benchmarks/uf/
 ```
 
-#### 场景 3: 单模式转换
+### Step 2: Generate all solver formats
 
 ```bash
-# 仅处理 UF 模式
-python scripts/convert/prepare_option.py \
-  --input benchmarks/round1 \
-  --modes UF \
-  --output results/uf_only
+python3 convert_uf2others.py \
+  --input benchmarks/uf/ \
+  --output benchmarks/converted/
 ```
 
-#### 场景 4: 处理单个文件
-
-```bash
-# 转换单个 SMT 文件
-python scripts/convert/prepare_option.py \
-  --input test.smt2 \
-  --output results/single
-```
-
----
-
-### 📊 统计输出示例
+### Result Structure
 
 ```
-======================================================================
-Processing Summary
-======================================================================
-
-Mode: UF
-  Input files processed: 150
-    ✓ z3:
-       Generated pairs (model/nom): 150
-       Replacements/file (avg): 3
-    ✓ cvc5:
-       Generated pairs (model/nom): 150
-       Replacements/file (avg): 3
-
-Mode: RA
-  Input files processed: 150
-    ✓ z3-noodler:
-       Generated pairs (model/nom): 150
-       Replacements/file (avg): 2
-
-Output Structure created:
-  root/ model / mode / solver / ... (Contains (get-model) + required options)
-  root/ nom   / mode / solver / ... (No (get-model), NO options)
-======================================================================
+benchmarks/
+├── original/           # Original SMT-LIB files
+├── uf/                # UF format (intermediate)
+└── converted/
+    ├── splitsmt/      # For SplitSMT solver
+    ├── generic/       # For cvc5, z3, z3-noodler
+    └── ostrich/       # For Ostrich solver
 ```
 
----
+## 📊 Supported Functions
 
-### ⚙️ configs/ 配置说明
+The scripts handle the following string split functions:
 
-求解器配置片段存放于 `configs/` 目录，按模式和求解器组织：
+| Function | Description |
+|----------|-------------|
+| `split_at` | Split string at delimiter, return part at index |
+| `split_rest` | Split string at delimiter, return rest |
+| `num_splits` | Count number of splits possible |
+
+## ⚙️ Configuration Files
+
+The `configs/` directory contains solver-specific UF declarations (for reference only - scripts don't depend on them):
 
 ```
 configs/
 ├── UF/
-│   ├── z3.txt          # Z3 特定配置
-│   ├── cvc5.txt        # CVC5 特定配置
-│   └── default.txt     # 回退配置（可选）
+│   ├── z3.txt
+│   ├── cvc5.txt
+│   ├── z3-noodler.txt
+│   └── ostrich.txt
 ├── RA/
-│   └── ...
 └── REC/
-    └── ...
 ```
 
-**配置文件格式**：
+## 🎯 Use Cases
 
-- 纯文本文件，每行一个 SMT-LIB 语句
-- 会被插入到 `(set-logic ALL)` 之后
-- 示例内容：
+### Benchmark Preparation
 
-  ```smt2
-  (declare-fun custom_function () String)
-  (assert (= custom_function "value"))
-  ```
+Convert a collection of SMT-LIB benchmarks for testing different solvers:
 
-**新增求解器步骤**：
+```bash
+# 1. Standardize to UF format
+python3 convert_splitsmt2uf.py -i benchmarks/raw -o benchmarks/uf
 
-1. 在每个模式目录（UF/RA/REC）下创建 `{solver}.txt` 文件
-2. 填入该求解器的特定配置
-3. 运行脚本时指定求解器名称
+# 2. Generate solver-specific versions
+python3 convert_uf2others.py -i benchmarks/uf -o benchmarks/solvers
+```
 
----
+### Single File Testing
 
-### 🛠️ 环境依赖
+Quickly convert a single test case to all formats:
 
-- **Python 3.7+**
-- **标准库**：仅依赖 Python 标准库，无需额外安装
-- **TTY 检测**：当标准输出不是 TTY 时自动禁用彩色输出
+```bash
+python3 convert_splitsmt2uf.py -i test.smt2 -o test_uf.smt2
+python3 convert_uf2others.py -i test_uf.smt2 -o test_outputs/
+```
 
----
+## 📝 Notes
 
-### ⚠️ 注意事项
+- All scripts preserve the original file structure when processing directories
+- Comments are preserved by `convert_splitsmt2uf.py`
+- Both scripts support `--dry-run` for preview without writing files
+- Output files are automatically created with proper directory structure
+- Scripts are standalone and don't require external dependencies beyond Python 3
 
-1. **输出会覆盖**：如果输出目录已存在同名文件，会被覆盖
-2. **configs 必需**：至少需要在一个模式目录下有配置文件
-3. **文件编码**：输入文件应使用 UTF-8 编码
-4. **相对路径保持**：输出文件保持输入的相对路径结构
+## 🐛 Troubleshooting
 
----
+**Issue**: Script doesn't recognize `.smt2` files
 
-### 🔧 故障排查
+- **Solution**: Ensure files have the `.smt2` extension
 
-#### 问题：提示 "No solvers specified"
+**Issue**: Permission denied when writing files
 
-**原因**：未提供求解器列表且默认列表为空
+- **Solution**: Check write permissions on the output directory
 
-**解决**：使用 `--solvers` 参数明确指定求解器
+**Issue**: UF declarations not found/removed
 
----
+- **Solution**: Verify input files are in the expected format (check first few lines)
 
-#### 问题：某个求解器显示 "Skipped"
+## 📚 Related Tools
 
-**原因**：`configs/{mode}/{solver}.txt` 和 `default.txt` 都不存在
-
-**解决**：
-
-1. 在对应模式目录下创建 `{solver}.txt` 配置文件
-2. 或创建 `default.txt` 作为回退配置
-
----
-
-#### 问题：文件数为 0
-
-**原因**：输入目录中没有 `.smt2` 文件
-
-**解决**：确认输入路径正确，且包含 `.smt2` 文件
-
----
-
-## 📚 更新日志
-
-### 2026-01-04
-
-- 🗑️ 移除过时的 `prepare.py`（功能已完全被 `prepare_option.py` 覆盖）
-- 📝 更新文档，聚焦于 `prepare_option.py`
-
-### 历史版本
-
-- 初始版本包含 `prepare.py` 和 `prepare_split.py`
+- `prepare.py`: Basic snippet insertion and string replacement
+- `prepare_option.py`: Advanced preparation with model/nom versions

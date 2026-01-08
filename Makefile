@@ -477,6 +477,33 @@ src/utils/RegexHelper.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/utils/RegexHelper.cpp.s
 .PHONY : src/utils/RegexHelper.cpp.s
 
+src/utils/StringHelper.o: src/utils/StringHelper.cpp.o
+.PHONY : src/utils/StringHelper.o
+
+# target to build an object file
+src/utils/StringHelper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/utils/StringHelper.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/utils/StringHelper.cpp.o
+.PHONY : src/utils/StringHelper.cpp.o
+
+src/utils/StringHelper.i: src/utils/StringHelper.cpp.i
+.PHONY : src/utils/StringHelper.i
+
+# target to preprocess a source file
+src/utils/StringHelper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/utils/StringHelper.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/utils/StringHelper.cpp.i
+.PHONY : src/utils/StringHelper.cpp.i
+
+src/utils/StringHelper.s: src/utils/StringHelper.cpp.s
+.PHONY : src/utils/StringHelper.s
+
+# target to generate assembly for a file
+src/utils/StringHelper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT.dir/build.make CMakeFiles/SplitSMT.dir/src/utils/StringHelper.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SplitSMT_debug.dir/build.make CMakeFiles/SplitSMT_debug.dir/src/utils/StringHelper.cpp.s
+.PHONY : src/utils/StringHelper.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -523,6 +550,9 @@ help:
 	@echo "... src/utils/RegexHelper.o"
 	@echo "... src/utils/RegexHelper.i"
 	@echo "... src/utils/RegexHelper.s"
+	@echo "... src/utils/StringHelper.o"
+	@echo "... src/utils/StringHelper.i"
+	@echo "... src/utils/StringHelper.s"
 .PHONY : help
 
 
