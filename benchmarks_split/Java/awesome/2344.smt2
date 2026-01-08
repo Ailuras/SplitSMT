@@ -1,14 +1,17 @@
 (set-option :produce-unsat-cores true) ; enable generation of unsat cores
 (set-option :produce-models true) ; enable model generation
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 (define-fun get_split_length ((x String) (d String) (limit Int)) Int
   (ite
     (> limit 0)
-    (ite (< (str.num_splits x d) limit)
-         (str.num_splits x d)
+    (ite (< (num_splits x d) limit)
+         (num_splits x d)
          limit)
-    (str.num_splits x d)
+    (num_splits x d)
   )
 )
 
@@ -16,9 +19,9 @@
   (ite
     (and (> limit 0)
          (= i (- limit 1))
-         (>= (str.num_splits x d) limit))
-    (str.split_rest x d (- limit 1))
-    (str.split_at x d i)
+         (>= (num_splits x d) limit))
+    (split_rest x d (- limit 1))
+    (split_at x d i)
   )
 )
 

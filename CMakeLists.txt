@@ -79,11 +79,7 @@ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 # Add executable
 add_executable(SplitSMT ${SOURCES})
 
-# Add debug executable
-add_executable(SplitSMT_debug
-    src/Debug.cpp
-    ${CORE_SOURCES}
-)
+
 
 
 # Set include directories for our project
@@ -115,34 +111,7 @@ if(STRP_SOLVER_PLATFORM_SUBDIR)
     )
 endif()
 
-# Set include directories for debug executable
-target_include_directories(SplitSMT_debug PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/SMTParser/include
-    ${GMP_INCLUDE_DIRS}
-    ${MPFR_INCLUDE_DIRS}
-)
 
-# Link libraries for debug executable
-target_link_libraries(SplitSMT_debug PRIVATE
-    smtparser
-)
-
-target_link_directories(SplitSMT_debug PRIVATE
-    ${GMP_LIBRARY_DIRS}
-    ${MPFR_LIBRARY_DIRS}
-)
-
-target_compile_definitions(SplitSMT_debug PRIVATE
-    STRP_PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
-    STRP_DEFAULT_SOLVER_DIR="${STRP_SOLVER_BASE_DIR}"
-)
-
-if(STRP_SOLVER_PLATFORM_SUBDIR)
-    target_compile_definitions(SplitSMT_debug PRIVATE
-        STRP_SOLVER_PLATFORM_SUBDIR="${STRP_SOLVER_PLATFORM_SUBDIR}"
-    )
-endif()
 
 # Add compile options
 if(MSVC)
@@ -180,10 +149,10 @@ add_custom_command(TARGET SplitSMT POST_BUILD
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_options(SplitSMT PRIVATE -g -O0)
-    target_compile_options(SplitSMT_debug PRIVATE -g -O0)
+
 else()
     target_compile_options(SplitSMT PRIVATE -O2)
-    target_compile_options(SplitSMT_debug PRIVATE -O2)
+
 endif()
 
 # Add simple clean target
