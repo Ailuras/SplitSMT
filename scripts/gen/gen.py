@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""Batch wrapper around REG-Split converters.
-
-Supports converting a single file or mirroring a directory tree, with
-per-file timeout control and a short success/failure summary.
-"""
 
 from __future__ import annotations
 
@@ -34,18 +29,20 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run SplitSMT on a file or directory of files."
     )
-    parser.add_argument("input_path", type=Path, help="待转换的文件或文件夹。")
     parser.add_argument(
-        "output_path",
+        "-i", "--input",
+        dest="input_path",
         type=Path,
+        required=True,
+        help="待转换的文件或文件夹。",
+    )
+    parser.add_argument(
+        "-o", "--output",
+        dest="output_path",
+        type=Path,
+        required=True,
         help="输出文件或文件夹。目录输入时会镜像原有相对路径。",
     )
-    # parser.add_argument(
-    #     "--version",
-    #     choices=("cplus", "python"),
-    #     default="cplus",
-    #     help="选择转化器版本：cplus（默认）或 python。",
-    # )
     parser.add_argument(
         "--clear",
         action="store_true",
@@ -57,11 +54,7 @@ def parse_args() -> argparse.Namespace:
         default=60,
         help="单个文件的超时时间（秒），默认 60。",
     )
-    parser.add_argument(
-        "--gen",
-        action="store_true",
-        help="传递 --gen 给 SplitSMT，生成分割后的 SMT2。",
-    )
+
     parser.add_argument(
         "--log-level",
         type=int,
@@ -107,22 +100,14 @@ def run_preprocess(
     input_file: Path,
     output_file: Path,
     timeout: int,
-    gen: bool,
     log_level: int | None,
     converter_path: Path,
 ) -> ProcessResult:
     start = time.time()
     try:
         output_file.parent.mkdir(parents=True, exist_ok=True)
-        # Converter usage:
-        # - C++ binary with --gen: SplitSMT <input> --gen <output> [options]
-        # - C++ binary without --gen: SplitSMT <input> [output] [options]
-        cmd = [str(converter_path), str(input_file)]
-        
-        if gen:
-            cmd.extend(["--gen", str(output_file)])
-        else:
-            cmd.append(str(output_file))
+        # Always run in generation mode: SplitSMT <input> <output> --gen
+        cmd = [str(converter_path), str(input_file), str(output_file), "--gen"]
             
         if log_level is not None:
             cmd.extend(["-l", str(log_level)])
@@ -131,13 +116,17 @@ def run_preprocess(
             cmd,
             # cwd=REPO_ROOT, # Optional if paths are absolute or relative to cur dir
             capture_output=True,
-            text=True,
+            text=False,  # Capture binary data to avoid decoding errors
             timeout=timeout,
         )
         duration = time.time() - start
         if completed.returncode == 0:
             return ProcessResult(input_file, output_file, True, duration)
-        reason = completed.stderr.strip() or completed.stdout.strip() or f"exit code {completed.returncode}"
+            
+        # Decode output safely with error replacement
+        stderr = completed.stderr.decode("utf-8", errors="replace")
+        stdout = completed.stdout.decode("utf-8", errors="replace")
+        reason = stderr.strip() or stdout.strip() or f"exit code {completed.returncode}"
         return ProcessResult(input_file, output_file, False, duration, reason)
     except subprocess.TimeoutExpired:
         return ProcessResult(
@@ -168,9 +157,6 @@ def main() -> None:
     if args.timeout <= 0:
         print("error: --timeout must be positive seconds", file=sys.stderr)
         sys.exit(1)
-    # if args.version == "python":
-    #     converter_path = PY_PREPROCESS_PATH
-    # else:
     converter_path = CPP_PREPROCESS_PATH
     if not converter_path.exists():
         print(f"error: converter not found: {converter_path}", file=sys.stderr)
@@ -216,7 +202,6 @@ def main() -> None:
                 file_path,
                 target_path,
                 args.timeout,
-                args.gen,
                 args.log_level,
                 converter_path,
             )

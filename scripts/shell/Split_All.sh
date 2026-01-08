@@ -12,3 +12,4 @@ wait
 
 python3 scripts/report/aggregate.py results/splitsmt --output results/splitsmt/report.xlsx --encoding utf-8
 
+python3 scripts/collect/collect.py results/splitsmt/report.xlsx --label Conflict --output todos --flatten

@@ -294,7 +294,7 @@ def build_rows(entries: Iterable[LogEntry]) -> tuple[List[str], List[Dict[str, o
 
     for entry in entries:
         file_key = str(entry.file_path)
-        path_str = str(entry.file_path.parent)
+        path_str = str(entry.file_path)
         filename = entry.file_path.name
         if file_key not in by_file:
             by_file[file_key] = {

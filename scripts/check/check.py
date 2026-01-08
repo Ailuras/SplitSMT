@@ -91,12 +91,6 @@ def parse_args() -> argparse.Namespace:
         help="Solvers to run (default: all available). Use 'all' explicitly to filter.",
     )
     parser.add_argument(
-        "--platform",
-        choices=["auto", "macos", "linux"],
-        default="auto",
-        help="Select solver script platform directory (default: auto detect).",
-    )
-    parser.add_argument(
         "--details",
         action="store_true",
         help="Print stdout/stderr from solvers (default: True). Use --quiet to suppress.",
@@ -112,16 +106,6 @@ def parse_args() -> argparse.Namespace:
         help="Disable colored output.",
     )
     return parser.parse_args()
-
-
-def detect_platform_dir(choice: str) -> str:
-    if choice in ("macos", "linux"):
-        return choice
-    if sys.platform.startswith("darwin"):
-        return "macos"
-    if sys.platform.startswith("linux"):
-        return "linux"
-    raise RuntimeError(f"Unsupported platform: {sys.platform}. Only macOS and Linux are supported.")
 
 
 def parse_solver_timeouts(raw: Iterable[str], default_timeout: int) -> Dict[str, int]:
@@ -152,8 +136,8 @@ def resolve_solvers(selected: Optional[List[str]]) -> List[str]:
     return list(dict.fromkeys(selected))
 
 
-def resolve_solver_script(name: str, platform_dir: str) -> pathlib.Path:
-    script_path = REPO_ROOT / "solvers" / platform_dir / name / "run.sh"
+def resolve_solver_script(name: str) -> pathlib.Path:
+    script_path = REPO_ROOT / "solvers" / f"{name}.sh"
     if not script_path.is_file():
         raise FileNotFoundError(f"Solver script not found: {script_path}")
     return script_path
@@ -182,11 +166,10 @@ def run_solver(
     solver: str,
     smt_file: pathlib.Path,
     timeout: int,
-    platform_dir: str,
 ) -> SolverResult:
     start = time.perf_counter()
     try:
-        script_path = resolve_solver_script(solver, platform_dir)
+        script_path = resolve_solver_script(solver)
         completed = subprocess.run(
             [str(script_path), str(timeout), str(smt_file)],
             cwd=str(REPO_ROOT),
@@ -282,7 +265,6 @@ def check_file(
     smt_file: pathlib.Path, 
     solvers: List[str], 
     solver_timeouts: Dict[str, int], 
-    platform_dir: str, 
     args: argparse.Namespace
 ) -> int:
     """Returns 0 if consistent/unknown, 1 if mismatch, 2 if error."""
@@ -296,7 +278,7 @@ def check_file(
 
     for solver in solvers:
         timeout = solver_timeouts.get(solver, args.timeout)
-        result = run_solver(solver, smt_file, timeout, platform_dir)
+        result = run_solver(solver, smt_file, timeout)
         results.append(result)
         
         if result.status in ("sat", "unsat"):
@@ -358,12 +340,6 @@ def main() -> int:
         print(f"{Colors.RED}Error: {exc}{Colors.RESET}", file=sys.stderr)
         return 2
 
-    try:
-        platform_dir = detect_platform_dir(args.platform)
-    except RuntimeError as exc:
-        print(f"{Colors.RED}Error: {exc}{Colors.RESET}", file=sys.stderr)
-        return 2
-
     solvers = resolve_solvers(args.solvers)
 
     print(f"Found {len(files_to_check)} files to check.\n")
@@ -378,7 +354,7 @@ def main() -> int:
     exit_code = 0
     
     for smt_file in files_to_check:
-        res = check_file(smt_file, solvers, solver_timeouts, platform_dir, args)
+        res = check_file(smt_file, solvers, solver_timeouts, args)
         if res == 0:
             stats["consistent"] += 1
         elif res == 1:

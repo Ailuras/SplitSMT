@@ -2,9 +2,9 @@
 """Collect SMT examples from the aggregate Excel report.
 
 Works with the output of scripts/report/aggregate.py. Supports filtering by
-label (consistency) and/or solver results (AND/OR expressions). Matching rows'
-`path` + `filename` are joined and copied to the output directory, with options
-to keep or flatten directory structure and to clear the output directory first.
+label (consistency) and/or solver results (AND/OR expressions). Matching files
+are copied to the output directory, with options to keep or flatten directory
+structure and to clear the output directory first.
 """
 
 from __future__ import annotations
@@ -69,11 +69,6 @@ def parse_args() -> argparse.Namespace:
         help="复制前清空输出目录（默认不清空，存在则覆盖）。",
     )
     parser.add_argument(
-        "--prune",
-        action="store_true",
-        help="在原路径中删除不匹配的文件（--output 失效）。",
-    )
-    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="仅展示匹配文件，不执行复制。",
@@ -136,8 +131,7 @@ def collect_file_paths(
     label_filter: Optional[str],
     target_result: Optional[str],
     solver_groups: Sequence[Tuple[str, ...]],
-    include_all: bool = False,
-) -> tuple[List[CollectedFile], List[str], Optional[List[CollectedFile]]]:
+) -> tuple[List[CollectedFile], List[str]]:
     workbook = load_workbook(xlsx_file, read_only=True, data_only=True)
     try:
         if "Results" not in workbook.sheetnames:
@@ -194,14 +188,13 @@ def collect_file_paths(
             )
 
         file_records: Dict[Path, CollectedFile] = {}
-        all_records: Optional[Dict[Path, CollectedFile]] = {} if include_all else None
         for row in worksheet.iter_rows(min_row=2):
             path_cell = row[path_col - 1].value
             filename_cell = row[filename_col - 1].value
             suite_cell = row[suite_col - 1].value
             category_cell = row[category_col - 1].value
 
-            if not filename_cell:
+            if not path_cell:
                 continue
 
             if label_check and label_col:
@@ -217,19 +210,11 @@ def collect_file_paths(
             if not matches_solver_filter(normalized_target, solver_groups, solver_results):
                 continue
 
-            path_str = str(path_cell).strip() if path_cell is not None else ""
-            filename_str = str(filename_cell).strip()
-            if not filename_str:
-                continue
-            base_path = Path(path_str).expanduser() if path_str else Path()
-            source_path = (base_path / filename_str).expanduser()
-            if all_records is not None and source_path not in all_records:
-                all_records[source_path] = CollectedFile(
-                    source=source_path,
-                    suite=str(suite_cell).strip() if suite_cell else "",
-                    category=str(category_cell).strip() if category_cell else "",
-                    filename=Path(filename_str).name,
-                )
+            # Path column now contains the complete file path
+            path_str = str(path_cell).strip()
+            source_path = Path(path_str).expanduser()
+            filename_str = str(filename_cell).strip() if filename_cell else source_path.name
+            
             if source_path not in file_records:
                 file_records[source_path] = CollectedFile(
                     source=source_path,
@@ -241,7 +226,6 @@ def collect_file_paths(
         return (
             list(file_records.values()),
             available_solvers,
-            list(all_records.values()) if all_records is not None else None,
         )
     finally:
         workbook.close()
@@ -324,10 +308,7 @@ def main() -> int:
         print(f"  Solver expression: {args.solvers_expr}")
     if defaulted_timeout:
         print("  Note: --solvers provided without --result，默认按 TIMEOUT 过滤")
-    if args.prune:
-        print("  Output directory: (ignored due to --prune)")
-    else:
-        print(f"  Output directory: {output_dir}")
+    print(f"  Output directory: {output_dir}")
     if args.dry_run:
         print("  Mode: DRY RUN (no files will be copied)")
     print("=" * 60)
@@ -335,72 +316,23 @@ def main() -> int:
 
     keep_structure = args.keep_structure or not args.flatten
 
-    file_records, available_solvers, all_records = collect_file_paths(
+    file_records, available_solvers = collect_file_paths(
         args.xlsx_file,
         args.label,
         target_result,
         solver_groups,
-        include_all=args.prune,
     )
 
     if available_solvers:
         print(f"Available solver columns: {', '.join(available_solvers)}")
     print(f"Matching files found: {len(file_records)}")
-    if args.prune:
-        print("  Prune mode: True")
-    else:
-        print(f"  Keep structure: {keep_structure}")
-        print(f"  Clear output first: {args.clear}")
+    print(f"  Keep structure: {keep_structure}")
+    print(f"  Clear output first: {args.clear}")
 
     print()
-    if not file_records and not args.prune:
+    if not file_records:
         print("No files to collect after filtering")
         return 0
-
-    if args.prune:
-        if all_records is None:
-            print("error: prune requested but no records were loaded", file=sys.stderr)
-            return 1
-        keep_set = {record.source for record in file_records}
-        to_delete = [record for record in all_records if record.source not in keep_set]
-        print(f"Pruning {len(to_delete)} file(s)...")
-        deleted = 0
-        missing = 0
-        failed = 0
-        for record in sorted(to_delete, key=lambda x: str(x.source)):
-            source_path = record.source
-            if not source_path.exists():
-                print(f"warning: source file not found: {source_path}", file=sys.stderr)
-                missing += 1
-                continue
-            if source_path.is_dir():
-                print(f"warning: path is a directory, skipping: {source_path}", file=sys.stderr)
-                failed += 1
-                continue
-            if args.dry_run:
-                print(f"would delete: {source_path}")
-                deleted += 1
-                continue
-            try:
-                source_path.unlink()
-                deleted += 1
-            except Exception as exc:
-                print(f"error deleting {source_path}: {exc}", file=sys.stderr)
-                failed += 1
-        print()
-        print("=" * 60)
-        print("Summary:")
-        print(f"  Kept (matched): {len(keep_set)}")
-        if args.dry_run:
-            print(f"  Would delete: {deleted}")
-        else:
-            print(f"  Deleted: {deleted}")
-        if missing > 0:
-            print(f"  Skipped (not found): {missing}")
-        if failed > 0:
-            print(f"  Failed: {failed}")
-        print("=" * 60)
-        return 1 if failed > 0 else 0
 
     print(f"Copying {len(file_records)} file(s)...")
     copied, skipped, failed = copy_files(

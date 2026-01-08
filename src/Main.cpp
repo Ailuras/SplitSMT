@@ -9,7 +9,6 @@
 struct Args {
   std::string inputFile;
   std::string outputFile;
-  std::string genOutputFile;
   strp::utils::LogLevel logLevel;
   strp::SolverType solverType;
   int timeout;
@@ -21,7 +20,7 @@ struct Args {
 void printUsage() {
   std::cout
       << "Usage: strprocessor <input_file> [output_file] [-l <log_level>] [-s "
-         "<solver>] [-t <timeout>] [--gen <gen_output>] [--check] [-h]"
+         "<solver>] [-t <timeout>] [--gen] [--check] [-h]"
       << std::endl;
   std::cout << "  <input_file>      Input SMT2 file" << std::endl;
   std::cout << "  [output_file]     Output file (optional)" << std::endl;
@@ -39,19 +38,18 @@ void printUsage() {
             << std::endl;
   std::cout << "                      z3-noodler  - Z3-Noodler solver"
             << std::endl;
-  std::cout
-      << "  --gen             Generate rewritten SMT2 file without solving"
-      << std::endl;
-  std::cout
-      << "  --check           When SAT, validate model against original split terms"
-      << std::endl;
+  std::cout << "  --gen             Generate rewritten SMT2 file to "
+               "output_file without solving"
+            << std::endl;
+  std::cout << "  --check           When SAT, validate model against original "
+               "split terms"
+            << std::endl;
   std::cout << "  -h, --help        Show this help message" << std::endl;
 }
 
 void parseArgs(int argc, char *argv[], Args &args) {
   args.inputFile = "";
   args.outputFile = "";
-  args.genOutputFile = "";
   args.logLevel = strp::utils::LogLevel::ERROR;
   args.solverType = strp::SolverType::Z3_NOODLER;
   args.timeout = 30; // Default timeout
@@ -124,9 +122,6 @@ void parseArgs(int argc, char *argv[], Args &args) {
       }
     } else if (arg == "--gen") {
       args.genOnly = true;
-      if (i + 1 < argc) {
-        args.genOutputFile = argv[++i];
-      }
     } else if (arg == "--check") {
       args.check = true;
     } else if (args.inputFile.empty()) {
@@ -141,7 +136,7 @@ void parseArgs(int argc, char *argv[], Args &args) {
     args.showHelp = true;
   }
 
-  if (args.genOnly && args.genOutputFile.empty()) {
+  if (args.genOnly && args.outputFile.empty()) {
     std::cerr << "Error: Output file required for --gen option" << std::endl;
     args.showHelp = true;
   }
@@ -208,7 +203,7 @@ int main(int argc, char *argv[]) {
         }
         strp::SplitSolver solver(args.solverType, strp::Context::getInstance(),
                                  args.timeout, false);
-        bool success = solver.generateOnly(args.genOutputFile);
+        bool success = solver.generateOnly(args.outputFile);
         return success ? 0 : 1;
       }
 

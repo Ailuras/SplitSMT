@@ -75,17 +75,16 @@ def collect_targets(
             filename_cell = row[filename_col - 1].value
             consistency_cell = row[consistency_col - 1].value
 
-            if not filename_cell:
+            if not path_cell:
                 continue
 
             consistency_val = str(consistency_cell).strip() if consistency_cell else "Other"
             
             if consistency_val.upper() in normalized_targets:
-                path_str = str(path_cell).strip() if path_cell else ""
-                filename_str = str(filename_cell).strip()
+                path_str = str(path_cell).strip()
+                filename_str = str(filename_cell).strip() if filename_cell else ""
                 
-                base_path = Path(path_str).expanduser() if path_str else Path()
-                source_path = (base_path / filename_str).expanduser()
+                source_path = Path(path_str).expanduser()
                 
                 targets.append(TargetedFile(
                     source=source_path,
