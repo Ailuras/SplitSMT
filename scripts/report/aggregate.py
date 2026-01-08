@@ -221,16 +221,43 @@ def derive_metadata(file_path: Path) -> tuple[str, str]:
 
 
 def classify_result(raw_output: str, status: str) -> str:
-    if raw_output:
-        for line in raw_output.splitlines():
-            stripped = line.strip()
-            if not stripped:
-                continue
-            candidate = stripped.split()[0].upper()
-            if candidate in VALID_RESULTS:
-                return candidate
-            break
-    return "UNKNOWN"
+    """
+    Classify the result based on solver output.
+    Prioritizes explicit SMT-LIB errors starting with '(error'.
+    Otherwise, looks for SAT/UNSAT/UNKNOWN.
+    """
+    if not raw_output:
+        return "UNKNOWN"
+
+    found_result = "UNKNOWN"
+    
+    for line in raw_output.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+            
+        # Detect SMT-LIB error
+        if stripped.startswith("(error") or stripped.startswith("(error "):
+            return "ERROR"
+            
+        if "Syntax Error" in line or "Unrecoverable Syntax Error" in line:
+            return "ERROR"
+            
+        # Check for standard results
+        # We split by whitespace to handle potential trailing comments or weird formatting
+        parts = stripped.split()
+        if not parts:
+            continue
+            
+        candidate = parts[0].upper()
+        if candidate in VALID_RESULTS:
+            found_result = candidate
+            # We don't break immediately because an error might appear later 
+            # (though usually error appears first, z3 might output error then continue)
+            # If we want to be strict about "any error = ERROR", we must scan everything.
+            # If we find a result, we keep it, but if we find an error later, we return ERROR.
+    
+    return found_result
 
 
 def classify_consistency(results: List[str]) -> str:
@@ -280,12 +307,23 @@ def build_rows(entries: Iterable[LogEntry]) -> tuple[List[str], List[Dict[str, o
         if entry.solver not in solvers:
             solvers.append(entry.solver)
         solver_prefix = entry.solver
-        if entry.success:
+        
+        # Determine the result to show in report
+        # Priority:
+        # 1. If we detected an explicit error in output (entry.result == "ERROR"), report ERROR
+        # 2. If the detailed status is SUCCESS, use the classified result
+        # 3. If TIMEOUT, report TIMEOUT
+        # 4. Otherwise fall back to status (likely ERROR or unknown)
+        
+        if entry.result == "ERROR":
+            result_value = "ERROR"
+        elif entry.success:
             result_value = entry.result
         elif entry.status == "TIMEOUT":
             result_value = "TIMEOUT"
         else:
             result_value = "ERROR" if entry.error == "" else entry.error
+        
         record[f"{solver_prefix}_result"] = result_value
         record[f"{solver_prefix}_time"] = entry.duration_sec
         record[f"{solver_prefix}_output"] = entry.raw_output

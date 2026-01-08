@@ -47,34 +47,12 @@ detect_cpu_cores() {
     fi
 }
 
-detect_platform() {
-    local uname_s
-    uname_s=$(uname -s)
-    case "$uname_s" in
-        Darwin)
-            echo "macos"
-            ;;
-        Linux)
-            echo "linux"
-            ;;
-        *)
-            echo ""
-            ;;
-    esac
-}
-
 resolve_solver_script() {
     local solver_name="$1"
-    local platform_dir
-    platform_dir=$(detect_platform)
-    if [[ -z "$platform_dir" ]]; then
-        echo "Error: Unsupported platform: $(uname -s). Only Darwin (macOS) and Linux are supported." >&2
-        return 1
-    fi
-    local script_path="$REPO_ROOT/solvers/$platform_dir/$solver_name/run.sh"
+    local script_path="$REPO_ROOT/solvers/$solver_name.sh"
     if [[ ! -f "$script_path" ]]; then
         echo "Error: Solver script not found: $script_path" >&2
-        echo "Expected path: solvers/$platform_dir/$solver_name/run.sh" >&2
+        echo "Expected path: solvers/$solver_name.sh" >&2
         return 1
     fi
     echo "$script_path"

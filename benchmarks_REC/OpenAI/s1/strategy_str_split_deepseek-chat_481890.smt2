@@ -1,0 +1,173 @@
+(set-logic ALL)
+(define-const delta String "\u{2FFFF}")
+
+(define-fun convert_for_split ((s String) (sep String)) String
+  (str.replace_all s sep delta))
+
+(define-fun-rec count_matches_rec ((s String) (from Int)) Int
+  (let ((pos (str.indexof s delta from)))
+    (ite (= pos (- 0 1))
+         0
+         (+ 1 (count_matches_rec s (+ pos (str.len delta)))))))
+
+(define-fun count_matches ((s String)) Int
+  (count_matches_rec s 0))
+
+(define-fun-rec nth_match_start ((s String) (n Int) (from Int)) Int
+  (ite (<= n 0) (- 1)
+    (let ((p (str.indexof s delta from)))
+      (ite (= n 1) p
+        (nth_match_start s (- n 1) (+ p (str.len delta)))))))
+
+(define-fun split_at ((s String) (sep String) (k Int)) String
+  (ite (or (< k 0) (= (str.len sep) 0)) ""
+    (let ((tmp (convert_for_split s sep)))
+      (let ((num (+ 1 (count_matches tmp))))
+        (ite (>= k num) ""
+          (let ((start_match_k (nth_match_start tmp k 0)))
+            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
+              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
+                (let ((end_k (ite (= start_match_next (- 1))
+                                  (str.len tmp)
+                                  start_match_next)))
+                  (ite (< end_k start_k)
+                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
+                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
+
+(define-fun-rec replace_iter ((s String) (sep String) (i Int)) String
+  (ite (<= i 0) s
+    (replace_iter (str.replace s sep delta) sep (- i 1))))
+
+(define-fun split_rest ((s String) (sep String) (k Int)) String
+  (ite (or (< k 0) (= (str.len sep) 0)) ""
+    (let ((tmp (convert_for_split s sep)))
+      (let ((num (count_matches tmp)))
+        (ite (< num k) ""
+          (let ((s_iter (replace_iter s sep k)))
+            (let ((start_match_k (nth_match_start s_iter k 0)))
+              (let ((lens (str.len s_iter)))
+                (ite (< start_match_k 0) s
+                  (str.substr s_iter (+ start_match_k 1)
+                              (- lens start_match_k 1)))))))))))
+
+(define-fun num_splits ((s String) (sep String)) Int
+  (let ((tmp (convert_for_split s sep)))
+    (+ 1 (count_matches tmp))))
+
+(define-fun convert_for_split_re ((s String) (r (RegEx String))) String
+  (str.replace_re_all s r delta))
+
+(define-fun-rec replace_iter_re ((s String) (r (RegEx String)) (i Int)) String
+  (ite (<= i 0) s
+    (replace_iter_re (str.replace_re s r delta) r (- i 1))))
+
+(define-fun split_at_re ((s String) (r (RegEx String)) (k Int)) String
+  (ite (< k 0) ""
+    (let ((tmp (convert_for_split_re s r)))
+      (let ((num (+ 1 (count_matches tmp))))
+        (ite (>= k num) ""
+          (let ((start_match_k (nth_match_start tmp k 0)))
+            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
+              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
+                (let ((end_k (ite (= start_match_next (- 1))
+                                  (str.len tmp)
+                                  start_match_next)))
+                  (ite (< end_k start_k)
+                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
+                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
+
+(define-fun split_rest_re ((s String) (r (RegEx String)) (k Int)) String
+  (ite (< k 0) ""
+    (let ((tmp (convert_for_split_re s r)))
+      (let ((num (count_matches tmp)))
+        (ite (< num k) ""
+          (let ((s_iter (replace_iter_re s r k)))
+            (let ((start_match_k (nth_match_start s_iter k 0)))
+              (let ((lens (str.len s_iter)))
+                (ite (< start_match_k 0) s
+                  (str.substr s_iter (+ start_match_k 1)
+                              (- lens start_match_k 1)))))))))))
+
+(define-fun num_splits_re ((s String) (r (RegEx String))) Int
+  (let ((tmp (convert_for_split_re s r)))
+    (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface for email parsing
+
+; Email candidate
+(declare-const X String)
+
+; Segments around '@' and '.'
+(declare-const local String)
+(declare-const domain String)
+(declare-const dom_label0 String)
+(declare-const dom_label1 String)
+(declare-const tld String)
+
+; Core split structure
+(assert (= local (split_at X "@" 0)))
+(assert (= domain (split_at X "@" 1)))
+(assert (= domain (split_rest X "@" 1)))
+(assert (= (num_splits X "@") 2))
+
+; Domain must have at least one '.' (i.e., at least 2 labels)
+(assert (>= (num_splits domain ".") 2))
+(assert (= dom_label0 (split_at domain "." 0)))
+(assert (= dom_label1 (split_at domain "." 1)))
+(assert (= tld (split_at domain "." (- (num_splits domain ".") 1))))
+
+; Disallow empty segments
+(assert (> (str.len local) 0))
+(assert (> (str.len domain) 0))
+(assert (> (str.len dom_label0) 0))
+(assert (> (str.len tld) 0))
+
+; No whitespace in the full email
+(assert (not (str.contains X " ")))
+(assert (not (str.contains X "\t")))
+(assert (not (str.contains X "\n")))
+(assert (not (str.contains X "\r")))
+
+; Local-part constraints: start with alnum, allow alnum and [._+-] in middle, end with alnum
+(assert (str.in_re local
+  (re.++
+    (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9"))
+    (re.* (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (str.to_re ".") (str.to_re "_") (str.to_re "+") (str.to_re "-")))
+    (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9")))))
+
+; Domain constraints: overall allowed charset and structure: labels separated by '.'
+(assert (str.in_re domain
+  (re.++
+    (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (str.to_re "-")))
+    (re.+ (re.++
+            (str.to_re ".")
+            (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9") (str.to_re "-"))))))))
+
+; First label and TLD cannot start/end with '-'
+(assert (not (= (str.at dom_label0 0) "-")))
+(assert (not (= (str.at dom_label0 (- (str.len dom_label0) 1)) "-")))
+(assert (not (= (str.at tld 0) "-")))
+(assert (not (= (str.at tld (- (str.len tld) 1)) "-")))
+
+; TLD must be alphabetic only, length 2..24
+(assert (and (>= (str.len tld) 2) (<= (str.len tld) 24)))
+(assert (str.in_re tld (re.+ (re.union (re.range "A" "Z") (re.range "a" "z")))))
+
+; Additional structural checks: do not allow consecutive dots in local or domain
+(assert (not (str.contains local "..")))
+(assert (not (str.contains domain "..")))
+
+; Ensure exactly one '@' in the entire string
+(assert (= (num_splits X "@") 2))
+
+; Create both SAT and UNSAT pressure: forbid a specific valid-looking email while requiring a pattern it matches
+(declare-const bad String)
+(assert (= bad "a.b+1@ex-ample.co"))
+(assert (str.in_re X (str.to_re bad)))
+(assert (not (= X bad)))
+
+(check-sat)
+
+
+; [GENERATION STATUS: SUCCESS]
+(exit)
