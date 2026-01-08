@@ -1,0 +1,5 @@
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-const -1 Int)
+(assert (= -1 (- 1)))

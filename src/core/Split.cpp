@@ -7,6 +7,7 @@
 // Internal delimiter used for splitting operations
 // #define INTERNAL_DELIMITER "\"#\""
 #include <algorithm>
+#include <charconv>
 #include <chrono>
 #include <cctype>
 #include <cstdlib>
@@ -17,6 +18,7 @@
 #include <iterator>
 #include <optional>
 #include <sstream>
+#include <string_view>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -31,27 +33,58 @@ std::string cleanQuotes(const std::string &str) {
   return str;
 }
 
-int parseInteger(const std::string &str) {
-  if (str.empty()) {
-    return 0;
+namespace {
+std::string_view trimView(std::string_view text) {
+  size_t start = 0;
+  while (start < text.size() &&
+         std::isspace(static_cast<unsigned char>(text[start]))) {
+    ++start;
+  }
+  size_t end = text.size();
+  while (end > start &&
+         std::isspace(static_cast<unsigned char>(text[end - 1]))) {
+    --end;
+  }
+  return text.substr(start, end - start);
+}
+
+std::optional<int> parseIntegerView(std::string_view text) {
+  text = trimView(text);
+  if (text.empty()) {
+    return std::nullopt;
   }
 
-  if (str[0] == '(' && str.back() == ')') {
-    if (str.substr(1, 2) == "- " && str.length() > 4) {
-      std::string numPart = str.substr(3, str.length() - 4);
-      try {
-        return -std::stoi(numPart);
-      } catch (const std::exception &) {
-        return 0;
-      }
+  int value = 0;
+  auto [ptr, ec] =
+      std::from_chars(text.data(), text.data() + text.size(), value);
+  if (ec != std::errc() || ptr != text.data() + text.size()) {
+    return std::nullopt;
+  }
+  return value;
+}
+} // namespace
+
+std::optional<int> parseInteger(const std::string &str) {
+  std::string_view text = trimView(str);
+  if (text.empty()) {
+    return std::nullopt;
+  }
+
+  // Handle the SMT-LIB negative numeral form: (- 123)
+  if (text.front() == '(' && text.back() == ')') {
+    const auto inner = trimView(text.substr(1, text.size() - 2));
+    if (inner.size() < 2 || inner[0] != '-' ||
+        !std::isspace(static_cast<unsigned char>(inner[1]))) {
+      return std::nullopt;
     }
+    auto mag = parseIntegerView(inner.substr(1));
+    if (!mag) {
+      return std::nullopt;
+    }
+    return -*mag;
   }
 
-  try {
-    return std::stoi(str);
-  } catch (const std::exception &) {
-    return 0;
-  }
+  return parseIntegerView(text);
 }
 
 void dumpSMTLIB2(const SMTParser::NodePtr &node, std::stringstream &ss) {
@@ -163,15 +196,20 @@ void SplitSolver::replaceSplitAtConstNodes(
           std::string delimiter = normalizeDelimiterLiteral(
               ctx.getParser().getString(node->getChild(1)));
 
-          Division *division = ctx.getDivision(str, delimiter);
-          if (division && division->isConstType()) {
-            ConstDivision *constDiv = static_cast<ConstDivision *>(division);
-            int index = parseInteger(arg3->toString());
-            if (index >= 0 &&
-                static_cast<size_t>(index) < constDiv->getSplitNums()) {
-              std::string splitValue = constDiv->getSplit(index);
-              std::string quotedValue = "\"" + splitValue + "\"";
-              SMTParser::NodePtr replacement =
+	          Division *division = ctx.getDivision(str, delimiter);
+	          if (division && division->isConstType()) {
+	            ConstDivision *constDiv = static_cast<ConstDivision *>(division);
+	            const auto indexOpt = parseInteger(arg3->toString());
+	            if (!indexOpt) {
+	              WARN("Invalid split_at index literal: ", arg3->toString());
+	              return;
+	            }
+	            const int index = *indexOpt;
+	            if (index >= 0 &&
+	                static_cast<size_t>(index) < constDiv->getSplitNums()) {
+	              std::string splitValue = constDiv->getSplit(index);
+	              std::string quotedValue = "\"" + splitValue + "\"";
+	              SMTParser::NodePtr replacement =
                   ctx.getParser().createStringConst(quotedValue);
               if (replacement) {
                 DEBUG("Replaced ", ctx.getParser().getString(node), " with ",
@@ -216,15 +254,20 @@ void SplitSolver::replaceSplitEndConstNodes(
 
           std::string str = cleanQuotes(arg1->toString());
 
-          std::string delimiter = normalizeDelimiterLiteral(
-              ctx.getParser().getString(node->getChild(1)));
+	          std::string delimiter = normalizeDelimiterLiteral(
+	              ctx.getParser().getString(node->getChild(1)));
 
-          int index = parseInteger(arg3->toString());
-          Division *division = ctx.getDivision(str, delimiter);
-          if (division && division->isConstType()) {
-            ConstDivision *constDiv = static_cast<ConstDivision *>(division);
-            if (index >= 0 &&
-                static_cast<size_t>(index) < constDiv->getSplitNums()) {
+	          const auto indexOpt = parseInteger(arg3->toString());
+	          if (!indexOpt) {
+	            WARN("Invalid split_rest index literal: ", arg3->toString());
+	            return;
+	          }
+	          const int index = *indexOpt;
+	          Division *division = ctx.getDivision(str, delimiter);
+	          if (division && division->isConstType()) {
+	            ConstDivision *constDiv = static_cast<ConstDivision *>(division);
+	            if (index >= 0 &&
+	                static_cast<size_t>(index) < constDiv->getSplitNums()) {
               const auto &splits = constDiv->getSplits();
               const auto &splitDelimiters = constDiv->getSplitDelimiters();
               std::string splitEndValue = "";
@@ -340,12 +383,17 @@ void SplitSolver::replaceSplitAtVarNodes(
 
         if (arg1->isVar() && arg3->isConst()) {
           std::string variable = arg1->toString();
-          std::string delimiter = normalizeDelimiterLiteral(
-              ctx.getParser().getString(node->getChild(1)));
-          DEBUG("[replaceSplitAtVarNodes] Variable: '", variable, "'");
-          DEBUG("[replaceSplitAtVarNodes] Delimiter regex: ", delimiter);
-          int index = parseInteger(arg3->toString());
-          DEBUG("[replaceSplitAtVarNodes] Index: ", index);
+	          std::string delimiter = normalizeDelimiterLiteral(
+	              ctx.getParser().getString(node->getChild(1)));
+	          DEBUG("[replaceSplitAtVarNodes] Variable: '", variable, "'");
+	          DEBUG("[replaceSplitAtVarNodes] Delimiter regex: ", delimiter);
+	          const auto indexOpt = parseInteger(arg3->toString());
+	          if (!indexOpt) {
+	            WARN("Invalid split_at index literal: ", arg3->toString());
+	            continue;
+	          }
+	          const int index = *indexOpt;
+	          DEBUG("[replaceSplitAtVarNodes] Index: ", index);
 
           Division *division = ctx.getDivision(variable, delimiter);
           if (division && division->isVarType()) {
@@ -411,12 +459,17 @@ void SplitSolver::replaceSplitEndVarNodes(
         DEBUG("SplitEnd Node: ", ctx.getParser().getString(node));
 
         if (arg1->isVar() && arg3->isConst()) {
-          std::string variable = arg1->toString();
-          std::string delimiter = normalizeDelimiterLiteral(
-              ctx.getParser().getString(node->getChild(1)));
-          int index = parseInteger(arg3->toString());
+	          std::string variable = arg1->toString();
+	          std::string delimiter = normalizeDelimiterLiteral(
+	              ctx.getParser().getString(node->getChild(1)));
+	          const auto indexOpt = parseInteger(arg3->toString());
+	          if (!indexOpt) {
+	            WARN("Invalid split_rest index literal: ", arg3->toString());
+	            continue;
+	          }
+	          const int index = *indexOpt;
 
-          Division *division = ctx.getDivision(variable, delimiter);
+	          Division *division = ctx.getDivision(variable, delimiter);
           if (division && division->isVarType()) {
             VarDivision *varDiv = static_cast<VarDivision *>(division);
             auto splitEndNums = varDiv->getSplitRestNumsAppeared();
@@ -542,13 +595,18 @@ void SplitSolver::detectInvalidIndex(Context &ctx, Division *division) {
   std::unordered_map<SMTParser::NodePtr, SMTParser::NodePtr> replacementMap;
 
   for (auto &divisionNode : divisionNodes) {
-    if (ctx.isSplitAtVarNode(divisionNode)) {
-      if (divisionNode->getChildrenSize() >= 3) {
-        auto arg3 = divisionNode->getChild(2);
-        int index = parseInteger(arg3->toString());
-        if (index < 0 || index > maxIndex) {
-          DEBUG("Invalid split_at index ", index, " for ", variable,
-                " with delimiters");
+	    if (ctx.isSplitAtVarNode(divisionNode)) {
+	      if (divisionNode->getChildrenSize() >= 3) {
+	        auto arg3 = divisionNode->getChild(2);
+	        const auto indexOpt = parseInteger(arg3->toString());
+	        if (!indexOpt) {
+	          WARN("Invalid split_at index literal: ", arg3->toString());
+	          continue;
+	        }
+	        const int index = *indexOpt;
+	        if (index < 0 || index > maxIndex) {
+	          DEBUG("Invalid split_at index ", index, " for ", variable,
+	                " with delimiters");
           SMTParser::NodePtr replacement =
               ctx.getParser().createStringConst("\"\"");
           replacementMap[divisionNode] = replacement;
@@ -557,13 +615,18 @@ void SplitSolver::detectInvalidIndex(Context &ctx, Division *division) {
       }
     }
 
-    if (ctx.isSplitRestVarNode(divisionNode)) {
-      if (divisionNode->getChildrenSize() >= 3) {
-        auto arg3 = divisionNode->getChild(2);
-        int index = parseInteger(arg3->toString());
-        if (index < 0 || index > maxIndex) {
-          DEBUG("Invalid split_rest index ", index, " for ", variable,
-                " with delimiters");
+	    if (ctx.isSplitRestVarNode(divisionNode)) {
+	      if (divisionNode->getChildrenSize() >= 3) {
+	        auto arg3 = divisionNode->getChild(2);
+	        const auto indexOpt = parseInteger(arg3->toString());
+	        if (!indexOpt) {
+	          WARN("Invalid split_rest index literal: ", arg3->toString());
+	          continue;
+	        }
+	        const int index = *indexOpt;
+	        if (index < 0 || index > maxIndex) {
+	          DEBUG("Invalid split_rest index ", index, " for ", variable,
+	                " with delimiters");
           SMTParser::NodePtr replacement =
               ctx.getParser().createStringConst("\"\"");
           replacementMap[divisionNode] = replacement;
@@ -765,11 +828,16 @@ void SplitSolver::addAuxiliaryLemmas(Context &ctx) {
 
       for (auto &node : splitAtVarNodes) {
         if (node->getChildrenSize() >= 3) {
-          auto arg3 = node->getChild(2);
+	          auto arg3 = node->getChild(2);
 
-          if (ctx.matchesDivision(node, variable, delimiter)) {
-            int index = parseInteger(arg3->toString());
-            auto atoms = ctx.getAtomsForSplitNode(node);
+	          if (ctx.matchesDivision(node, variable, delimiter)) {
+	            const auto indexOpt = parseInteger(arg3->toString());
+	            if (!indexOpt) {
+	              WARN("Invalid split_at index literal: ", arg3->toString());
+	              continue;
+	            }
+	            const int index = *indexOpt;
+	            auto atoms = ctx.getAtomsForSplitNode(node);
 
             for (auto &atom : atoms) {
               std::string disjuncts = "";
@@ -806,11 +874,16 @@ void SplitSolver::addAuxiliaryLemmas(Context &ctx) {
 
       for (auto &node : splitRestVarNodes) {
         if (node->getChildrenSize() >= 3) {
-          auto arg3 = node->getChild(2);
+	          auto arg3 = node->getChild(2);
 
-          if (ctx.matchesDivision(node, variable, delimiter)) {
-            int index = parseInteger(arg3->toString());
-            auto atoms = ctx.getAtomsForSplitNode(node);
+	          if (ctx.matchesDivision(node, variable, delimiter)) {
+	            const auto indexOpt = parseInteger(arg3->toString());
+	            if (!indexOpt) {
+	              WARN("Invalid split_rest index literal: ", arg3->toString());
+	              continue;
+	            }
+	            const int index = *indexOpt;
+	            auto atoms = ctx.getAtomsForSplitNode(node);
 
             for (auto &atom : atoms) {
               std::string disjuncts = "";

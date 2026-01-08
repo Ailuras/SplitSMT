@@ -2,12 +2,13 @@
 
 #include "Context.h"
 #include "Solver.h"
+#include <optional>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
-int parseInteger(const std::string &str);
+std::optional<int> parseInteger(const std::string &str);
 
 namespace strp {
 

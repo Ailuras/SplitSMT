@@ -1,0 +1,44 @@
+(set-logic ALL)
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+(declare-fun T_5 () Bool)
+(declare-fun T_6 () Bool)
+(declare-fun T_7 () Bool)
+(declare-fun T_8 () Bool)
+(declare-fun var_0xINPUT_239267 () String)
+(assert (= T_1 (not (= "AA1ND6MEXd" var_0xINPUT_239267))))
+(assert T_1)
+(assert (= T_2 (not (= "" var_0xINPUT_239267))))
+(assert T_2)
+(assert (= T_3 (not (= "" var_0xINPUT_239267))))
+(assert T_3)
+(assert (= T_4 (not (= var_0xINPUT_239267 ""))))
+(assert T_4)
+(assert (= T_5 (= var_0xINPUT_239267 "")))
+(assert (= T_6 (not T_5)))
+(assert T_6)
+(assert (= T_7 (not (= "" var_0xINPUT_239267))))
+(assert T_7)
+(assert (= T_8 (= var_0xINPUT_239267 "Example:")))
+(assert T_8)
+
+; --- START CONSTRAINT ---
+(declare-fun split_at (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-fun split_rest (String String Int) String)
+
+(declare-fun ex_prefix () String)
+(declare-fun ex_suffix () String)
+
+(assert (= ex_prefix (split_at var_0xINPUT_239267 ":" 0)))
+(assert (= ex_suffix (split_rest var_0xINPUT_239267 ":" 1)))
+(assert (>= (num_splits var_0xINPUT_239267 ":") 2))
+(assert (= ex_prefix "Example"))
+(assert (= ex_suffix ""))
+; --- END CONSTRAINT ---
+
+(check-sat)
+
+; [GENERATION STATUS: SUCCESS]

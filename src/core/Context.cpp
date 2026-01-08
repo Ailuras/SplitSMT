@@ -423,10 +423,30 @@ void Context::updateDivisions() {
   auto splitRestVarNodes = getSplitRestVarNodes();
   auto numSplitVarNodes = getNumSplitVarNodes();
 
+  auto parseSplitIndexOrFallback =
+      [&](const SMTParser::NodePtr &indexNode,
+          const char *opName) -> std::optional<int> {
+    const std::string rawIndex = parser.getString(indexNode);
+    auto index = parseInteger(rawIndex);
+    if (!index) {
+      const std::string reason =
+          std::string("Split operation with unsupported index literal (") +
+          opName + "): '" + rawIndex + "'";
+      FallbackManager::getInstance().setFallbackRequired(true, reason,
+                                                         parser.getRawContent());
+      LOGGER.INFO("Switching to fallback processing: ", reason);
+    }
+    return index;
+  };
+
   for (auto &node : splitAtConstNodes) {
     try {
-      if (node->getChildrenSize() >= 2) {
+      if (node->getChildrenSize() >= 3) {
         auto arg1 = node->getChild(0);
+        auto arg3 = node->getChild(2);
+        if (!parseSplitIndexOrFallback(arg3, "split_at")) {
+          return;
+        }
 
         std::string divided = parser.getString(arg1);
         if (divided.size() >= 2 && divided.front() == '"' &&
@@ -470,7 +490,11 @@ void Context::updateDivisions() {
         if (isDelimiterStringType(delimiter)) {
           delimiter = Parser::normalizeStringLiteral(delimiter);
         }
-        int index = parseInteger(parser.getString(arg3));
+        auto indexOpt = parseSplitIndexOrFallback(arg3, "split_rest");
+        if (!indexOpt) {
+          return;
+        }
+        int index = *indexOpt;
 
         if (!hasDivision(divided, delimiter)) {
           addDivision(std::make_unique<ConstDivision>(divided, delimiter));
@@ -515,7 +539,11 @@ void Context::updateDivisions() {
         if (isDelimiterStringType(delimiter)) {
           delimiter = Parser::normalizeStringLiteral(delimiter);
         }
-        int index = parseInteger(parser.getString(arg3));
+        auto indexOpt = parseSplitIndexOrFallback(arg3, "split_at");
+        if (!indexOpt) {
+          return;
+        }
+        int index = *indexOpt;
 
         Division *division = getDivision(variable, delimiter);
         if (!division) {
@@ -560,7 +588,11 @@ void Context::updateDivisions() {
         if (isDelimiterStringType(delimiter)) {
           delimiter = Parser::normalizeStringLiteral(delimiter);
         }
-        int index = parseInteger(parser.getString(arg3));
+        auto indexOpt = parseSplitIndexOrFallback(arg3, "split_rest");
+        if (!indexOpt) {
+          return;
+        }
+        int index = *indexOpt;
 
         Division *division = getDivision(variable, delimiter);
         if (!division) {
