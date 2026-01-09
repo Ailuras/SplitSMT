@@ -90,3 +90,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

@@ -79,7 +79,8 @@ inline std::filesystem::path z3NoodlerScriptPath() {
   return solverScriptPath("z3-noodler");
 }
 
-// Global constants
-constexpr auto INTERNAL_DELIMITER = "\"\\u{2FFFF}\"";
+// Global constants - Use backtick (`) as delimiter - rare in normal strings
+// Note: This is a compromise; users should not use backtick in string inputs
+constexpr auto INTERNAL_DELIMITER = "\"`\"";
 
 } // namespace strp::config

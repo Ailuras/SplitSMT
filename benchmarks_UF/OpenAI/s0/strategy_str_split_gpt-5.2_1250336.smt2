@@ -132,3 +132,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

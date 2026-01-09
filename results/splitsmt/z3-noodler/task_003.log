@@ -1,27 +1,39 @@
 ===========================================================
 Task Group 3
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-08 22:44:46
+Started: 2026-01-09 16:27:30
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-08T14:44:46Z
-END: 2026-01-08T14:44:56Z
-DURATION_SEC: 10.260062583
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1237665.smt2
+START: 2026-01-09T08:27:30Z
+END: 2026-01-09T08:27:33Z
+DURATION_SEC: 2.985887683
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_962832.smt2
-START: 2026-01-08T14:44:56Z
-END: 2026-01-08T14:44:57Z
-DURATION_SEC: .324538109
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1271322.smt2
+START: 2026-01-09T08:27:33Z
+END: 2026-01-09T08:27:41Z
+DURATION_SEC: 7.137258315
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1273872.smt2
+START: 2026-01-09T08:27:41Z
+END: 2026-01-09T08:27:41Z
+DURATION_SEC: .151084657
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,22 +42,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
-START: 2026-01-08T14:44:57Z
-END: 2026-01-08T14:45:07Z
-DURATION_SEC: 9.843192090
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
-START: 2026-01-08T14:45:07Z
-END: 2026-01-08T14:45:07Z
-DURATION_SEC: .522850364
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1277075.smt2
+START: 2026-01-09T08:27:41Z
+END: 2026-01-09T08:27:51Z
+DURATION_SEC: 10.153958000
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,298 +54,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/10778.smt2
-START: 2026-01-08T14:45:07Z
-END: 2026-01-08T14:45:15Z
-DURATION_SEC: 7.748532972
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/10794.smt2
-START: 2026-01-08T14:45:15Z
-END: 2026-01-08T14:45:16Z
-DURATION_SEC: 1.229670043
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11107.smt2
-START: 2026-01-08T14:45:16Z
-END: 2026-01-08T14:45:17Z
-DURATION_SEC: .617697824
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11234.smt2
-START: 2026-01-08T14:45:17Z
-END: 2026-01-08T14:45:27Z
-DURATION_SEC: 10.210770828
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11442.smt2
-START: 2026-01-08T14:45:27Z
-END: 2026-01-08T14:45:28Z
-DURATION_SEC: .252570756
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11634.smt2
-START: 2026-01-08T14:45:28Z
-END: 2026-01-08T14:45:30Z
-DURATION_SEC: 2.264854163
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11642.smt2
-START: 2026-01-08T14:45:30Z
-END: 2026-01-08T14:45:32Z
-DURATION_SEC: 2.169274979
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11661.smt2
-START: 2026-01-08T14:45:32Z
-END: 2026-01-08T14:45:34Z
-DURATION_SEC: 1.867586462
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11770.smt2
-START: 2026-01-08T14:45:34Z
-END: 2026-01-08T14:45:36Z
-DURATION_SEC: 2.051299110
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11864.smt2
-START: 2026-01-08T14:45:36Z
-END: 2026-01-08T14:45:39Z
-DURATION_SEC: 2.192102638
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/12029.smt2
-START: 2026-01-08T14:45:39Z
-END: 2026-01-08T14:45:41Z
-DURATION_SEC: 2.731275694
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/12063.smt2
-START: 2026-01-08T14:45:41Z
-END: 2026-01-08T14:45:44Z
-DURATION_SEC: 2.372482499
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1227.smt2
-START: 2026-01-08T14:45:44Z
-END: 2026-01-08T14:45:46Z
-DURATION_SEC: 2.272468360
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/12358.smt2
-START: 2026-01-08T14:45:46Z
-END: 2026-01-08T14:45:49Z
-DURATION_SEC: 2.164643207
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/125.smt2
-START: 2026-01-08T14:45:49Z
-END: 2026-01-08T14:45:59Z
-DURATION_SEC: 10.337890618
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1279.smt2
-START: 2026-01-08T14:45:59Z
-END: 2026-01-08T14:46:03Z
-DURATION_SEC: 4.341413182
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1299.smt2
-START: 2026-01-08T14:46:03Z
-END: 2026-01-08T14:46:07Z
-DURATION_SEC: 3.980008542
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/14165.smt2
-START: 2026-01-08T14:46:07Z
-END: 2026-01-08T14:46:08Z
-DURATION_SEC: .322513831
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1491.smt2
-START: 2026-01-08T14:46:08Z
-END: 2026-01-08T14:46:09Z
-DURATION_SEC: .793319132
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/15181.smt2
-START: 2026-01-08T14:46:09Z
-END: 2026-01-08T14:46:19Z
-DURATION_SEC: 10.259080094
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1574.smt2
-START: 2026-01-08T14:46:19Z
-END: 2026-01-08T14:46:21Z
-DURATION_SEC: 2.003174244
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/16116.smt2
-START: 2026-01-08T14:46:21Z
-END: 2026-01-08T14:46:22Z
-DURATION_SEC: .446755072
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1700.smt2
-START: 2026-01-08T14:46:22Z
-END: 2026-01-08T14:46:24Z
-DURATION_SEC: 2.273023943
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1759.smt2
-START: 2026-01-08T14:46:24Z
-END: 2026-01-08T14:46:34Z
-DURATION_SEC: 10.228401091
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1768.smt2
-START: 2026-01-08T14:46:34Z
-END: 2026-01-08T14:46:35Z
-DURATION_SEC: .279195524
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1311643.smt2
+START: 2026-01-09T08:27:51Z
+END: 2026-01-09T08:27:57Z
+DURATION_SEC: 5.690654275
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -354,10 +66,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1778.smt2
-START: 2026-01-08T14:46:35Z
-END: 2026-01-08T14:46:45Z
-DURATION_SEC: 10.216212873
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1341298.smt2
+START: 2026-01-09T08:27:57Z
+END: 2026-01-09T08:28:09Z
+DURATION_SEC: 11.741597936
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -366,10 +78,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/1798.smt2
-START: 2026-01-08T14:46:45Z
-END: 2026-01-08T14:46:55Z
-DURATION_SEC: 10.192275082
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1350522.smt2
+START: 2026-01-09T08:28:09Z
+END: 2026-01-09T08:28:19Z
+DURATION_SEC: 10.465613010
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -378,70 +90,27 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/18293.smt2
-START: 2026-01-08T14:46:55Z
-END: 2026-01-08T14:46:56Z
-DURATION_SEC: .512069367
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19222.smt2
-START: 2026-01-08T14:46:56Z
-END: 2026-01-08T14:46:58Z
-DURATION_SEC: 2.043357140
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19251.smt2
-START: 2026-01-08T14:46:58Z
-END: 2026-01-08T14:47:00Z
-DURATION_SEC: 2.018074915
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1356297.smt2
+START: 2026-01-09T08:28:19Z
+END: 2026-01-09T08:28:20Z
+DURATION_SEC: .893481466
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
+[31m[2026-01-09 16:28:20] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 638403 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19256.smt2
-START: 2026-01-08T14:47:00Z
-END: 2026-01-08T14:47:02Z
-DURATION_SEC: 2.221184951
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19258.smt2
-START: 2026-01-08T14:47:02Z
-END: 2026-01-08T14:47:10Z
-DURATION_SEC: 7.510073145
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19912.smt2
-START: 2026-01-08T14:47:10Z
-END: 2026-01-08T14:47:20Z
-DURATION_SEC: 10.261098550
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1382187.smt2
+START: 2026-01-09T08:28:20Z
+END: 2026-01-09T08:28:30Z
+DURATION_SEC: 10.258732035
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -450,449 +119,14 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20049.smt2
-START: 2026-01-08T14:47:20Z
-END: 2026-01-08T14:47:21Z
-DURATION_SEC: 1.101283169
+FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1392554.smt2
+START: 2026-01-09T08:28:30Z
+END: 2026-01-09T08:28:34Z
+DURATION_SEC: 3.292312245
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20082.smt2
-START: 2026-01-08T14:47:21Z
-END: 2026-01-08T14:47:22Z
-DURATION_SEC: .544460014
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20116.smt2
-START: 2026-01-08T14:47:22Z
-END: 2026-01-08T14:47:24Z
-DURATION_SEC: 2.671450360
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20200.smt2
-START: 2026-01-08T14:47:24Z
-END: 2026-01-08T14:47:30Z
-DURATION_SEC: 5.320912275
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20413.smt2
-START: 2026-01-08T14:47:30Z
-END: 2026-01-08T14:47:30Z
-DURATION_SEC: .300606753
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20494.smt2
-START: 2026-01-08T14:47:30Z
-END: 2026-01-08T14:47:32Z
-DURATION_SEC: 1.898034538
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20498.smt2
-START: 2026-01-08T14:47:32Z
-END: 2026-01-08T14:47:34Z
-DURATION_SEC: 1.953124582
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20512.smt2
-START: 2026-01-08T14:47:34Z
-END: 2026-01-08T14:47:45Z
-DURATION_SEC: 10.188522084
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21157.smt2
-START: 2026-01-08T14:47:45Z
-END: 2026-01-08T14:47:55Z
-DURATION_SEC: 10.274502625
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21168.smt2
-START: 2026-01-08T14:47:55Z
-END: 2026-01-08T14:47:55Z
-DURATION_SEC: .246162052
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21345.smt2
-START: 2026-01-08T14:47:55Z
-END: 2026-01-08T14:47:57Z
-DURATION_SEC: 1.398318235
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21382.smt2
-START: 2026-01-08T14:47:57Z
-END: 2026-01-08T14:47:58Z
-DURATION_SEC: 1.609748852
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21489.smt2
-START: 2026-01-08T14:47:58Z
-END: 2026-01-08T14:48:01Z
-DURATION_SEC: 2.144271020
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/21922.smt2
-START: 2026-01-08T14:48:01Z
-END: 2026-01-08T14:48:04Z
-DURATION_SEC: 3.318960902
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: top20_gh/10596.smt2
-START: 2026-01-08T14:48:04Z
-END: 2026-01-08T14:48:04Z
-DURATION_SEC: .074446858
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-08 22:48:04] Failed to open file: top20_gh/10596.smt2[0m
-[31m[2026-01-08 22:48:04] Failed to open file: top20_gh/10596.smt2[0m
-[31m[2026-01-08 22:48:04] Failed to parse file: top20_gh/10596.smt2[0m
-[31m[2026-01-08 22:48:04] Failed to parse file: top20_gh/10596.smt2[0m
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/10620.smt2
-START: 2026-01-08T14:48:04Z
-END: 2026-01-08T14:48:05Z
-DURATION_SEC: .395772589
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/1118.smt2
-START: 2026-01-08T14:48:05Z
-END: 2026-01-08T14:48:09Z
-DURATION_SEC: 4.341574383
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/11724.smt2
-START: 2026-01-08T14:48:09Z
-END: 2026-01-08T14:48:10Z
-DURATION_SEC: 1.255254070
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/12319.smt2
-START: 2026-01-08T14:48:10Z
-END: 2026-01-08T14:48:21Z
-DURATION_SEC: 10.348502353
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/12328.smt2
-START: 2026-01-08T14:48:21Z
-END: 2026-01-08T14:48:31Z
-DURATION_SEC: 10.121801299
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/12336.smt2
-START: 2026-01-08T14:48:31Z
-END: 2026-01-08T14:48:41Z
-DURATION_SEC: 10.163981365
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/12342.smt2
-START: 2026-01-08T14:48:41Z
-END: 2026-01-08T14:48:52Z
-DURATION_SEC: 10.315745144
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/15456.smt2
-START: 2026-01-08T14:48:53Z
-END: 2026-01-08T14:48:54Z
-DURATION_SEC: .387539448
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/16346.smt2
-START: 2026-01-08T14:48:54Z
-END: 2026-01-08T14:48:56Z
-DURATION_SEC: 2.455784512
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/16405.smt2
-START: 2026-01-08T14:48:56Z
-END: 2026-01-08T14:48:59Z
-DURATION_SEC: 2.607487593
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/1643.smt2
-START: 2026-01-08T14:48:59Z
-END: 2026-01-08T14:49:09Z
-DURATION_SEC: 10.175816417
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/18189.smt2
-START: 2026-01-08T14:49:09Z
-END: 2026-01-08T14:49:10Z
-DURATION_SEC: 1.269459543
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/18195.smt2
-START: 2026-01-08T14:49:10Z
-END: 2026-01-08T14:49:11Z
-DURATION_SEC: .593241832
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/2964.smt2
-START: 2026-01-08T14:49:11Z
-END: 2026-01-08T14:49:11Z
-DURATION_SEC: .250997573
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/3855.smt2
-START: 2026-01-08T14:49:11Z
-END: 2026-01-08T14:49:22Z
-DURATION_SEC: 10.209023853
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/4906.smt2
-START: 2026-01-08T14:49:22Z
-END: 2026-01-08T14:49:24Z
-DURATION_SEC: 2.766454412
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/5647.smt2
-START: 2026-01-08T14:49:25Z
-END: 2026-01-08T14:49:25Z
-DURATION_SEC: .231437360
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/591.smt2
-START: 2026-01-08T14:49:25Z
-END: 2026-01-08T14:49:27Z
-DURATION_SEC: 2.036138440
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/6394.smt2
-START: 2026-01-08T14:49:27Z
-END: 2026-01-08T14:49:28Z
-DURATION_SEC: .676603947
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/6812.smt2
-START: 2026-01-08T14:49:28Z
-END: 2026-01-08T14:49:28Z
-DURATION_SEC: .682081586
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/6840.smt2
-START: 2026-01-08T14:49:28Z
-END: 2026-01-08T14:49:29Z
-DURATION_SEC: .934002390
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/top20_gh/6863.smt2
-START: 2026-01-08T14:49:29Z
-END: 2026-01-08T14:49:30Z
-DURATION_SEC: .916421012
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 3 completed at 2026-01-08 22:49:30
+Task Group 3 completed at 2026-01-09 16:28:34

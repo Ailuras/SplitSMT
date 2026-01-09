@@ -1,10 +1,21 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/325.smt2
+FILE: benchmarks_UF/Java/top20_gh/6394.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:02
-END: 2026-01-09 14:05:02
-DURATION_SEC: 0.262
+START: 2026-01-09 15:54:21
+END: 2026-01-09 15:54:31
+DURATION_SEC: 10.073
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/Java/top20_gh/6812.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:31
+END: 2026-01-09 15:54:32
+DURATION_SEC: 0.417
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +23,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5089.smt2
+FILE: benchmarks_UF/Java/top20_gh/6840.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:02
-END: 2026-01-09 14:05:02
-DURATION_SEC: 0.086
+START: 2026-01-09 15:54:32
+END: 2026-01-09 15:54:32
+DURATION_SEC: 0.410
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,22 +35,58 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5094.smt2
+FILE: benchmarks_UF/Java/top20_gh/6863.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:02
-END: 2026-01-09 14:05:02
-DURATION_SEC: 0.084
+START: 2026-01-09 15:54:33
+END: 2026-01-09 15:54:33
+DURATION_SEC: 0.425
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5095.smt2
+FILE: benchmarks_UF/Java/top20_gh/6892.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:03
-END: 2026-01-09 14:05:03
+START: 2026-01-09 15:54:33
+END: 2026-01-09 15:54:33
+DURATION_SEC: 0.449
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/Java/top20_gh/9690.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:33
+END: 2026-01-09 15:54:34
+DURATION_SEC: 0.205
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/Java/top20_gh/9717.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:34
+END: 2026-01-09 15:54:34
+DURATION_SEC: 0.180
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/Java/top20_maven/1489.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:34
+END: 2026-01-09 15:54:34
 DURATION_SEC: 0.193
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -48,70 +95,22 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5096.smt2
+FILE: benchmarks_UF/Java/top20_maven/1853.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:03
-END: 2026-01-09 14:05:03
-DURATION_SEC: 0.195
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5097.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:03
-END: 2026-01-09 14:05:03
-DURATION_SEC: 0.192
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5098.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:03
-END: 2026-01-09 14:05:13
-DURATION_SEC: 10.068
+START: 2026-01-09 15:54:34
+END: 2026-01-09 15:54:44
+DURATION_SEC: 10.024
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/top20_maven/5516.smt2
+FILE: benchmarks_UF/Java/top20_maven/1927.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:13
-END: 2026-01-09 14:05:13
-DURATION_SEC: 0.163
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_1028900.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:13
-END: 2026-01-09 14:05:14
-DURATION_SEC: 0.121
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_1045348.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:14
-END: 2026-01-09 14:05:22
-DURATION_SEC: 8.554
+START: 2026-01-09 15:54:44
+END: 2026-01-09 15:54:44
+DURATION_SEC: 0.200
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

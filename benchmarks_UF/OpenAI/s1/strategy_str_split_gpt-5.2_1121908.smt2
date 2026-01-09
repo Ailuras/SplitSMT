@@ -44,3 +44,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

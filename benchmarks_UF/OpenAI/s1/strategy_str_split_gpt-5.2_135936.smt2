@@ -76,3 +76,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

@@ -61,7 +61,6 @@
 ; =====================
 ; UNSAT instance: contradictory content-length
 ; =====================
-(push 1)
 (declare-const req_unsat String)
 (declare-const headers_unsat String)
 (declare-const line_cl_unsat String)
@@ -92,9 +91,4 @@
 (assert (= (str.len body_unsat) cl_value_unsat_int))
 
 (check-sat)
-(pop 1)
-
-
-
-; [GENERATION STATUS: SUCCESS]
-(check-sat)
+(exit)

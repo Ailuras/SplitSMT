@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1824355.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1330490.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:50
-DURATION_SEC: 0.772
+START: 2026-01-09 15:53:00
+END: 2026-01-09 15:53:02
+DURATION_SEC: 2.293
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,28 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1857289.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1351550.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:50
-END: 2026-01-09 14:03:50
-DURATION_SEC: 0.216
+START: 2026-01-09 15:53:03
+END: 2026-01-09 15:53:04
+DURATION_SEC: 0.382
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry "2023-10-05 14:30:22 ERROR: Database connection failed [server-db-01]")
+ (timestamp "20CH-JK-LM PQ:ST:XV")
+ (log_level "INFO")
+ (message "Y")
+ (source "-]"))
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1357476.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:04
+END: 2026-01-09 15:53:04
+DURATION_SEC: 0.256
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +41,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1873298.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1386724.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:50
-END: 2026-01-09 14:03:52
-DURATION_SEC: 1.406
+START: 2026-01-09 15:53:05
+END: 2026-01-09 15:53:07
+DURATION_SEC: 2.282
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +53,42 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1874067.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1390232.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:52
-END: 2026-01-09 14:03:52
-DURATION_SEC: 0.422
+START: 2026-01-09 15:53:08
+END: 2026-01-09 15:53:18
+DURATION_SEC: 10.185
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1398591.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:18
+END: 2026-01-09 15:53:18
+DURATION_SEC: 0.148
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((csv_data ",")
+ (field_count 4)
+ (field_0 "Name")
+ (field_1 "0")
+ (field_2 "Name")
+ (field_3 "Name")
+ (has_empty_field false)
+ (is_valid true))
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1422471.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:19
+END: 2026-01-09 15:53:21
+DURATION_SEC: 2.218
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +96,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1889497.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1427364.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:52
-END: 2026-01-09 14:03:52
-DURATION_SEC: 0.196
+START: 2026-01-09 15:53:23
+END: 2026-01-09 15:53:23
+DURATION_SEC: 0.362
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +108,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1898048.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1428470.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:53
-END: 2026-01-09 14:03:53
-DURATION_SEC: 0.219
+START: 2026-01-09 15:53:24
+END: 2026-01-09 15:53:24
+DURATION_SEC: 0.215
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,47 +120,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1920090.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1445525.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:53
-END: 2026-01-09 14:03:53
-DURATION_SEC: 0.100
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1953268.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:53
-END: 2026-01-09 14:03:53
-DURATION_SEC: 0.442
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1955773.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:54
-END: 2026-01-09 14:03:54
-DURATION_SEC: 0.638
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_195650.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:54
-END: 2026-01-09 14:03:55
-DURATION_SEC: 0.704
+START: 2026-01-09 15:53:24
+END: 2026-01-09 15:53:24
+DURATION_SEC: 0.111
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

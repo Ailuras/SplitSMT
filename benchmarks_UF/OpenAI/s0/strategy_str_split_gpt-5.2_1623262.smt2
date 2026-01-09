@@ -112,3 +112,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_817982.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_285268.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:39
-END: 2026-01-09 14:03:39
-DURATION_SEC: 0.167
+START: 2026-01-09 15:52:50
+END: 2026-01-09 15:52:51
+DURATION_SEC: 0.359
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_837250.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_378613.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:39
-END: 2026-01-09 14:03:41
-DURATION_SEC: 1.228
+START: 2026-01-09 15:52:51
+END: 2026-01-09 15:52:51
+DURATION_SEC: 0.181
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,95 +24,95 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_844304.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:41
-END: 2026-01-09 14:03:41
-DURATION_SEC: 0.545
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_856200.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:41
-END: 2026-01-09 14:03:42
-DURATION_SEC: 0.409
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_871359.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:42
-END: 2026-01-09 14:03:42
-DURATION_SEC: 0.258
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_898126.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:42
-END: 2026-01-09 14:03:42
-DURATION_SEC: 0.348
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.133
+START: 2026-01-09 15:52:51
+END: 2026-01-09 15:52:51
+DURATION_SEC: 0.123
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2:49.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2:35.40: invalid kind 'STRING_CONCAT', expected Terms with kind STRING_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_962832.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_387242.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.139
+START: 2026-01-09 15:52:51
+END: 2026-01-09 15:52:52
+DURATION_SEC: 0.363
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_396493.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.137
+START: 2026-01-09 15:52:52
+END: 2026-01-09 15:52:52
+DURATION_SEC: 0.304
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_434520.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:52
+END: 2026-01-09 15:52:53
+DURATION_SEC: 1.022
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_447759.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:53
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.396
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_453563.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.341
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_488100.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.071
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2:40.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_488100.smt2:34.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_493903.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.098
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.323
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

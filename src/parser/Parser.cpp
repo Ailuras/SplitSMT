@@ -115,31 +115,81 @@ std::string Parser::decodeStringLiteral(const std::string &literal) {
 std::string Parser::encodeStringLiteral(const std::string &value) {
   std::ostringstream oss;
   oss << '"';
-  for (unsigned char c : value) {
-    switch (c) {
-    case '"':
-      oss << "\"\"";
-      break;
-    case '\\':
-      oss << "\\\\";
-      break;
-    case '\n':
-      oss << "\\n";
-      break;
-    case '\r':
-      oss << "\\r";
-      break;
-    case '\t':
-      oss << "\\t";
-      break;
-    default:
-      if (c < 0x20 || c == 0x7F) {
-        oss << "\\u" << std::uppercase << std::setw(4) << std::setfill('0')
-            << std::hex << static_cast<int>(c) << std::nouppercase << std::dec;
-      } else {
-        oss << static_cast<char>(c);
+  size_t i = 0;
+  while (i < value.size()) {
+    unsigned char c = static_cast<unsigned char>(value[i]);
+
+    // Handle ASCII printable characters and common escapes
+    if (c < 0x80) {
+      switch (c) {
+      case '"':
+        oss << "\"\"";
+        break;
+      case '\\':
+        oss << "\\\\";
+        break;
+      case '\n':
+        oss << "\\n";
+        break;
+      case '\r':
+        oss << "\\r";
+        break;
+      case '\t':
+        oss << "\\t";
+        break;
+      default:
+        if (c < 0x20 || c == 0x7F) {
+          // Control characters - use \uXXXX format
+          oss << "\\u" << std::hex << std::uppercase << std::setw(4)
+              << std::setfill('0') << static_cast<int>(c) << std::dec
+              << std::nouppercase;
+        } else {
+          oss << static_cast<char>(c);
+        }
+        break;
       }
-      break;
+      ++i;
+    } else {
+      // UTF-8 multi-byte sequence - pass through valid sequences directly
+      size_t bytesNeeded = 0;
+
+      if ((c & 0xE0) == 0xC0) {
+        bytesNeeded = 2;
+      } else if ((c & 0xF0) == 0xE0) {
+        bytesNeeded = 3;
+      } else if ((c & 0xF8) == 0xF0) {
+        bytesNeeded = 4;
+      } else {
+        // Invalid UTF-8 leading byte - output as raw byte (most solvers handle
+        // this)
+        oss << static_cast<char>(c);
+        ++i;
+        continue;
+      }
+
+      // Check if we have enough bytes and they're valid continuation bytes
+      bool valid = (i + bytesNeeded <= value.size());
+      if (valid) {
+        for (size_t j = 1; j < bytesNeeded; ++j) {
+          unsigned char cont = static_cast<unsigned char>(value[i + j]);
+          if ((cont & 0xC0) != 0x80) {
+            valid = false;
+            break;
+          }
+        }
+      }
+
+      if (valid) {
+        // Valid UTF-8 sequence - output raw bytes directly
+        for (size_t j = 0; j < bytesNeeded; ++j) {
+          oss << value[i + j];
+        }
+        i += bytesNeeded;
+      } else {
+        // Invalid sequence - output first byte as raw
+        oss << static_cast<char>(c);
+        ++i;
+      }
     }
   }
   oss << '"';

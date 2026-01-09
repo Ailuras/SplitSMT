@@ -1,10 +1,34 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1574711.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_2073791.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.064
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.097
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_2077871.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.080
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_2077998.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.130
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1575536.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_2086990.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.055
+START: 2026-01-09 15:53:29
+END: 2026-01-09 15:53:29
+DURATION_SEC: 0.054
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,59 +48,11 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1622364.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_2089561.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.279
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1625619.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.094
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1633494.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.121
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1642884.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.141
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1678525.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.728
+START: 2026-01-09 15:53:29
+END: 2026-01-09 15:53:29
+DURATION_SEC: 0.357
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -85,23 +61,24 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1691353.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_210810.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:07
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.116
+START: 2026-01-09 15:53:29
+END: 2026-01-09 15:53:30
+DURATION_SEC: 0.319
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1691353.smt2:71.171: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_172414.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_217950.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:07
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.076
+START: 2026-01-09 15:53:30
+END: 2026-01-09 15:53:30
+DURATION_SEC: 0.062
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -109,13 +86,37 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1734707.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_240289.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:07
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.048
+START: 2026-01-09 15:53:30
+END: 2026-01-09 15:53:30
+DURATION_SEC: 0.310
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_251152.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:30
+END: 2026-01-09 15:53:30
+DURATION_SEC: 0.110
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_253287.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:30
+END: 2026-01-09 15:53:31
+DURATION_SEC: 0.458
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

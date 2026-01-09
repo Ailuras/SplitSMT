@@ -86,7 +86,6 @@
 (check-sat)
 
 ; ========= UNSAT instance: contradictory timestamp/level constraints =========
-(push 1)
 (declare-const log_line_unsat String)
 (declare-const ts_unsat String)
 (declare-const level_unsat String)
@@ -124,9 +123,4 @@
                                                             (str.to_re "DEBUG"))))))
 
 (check-sat)
-(pop 1)
-
-
-
-; [GENERATION STATUS: SUCCESS]
-(check-sat)
+(exit)

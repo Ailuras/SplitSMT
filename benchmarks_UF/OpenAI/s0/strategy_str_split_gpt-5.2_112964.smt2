@@ -106,3 +106,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

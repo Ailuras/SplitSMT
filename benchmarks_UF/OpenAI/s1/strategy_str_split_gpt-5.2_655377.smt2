@@ -57,3 +57,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

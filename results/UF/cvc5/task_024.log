@@ -1,10 +1,23 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_994211.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_438060.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:31
-END: 2026-01-09 14:03:31
-DURATION_SEC: 0.106
+START: 2026-01-09 15:52:45
+END: 2026-01-09 15:52:46
+DURATION_SEC: 0.249
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry " :") (timestamp " AAAAAAAAAAAAAAAA:-") (log_level "INFO") (message ":") (colon_segments 2) (space_segments 3))
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_440828.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:46
+END: 2026-01-09 15:52:46
+DURATION_SEC: 0.204
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +25,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1021023.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_441293.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:31
-END: 2026-01-09 14:03:32
-DURATION_SEC: 0.508
+START: 2026-01-09 15:52:46
+END: 2026-01-09 15:52:46
+DURATION_SEC: 0.132
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +37,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1060381.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_478946.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:32
-END: 2026-01-09 14:03:32
-DURATION_SEC: 0.304
+START: 2026-01-09 15:52:46
+END: 2026-01-09 15:52:46
+DURATION_SEC: 0.264
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +49,24 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1081790.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_487183.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:32
-END: 2026-01-09 14:03:32
-DURATION_SEC: 0.228
+START: 2026-01-09 15:52:46
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.097
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((csv_line "") (field_count 4) (field1 "A") (field2 "") (field3 "") (field4 "") (empty_field_index 1))
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_497954.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:47
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.148
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +74,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1087030.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_532752.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:33
-END: 2026-01-09 14:03:33
-DURATION_SEC: 0.258
+START: 2026-01-09 15:52:47
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.100
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,23 +86,24 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1092219.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_539004.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:33
-END: 2026-01-09 14:03:43
-DURATION_SEC: 10.083
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-09 15:52:47
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.148
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-cvc5 interrupted by SIGTERM.
+sat
+((header "Content-Length:") (key1 "\u{5c}n") (value1 "\u{5c}n") (key2 "AA") (value2 "\u{5c}n") (content_length_val 0))
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1112664.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_551086.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.312
+START: 2026-01-09 15:52:47
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.052
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,35 +111,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1124017.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_575126.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:53
-DURATION_SEC: 10.042
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-cvc5 interrupted by SIGTERM.
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1132769.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:53
-END: 2026-01-09 14:03:54
-DURATION_SEC: 0.230
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1154656.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:54
-END: 2026-01-09 14:03:54
-DURATION_SEC: 0.289
+START: 2026-01-09 15:52:47
+END: 2026-01-09 15:52:47
+DURATION_SEC: 0.144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

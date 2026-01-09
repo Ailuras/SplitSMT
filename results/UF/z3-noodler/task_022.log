@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_642646.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1981189.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:44
-DURATION_SEC: 0.826
+START: 2026-01-09 15:52:52
+END: 2026-01-09 15:52:53
+DURATION_SEC: 0.283
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,58 +12,67 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_660355.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2013165.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:44
-END: 2026-01-09 14:03:49
-DURATION_SEC: 4.477
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_686023.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.154
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_728208.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:50
-DURATION_SEC: 0.501
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_764239.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:50
-END: 2026-01-09 14:04:00
-DURATION_SEC: 10.080
+START: 2026-01-09 15:52:53
+END: 2026-01-09 15:53:03
+DURATION_SEC: 10.065
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_778599.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2014647.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:00
-END: 2026-01-09 14:04:00
-DURATION_SEC: 0.224
+START: 2026-01-09 15:53:03
+END: 2026-01-09 15:53:03
+DURATION_SEC: 0.134
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry "")
+ (timestamp "       ::")
+ (log_level "ERROR")
+ (message " "))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2016033.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:04
+END: 2026-01-09 15:53:04
+DURATION_SEC: 0.466
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((email "example@domain.com\u{1}")
+ (local_part "\u{0}")
+ (domain "\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}")
+ (domain_name "\u{0}")
+ (tld "\u{0}\u{0}"))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2087679.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:04
+END: 2026-01-09 15:53:05
+DURATION_SEC: 0.742
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2091984.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:06
+END: 2026-01-09 15:53:06
+DURATION_SEC: 0.673
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -71,36 +80,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_779281.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2098746.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:00
-END: 2026-01-09 14:04:10
-DURATION_SEC: 10.081
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_790534.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:10
-END: 2026-01-09 14:04:11
-DURATION_SEC: 0.146
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 19 column 26: invalid option value")
-(error "line 32 column 26: invalid option value")
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_797391.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:11
-END: 2026-01-09 14:04:11
-DURATION_SEC: 0.752
+START: 2026-01-09 15:53:07
+END: 2026-01-09 15:53:07
+DURATION_SEC: 0.145
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,11 +92,39 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_812440.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_250481.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:11
-END: 2026-01-09 14:04:14
-DURATION_SEC: 2.488
+START: 2026-01-09 15:53:08
+END: 2026-01-09 15:53:09
+DURATION_SEC: 0.775
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_253237.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:09
+END: 2026-01-09 15:53:10
+DURATION_SEC: 0.495
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry "\u{0}\u{0}")
+ (timestamp "\u{0}\u{0}\u{0}")
+ (log_level "WARN")
+ (message "\u{0}"))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_253445.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:10
+END: 2026-01-09 15:53:10
+DURATION_SEC: 0.399
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

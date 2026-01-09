@@ -32,3 +32,4 @@
 (check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

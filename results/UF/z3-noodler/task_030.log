@@ -1,21 +1,21 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1972571.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1456219.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:14
-END: 2026-01-09 14:04:24
-DURATION_SEC: 10.022
+START: 2026-01-09 15:53:21
+END: 2026-01-09 15:53:31
+DURATION_SEC: 10.018
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1979984.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1488537.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:24
-END: 2026-01-09 14:04:24
-DURATION_SEC: 0.522
+START: 2026-01-09 15:53:31
+END: 2026-01-09 15:53:32
+DURATION_SEC: 0.344
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -23,11 +23,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_2053188.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1518541.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:25
-END: 2026-01-09 14:04:25
-DURATION_SEC: 0.483
+START: 2026-01-09 15:53:32
+END: 2026-01-09 15:53:32
+DURATION_SEC: 0.723
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -35,11 +35,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_2054930.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1531736.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:25
-END: 2026-01-09 14:04:27
-DURATION_SEC: 2.024
+START: 2026-01-09 15:53:32
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.193
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -47,11 +47,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_2064470.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1543371.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:27
-END: 2026-01-09 14:04:28
-DURATION_SEC: 0.611
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.320
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -59,26 +59,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_2069093.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1546267.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:28
-END: 2026-01-09 14:04:28
-DURATION_SEC: 0.466
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot replace dummy symbol by more than one symbol in transducers yet
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3522103 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_2096516.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:28
-END: 2026-01-09 14:04:29
-DURATION_SEC: 0.793
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.191
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,11 +71,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_223892.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1567620.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:29
-END: 2026-01-09 14:04:30
-DURATION_SEC: 0.322
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:34
+DURATION_SEC: 0.247
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,11 +83,22 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_228499.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1580435.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:30
-END: 2026-01-09 14:04:30
-DURATION_SEC: 0.226
+START: 2026-01-09 15:53:34
+END: 2026-01-09 15:53:44
+DURATION_SEC: 10.087
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_163150.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:44
+END: 2026-01-09 15:53:44
+DURATION_SEC: 0.662
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,11 +106,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_231876.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1642848.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:30
-END: 2026-01-09 14:04:40
-DURATION_SEC: 10.029
+START: 2026-01-09 15:53:44
+END: 2026-01-09 15:53:54
+DURATION_SEC: 10.054
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------

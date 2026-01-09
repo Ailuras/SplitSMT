@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/19256.smt2
+FILE: benchmarks_UF/Java/awesome/11642.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:33
-END: 2026-01-09 14:04:33
-DURATION_SEC: 0.197
+START: 2026-01-09 15:53:51
+END: 2026-01-09 15:53:52
+DURATION_SEC: 1.074
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/19258.smt2
+FILE: benchmarks_UF/Java/awesome/11661.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:33
-END: 2026-01-09 14:04:34
-DURATION_SEC: 0.942
+START: 2026-01-09 15:53:53
+END: 2026-01-09 15:53:53
+DURATION_SEC: 0.207
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,22 +24,22 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/19912.smt2
+FILE: benchmarks_UF/Java/awesome/11770.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:34
-END: 2026-01-09 14:04:44
-DURATION_SEC: 10.083
+START: 2026-01-09 15:53:54
+END: 2026-01-09 15:54:04
+DURATION_SEC: 10.020
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20049.smt2
+FILE: benchmarks_UF/Java/awesome/11864.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:44
-END: 2026-01-09 14:04:45
-DURATION_SEC: 0.184
+START: 2026-01-09 15:54:04
+END: 2026-01-09 15:54:04
+DURATION_SEC: 0.179
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -47,11 +47,26 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20082.smt2
+FILE: benchmarks_UF/Java/awesome/12029.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:45
-END: 2026-01-09 14:04:45
-DURATION_SEC: 0.524
+START: 2026-01-09 15:54:05
+END: 2026-01-09 15:54:06
+DURATION_SEC: 0.607
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 174763 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/Java/awesome/12063.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:06
+END: 2026-01-09 15:54:07
+DURATION_SEC: 0.535
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -59,11 +74,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20116.smt2
+FILE: benchmarks_UF/Java/awesome/1227.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:45
-END: 2026-01-09 14:04:46
-DURATION_SEC: 0.232
+START: 2026-01-09 15:54:07
+END: 2026-01-09 15:54:07
+DURATION_SEC: 0.250
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -71,11 +86,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20200.smt2
+FILE: benchmarks_UF/Java/awesome/12358.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:46
-END: 2026-01-09 14:04:46
-DURATION_SEC: 0.291
+START: 2026-01-09 15:54:09
+END: 2026-01-09 15:54:09
+DURATION_SEC: 0.138
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,11 +98,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20413.smt2
+FILE: benchmarks_UF/Java/awesome/125.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:46
-END: 2026-01-09 14:04:46
-DURATION_SEC: 0.109
+START: 2026-01-09 15:54:10
+END: 2026-01-09 15:54:10
+DURATION_SEC: 0.219
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -95,23 +110,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20494.smt2
+FILE: benchmarks_UF/Java/awesome/1279.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:46
-END: 2026-01-09 14:04:46
-DURATION_SEC: 0.124
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/20498.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:46
-END: 2026-01-09 14:04:46
-DURATION_SEC: 0.122
+START: 2026-01-09 15:54:10
+END: 2026-01-09 15:54:10
+DURATION_SEC: 0.140
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

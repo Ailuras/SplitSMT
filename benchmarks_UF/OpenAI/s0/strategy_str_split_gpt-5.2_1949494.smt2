@@ -79,3 +79,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

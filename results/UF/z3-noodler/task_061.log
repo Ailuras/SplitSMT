@@ -1,10 +1,21 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_416645.smt2
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_313702.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:18
-END: 2026-01-09 14:05:18
-DURATION_SEC: 0.070
+START: 2026-01-09 15:54:45
+END: 2026-01-09 15:54:55
+DURATION_SEC: 10.078
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_323390.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:55
+END: 2026-01-09 15:54:56
+DURATION_SEC: 0.484
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,109 +23,97 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_440191.smt2
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_339752.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:18
-END: 2026-01-09 14:05:18
-DURATION_SEC: 0.053
+START: 2026-01-09 15:54:56
+END: 2026-01-09 15:54:57
+DURATION_SEC: 0.559
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_352720.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:58
+END: 2026-01-09 15:54:58
+DURATION_SEC: 0.411
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_366185.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:00
+END: 2026-01-09 15:55:03
+DURATION_SEC: 3.055
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_411495.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:03
+END: 2026-01-09 15:55:03
+DURATION_SEC: 0.213
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_414114.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:03
+END: 2026-01-09 15:55:03
+DURATION_SEC: 0.406
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_416645.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:03
+END: 2026-01-09 15:55:04
+DURATION_SEC: 0.092
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_458959.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:18
-END: 2026-01-09 14:05:18
-DURATION_SEC: 0.128
+START: 2026-01-09 15:55:04
+END: 2026-01-09 15:55:04
+DURATION_SEC: 0.124
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_463205.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:18
-END: 2026-01-09 14:05:18
-DURATION_SEC: 0.066
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_476984.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:18
-END: 2026-01-09 14:05:18
-DURATION_SEC: 0.143
+START: 2026-01-09 15:55:04
+END: 2026-01-09 15:55:04
+DURATION_SEC: 0.135
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_518814.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:19
-END: 2026-01-09 14:05:19
-DURATION_SEC: 0.138
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_546256.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:19
-END: 2026-01-09 14:05:19
-DURATION_SEC: 0.053
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_548494.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:19
-END: 2026-01-09 14:05:19
-DURATION_SEC: 0.384
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_558615.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:19
-END: 2026-01-09 14:05:19
-DURATION_SEC: 0.259
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_584687.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:19
-END: 2026-01-09 14:05:20
-DURATION_SEC: 0.163
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
 

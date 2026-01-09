@@ -85,3 +85,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

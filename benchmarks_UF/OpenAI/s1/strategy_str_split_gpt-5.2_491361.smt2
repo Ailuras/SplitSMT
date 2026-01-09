@@ -96,3 +96,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

@@ -52,7 +52,6 @@
 ; -----------------------------
 ; UNSAT instance: contradicts empty-field detection on a concrete row
 ; -----------------------------
-(push 1)
 (declare-const csv_row_bad String)
 (declare-const bad0 String)
 (declare-const bad1 String)
@@ -68,9 +67,4 @@
 (assert (not (= bad1 "")))
 
 (check-sat)
-(pop 1)
-
-
-
-; [GENERATION STATUS: SUCCESS]
-(check-sat)
+(exit)

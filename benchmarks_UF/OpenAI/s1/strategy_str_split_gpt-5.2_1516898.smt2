@@ -63,3 +63,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

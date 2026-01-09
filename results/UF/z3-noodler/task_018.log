@@ -1,59 +1,22 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1893380.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1376047.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:38
-END: 2026-01-09 14:03:41
-DURATION_SEC: 2.897
+START: 2026-01-09 15:52:48
+END: 2026-01-09 15:52:49
+DURATION_SEC: 0.279
 STATUS: SUCCESS
 EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1921836.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:41
-END: 2026-01-09 14:03:42
-DURATION_SEC: 0.833
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1941087.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:42
-END: 2026-01-09 14:03:42
-DURATION_SEC: 0.512
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1958920.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.170
-STATUS: ERROR
-EXIT_CODE: 1
 -----------------------------------------------------------
 unknown
-(error "line 57 column 85: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1966221.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1393302.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:43
-DURATION_SEC: 0.578
+START: 2026-01-09 15:52:49
+END: 2026-01-09 15:52:49
+DURATION_SEC: 0.354
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -61,11 +24,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1975231.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1423637.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:43
-END: 2026-01-09 14:03:44
-DURATION_SEC: 0.332
+START: 2026-01-09 15:52:49
+END: 2026-01-09 15:52:51
+DURATION_SEC: 1.589
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -73,11 +36,47 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1981189.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1426875.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:44
-END: 2026-01-09 14:03:44
-DURATION_SEC: 0.367
+START: 2026-01-09 15:52:51
+END: 2026-01-09 15:52:51
+DURATION_SEC: 0.257
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((csv_line "")
+ (field_count 4)
+ (field1 ",")
+ (field2 ",data,data")
+ (field3 ",")
+ (field4 ",")
+ (empty_field_detected false))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1427370.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:51
+END: 2026-01-09 15:52:52
+DURATION_SEC: 0.542
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((email "\u{0}\u{0}\u{0}")
+ (local_part "\u{0}")
+ (domain "\u{0}\u{1}\u{0}")
+ (domain_name "\u{0}")
+ (tld "\u{0}\u{0}"))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1431579.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:52
+END: 2026-01-09 15:52:52
+DURATION_SEC: 0.208
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -85,10 +84,22 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2013165.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1448234.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:44
-END: 2026-01-09 14:03:54
+START: 2026-01-09 15:52:52
+END: 2026-01-09 15:52:53
+DURATION_SEC: 0.454
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1480594.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:53
+END: 2026-01-09 15:53:03
 DURATION_SEC: 10.105
 STATUS: TIMEOUT
 EXIT_CODE: 143
@@ -96,34 +107,34 @@ EXIT_CODE: 143
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2014647.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_149700.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:55
-END: 2026-01-09 14:03:55
-DURATION_SEC: 0.248
+START: 2026-01-09 15:53:03
+END: 2026-01-09 15:53:03
+DURATION_SEC: 0.487
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((log_entry "")
- (timestamp "       ::")
- (log_level "ERROR")
- (message " "))
+((email "\u{0}\u{1}\u{0}")
+ (local_part "\u{0}")
+ (domain "\u{0}\u{0}\u{0}")
+ (tld "\u{0}\u{0}"))
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_2016033.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1518165.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:55
-END: 2026-01-09 14:03:55
-DURATION_SEC: 0.555
+START: 2026-01-09 15:53:03
+END: 2026-01-09 15:53:04
+DURATION_SEC: 0.480
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((email "example@domain.com\u{1}")
- (local_part "\u{0}")
- (domain "\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}")
- (domain_name "\u{0}")
- (tld "\u{0}\u{0}"))
+((csv_data ",")
+ (field_count 4)
+ (first_field "ID")
+ (middle_field "")
+ (last_field ","))
 

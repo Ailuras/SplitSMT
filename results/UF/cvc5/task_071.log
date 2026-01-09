@@ -1,22 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_2042811.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1539869.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:02
-END: 2026-01-09 14:04:02
-DURATION_SEC: 0.099
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_2042811.smt2:79.67: Symbol 're.loop' not declared as a variable")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_2067788.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:02
-END: 2026-01-09 14:04:04
-DURATION_SEC: 1.592
+START: 2026-01-09 15:53:26
+END: 2026-01-09 15:53:26
+DURATION_SEC: 0.156
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +12,35 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_247011.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1541426.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:04
-END: 2026-01-09 14:04:04
-DURATION_SEC: 0.061
+START: 2026-01-09 15:53:26
+END: 2026-01-09 15:53:27
+DURATION_SEC: 0.805
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1541506.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:27
+END: 2026-01-09 15:53:27
+DURATION_SEC: 0.063
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1554866.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:27
+END: 2026-01-09 15:53:27
+DURATION_SEC: 0.031
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +48,11 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_253287.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1560732.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:04
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.512
+START: 2026-01-09 15:53:27
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.332
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,60 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_260551.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1561299.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.143
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_260551.smt2:57.65: Symbol 'int.to.str' not declared as a variable")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_277574.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:09
-DURATION_SEC: 3.785
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_280052.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:09
-END: 2026-01-09 14:04:09
-DURATION_SEC: 0.202
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_281170.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:09
-END: 2026-01-09 14:04:09
-DURATION_SEC: 0.134
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_281170.smt2:53.31: Symbol 're.loop' not declared as a variable")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_314228.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:09
-END: 2026-01-09 14:04:09
-DURATION_SEC: 0.061
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.065
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -109,11 +72,47 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_338520.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1577166.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:09
-END: 2026-01-09 14:04:09
-DURATION_SEC: 0.039
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.138
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1577166.smt2:9.14: Symbol `str.to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1595163.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1595461.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.302
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1614828.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.029
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

@@ -75,3 +75,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

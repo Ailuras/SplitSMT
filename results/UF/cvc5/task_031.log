@@ -1,22 +1,71 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_236217.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_164599.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:37
-DURATION_SEC: 0.082
+START: 2026-01-09 15:52:48
+END: 2026-01-09 15:52:48
+DURATION_SEC: 0.192
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_254006.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1650953.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:37
-DURATION_SEC: 0.063
+START: 2026-01-09 15:52:48
+END: 2026-01-09 15:52:53
+DURATION_SEC: 4.882
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1653721.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:53
+END: 2026-01-09 15:52:53
+DURATION_SEC: 0.247
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1669973.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.174
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1674043.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.151
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((header "Content-Length: 1024\u{5c}nHost: example.com\u{5c}nUser-Agent: Mozilla/5.0") (content_length_value "1") (host_value "") (user_agent_value ""))
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1751582.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:54
+DURATION_SEC: 0.102
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +73,11 @@ unknown
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_285268.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1754127.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:37
-DURATION_SEC: 0.285
+START: 2026-01-09 15:52:54
+END: 2026-01-09 15:52:55
+DURATION_SEC: 0.676
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,23 +85,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_330294.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1769005.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:37
-DURATION_SEC: 0.069
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_378613.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:37
-DURATION_SEC: 0.079
+START: 2026-01-09 15:52:55
+END: 2026-01-09 15:52:55
+DURATION_SEC: 0.473
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,23 +97,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1783038.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:37
-END: 2026-01-09 14:03:38
-DURATION_SEC: 0.116
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2:35.40: invalid kind 'STRING_CONCAT', expected Terms with kind STRING_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_387242.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:38
-END: 2026-01-09 14:03:38
-DURATION_SEC: 0.295
+START: 2026-01-09 15:52:55
+END: 2026-01-09 15:52:57
+DURATION_SEC: 1.657
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,35 +109,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_396493.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1791155.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:38
-END: 2026-01-09 14:03:38
-DURATION_SEC: 0.297
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_434520.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:38
-END: 2026-01-09 14:03:39
-DURATION_SEC: 1.148
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_447759.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:40
-END: 2026-01-09 14:03:40
-DURATION_SEC: 0.396
+START: 2026-01-09 15:52:57
+END: 2026-01-09 15:52:57
+DURATION_SEC: 0.198
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

@@ -80,3 +80,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

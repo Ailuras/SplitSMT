@@ -77,7 +77,6 @@
 (assert (str.in_re key1 (re.++ (str.to_re "b") (re.* (str.to_re "a")))))
 
 ; SAT branch constraints
-(push 1)
   ; Concrete exemplifying constraints to ensure satisfiable instance exists
   (assert (= year "2024"))
   (assert (= month "01"))
@@ -90,20 +89,5 @@
   (assert (= val1 "ok"))
   ; Tie together a consistent logline (not enforcing exact reconstruction due to uninterpreted split)
   (assert (>= (str.len logline) 10))
-(pop 1)
-
-; UNSAT branch constraints: contradict level and timestamp width simultaneously
-(push 1)
-  (assert (= level "INFO:"))
-  (assert (= level "ERROR:"))
-  (assert (str.in_re year two_digits))
-  (assert (str.in_re year four_digits))
-  (assert (not (= year "")))
-  (check-sat)
-(pop 1)
-
-; Overall instance remains satisfiable without the UNSAT branch
 (check-sat)
-
-
-; [GENERATION STATUS: SUCCESS]
+(exit)

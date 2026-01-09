@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1756106.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_267942.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.075
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:28
+DURATION_SEC: 0.061
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,36 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1780670.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_277574.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:05
-DURATION_SEC: 0.158
+START: 2026-01-09 15:53:28
+END: 2026-01-09 15:53:32
+DURATION_SEC: 3.675
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_278540.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:32
+END: 2026-01-09 15:53:32
+DURATION_SEC: 0.064
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_278540.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_280052.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:32
+END: 2026-01-09 15:53:32
+DURATION_SEC: 0.133
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +49,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1799843.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_292697.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:05
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.136
+START: 2026-01-09 15:53:32
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.419
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_312250.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.097
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +73,36 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1810070.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_321891.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.093
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:33
+DURATION_SEC: 0.295
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_342603.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:34
+DURATION_SEC: 0.254
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_354236.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:34
+END: 2026-01-09 15:53:34
+DURATION_SEC: 0.117
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,73 +110,13 @@ unsat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1839108.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_357123.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.088
+START: 2026-01-09 15:53:34
+END: 2026-01-09 15:53:34
+DURATION_SEC: 0.332
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1870646.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.081
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1894177.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:06
-DURATION_SEC: 0.165
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_191182.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.230
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1916506.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:07
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.151
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_192988.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:07
-END: 2026-01-09 14:04:07
-DURATION_SEC: 0.165
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
+sat
 

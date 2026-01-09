@@ -50,3 +50,4 @@
 
 
 ; [GENERATION STATUS: SUCCESS]
+(exit)

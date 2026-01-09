@@ -1,22 +1,45 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_236217.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_164599.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:52
-END: 2026-01-09 14:04:54
-DURATION_SEC: 2.106
+START: 2026-01-09 15:54:19
+END: 2026-01-09 15:54:21
+DURATION_SEC: 2.681
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_254006.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1650953.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:54
-END: 2026-01-09 14:04:56
-DURATION_SEC: 2.189
+START: 2026-01-09 15:54:21
+END: 2026-01-09 15:54:32
+DURATION_SEC: 10.264
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1653721.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:32
+END: 2026-01-09 15:54:39
+DURATION_SEC: 7.422
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1669973.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:40
+END: 2026-01-09 15:54:46
+DURATION_SEC: 5.531
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +47,36 @@ unknown
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_285268.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1674043.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:56
-END: 2026-01-09 14:04:59
-DURATION_SEC: 3.116
+START: 2026-01-09 15:54:46
+END: 2026-01-09 15:54:50
+DURATION_SEC: 3.604
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((header "Content-Length: 1024\u{5c}nHost: example.com\u{5c}nUser-Agent: Mozilla/5.0") (content_length_value "1") (host_value "") (user_agent_value ""))
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1751582.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:50
+END: 2026-01-09 15:54:52
+DURATION_SEC: 2.210
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1754127.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:54:53
+END: 2026-01-09 15:54:58
+DURATION_SEC: 5.270
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,46 +84,22 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_330294.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1769005.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:59
-END: 2026-01-09 14:05:01
-DURATION_SEC: 1.679
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_378613.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:01
-END: 2026-01-09 14:05:04
-DURATION_SEC: 2.770
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:04
-END: 2026-01-09 14:05:14
-DURATION_SEC: 10.135
+START: 2026-01-09 15:54:59
+END: 2026-01-09 15:55:09
+DURATION_SEC: 10.169
 STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_387242.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1783038.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:14
-END: 2026-01-09 14:05:17
-DURATION_SEC: 2.613
+START: 2026-01-09 15:55:09
+END: 2026-01-09 15:55:12
+DURATION_SEC: 2.734
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,35 +107,13 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_396493.smt2
+FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_1791155.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:17
-END: 2026-01-09 14:05:27
-DURATION_SEC: 10.116
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_434520.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:27
-END: 2026-01-09 14:05:35
-DURATION_SEC: 7.984
+START: 2026-01-09 15:55:12
+END: 2026-01-09 15:55:16
+DURATION_SEC: 4.262
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_447759.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:35
-END: 2026-01-09 14:05:45
-DURATION_SEC: 10.114
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
 

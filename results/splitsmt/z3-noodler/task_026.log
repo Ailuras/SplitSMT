@@ -1,0 +1,134 @@
+===========================================================
+Task Group 26
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-09 16:28:58
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_779281.smt2
+START: 2026-01-09T08:28:58Z
+END: 2026-01-09T08:28:59Z
+DURATION_SEC: .509562413
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_790534.smt2
+START: 2026-01-09T08:28:59Z
+END: 2026-01-09T08:29:03Z
+DURATION_SEC: 3.946274963
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_797391.smt2
+START: 2026-01-09T08:29:03Z
+END: 2026-01-09T08:29:13Z
+DURATION_SEC: 10.274962360
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_812440.smt2
+START: 2026-01-09T08:29:13Z
+END: 2026-01-09T08:29:23Z
+DURATION_SEC: 10.181043636
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_816688.smt2
+START: 2026-01-09T08:29:23Z
+END: 2026-01-09T08:29:34Z
+DURATION_SEC: 10.216952076
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+warning: "get-value" command is safely ignored in line 48.
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_892305.smt2
+START: 2026-01-09T08:29:34Z
+END: 2026-01-09T08:29:34Z
+DURATION_SEC: .424496694
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_894836.smt2
+START: 2026-01-09T08:29:34Z
+END: 2026-01-09T08:29:34Z
+DURATION_SEC: .380726368
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_897306.smt2
+START: 2026-01-09T08:29:34Z
+END: 2026-01-09T08:29:45Z
+DURATION_SEC: 10.207564775
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+warning: "get-value" command is safely ignored in line 67.
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_897699.smt2
+START: 2026-01-09T08:29:45Z
+END: 2026-01-09T08:29:55Z
+DURATION_SEC: 10.181467230
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_914724.smt2
+START: 2026-01-09T08:29:55Z
+END: 2026-01-09T08:29:56Z
+DURATION_SEC: .879737268
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 16:29:56] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 674808 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+Task Group 26 completed at 2026-01-09 16:29:56

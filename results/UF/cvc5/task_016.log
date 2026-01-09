@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1623885.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1065412.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:29
-END: 2026-01-09 14:03:29
-DURATION_SEC: 0.178
+START: 2026-01-09 15:52:38
+END: 2026-01-09 15:52:38
+DURATION_SEC: 0.151
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1641710.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1090832.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:29
-END: 2026-01-09 14:03:29
-DURATION_SEC: 0.153
+START: 2026-01-09 15:52:39
+END: 2026-01-09 15:52:39
+DURATION_SEC: 0.121
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,24 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1647018.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1121291.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:29
-END: 2026-01-09 14:03:29
-DURATION_SEC: 0.096
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-((csv_data "AAAAAAAAAA") (field_count 6) (field2 "AAAAAAAAAA") (field4 "") (has_empty_field true))
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1661412.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:30
-DURATION_SEC: 0.195
+START: 2026-01-09 15:52:39
+END: 2026-01-09 15:52:40
+DURATION_SEC: 0.970
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -49,11 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1674076.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1124159.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:30
-DURATION_SEC: 0.161
+START: 2026-01-09 15:52:40
+END: 2026-01-09 15:52:40
+DURATION_SEC: 0.175
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -61,23 +48,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1162156.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:30
-DURATION_SEC: 0.070
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2:51.127: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1699343.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:30
-DURATION_SEC: 0.122
+START: 2026-01-09 15:52:40
+END: 2026-01-09 15:52:40
+DURATION_SEC: 0.271
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -85,23 +60,37 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1715411.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1165585.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:30
-DURATION_SEC: 0.099
+START: 2026-01-09 15:52:40
+END: 2026-01-09 15:52:41
+DURATION_SEC: 0.120
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+((log_entry "12:34:56 INFO Server started successfully") (timestamp "A") (log_level "INFO") (message " "))
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_173204.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1187150.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:30
-END: 2026-01-09 14:03:31
-DURATION_SEC: 0.099
+START: 2026-01-09 15:52:41
+END: 2026-01-09 15:52:41
+DURATION_SEC: 0.144
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((csv_line ",") (field0 "") (field1 "") (field2 "") (total_fields 4) (has_empty_field true))
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1197104.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:41
+END: 2026-01-09 15:52:41
+DURATION_SEC: 0.312
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -109,11 +98,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1742363.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1211842.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:31
-END: 2026-01-09 14:03:31
-DURATION_SEC: 0.104
+START: 2026-01-09 15:52:41
+END: 2026-01-09 15:52:41
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1218378.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:52:41
+END: 2026-01-09 15:52:42
+DURATION_SEC: 0.327
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

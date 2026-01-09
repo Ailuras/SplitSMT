@@ -1,0 +1,133 @@
+===========================================================
+Task Group 42
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-09 16:30:20
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/2371.smt2
+START: 2026-01-09T08:30:20Z
+END: 2026-01-09T08:30:30Z
+DURATION_SEC: 10.108031784
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/2376.smt2
+START: 2026-01-09T08:30:30Z
+END: 2026-01-09T08:30:41Z
+DURATION_SEC: 10.190868206
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/2402.smt2
+START: 2026-01-09T08:30:41Z
+END: 2026-01-09T08:30:51Z
+DURATION_SEC: 10.393779301
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/245.smt2
+START: 2026-01-09T08:30:51Z
+END: 2026-01-09T08:30:52Z
+DURATION_SEC: .429222531
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 16:30:51] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 693882 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/278.smt2
+START: 2026-01-09T08:30:52Z
+END: 2026-01-09T08:30:52Z
+DURATION_SEC: .155472978
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/307.smt2
+START: 2026-01-09T08:30:52Z
+END: 2026-01-09T08:30:53Z
+DURATION_SEC: 1.711391836
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/3122.smt2
+START: 2026-01-09T08:30:53Z
+END: 2026-01-09T08:31:04Z
+DURATION_SEC: 10.111708962
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/33306.smt2
+START: 2026-01-09T08:31:04Z
+END: 2026-01-09T08:31:04Z
+DURATION_SEC: .352584873
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 16:31:04] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 697496 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/33328.smt2
+START: 2026-01-09T08:31:04Z
+END: 2026-01-09T08:31:04Z
+DURATION_SEC: .300206029
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 16:31:04] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 697655 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/33720.smt2
+START: 2026-01-09T08:31:04Z

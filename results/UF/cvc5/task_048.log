@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/860.smt2
+FILE: benchmarks_UF/Java/awesome/6116.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:48
-END: 2026-01-09 14:03:48
-DURATION_SEC: 0.115
+START: 2026-01-09 15:52:56
+END: 2026-01-09 15:52:56
+DURATION_SEC: 0.051
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/8775.smt2
+FILE: benchmarks_UF/Java/awesome/6268.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:48
-END: 2026-01-09 14:03:48
-DURATION_SEC: 0.136
+START: 2026-01-09 15:52:56
+END: 2026-01-09 15:52:56
+DURATION_SEC: 0.071
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/8916.smt2
+FILE: benchmarks_UF/Java/awesome/6277.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:48
-END: 2026-01-09 14:03:48
-DURATION_SEC: 0.232
+START: 2026-01-09 15:52:56
+END: 2026-01-09 15:52:57
+DURATION_SEC: 0.075
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/8948.smt2
+FILE: benchmarks_UF/Java/awesome/633.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:48
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.191
+START: 2026-01-09 15:52:57
+END: 2026-01-09 15:52:57
+DURATION_SEC: 0.087
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +48,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/8949.smt2
+FILE: benchmarks_UF/Java/awesome/649.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.138
+START: 2026-01-09 15:52:57
+END: 2026-01-09 15:53:07
+DURATION_SEC: 10.147
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/Java/awesome/650.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:08
+END: 2026-01-09 15:53:08
+DURATION_SEC: 0.059
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,47 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/9179.smt2
+FILE: benchmarks_UF/Java/awesome/6760.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.146
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/9192.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.097
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/9338.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:49
-END: 2026-01-09 14:03:49
-DURATION_SEC: 0.091
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/9391.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:03:50
-END: 2026-01-09 14:03:51
-DURATION_SEC: 1.930
+START: 2026-01-09 15:53:09
+END: 2026-01-09 15:53:10
+DURATION_SEC: 1.498
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,13 +84,37 @@ unknown
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/9409.smt2
+FILE: benchmarks_UF/Java/awesome/6769.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:03:52
-END: 2026-01-09 14:03:52
-DURATION_SEC: 0.123
+START: 2026-01-09 15:53:10
+END: 2026-01-09 15:53:11
+DURATION_SEC: 0.305
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/Java/awesome/685.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:11
+END: 2026-01-09 15:53:11
+DURATION_SEC: 0.152
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/Java/awesome/6947.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:12
+END: 2026-01-09 15:53:13
+DURATION_SEC: 0.771
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

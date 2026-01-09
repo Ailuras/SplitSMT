@@ -1,10 +1,10 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1623885.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1065412.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:00
-END: 2026-01-09 14:04:03
-DURATION_SEC: 3.040
+START: 2026-01-09 15:53:15
+END: 2026-01-09 15:53:18
+DURATION_SEC: 3.214
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1641710.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1090832.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:03
-END: 2026-01-09 14:04:06
-DURATION_SEC: 2.757
+START: 2026-01-09 15:53:19
+END: 2026-01-09 15:53:23
+DURATION_SEC: 4.345
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,24 +24,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1647018.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1121291.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:06
-END: 2026-01-09 14:04:09
-DURATION_SEC: 3.135
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-((csv_data "\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}") (field_count 6) (field2 "\u{0}") (field4 "") (has_empty_field true))
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1661412.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:09
-END: 2026-01-09 14:04:13
-DURATION_SEC: 3.902
+START: 2026-01-09 15:53:24
+END: 2026-01-09 15:53:27
+DURATION_SEC: 3.657
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -49,11 +36,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1674076.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1124159.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:13
-END: 2026-01-09 14:04:15
-DURATION_SEC: 2.109
+START: 2026-01-09 15:53:27
+END: 2026-01-09 15:53:30
+DURATION_SEC: 2.716
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -61,23 +48,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1162156.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:15
-END: 2026-01-09 14:04:17
-DURATION_SEC: 2.242
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1699343.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:04:17
-END: 2026-01-09 14:04:20
-DURATION_SEC: 2.536
+START: 2026-01-09 15:53:30
+END: 2026-01-09 15:53:32
+DURATION_SEC: 2.451
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -85,35 +60,61 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1715411.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1165585.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:20
-END: 2026-01-09 14:04:22
-DURATION_SEC: 2.334
+START: 2026-01-09 15:53:33
+END: 2026-01-09 15:53:35
+DURATION_SEC: 2.636
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+((log_entry "12:34:56 INFO Server started successfully") (timestamp "") (log_level "ERROR") (message "\u{0}"))
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_173204.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1187150.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:22
-END: 2026-01-09 14:04:25
-DURATION_SEC: 2.369
+START: 2026-01-09 15:53:35
+END: 2026-01-09 15:53:38
+DURATION_SEC: 2.865
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
+((csv_line ",") (field0 "\u{0}") (field1 "\u{0}") (field2 "\u{0}") (total_fields 3) (has_empty_field false))
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1742363.smt2
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1197104.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:04:25
-END: 2026-01-09 14:04:26
-DURATION_SEC: 1.921
+START: 2026-01-09 15:53:38
+END: 2026-01-09 15:53:43
+DURATION_SEC: 4.810
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1211842.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:43
+END: 2026-01-09 15:53:46
+DURATION_SEC: 3.024
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1218378.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:53:46
+END: 2026-01-09 15:53:49
+DURATION_SEC: 3.000
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

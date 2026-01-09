@@ -1,0 +1,129 @@
+===========================================================
+Task Group 41
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-09 16:30:20
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/20413.smt2
+START: 2026-01-09T08:30:20Z
+END: 2026-01-09T08:30:20Z
+DURATION_SEC: .130917676
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/20494.smt2
+START: 2026-01-09T08:30:20Z
+END: 2026-01-09T08:30:22Z
+DURATION_SEC: 1.691586908
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/20498.smt2
+START: 2026-01-09T08:30:22Z
+END: 2026-01-09T08:30:24Z
+DURATION_SEC: 2.722521138
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/20512.smt2
+START: 2026-01-09T08:30:24Z
+END: 2026-01-09T08:30:35Z
+DURATION_SEC: 10.148103074
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/21157.smt2
+START: 2026-01-09T08:30:35Z
+END: 2026-01-09T08:30:45Z
+DURATION_SEC: 10.236333835
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/21345.smt2
+START: 2026-01-09T08:30:45Z
+END: 2026-01-09T08:30:46Z
+DURATION_SEC: 1.158055787
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/21382.smt2
+START: 2026-01-09T08:30:46Z
+END: 2026-01-09T08:30:47Z
+DURATION_SEC: 1.208890294
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/21489.smt2
+START: 2026-01-09T08:30:47Z
+END: 2026-01-09T08:30:51Z
+DURATION_SEC: 3.459659415
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/21922.smt2
+START: 2026-01-09T08:30:51Z
+END: 2026-01-09T08:30:53Z
+DURATION_SEC: 2.447339013
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 16:30:53] External solver did not return a valid status. Output: ASSERTION VIOLATION
+File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
+Line: 554
+trans_iter->get_output().size() == 1
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 693781 Segmentation fault      "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+Task Group 41 completed at 2026-01-09 16:30:54

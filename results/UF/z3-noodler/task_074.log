@@ -1,10 +1,46 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_767244.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1783649.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:36
-END: 2026-01-09 14:05:36
-DURATION_SEC: 0.063
+START: 2026-01-09 15:55:16
+END: 2026-01-09 15:55:24
+DURATION_SEC: 7.585
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1784089.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:24
+END: 2026-01-09 15:55:24
+DURATION_SEC: 0.206
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1786390.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:24
+END: 2026-01-09 15:55:34
+DURATION_SEC: 10.019
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1790091.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:34
+END: 2026-01-09 15:55:34
+DURATION_SEC: 0.096
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +48,57 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_772327.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1792360.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:36
-END: 2026-01-09 14:05:36
-DURATION_SEC: 0.073
+START: 2026-01-09 15:55:35
+END: 2026-01-09 15:55:35
+DURATION_SEC: 0.697
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1799555.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:36
+END: 2026-01-09 15:55:46
+DURATION_SEC: 10.019
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1812689.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:46
+END: 2026-01-09 15:55:54
+DURATION_SEC: 8.126
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1827510.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:55:54
+END: 2026-01-09 15:56:04
+DURATION_SEC: 10.020
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1832381.smt2
+TIMEOUT: 10s
+START: 2026-01-09 15:56:04
+END: 2026-01-09 15:56:04
+DURATION_SEC: 0.068
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,94 +106,13 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_775065.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_183750.smt2
 TIMEOUT: 10s
-START: 2026-01-09 14:05:36
-END: 2026-01-09 14:05:36
-DURATION_SEC: 0.070
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_778684.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:36
-END: 2026-01-09 14:05:37
-DURATION_SEC: 0.111
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_817365.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:37
-END: 2026-01-09 14:05:37
+START: 2026-01-09 15:56:04
+END: 2026-01-09 15:56:04
 DURATION_SEC: 0.078
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_820585.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:37
-END: 2026-01-09 14:05:47
-DURATION_SEC: 10.026
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_868218.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:47
-END: 2026-01-09 14:05:47
-DURATION_SEC: 0.057
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_869368.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:47
-END: 2026-01-09 14:05:57
-DURATION_SEC: 10.015
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_972878.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:57
-END: 2026-01-09 14:05:57
-DURATION_SEC: 0.073
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_981761.smt2
-TIMEOUT: 10s
-START: 2026-01-09 14:05:57
-END: 2026-01-09 14:06:07
-DURATION_SEC: 10.021
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
 
