@@ -1,6 +1,0 @@
-(set-logic ALL)
-(declare-fun split_at (String String Int) String)
-(declare-fun split_rest (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(assert (= (split_at "a-b" "-" -1) "a"))
-(check-sat)
