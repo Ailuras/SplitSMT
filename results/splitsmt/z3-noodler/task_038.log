@@ -1,22 +1,22 @@
 ===========================================================
 Task Group 38
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:30:07
+Started: 2026-01-09 17:54:26
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/11642.smt2
-START: 2026-01-09T08:30:07Z
-END: 2026-01-09T08:30:08Z
-DURATION_SEC: 1.079419928
+START: 2026-01-09T09:54:26Z
+END: 2026-01-09T09:54:27Z
+DURATION_SEC: 1.349482574
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:30:08] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:54:27] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 681196 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1319635 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -24,9 +24,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/11661.smt2
-START: 2026-01-09T08:30:08Z
-END: 2026-01-09T08:30:09Z
-DURATION_SEC: .189560290
+START: 2026-01-09T09:54:27Z
+END: 2026-01-09T09:54:27Z
+DURATION_SEC: .284933733
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,16 +36,16 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/11770.smt2
-START: 2026-01-09T08:30:09Z
-END: 2026-01-09T08:30:10Z
-DURATION_SEC: .910423497
+START: 2026-01-09T09:54:27Z
+END: 2026-01-09T09:54:29Z
+DURATION_SEC: 1.146420833
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:30:09] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:54:28] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 681831 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1320174 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -53,9 +53,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/11864.smt2
-START: 2026-01-09T08:30:10Z
-END: 2026-01-09T08:30:12Z
-DURATION_SEC: 2.155784025
+START: 2026-01-09T09:54:29Z
+END: 2026-01-09T09:54:31Z
+DURATION_SEC: 1.860457589
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -65,9 +65,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/12029.smt2
-START: 2026-01-09T08:30:12Z
-END: 2026-01-09T08:30:14Z
-DURATION_SEC: 2.330105889
+START: 2026-01-09T09:54:31Z
+END: 2026-01-09T09:54:33Z
+DURATION_SEC: 2.463101028
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -77,9 +77,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/12063.smt2
-START: 2026-01-09T08:30:14Z
-END: 2026-01-09T08:30:18Z
-DURATION_SEC: 3.731799059
+START: 2026-01-09T09:54:33Z
+END: 2026-01-09T09:54:36Z
+DURATION_SEC: 2.356203989
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -89,9 +89,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/1227.smt2
-START: 2026-01-09T08:30:18Z
-END: 2026-01-09T08:30:20Z
-DURATION_SEC: 2.373352949
+START: 2026-01-09T09:54:36Z
+END: 2026-01-09T09:54:38Z
+DURATION_SEC: 2.479346686
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -101,9 +101,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/12358.smt2
-START: 2026-01-09T08:30:20Z
-END: 2026-01-09T08:30:22Z
-DURATION_SEC: 1.772275753
+START: 2026-01-09T09:54:38Z
+END: 2026-01-09T09:54:40Z
+DURATION_SEC: 1.863286693
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,9 +113,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/125.smt2
-START: 2026-01-09T08:30:22Z
-END: 2026-01-09T08:30:32Z
-DURATION_SEC: 10.104649944
+START: 2026-01-09T09:54:40Z
+END: 2026-01-09T09:54:50Z
+DURATION_SEC: 10.170404359
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -125,13 +125,13 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/1279.smt2
-START: 2026-01-09T08:30:32Z
-END: 2026-01-09T08:30:36Z
-DURATION_SEC: 4.078352828
+START: 2026-01-09T09:54:50Z
+END: 2026-01-09T09:54:54Z
+DURATION_SEC: 4.164288329
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 38 completed at 2026-01-09 16:30:36
+Task Group 38 completed at 2026-01-09 17:54:54

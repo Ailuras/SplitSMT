@@ -2,9 +2,9 @@
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_872904.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:23
-END: 2026-01-09 15:53:23
-DURATION_SEC: 0.127
+START: 2026-01-09 19:41:49
+END: 2026-01-09 19:41:49
+DURATION_SEC: 0.191
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -14,9 +14,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_884894.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:24
-END: 2026-01-09 15:53:24
-DURATION_SEC: 0.082
+START: 2026-01-09 19:41:49
+END: 2026-01-09 19:41:49
+DURATION_SEC: 0.074
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -26,9 +26,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_914217.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:24
-END: 2026-01-09 15:53:24
-DURATION_SEC: 0.121
+START: 2026-01-09 19:41:49
+END: 2026-01-09 19:41:49
+DURATION_SEC: 0.132
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,9 +38,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_943341.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:24
-END: 2026-01-09 15:53:24
-DURATION_SEC: 0.268
+START: 2026-01-09 19:41:49
+END: 2026-01-09 19:41:50
+DURATION_SEC: 0.298
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +50,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_949623.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:24
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.253
+START: 2026-01-09 19:41:50
+END: 2026-01-09 19:41:50
+DURATION_SEC: 0.326
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,9 +62,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_951860.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.582
+START: 2026-01-09 19:41:50
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.669
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -74,9 +74,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_965933.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.081
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.093
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,9 +86,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_988918.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:26
-DURATION_SEC: 0.092
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.108
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,25 +96,25 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1010941.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1036937.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:26
-END: 2026-01-09 15:53:26
-DURATION_SEC: 0.051
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.063
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1036937.smt2:10.14: Symbol `to_int' is shadowing a theory function symbol")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1023632.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1049044.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:26
-END: 2026-01-09 15:53:26
-DURATION_SEC: 0.075
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.192
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 

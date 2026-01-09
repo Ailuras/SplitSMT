@@ -1,22 +1,22 @@
 ===========================================================
 Task Group 54
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:05:51
+Started: 2026-01-09 17:55:27
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1090429.smt2
-START: 2026-01-09T08:05:51Z
-END: 2026-01-09T08:05:52Z
-DURATION_SEC: .437262322
+START: 2026-01-09T09:55:27Z
+END: 2026-01-09T09:55:27Z
+DURATION_SEC: .571559183
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:05:52] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:55:27] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 372630 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1340271 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -24,16 +24,16 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_1098687.smt2
-START: 2026-01-09T08:05:52Z
-END: 2026-01-09T08:05:52Z
-DURATION_SEC: .493210265
+START: 2026-01-09T09:55:27Z
+END: 2026-01-09T09:55:28Z
+DURATION_SEC: .406706644
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:05:52] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:55:28] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 372805 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1340463 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -41,16 +41,16 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1115533.smt2
-START: 2026-01-09T08:05:52Z
-END: 2026-01-09T08:05:53Z
-DURATION_SEC: .688637149
+START: 2026-01-09T09:55:28Z
+END: 2026-01-09T09:55:28Z
+DURATION_SEC: .713400878
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:05:53] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:55:28] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 372968 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1340537 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -58,9 +58,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_1122576.smt2
-START: 2026-01-09T08:05:53Z
-END: 2026-01-09T08:06:03Z
-DURATION_SEC: 10.121072396
+START: 2026-01-09T09:55:28Z
+END: 2026-01-09T09:55:39Z
+DURATION_SEC: 10.401662857
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -70,9 +70,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_1161584.smt2
-START: 2026-01-09T08:06:03Z
-END: 2026-01-09T08:06:04Z
-DURATION_SEC: .194892407
+START: 2026-01-09T09:55:39Z
+END: 2026-01-09T09:55:39Z
+DURATION_SEC: .368132753
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -82,9 +82,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1189722.smt2
-START: 2026-01-09T08:06:04Z
-END: 2026-01-09T08:06:14Z
-DURATION_SEC: 10.226274071
+START: 2026-01-09T09:55:39Z
+END: 2026-01-09T09:55:49Z
+DURATION_SEC: 9.427839331
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -94,16 +94,16 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_119258.smt2
-START: 2026-01-09T08:06:14Z
-END: 2026-01-09T08:06:14Z
-DURATION_SEC: .529621001
+START: 2026-01-09T09:55:49Z
+END: 2026-01-09T09:55:49Z
+DURATION_SEC: .386498752
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:14] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:55:49] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 379565 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1347956 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -111,40 +111,47 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_120902.smt2
-START: 2026-01-09T08:06:15Z
-END: 2026-01-09T08:06:15Z
-DURATION_SEC: .245077367
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:55:49Z
+END: 2026-01-09T09:55:50Z
+DURATION_SEC: .266941193
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:15] External solver reported errors in output: (error "line 66 column 56: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1229669.smt2
-START: 2026-01-09T08:06:15Z
-END: 2026-01-09T08:06:15Z
-DURATION_SEC: .384085355
+START: 2026-01-09T09:55:50Z
+END: 2026-01-09T09:55:50Z
+DURATION_SEC: .463540908
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:15] External solver reported errors in output: (error "line 18 column 31: unknown constant str.num_splits (string string) ")[0m
+[31m[2026-01-09 17:55:50] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1348246 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1262518.smt2
-START: 2026-01-09T08:06:15Z
-END: 2026-01-09T08:06:16Z
-DURATION_SEC: .369340675
+START: 2026-01-09T09:55:50Z
+END: 2026-01-09T09:55:51Z
+DURATION_SEC: .346869622
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:16] External solver reported errors in output: (error "line 22 column 35: unknown constant str.num_splits (string string) ")[0m
+[31m[2026-01-09 17:55:51] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1348439 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
 unknown
 ===========================================================
 
-Task Group 54 completed at 2026-01-09 16:06:16
+Task Group 54 completed at 2026-01-09 17:55:51

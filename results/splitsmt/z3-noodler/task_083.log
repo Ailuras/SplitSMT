@@ -1,19 +1,19 @@
 ===========================================================
 Task Group 83
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:07:16
+Started: 2026-01-09 17:56:54
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_654361.smt2
-START: 2026-01-09T08:07:16Z
-END: 2026-01-09T08:07:20Z
-DURATION_SEC: 2.987103673
+START: 2026-01-09T09:56:54Z
+END: 2026-01-09T09:56:58Z
+DURATION_SEC: 3.399814838
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:19] External solver did not return a valid status. Output: ASSERTION VIOLATION
+[31m[2026-01-09 17:56:58] External solver did not return a valid status. Output: ASSERTION VIOLATION
 File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
 Line: 560
 solution.length_sensitive_vars.contains(output_var)
@@ -27,9 +27,9 @@ INVALID COMMAND
 terminate called after throwing an instance of 'std::runtime_error'
   what():  Integer/real conversions with transducers are not supported yet
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 399202 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1372904 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
 
-Task Group 83 completed at 2026-01-09 16:07:20
+Task Group 83 completed at 2026-01-09 17:56:58

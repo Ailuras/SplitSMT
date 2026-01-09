@@ -1,10 +1,67 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/Java/awesome/6769.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_438060.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.052
+START: 2026-01-09 19:47:27
+END: 2026-01-09 19:47:37
+DURATION_SEC: 10.028
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_440828.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:37
+END: 2026-01-09 19:47:47
+DURATION_SEC: 10.060
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_441293.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:47
+END: 2026-01-09 19:47:57
+DURATION_SEC: 10.040
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_478946.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:57
+END: 2026-01-09 19:48:07
+DURATION_SEC: 10.024
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_487183.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:48:07
+END: 2026-01-09 19:48:08
+DURATION_SEC: 1.109
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 137 column 79: model is not available")
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_497954.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:48:08
+END: 2026-01-09 19:48:11
+DURATION_SEC: 2.859
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,142 +69,21 @@ unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/Java/awesome/685.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_532752.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.051
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-09 19:48:11
+END: 2026-01-09 19:48:21
+DURATION_SEC: 10.018
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/Java/awesome/6947.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_539004.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.044
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/6973.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.058
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/723.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.059
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/758.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.032
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/768.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:47
-DURATION_SEC: 0.049
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/788.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:47
-END: 2026-01-09 11:26:48
-DURATION_SEC: 0.315
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/796.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:48
-END: 2026-01-09 11:26:49
-DURATION_SEC: 0.037
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/821.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:49
-END: 2026-01-09 11:26:49
-DURATION_SEC: 0.037
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/860.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:49
-END: 2026-01-09 11:26:49
-DURATION_SEC: 0.134
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/8775.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:49
-END: 2026-01-09 11:26:49
-DURATION_SEC: 0.078
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/8916.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:49
-END: 2026-01-09 11:26:59
+START: 2026-01-09 19:48:21
+END: 2026-01-09 19:48:31
 DURATION_SEC: 10.020
 STATUS: TIMEOUT
 EXIT_CODE: 143
@@ -155,35 +91,11 @@ EXIT_CODE: 143
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/Java/awesome/8948.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_551086.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.053
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/8949.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.053
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/9179.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.042
+START: 2026-01-09 19:48:31
+END: 2026-01-09 19:48:31
+DURATION_SEC: 0.041
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -191,49 +103,12 @@ unsat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/Java/awesome/9192.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_575126.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.071
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-09 19:48:31
+END: 2026-01-09 19:48:41
+DURATION_SEC: 10.023
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/9338.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.052
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/9391.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.047
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/Java/awesome/9409.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:26:59
-END: 2026-01-09 11:26:59
-DURATION_SEC: 0.048
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
 

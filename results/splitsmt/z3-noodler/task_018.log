@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 18
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:28:21
+Started: 2026-01-09 17:52:40
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1376047.smt2
-START: 2026-01-09T08:28:21Z
-END: 2026-01-09T08:28:23Z
-DURATION_SEC: 1.324873945
+START: 2026-01-09T09:52:40Z
+END: 2026-01-09T09:52:41Z
+DURATION_SEC: .300027006
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1393302.smt2
-START: 2026-01-09T08:28:23Z
-END: 2026-01-09T08:28:23Z
-DURATION_SEC: .407725978
+START: 2026-01-09T09:52:41Z
+END: 2026-01-09T09:52:41Z
+DURATION_SEC: .330632243
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1423637.smt2
-START: 2026-01-09T08:28:23Z
-END: 2026-01-09T08:28:33Z
-DURATION_SEC: 10.190180483
+START: 2026-01-09T09:52:41Z
+END: 2026-01-09T09:52:51Z
+DURATION_SEC: 10.298063951
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1426875.smt2
-START: 2026-01-09T08:28:33Z
-END: 2026-01-09T08:28:44Z
-DURATION_SEC: 10.284670711
+START: 2026-01-09T09:52:51Z
+END: 2026-01-09T09:53:02Z
+DURATION_SEC: 10.344726144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -56,9 +56,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1427370.smt2
-START: 2026-01-09T08:28:44Z
-END: 2026-01-09T08:28:54Z
-DURATION_SEC: 10.113961655
+START: 2026-01-09T09:53:02Z
+END: 2026-01-09T09:53:12Z
+DURATION_SEC: 10.182304822
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -69,9 +69,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1431579.smt2
-START: 2026-01-09T08:28:54Z
-END: 2026-01-09T08:28:54Z
-DURATION_SEC: .350259516
+START: 2026-01-09T09:53:12Z
+END: 2026-01-09T09:53:12Z
+DURATION_SEC: .271542082
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -81,9 +81,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1448234.smt2
-START: 2026-01-09T08:28:54Z
-END: 2026-01-09T08:29:05Z
-DURATION_SEC: 10.296904653
+START: 2026-01-09T09:53:12Z
+END: 2026-01-09T09:53:23Z
+DURATION_SEC: 10.213362370
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -93,16 +93,16 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1480594.smt2
-START: 2026-01-09T08:29:05Z
-END: 2026-01-09T08:29:06Z
-DURATION_SEC: 1.060166008
+START: 2026-01-09T09:53:23Z
+END: 2026-01-09T09:53:24Z
+DURATION_SEC: .933013979
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:29:06] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:53:24] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 654283 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1299777 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -110,9 +110,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_149700.smt2
-START: 2026-01-09T08:29:06Z
-END: 2026-01-09T08:29:16Z
-DURATION_SEC: 10.579087305
+START: 2026-01-09T09:53:24Z
+END: 2026-01-09T09:53:34Z
+DURATION_SEC: 10.274499851
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -123,9 +123,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/s0/strategy_str_split_deepseek-chat_1518165.smt2
-START: 2026-01-09T08:29:16Z
-END: 2026-01-09T08:29:17Z
-DURATION_SEC: .474962842
+START: 2026-01-09T09:53:34Z
+END: 2026-01-09T09:53:35Z
+DURATION_SEC: .502740390
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -133,4 +133,4 @@ warning: "get-value" command is safely ignored in line 44.
 unknown
 ===========================================================
 
-Task Group 18 completed at 2026-01-09 16:29:17
+Task Group 18 completed at 2026-01-09 17:53:35

@@ -1,0 +1,124 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/4935.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:56
+END: 2026-01-09 19:46:56
+DURATION_SEC: 0.159
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5194.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:56
+END: 2026-01-09 19:46:56
+DURATION_SEC: 0.307
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130479 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5218.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:56
+END: 2026-01-09 19:46:57
+DURATION_SEC: 0.183
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130652 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5228.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:57
+END: 2026-01-09 19:46:57
+DURATION_SEC: 0.056
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5237.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:57
+END: 2026-01-09 19:47:01
+DURATION_SEC: 4.398
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5414.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:01
+END: 2026-01-09 19:47:11
+DURATION_SEC: 10.020
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/5844.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:11
+END: 2026-01-09 19:47:11
+DURATION_SEC: 0.173
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/59.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:11
+END: 2026-01-09 19:47:12
+DURATION_SEC: 0.192
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/6001.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:12
+END: 2026-01-09 19:47:22
+DURATION_SEC: 10.022
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/6058.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:22
+END: 2026-01-09 19:47:22
+DURATION_SEC: 0.295
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+

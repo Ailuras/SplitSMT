@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 100
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:08:08
+Started: 2026-01-09 17:57:46
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_735436.smt2
-START: 2026-01-09T08:08:08Z
-END: 2026-01-09T08:08:08Z
-DURATION_SEC: .118114332
+START: 2026-01-09T09:57:46Z
+END: 2026-01-09T09:57:47Z
+DURATION_SEC: .140537106
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_737502.smt2
-START: 2026-01-09T08:08:08Z
-END: 2026-01-09T08:08:09Z
-DURATION_SEC: .361031695
+START: 2026-01-09T09:57:47Z
+END: 2026-01-09T09:57:47Z
+DURATION_SEC: .488515955
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_743231.smt2
-START: 2026-01-09T08:08:09Z
-END: 2026-01-09T08:08:09Z
-DURATION_SEC: .186066133
+START: 2026-01-09T09:57:47Z
+END: 2026-01-09T09:57:47Z
+DURATION_SEC: .272545912
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,26 +43,25 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_745381.smt2
-START: 2026-01-09T08:08:09Z
-END: 2026-01-09T08:08:09Z
-DURATION_SEC: .124278529
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:57:47Z
+END: 2026-01-09T09:57:48Z
+DURATION_SEC: .187293923
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:08:09] External solver reported errors in output: (error "line 36 column 42: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_745406.smt2
-START: 2026-01-09T08:08:09Z
-END: 2026-01-09T08:08:19Z
-DURATION_SEC: 10.124374805
+START: 2026-01-09T09:57:48Z
+END: 2026-01-09T09:57:58Z
+DURATION_SEC: 10.125619261
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 100 completed at 2026-01-09 16:08:19
+Task Group 100 completed at 2026-01-09 17:57:58

@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_846735.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_945036.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:30
-END: 2026-01-09 15:53:31
-DURATION_SEC: 0.287
+START: 2026-01-09 19:42:02
+END: 2026-01-09 19:42:02
+DURATION_SEC: 0.393
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,35 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_849202.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_968293.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:31
-END: 2026-01-09 15:53:31
-DURATION_SEC: 0.596
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_860129.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:31
-END: 2026-01-09 15:53:31
-DURATION_SEC: 0.072
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_869368.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:32
-END: 2026-01-09 15:53:32
-DURATION_SEC: 0.450
+START: 2026-01-09 19:42:02
+END: 2026-01-09 19:42:03
+DURATION_SEC: 0.368
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,47 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_869808.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_990853.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:32
-END: 2026-01-09 15:53:32
-DURATION_SEC: 0.115
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_869808.smt2:37.32: Extra parentheses around sort name not permitted in SMT-LIB")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_873487.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:32
-END: 2026-01-09 15:53:32
-DURATION_SEC: 0.062
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_893146.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:32
-END: 2026-01-09 15:53:32
-DURATION_SEC: 0.061
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_893416.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:32
-END: 2026-01-09 15:53:34
-DURATION_SEC: 1.135
+START: 2026-01-09 19:42:03
+END: 2026-01-09 19:42:04
+DURATION_SEC: 1.305
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,25 +36,13 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_913082.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_991259.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:34
-END: 2026-01-09 15:53:34
-DURATION_SEC: 0.172
+START: 2026-01-09 19:42:04
+END: 2026-01-09 19:42:05
+DURATION_SEC: 0.500
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_921405.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:34
-END: 2026-01-09 15:53:34
-DURATION_SEC: 0.175
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_921405.smt2:26.64: Symbol 're.loop' not declared as a variable")
+sat
 

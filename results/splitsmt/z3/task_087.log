@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 87
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 16:06:29
+Started: 2026-01-09 17:55:30
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1010164.smt2
-START: 2026-01-09T08:06:29Z
-END: 2026-01-09T08:06:30Z
-DURATION_SEC: .156048997
+START: 2026-01-09T09:55:30Z
+END: 2026-01-09T09:55:30Z
+DURATION_SEC: .178765372
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_1036806.smt2
-START: 2026-01-09T08:06:30Z
-END: 2026-01-09T08:06:30Z
-DURATION_SEC: .710231951
+START: 2026-01-09T09:55:30Z
+END: 2026-01-09T09:55:31Z
+DURATION_SEC: .883431030
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1070005.smt2
-START: 2026-01-09T08:06:31Z
-END: 2026-01-09T08:06:31Z
-DURATION_SEC: .070109590
+START: 2026-01-09T09:55:31Z
+END: 2026-01-09T09:55:31Z
+DURATION_SEC: .074714249
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1071454.smt2
-START: 2026-01-09T08:06:31Z
-END: 2026-01-09T08:06:32Z
-DURATION_SEC: 1.399276414
+START: 2026-01-09T09:55:31Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: 2.407114511
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,22 +55,21 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1075212.smt2
-START: 2026-01-09T08:06:32Z
-END: 2026-01-09T08:06:32Z
-DURATION_SEC: .160772702
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: .155298485
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:32] External solver reported errors in output: (error "line 36 column 41: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_1087587.smt2
-START: 2026-01-09T08:06:32Z
-END: 2026-01-09T08:06:32Z
-DURATION_SEC: .117003362
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: .239963832
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -80,22 +79,21 @@ sat
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1121908.smt2
-START: 2026-01-09T08:06:32Z
-END: 2026-01-09T08:06:33Z
-DURATION_SEC: .191026485
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:35Z
+DURATION_SEC: .265822195
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:33] External solver reported errors in output: (error "line 25 column 42: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1122577.smt2
-START: 2026-01-09T08:06:33Z
-END: 2026-01-09T08:06:33Z
-DURATION_SEC: .089157186
+START: 2026-01-09T09:55:35Z
+END: 2026-01-09T09:55:35Z
+DURATION_SEC: .153932144
 STATUS: ERROR
 EXIT_CODE: 139
 -----------------------------------------------------------
@@ -105,26 +103,25 @@ EXIT_CODE: 139
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1156545.smt2
-START: 2026-01-09T08:06:33Z
-END: 2026-01-09T08:06:33Z
-DURATION_SEC: .201496623
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:55:35Z
+END: 2026-01-09T09:55:35Z
+DURATION_SEC: .248711677
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:33] External solver reported errors in output: (error "line 35 column 52: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_1193089.smt2
-START: 2026-01-09T08:06:33Z
-END: 2026-01-09T08:06:33Z
-DURATION_SEC: .104163392
+START: 2026-01-09T09:55:35Z
+END: 2026-01-09T09:55:35Z
+DURATION_SEC: .113210325
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 error: Wrong number of parameters of "String to code on non-single character string" in line 172.
 ===========================================================
 
-Task Group 87 completed at 2026-01-09 16:06:33
+Task Group 87 completed at 2026-01-09 17:55:35

@@ -1,0 +1,126 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/6973.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:03
+END: 2026-01-09 19:47:03
+DURATION_SEC: 0.398
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/723.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:03
+END: 2026-01-09 19:47:13
+DURATION_SEC: 10.025
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/768.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:13
+END: 2026-01-09 19:47:14
+DURATION_SEC: 0.981
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/788.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:14
+END: 2026-01-09 19:47:15
+DURATION_SEC: 0.326
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2140398 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/860.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:15
+END: 2026-01-09 19:47:25
+DURATION_SEC: 10.018
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/8775.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:25
+END: 2026-01-09 19:47:28
+DURATION_SEC: 3.379
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/8916.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:28
+END: 2026-01-09 19:47:38
+DURATION_SEC: 10.019
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/8948.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:38
+END: 2026-01-09 19:47:46
+DURATION_SEC: 8.400
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2154530 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/8949.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:46
+END: 2026-01-09 19:47:54
+DURATION_SEC: 7.839
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2160563 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/9192.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:54
+END: 2026-01-09 19:47:58
+DURATION_SEC: 3.973
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+

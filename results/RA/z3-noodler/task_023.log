@@ -1,164 +1,23 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/4762.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_257815.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:46
-END: 2026-01-09 11:22:48
-DURATION_SEC: 1.246
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.231
 STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2257419 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/4891.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:48
-END: 2026-01-09 11:22:49
-DURATION_SEC: 0.776
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2257875 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/4935.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:49
-END: 2026-01-09 11:22:49
-DURATION_SEC: 0.179
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5194.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:49
-END: 2026-01-09 11:22:50
-DURATION_SEC: 0.785
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2258340 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5218.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:50
-END: 2026-01-09 11:22:51
-DURATION_SEC: 0.634
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2258624 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5228.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:51
-END: 2026-01-09 11:22:51
-DURATION_SEC: 0.080
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5237.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:51
-END: 2026-01-09 11:22:55
-DURATION_SEC: 4.530
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5414.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:56
-END: 2026-01-09 11:23:06
-DURATION_SEC: 10.068
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/5844.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:06
-END: 2026-01-09 11:23:06
-DURATION_SEC: 0.175
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/59.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:06
-END: 2026-01-09 11:23:06
-DURATION_SEC: 0.247
-STATUS: SUCCESS
-EXIT_CODE: 0
+EXIT_CODE: 1
 -----------------------------------------------------------
 unknown
+(error "line 133 column 82: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6001.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_262610.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:06
-END: 2026-01-09 11:23:16
-DURATION_SEC: 10.052
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6058.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:16
-END: 2026-01-09 11:23:17
-DURATION_SEC: 0.351
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6076.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:17
-END: 2026-01-09 11:23:17
-DURATION_SEC: 0.075
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.118
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -166,90 +25,100 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6116.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_279008.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:17
-END: 2026-01-09 11:23:17
-DURATION_SEC: 0.339
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.245
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6268.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_291051.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:17
-END: 2026-01-09 11:23:18
-DURATION_SEC: 0.532
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.175
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_310949.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.348
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_318863.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.517
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_327644.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:39
+DURATION_SEC: 0.351
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_338254.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:39
+END: 2026-01-09 19:46:40
+DURATION_SEC: 1.065
 STATUS: ERROR
-EXIT_CODE: 134
+EXIT_CODE: 1
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2268468 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+(error "line 131 column 61: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6277.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_354847.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:18
-END: 2026-01-09 11:23:19
-DURATION_SEC: 0.713
+START: 2026-01-09 19:46:40
+END: 2026-01-09 19:46:40
+DURATION_SEC: 0.282
 STATUS: ERROR
-EXIT_CODE: 134
+EXIT_CODE: 1
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2268740 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+(error "line 138 column 70: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/633.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_370020.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:19
-END: 2026-01-09 11:23:29
-DURATION_SEC: 10.045
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-09 19:46:40
+END: 2026-01-09 19:46:40
+DURATION_SEC: 0.165
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/649.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:29
-END: 2026-01-09 11:23:29
-DURATION_SEC: 0.191
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/650.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:29
-END: 2026-01-09 11:23:29
-DURATION_SEC: 0.196
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6760.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:29
-END: 2026-01-09 11:23:35
-DURATION_SEC: 5.386
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
+unknown
+(error "line 128 column 57: model is not available, did you forget to enable model generation with 'model=true'?")
 

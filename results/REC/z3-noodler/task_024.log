@@ -1,168 +1,23 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/6769.smt2
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_438060.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:08
-END: 2026-01-09 11:31:08
-DURATION_SEC: 0.109
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/685.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:08
-END: 2026-01-09 11:31:08
-DURATION_SEC: 0.114
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/6947.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:08
-END: 2026-01-09 11:31:08
-DURATION_SEC: 0.114
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/6973.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:08
-END: 2026-01-09 11:31:09
-DURATION_SEC: 0.462
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/723.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:09
-END: 2026-01-09 11:31:09
-DURATION_SEC: 0.123
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/758.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:09
-END: 2026-01-09 11:31:09
-DURATION_SEC: 0.130
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/768.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:09
-END: 2026-01-09 11:31:09
-DURATION_SEC: 0.142
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/788.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:09
-END: 2026-01-09 11:31:10
-DURATION_SEC: 0.753
+START: 2026-01-09 19:52:52
+END: 2026-01-09 19:52:52
+DURATION_SEC: 0.382
 STATUS: ERROR
-EXIT_CODE: 134
+EXIT_CODE: 1
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2411175 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+(error "line 139 column 80: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/796.smt2
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_440828.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:10
-END: 2026-01-09 11:31:10
-DURATION_SEC: 0.087
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/821.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:10
-END: 2026-01-09 11:31:10
-DURATION_SEC: 0.106
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/860.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:11
-END: 2026-01-09 11:31:16
-DURATION_SEC: 5.799
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/8775.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:16
-END: 2026-01-09 11:31:17
-DURATION_SEC: 1.108
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/8916.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:17
-END: 2026-01-09 11:31:28
-DURATION_SEC: 10.055
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/8948.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:28
-END: 2026-01-09 11:31:28
-DURATION_SEC: 0.100
+START: 2026-01-09 19:52:52
+END: 2026-01-09 19:52:53
+DURATION_SEC: 0.436
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -170,11 +25,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/8949.smt2
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_441293.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:28
-END: 2026-01-09 11:31:28
-DURATION_SEC: 0.194
+START: 2026-01-09 19:52:53
+END: 2026-01-09 19:52:53
+DURATION_SEC: 0.431
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -182,11 +37,73 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/9179.smt2
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_478946.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:28
-END: 2026-01-09 11:31:28
-DURATION_SEC: 0.095
+START: 2026-01-09 19:52:53
+END: 2026-01-09 19:52:54
+DURATION_SEC: 0.232
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_487183.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:54
+END: 2026-01-09 19:52:54
+DURATION_SEC: 0.217
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 140 column 79: model is not available, did you forget to enable model generation with 'model=true'?")
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_497954.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:54
+END: 2026-01-09 19:52:54
+DURATION_SEC: 0.439
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_532752.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:54
+END: 2026-01-09 19:52:55
+DURATION_SEC: 0.327
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_539004.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:55
+DURATION_SEC: 0.582
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 135 column 62: model is not available, did you forget to enable model generation with 'model=true'?")
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_551086.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:55
+DURATION_SEC: 0.099
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -194,47 +111,11 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/9192.smt2
+FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_575126.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:28
-END: 2026-01-09 11:31:28
-DURATION_SEC: 0.124
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/9338.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:28
-END: 2026-01-09 11:31:29
-DURATION_SEC: 0.747
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/9391.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:30
-DURATION_SEC: 1.095
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/Java/awesome/9409.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:30
-END: 2026-01-09 11:31:30
-DURATION_SEC: 0.098
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:56
+DURATION_SEC: 0.293
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

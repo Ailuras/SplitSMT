@@ -1,0 +1,131 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/37944.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:47
+END: 2026-01-09 19:46:47
+DURATION_SEC: 0.165
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/37946.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:47
+END: 2026-01-09 19:46:48
+DURATION_SEC: 0.645
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/37.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:48
+END: 2026-01-09 19:46:48
+DURATION_SEC: 0.260
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2126063 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/3860.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:48
+END: 2026-01-09 19:46:49
+DURATION_SEC: 0.180
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/40692.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:49
+END: 2026-01-09 19:46:59
+DURATION_SEC: 10.025
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/4197.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:59
+END: 2026-01-09 19:46:59
+DURATION_SEC: 0.446
+STATUS: ERROR
+EXIT_CODE: 110
+-----------------------------------------------------------
+ASSERTION VIOLATION
+File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
+Line: 437
+!var_name.contains(util::get_variable_basic_term(n))
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/42066.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:59
+END: 2026-01-09 19:47:09
+DURATION_SEC: 10.021
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/4296.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:09
+END: 2026-01-09 19:47:15
+DURATION_SEC: 5.591
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/4322.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:15
+END: 2026-01-09 19:47:15
+DURATION_SEC: 0.316
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2140710 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/awesome/4349.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:15
+END: 2026-01-09 19:47:15
+DURATION_SEC: 0.266
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2140899 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+

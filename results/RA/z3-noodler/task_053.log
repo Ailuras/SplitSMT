@@ -1,0 +1,125 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/325.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:22
+END: 2026-01-09 19:47:22
+DURATION_SEC: 0.371
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2144565 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5089.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:22
+END: 2026-01-09 19:47:32
+DURATION_SEC: 10.022
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5095.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:32
+END: 2026-01-09 19:47:33
+DURATION_SEC: 0.603
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5096.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:33
+END: 2026-01-09 19:47:34
+DURATION_SEC: 0.706
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5097.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:34
+END: 2026-01-09 19:47:35
+DURATION_SEC: 0.645
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5098.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:35
+END: 2026-01-09 19:47:35
+DURATION_SEC: 0.143
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/Java/top20_maven/5516.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:35
+END: 2026-01-09 19:47:35
+DURATION_SEC: 0.300
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2152359 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt5.2_1045348.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:35
+END: 2026-01-09 19:47:35
+DURATION_SEC: 0.219
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt-5.2_1062119.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:35
+END: 2026-01-09 19:47:36
+DURATION_SEC: 0.742
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt5.2_1066928.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:47:36
+END: 2026-01-09 19:47:36
+DURATION_SEC: 0.156
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+

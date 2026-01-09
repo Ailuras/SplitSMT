@@ -1,46 +1,10 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_267942.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1849790.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:56:43
-END: 2026-01-09 15:56:45
-DURATION_SEC: 1.916
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_277574.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:56:45
-END: 2026-01-09 15:56:55
-DURATION_SEC: 10.193
-STATUS: TIMEOUT
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_278540.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:56:55
-END: 2026-01-09 15:56:57
-DURATION_SEC: 1.421
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-to_int expects a term of type Real, not cl_val_sat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_280052.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:56:57
-END: 2026-01-09 15:57:00
-DURATION_SEC: 3.026
+START: 2026-01-09 19:45:17
+END: 2026-01-09 19:45:21
+DURATION_SEC: 4.116
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,34 +12,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_292697.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1856544.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:57:00
-END: 2026-01-09 15:57:11
-DURATION_SEC: 10.924
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_312250.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:57:11
-END: 2026-01-09 15:57:14
-DURATION_SEC: 3.041
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_321891.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:57:15
-END: 2026-01-09 15:57:18
-DURATION_SEC: 2.594
+START: 2026-01-09 19:45:21
+END: 2026-01-09 19:45:23
+DURATION_SEC: 2.434
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,36 +24,95 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_342603.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1874023.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:57:18
-END: 2026-01-09 15:57:20
-DURATION_SEC: 2.128
+START: 2026-01-09 19:45:23
+END: 2026-01-09 19:45:27
+DURATION_SEC: 3.682
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-unsat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_354236.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1889948.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:57:20
-END: 2026-01-09 15:57:21
-DURATION_SEC: 1.498
+START: 2026-01-09 19:45:27
+END: 2026-01-09 19:45:32
+DURATION_SEC: 5.179
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_357123.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1922790.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:57:22
-END: 2026-01-09 15:57:25
-DURATION_SEC: 3.561
+START: 2026-01-09 19:45:32
+END: 2026-01-09 19:45:34
+DURATION_SEC: 2.346
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1925759.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:45:34
+END: 2026-01-09 19:45:37
+DURATION_SEC: 2.387
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1942681.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:45:37
+END: 2026-01-09 19:45:39
+DURATION_SEC: 2.245
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_194609.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:45:39
+END: 2026-01-09 19:45:41
+DURATION_SEC: 2.208
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1952739.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:45:41
+END: 2026-01-09 19:45:46
+DURATION_SEC: 4.960
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1961895.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:45:46
+END: 2026-01-09 19:45:49
+DURATION_SEC: 2.380
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

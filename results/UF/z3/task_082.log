@@ -1,22 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_561468.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_465879.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:05
-END: 2026-01-09 15:54:06
-DURATION_SEC: 0.527
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_567720.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:54:06
-END: 2026-01-09 15:54:07
-DURATION_SEC: 0.681
+START: 2026-01-09 19:42:42
+END: 2026-01-09 19:42:48
+DURATION_SEC: 5.346
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,72 +12,58 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_568076.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_491361.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:07
-END: 2026-01-09 15:54:07
-DURATION_SEC: 0.129
+START: 2026-01-09 19:42:48
+END: 2026-01-09 19:42:48
+DURATION_SEC: 0.800
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_494681.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:48
+END: 2026-01-09 19:42:48
+DURATION_SEC: 0.081
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
 sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_582928.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_520057.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:09
-END: 2026-01-09 15:54:19
-DURATION_SEC: 10.025
+START: 2026-01-09 19:42:49
+END: 2026-01-09 19:42:53
+DURATION_SEC: 4.720
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_526814.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:53
+END: 2026-01-09 19:43:03
+DURATION_SEC: 10.140
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_586734.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_550204.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:19
-END: 2026-01-09 15:54:19
-DURATION_SEC: 0.092
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_617170.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:54:19
-END: 2026-01-09 15:54:19
-DURATION_SEC: 0.081
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_617272.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:54:19
-END: 2026-01-09 15:54:19
-DURATION_SEC: 0.070
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_635009.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:54:19
-END: 2026-01-09 15:54:20
-DURATION_SEC: 0.860
+START: 2026-01-09 19:43:04
+END: 2026-01-09 19:43:04
+DURATION_SEC: 0.261
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -97,25 +71,47 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_652265.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_555302.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:20
-END: 2026-01-09 15:54:20
-DURATION_SEC: 0.072
+START: 2026-01-09 19:43:04
+END: 2026-01-09 19:43:04
+DURATION_SEC: 0.096
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_652935.smt2
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_567797.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:54:20
-END: 2026-01-09 15:54:20
-DURATION_SEC: 0.079
+START: 2026-01-09 19:43:04
+END: 2026-01-09 19:43:14
+DURATION_SEC: 10.155
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_586090.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:43:14
+END: 2026-01-09 19:43:14
+DURATION_SEC: 0.078
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_596319.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:43:14
+END: 2026-01-09 19:43:24
+DURATION_SEC: 10.061
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
 

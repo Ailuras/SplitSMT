@@ -1,66 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/20512.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:21:59
-END: 2026-01-09 11:22:09
-DURATION_SEC: 10.033
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21157.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:09
-END: 2026-01-09 11:22:19
-DURATION_SEC: 10.058
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21168.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:19
-END: 2026-01-09 11:22:19
-DURATION_SEC: 0.062
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21345.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:19
-END: 2026-01-09 11:22:29
-DURATION_SEC: 10.019
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21382.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:29
-END: 2026-01-09 11:22:40
-DURATION_SEC: 10.140
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21489.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:40
-END: 2026-01-09 11:22:40
-DURATION_SEC: 0.366
+START: 2026-01-09 19:46:35
+END: 2026-01-09 19:46:36
+DURATION_SEC: 0.212
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -68,89 +12,35 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/21922.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1699343.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:40
-END: 2026-01-09 11:22:41
-DURATION_SEC: 0.747
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2255114 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/2344.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:41
-END: 2026-01-09 11:22:44
-DURATION_SEC: 3.135
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/2371.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:44
-END: 2026-01-09 11:22:45
-DURATION_SEC: 1.274
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/2376.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:45
-END: 2026-01-09 11:22:47
-DURATION_SEC: 1.918
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/2402.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:47
-END: 2026-01-09 11:22:51
-DURATION_SEC: 4.089
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/245.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:51
-END: 2026-01-09 11:22:52
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:36
 DURATION_SEC: 0.484
-STATUS: ERROR
-EXIT_CODE: 134
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2259219 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/278.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_173204.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:52
-END: 2026-01-09 11:22:52
-DURATION_SEC: 0.082
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.971
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1742363.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.073
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -158,98 +48,113 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/307.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1757039.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:52
-END: 2026-01-09 11:22:53
-DURATION_SEC: 0.816
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.080
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2259552 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/3122.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1768325.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:53
-END: 2026-01-09 11:23:01
-DURATION_SEC: 7.866
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.137
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2259909 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+((csv_line "123,John Doe,30,USA")
+ (field_count 0)
+ (first_field "")
+ (last_field "")
+ (middle_field "")
+ (has_empty_field (exists ((i Int))
+  (let ((a!1 (not (and (<= 0 i) (not (>= i 4)))))
+        (a!2 (ite (= (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                                      (+ 1 i)
+                                      0)
+                     (- 1))
+                  19
+                  (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                                   (+ 1 i)
+                                   0)))
+        (a!3 (+ 1
+                (ite (= i 0)
+                     (- 1)
+                     (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                                      i
+                                      0))))
+        (a!4 (* (- 1)
+                (ite (= i 0)
+                     (- 1)
+                     (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                                      i
+                                      0)))))
+  (let ((a!5 (ite (<= (ite (= i 0)
+                           (- 1)
+                           (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                                            i
+                                            0))
+                      a!2)
+                  (str.substr "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                              a!3
+                              (+ (- 1) a!2 a!4))
+                  (str.substr "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
+                              a!3
+                              (+ 18 a!4)))))
+    (and (>= i 1) (not (<= 3 i)) (or a!1 (= "" a!5))))))))
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/33306.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1774137.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:01
-END: 2026-01-09 11:23:02
-DURATION_SEC: 0.532
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.453
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2262798 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/33328.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1778412.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:02
-END: 2026-01-09 11:23:02
-DURATION_SEC: 0.593
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.219
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2262955 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/33720.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1824909.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:02
-END: 2026-01-09 11:23:12
-DURATION_SEC: 10.041
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:39
+DURATION_SEC: 0.390
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/337.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1827047.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:12
-END: 2026-01-09 11:23:14
-DURATION_SEC: 1.899
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-09 19:46:39
+END: 2026-01-09 19:46:39
+DURATION_SEC: 0.586
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2266728 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34010.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:15
-END: 2026-01-09 11:23:25
-DURATION_SEC: 10.062
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
+unknown
 

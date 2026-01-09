@@ -1,19 +1,19 @@
 ===========================================================
 Task Group 68
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-09 16:09:19
+Started: 2026-01-09 17:59:45
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2
-START: 2026-01-09T08:09:19Z
-END: 2026-01-09T08:09:21Z
-DURATION_SEC: 2.023734597
+START: 2026-01-09T09:59:45Z
+END: 2026-01-09T09:59:46Z
+DURATION_SEC: 1.240316306
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:21] External solver did not return a valid status. Output: to_int expects a term of type Real, not cl_val_sat
+[31m[2026-01-09 17:59:46] External solver did not return a valid status. Output: to_int expects a term of type Real, not cl_val_sat
 [0m
 unknown
 ===========================================================
@@ -21,22 +21,22 @@ unknown
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1275180.smt2
-START: 2026-01-09T08:09:22Z
-END: 2026-01-09T08:09:24Z
-DURATION_SEC: 1.907165041
+START: 2026-01-09T09:59:46Z
+END: 2026-01-09T09:59:47Z
+DURATION_SEC: 1.039903855
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:24] External solver did not return a valid status. Output: [0m
+[31m[2026-01-09 17:59:47] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1278982.smt2
-START: 2026-01-09T08:09:24Z
-END: 2026-01-09T08:09:27Z
-DURATION_SEC: 2.903826161
+START: 2026-01-09T09:59:47Z
+END: 2026-01-09T09:59:49Z
+DURATION_SEC: 1.905349030
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -46,9 +46,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_128447.smt2
-START: 2026-01-09T08:09:27Z
-END: 2026-01-09T08:09:29Z
-DURATION_SEC: 1.628636679
+START: 2026-01-09T09:59:49Z
+END: 2026-01-09T09:59:51Z
+DURATION_SEC: 2.074617638
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -58,22 +58,22 @@ unsat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2
-START: 2026-01-09T08:09:29Z
-END: 2026-01-09T08:09:39Z
-DURATION_SEC: 10.182183963
+START: 2026-01-09T09:59:51Z
+END: 2026-01-09T10:00:01Z
+DURATION_SEC: 10.204613904
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:39] External solver did not return a valid status. Output: [0m
+[31m[2026-01-09 18:00:01] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1315257.smt2
-START: 2026-01-09T08:09:39Z
-END: 2026-01-09T08:09:40Z
-DURATION_SEC: 1.617275929
+START: 2026-01-09T10:00:01Z
+END: 2026-01-09T10:00:03Z
+DURATION_SEC: 1.661848742
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,53 +83,53 @@ unsat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1335672.smt2
-START: 2026-01-09T08:09:40Z
-END: 2026-01-09T08:09:41Z
-DURATION_SEC: 1.092497545
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T10:00:03Z
+END: 2026-01-09T10:00:05Z
+DURATION_SEC: 1.862768413
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:41] External solver did not return a valid status. Output: [0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1341608.smt2
-START: 2026-01-09T08:09:41Z
-END: 2026-01-09T08:09:43Z
-DURATION_SEC: 1.942042380
+START: 2026-01-09T10:00:05Z
+END: 2026-01-09T10:00:06Z
+DURATION_SEC: 1.367363009
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:43] External solver did not return a valid status. Output: [0m
+[31m[2026-01-09 18:00:06] External solver did not return a valid status. Output: = cannot be applied to re_range(str_cons(mod_cast(0, 65535, 48), str_empty), str_cons(mod_cast(0, 65535, 57), str_empty)), reDigit
+[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1376934.smt2
-START: 2026-01-09T08:09:43Z
-END: 2026-01-09T08:09:45Z
-DURATION_SEC: 1.154279105
+START: 2026-01-09T10:00:06Z
+END: 2026-01-09T10:00:07Z
+DURATION_SEC: 1.337225979
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:45] External solver did not return a valid status. Output: [0m
+[31m[2026-01-09 18:00:07] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1379443.smt2
-START: 2026-01-09T08:09:45Z
-END: 2026-01-09T08:09:46Z
-DURATION_SEC: 1.262610002
+START: 2026-01-09T10:00:08Z
+END: 2026-01-09T10:00:09Z
+DURATION_SEC: 1.233716513
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:09:46] External solver did not return a valid status. Output: [0m
+[31m[2026-01-09 18:00:09] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
-Task Group 68 completed at 2026-01-09 16:09:46
+Task Group 68 completed at 2026-01-09 18:00:09

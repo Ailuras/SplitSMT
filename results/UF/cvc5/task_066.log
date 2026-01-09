@@ -1,122 +1,122 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1085926.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_117640.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:24
-END: 2026-01-09 15:53:24
-DURATION_SEC: 0.503
+START: 2026-01-09 19:41:50
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.126
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_117640.smt2:72.37: Symbol 'num_splits' not declared as a variable")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1242060.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.120
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1242060.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1250336.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:51
+DURATION_SEC: 0.070
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1250336.smt2:9.14: Symbol `str.to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1265060.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:51
+END: 2026-01-09 19:41:54
+DURATION_SEC: 2.624
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:54
+END: 2026-01-09 19:41:54
+DURATION_SEC: 0.234
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.096
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2:49.72: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1376934.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.187
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_144948.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.172
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1453464.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.026
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1453464.smt2:28.34: type constructor arity is wrong: `RegLan' requires 0 parameters but was provided 1")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1492396.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:56
+DURATION_SEC: 0.346
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
 sat
 (error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1122872.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.041
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1122872.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_112289.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.291
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_112964.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.182
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1134932.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:26
-DURATION_SEC: 0.754
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1137404.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:26
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.701
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_115711.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.085
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1157146.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.059
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1157146.smt2:10.14: Symbol `to_int' is shadowing a theory function symbol")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1160520.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.108
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1163460.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.079
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
 

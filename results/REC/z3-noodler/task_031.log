@@ -1,58 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_416645.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_164599.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:29
-DURATION_SEC: 0.107
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_440191.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:29
-DURATION_SEC: 0.070
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_458959.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:29
-DURATION_SEC: 0.083
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_463205.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:29
-DURATION_SEC: 0.148
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_476984.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:29
-END: 2026-01-09 11:31:30
-DURATION_SEC: 0.282
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:55
+DURATION_SEC: 0.302
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,58 +12,59 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_518814.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1650953.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:30
-END: 2026-01-09 11:31:30
-DURATION_SEC: 0.581
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:55
+DURATION_SEC: 0.337
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_546256.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1653721.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:30
-END: 2026-01-09 11:31:30
-DURATION_SEC: 0.065
+START: 2026-01-09 19:52:55
+END: 2026-01-09 19:52:56
+DURATION_SEC: 0.327
 STATUS: SUCCESS
 EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1669973.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:56
+END: 2026-01-09 19:52:56
+DURATION_SEC: 0.361
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1674043.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:56
+END: 2026-01-09 19:52:56
+DURATION_SEC: 0.165
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
 unsat
+(error "line 160 column 68: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_548494.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1751582.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:30
-END: 2026-01-09 11:31:31
-DURATION_SEC: 0.176
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_558615.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:31
-END: 2026-01-09 11:31:31
-DURATION_SEC: 0.211
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_584687.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:31
-END: 2026-01-09 11:31:31
+START: 2026-01-09 19:52:56
+END: 2026-01-09 19:52:57
 DURATION_SEC: 0.246
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -120,58 +73,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_590967.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1754127.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:31
-END: 2026-01-09 11:31:31
-DURATION_SEC: 0.109
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_641224.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:31
-END: 2026-01-09 11:31:31
-DURATION_SEC: 0.221
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_644978.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:31
-END: 2026-01-09 11:31:42
-DURATION_SEC: 10.075
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_647054.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:42
-END: 2026-01-09 11:31:42
-DURATION_SEC: 0.158
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_649739.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:42
-END: 2026-01-09 11:31:42
-DURATION_SEC: 0.083
+START: 2026-01-09 19:52:57
+END: 2026-01-09 19:52:57
+DURATION_SEC: 0.103
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -179,51 +85,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_671463.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1769005.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:42
-END: 2026-01-09 11:31:42
-DURATION_SEC: 0.213
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_726187.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:42
-END: 2026-01-09 11:31:42
-DURATION_SEC: 0.071
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_736908.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:42
-END: 2026-01-09 11:31:43
-DURATION_SEC: 1.071
-STATUS: ERROR
-EXIT_CODE: 110
------------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_746460.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:31:43
-END: 2026-01-09 11:31:43
-DURATION_SEC: 0.168
+START: 2026-01-09 19:52:57
+END: 2026-01-09 19:52:57
+DURATION_SEC: 0.243
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -231,13 +97,25 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_759537.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1783038.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:31:43
-END: 2026-01-09 11:31:44
-DURATION_SEC: 0.226
+START: 2026-01-09 19:52:57
+END: 2026-01-09 19:52:58
+DURATION_SEC: 0.588
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1791155.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:52:58
+END: 2026-01-09 19:52:58
+DURATION_SEC: 0.534
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

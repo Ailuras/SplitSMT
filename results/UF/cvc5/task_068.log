@@ -1,108 +1,33 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1623262.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.077
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1275180.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.114
+START: 2026-01-09 19:41:52
+END: 2026-01-09 19:41:52
+DURATION_SEC: 0.154
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1278982.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1626427.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.029
+START: 2026-01-09 19:41:52
+END: 2026-01-09 19:41:52
+DURATION_SEC: 0.229
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_128447.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.226
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
 sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1666942.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:25
-DURATION_SEC: 0.066
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2:49.72: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1315257.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:25
-END: 2026-01-09 15:53:27
-DURATION_SEC: 1.074
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1335672.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.054
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1341608.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.240
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1376934.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
+START: 2026-01-09 19:41:52
+END: 2026-01-09 19:41:52
 DURATION_SEC: 0.148
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -111,13 +36,89 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1379443.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1676599.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.103
+START: 2026-01-09 19:41:52
+END: 2026-01-09 19:41:53
+DURATION_SEC: 0.430
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1688995.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:53
+END: 2026-01-09 19:41:53
+DURATION_SEC: 0.143
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1745778.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:53
+END: 2026-01-09 19:41:54
+DURATION_SEC: 1.356
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1747235.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.301
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1765086.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.047
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1765086.smt2:10.14: Symbol `to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1781893.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.261
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1783649.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:57
+DURATION_SEC: 1.742
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

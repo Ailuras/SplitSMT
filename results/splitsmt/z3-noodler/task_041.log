@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 41
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:30:20
+Started: 2026-01-09 17:54:37
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/20413.smt2
-START: 2026-01-09T08:30:20Z
-END: 2026-01-09T08:30:20Z
-DURATION_SEC: .130917676
+START: 2026-01-09T09:54:37Z
+END: 2026-01-09T09:54:37Z
+DURATION_SEC: .282326171
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/20494.smt2
-START: 2026-01-09T08:30:20Z
-END: 2026-01-09T08:30:22Z
-DURATION_SEC: 1.691586908
+START: 2026-01-09T09:54:37Z
+END: 2026-01-09T09:54:39Z
+DURATION_SEC: 1.630284764
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/20498.smt2
-START: 2026-01-09T08:30:22Z
-END: 2026-01-09T08:30:24Z
-DURATION_SEC: 2.722521138
+START: 2026-01-09T09:54:39Z
+END: 2026-01-09T09:54:41Z
+DURATION_SEC: 1.936579800
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/20512.smt2
-START: 2026-01-09T08:30:24Z
-END: 2026-01-09T08:30:35Z
-DURATION_SEC: 10.148103074
+START: 2026-01-09T09:54:41Z
+END: 2026-01-09T09:54:51Z
+DURATION_SEC: 10.228337723
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,9 +55,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/21157.smt2
-START: 2026-01-09T08:30:35Z
-END: 2026-01-09T08:30:45Z
-DURATION_SEC: 10.236333835
+START: 2026-01-09T09:54:51Z
+END: 2026-01-09T09:55:02Z
+DURATION_SEC: 10.193837963
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -67,9 +67,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/21345.smt2
-START: 2026-01-09T08:30:45Z
-END: 2026-01-09T08:30:46Z
-DURATION_SEC: 1.158055787
+START: 2026-01-09T09:55:02Z
+END: 2026-01-09T09:55:03Z
+DURATION_SEC: 1.342579556
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -79,9 +79,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/21382.smt2
-START: 2026-01-09T08:30:46Z
-END: 2026-01-09T08:30:47Z
-DURATION_SEC: 1.208890294
+START: 2026-01-09T09:55:03Z
+END: 2026-01-09T09:55:04Z
+DURATION_SEC: 1.346175931
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -91,9 +91,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/21489.smt2
-START: 2026-01-09T08:30:47Z
-END: 2026-01-09T08:30:51Z
-DURATION_SEC: 3.459659415
+START: 2026-01-09T09:55:04Z
+END: 2026-01-09T09:55:07Z
+DURATION_SEC: 2.011983830
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -103,13 +103,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/21922.smt2
-START: 2026-01-09T08:30:51Z
-END: 2026-01-09T08:30:53Z
-DURATION_SEC: 2.447339013
+START: 2026-01-09T09:55:07Z
+END: 2026-01-09T09:55:10Z
+DURATION_SEC: 2.969234633
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:30:53] External solver did not return a valid status. Output: ASSERTION VIOLATION
+[31m[2026-01-09 17:55:09] External solver did not return a valid status. Output: ASSERTION VIOLATION
 File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
 Line: 554
 trans_iter->get_output().size() == 1
@@ -121,9 +121,9 @@ INVALID COMMAND
 INVALID COMMAND
 (C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 693781 Segmentation fault      "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1333243 Segmentation fault      "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
 
-Task Group 41 completed at 2026-01-09 16:30:54
+Task Group 41 completed at 2026-01-09 17:55:10

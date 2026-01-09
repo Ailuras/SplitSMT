@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 99
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 16:07:14
+Started: 2026-01-09 17:56:10
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_613391.smt2
-START: 2026-01-09T08:07:14Z
-END: 2026-01-09T08:07:14Z
-DURATION_SEC: .199326842
+START: 2026-01-09T09:56:10Z
+END: 2026-01-09T09:56:11Z
+DURATION_SEC: .312008323
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,22 +19,21 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_625451.smt2
-START: 2026-01-09T08:07:14Z
-END: 2026-01-09T08:07:14Z
-DURATION_SEC: .240378728
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:11Z
+END: 2026-01-09T09:56:11Z
+DURATION_SEC: .301999760
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:14] External solver reported errors in output: (error "line 28 column 41: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_631248.smt2
-START: 2026-01-09T08:07:14Z
-END: 2026-01-09T08:07:14Z
-DURATION_SEC: .129583823
+START: 2026-01-09T09:56:11Z
+END: 2026-01-09T09:56:11Z
+DURATION_SEC: .490809725
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -44,9 +43,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_633476.smt2
-START: 2026-01-09T08:07:14Z
-END: 2026-01-09T08:07:26Z
-DURATION_SEC: 11.108672266
+START: 2026-01-09T09:56:12Z
+END: 2026-01-09T09:56:22Z
+DURATION_SEC: 10.373499585
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -56,9 +55,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_640041.smt2
-START: 2026-01-09T08:07:26Z
-END: 2026-01-09T08:07:26Z
-DURATION_SEC: .061784324
+START: 2026-01-09T09:56:22Z
+END: 2026-01-09T09:56:22Z
+DURATION_SEC: .080638102
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -68,66 +67,61 @@ error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_655377.smt2
-START: 2026-01-09T08:07:26Z
-END: 2026-01-09T08:07:26Z
-DURATION_SEC: .262637312
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:22Z
+END: 2026-01-09T09:56:23Z
+DURATION_SEC: .440207502
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:26] External solver reported errors in output: (error "line 29 column 37: unknown constant str.num_splits (string string) ")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt5.2_668598.smt2
-START: 2026-01-09T08:07:26Z
-END: 2026-01-09T08:07:26Z
-DURATION_SEC: .276002598
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:23Z
+END: 2026-01-09T09:56:23Z
+DURATION_SEC: .405198622
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:26] External solver reported errors in output: (error "line 42 column 41: unknown constant str.num_splits (string string) ")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_671875.smt2
-START: 2026-01-09T08:07:26Z
-END: 2026-01-09T08:07:26Z
-DURATION_SEC: .127158631
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:23Z
+END: 2026-01-09T09:56:23Z
+DURATION_SEC: .233121840
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:26] External solver reported errors in output: (error "line 35 column 41: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_692517.smt2
-START: 2026-01-09T08:07:26Z
-END: 2026-01-09T08:07:27Z
-DURATION_SEC: .362040745
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:23Z
+END: 2026-01-09T09:56:25Z
+DURATION_SEC: 1.090331861
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:27] External solver reported errors in output: (error "line 30 column 37: unknown constant str.num_splits (string string) ")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
 FILE: benchmarks_splitsmt/OpenAI/s1/strategy_str_split_gpt-5.2_718316.smt2
-START: 2026-01-09T08:07:27Z
-END: 2026-01-09T08:07:27Z
-DURATION_SEC: .179135492
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:56:25Z
+END: 2026-01-09T09:56:25Z
+DURATION_SEC: .134417254
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:07:27] External solver reported errors in output: (error "line 31 column 52: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
-Task Group 99 completed at 2026-01-09 16:07:27
+Task Group 99 completed at 2026-01-09 17:56:25

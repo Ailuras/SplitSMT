@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 53
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:05:50
+Started: 2026-01-09 17:55:27
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/325.smt2
-START: 2026-01-09T08:05:50Z
-END: 2026-01-09T08:05:55Z
-DURATION_SEC: 4.678790868
+START: 2026-01-09T09:55:27Z
+END: 2026-01-09T09:55:32Z
+DURATION_SEC: 5.192017140
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5089.smt2
-START: 2026-01-09T08:05:55Z
-END: 2026-01-09T08:05:56Z
-DURATION_SEC: 1.540496535
+START: 2026-01-09T09:55:32Z
+END: 2026-01-09T09:55:33Z
+DURATION_SEC: 1.431000674
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5095.smt2
-START: 2026-01-09T08:05:56Z
-END: 2026-01-09T08:05:56Z
-DURATION_SEC: .144182384
+START: 2026-01-09T09:55:33Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: .280344841
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5096.smt2
-START: 2026-01-09T08:05:56Z
-END: 2026-01-09T08:05:56Z
-DURATION_SEC: .138008299
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: .202530363
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,9 +55,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5097.smt2
-START: 2026-01-09T08:05:56Z
-END: 2026-01-09T08:05:57Z
-DURATION_SEC: .170715796
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: .308857965
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -67,9 +67,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5098.smt2
-START: 2026-01-09T08:05:57Z
-END: 2026-01-09T08:05:57Z
-DURATION_SEC: .180822525
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:35Z
+DURATION_SEC: .235397588
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -79,9 +79,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/top20_maven/5516.smt2
-START: 2026-01-09T08:05:57Z
-END: 2026-01-09T08:05:59Z
-DURATION_SEC: 2.043605778
+START: 2026-01-09T09:55:35Z
+END: 2026-01-09T09:55:37Z
+DURATION_SEC: 2.247080631
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -91,9 +91,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1045348.smt2
-START: 2026-01-09T08:05:59Z
-END: 2026-01-09T08:06:09Z
-DURATION_SEC: 10.152956754
+START: 2026-01-09T09:55:37Z
+END: 2026-01-09T09:55:47Z
+DURATION_SEC: 10.211109101
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -103,9 +103,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_1062119.smt2
-START: 2026-01-09T08:06:09Z
-END: 2026-01-09T08:06:12Z
-DURATION_SEC: 2.328562980
+START: 2026-01-09T09:55:47Z
+END: 2026-01-09T09:55:50Z
+DURATION_SEC: 2.640189336
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -115,14 +115,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1066928.smt2
-START: 2026-01-09T08:06:12Z
-END: 2026-01-09T08:06:15Z
-DURATION_SEC: 3.115189755
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-09T09:55:50Z
+END: 2026-01-09T09:55:53Z
+DURATION_SEC: 3.591315138
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:15] External solver reported errors in output: (error "line 38 column 43: unknown constant str.num_splits (string string) ")[0m
-unknown
+unsat
 ===========================================================
 
-Task Group 53 completed at 2026-01-09 16:06:15
+Task Group 53 completed at 2026-01-09 17:55:54

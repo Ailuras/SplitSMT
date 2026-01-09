@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 49
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:30:59
+Started: 2026-01-09 17:55:12
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6973.smt2
-START: 2026-01-09T08:30:59Z
-END: 2026-01-09T08:31:04Z
-DURATION_SEC: 4.690574518
+START: 2026-01-09T09:55:12Z
+END: 2026-01-09T09:55:17Z
+DURATION_SEC: 5.023972519
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,4 +19,114 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/723.smt2
-START: 2026-01-09T08:31:04Z
+START: 2026-01-09T09:55:17Z
+END: 2026-01-09T09:55:28Z
+DURATION_SEC: 10.789133255
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/768.smt2
+START: 2026-01-09T09:55:28Z
+END: 2026-01-09T09:55:29Z
+DURATION_SEC: 1.075180756
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/788.smt2
+START: 2026-01-09T09:55:29Z
+END: 2026-01-09T09:55:30Z
+DURATION_SEC: .867528691
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-09 17:55:30] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1340990 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/860.smt2
+START: 2026-01-09T09:55:30Z
+END: 2026-01-09T09:55:40Z
+DURATION_SEC: 10.166330509
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/8775.smt2
+START: 2026-01-09T09:55:40Z
+END: 2026-01-09T09:55:41Z
+DURATION_SEC: .372883339
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/8916.smt2
+START: 2026-01-09T09:55:41Z
+END: 2026-01-09T09:55:41Z
+DURATION_SEC: .156895469
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/8948.smt2
+START: 2026-01-09T09:55:41Z
+END: 2026-01-09T09:55:51Z
+DURATION_SEC: 10.146873573
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/8949.smt2
+START: 2026-01-09T09:55:51Z
+END: 2026-01-09T09:56:01Z
+DURATION_SEC: 10.113882086
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/9192.smt2
+START: 2026-01-09T09:56:01Z
+END: 2026-01-09T09:56:03Z
+DURATION_SEC: 1.572453196
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 49 completed at 2026-01-09 17:56:03

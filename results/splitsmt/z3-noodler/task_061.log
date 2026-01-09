@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 61
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:06:16
+Started: 2026-01-09 17:55:54
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_313702.smt2
-START: 2026-01-09T08:06:16Z
-END: 2026-01-09T08:06:27Z
-DURATION_SEC: 11.112059324
+START: 2026-01-09T09:55:54Z
+END: 2026-01-09T09:56:04Z
+DURATION_SEC: 10.192521017
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,22 +19,26 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_323390.smt2
-START: 2026-01-09T08:06:28Z
-END: 2026-01-09T08:06:28Z
-DURATION_SEC: .669552283
+START: 2026-01-09T09:56:04Z
+END: 2026-01-09T09:56:05Z
+DURATION_SEC: .422724424
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:28] External solver reported errors in output: (error "line 23 column 57: unknown constant str.num_splits (string string) ")[0m
+[31m[2026-01-09 17:56:05] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1353147 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_339752.smt2
-START: 2026-01-09T08:06:28Z
-END: 2026-01-09T08:06:29Z
-DURATION_SEC: .186761380
+START: 2026-01-09T09:56:05Z
+END: 2026-01-09T09:56:05Z
+DURATION_SEC: .216621982
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -44,9 +48,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_352720.smt2
-START: 2026-01-09T08:06:29Z
-END: 2026-01-09T08:06:29Z
-DURATION_SEC: .146357260
+START: 2026-01-09T09:56:05Z
+END: 2026-01-09T09:56:05Z
+DURATION_SEC: .145583286
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -56,9 +60,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_366185.smt2
-START: 2026-01-09T08:06:29Z
-END: 2026-01-09T08:06:30Z
-DURATION_SEC: 1.235792503
+START: 2026-01-09T09:56:05Z
+END: 2026-01-09T09:56:06Z
+DURATION_SEC: 1.166581597
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -68,9 +72,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_411495.smt2
-START: 2026-01-09T08:06:30Z
-END: 2026-01-09T08:06:40Z
-DURATION_SEC: 10.146561586
+START: 2026-01-09T09:56:06Z
+END: 2026-01-09T09:56:17Z
+DURATION_SEC: 10.153185491
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -80,22 +84,26 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_414114.smt2
-START: 2026-01-09T08:06:40Z
-END: 2026-01-09T08:06:40Z
-DURATION_SEC: .188520876
+START: 2026-01-09T09:56:17Z
+END: 2026-01-09T09:56:17Z
+DURATION_SEC: .527191054
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:06:40] External solver reported errors in output: (error "line 18 column 35: unknown constant str.num_splits (string string) ")[0m
+[31m[2026-01-09 17:56:17] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1357246 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_416645.smt2
-START: 2026-01-09T08:06:40Z
-END: 2026-01-09T08:06:41Z
-DURATION_SEC: .176541258
+START: 2026-01-09T09:56:17Z
+END: 2026-01-09T09:56:17Z
+DURATION_SEC: .197140331
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -105,9 +113,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_458959.smt2
-START: 2026-01-09T08:06:41Z
-END: 2026-01-09T08:06:41Z
-DURATION_SEC: .139316656
+START: 2026-01-09T09:56:17Z
+END: 2026-01-09T09:56:18Z
+DURATION_SEC: .217500245
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -117,13 +125,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_476984.smt2
-START: 2026-01-09T08:06:41Z
-END: 2026-01-09T08:06:41Z
-DURATION_SEC: .211752178
+START: 2026-01-09T09:56:18Z
+END: 2026-01-09T09:56:18Z
+DURATION_SEC: .246037862
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 61 completed at 2026-01-09 16:06:41
+Task Group 61 completed at 2026-01-09 17:56:18

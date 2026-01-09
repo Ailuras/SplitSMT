@@ -1,22 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1164648.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1497641.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:41
-END: 2026-01-09 15:53:41
-DURATION_SEC: 0.123
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1173862.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:41
-END: 2026-01-09 15:53:41
-DURATION_SEC: 0.499
+START: 2026-01-09 19:42:13
+END: 2026-01-09 19:42:13
+DURATION_SEC: 0.080
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1174592.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_152160.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:41
-END: 2026-01-09 15:53:42
-DURATION_SEC: 0.204
+START: 2026-01-09 19:42:13
+END: 2026-01-09 19:42:20
+DURATION_SEC: 6.482
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,55 +24,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_117640.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1524591.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:42
-END: 2026-01-09 15:53:42
-DURATION_SEC: 0.262
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "line 72 column 37: unknown constant num_splits (String String) ")
-(error "line 75 column 40: unknown constant split_at (String String Int) ")
-(error "line 76 column 39: unknown constant split_at (String String Int) ")
-(error "line 77 column 39: unknown constant split_at (String String Int) ")
-(error "line 78 column 39: unknown constant split_at (String String Int) ")
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1219561.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:42
-END: 2026-01-09 15:53:42
-DURATION_SEC: 0.151
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1221552.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:42
-END: 2026-01-09 15:53:43
-DURATION_SEC: 0.713
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1242060.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:43
-END: 2026-01-09 15:53:43
-DURATION_SEC: 0.170
+START: 2026-01-09 19:42:20
+END: 2026-01-09 19:42:20
+DURATION_SEC: 0.514
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -92,11 +36,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1250336.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1536240.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:43
-END: 2026-01-09 15:53:43
-DURATION_SEC: 0.166
+START: 2026-01-09 19:42:20
+END: 2026-01-09 19:42:20
+DURATION_SEC: 0.128
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -104,23 +48,71 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1259833.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1536257.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:43
-END: 2026-01-09 15:53:44
-DURATION_SEC: 0.136
+START: 2026-01-09 19:42:20
+END: 2026-01-09 19:42:22
+DURATION_SEC: 1.572
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1265060.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1541426.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:44
-END: 2026-01-09 15:53:46
-DURATION_SEC: 2.432
+START: 2026-01-09 19:42:22
+END: 2026-01-09 19:42:23
+DURATION_SEC: 0.383
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1541506.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:23
+END: 2026-01-09 19:42:23
+DURATION_SEC: 0.054
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1560732.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:23
+END: 2026-01-09 19:42:25
+DURATION_SEC: 1.887
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1595461.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:25
+END: 2026-01-09 19:42:26
+DURATION_SEC: 1.308
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1615843.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:26
+END: 2026-01-09 19:42:27
+DURATION_SEC: 0.982
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

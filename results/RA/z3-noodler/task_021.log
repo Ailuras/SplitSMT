@@ -1,134 +1,71 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34014-deviant-0.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1842261.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:00
-END: 2026-01-09 11:22:00
-DURATION_SEC: 0.092
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:36
+DURATION_SEC: 0.217
 STATUS: ERROR
-EXIT_CODE: 110
+EXIT_CODE: 1
 -----------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+unknown
+(error "line 129 column 50: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34014-deviant-1.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1842708.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:00
-END: 2026-01-09 11:22:00
-DURATION_SEC: 0.063
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:36
+DURATION_SEC: 0.267
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 134 column 69: model is not available, did you forget to enable model generation with 'model=true'?")
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_184368.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:36
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.242
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34014.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1846971.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:00
-END: 2026-01-09 11:22:10
-DURATION_SEC: 10.052
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.218
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34019-deviant-0.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1893380.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:10
-END: 2026-01-09 11:22:10
-DURATION_SEC: 0.238
-STATUS: ERROR
-EXIT_CODE: 110
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
+DURATION_SEC: 0.401
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/34019.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1921836.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:22:10
-END: 2026-01-09 11:22:20
-DURATION_SEC: 10.037
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/340.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:20
-END: 2026-01-09 11:22:30
-DURATION_SEC: 10.023
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/347.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:30
-END: 2026-01-09 11:22:40
-DURATION_SEC: 10.060
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35360.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:40
-END: 2026-01-09 11:22:42
-DURATION_SEC: 1.430
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2255359 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35365.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:42
-END: 2026-01-09 11:22:52
-DURATION_SEC: 10.099
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35367.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:22:52
-END: 2026-01-09 11:23:02
-DURATION_SEC: 10.057
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35369.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:02
-END: 2026-01-09 11:23:03
+START: 2026-01-09 19:46:37
+END: 2026-01-09 19:46:37
 DURATION_SEC: 0.238
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -137,11 +74,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35370.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1941087.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:03
-END: 2026-01-09 11:23:03
-DURATION_SEC: 0.191
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.204
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -149,11 +86,24 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35371.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1958920.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:03
-END: 2026-01-09 11:23:03
-DURATION_SEC: 0.183
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.206
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 143 column 85: model is not available, did you forget to enable model generation with 'model=true'?")
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1966221.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.220
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -161,93 +111,13 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/353.smt2
+FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1975231.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:23:03
-END: 2026-01-09 11:23:08
-DURATION_SEC: 5.044
+START: 2026-01-09 19:46:38
+END: 2026-01-09 19:46:38
+DURATION_SEC: 0.166
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35411.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:08
-END: 2026-01-09 11:23:17
-DURATION_SEC: 8.453
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2265286 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/35414.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:17
-END: 2026-01-09 11:23:17
-DURATION_SEC: 0.688
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2268292 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/356.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:18
-END: 2026-01-09 11:23:18
-DURATION_SEC: 0.137
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/3751.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:18
-END: 2026-01-09 11:23:28
-DURATION_SEC: 10.070
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/3766.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:28
-END: 2026-01-09 11:23:28
-DURATION_SEC: 0.227
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/3776.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:23:28
-END: 2026-01-09 11:23:37
-DURATION_SEC: 8.529
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2272610 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 

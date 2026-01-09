@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 48
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 16:30:54
+Started: 2026-01-09 17:55:10
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6116.smt2
-START: 2026-01-09T08:30:54Z
-END: 2026-01-09T08:30:55Z
-DURATION_SEC: .660038904
+START: 2026-01-09T09:55:10Z
+END: 2026-01-09T09:55:11Z
+DURATION_SEC: .658484986
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,16 +19,16 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6268.smt2
-START: 2026-01-09T08:30:55Z
-END: 2026-01-09T08:30:55Z
-DURATION_SEC: .246154688
+START: 2026-01-09T09:55:11Z
+END: 2026-01-09T09:55:11Z
+DURATION_SEC: .322672663
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 16:30:55] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-09 17:55:11] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  only replace_all with concrete find&replace is supported
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 694944 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1334917 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -36,9 +36,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6277.smt2
-START: 2026-01-09T08:30:55Z
-END: 2026-01-09T08:30:55Z
-DURATION_SEC: .140306926
+START: 2026-01-09T09:55:11Z
+END: 2026-01-09T09:55:11Z
+DURATION_SEC: .214742921
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,9 +48,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/633.smt2
-START: 2026-01-09T08:30:55Z
-END: 2026-01-09T08:30:57Z
-DURATION_SEC: 1.437333398
+START: 2026-01-09T09:55:11Z
+END: 2026-01-09T09:55:13Z
+DURATION_SEC: 1.103817702
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,9 +60,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/649.smt2
-START: 2026-01-09T08:30:57Z
-END: 2026-01-09T08:30:57Z
-DURATION_SEC: .522784976
+START: 2026-01-09T09:55:13Z
+END: 2026-01-09T09:55:13Z
+DURATION_SEC: .328871999
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,9 +72,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/650.smt2
-START: 2026-01-09T08:30:57Z
-END: 2026-01-09T08:30:57Z
-DURATION_SEC: .282344965
+START: 2026-01-09T09:55:13Z
+END: 2026-01-09T09:55:13Z
+DURATION_SEC: .232175972
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,9 +84,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6760.smt2
-START: 2026-01-09T08:30:57Z
-END: 2026-01-09T08:31:08Z
-DURATION_SEC: 10.186750412
+START: 2026-01-09T09:55:13Z
+END: 2026-01-09T09:55:24Z
+DURATION_SEC: 10.201843470
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,4 +96,37 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/Java/awesome/6769.smt2
-START: 2026-01-09T08:31:08Z
+START: 2026-01-09T09:55:24Z
+END: 2026-01-09T09:55:34Z
+DURATION_SEC: 10.245905839
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/685.smt2
+START: 2026-01-09T09:55:34Z
+END: 2026-01-09T09:55:44Z
+DURATION_SEC: 10.285514065
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/Java/awesome/6947.smt2
+START: 2026-01-09T09:55:44Z
+END: 2026-01-09T09:55:50Z
+DURATION_SEC: 5.389392151
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 48 completed at 2026-01-09 17:55:50

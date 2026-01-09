@@ -1,9 +1,32 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1420398.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_285268.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:40:13
-END: 2026-01-09 11:40:23
+START: 2026-01-09 19:55:20
+END: 2026-01-09 19:55:30
+DURATION_SEC: 10.021
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_378613.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:55:30
+END: 2026-01-09 19:55:30
+DURATION_SEC: 0.041
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_386632.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:55:30
+END: 2026-01-09 19:55:40
 DURATION_SEC: 10.022
 STATUS: TIMEOUT
 EXIT_CODE: 143
@@ -11,70 +34,10 @@ EXIT_CODE: 143
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1448947.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_387242.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:40:23
-END: 2026-01-09 11:40:23
-DURATION_SEC: 0.068
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1470543.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:23
-END: 2026-01-09 11:40:23
-DURATION_SEC: 0.043
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1479520.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:24
-END: 2026-01-09 11:40:24
-DURATION_SEC: 0.039
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1497641.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:24
-END: 2026-01-09 11:40:24
-DURATION_SEC: 0.048
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1517510.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:24
-END: 2026-01-09 11:40:24
-DURATION_SEC: 0.075
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_152160.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:24
-END: 2026-01-09 11:40:34
+START: 2026-01-09 19:55:40
+END: 2026-01-09 19:55:50
 DURATION_SEC: 10.023
 STATUS: TIMEOUT
 EXIT_CODE: 143
@@ -82,158 +45,68 @@ EXIT_CODE: 143
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1541426.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_396493.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.048
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-09 19:55:50
+END: 2026-01-09 19:56:00
+DURATION_SEC: 10.023
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unsat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1563266.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_434520.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.044
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1572634.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.042
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1573079.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.042
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1595461.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.075
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1617909.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.046
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_162412.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.044
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1636807.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.044
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1642536.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.045
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1650553.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.042
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1672161.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:34
-DURATION_SEC: 0.048
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1676599.smt2
-TIMEOUT: 10s
-START: 2026-01-09 11:40:34
-END: 2026-01-09 11:40:44
+START: 2026-01-09 19:56:00
+END: 2026-01-09 19:56:10
 DURATION_SEC: 10.022
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
-sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_1717798.smt2
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_447759.smt2
 TIMEOUT: 10s
-START: 2026-01-09 11:40:45
-END: 2026-01-09 11:40:45
-DURATION_SEC: 0.046
+START: 2026-01-09 19:56:10
+END: 2026-01-09 19:56:20
+DURATION_SEC: 10.021
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_453563.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:56:20
+END: 2026-01-09 19:56:30
+DURATION_SEC: 10.042
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_488100.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:56:31
+END: 2026-01-09 19:56:33
+DURATION_SEC: 2.969
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
-unsat
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_493903.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:56:34
+END: 2026-01-09 19:56:44
+DURATION_SEC: 10.024
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
 

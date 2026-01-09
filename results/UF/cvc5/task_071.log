@@ -1,22 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1539869.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_253287.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:26
-END: 2026-01-09 15:53:26
-DURATION_SEC: 0.156
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1541426.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:26
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.805
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:55
+DURATION_SEC: 0.528
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,83 +12,24 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1541506.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_277574.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.063
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1554866.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:27
-DURATION_SEC: 0.031
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1560732.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:27
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.332
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1561299.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:28
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.065
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1577166.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:28
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.138
+START: 2026-01-09 19:41:55
+END: 2026-01-09 19:41:59
+DURATION_SEC: 3.870
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1577166.smt2:9.14: Symbol `str.to_int' is shadowing a theory function symbol")
+sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1595163.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_280052.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:28
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.110
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1595461.smt2
-TIMEOUT: 10s
-START: 2026-01-09 15:53:28
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.302
+START: 2026-01-09 19:41:59
+END: 2026-01-09 19:41:59
+DURATION_SEC: 0.116
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,13 +37,85 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1614828.smt2
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_292697.smt2
 TIMEOUT: 10s
-START: 2026-01-09 15:53:28
-END: 2026-01-09 15:53:28
-DURATION_SEC: 0.029
+START: 2026-01-09 19:41:59
+END: 2026-01-09 19:42:00
+DURATION_SEC: 0.443
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_321891.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:00
+END: 2026-01-09 19:42:00
+DURATION_SEC: 0.209
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_357123.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:00
+END: 2026-01-09 19:42:00
+DURATION_SEC: 0.200
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_362699.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:01
+END: 2026-01-09 19:42:01
+DURATION_SEC: 0.397
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_418849.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:01
+END: 2026-01-09 19:42:01
+DURATION_SEC: 0.134
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_437283.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:01
+END: 2026-01-09 19:42:01
+DURATION_SEC: 0.152
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_449669.smt2
+TIMEOUT: 10s
+START: 2026-01-09 19:42:01
+END: 2026-01-09 19:42:02
+DURATION_SEC: 0.253
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 
