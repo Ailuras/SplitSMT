@@ -1,0 +1,28 @@
+(set-logic ALL)
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+(declare-fun var_0xINPUT_53242 () String)
+(assert (= T_1 (not (= "" var_0xINPUT_53242))))
+(assert (= T_2 (not T_1)))
+(assert T_2)
+(assert (= T_3 (not (= "" var_0xINPUT_53242))))
+(assert (= T_4 (not T_3)))
+(assert T_4)
+
+; --- START CONSTRAINT ---
+(declare-fun split_at (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-fun split_rest (String String Int) String)
+(declare-const delim_0 String)
+(declare-const seg0 String)
+(assert (= delim_0 "|"))
+(assert (= seg0 (split_at var_0xINPUT_53242 delim_0 0)))
+(assert (>= (num_splits var_0xINPUT_53242 delim_0) 1))
+(assert (= seg0 var_0xINPUT_53242))
+; --- END CONSTRAINT ---
+
+(check-sat)
+
+; [GENERATION STATUS: SUCCESS]

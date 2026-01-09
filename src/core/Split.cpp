@@ -479,7 +479,7 @@ void SplitSolver::replaceNumSplitVarNodes(
         auto arg2 = node->getChild(1);
         DEBUG("NumSplit Node: ", ctx.getParser().getString(node));
 
-        if (arg1->isVar() && arg2->isConst()) {
+        if (arg1->isVar()) {
           std::string variable = arg1->toString();
           std::string delimiter = normalizeDelimiterLiteral(
               ctx.getParser().getString(node->getChild(1)));

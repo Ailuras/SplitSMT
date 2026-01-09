@@ -1,0 +1,243 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/20512.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:00
+END: 2026-01-09 11:31:00
+DURATION_SEC: 0.099
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21157.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:00
+END: 2026-01-09 11:31:00
+DURATION_SEC: 0.097
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21168.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:00
+END: 2026-01-09 11:31:00
+DURATION_SEC: 0.062
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21345.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:00
+END: 2026-01-09 11:31:00
+DURATION_SEC: 0.308
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21382.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:00
+END: 2026-01-09 11:31:01
+DURATION_SEC: 0.281
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21489.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:01
+END: 2026-01-09 11:31:01
+DURATION_SEC: 0.118
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/21922.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:01
+END: 2026-01-09 11:31:01
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/2344.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:01
+END: 2026-01-09 11:31:01
+DURATION_SEC: 0.211
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/2371.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:01
+END: 2026-01-09 11:31:01
+DURATION_SEC: 0.105
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/2376.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:01
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.151
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/2402.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.209
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/245.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/278.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.078
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/307.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.081
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/3122.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/33306.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:02
+DURATION_SEC: 0.104
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/33328.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:02
+END: 2026-01-09 11:31:05
+DURATION_SEC: 2.245
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2408062 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/33720.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:05
+END: 2026-01-09 11:31:06
+DURATION_SEC: 0.278
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/337.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:06
+END: 2026-01-09 11:31:06
+DURATION_SEC: 0.145
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/Java/awesome/34010.smt2
+TIMEOUT: 10s
+START: 2026-01-09 11:31:06
+END: 2026-01-09 11:31:06
+DURATION_SEC: 0.121
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+

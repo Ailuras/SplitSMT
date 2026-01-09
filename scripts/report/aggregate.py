@@ -229,8 +229,8 @@ def classify_result(raw_output: str, status: str) -> str:
     if not raw_output:
         return "UNKNOWN"
 
-    found_result = "UNKNOWN"
-    
+    found_results = set()
+
     for line in raw_output.splitlines():
         stripped = line.strip()
         if not stripped:
@@ -244,20 +244,24 @@ def classify_result(raw_output: str, status: str) -> str:
             return "ERROR"
             
         # Check for standard results
-        # We split by whitespace to handle potential trailing comments or weird formatting
         parts = stripped.split()
         if not parts:
             continue
             
         candidate = parts[0].upper()
-        if candidate in VALID_RESULTS:
-            found_result = candidate
-            # We don't break immediately because an error might appear later 
-            # (though usually error appears first, z3 might output error then continue)
-            # If we want to be strict about "any error = ERROR", we must scan everything.
-            # If we find a result, we keep it, but if we find an error later, we return ERROR.
+        if candidate in ["SAT", "UNSAT"]:
+            found_results.add(candidate)
+            
+    if "SAT" in found_results and "UNSAT" in found_results:
+        return "UNKNOWN"
     
-    return found_result
+    # If we have only one type of result, return it
+    if "SAT" in found_results:
+        return "SAT"
+    if "UNSAT" in found_results:
+        return "UNSAT"
+        
+    return "UNKNOWN"
 
 
 def classify_consistency(results: List[str]) -> str:

@@ -31,21 +31,53 @@ def parse_args() -> argparse.Namespace:
         help="Excel file produced by scripts/report/aggregate.py",
     )
     parser.add_argument(
+        "-t",
         "--targets",
         nargs="+",
-        default=["Error", "Hard"],
-        help="Consistency labels to target for deletion (default: Error Hard).",
+        default=None,
+        help="Consistency labels to target for deletion (e.g. Error Hard).",
+    )
+    parser.add_argument(
+        "-s",
+        "--solver",
+        type=str,
+        help="Solver name to filter by (must be used with --result).",
+    )
+    parser.add_argument(
+        "-r",
+        "--result",
+        type=str,
+        help="Solver result to filter by (must be used with --solver).",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Only show what would be deleted, do not actually delete.",
     )
-    return parser.parse_args()
+    
+    args = parser.parse_args()
+    
+    # Validation
+    has_targets = args.targets is not None
+    has_solver = args.solver is not None
+    has_result = args.result is not None
+    
+    if not has_targets and not (has_solver or has_result):
+        parser.error("You must specify either --targets or (--solver and --result).")
+        
+    if has_targets and (has_solver or has_result):
+        parser.error("Cannot use --targets together with --solver/--result.")
+        
+    if (has_solver and not has_result) or (has_result and not has_solver):
+        parser.error("Both --solver and --result must be specified together.")
+        
+    return args
 
 def collect_targets(
     xlsx_file: Path,
-    target_labels: List[str],
+    target_labels: Optional[List[str]] = None,
+    solver: Optional[str] = None,
+    result: Optional[str] = None,
 ) -> List[TargetedFile]:
     workbook = load_workbook(xlsx_file, read_only=True, data_only=True)
     try:
@@ -61,34 +93,63 @@ def collect_targets(
         }
         path_col = headers.get("path")
         filename_col = headers.get("filename")
+        
+        # Determine filtering mode columns
         consistency_col = headers.get("consistency")
-
-        if path_col is None or filename_col is None or consistency_col is None:
-            print("error: 'path', 'filename', or 'consistency' column not found", file=sys.stderr)
+        solver_col = None
+        
+        if solver:
+            solver_col_name = f"{solver}_result"
+            solver_col = headers.get(solver_col_name)
+            if solver_col is None:
+                print(f"error: Column '{solver_col_name}' not found for solver '{solver}'", file=sys.stderr)
+                sys.exit(1)
+        
+        if path_col is None or filename_col is None:
+            print("error: 'path' or 'filename' column not found", file=sys.stderr)
             sys.exit(1)
+            
+        if target_labels and consistency_col is None:
+             print("error: 'consistency' column not found (required for --targets)", file=sys.stderr)
+             sys.exit(1)
 
         targets: List[TargetedFile] = []
-        normalized_targets = {t.upper().strip() for t in target_labels}
+        normalized_targets = {t.upper().strip() for t in target_labels} if target_labels else set()
+        normalized_result = result.upper().strip() if result else None
 
         for row in worksheet.iter_rows(min_row=2):
             path_cell = row[path_col - 1].value
-            filename_cell = row[filename_col - 1].value
-            consistency_cell = row[consistency_col - 1].value
-
             if not path_cell:
                 continue
 
-            consistency_val = str(consistency_cell).strip() if consistency_cell else "Other"
+            path_str = str(path_cell).strip()
+            filename_cell = row[filename_col - 1].value
+            filename_str = str(filename_cell).strip() if filename_cell else ""
+            source_path = Path(path_str).expanduser()
             
-            if consistency_val.upper() in normalized_targets:
-                path_str = str(path_cell).strip()
-                filename_str = str(filename_cell).strip() if filename_cell else ""
-                
-                source_path = Path(path_str).expanduser()
-                
+            should_delete = False
+            reason = ""
+            
+            # Mode 1: Consistency targets
+            if target_labels:
+                consistency_cell = row[consistency_col - 1].value
+                consistency_val = str(consistency_cell).strip() if consistency_cell else "Other"
+                if consistency_val.upper() in normalized_targets:
+                    should_delete = True
+                    reason = consistency_val
+            
+            # Mode 2: Solver result
+            elif solver and normalized_result:
+                val_cell = row[solver_col - 1].value
+                val_str = str(val_cell).upper().strip() if val_cell else ""
+                if val_str == normalized_result:
+                    should_delete = True
+                    reason = f"{solver}={val_str}"
+            
+            if should_delete:
                 targets.append(TargetedFile(
                     source=source_path,
-                    consistency=consistency_val,
+                    consistency=reason,
                     filename=filename_str
                 ))
 
@@ -140,9 +201,15 @@ def main():
         print(f"error: Excel file not found: {args.xlsx_file}", file=sys.stderr)
         return 1
         
-    print(f"Scanning {args.xlsx_file} for targets: {', '.join(args.targets)}")
+    desc_str = ""
+    if args.targets:
+        desc_str = f"targets: {', '.join(args.targets)}"
+    else:
+        desc_str = f"solver: {args.solver}, result: {args.result}"
+        
+    print(f"Scanning {args.xlsx_file} for {desc_str}")
     
-    targets = collect_targets(args.xlsx_file, args.targets)
+    targets = collect_targets(args.xlsx_file, args.targets, args.solver, args.result)
     
     if not targets:
         print("No matching files found.")
