@@ -1,0 +1,204 @@
+(set-option :produce-unsat-cores true) ; enable generation of unsat cores
+(set-option :produce-models true) ; enable model generation
+(set-logic ALL)
+(define-const delta String "\u{2FFFF}")
+
+(define-fun convert_for_split ((s String) (sep String)) String
+  (str.replace_all s sep delta))
+
+(define-fun count_matches ((s String)) Int
+  (ite (= (str.len s) 0) 0
+    (let ((len_s (str.len s))
+          (len_removed (str.len (str.replace_all s delta ""))))
+      (- len_s len_removed))))
+
+(define-fun-rec nth_match_start ((s String) (n Int) (from Int)) Int
+  (ite (<= n 0) (- 1)
+    (let ((p (str.indexof s delta from)))
+      (ite (= n 1) p
+        (nth_match_start s (- n 1) (+ p (str.len delta)))))))
+
+(define-fun split_at ((s String) (sep String) (k Int)) String
+  (ite (or (< k 0) (= (str.len sep) 0)) ""
+    (let ((tmp (convert_for_split s sep)))
+      (let ((num (+ 1 (count_matches tmp))))
+        (ite (>= k num) ""
+          (let ((start_match_k (nth_match_start tmp k 0)))
+            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
+              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
+                (let ((end_k (ite (= start_match_next (- 1))
+                                  (str.len tmp)
+                                  start_match_next)))
+                  (ite (< end_k start_k)
+                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
+                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
+
+(define-fun-rec replace_iter ((s String) (sep String) (i Int)) String
+  (ite (<= i 0) s
+    (replace_iter (str.replace s sep delta) sep (- i 1))))
+
+(define-fun split_rest ((s String) (sep String) (k Int)) String
+  (ite (or (< k 0) (= (str.len sep) 0)) ""
+    (let ((tmp (convert_for_split s sep)))
+      (let ((num (count_matches tmp)))
+        (ite (< num k) ""
+          (let ((s_iter (replace_iter s sep k)))
+            (let ((start_match_k (nth_match_start s_iter k 0)))
+              (let ((lens (str.len s_iter)))
+                (ite (< start_match_k 0) s
+                  (str.substr s_iter (+ start_match_k 1)
+                              (- lens start_match_k 1)))))))))))
+
+(define-fun num_splits ((s String) (sep String)) Int
+  (let ((tmp (convert_for_split s sep)))
+    (+ 1 (count_matches tmp))))
+
+(define-fun convert_for_split_re ((s String) (r (RegEx String))) String
+  (str.replace_re_all s r delta))
+
+(define-fun-rec replace_iter_re ((s String) (r (RegEx String)) (i Int)) String
+  (ite (<= i 0) s
+    (replace_iter_re (str.replace_re s r delta) r (- i 1))))
+
+(define-fun split_at_re ((s String) (r (RegEx String)) (k Int)) String
+  (ite (< k 0) ""
+    (let ((tmp (convert_for_split_re s r)))
+      (let ((num (+ 1 (count_matches tmp))))
+        (ite (>= k num) ""
+          (let ((start_match_k (nth_match_start tmp k 0)))
+            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
+              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
+                (let ((end_k (ite (= start_match_next (- 1))
+                                  (str.len tmp)
+                                  start_match_next)))
+                  (ite (< end_k start_k)
+                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
+                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
+
+(define-fun split_rest_re ((s String) (r (RegEx String)) (k Int)) String
+  (ite (< k 0) ""
+    (let ((tmp (convert_for_split_re s r)))
+      (let ((num (count_matches tmp)))
+        (ite (< num k) ""
+          (let ((s_iter (replace_iter_re s r k)))
+            (let ((start_match_k (nth_match_start s_iter k 0)))
+              (let ((lens (str.len s_iter)))
+                (ite (< start_match_k 0) s
+                  (str.substr s_iter (+ start_match_k 1)
+                              (- lens start_match_k 1)))))))))))
+
+(define-fun num_splits_re ((s String) (r (RegEx String))) Int
+  (let ((tmp (convert_for_split_re s r)))
+    (+ 1 (count_matches tmp))))
+(declare-fun split_at_re (String RegLan Int) String)
+(declare-fun split_rest_re (String RegLan Int) String)
+(declare-fun num_splits_re (String RegLan) Int)
+
+(define-fun get_split_length ((x String) (d String) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (num_splits x d) limit)
+         (num_splits x d)
+         limit)
+    (num_splits x d)
+  )
+)
+
+(define-fun get_split_element ((x String) (d String) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (num_splits x d) limit))
+    (split_rest x d (- limit 1))
+    (split_at x d i)
+  )
+)
+
+(define-fun get_split_length_re ((x String) (d RegLan) (limit Int)) Int
+  (ite
+    (> limit 0)
+    (ite (< (num_splits_re x d) limit)
+         (num_splits_re x d)
+         limit)
+    (num_splits_re x d)
+  )
+)
+
+(define-fun get_split_element_re ((x String) (d RegLan) (limit Int) (i Int)) String
+  (ite
+    (and (> limit 0)
+         (= i (- limit 1))
+         (>= (num_splits_re x d) limit))
+    (split_rest_re x d (- limit 1))
+    (split_at_re x d i)
+  )
+)
+
+(declare-sort var163 0)
+(declare-sort var292 0)
+(declare-sort void 0)
+(declare-sort Iterator 0)
+(declare-sort ClassObject 0)
+(declare-fun var292-init () var292)
+(declare-fun <init>/598147663 (var292) void)
+(define-fun startsWith/-1785782452 ((s String) (prefix String)) Bool (str.prefixof prefix s))
+(define-fun length/-134980193 ((s String)) Int (str.len s))
+(define-fun substring/850833817 ((s String) (begin Int)) String (str.substr s begin (- (str.len s) begin)))
+(declare-fun setWord/-781399982 (var292 String) void)
+(declare-fun setValue/611793815 (var292 String) void)
+(declare-const null-String String)
+(declare-const var2942 String) ; Statement: r1 := @parameter0: java.lang.String 
+(assert (not (= var2942 null-String)))
+(define-const var2656 var292 var292-init) ; Statement: $r0 = new edu.stanford.nlp.ling.CoreLabel 
+(assert true)
+;(assert (<init>/598147663 var2656)) ; Statement: specialinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void <init>()>() 
+
+(declare-const var2656!1 var292)
+; split operation: var890 = var2942.split("\u005c|\u005c|\u005c|") ; Statement: r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|\\|\\|") 
+(define-const var3374 Int (get_split_length_re var2942 (re.++ (str.to_re "\u{5C}") (str.to_re "|") (str.to_re "\u{5C}") (str.to_re "|") (str.to_re "\u{5C}") (str.to_re "|")) (- 1))) ; Statement: i0 = lengthof r2 
+(define-const var1106 Int 0) ; Statement: i8 = 0 
+(assert true) ; Non Conditional
+ ; Statement: if i8 >= i0 goto return $r0 
+(assert (not (>= var1106 var3374))) ; Negate: Cond: i8 >= i0  
+(define-const var2287 String (get_split_element_re var2942 (re.++ (str.to_re "\u{5C}") (str.to_re "|") (str.to_re "\u{5C}") (str.to_re "|") (str.to_re "\u{5C}") (str.to_re "|")) (- 1) var1106)) ; Statement: r3 = r2[i8] 
+(assert true)
+(define-const var2604 Bool (startsWith/-1785782452 var2287 "word:::")) ; Statement: $z0 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("word:::") 
+ ; Statement: if $z0 == 0 goto $z1 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("tag:::") 
+(assert (not (= (ite var2604 1 0) 0))) ; Negate: Cond: $z0 == 0  
+(define-const var2311 String "word:::") ; Statement: $r13 = "word:::" 
+(assert true)
+(define-const var2776 Int (length/-134980193 var2311)) ; Statement: $i6 = virtualinvoke $r13.<java.lang.String: int length()>() 
+(assert (and true (and (>= var2776 0) (>= (str.len var2287) var2776))))
+(define-const var805 String (substring/850833817 var2287 var2776)) ; Statement: $r14 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i6) 
+(assert true)
+;(assert (setWord/-781399982 var2656!1 var805)) ; Statement: virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setWord(java.lang.String)>($r14) 
+
+(declare-const var2656!2 var292)
+(declare-const var805!1 String)
+(define-const var2568 String "word:::") ; Statement: $r15 = "word:::" 
+(assert true)
+(define-const var1006 Int (length/-134980193 var2568)) ; Statement: $i7 = virtualinvoke $r15.<java.lang.String: int length()>() 
+(assert (and true (and (>= var1006 0) (>= (str.len var2287) var1006))))
+(define-const var1781 String (substring/850833817 var2287 var1006)) ; Statement: $r16 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i7) 
+(assert true)
+;(assert (setValue/611793815 var2656!2 var1781)) ; Statement: virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setValue(java.lang.String)>($r16) 
+
+(declare-const var2656!3 var292)
+(declare-const var1781!1 String)
+ ; Statement: goto [?= i8 = i8 + 1] 
+(assert true) ; Non Conditional
+(define-const var1106!1 Int (+ var1106 1)) ; Statement: i8 = i8 + 1 
+ ; Statement: goto [?= (branch)] 
+(assert true) ; Non Conditional
+ ; Statement: if i8 >= i0 goto return $r0 
+(assert (>= var1106!1 var3374)) ; Cond: i8 >= i0 
+ ; Statement: return $r0 
+(check-sat)
+; {var292-init=([], edu.stanford.nlp.ling.CoreLabel), <init>/598147663=([edu.stanford.nlp.ling.CoreLabel], void), startsWith/-1785782452=([java.lang.String, java.lang.String], boolean), length/-134980193=([java.lang.String], int), substring/850833817=([java.lang.String, int], java.lang.String), setWord/-781399982=([edu.stanford.nlp.ling.CoreLabel, java.lang.String], void), setValue/611793815=([edu.stanford.nlp.ling.CoreLabel, java.lang.String], void)}
+; {var2942=r1, var163=null_type, var292=edu.stanford.nlp.ling.CoreLabel, var2656=$r0, var890=r2, var3374=i0, var1106=i8, var2287=r3, var2604=$z0, var2311=$r13, var2776=$i6, var805=$r14, var2568=$r15, var1006=$i7, var1781=$r16}
+; {r1=var2942, null_type=var163, edu.stanford.nlp.ling.CoreLabel=var292, $r0=var2656, r2=var890, i0=var3374, i8=var1106, r3=var2287, $z0=var2604, $r13=var2311, $i6=var2776, $r14=var805, $r15=var2568, $i7=var1006, $r16=var1781}
+;seq <java.lang.String: java.lang.String[] split(java.lang.String)>;	<java.lang.String: boolean startsWith(java.lang.String)>;	<java.lang.String: int length()>;	<java.lang.String: java.lang.String substring(int)>;	<java.lang.String: int length()>;	<java.lang.String: java.lang.String substring(int)>
+;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean startsWith(java.lang.String)>": 1,"<java.lang.String: int length()>": 2,"<java.lang.String: java.lang.String substring(int)>": 2}
+;stmts r1 := @parameter0: java.lang.String;	$r0 = new edu.stanford.nlp.ling.CoreLabel;	specialinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|\\|\\|");	i0 = lengthof r2;	i8 = 0;	if i8 >= i0 goto return $r0;	r3 = r2[i8];	$z0 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("word:::");	if $z0 == 0 goto $z1 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("tag:::");	$r13 = "word:::";	$i6 = virtualinvoke $r13.<java.lang.String: int length()>();	$r14 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i6);	virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setWord(java.lang.String)>($r14);	$r15 = "word:::";	$i7 = virtualinvoke $r15.<java.lang.String: int length()>();	$r16 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i7);	virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setValue(java.lang.String)>($r16);	goto [?= i8 = i8 + 1];	i8 = i8 + 1;	goto [?= (branch)];	if i8 >= i0 goto return $r0;	return $r0
+;block_num 7
+(exit)
