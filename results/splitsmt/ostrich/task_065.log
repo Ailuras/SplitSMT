@@ -1,135 +1,138 @@
 ===========================================================
 Task Group 65
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-09 17:59:36
+Started: 2026-01-15 19:40:54
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1031938.smt2
-START: 2026-01-09T09:59:36Z
-END: 2026-01-09T09:59:39Z
-DURATION_SEC: 2.760484911
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1034893.smt2
-START: 2026-01-09T09:59:39Z
-END: 2026-01-09T09:59:40Z
-DURATION_SEC: 1.410444735
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_2043418.smt2
+START: 2026-01-15T11:40:54Z
+END: 2026-01-15T11:41:05Z
+DURATION_SEC: 10.266024305
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:59:40] External solver did not return a valid status. Output: = cannot be applied to re_++(str_to_re(str_cons(mod_cast(0, 65535, 32), str_empty)), re_+(re_range(str_cons(mod_cast(0, 65535, 48), str_empty), str_cons(mod_cast(0, 65535, 57), str_empty)))), cl_digits_re
+[31m[2026-01-15 19:41:05] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_2072952.smt2
+START: 2026-01-15T11:41:05Z
+END: 2026-01-15T11:41:06Z
+DURATION_SEC: 1.159746141
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:06] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_2077998.smt2
+START: 2026-01-15T11:41:06Z
+END: 2026-01-15T11:41:16Z
+DURATION_SEC: 10.202614431
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:16] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_240289.smt2
+START: 2026-01-15T11:41:16Z
+END: 2026-01-15T11:41:18Z
+DURATION_SEC: 1.524476321
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:18] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_253287.smt2
+START: 2026-01-15T11:41:18Z
+END: 2026-01-15T11:41:19Z
+DURATION_SEC: 1.272634785
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:19] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_277574.smt2
+START: 2026-01-15T11:41:19Z
+END: 2026-01-15T11:41:29Z
+DURATION_SEC: 10.143427943
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:29] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_280052.smt2
+START: 2026-01-15T11:41:29Z
+END: 2026-01-15T11:41:30Z
+DURATION_SEC: 1.181447574
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:30] External solver did not return a valid status. Output: = cannot be applied to digit_re, re_union(str_to_re(str_cons(mod_cast(0, 65535, 48), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 49), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 50), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 51), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 52), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 53), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 54), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 55), str_empty)), re_union(str_to_re(str_cons(mod_cast(0, 65535, 56), str_empty)), str_to_re(str_cons(mod_cast(0, 65535, 57), str_empty)))))))))))
 [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1036937.smt2
-START: 2026-01-09T09:59:40Z
-END: 2026-01-09T09:59:42Z
-DURATION_SEC: 1.440604779
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_292697.smt2
+START: 2026-01-15T11:41:30Z
+END: 2026-01-15T11:41:32Z
+DURATION_SEC: 1.267762378
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:59:42] External solver did not return a valid status. Output: to_int expects a term of type Real, not cl_val_sat
-[0m
+[31m[2026-01-15 19:41:32] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1048410.smt2
-START: 2026-01-09T09:59:42Z
-END: 2026-01-09T09:59:44Z
-DURATION_SEC: 2.087879047
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1049044.smt2
-START: 2026-01-09T09:59:44Z
-END: 2026-01-09T09:59:45Z
-DURATION_SEC: 1.379243694
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_321891.smt2
+START: 2026-01-15T11:41:32Z
+END: 2026-01-15T11:41:33Z
+DURATION_SEC: 1.391598755
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:59:45] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:41:33] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1054811.smt2
-START: 2026-01-09T09:59:45Z
-END: 2026-01-09T09:59:56Z
-DURATION_SEC: 10.176706769
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_357123.smt2
+START: 2026-01-15T11:41:33Z
+END: 2026-01-15T11:41:34Z
+DURATION_SEC: 1.346068845
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:59:56] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:41:34] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1066438.smt2
-START: 2026-01-09T09:59:56Z
-END: 2026-01-09T09:59:57Z
-DURATION_SEC: 1.713979240
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1067152.smt2
-START: 2026-01-09T09:59:57Z
-END: 2026-01-09T09:59:57Z
-DURATION_SEC: .043081517
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in str_replace_re_all" in line 1.
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1076105.smt2
-START: 2026-01-09T09:59:57Z
-END: 2026-01-09T09:59:59Z
-DURATION_SEC: 1.839929800
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1079807.smt2
-START: 2026-01-09T09:59:59Z
-END: 2026-01-09T10:00:00Z
-DURATION_SEC: 1.170349198
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 18:00:00] External solver did not return a valid status. Output: to_int expects a term of type Real, not content_length_str_sat
-[0m
-unknown
-===========================================================
-
-Task Group 65 completed at 2026-01-09 18:00:00
+Task Group 65 completed at 2026-01-15 19:41:34

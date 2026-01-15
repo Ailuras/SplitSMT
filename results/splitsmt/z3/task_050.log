@@ -1,15 +1,27 @@
 ===========================================================
 Task Group 50
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 17:54:17
+Started: 2026-01-15 19:36:37
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/9338.smt2
-START: 2026-01-09T09:54:17Z
-END: 2026-01-09T09:54:18Z
-DURATION_SEC: .267520390
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1317164.smt2
+START: 2026-01-15T11:36:37Z
+END: 2026-01-15T11:36:37Z
+DURATION_SEC: .271940678
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1319320.smt2
+START: 2026-01-15T11:36:37Z
+END: 2026-01-15T11:36:47Z
+DURATION_SEC: 10.131674587
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +30,22 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/9391.smt2
-START: 2026-01-09T09:54:18Z
-END: 2026-01-09T09:54:18Z
-DURATION_SEC: .310419192
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1323588.smt2
+START: 2026-01-15T11:36:47Z
+END: 2026-01-15T11:36:48Z
+DURATION_SEC: .275444270
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_133020.smt2
+START: 2026-01-15T11:36:48Z
+END: 2026-01-15T11:36:49Z
+DURATION_SEC: .828992593
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,10 +54,22 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/9409.smt2
-START: 2026-01-09T09:54:18Z
-END: 2026-01-09T09:54:18Z
-DURATION_SEC: .274513469
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1349051.smt2
+START: 2026-01-15T11:36:49Z
+END: 2026-01-15T11:36:49Z
+DURATION_SEC: .224551506
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_140584.smt2
+START: 2026-01-15T11:36:49Z
+END: 2026-01-15T11:36:49Z
+DURATION_SEC: .261247090
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +78,22 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/10560.smt2
-START: 2026-01-09T09:54:18Z
-END: 2026-01-09T09:54:19Z
-DURATION_SEC: .180301451
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1439356.smt2
+START: 2026-01-15T11:36:49Z
+END: 2026-01-15T11:36:50Z
+DURATION_SEC: .316418499
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1443894.smt2
+START: 2026-01-15T11:36:50Z
+END: 2026-01-15T11:37:00Z
+DURATION_SEC: 10.275950277
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,10 +102,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/10596.smt2
-START: 2026-01-09T09:54:19Z
-END: 2026-01-09T09:54:19Z
-DURATION_SEC: .200622007
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1457081.smt2
+START: 2026-01-15T11:37:00Z
+END: 2026-01-15T11:37:01Z
+DURATION_SEC: .493800818
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,62 +114,14 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/1118.smt2
-START: 2026-01-09T09:54:19Z
-END: 2026-01-09T09:54:19Z
-DURATION_SEC: .263224389
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1457183.smt2
+START: 2026-01-15T11:37:01Z
+END: 2026-01-15T11:37:01Z
+DURATION_SEC: .254318898
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+unsat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/11724.smt2
-START: 2026-01-09T09:54:19Z
-END: 2026-01-09T09:54:19Z
-DURATION_SEC: .195350478
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/12319.smt2
-START: 2026-01-09T09:54:19Z
-END: 2026-01-09T09:54:20Z
-DURATION_SEC: .169601328
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/12328.smt2
-START: 2026-01-09T09:54:20Z
-END: 2026-01-09T09:54:20Z
-DURATION_SEC: .307583868
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/top20_gh/12336.smt2
-START: 2026-01-09T09:54:20Z
-END: 2026-01-09T09:54:20Z
-DURATION_SEC: .223592267
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 50 completed at 2026-01-09 17:54:20
+Task Group 50 completed at 2026-01-15 19:37:01

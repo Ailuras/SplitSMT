@@ -1,23 +1,71 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_927446.smt2
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_914032.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:53
-END: 2026-01-09 19:52:53
-DURATION_SEC: 0.093
+START: 2026-01-15 19:09:04
+END: 2026-01-15 19:09:05
+DURATION_SEC: 1.459
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_921516.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:06
+DURATION_SEC: 0.079
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_951127.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:06
+DURATION_SEC: 0.064
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_973300.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:06
+DURATION_SEC: 0.167
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_975951.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:06
+DURATION_SEC: 0.238
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
-(error "line 139 column 50: model is not available, did you forget to enable model generation with 'model=true'?")
+unknown
+(error "line 118 column 14: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_929795.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1021023.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:53
-END: 2026-01-09 19:52:53
-DURATION_SEC: 0.384
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:06
+DURATION_SEC: 0.274
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -25,23 +73,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_937415.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1060381.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:53
-END: 2026-01-09 19:52:53
-DURATION_SEC: 0.141
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_965979.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:52:53
-END: 2026-01-09 19:52:54
-DURATION_SEC: 0.646
+START: 2026-01-15 19:09:06
+END: 2026-01-15 19:09:07
+DURATION_SEC: 0.170
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -49,47 +85,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s0/strategy_str_split_deepseek-chat_994211.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1081790.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:54
-END: 2026-01-09 19:52:54
-DURATION_SEC: 0.304
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1021023.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:52:55
-END: 2026-01-09 19:52:55
-DURATION_SEC: 0.334
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1060381.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:52:55
-END: 2026-01-09 19:52:55
-DURATION_SEC: 0.201
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1081790.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:52:55
-END: 2026-01-09 19:52:55
-DURATION_SEC: 0.082
+START: 2026-01-15 19:09:07
+END: 2026-01-15 19:09:07
+DURATION_SEC: 0.085
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -97,11 +97,11 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1087030.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1087030.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:55
-END: 2026-01-09 19:52:55
-DURATION_SEC: 0.095
+START: 2026-01-15 19:09:07
+END: 2026-01-15 19:09:07
+DURATION_SEC: 0.093
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -109,11 +109,11 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/DeepSeek/s1/strategy_str_split_deepseek-chat_1092219.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1092219.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:52:55
-END: 2026-01-09 19:52:56
-DURATION_SEC: 0.146
+START: 2026-01-15 19:09:07
+END: 2026-01-15 19:09:07
+DURATION_SEC: 0.106
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

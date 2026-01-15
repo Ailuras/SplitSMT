@@ -1,129 +1,134 @@
 ===========================================================
 Task Group 73
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-09 17:56:25
+Started: 2026-01-15 19:38:43
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1688367.smt2
-START: 2026-01-09T09:56:25Z
-END: 2026-01-09T09:56:25Z
-DURATION_SEC: .101278295
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1688995.smt2
-START: 2026-01-09T09:56:25Z
-END: 2026-01-09T09:56:25Z
-DURATION_SEC: .138824058
+FILE: benchmarks_splitsmt/RealWorld/awesome/21157.smt2
+START: 2026-01-15T11:38:43Z
+END: 2026-01-15T11:38:43Z
+DURATION_SEC: .169889082
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:56:25] External solver reported errors in output: (error "parse error: /tmp/smt2_unyc8w.smt2:60.62: symbol 'regex' not declared as a type")[0m
+[31m[2026-01-15 19:38:43] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_169166.smt2
-START: 2026-01-09T09:56:25Z
-END: 2026-01-09T09:56:26Z
-DURATION_SEC: .251624367
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1712097.smt2
-START: 2026-01-09T09:56:26Z
-END: 2026-01-09T09:56:26Z
-DURATION_SEC: .137963478
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1745151.smt2
-START: 2026-01-09T09:56:26Z
-END: 2026-01-09T09:56:26Z
-DURATION_SEC: .145324196
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1745778.smt2
-START: 2026-01-09T09:56:26Z
-END: 2026-01-09T09:56:29Z
-DURATION_SEC: 2.854857053
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1747235.smt2
-START: 2026-01-09T09:56:29Z
-END: 2026-01-09T09:56:39Z
-DURATION_SEC: 10.247808360
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1765086.smt2
-START: 2026-01-09T09:56:39Z
-END: 2026-01-09T09:56:40Z
-DURATION_SEC: .144317058
+FILE: benchmarks_splitsmt/RealWorld/awesome/21345.smt2
+START: 2026-01-15T11:38:43Z
+END: 2026-01-15T11:38:43Z
+DURATION_SEC: .162032930
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:56:39] External solver reported errors in output: (error "parse error: /tmp/smt2_ey3xzz.smt2:84.14: symbol `to_int' is shadowing a theory function symbol")[0m
+[31m[2026-01-15 19:38:43] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1778749.smt2
-START: 2026-01-09T09:56:40Z
-END: 2026-01-09T09:56:40Z
-DURATION_SEC: .224921933
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_splitsmt/RealWorld/awesome/21382.smt2
+START: 2026-01-15T11:38:43Z
+END: 2026-01-15T11:38:43Z
+DURATION_SEC: .137311282
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+[31m[2026-01-15 19:38:43] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1781893.smt2
-START: 2026-01-09T09:56:40Z
-END: 2026-01-09T09:56:40Z
-DURATION_SEC: .540388900
+FILE: benchmarks_splitsmt/RealWorld/awesome/21489.smt2
+START: 2026-01-15T11:38:43Z
+END: 2026-01-15T11:38:44Z
+DURATION_SEC: .366004628
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
-Task Group 73 completed at 2026-01-09 17:56:40
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/21922.smt2
+START: 2026-01-15T11:38:44Z
+END: 2026-01-15T11:38:44Z
+DURATION_SEC: .130680014
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:38:44] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/2344.smt2
+START: 2026-01-15T11:38:44Z
+END: 2026-01-15T11:38:45Z
+DURATION_SEC: .919111035
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/2371.smt2
+START: 2026-01-15T11:38:45Z
+END: 2026-01-15T11:38:45Z
+DURATION_SEC: .181904623
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:38:45] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/2376.smt2
+START: 2026-01-15T11:38:45Z
+END: 2026-01-15T11:38:45Z
+DURATION_SEC: .243014188
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:38:45] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/2402.smt2
+START: 2026-01-15T11:38:45Z
+END: 2026-01-15T11:38:45Z
+DURATION_SEC: .132033107
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:38:45] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/245.smt2
+START: 2026-01-15T11:38:46Z
+END: 2026-01-15T11:38:46Z
+DURATION_SEC: .263058662
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 73 completed at 2026-01-15 19:38:46

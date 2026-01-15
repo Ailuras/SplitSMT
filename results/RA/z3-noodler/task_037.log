@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s1/strategy_str_split_deepseek-chat_898126.smt2
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:44
-END: 2026-01-09 19:46:45
-DURATION_SEC: 0.658
+START: 2026-01-15 19:03:53
+END: 2026-01-15 19:03:54
+DURATION_SEC: 0.958
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:45
-END: 2026-01-09 19:46:45
-DURATION_SEC: 0.221
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:54
+DURATION_SEC: 0.187
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:45
-END: 2026-01-09 19:46:45
-DURATION_SEC: 0.261
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.254
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +36,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:45
-END: 2026-01-09 19:46:45
-DURATION_SEC: 0.276
+START: 2026-01-15 19:03:55
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.303
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,26 +48,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/10778.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:45
-END: 2026-01-09 19:46:47
-DURATION_SEC: 1.042
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2124244 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/10794.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:47
-END: 2026-01-09 19:46:47
-DURATION_SEC: 0.205
+START: 2026-01-15 19:03:55
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.322
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -75,11 +60,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/11107.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:47
-END: 2026-01-09 19:46:51
-DURATION_SEC: 4.054
+START: 2026-01-15 19:03:55
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.143
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -87,11 +72,23 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/11234.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:51
-END: 2026-01-09 19:46:57
-DURATION_SEC: 5.818
+START: 2026-01-15 19:03:56
+END: 2026-01-15 19:03:56
+DURATION_SEC: 0.098
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:56
+END: 2026-01-15 19:03:56
+DURATION_SEC: 0.117
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -99,31 +96,25 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/11442.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:57
-END: 2026-01-09 19:46:57
-DURATION_SEC: 0.121
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-15 19:03:56
+END: 2026-01-15 19:03:56
+DURATION_SEC: 0.082
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130884 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/11634.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:57
-END: 2026-01-09 19:46:57
-DURATION_SEC: 0.205
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-15 19:03:56
+END: 2026-01-15 19:03:59
+DURATION_SEC: 2.603
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2131033 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 

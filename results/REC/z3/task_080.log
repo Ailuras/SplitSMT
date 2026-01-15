@@ -1,118 +1,147 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_362699.smt2
+FILE: benchmarks_REC/RealWorld/awesome/649.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:18
-END: 2026-01-09 19:58:28
-DURATION_SEC: 10.022
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:15:15
+END: 2026-01-15 19:15:15
+DURATION_SEC: 0.042
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_379857.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:58:28
-END: 2026-01-09 19:58:28
-DURATION_SEC: 0.040
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
 sat
-unsat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_389458.smt2
+FILE: benchmarks_REC/RealWorld/awesome/650.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:28
-END: 2026-01-09 19:58:28
-DURATION_SEC: 0.043
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:15:15
+END: 2026-01-15 19:15:15
+DURATION_SEC: 0.038
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_399861.smt2
+FILE: benchmarks_REC/RealWorld/awesome/6760.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:28
-END: 2026-01-09 19:58:28
-DURATION_SEC: 0.045
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:15:15
+END: 2026-01-15 19:15:15
+DURATION_SEC: 0.059
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_418849.smt2
+FILE: benchmarks_REC/RealWorld/awesome/6769.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:28
-END: 2026-01-09 19:58:38
+START: 2026-01-15 19:15:15
+END: 2026-01-15 19:15:25
+DURATION_SEC: 10.023
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/RealWorld/awesome/685.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:15:25
+END: 2026-01-15 19:15:35
 DURATION_SEC: 10.022
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt5.2_437283.smt2
+FILE: benchmarks_REC/RealWorld/awesome/6947.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:38
-END: 2026-01-09 19:58:38
-DURATION_SEC: 0.047
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:15:35
+END: 2026-01-15 19:15:35
+DURATION_SEC: 0.078
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_449669.smt2
+FILE: benchmarks_REC/RealWorld/awesome/6973.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:38
-END: 2026-01-09 19:58:48
-DURATION_SEC: 10.019
+START: 2026-01-15 19:15:35
+END: 2026-01-15 19:15:35
+DURATION_SEC: 0.063
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/RealWorld/awesome/723.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:15:35
+END: 2026-01-15 19:15:38
+DURATION_SEC: 2.807
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_REC/RealWorld/awesome/768.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:15:38
+END: 2026-01-15 19:15:48
+DURATION_SEC: 10.021
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_467503.smt2
+FILE: benchmarks_REC/RealWorld/awesome/788.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:58:49
-END: 2026-01-09 19:58:49
-DURATION_SEC: 0.041
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:15:48
+END: 2026-01-15 19:15:48
+DURATION_SEC: 0.248
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_474817.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:58:49
-END: 2026-01-09 19:58:49
-DURATION_SEC: 0.033
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_REC/OpenAI/s0/strategy_str_split_gpt-5.2_475134.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:58:49
-END: 2026-01-09 19:58:49
-DURATION_SEC: 0.040
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
 

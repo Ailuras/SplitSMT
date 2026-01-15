@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 37
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 17:54:25
+Started: 2026-01-15 19:35:53
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_898126.smt2
-START: 2026-01-09T09:54:25Z
-END: 2026-01-09T09:54:35Z
-DURATION_SEC: 10.157772781
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
+START: 2026-01-15T11:35:53Z
+END: 2026-01-15T11:36:04Z
+DURATION_SEC: 10.383267261
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +18,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-09T09:54:35Z
-END: 2026-01-09T09:54:45Z
-DURATION_SEC: 10.174062193
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
+START: 2026-01-15T11:36:04Z
+END: 2026-01-15T11:36:14Z
+DURATION_SEC: 10.279363919
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,10 +30,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
-START: 2026-01-09T09:54:45Z
-END: 2026-01-09T09:54:55Z
-DURATION_SEC: 9.482767468
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
+START: 2026-01-15T11:36:14Z
+END: 2026-01-15T11:36:24Z
+DURATION_SEC: 10.059659873
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +42,10 @@ sat
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
-START: 2026-01-09T09:54:55Z
-END: 2026-01-09T09:54:56Z
-DURATION_SEC: .963006935
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
+START: 2026-01-15T11:36:24Z
+END: 2026-01-15T11:36:25Z
+DURATION_SEC: .667671974
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,46 +54,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/10778.smt2
-START: 2026-01-09T09:54:56Z
-END: 2026-01-09T09:55:04Z
-DURATION_SEC: 7.942988151
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/10794.smt2
-START: 2026-01-09T09:55:04Z
-END: 2026-01-09T09:55:05Z
-DURATION_SEC: .994078163
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11107.smt2
-START: 2026-01-09T09:55:05Z
-END: 2026-01-09T09:55:05Z
-DURATION_SEC: .259958376
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11234.smt2
-START: 2026-01-09T09:55:05Z
-END: 2026-01-09T09:55:16Z
-DURATION_SEC: 10.171268300
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
+START: 2026-01-15T11:36:25Z
+END: 2026-01-15T11:36:35Z
+DURATION_SEC: 10.287676116
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -102,31 +66,67 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11442.smt2
-START: 2026-01-09T09:55:16Z
-END: 2026-01-09T09:55:16Z
-DURATION_SEC: .365165457
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
+START: 2026-01-15T11:36:35Z
+END: 2026-01-15T11:36:35Z
+DURATION_SEC: .110396929
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/11634.smt2
-START: 2026-01-09T09:55:16Z
-END: 2026-01-09T09:55:18Z
-DURATION_SEC: 1.643835452
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+START: 2026-01-15T11:36:35Z
+END: 2026-01-15T11:36:37Z
+DURATION_SEC: 1.308366045
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:55:17] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
+[31m[2026-01-15 19:36:37] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1336841 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2469050 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
 
-Task Group 37 completed at 2026-01-09 17:55:18
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
+START: 2026-01-15T11:36:37Z
+END: 2026-01-15T11:36:37Z
+DURATION_SEC: .259320781
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
+START: 2026-01-15T11:36:37Z
+END: 2026-01-15T11:36:37Z
+DURATION_SEC: .227329568
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
+START: 2026-01-15T11:36:37Z
+END: 2026-01-15T11:36:38Z
+DURATION_SEC: .125203994
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Wrong number of parameters of "String to code on non-single character string" in line 172.
+===========================================================
+
+Task Group 37 completed at 2026-01-15 19:36:38

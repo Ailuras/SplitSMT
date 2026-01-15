@@ -1,126 +1,120 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1299.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:45
-END: 2026-01-09 19:46:46
-DURATION_SEC: 0.398
+START: 2026-01-15 19:03:53
+END: 2026-01-15 19:03:54
+DURATION_SEC: 0.360
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/14165.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1384326.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:46
-END: 2026-01-09 19:46:46
-DURATION_SEC: 0.430
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:58
+DURATION_SEC: 4.342
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1491.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1385155.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:46
-END: 2026-01-09 19:46:47
-DURATION_SEC: 1.359
+START: 2026-01-15 19:03:58
+END: 2026-01-15 19:04:00
+DURATION_SEC: 1.305
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/15181.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1393625.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:48
-END: 2026-01-09 19:46:56
-DURATION_SEC: 8.635
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2125771 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1574.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:56
-END: 2026-01-09 19:46:56
-DURATION_SEC: 0.331
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130553 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/16116.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:56
-END: 2026-01-09 19:46:57
-DURATION_SEC: 0.066
+START: 2026-01-15 19:04:00
+END: 2026-01-15 19:04:00
+DURATION_SEC: 0.587
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1700.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1433648.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:57
-END: 2026-01-09 19:46:57
-DURATION_SEC: 0.353
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-15 19:04:00
+END: 2026-01-15 19:04:00
+DURATION_SEC: 0.325
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130775 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1759.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1451089.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:57
-END: 2026-01-09 19:47:07
-DURATION_SEC: 10.056
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.114
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1778.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1451380.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:07
-END: 2026-01-09 19:47:17
-DURATION_SEC: 10.029
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.152
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/1798.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt5.2_1452693.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:17
-END: 2026-01-09 19:47:27
-DURATION_SEC: 10.023
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.228
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt5.2_1460025.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.271
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1461361.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.272
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

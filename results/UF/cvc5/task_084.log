@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_817400.smt2
+FILE: benchmarks_UF/RealWorld/top20_gh/591.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:02
-END: 2026-01-09 19:42:02
-DURATION_SEC: 0.200
+START: 2026-01-15 18:58:30
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.103
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_863567.smt2
+FILE: benchmarks_UF/RealWorld/top20_gh/6394.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:02
-END: 2026-01-09 19:42:03
-DURATION_SEC: 0.732
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.174
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,97 +24,97 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_871902.smt2
+FILE: benchmarks_UF/RealWorld/top20_gh/6812.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:03
-END: 2026-01-09 19:42:03
-DURATION_SEC: 0.365
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_882377.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:03
-END: 2026-01-09 19:42:04
-DURATION_SEC: 0.449
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_888010.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:04
-END: 2026-01-09 19:42:06
-DURATION_SEC: 2.466
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_891403.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:06
-END: 2026-01-09 19:42:06
-DURATION_SEC: 0.040
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.125
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_891403.smt2:58.36: Symbol 're.loop' not declared as a variable")
+(error "Regular expression terms are not supported in theory combination")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_925123.smt2
+FILE: benchmarks_UF/RealWorld/top20_gh/6840.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:06
-END: 2026-01-09 19:42:07
-DURATION_SEC: 0.303
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_932016.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:07
-END: 2026-01-09 19:42:07
-DURATION_SEC: 0.283
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_934218.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:07
-END: 2026-01-09 19:42:07
-DURATION_SEC: 0.054
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.112
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_934218.smt2:45.58: Symbol 're.loop' not declared as a variable")
+(error "Regular expression terms are not supported in theory combination")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_934219.smt2
+FILE: benchmarks_UF/RealWorld/top20_gh/6863.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:07
-END: 2026-01-09 19:42:07
-DURATION_SEC: 0.292
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.130
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_gh/6892.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:32
+DURATION_SEC: 0.097
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_gh/9690.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:32
+END: 2026-01-15 18:58:32
+DURATION_SEC: 0.148
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_gh/9717.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:32
+END: 2026-01-15 18:58:32
+DURATION_SEC: 0.123
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_maven/1489.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:32
+END: 2026-01-15 18:58:32
+DURATION_SEC: 0.153
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_maven/1853.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:32
+END: 2026-01-15 18:58:32
+DURATION_SEC: 0.140
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
 

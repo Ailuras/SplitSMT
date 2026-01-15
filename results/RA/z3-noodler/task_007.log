@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1749144.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1966221.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:21
-END: 2026-01-09 19:46:21
-DURATION_SEC: 0.145
+START: 2026-01-15 19:03:30
+END: 2026-01-15 19:03:30
+DURATION_SEC: 0.305
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1752656.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1975231.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:21
-END: 2026-01-09 19:46:21
-DURATION_SEC: 0.166
+START: 2026-01-15 19:03:30
+END: 2026-01-15 19:03:31
+DURATION_SEC: 0.199
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,23 +24,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1758931.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1981189.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:21
-END: 2026-01-09 19:46:21
-DURATION_SEC: 0.078
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_180966.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:21
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.150
+START: 2026-01-15 19:03:31
+END: 2026-01-15 19:03:31
+DURATION_SEC: 0.181
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,23 +36,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_182100.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2013165.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.077
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1830942.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.148
+START: 2026-01-15 19:03:31
+END: 2026-01-15 19:03:31
+DURATION_SEC: 0.312
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,35 +48,37 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_183158.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2014647.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.166
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:03:31
+END: 2026-01-15 19:03:31
+DURATION_SEC: 0.232
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+unknown
+(error "line 125 column 50: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1864431.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2016033.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.099
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:03:32
+END: 2026-01-15 19:03:32
+DURATION_SEC: 0.260
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-sat
+unknown
+(error "line 130 column 52: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1865035.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2087679.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:22
-DURATION_SEC: 0.160
+START: 2026-01-15 19:03:32
+END: 2026-01-15 19:03:32
+DURATION_SEC: 0.227
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,11 +86,35 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1873839.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2091984.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:22
-END: 2026-01-09 19:46:23
-DURATION_SEC: 0.164
+START: 2026-01-15 19:03:32
+END: 2026-01-15 19:03:32
+DURATION_SEC: 0.255
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_2098746.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:32
+END: 2026-01-15 19:03:33
+DURATION_SEC: 0.257
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_250481.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:33
+END: 2026-01-15 19:03:33
+DURATION_SEC: 0.285
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

@@ -1,26 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_736908.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1747235.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:53:09
-END: 2026-01-09 19:53:10
-DURATION_SEC: 1.078
-STATUS: ERROR
-EXIT_CODE: 110
------------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_746460.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:53:10
-END: 2026-01-09 19:53:10
-DURATION_SEC: 0.174
+START: 2026-01-15 19:09:20
+END: 2026-01-15 19:09:21
+DURATION_SEC: 0.738
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -28,11 +12,72 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt-5.2_754900.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1765086.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:53:10
-END: 2026-01-09 19:53:10
-DURATION_SEC: 0.089
+START: 2026-01-15 19:09:21
+END: 2026-01-15 19:09:21
+DURATION_SEC: 0.149
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1781893.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:21
+END: 2026-01-15 19:09:21
+DURATION_SEC: 0.501
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1783649.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:21
+END: 2026-01-15 19:09:22
+DURATION_SEC: 0.114
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1786390.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:22
+END: 2026-01-15 19:09:22
+DURATION_SEC: 0.132
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1792360.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:22
+END: 2026-01-15 19:09:22
+DURATION_SEC: 0.576
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1812689.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:09:22
+END: 2026-01-15 19:09:22
+DURATION_SEC: 0.137
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -40,35 +85,23 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_759537.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1848860.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:53:10
-END: 2026-01-09 19:53:11
-DURATION_SEC: 0.290
+START: 2026-01-15 19:09:22
+END: 2026-01-15 19:09:23
+DURATION_SEC: 0.091
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_768997.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864105.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:53:11
-END: 2026-01-09 19:53:11
-DURATION_SEC: 0.077
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_791905.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:53:11
-END: 2026-01-09 19:53:11
-DURATION_SEC: 0.126
+START: 2026-01-15 19:09:23
+END: 2026-01-15 19:09:24
+DURATION_SEC: 1.443
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -76,49 +109,13 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_827340.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:53:11
-END: 2026-01-09 19:53:11
-DURATION_SEC: 0.194
+START: 2026-01-15 19:09:24
+END: 2026-01-15 19:09:24
+DURATION_SEC: 0.142
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt-5.2_853503.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:53:11
-END: 2026-01-09 19:53:11
-DURATION_SEC: 0.277
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt5.2_855346.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:53:11
-END: 2026-01-09 19:53:12
-DURATION_SEC: 0.276
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/is/strategy_generic_insertion_gpt-5.2_863023.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:53:12
-END: 2026-01-09 19:53:12
-DURATION_SEC: 0.139
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+unsat
 

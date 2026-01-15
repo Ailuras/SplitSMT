@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1237665.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_136119.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.053
+START: 2026-01-15 18:57:51
+END: 2026-01-15 18:57:51
+DURATION_SEC: 0.083
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,27 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1271322.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1369241.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.057
+START: 2026-01-15 18:57:51
+END: 2026-01-15 18:57:51
+DURATION_SEC: 0.092
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry "12:34:56 INFO Server started successfully")
+ (timestamp "1")
+ (log_level "INFO")
+ (message "B"))
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1376047.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:51
+END: 2026-01-15 18:57:51
+DURATION_SEC: 0.072
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,23 +40,71 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1273872.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1393302.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
+START: 2026-01-15 18:57:51
+END: 2026-01-15 18:57:52
+DURATION_SEC: 0.520
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1423637.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:52
+END: 2026-01-15 18:57:52
+DURATION_SEC: 0.531
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1426875.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:52
+END: 2026-01-15 18:57:52
 DURATION_SEC: 0.048
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+((csv_line ",")
+ (field_count 4)
+ (field1 "A")
+ (field2 "data")
+ (field3 "A")
+ (field4 "A")
+ (empty_field_detected false))
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1277075.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1427370.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.086
+START: 2026-01-15 18:57:52
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.178
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((email "AB")
+ (local_part "E")
+ (domain "")
+ (domain_name "D")
+ (tld ".C"))
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1431579.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.043
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +112,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1311643.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1448234.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:21
-DURATION_SEC: 2.426
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.183
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,60 +124,12 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1341298.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1480594.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:21
-END: 2026-01-09 19:41:32
-DURATION_SEC: 10.123
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:58:03
+DURATION_SEC: 10.031
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1350522.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.085
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1356297.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.090
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1382187.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.285
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1392554.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.085
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
 

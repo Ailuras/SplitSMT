@@ -1,21 +1,71 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1875305.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_253237.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:21
-END: 2026-01-09 19:46:31
-DURATION_SEC: 10.021
+START: 2026-01-15 19:03:30
+END: 2026-01-15 19:03:37
+DURATION_SEC: 7.095
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 126 column 50: model is not available")
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_253445.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:37
+END: 2026-01-15 19:03:39
+DURATION_SEC: 1.380
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_257815.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:39
+END: 2026-01-15 19:03:43
+DURATION_SEC: 4.479
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+unknown
+(error "line 133 column 82: model is not available")
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_262610.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:43
+END: 2026-01-15 19:03:43
+DURATION_SEC: 0.077
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_279008.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:43
+END: 2026-01-15 19:03:54
+DURATION_SEC: 10.029
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1884665.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_291051.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:32
-DURATION_SEC: 0.524
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:56
+DURATION_SEC: 2.327
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -23,70 +73,32 @@ unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1885762.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_310949.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:32
-END: 2026-01-09 19:46:32
-DURATION_SEC: 0.079
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:03:56
+END: 2026-01-15 19:04:06
+DURATION_SEC: 10.042
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1914282.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_318863.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:32
-END: 2026-01-09 19:46:36
-DURATION_SEC: 4.756
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:04:06
+END: 2026-01-15 19:04:16
+DURATION_SEC: 10.024
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1918375.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_327644.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:36
-END: 2026-01-09 19:46:37
-DURATION_SEC: 0.161
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1954405.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:37
-END: 2026-01-09 19:46:37
-DURATION_SEC: 0.145
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1958371.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:37
-END: 2026-01-09 19:46:37
-DURATION_SEC: 0.146
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1969999.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:37
-END: 2026-01-09 19:46:47
+START: 2026-01-15 19:04:16
+END: 2026-01-15 19:04:26
 DURATION_SEC: 10.020
 STATUS: TIMEOUT
 EXIT_CODE: 143
@@ -94,25 +106,12 @@ EXIT_CODE: 143
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1988936.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_338254.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:47
-END: 2026-01-09 19:46:52
-DURATION_SEC: 4.577
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:04:26
+END: 2026-01-15 19:04:36
+DURATION_SEC: 10.019
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1998880.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:52
-END: 2026-01-09 19:46:52
-DURATION_SEC: 0.190
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
 

@@ -1,47 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_117640.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_362699.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:50
-END: 2026-01-09 19:41:51
-DURATION_SEC: 0.126
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-sat
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_117640.smt2:72.37: Symbol 'num_splits' not declared as a variable")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1242060.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:51
-END: 2026-01-09 19:41:51
-DURATION_SEC: 0.120
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1242060.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1250336.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:51
-END: 2026-01-09 19:41:51
-DURATION_SEC: 0.070
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1250336.smt2:9.14: Symbol `str.to_int' is shadowing a theory function symbol")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1265060.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:51
-END: 2026-01-09 19:41:54
-DURATION_SEC: 2.624
+START: 2026-01-15 18:58:24
+END: 2026-01-15 18:58:24
+DURATION_SEC: 0.563
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -49,35 +12,71 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_418849.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:54
-END: 2026-01-09 19:41:54
-DURATION_SEC: 0.234
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 18:58:24
+END: 2026-01-15 18:58:24
+DURATION_SEC: 0.162
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1273413.smt2:9.14: Symbol `to_int' is shadowing a theory function symbol")
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_437283.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:55
-END: 2026-01-09 19:41:55
+START: 2026-01-15 18:58:24
+END: 2026-01-15 18:58:25
+DURATION_SEC: 0.220
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_449669.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:25
+DURATION_SEC: 0.160
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_467503.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:25
+DURATION_SEC: 0.154
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_497127.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:26
+DURATION_SEC: 0.503
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_497648.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:26
+END: 2026-01-15 18:58:26
 DURATION_SEC: 0.096
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1296053.smt2:49.72: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt5.2_1376934.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:55
-END: 2026-01-09 19:41:55
-DURATION_SEC: 0.187
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -85,11 +84,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_144948.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_512997.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:55
-END: 2026-01-09 19:41:55
-DURATION_SEC: 0.172
+START: 2026-01-15 18:58:26
+END: 2026-01-15 18:58:26
+DURATION_SEC: 0.193
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -97,26 +96,25 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1453464.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_542594.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:55
-END: 2026-01-09 19:41:55
-DURATION_SEC: 0.026
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 18:58:26
+END: 2026-01-15 18:58:29
+DURATION_SEC: 2.810
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1453464.smt2:28.34: type constructor arity is wrong: `RegLan' requires 0 parameters but was provided 1")
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s0/strategy_str_split_gpt-5.2_1492396.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_545102.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:55
-END: 2026-01-09 19:41:56
-DURATION_SEC: 0.346
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 18:58:29
+END: 2026-01-15 18:58:29
+DURATION_SEC: 0.326
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 

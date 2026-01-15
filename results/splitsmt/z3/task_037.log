@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 37
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 17:53:49
+Started: 2026-01-15 19:35:19
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_898126.smt2
-START: 2026-01-09T09:53:49Z
-END: 2026-01-09T09:54:00Z
-DURATION_SEC: 10.318407141
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
+START: 2026-01-15T11:35:19Z
+END: 2026-01-15T11:35:29Z
+DURATION_SEC: 10.225236184
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +18,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-09T09:54:00Z
-END: 2026-01-09T09:54:00Z
-DURATION_SEC: .258948294
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
+START: 2026-01-15T11:35:29Z
+END: 2026-01-15T11:35:30Z
+DURATION_SEC: .358973980
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,10 +30,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
-START: 2026-01-09T09:54:00Z
-END: 2026-01-09T09:54:01Z
-DURATION_SEC: .714793358
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
+START: 2026-01-15T11:35:30Z
+END: 2026-01-15T11:35:31Z
+DURATION_SEC: .789538206
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +42,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
-START: 2026-01-09T09:54:01Z
-END: 2026-01-09T09:54:11Z
-DURATION_SEC: 10.293611968
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
+START: 2026-01-15T11:35:31Z
+END: 2026-01-15T11:35:41Z
+DURATION_SEC: 10.176097435
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,10 +54,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/10778.smt2
-START: 2026-01-09T09:54:11Z
-END: 2026-01-09T09:54:12Z
-DURATION_SEC: .281641234
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
+START: 2026-01-15T11:35:41Z
+END: 2026-01-15T11:35:42Z
+DURATION_SEC: .983898765
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,10 +66,22 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/10794.smt2
-START: 2026-01-09T09:54:12Z
-END: 2026-01-09T09:54:12Z
-DURATION_SEC: .270618834
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
+START: 2026-01-15T11:35:42Z
+END: 2026-01-15T11:35:42Z
+DURATION_SEC: .083120361
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+START: 2026-01-15T11:35:42Z
+END: 2026-01-15T11:35:45Z
+DURATION_SEC: 2.768107503
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -78,34 +90,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/11107.smt2
-START: 2026-01-09T09:54:12Z
-END: 2026-01-09T09:54:12Z
-DURATION_SEC: .267113672
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/11234.smt2
-START: 2026-01-09T09:54:12Z
-END: 2026-01-09T09:54:13Z
-DURATION_SEC: .241513392
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/11442.smt2
-START: 2026-01-09T09:54:13Z
-END: 2026-01-09T09:54:13Z
-DURATION_SEC: .235634275
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
+START: 2026-01-15T11:35:45Z
+END: 2026-01-15T11:35:45Z
+DURATION_SEC: .217129048
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -114,14 +102,26 @@ sat
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/11634.smt2
-START: 2026-01-09T09:54:13Z
-END: 2026-01-09T09:54:13Z
-DURATION_SEC: .342720057
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
+START: 2026-01-15T11:35:45Z
+END: 2026-01-15T11:35:46Z
+DURATION_SEC: .322993769
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+unsat
 ===========================================================
 
-Task Group 37 completed at 2026-01-09 17:54:13
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
+START: 2026-01-15T11:35:46Z
+END: 2026-01-15T11:35:46Z
+DURATION_SEC: .139062948
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Wrong number of parameters of "String to code on non-single character string" in line 172.
+===========================================================
+
+Task Group 37 completed at 2026-01-15 19:35:46

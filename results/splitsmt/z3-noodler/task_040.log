@@ -1,15 +1,27 @@
 ===========================================================
 Task Group 40
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-09 17:54:34
+Started: 2026-01-15 19:36:04
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/18293.smt2
-START: 2026-01-09T09:54:34Z
-END: 2026-01-09T09:54:34Z
-DURATION_SEC: .175606078
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1474152.smt2
+START: 2026-01-15T11:36:04Z
+END: 2026-01-15T11:36:14Z
+DURATION_SEC: 10.187334815
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1481425.smt2
+START: 2026-01-15T11:36:14Z
+END: 2026-01-15T11:36:15Z
+DURATION_SEC: .357208975
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,63 +30,44 @@ sat
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19222.smt2
-START: 2026-01-09T09:54:34Z
-END: 2026-01-09T09:54:36Z
-DURATION_SEC: 2.024116549
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19251.smt2
-START: 2026-01-09T09:54:36Z
-END: 2026-01-09T09:54:38Z
-DURATION_SEC: 1.850741871
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1496397.smt2
+START: 2026-01-15T11:36:15Z
+END: 2026-01-15T11:36:17Z
+DURATION_SEC: 1.951582773
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:54:38] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
+[31m[2026-01-15 19:36:17] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1323110 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2463673 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19256.smt2
-START: 2026-01-09T09:54:38Z
-END: 2026-01-09T09:54:40Z
-DURATION_SEC: 2.264722228
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1516898.smt2
+START: 2026-01-15T11:36:17Z
+END: 2026-01-15T11:36:18Z
+DURATION_SEC: .694450371
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-sat
+[31m[2026-01-15 19:36:18] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2464149 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19258.smt2
-START: 2026-01-09T09:54:40Z
-END: 2026-01-09T09:54:48Z
-DURATION_SEC: 7.303051147
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/19912.smt2
-START: 2026-01-09T09:54:48Z
-END: 2026-01-09T09:54:58Z
-DURATION_SEC: 10.186019888
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1526278.smt2
+START: 2026-01-15T11:36:18Z
+END: 2026-01-15T11:36:28Z
+DURATION_SEC: 10.167259387
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,50 +76,62 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20049.smt2
-START: 2026-01-09T09:54:58Z
-END: 2026-01-09T09:54:59Z
-DURATION_SEC: .818980830
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1547457.smt2
+START: 2026-01-15T11:36:28Z
+END: 2026-01-15T11:36:38Z
+DURATION_SEC: 10.199888032
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20082.smt2
-START: 2026-01-09T09:54:59Z
-END: 2026-01-09T09:54:59Z
-DURATION_SEC: .287969755
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20116.smt2
-START: 2026-01-09T09:54:59Z
-END: 2026-01-09T09:55:02Z
-DURATION_SEC: 2.554617447
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/Java/awesome/20200.smt2
-START: 2026-01-09T09:55:02Z
-END: 2026-01-09T09:55:07Z
-DURATION_SEC: 4.920273433
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_154820.smt2
+START: 2026-01-15T11:36:38Z
+END: 2026-01-15T11:36:39Z
+DURATION_SEC: .729079406
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 40 completed at 2026-01-09 17:55:07
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1566294.smt2
+START: 2026-01-15T11:36:39Z
+END: 2026-01-15T11:36:40Z
+DURATION_SEC: .678913815
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1574711.smt2
+START: 2026-01-15T11:36:40Z
+END: 2026-01-15T11:36:40Z
+DURATION_SEC: .399358961
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_158199.smt2
+START: 2026-01-15T11:36:40Z
+END: 2026-01-15T11:36:50Z
+DURATION_SEC: 10.199492617
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 40 completed at 2026-01-15 19:36:50

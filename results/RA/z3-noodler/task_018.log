@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1376047.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1662149.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:33
-END: 2026-01-09 19:46:33
-DURATION_SEC: 0.109
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:34
+DURATION_SEC: 0.080
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1393302.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1663321.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:33
-END: 2026-01-09 19:46:33
-DURATION_SEC: 0.602
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:34
+DURATION_SEC: 0.157
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,49 +24,62 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1423637.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1686230.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:33
-END: 2026-01-09 19:46:34
-DURATION_SEC: 0.431
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:34
+DURATION_SEC: 0.133
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1426875.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1696873.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:34
-END: 2026-01-09 19:46:34
-DURATION_SEC: 0.119
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.103
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1710397.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:35
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.108
 STATUS: ERROR
-EXIT_CODE: 1
+EXIT_CODE: 134
 -----------------------------------------------------------
-unknown
-(error "line 129 column 82: model is not available, did you forget to enable model generation with 'model=true'?")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2085818 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1427370.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1747243.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:34
-END: 2026-01-09 19:46:34
-DURATION_SEC: 0.238
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 19:03:35
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.094
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
-(error "line 141 column 52: model is not available, did you forget to enable model generation with 'model=true'?")
+unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1431579.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1748024.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:34
-END: 2026-01-09 19:46:35
-DURATION_SEC: 0.160
+START: 2026-01-15 19:03:35
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.191
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -74,11 +87,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1448234.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1749144.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:35
-END: 2026-01-09 19:46:35
-DURATION_SEC: 0.206
+START: 2026-01-15 19:03:35
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.162
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,11 +99,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1480594.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1752656.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:35
-END: 2026-01-09 19:46:35
-DURATION_SEC: 0.293
+START: 2026-01-15 19:03:35
+END: 2026-01-15 19:03:35
+DURATION_SEC: 0.165
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,27 +111,13 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_149700.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1758931.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:35
-END: 2026-01-09 19:46:35
-DURATION_SEC: 0.246
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 19:03:36
+END: 2026-01-15 19:03:36
+DURATION_SEC: 0.101
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
-(error "line 133 column 40: model is not available, did you forget to enable model generation with 'model=true'?")
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_1518165.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:35
-END: 2026-01-09 19:46:36
-DURATION_SEC: 0.210
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-(error "line 133 column 69: model is not available, did you forget to enable model generation with 'model=true'?")
+unsat
 

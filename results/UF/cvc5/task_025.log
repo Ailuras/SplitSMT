@@ -1,22 +1,21 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_588097.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_656566.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.079
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.086
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((csv_data "") (field_count 3) (first_field "") (last_field "") (empty_field_index 1))
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_595992.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_656876.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
 DURATION_SEC: 0.068
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -25,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_631416.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_660767.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.124
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.034
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -37,24 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_632516.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_672983.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.150
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-((header "\u{5c}n:") (first_line "A") (content_length_val 0) (key1 "\u{5c}n") (value1 "\u{5c}n") (key2 "\u{5c}n") (value2 "\u{5c}n"))
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_639966.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:27
-DURATION_SEC: 0.202
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.120
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,11 +48,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_642646.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_676255.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:27
-END: 2026-01-09 19:41:27
-DURATION_SEC: 0.166
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:55
+DURATION_SEC: 0.085
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -74,11 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_660355.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_715045.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:27
-END: 2026-01-09 19:41:27
-DURATION_SEC: 0.538
+START: 2026-01-15 18:57:55
+END: 2026-01-15 18:57:55
+DURATION_SEC: 0.105
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,11 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_728208.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_737486.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:28
-END: 2026-01-09 19:41:28
-DURATION_SEC: 0.152
+START: 2026-01-15 18:57:55
+END: 2026-01-15 18:57:55
+DURATION_SEC: 0.097
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,11 +84,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_764239.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_744993.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:28
-END: 2026-01-09 19:41:28
-DURATION_SEC: 0.235
+START: 2026-01-15 18:57:55
+END: 2026-01-15 18:58:05
+DURATION_SEC: 10.048
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_749756.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.178
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,11 +108,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_778599.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_773120.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:28
-END: 2026-01-09 19:41:28
-DURATION_SEC: 0.138
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.217
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

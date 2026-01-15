@@ -1,15 +1,27 @@
 ===========================================================
 Task Group 46
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 17:54:15
+Started: 2026-01-15 19:36:10
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4369.smt2
-START: 2026-01-09T09:54:15Z
-END: 2026-01-09T09:54:15Z
-DURATION_SEC: .253406631
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_640041.smt2
+START: 2026-01-15T11:36:10Z
+END: 2026-01-15T11:36:10Z
+DURATION_SEC: .152862119
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_655377.smt2
+START: 2026-01-15T11:36:10Z
+END: 2026-01-15T11:36:11Z
+DURATION_SEC: .479629985
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +30,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/437.smt2
-START: 2026-01-09T09:54:15Z
-END: 2026-01-09T09:54:15Z
-DURATION_SEC: .246385735
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_668598.smt2
+START: 2026-01-15T11:36:11Z
+END: 2026-01-15T11:36:11Z
+DURATION_SEC: .488025774
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,10 +42,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4457.smt2
-START: 2026-01-09T09:54:15Z
-END: 2026-01-09T09:54:16Z
-DURATION_SEC: .343995083
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_692517.smt2
+START: 2026-01-15T11:36:11Z
+END: 2026-01-15T11:36:12Z
+DURATION_SEC: .911963752
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +54,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4469.smt2
-START: 2026-01-09T09:54:16Z
-END: 2026-01-09T09:54:16Z
-DURATION_SEC: .296573217
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_737502.smt2
+START: 2026-01-15T11:36:12Z
+END: 2026-01-15T11:36:23Z
+DURATION_SEC: 10.254782867
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,10 +66,34 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4556.smt2
-START: 2026-01-09T09:54:16Z
-END: 2026-01-09T09:54:17Z
-DURATION_SEC: .267237130
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
+START: 2026-01-15T11:36:23Z
+END: 2026-01-15T11:36:23Z
+DURATION_SEC: .279103608
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
+START: 2026-01-15T11:36:23Z
+END: 2026-01-15T11:36:23Z
+DURATION_SEC: .285283466
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
+START: 2026-01-15T11:36:23Z
+END: 2026-01-15T11:36:34Z
+DURATION_SEC: 10.295728369
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,10 +102,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4659.smt2
-START: 2026-01-09T09:54:17Z
-END: 2026-01-09T09:54:17Z
-DURATION_SEC: .324985729
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_817400.smt2
+START: 2026-01-15T11:36:34Z
+END: 2026-01-15T11:36:35Z
+DURATION_SEC: .864911322
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -78,50 +114,14 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4684.smt2
-START: 2026-01-09T09:54:17Z
-END: 2026-01-09T09:54:17Z
-DURATION_SEC: .199026720
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_863567.smt2
+START: 2026-01-15T11:36:35Z
+END: 2026-01-15T11:36:42Z
+DURATION_SEC: 7.013261837
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/472.smt2
-START: 2026-01-09T09:54:17Z
-END: 2026-01-09T09:54:18Z
-DURATION_SEC: .355615950
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4762.smt2
-START: 2026-01-09T09:54:18Z
-END: 2026-01-09T09:54:18Z
-DURATION_SEC: .555164807
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/Java/awesome/4891.smt2
-START: 2026-01-09T09:54:18Z
-END: 2026-01-09T09:54:19Z
-DURATION_SEC: .419706627
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 46 completed at 2026-01-09 17:54:19
+Task Group 46 completed at 2026-01-15 19:36:42

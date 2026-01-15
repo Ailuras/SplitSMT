@@ -1,22 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1914282.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:24
-END: 2026-01-09 19:41:24
-DURATION_SEC: 0.116
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2:51.127: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1699343.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:24
-END: 2026-01-09 19:41:24
-DURATION_SEC: 0.253
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.058
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_173204.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1918375.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:24
-END: 2026-01-09 19:41:24
-DURATION_SEC: 0.150
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.033
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1742363.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1954405.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:24
-END: 2026-01-09 19:41:24
-DURATION_SEC: 0.160
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.127
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,37 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1757039.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1958371.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:25
-END: 2026-01-09 19:41:25
-DURATION_SEC: 0.122
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsupported
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1768325.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:25
-END: 2026-01-09 19:41:25
-DURATION_SEC: 0.146
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-((csv_line "123,John Doe,30,USA") (field_count 0) (first_field "") (last_field "") (middle_field "") (has_empty_field false))
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1774137.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:25
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.661
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.031
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,11 +48,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1778412.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1969999.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.132
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:53
+DURATION_SEC: 0.053
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,11 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1824909.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1988936.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.217
+START: 2026-01-15 18:57:53
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.199
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,13 +72,49 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1827047.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1998880.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:26
-END: 2026-01-09 19:41:26
-DURATION_SEC: 0.070
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.123
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2013719.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.037
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2033189.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.069
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2035847.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:57:54
+DURATION_SEC: 0.066
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

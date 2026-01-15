@@ -1,51 +1,15 @@
 ===========================================================
 Task Group 13
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-09 17:52:29
+Started: 2026-01-15 19:34:14
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_621820.smt2
-START: 2026-01-09T09:52:29Z
-END: 2026-01-09T09:52:39Z
-DURATION_SEC: 10.168605091
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_626217.smt2
-START: 2026-01-09T09:52:39Z
-END: 2026-01-09T09:52:49Z
-DURATION_SEC: 10.242756213
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_649239.smt2
-START: 2026-01-09T09:52:50Z
-END: 2026-01-09T09:53:00Z
-DURATION_SEC: 10.292142623
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_656566.smt2
-START: 2026-01-09T09:53:00Z
-END: 2026-01-09T09:53:00Z
-DURATION_SEC: .413288712
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1061294.smt2
+START: 2026-01-15T11:34:14Z
+END: 2026-01-15T11:34:17Z
+DURATION_SEC: 2.560540074
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,10 +18,22 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_656876.smt2
-START: 2026-01-09T09:53:00Z
-END: 2026-01-09T09:53:03Z
-DURATION_SEC: 2.859425332
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1069043.smt2
+START: 2026-01-15T11:34:17Z
+END: 2026-01-15T11:34:27Z
+DURATION_SEC: 10.145114103
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1071782.smt2
+START: 2026-01-15T11:34:27Z
+END: 2026-01-15T11:34:33Z
+DURATION_SEC: 6.422397649
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,10 +42,10 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_660767.smt2
-START: 2026-01-09T09:53:03Z
-END: 2026-01-09T09:53:04Z
-DURATION_SEC: .190041756
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1072608.smt2
+START: 2026-01-15T11:34:34Z
+END: 2026-01-15T11:34:34Z
+DURATION_SEC: .221009488
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -78,10 +54,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_672983.smt2
-START: 2026-01-09T09:53:04Z
-END: 2026-01-09T09:53:05Z
-DURATION_SEC: .868208802
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1094828.smt2
+START: 2026-01-15T11:34:34Z
+END: 2026-01-15T11:34:38Z
+DURATION_SEC: 4.355588691
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -90,39 +66,62 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_676255.smt2
-START: 2026-01-09T09:53:05Z
-END: 2026-01-09T09:53:06Z
-DURATION_SEC: 1.748526386
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1126126.smt2
+START: 2026-01-15T11:34:38Z
+END: 2026-01-15T11:34:40Z
+DURATION_SEC: 1.560832880
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_715045.smt2
-START: 2026-01-09T09:53:06Z
-END: 2026-01-09T09:53:07Z
-DURATION_SEC: .258456073
-STATUS: ERROR
-EXIT_CODE: 1
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1129596.smt2
+START: 2026-01-15T11:34:40Z
+END: 2026-01-15T11:34:50Z
+DURATION_SEC: 10.114727623
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-09 17:53:07] External solver reported errors in output: (error "parse error: /tmp/smt2_ue3zf6.smt2:54.62: symbol 'regex' not declared as a type")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/is/strategy_generic_insertion_deepseek-chat_737486.smt2
-START: 2026-01-09T09:53:07Z
-END: 2026-01-09T09:53:14Z
-DURATION_SEC: 7.415199845
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1164555.smt2
+START: 2026-01-15T11:34:50Z
+END: 2026-01-15T11:34:50Z
+DURATION_SEC: .150693438
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1170233.smt2
+START: 2026-01-15T11:34:50Z
+END: 2026-01-15T11:34:55Z
+DURATION_SEC: 5.066957464
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 13 completed at 2026-01-09 17:53:14
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1181325.smt2
+START: 2026-01-15T11:34:55Z
+END: 2026-01-15T11:34:56Z
+DURATION_SEC: .708525138
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 13 completed at 2026-01-15 19:34:56

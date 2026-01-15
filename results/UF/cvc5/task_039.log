@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1299.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.065
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:06
+DURATION_SEC: 0.220
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/14165.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1384326.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.071
+START: 2026-01-15 18:58:06
+END: 2026-01-15 18:58:07
+DURATION_SEC: 1.136
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1491.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1385155.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.104
+START: 2026-01-15 18:58:07
+END: 2026-01-15 18:58:09
+DURATION_SEC: 1.870
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/15181.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1393625.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.073
+START: 2026-01-15 18:58:09
+END: 2026-01-15 18:58:13
+DURATION_SEC: 3.495
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +48,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1574.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1433648.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.071
+START: 2026-01-15 18:58:13
+END: 2026-01-15 18:58:13
+DURATION_SEC: 0.172
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1433648.smt2:53.73: Symbol 're.loop' not declared as a variable")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1451089.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:13
+END: 2026-01-15 18:58:13
+DURATION_SEC: 0.242
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/16116.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1451380.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.054
+START: 2026-01-15 18:58:13
+END: 2026-01-15 18:58:13
+DURATION_SEC: 0.108
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,11 +84,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1700.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1452693.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.051
+START: 2026-01-15 18:58:13
+END: 2026-01-15 18:58:14
+DURATION_SEC: 0.394
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,11 +96,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1759.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1460025.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.035
+START: 2026-01-15 18:58:14
+END: 2026-01-15 18:58:14
+DURATION_SEC: 0.205
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,23 +108,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1778.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1461361.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:44
-DURATION_SEC: 10.062
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-cvc5 interrupted by SIGTERM.
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/1798.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:45
-END: 2026-01-09 19:41:45
-DURATION_SEC: 0.101
+START: 2026-01-15 18:58:14
+END: 2026-01-15 18:58:14
+DURATION_SEC: 0.124
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

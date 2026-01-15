@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_168359.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1914282.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.268
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:25
+DURATION_SEC: 0.428
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,22 +12,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1699343.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1918375.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:42
-DURATION_SEC: 10.064
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_173204.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:42
-END: 2026-01-09 19:41:43
-DURATION_SEC: 0.849
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:26
+DURATION_SEC: 0.302
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -35,11 +24,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1742363.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1954405.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:43
-END: 2026-01-09 19:41:43
-DURATION_SEC: 0.247
+START: 2026-01-15 18:58:26
+END: 2026-01-15 18:58:26
+DURATION_SEC: 0.550
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -47,11 +36,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1757039.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1958371.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:43
-END: 2026-01-09 19:41:43
-DURATION_SEC: 0.327
+START: 2026-01-15 18:58:26
+END: 2026-01-15 18:58:27
+DURATION_SEC: 0.240
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -59,29 +48,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1768325.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1969999.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:44
-END: 2026-01-09 19:41:44
-DURATION_SEC: 0.168
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-((csv_line "123,John Doe,30,USA")
- (field_count 0)
- (first_field "")
- (last_field "")
- (middle_field "")
- (has_empty_field false))
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1774137.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:44
-END: 2026-01-09 19:41:47
-DURATION_SEC: 2.822
+START: 2026-01-15 18:58:27
+END: 2026-01-15 18:58:27
+DURATION_SEC: 0.269
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -89,11 +60,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1778412.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1988936.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:47
-END: 2026-01-09 19:41:47
-DURATION_SEC: 0.490
+START: 2026-01-15 18:58:27
+END: 2026-01-15 18:58:27
+DURATION_SEC: 0.270
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -101,11 +72,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1824909.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1998880.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:47
-END: 2026-01-09 19:41:50
-DURATION_SEC: 2.260
+START: 2026-01-15 18:58:27
+END: 2026-01-15 18:58:27
+DURATION_SEC: 0.149
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,12 +84,37 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/s0/strategy_str_split_deepseek-chat_1827047.smt2
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2013719.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:50
-END: 2026-01-09 19:42:00
-DURATION_SEC: 10.031
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 18:58:27
+END: 2026-01-15 18:58:28
+DURATION_SEC: 0.132
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2033189.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:28
+END: 2026-01-15 18:58:29
+DURATION_SEC: 1.777
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2035847.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:30
+END: 2026-01-15 18:58:30
+DURATION_SEC: 0.216
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

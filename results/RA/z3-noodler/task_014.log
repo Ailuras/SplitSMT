@@ -1,40 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_744993.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1186953.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:24
-END: 2026-01-09 19:46:29
-DURATION_SEC: 4.290
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-(error "line 113 column 14: model is not available, did you forget to enable model generation with 'model=true'?")
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_749756.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:29
-END: 2026-01-09 19:46:31
-DURATION_SEC: 1.729
-STATUS: ERROR
-EXIT_CODE: 110
------------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_773120.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:31
-DURATION_SEC: 0.165
+START: 2026-01-15 19:03:33
+END: 2026-01-15 19:03:34
+DURATION_SEC: 0.211
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,23 +12,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_787104.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1192875.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:31
-DURATION_SEC: 0.129
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_823124.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:31
-DURATION_SEC: 0.060
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:34
+DURATION_SEC: 0.149
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,23 +24,45 @@ unsat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_825515.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1193768.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:31
-DURATION_SEC: 0.153
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 19:03:34
+END: 2026-01-15 19:03:44
+DURATION_SEC: 10.027
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_833970.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1211062.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:31
-END: 2026-01-09 19:46:36
-DURATION_SEC: 4.937
+START: 2026-01-15 19:03:44
+END: 2026-01-15 19:03:44
+DURATION_SEC: 0.068
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1215264.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:44
+END: 2026-01-15 19:03:54
+DURATION_SEC: 10.022
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1233037.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:54
+DURATION_SEC: 0.380
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -90,11 +70,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_842300.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1234406.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:36
-END: 2026-01-09 19:46:36
-DURATION_SEC: 0.266
+START: 2026-01-15 19:03:54
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.149
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -102,11 +82,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_851877.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1237665.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:36
-END: 2026-01-09 19:46:37
-DURATION_SEC: 0.141
+START: 2026-01-15 19:03:55
+END: 2026-01-15 19:03:55
+DURATION_SEC: 0.144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -114,12 +94,25 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/is/strategy_generic_insertion_deepseek-chat_860432.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1271322.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:37
-END: 2026-01-09 19:46:47
-DURATION_SEC: 10.028
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:03:55
+END: 2026-01-15 19:03:57
+DURATION_SEC: 2.494
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1273872.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:57
+END: 2026-01-15 19:03:57
+DURATION_SEC: 0.059
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

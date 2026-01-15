@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1621468.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1824909.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.132
+START: 2026-01-15 18:57:51
+END: 2026-01-15 18:57:54
+DURATION_SEC: 2.888
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,55 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1632154.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1827047.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.100
+START: 2026-01-15 18:57:54
+END: 2026-01-15 18:58:04
+DURATION_SEC: 10.050
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1842261.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
+DURATION_SEC: 0.404
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((log_entry "\u{0}\u{0}")
+ (timestamp "\u{0}\u{0}\u{0}")
+ (log_level "ERROR")
+ (message "\u{0}"))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1842708.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.308
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+((csv_data ",,,,,,,,,,")
+ (field_count 5)
+ (first_field ",")
+ (last_field ",")
+ (middle_field ""))
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_184368.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.562
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +68,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1653233.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1846971.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.159
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:06
+DURATION_SEC: 0.975
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +80,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1662149.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1893380.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.117
+START: 2026-01-15 18:58:06
+END: 2026-01-15 18:58:09
+DURATION_SEC: 3.017
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +92,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1663321.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1921836.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:19
-DURATION_SEC: 0.126
+START: 2026-01-15 18:58:09
+END: 2026-01-15 18:58:10
+DURATION_SEC: 0.693
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +104,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1686230.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1941087.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:19
-END: 2026-01-09 19:41:20
-DURATION_SEC: 0.133
+START: 2026-01-15 18:58:10
+END: 2026-01-15 18:58:11
+DURATION_SEC: 0.433
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,49 +116,14 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1696873.smt2
+FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1958920.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:20
-END: 2026-01-09 19:41:20
-DURATION_SEC: 0.150
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:58:11
+END: 2026-01-15 18:58:11
+DURATION_SEC: 0.162
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1710397.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:20
-END: 2026-01-09 19:41:20
-DURATION_SEC: 0.226
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1747243.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:20
-END: 2026-01-09 19:41:21
-DURATION_SEC: 0.622
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/DeepSeek/is/strategy_generic_insertion_deepseek-chat_1748024.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:21
-END: 2026-01-09 19:41:21
-DURATION_SEC: 0.209
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
+unknown
+(error "line 57 column 85: model is not available, did you forget to enable model generation with 'model=true'?")
 

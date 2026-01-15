@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1574711.smt2
+FILE: benchmarks_UF/RealWorld/awesome/4556.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:58
-END: 2026-01-09 19:41:58
-DURATION_SEC: 0.055
+START: 2026-01-15 18:58:28
+END: 2026-01-15 18:58:28
+DURATION_SEC: 0.158
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_158199.smt2
+FILE: benchmarks_UF/RealWorld/awesome/4659.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:58
-END: 2026-01-09 19:41:58
-DURATION_SEC: 0.078
+START: 2026-01-15 18:58:28
+END: 2026-01-15 18:58:29
+DURATION_SEC: 0.086
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1622364.smt2
+FILE: benchmarks_UF/RealWorld/awesome/4684.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:58
-END: 2026-01-09 19:41:58
-DURATION_SEC: 0.135
+START: 2026-01-15 18:58:29
+END: 2026-01-15 18:58:29
+DURATION_SEC: 0.068
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,83 +36,83 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1653716.smt2
+FILE: benchmarks_UF/RealWorld/awesome/472.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:58
-END: 2026-01-09 19:41:59
-DURATION_SEC: 0.700
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1662413.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:59
-END: 2026-01-09 19:42:00
-DURATION_SEC: 1.042
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1691353.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.131
+START: 2026-01-15 18:58:29
+END: 2026-01-15 18:58:29
+DURATION_SEC: 0.097
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1691353.smt2:71.171: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+(error "Regular expression terms are not supported in theory combination")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1726635.smt2
+FILE: benchmarks_UF/RealWorld/awesome/4762.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.272
+START: 2026-01-15 18:58:29
+END: 2026-01-15 18:58:30
+DURATION_SEC: 0.817
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1738265.smt2
+FILE: benchmarks_UF/RealWorld/awesome/4891.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:01
-END: 2026-01-09 19:42:01
-DURATION_SEC: 0.120
+START: 2026-01-15 18:58:30
+END: 2026-01-15 18:58:30
+DURATION_SEC: 0.115
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/4935.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:30
+END: 2026-01-15 18:58:30
+DURATION_SEC: 0.491
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt5.2_1780670.smt2
+FILE: benchmarks_UF/RealWorld/awesome/5194.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:01
-END: 2026-01-09 19:42:01
-DURATION_SEC: 0.148
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:58:30
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.130
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-sat
+(error "Regular expression terms are not supported in theory combination")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/s1/strategy_str_split_gpt-5.2_1842625.smt2
+FILE: benchmarks_UF/RealWorld/awesome/5218.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:01
-END: 2026-01-09 19:42:01
-DURATION_SEC: 0.294
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.158
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/5228.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:31
+END: 2026-01-15 18:58:31
+DURATION_SEC: 0.079
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

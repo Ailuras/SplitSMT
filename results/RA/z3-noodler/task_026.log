@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_779281.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_787104.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:38
-END: 2026-01-09 19:46:38
-DURATION_SEC: 0.200
+START: 2026-01-15 19:03:45
+END: 2026-01-15 19:03:45
+DURATION_SEC: 0.127
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,25 +12,47 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_790534.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_823124.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:38
-END: 2026-01-09 19:46:39
-DURATION_SEC: 0.113
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 19:03:45
+END: 2026-01-15 19:03:45
+DURATION_SEC: 0.075
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "line 105 column 26: invalid option value")
-(error "line 118 column 26: invalid option value")
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_825515.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:45
+END: 2026-01-15 19:03:45
+DURATION_SEC: 0.140
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_833970.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:03:46
+END: 2026-01-15 19:03:51
+DURATION_SEC: 5.326
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
 sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_797391.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_842300.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:39
-END: 2026-01-09 19:46:39
-DURATION_SEC: 0.220
+START: 2026-01-15 19:03:51
+END: 2026-01-15 19:03:51
+DURATION_SEC: 0.243
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,11 +60,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_812440.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_851877.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:39
-END: 2026-01-09 19:46:40
-DURATION_SEC: 0.940
+START: 2026-01-15 19:03:51
+END: 2026-01-15 19:03:51
+DURATION_SEC: 0.174
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,24 +72,34 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_816688.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_860432.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:40
-END: 2026-01-09 19:46:40
-DURATION_SEC: 0.263
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-15 19:03:51
+END: 2026-01-15 19:04:01
+DURATION_SEC: 10.038
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-unknown
-(error "line 137 column 74: model is not available, did you forget to enable model generation with 'model=true'?")
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_892305.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_862905.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:40
-END: 2026-01-09 19:46:40
-DURATION_SEC: 0.186
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.252
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_890366.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.142
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -75,50 +107,13 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_894836.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_912134.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:46:40
-END: 2026-01-09 19:46:41
-DURATION_SEC: 0.190
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.085
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_897306.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:41
-END: 2026-01-09 19:46:41
-DURATION_SEC: 0.504
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-unknown
-(error "line 156 column 63: model is not available, did you forget to enable model generation with 'model=true'?")
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_897699.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:41
-END: 2026-01-09 19:46:42
-DURATION_SEC: 0.570
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/s0/strategy_str_split_deepseek-chat_914724.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:46:42
-END: 2026-01-09 19:46:42
-DURATION_SEC: 0.309
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+sat
 

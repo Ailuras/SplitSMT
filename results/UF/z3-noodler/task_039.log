@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1299.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:30
-END: 2026-01-09 19:42:30
-DURATION_SEC: 0.216
+START: 2026-01-15 18:59:04
+END: 2026-01-15 18:59:04
+DURATION_SEC: 0.627
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,33 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/14165.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1384326.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:30
-END: 2026-01-09 19:42:30
-DURATION_SEC: 0.189
+START: 2026-01-15 18:59:04
+END: 2026-01-15 18:59:15
+DURATION_SEC: 10.069
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1385155.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:59:15
+END: 2026-01-15 18:59:25
+DURATION_SEC: 10.042
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1393625.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:59:25
+END: 2026-01-15 18:59:26
+DURATION_SEC: 1.592
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,26 +46,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1491.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1433648.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:30
-END: 2026-01-09 19:42:31
-DURATION_SEC: 0.283
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2011389 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/15181.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:31
-END: 2026-01-09 19:42:31
-DURATION_SEC: 0.192
+START: 2026-01-15 18:59:26
+END: 2026-01-15 18:59:33
+DURATION_SEC: 6.048
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -51,11 +58,22 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1574.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1451089.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:31
-END: 2026-01-09 19:42:31
-DURATION_SEC: 0.273
+START: 2026-01-15 18:59:33
+END: 2026-01-15 18:59:43
+DURATION_SEC: 10.072
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1451380.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:59:43
+END: 2026-01-15 18:59:43
+DURATION_SEC: 0.253
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -63,59 +81,33 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/16116.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1452693.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:31
-END: 2026-01-09 19:42:31
-DURATION_SEC: 0.148
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:59:43
+END: 2026-01-15 18:59:53
+DURATION_SEC: 10.030
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1700.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1460025.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:31
-END: 2026-01-09 19:42:32
-DURATION_SEC: 0.202
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:59:53
+END: 2026-01-15 19:00:03
+DURATION_SEC: 10.020
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1759.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1461361.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:32
-END: 2026-01-09 19:42:32
-DURATION_SEC: 0.234
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1778.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:32
-END: 2026-01-09 19:42:41
-DURATION_SEC: 9.031
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/Java/awesome/1798.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:41
-END: 2026-01-09 19:42:41
-DURATION_SEC: 0.287
+START: 2026-01-15 19:00:03
+END: 2026-01-15 19:00:04
+DURATION_SEC: 0.631
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

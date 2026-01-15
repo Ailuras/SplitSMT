@@ -1,15 +1,27 @@
 ===========================================================
 Task Group 53
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-09 17:55:29
+Started: 2026-01-15 19:37:44
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/325.smt2
-START: 2026-01-09T09:55:29Z
-END: 2026-01-09T09:55:30Z
-DURATION_SEC: .331180619
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1782846.smt2
+START: 2026-01-15T11:37:44Z
+END: 2026-01-15T11:37:54Z
+DURATION_SEC: 10.150561847
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1819654.smt2
+START: 2026-01-15T11:37:54Z
+END: 2026-01-15T11:37:56Z
+DURATION_SEC: 1.584149171
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +30,22 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5089.smt2
-START: 2026-01-09T09:55:30Z
-END: 2026-01-09T09:55:30Z
-DURATION_SEC: .269837955
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1838598.smt2
+START: 2026-01-15T11:37:56Z
+END: 2026-01-15T11:38:06Z
+DURATION_SEC: 10.232737324
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1845341.smt2
+START: 2026-01-15T11:38:06Z
+END: 2026-01-15T11:38:08Z
+DURATION_SEC: 1.643047456
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,102 +54,74 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5095.smt2
-START: 2026-01-09T09:55:30Z
-END: 2026-01-09T09:55:30Z
-DURATION_SEC: .187757954
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:55:30] External solver reported errors in output: (error "parse error: /tmp/smt2_v8anfs.smt2:54.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5096.smt2
-START: 2026-01-09T09:55:30Z
-END: 2026-01-09T09:55:31Z
-DURATION_SEC: .241665429
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:55:30] External solver reported errors in output: (error "parse error: /tmp/smt2_8whtqw.smt2:54.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5097.smt2
-START: 2026-01-09T09:55:31Z
-END: 2026-01-09T09:55:31Z
-DURATION_SEC: .171177646
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:55:31] External solver reported errors in output: (error "parse error: /tmp/smt2_h6n10m.smt2:54.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5098.smt2
-START: 2026-01-09T09:55:31Z
-END: 2026-01-09T09:55:31Z
-DURATION_SEC: .156861982
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:55:31] External solver reported errors in output: (error "parse error: /tmp/smt2_dv3slw.smt2:54.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/Java/top20_maven/5516.smt2
-START: 2026-01-09T09:55:31Z
-END: 2026-01-09T09:55:31Z
-DURATION_SEC: .232762850
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1045348.smt2
-START: 2026-01-09T09:55:31Z
-END: 2026-01-09T09:55:42Z
-DURATION_SEC: 10.161866309
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt-5.2_1062119.smt2
-START: 2026-01-09T09:55:42Z
-END: 2026-01-09T09:55:42Z
-DURATION_SEC: .509707171
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/is/strategy_generic_insertion_gpt5.2_1066928.smt2
-START: 2026-01-09T09:55:42Z
-END: 2026-01-09T09:55:42Z
-DURATION_SEC: .166571228
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1854932.smt2
+START: 2026-01-15T11:38:08Z
+END: 2026-01-15T11:38:12Z
+DURATION_SEC: 4.141244421
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 53 completed at 2026-01-09 17:55:42
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1861179.smt2
+START: 2026-01-15T11:38:12Z
+END: 2026-01-15T11:38:14Z
+DURATION_SEC: 1.685941148
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1920182.smt2
+START: 2026-01-15T11:38:14Z
+END: 2026-01-15T11:38:14Z
+DURATION_SEC: .176640716
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1933505.smt2
+START: 2026-01-15T11:38:14Z
+END: 2026-01-15T11:38:15Z
+DURATION_SEC: 1.207618113
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1944435.smt2
+START: 2026-01-15T11:38:15Z
+END: 2026-01-15T11:38:16Z
+DURATION_SEC: 1.129628604
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1949386.smt2
+START: 2026-01-15T11:38:16Z
+END: 2026-01-15T11:38:17Z
+DURATION_SEC: .992603295
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 53 completed at 2026-01-15 19:38:17

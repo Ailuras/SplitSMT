@@ -1,134 +1,134 @@
 ===========================================================
 Task Group 46
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-09 17:57:15
+Started: 2026-01-15 19:38:35
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4369.smt2
-START: 2026-01-09T09:57:15Z
-END: 2026-01-09T09:57:26Z
-DURATION_SEC: 10.260957224
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:57:26] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/437.smt2
-START: 2026-01-09T09:57:26Z
-END: 2026-01-09T09:57:28Z
-DURATION_SEC: 2.454445356
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:57:28] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4457.smt2
-START: 2026-01-09T09:57:28Z
-END: 2026-01-09T09:57:33Z
-DURATION_SEC: 4.546448981
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 17:57:32] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4469.smt2
-START: 2026-01-09T09:57:33Z
-END: 2026-01-09T09:57:38Z
-DURATION_SEC: 4.777562839
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_640041.smt2
+START: 2026-01-15T11:38:35Z
+END: 2026-01-15T11:38:35Z
+DURATION_SEC: .119106543
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4556.smt2
-START: 2026-01-09T09:57:38Z
-END: 2026-01-09T09:57:48Z
-DURATION_SEC: 10.362729796
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_655377.smt2
+START: 2026-01-15T11:38:35Z
+END: 2026-01-15T11:38:46Z
+DURATION_SEC: 10.324789969
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:57:48] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:38:46] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4659.smt2
-START: 2026-01-09T09:57:48Z
-END: 2026-01-09T09:57:52Z
-DURATION_SEC: 3.398842295
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_668598.smt2
+START: 2026-01-15T11:38:46Z
+END: 2026-01-15T11:38:49Z
+DURATION_SEC: 3.038609065
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4684.smt2
-START: 2026-01-09T09:57:52Z
-END: 2026-01-09T09:57:56Z
-DURATION_SEC: 4.319168883
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_692517.smt2
+START: 2026-01-15T11:38:49Z
+END: 2026-01-15T11:38:59Z
+DURATION_SEC: 10.385873352
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:38:59] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_737502.smt2
+START: 2026-01-15T11:38:59Z
+END: 2026-01-15T11:39:02Z
+DURATION_SEC: 2.253665265
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:39:02] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
+START: 2026-01-15T11:39:02Z
+END: 2026-01-15T11:39:04Z
+DURATION_SEC: 1.927405193
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:39:04] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
+START: 2026-01-15T11:39:04Z
+END: 2026-01-15T11:39:06Z
+DURATION_SEC: 2.136994725
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/472.smt2
-START: 2026-01-09T09:57:56Z
-END: 2026-01-09T09:58:06Z
-DURATION_SEC: 10.250196407
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
+START: 2026-01-15T11:39:06Z
+END: 2026-01-15T11:39:16Z
+DURATION_SEC: 10.227046254
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:58:06] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:39:16] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4762.smt2
-START: 2026-01-09T09:58:06Z
-END: 2026-01-09T09:58:09Z
-DURATION_SEC: 2.649158091
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_817400.smt2
+START: 2026-01-15T11:39:16Z
+END: 2026-01-15T11:39:26Z
+DURATION_SEC: 10.235262577
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:58:09] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:39:26] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/Java/awesome/4891.smt2
-START: 2026-01-09T09:58:09Z
-END: 2026-01-09T09:58:18Z
-DURATION_SEC: 8.409769467
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_863567.smt2
+START: 2026-01-15T11:39:26Z
+END: 2026-01-15T11:39:36Z
+DURATION_SEC: 10.182664005
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 17:58:17] External solver reported errors in output: (error "internal exception: java.lang.illegalargumentexception: cannot execute actions list(addformula((! (str_empty(all_529_4) & str_empty(all_353_4)))))")[0m
+[31m[2026-01-15 19:39:36] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
-Task Group 46 completed at 2026-01-09 17:58:18
+Task Group 46 completed at 2026-01-15 19:39:36

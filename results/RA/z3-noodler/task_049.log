@@ -1,33 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/6973.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1189722.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:03
-END: 2026-01-09 19:47:03
-DURATION_SEC: 0.398
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/723.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:03
-END: 2026-01-09 19:47:13
-DURATION_SEC: 10.025
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/768.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:13
-END: 2026-01-09 19:47:14
-DURATION_SEC: 0.981
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.160
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -35,37 +12,23 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/788.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_119258.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:14
-END: 2026-01-09 19:47:15
-DURATION_SEC: 0.326
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.158
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2140398 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/860.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_120902.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:15
-END: 2026-01-09 19:47:25
-DURATION_SEC: 10.018
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/8775.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:25
-END: 2026-01-09 19:47:28
-DURATION_SEC: 3.379
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.148
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -73,54 +36,85 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/8916.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1229669.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:28
-END: 2026-01-09 19:47:38
-DURATION_SEC: 10.019
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/8948.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:38
-END: 2026-01-09 19:47:46
-DURATION_SEC: 8.400
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2154530 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/8949.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:46
-END: 2026-01-09 19:47:54
-DURATION_SEC: 7.839
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2160563 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/awesome/9192.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:54
-END: 2026-01-09 19:47:58
-DURATION_SEC: 3.973
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:01
+DURATION_SEC: 0.125
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1262518.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:01
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.314
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1262770.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.150
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1271244.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.272
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1274915.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.099
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1281005.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.085
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1316079.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:02
+DURATION_SEC: 0.083
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

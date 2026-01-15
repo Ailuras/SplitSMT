@@ -1,132 +1,132 @@
 ===========================================================
 Task Group 70
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-09 17:59:51
+Started: 2026-01-15 19:41:15
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1457086.smt2
-START: 2026-01-09T09:59:51Z
-END: 2026-01-09T09:59:51Z
-DURATION_SEC: .053122904
+FILE: benchmarks_splitsmt/RealWorld/awesome/12029.smt2
+START: 2026-01-15T11:41:15Z
+END: 2026-01-15T11:41:17Z
+DURATION_SEC: 2.141777183
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in reg_loop" in line 64.
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1485224.smt2
-START: 2026-01-09T09:59:51Z
-END: 2026-01-09T09:59:53Z
-DURATION_SEC: 1.814291537
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1492396.smt2
-START: 2026-01-09T09:59:53Z
-END: 2026-01-09T10:00:03Z
-DURATION_SEC: 10.164365054
+FILE: benchmarks_splitsmt/RealWorld/awesome/12063.smt2
+START: 2026-01-15T11:41:17Z
+END: 2026-01-15T11:41:28Z
+DURATION_SEC: 10.182667023
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 18:00:03] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:41:28] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1497641.smt2
-START: 2026-01-09T10:00:03Z
-END: 2026-01-09T10:00:13Z
-DURATION_SEC: 10.136725845
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 18:00:13] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_152160.smt2
-START: 2026-01-09T10:00:13Z
-END: 2026-01-09T10:00:15Z
-DURATION_SEC: 1.186865290
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 18:00:15] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1524591.smt2
-START: 2026-01-09T10:00:15Z
-END: 2026-01-09T10:00:16Z
-DURATION_SEC: 1.305807759
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-09 18:00:16] External solver did not return a valid status. Output: [0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1525553.smt2
-START: 2026-01-09T10:00:16Z
-END: 2026-01-09T10:00:18Z
-DURATION_SEC: 1.682211948
+FILE: benchmarks_splitsmt/RealWorld/awesome/1227.smt2
+START: 2026-01-15T11:41:28Z
+END: 2026-01-15T11:41:31Z
+DURATION_SEC: 2.981845919
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1529898.smt2
-START: 2026-01-09T10:00:18Z
-END: 2026-01-09T10:00:20Z
-DURATION_SEC: 1.949983873
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1536240.smt2
-START: 2026-01-09T10:00:20Z
-END: 2026-01-09T10:00:22Z
-DURATION_SEC: 1.906105257
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1536257.smt2
-START: 2026-01-09T10:00:22Z
-END: 2026-01-09T10:00:23Z
-DURATION_SEC: 1.194753725
+FILE: benchmarks_splitsmt/RealWorld/awesome/12358.smt2
+START: 2026-01-15T11:41:31Z
+END: 2026-01-15T11:41:41Z
+DURATION_SEC: 10.231528500
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-09 18:00:23] External solver did not return a valid status. Output: [0m
+[31m[2026-01-15 19:41:41] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
-Task Group 70 completed at 2026-01-09 18:00:23
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/125.smt2
+START: 2026-01-15T11:41:41Z
+END: 2026-01-15T11:41:43Z
+DURATION_SEC: 1.892486373
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/1279.smt2
+START: 2026-01-15T11:41:43Z
+END: 2026-01-15T11:41:53Z
+DURATION_SEC: 10.192652148
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:41:53] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/1299.smt2
+START: 2026-01-15T11:41:53Z
+END: 2026-01-15T11:42:03Z
+DURATION_SEC: 10.205974424
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:42:03] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/14165.smt2
+START: 2026-01-15T11:42:03Z
+END: 2026-01-15T11:42:05Z
+DURATION_SEC: 1.487765025
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:42:05] External solver did not return a valid status. Output: [0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/1491.smt2
+START: 2026-01-15T11:42:05Z
+END: 2026-01-15T11:42:07Z
+DURATION_SEC: 2.099277026
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/15181.smt2
+START: 2026-01-15T11:42:07Z
+END: 2026-01-15T11:42:08Z
+DURATION_SEC: 1.734563068
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 70 completed at 2026-01-15 19:42:08

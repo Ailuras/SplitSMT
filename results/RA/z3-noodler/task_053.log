@@ -1,36 +1,82 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/325.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1782846.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:22
-END: 2026-01-09 19:47:22
-DURATION_SEC: 0.371
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-15 19:04:02
+END: 2026-01-15 19:04:03
+DURATION_SEC: 0.209
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2144565 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5089.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1819654.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:22
-END: 2026-01-09 19:47:32
-DURATION_SEC: 10.022
-STATUS: TIMEOUT
-EXIT_CODE: 143
+START: 2026-01-15 19:04:03
+END: 2026-01-15 19:04:03
+DURATION_SEC: 0.139
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5095.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1838598.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:32
-END: 2026-01-09 19:47:33
-DURATION_SEC: 0.603
+START: 2026-01-15 19:04:03
+END: 2026-01-15 19:04:03
+DURATION_SEC: 0.372
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1845341.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:03
+END: 2026-01-15 19:04:03
+DURATION_SEC: 0.290
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1854932.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:03
+END: 2026-01-15 19:04:04
+DURATION_SEC: 0.171
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1861179.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:04
+END: 2026-01-15 19:04:04
+DURATION_SEC: 0.151
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1920182.smt2
+TIMEOUT: 10s
+START: 2026-01-15 19:04:04
+END: 2026-01-15 19:04:04
+DURATION_SEC: 0.089
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,34 +84,10 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5096.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1933505.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:33
-END: 2026-01-09 19:47:34
-DURATION_SEC: 0.706
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5097.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:34
-END: 2026-01-09 19:47:35
-DURATION_SEC: 0.645
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5098.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:35
-END: 2026-01-09 19:47:35
+START: 2026-01-15 19:04:04
+END: 2026-01-15 19:04:04
 DURATION_SEC: 0.143
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -74,26 +96,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/Java/top20_maven/5516.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1944435.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:35
-END: 2026-01-09 19:47:35
-DURATION_SEC: 0.300
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2152359 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt5.2_1045348.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:35
-END: 2026-01-09 19:47:35
-DURATION_SEC: 0.219
+START: 2026-01-15 19:04:04
+END: 2026-01-15 19:04:04
+DURATION_SEC: 0.144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -101,23 +108,11 @@ unknown
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt-5.2_1062119.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1949386.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:47:35
-END: 2026-01-09 19:47:36
-DURATION_SEC: 0.742
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/is/strategy_generic_insertion_gpt5.2_1066928.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:47:36
-END: 2026-01-09 19:47:36
-DURATION_SEC: 0.156
+START: 2026-01-15 19:04:04
+END: 2026-01-15 19:04:05
+DURATION_SEC: 0.150
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

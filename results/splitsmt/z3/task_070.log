@@ -1,39 +1,15 @@
 ===========================================================
 Task Group 70
 Solver: SplitSMT (using z3)
-Started: 2026-01-09 17:54:46
+Started: 2026-01-15 19:37:33
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1457086.smt2
-START: 2026-01-09T09:54:46Z
-END: 2026-01-09T09:54:47Z
-DURATION_SEC: .090670753
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in reg_loop" in line 64.
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1485224.smt2
-START: 2026-01-09T09:54:47Z
-END: 2026-01-09T09:54:47Z
-DURATION_SEC: .162557901
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1492396.smt2
-START: 2026-01-09T09:54:47Z
-END: 2026-01-09T09:54:57Z
-DURATION_SEC: 10.097808205
+FILE: benchmarks_splitsmt/RealWorld/awesome/12029.smt2
+START: 2026-01-15T11:37:33Z
+END: 2026-01-15T11:37:33Z
+DURATION_SEC: .211265394
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +18,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_1497641.smt2
-START: 2026-01-09T09:54:57Z
-END: 2026-01-09T09:55:07Z
-DURATION_SEC: 10.207479846
+FILE: benchmarks_splitsmt/RealWorld/awesome/12063.smt2
+START: 2026-01-15T11:37:33Z
+END: 2026-01-15T11:37:33Z
+DURATION_SEC: .220755809
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -54,10 +30,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt5.2_152160.smt2
-START: 2026-01-09T09:55:07Z
-END: 2026-01-09T09:55:18Z
-DURATION_SEC: 10.488795691
+FILE: benchmarks_splitsmt/RealWorld/awesome/1227.smt2
+START: 2026-01-15T11:37:33Z
+END: 2026-01-15T11:37:33Z
+DURATION_SEC: .249959778
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,10 +42,10 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1524591.smt2
-START: 2026-01-09T09:55:18Z
-END: 2026-01-09T09:55:19Z
-DURATION_SEC: 1.469171001
+FILE: benchmarks_splitsmt/RealWorld/awesome/12358.smt2
+START: 2026-01-15T11:37:33Z
+END: 2026-01-15T11:37:34Z
+DURATION_SEC: .207890865
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -78,50 +54,74 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1525553.smt2
-START: 2026-01-09T09:55:19Z
-END: 2026-01-09T09:55:20Z
-DURATION_SEC: .305285645
+FILE: benchmarks_splitsmt/RealWorld/awesome/125.smt2
+START: 2026-01-15T11:37:34Z
+END: 2026-01-15T11:37:34Z
+DURATION_SEC: .201935546
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1529898.smt2
-START: 2026-01-09T09:55:20Z
-END: 2026-01-09T09:55:20Z
-DURATION_SEC: .298582039
+FILE: benchmarks_splitsmt/RealWorld/awesome/1279.smt2
+START: 2026-01-15T11:37:34Z
+END: 2026-01-15T11:37:34Z
+DURATION_SEC: .192166690
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1536240.smt2
-START: 2026-01-09T09:55:20Z
-END: 2026-01-09T09:55:21Z
-DURATION_SEC: .319550223
+FILE: benchmarks_splitsmt/RealWorld/awesome/1299.smt2
+START: 2026-01-15T11:37:34Z
+END: 2026-01-15T11:37:34Z
+DURATION_SEC: .234766381
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/s0/strategy_str_split_gpt-5.2_1536257.smt2
-START: 2026-01-09T09:55:21Z
-END: 2026-01-09T09:55:21Z
-DURATION_SEC: .196222111
+FILE: benchmarks_splitsmt/RealWorld/awesome/14165.smt2
+START: 2026-01-15T11:37:34Z
+END: 2026-01-15T11:37:35Z
+DURATION_SEC: .256333955
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
-Task Group 70 completed at 2026-01-09 17:55:21
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/RealWorld/awesome/1491.smt2
+START: 2026-01-15T11:37:35Z
+END: 2026-01-15T11:37:35Z
+DURATION_SEC: .198249677
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3
+FILE: benchmarks_splitsmt/RealWorld/awesome/15181.smt2
+START: 2026-01-15T11:37:35Z
+END: 2026-01-15T11:37:35Z
+DURATION_SEC: .208901264
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 70 completed at 2026-01-15 19:37:35

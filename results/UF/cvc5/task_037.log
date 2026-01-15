@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_898126.smt2
+FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:32
-END: 2026-01-09 19:41:32
-DURATION_SEC: 0.210
+START: 2026-01-15 18:58:03
+END: 2026-01-15 18:58:03
+DURATION_SEC: 0.254
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,59 +12,35 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2
+FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
-DURATION_SEC: 0.070
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_934728.smt2:49.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
-DURATION_SEC: 0.091
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Parse Error: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_970209.smt2:40.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/DeepSeek/s1/strategy_str_split_deepseek-chat_999797.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
-DURATION_SEC: 0.083
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/10778.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
-DURATION_SEC: 0.080
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/10794.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
 DURATION_SEC: 0.058
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2:49.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
+DURATION_SEC: 0.033
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2:40.130: invalid kind 'REGEXP_CONCAT', expected Terms with kind REGEXP_CONCAT must have at least 2 children and at most 67108863 children (the one under construction has 1)")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
+DURATION_SEC: 0.105
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,11 +48,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/11107.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:33
-DURATION_SEC: 0.128
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
+DURATION_SEC: 0.378
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,11 +60,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/11234.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:33
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.062
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:04
+DURATION_SEC: 0.093
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2:48.63: Symbol 're.loop' not declared as a variable")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:04
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.319
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,11 +84,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/11442.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.069
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.185
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,11 +96,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/Java/awesome/11634.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:34
-END: 2026-01-09 19:41:34
-DURATION_SEC: 0.086
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:05
+DURATION_SEC: 0.105
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:05
+END: 2026-01-15 18:58:08
+DURATION_SEC: 2.303
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

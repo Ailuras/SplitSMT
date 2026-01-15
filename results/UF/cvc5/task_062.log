@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_484871.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1541506.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:48
-DURATION_SEC: 0.132
+START: 2026-01-15 18:58:21
+END: 2026-01-15 18:58:21
+DURATION_SEC: 0.134
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_518814.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1560732.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:48
-DURATION_SEC: 0.120
+START: 2026-01-15 18:58:21
+END: 2026-01-15 18:58:22
+DURATION_SEC: 0.324
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_532541.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1595461.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:48
-DURATION_SEC: 0.158
+START: 2026-01-15 18:58:22
+END: 2026-01-15 18:58:22
+DURATION_SEC: 0.238
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +36,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_556992.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1615843.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:48
-DURATION_SEC: 0.107
+START: 2026-01-15 18:58:22
+END: 2026-01-15 18:58:23
+DURATION_SEC: 0.418
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +48,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_631373.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1623262.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:48
-DURATION_SEC: 0.169
+START: 2026-01-15 18:58:23
+END: 2026-01-15 18:58:23
+DURATION_SEC: 0.163
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_641224.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1626427.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:48
-END: 2026-01-09 19:41:49
-DURATION_SEC: 0.231
+START: 2026-01-15 18:58:23
+END: 2026-01-15 18:58:23
+DURATION_SEC: 0.189
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,11 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_647054.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1666942.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:49
-END: 2026-01-09 19:41:49
-DURATION_SEC: 0.143
+START: 2026-01-15 18:58:23
+END: 2026-01-15 18:58:24
+DURATION_SEC: 0.204
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,37 +84,40 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt5.2_649739.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1676599.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:49
-END: 2026-01-09 19:41:49
-DURATION_SEC: 0.093
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:58:24
+END: 2026-01-15 18:58:24
+DURATION_SEC: 0.523
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
 sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_699759.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1688995.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:49
-END: 2026-01-09 19:41:49
-DURATION_SEC: 0.160
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:58:24
+END: 2026-01-15 18:58:24
+DURATION_SEC: 0.133
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-sat
+unknown
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/is/strategy_generic_insertion_gpt-5.2_719502.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1745778.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:49
-END: 2026-01-09 19:41:50
-DURATION_SEC: 0.172
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-15 18:58:25
+END: 2026-01-15 18:58:26
+DURATION_SEC: 1.296
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
 sat
+(error "cannot make multiple queries unless incremental solving is enabled (try --incremental)")
 

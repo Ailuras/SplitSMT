@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/20413.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1622364.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:59
-END: 2026-01-09 19:41:59
-DURATION_SEC: 0.187
+START: 2026-01-15 18:58:32
+END: 2026-01-15 18:58:33
+DURATION_SEC: 0.165
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/20494.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1653716.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:59
-END: 2026-01-09 19:41:59
-DURATION_SEC: 0.081
+START: 2026-01-15 18:58:33
+END: 2026-01-15 18:58:36
+DURATION_SEC: 3.119
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,44 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/20498.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1662413.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:59
-END: 2026-01-09 19:41:59
-DURATION_SEC: 0.083
+START: 2026-01-15 18:58:36
+END: 2026-01-15 18:58:46
+DURATION_SEC: 10.035
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1691353.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:46
+END: 2026-01-15 18:58:56
+DURATION_SEC: 10.045
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1726635.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:58:56
+END: 2026-01-15 18:59:06
+DURATION_SEC: 10.108
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1738265.smt2
+TIMEOUT: 10s
+START: 2026-01-15 18:59:06
+END: 2026-01-15 18:59:06
+DURATION_SEC: 0.190
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +69,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/20512.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1780670.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:41:59
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.071
+START: 2026-01-15 18:59:06
+END: 2026-01-15 18:59:07
+DURATION_SEC: 0.711
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +81,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/21157.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1842625.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.096
+START: 2026-01-15 18:59:07
+END: 2026-01-15 18:59:07
+DURATION_SEC: 0.092
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +93,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/21345.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1849790.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.136
+START: 2026-01-15 18:59:07
+END: 2026-01-15 18:59:10
+DURATION_SEC: 2.633
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,47 +105,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/Java/awesome/21382.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1856544.smt2
 TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.055
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/Java/awesome/21489.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:00
-DURATION_SEC: 0.122
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/Java/awesome/21922.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:00
-END: 2026-01-09 19:42:01
-DURATION_SEC: 0.323
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/Java/awesome/2344.smt2
-TIMEOUT: 10s
-START: 2026-01-09 19:42:01
-END: 2026-01-09 19:42:01
-DURATION_SEC: 0.093
+START: 2026-01-15 18:59:10
+END: 2026-01-15 18:59:10
+DURATION_SEC: 0.144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
