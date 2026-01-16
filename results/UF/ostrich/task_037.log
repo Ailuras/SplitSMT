@@ -2,9 +2,9 @@
 Solver: ostrich
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:25
-END: 2026-01-16 12:54:28
-DURATION_SEC: 2.702
+START: 2026-01-16 18:07:25
+END: 2026-01-16 18:07:28
+DURATION_SEC: 3.148
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -14,9 +14,9 @@ sat
 Solver: ostrich
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:28
-END: 2026-01-16 12:54:33
-DURATION_SEC: 5.434
+START: 2026-01-16 18:07:28
+END: 2026-01-16 18:07:34
+DURATION_SEC: 5.707
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -26,9 +26,9 @@ sat
 Solver: ostrich
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:33
-END: 2026-01-16 12:54:39
-DURATION_SEC: 5.545
+START: 2026-01-16 18:07:34
+END: 2026-01-16 18:07:39
+DURATION_SEC: 5.257
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,9 +38,9 @@ sat
 Solver: ostrich
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:39
-END: 2026-01-16 12:54:42
-DURATION_SEC: 2.844
+START: 2026-01-16 18:07:39
+END: 2026-01-16 18:07:42
+DURATION_SEC: 2.641
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +50,9 @@ sat
 Solver: ostrich
 FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:42
-END: 2026-01-16 12:54:46
-DURATION_SEC: 4.192
+START: 2026-01-16 18:07:42
+END: 2026-01-16 18:07:47
+DURATION_SEC: 4.676
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,22 +60,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:54:46
-END: 2026-01-16 12:54:48
-DURATION_SEC: 1.536
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
 FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:48
-END: 2026-01-16 12:54:58
-DURATION_SEC: 10.129
+START: 2026-01-16 18:07:47
+END: 2026-01-16 18:07:57
+DURATION_SEC: 10.168
 STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -84,9 +73,9 @@ EXIT_CODE: 1
 Solver: ostrich
 FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:54:58
-END: 2026-01-16 12:55:01
-DURATION_SEC: 2.843
+START: 2026-01-16 18:07:57
+END: 2026-01-16 18:08:00
+DURATION_SEC: 3.027
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,9 +85,9 @@ sat
 Solver: ostrich
 FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:01
-END: 2026-01-16 12:55:02
-DURATION_SEC: 1.826
+START: 2026-01-16 18:08:00
+END: 2026-01-16 18:08:02
+DURATION_SEC: 2.321
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -106,13 +95,24 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt-5.2_1211154.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:03
-END: 2026-01-16 12:55:12
-DURATION_SEC: 9.020
+START: 2026-01-16 18:08:02
+END: 2026-01-16 18:08:05
+DURATION_SEC: 3.243
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/OpenAI/complex/strategy_str_split_gpt5.2_1219617.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:08:05
+END: 2026-01-16 18:08:16
+DURATION_SEC: 10.138
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
 

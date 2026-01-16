@@ -1,0 +1,156 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_981761.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:44
+END: 2026-01-16 17:14:44
+DURATION_SEC: 0.565
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_999425.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:44
+END: 2026-01-16 17:14:44
+DURATION_SEC: 0.096
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/10778.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:44
+END: 2026-01-16 17:14:46
+DURATION_SEC: 1.325
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2477768 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/10794.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:46
+END: 2026-01-16 17:14:46
+DURATION_SEC: 0.180
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11107.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:46
+END: 2026-01-16 17:14:47
+DURATION_SEC: 1.360
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11234.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:47
+END: 2026-01-16 17:14:48
+DURATION_SEC: 0.361
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11442.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:48
+END: 2026-01-16 17:14:48
+DURATION_SEC: 0.122
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2478645 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11634.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:48
+END: 2026-01-16 17:14:48
+DURATION_SEC: 0.145
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2478675 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11642.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:48
+END: 2026-01-16 17:14:48
+DURATION_SEC: 0.301
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2478706 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11661.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:48
+END: 2026-01-16 17:14:49
+DURATION_SEC: 0.071
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unsat
+

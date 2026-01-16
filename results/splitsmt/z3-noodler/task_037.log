@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 37
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-16 13:29:56
+Started: 2026-01-16 18:26:37
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
-START: 2026-01-16T05:29:56Z
-END: 2026-01-16T05:30:06Z
-DURATION_SEC: 10.293221910
+START: 2026-01-16T10:26:37Z
+END: 2026-01-16T10:26:47Z
+DURATION_SEC: 10.228123298
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,21 +19,21 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-16T05:30:06Z
-END: 2026-01-16T05:30:16Z
-DURATION_SEC: 10.221906992
+START: 2026-01-16T10:26:47Z
+END: 2026-01-16T10:26:52Z
+DURATION_SEC: 4.584911649
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
-START: 2026-01-16T05:30:16Z
-END: 2026-01-16T05:30:27Z
-DURATION_SEC: 10.207042736
+START: 2026-01-16T10:26:52Z
+END: 2026-01-16T10:27:02Z
+DURATION_SEC: 10.198398802
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
-START: 2026-01-16T05:30:27Z
-END: 2026-01-16T05:30:27Z
-DURATION_SEC: .503098645
+START: 2026-01-16T10:27:02Z
+END: 2026-01-16T10:27:03Z
+DURATION_SEC: .604474888
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,9 +55,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
-START: 2026-01-16T05:30:27Z
-END: 2026-01-16T05:30:37Z
-DURATION_SEC: 10.163303420
+START: 2026-01-16T10:27:03Z
+END: 2026-01-16T10:27:13Z
+DURATION_SEC: 10.208298843
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -66,39 +66,22 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1070005.smt2
-START: 2026-01-16T05:30:37Z
-END: 2026-01-16T05:30:38Z
-DURATION_SEC: .123431034
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+START: 2026-01-16T10:27:13Z
+END: 2026-01-16T10:27:14Z
+DURATION_SEC: 1.066273654
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
-START: 2026-01-16T05:30:38Z
-END: 2026-01-16T05:30:39Z
-DURATION_SEC: 1.312120503
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:30:39] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle non-chain free constraints with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 831853 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
-START: 2026-01-16T05:30:39Z
-END: 2026-01-16T05:30:39Z
-DURATION_SEC: .319849098
+START: 2026-01-16T10:27:14Z
+END: 2026-01-16T10:27:15Z
+DURATION_SEC: .265286961
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,9 +91,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
-START: 2026-01-16T05:30:39Z
-END: 2026-01-16T05:30:40Z
-DURATION_SEC: .224925550
+START: 2026-01-16T10:27:15Z
+END: 2026-01-16T10:27:15Z
+DURATION_SEC: .228164845
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -119,14 +102,26 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1193089.smt2
-START: 2026-01-16T05:30:40Z
-END: 2026-01-16T05:30:40Z
-DURATION_SEC: .088202530
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1211154.smt2
+START: 2026-01-16T10:27:15Z
+END: 2026-01-16T10:27:25Z
+DURATION_SEC: 10.281230258
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-error: Wrong number of parameters of "String to code on non-single character string" in line 172.
+unknown
 ===========================================================
 
-Task Group 37 completed at 2026-01-16 13:30:40
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1219617.smt2
+START: 2026-01-16T10:27:25Z
+END: 2026-01-16T10:27:36Z
+DURATION_SEC: 10.221713590
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 37 completed at 2026-01-16 18:27:36

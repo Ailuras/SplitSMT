@@ -1,0 +1,142 @@
+===========================================================
+Task Group 4
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-16 17:27:44
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_149700.smt2
+START: 2026-01-16T09:27:44Z
+END: 2026-01-16T09:27:49Z
+DURATION_SEC: 4.282990457
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1518165.smt2
+START: 2026-01-16T09:27:49Z
+END: 2026-01-16T09:27:49Z
+DURATION_SEC: .620474882
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1538237.smt2
+START: 2026-01-16T09:27:49Z
+END: 2026-01-16T09:27:50Z
+DURATION_SEC: .646444070
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:27:50] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2658311 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1557632.smt2
+START: 2026-01-16T09:27:50Z
+END: 2026-01-16T09:27:51Z
+DURATION_SEC: .802786978
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:27:51] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2658831 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1566995.smt2
+START: 2026-01-16T09:27:51Z
+END: 2026-01-16T09:28:01Z
+DURATION_SEC: 10.321845033
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1585100.smt2
+START: 2026-01-16T09:28:01Z
+END: 2026-01-16T09:28:12Z
+DURATION_SEC: 10.307784360
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1599984.smt2
+START: 2026-01-16T09:28:12Z
+END: 2026-01-16T09:28:13Z
+DURATION_SEC: .780924571
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1623885.smt2
+START: 2026-01-16T09:28:13Z
+END: 2026-01-16T09:28:14Z
+DURATION_SEC: 1.427053320
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:28:14] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  Integer/real conversions with transducers are not supported yet
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2673231 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1641710.smt2
+START: 2026-01-16T09:28:14Z
+END: 2026-01-16T09:28:16Z
+DURATION_SEC: 1.556479312
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1647018.smt2
+START: 2026-01-16T09:28:16Z
+END: 2026-01-16T09:28:26Z
+DURATION_SEC: 10.258207304
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 4 completed at 2026-01-16 17:28:26

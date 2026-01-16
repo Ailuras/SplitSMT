@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 19
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-16 13:28:32
+Started: 2026-01-16 18:25:34
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_180966.smt2
-START: 2026-01-16T05:28:32Z
-END: 2026-01-16T05:28:32Z
-DURATION_SEC: .360075446
+START: 2026-01-16T10:25:34Z
+END: 2026-01-16T10:25:35Z
+DURATION_SEC: .352064084
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_182100.smt2
-START: 2026-01-16T05:28:32Z
-END: 2026-01-16T05:28:32Z
-DURATION_SEC: .264126210
+START: 2026-01-16T10:25:35Z
+END: 2026-01-16T10:25:35Z
+DURATION_SEC: .332289705
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,26 +31,21 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1830942.smt2
-START: 2026-01-16T05:28:32Z
-END: 2026-01-16T05:28:33Z
-DURATION_SEC: .367885537
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-16T10:25:35Z
+END: 2026-01-16T10:25:36Z
+DURATION_SEC: .329299077
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-16 13:28:33] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 796571 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_183158.smt2
-START: 2026-01-16T05:28:33Z
-END: 2026-01-16T05:28:34Z
-DURATION_SEC: 1.178411524
+START: 2026-01-16T10:25:36Z
+END: 2026-01-16T10:25:36Z
+DURATION_SEC: .677624089
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,21 +55,21 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1864431.smt2
-START: 2026-01-16T05:28:34Z
-END: 2026-01-16T05:28:35Z
-DURATION_SEC: .269411815
+START: 2026-01-16T10:25:37Z
+END: 2026-01-16T10:25:37Z
+DURATION_SEC: .306389635
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1865035.smt2
-START: 2026-01-16T05:28:35Z
-END: 2026-01-16T05:28:37Z
-DURATION_SEC: 2.544961738
+START: 2026-01-16T10:25:37Z
+END: 2026-01-16T10:25:38Z
+DURATION_SEC: .647334388
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,9 +79,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1873839.smt2
-START: 2026-01-16T05:28:37Z
-END: 2026-01-16T05:28:48Z
-DURATION_SEC: 10.408146572
+START: 2026-01-16T10:25:38Z
+END: 2026-01-16T10:25:48Z
+DURATION_SEC: 10.299051123
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,9 +91,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1875305.smt2
-START: 2026-01-16T05:28:48Z
-END: 2026-01-16T05:28:58Z
-DURATION_SEC: 10.384574316
+START: 2026-01-16T10:25:48Z
+END: 2026-01-16T10:25:58Z
+DURATION_SEC: 10.317021461
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,9 +103,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1884665.smt2
-START: 2026-01-16T05:28:58Z
-END: 2026-01-16T05:29:01Z
-DURATION_SEC: 2.421363944
+START: 2026-01-16T10:25:58Z
+END: 2026-01-16T10:26:00Z
+DURATION_SEC: 1.878230764
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -120,18 +115,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1885762.smt2
-START: 2026-01-16T05:29:01Z
-END: 2026-01-16T05:29:01Z
-DURATION_SEC: .503728755
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-16T10:26:00Z
+END: 2026-01-16T10:26:01Z
+DURATION_SEC: .366339645
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-16 13:29:01] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle non-chain free constraints with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 804658 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-[0m
 unknown
 ===========================================================
 
-Task Group 19 completed at 2026-01-16 13:29:01
+Task Group 19 completed at 2026-01-16 18:26:01

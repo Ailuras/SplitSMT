@@ -1,10 +1,34 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/5414.smt2
+FILE: benchmarks_UF/RealWorld/awesome/6760.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.156
+START: 2026-01-16 18:05:59
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.689
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/6769.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.179
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/685.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.065
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -12,109 +36,85 @@ EXIT_CODE: 1
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/5844.smt2
+FILE: benchmarks_UF/RealWorld/awesome/6947.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:01
+DURATION_SEC: 0.873
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/6973.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:01
+END: 2026-01-16 18:06:01
+DURATION_SEC: 0.145
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/723.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:01
+END: 2026-01-16 18:06:01
+DURATION_SEC: 0.132
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/768.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:01
+END: 2026-01-16 18:06:01
+DURATION_SEC: 0.107
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/788.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:02
+END: 2026-01-16 18:06:04
+DURATION_SEC: 2.223
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/860.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:04
+END: 2026-01-16 18:06:04
+DURATION_SEC: 0.042
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/8775.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:04
+END: 2026-01-16 18:06:04
 DURATION_SEC: 0.061
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/59.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.114
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/6001.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.137
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Regular expression terms are not supported in theory combination")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/6058.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.100
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/6116.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:04
-END: 2026-01-16 12:53:04
-DURATION_SEC: 0.082
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/6268.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:04
-END: 2026-01-16 12:53:04
-DURATION_SEC: 0.191
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/6277.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:04
-END: 2026-01-16 12:53:04
-DURATION_SEC: 0.208
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/633.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:04
-END: 2026-01-16 12:53:04
-DURATION_SEC: 0.106
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Regular expression terms are not supported in theory combination")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/649.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:04
-END: 2026-01-16 12:53:15
-DURATION_SEC: 10.180
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-cvc5 interrupted by SIGTERM.
 

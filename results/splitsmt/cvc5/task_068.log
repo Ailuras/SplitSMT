@@ -1,15 +1,28 @@
 ===========================================================
 Task Group 68
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-16 13:32:34
+Started: 2026-01-16 18:30:05
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_782514.smt2
-START: 2026-01-16T05:32:34Z
-END: 2026-01-16T05:32:34Z
-DURATION_SEC: .298975718
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_981761.smt2
+START: 2026-01-16T10:30:05Z
+END: 2026-01-16T10:30:05Z
+DURATION_SEC: .099819877
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 18:30:05] External solver reported errors in output: (error "parse error: /tmp/smt2_pz0snf.smt2:55.14: symbol `sep' is shadowing a theory function symbol")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_999425.smt2
+START: 2026-01-16T10:30:05Z
+END: 2026-01-16T10:30:05Z
+DURATION_SEC: .105181356
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,73 +31,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_820585.smt2
-START: 2026-01-16T05:32:34Z
-END: 2026-01-16T05:32:34Z
-DURATION_SEC: .126062338
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:32:34] External solver reported errors in output: (error "parse error: /tmp/smt2_11kcow.smt2:60.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_846735.smt2
-START: 2026-01-16T05:32:34Z
-END: 2026-01-16T05:32:34Z
-DURATION_SEC: .124558958
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:32:34] External solver reported errors in output: (error "parse error: /tmp/smt2_enhbfc.smt2:60.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_869368.smt2
-START: 2026-01-16T05:32:34Z
-END: 2026-01-16T05:32:44Z
-DURATION_SEC: 10.116102010
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_893416.smt2
-START: 2026-01-16T05:32:44Z
-END: 2026-01-16T05:32:45Z
-DURATION_SEC: .195863124
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_925395.smt2
-START: 2026-01-16T05:32:45Z
-END: 2026-01-16T05:32:45Z
-DURATION_SEC: .281309508
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:32:45] External solver reported errors in output: (error "parse error: /tmp/smt2_tnv9ez.smt2:71.14: symbol `to_int' is shadowing a theory function symbol")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_944051.smt2
-START: 2026-01-16T05:32:45Z
-END: 2026-01-16T05:32:49Z
-DURATION_SEC: 3.892287703
+FILE: benchmarks_splitsmt/RealWorld/awesome/10778.smt2
+START: 2026-01-16T10:30:05Z
+END: 2026-01-16T10:30:05Z
+DURATION_SEC: .376942081
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -93,39 +43,88 @@ sat
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_948963.smt2
-START: 2026-01-16T05:32:49Z
-END: 2026-01-16T05:32:49Z
-DURATION_SEC: .197619108
+FILE: benchmarks_splitsmt/RealWorld/awesome/10794.smt2
+START: 2026-01-16T10:30:05Z
+END: 2026-01-16T10:30:05Z
+DURATION_SEC: .190081188
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_981761.smt2
-START: 2026-01-16T05:32:49Z
-END: 2026-01-16T05:32:49Z
-DURATION_SEC: .158597552
+FILE: benchmarks_splitsmt/RealWorld/awesome/11107.smt2
+START: 2026-01-16T10:30:05Z
+END: 2026-01-16T10:30:06Z
+DURATION_SEC: .187365496
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11234.smt2
+START: 2026-01-16T10:30:06Z
+END: 2026-01-16T10:30:06Z
+DURATION_SEC: .195805610
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11442.smt2
+START: 2026-01-16T10:30:06Z
+END: 2026-01-16T10:30:06Z
+DURATION_SEC: .206118452
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-16 13:32:49] External solver reported errors in output: (error "parse error: /tmp/smt2_vrhqw6.smt2:55.14: symbol `sep' is shadowing a theory function symbol")[0m
+[31m[2026-01-16 18:30:06] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_999425.smt2
-START: 2026-01-16T05:32:49Z
-END: 2026-01-16T05:32:50Z
-DURATION_SEC: .403550142
+FILE: benchmarks_splitsmt/RealWorld/awesome/11634.smt2
+START: 2026-01-16T10:30:06Z
+END: 2026-01-16T10:30:07Z
+DURATION_SEC: .430861135
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
-Task Group 68 completed at 2026-01-16 13:32:50
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11642.smt2
+START: 2026-01-16T10:30:07Z
+END: 2026-01-16T10:30:07Z
+DURATION_SEC: .241470360
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11661.smt2
+START: 2026-01-16T10:30:07Z
+END: 2026-01-16T10:30:07Z
+DURATION_SEC: .243777550
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 18:30:07] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+Task Group 68 completed at 2026-01-16 18:30:07

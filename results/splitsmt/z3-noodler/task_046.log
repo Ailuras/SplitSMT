@@ -1,75 +1,15 @@
 ===========================================================
 Task Group 46
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-16 13:30:40
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_640041.smt2
-START: 2026-01-16T05:30:40Z
-END: 2026-01-16T05:30:41Z
-DURATION_SEC: .115570615
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-error: Kind mismatch of command "Type mismatch in reg_loop" in line 46.
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_655377.smt2
-START: 2026-01-16T05:30:41Z
-END: 2026-01-16T05:30:49Z
-DURATION_SEC: 8.007916597
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_668598.smt2
-START: 2026-01-16T05:30:49Z
-END: 2026-01-16T05:30:50Z
-DURATION_SEC: 1.073224334
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_692517.smt2
-START: 2026-01-16T05:30:50Z
-END: 2026-01-16T05:31:00Z
-DURATION_SEC: 10.228433830
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_737502.smt2
-START: 2026-01-16T05:31:00Z
-END: 2026-01-16T05:31:01Z
-DURATION_SEC: .648080131
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+Started: 2026-01-16 18:27:29
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
-START: 2026-01-16T05:31:01Z
-END: 2026-01-16T05:31:01Z
-DURATION_SEC: .335478897
+START: 2026-01-16T10:27:29Z
+END: 2026-01-16T10:27:29Z
+DURATION_SEC: .211870250
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -79,9 +19,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
-START: 2026-01-16T05:31:01Z
-END: 2026-01-16T05:31:02Z
-DURATION_SEC: .421968281
+START: 2026-01-16T10:27:29Z
+END: 2026-01-16T10:27:29Z
+DURATION_SEC: .205040800
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -91,13 +31,73 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
-START: 2026-01-16T05:31:02Z
-END: 2026-01-16T05:31:12Z
-DURATION_SEC: 10.243702466
+START: 2026-01-16T10:27:29Z
+END: 2026-01-16T10:27:29Z
+DURATION_SEC: .323379723
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_817400.smt2
+START: 2026-01-16T10:27:30Z
+END: 2026-01-16T10:27:31Z
+DURATION_SEC: 1.041692630
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 46 completed at 2026-01-16 13:31:12
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_863567.smt2
+START: 2026-01-16T10:27:31Z
+END: 2026-01-16T10:27:41Z
+DURATION_SEC: 10.209652110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_871902.smt2
+START: 2026-01-16T10:27:41Z
+END: 2026-01-16T10:27:42Z
+DURATION_SEC: .650638571
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_882377.smt2
+START: 2026-01-16T10:27:42Z
+END: 2026-01-16T10:27:43Z
+DURATION_SEC: .832233940
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_888010.smt2
+START: 2026-01-16T10:27:43Z
+END: 2026-01-16T10:27:53Z
+DURATION_SEC: 10.236816218
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 46 completed at 2026-01-16 18:27:53

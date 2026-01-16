@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/21345.smt2
+FILE: benchmarks_UF/RealWorld/awesome/3122.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:01
-END: 2026-01-16 12:53:01
-DURATION_SEC: 0.190
+START: 2026-01-16 18:05:57
+END: 2026-01-16 18:05:57
+DURATION_SEC: 0.183
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ EXIT_CODE: 1
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/21382.smt2
+FILE: benchmarks_UF/RealWorld/awesome/33306.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:01
-END: 2026-01-16 12:53:01
-DURATION_SEC: 0.194
+START: 2026-01-16 18:05:57
+END: 2026-01-16 18:05:58
+DURATION_SEC: 0.167
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -24,11 +24,35 @@ EXIT_CODE: 1
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/21489.smt2
+FILE: benchmarks_UF/RealWorld/awesome/33328.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:01
-END: 2026-01-16 12:53:01
-DURATION_SEC: 0.205
+START: 2026-01-16 18:05:58
+END: 2026-01-16 18:05:59
+DURATION_SEC: 1.057
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/33720.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:05:59
+END: 2026-01-16 18:05:59
+DURATION_SEC: 0.136
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Regular expression terms are not supported in theory combination")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/337.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:05:59
+END: 2026-01-16 18:05:59
+DURATION_SEC: 0.199
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,23 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/21922.smt2
+FILE: benchmarks_UF/RealWorld/awesome/34010.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:02
-END: 2026-01-16 12:53:02
-DURATION_SEC: 0.175
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Regular expression terms are not supported in theory combination")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/2344.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:02
-END: 2026-01-16 12:53:02
-DURATION_SEC: 0.163
+START: 2026-01-16 18:05:59
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.138
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/2371.smt2
+FILE: benchmarks_UF/RealWorld/awesome/34014.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:02
-END: 2026-01-16 12:53:02
-DURATION_SEC: 0.150
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.128
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -72,35 +84,11 @@ EXIT_CODE: 1
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/2376.smt2
+FILE: benchmarks_UF/RealWorld/awesome/34019.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:02
-END: 2026-01-16 12:53:02
-DURATION_SEC: 0.174
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Regular expression terms are not supported in theory combination")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/2402.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.141
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "Regular expression terms are not supported in theory combination")
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/245.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.063
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.139
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,11 +96,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/awesome/278.smt2
+FILE: benchmarks_UF/RealWorld/awesome/340.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:53:03
-END: 2026-01-16 12:53:03
-DURATION_SEC: 0.099
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.142
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/awesome/347.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:06:00
+END: 2026-01-16 18:06:00
+DURATION_SEC: 0.218
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

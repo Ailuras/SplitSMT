@@ -1,98 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_112964.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:58
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.818
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1134932.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.083
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1137404.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.055
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1173862.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.069
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1174592.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.041
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_117640.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:09:59
-DURATION_SEC: 0.050
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 157 column 37: unknown constant num_splits (String String) ")
-(error "line 160 column 40: unknown constant split_at (String String Int) ")
-(error "line 161 column 39: unknown constant split_at (String String Int) ")
-(error "line 162 column 39: unknown constant split_at (String String Int) ")
-(error "line 163 column 39: unknown constant split_at (String String Int) ")
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1242060.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:09:59
-END: 2026-01-16 13:10:09
-DURATION_SEC: 10.021
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3
 FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1250336.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:10:09
-END: 2026-01-16 13:10:09
-DURATION_SEC: 0.049
+START: 2026-01-16 18:15:34
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.070
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -102,9 +14,9 @@ sat
 Solver: z3
 FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1265060.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:10:09
-END: 2026-01-16 13:10:09
-DURATION_SEC: 0.045
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.053
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -114,11 +26,94 @@ unsat
 Solver: z3
 FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1273413.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:10:09
-END: 2026-01-16 13:10:09
-DURATION_SEC: 0.149
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.233
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1376934.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.040
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_144948.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.044
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1492396.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.107
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1497641.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:35
+DURATION_SEC: 0.059
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_152160.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:35
+END: 2026-01-16 18:15:45
+DURATION_SEC: 10.021
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1524591.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:45
+END: 2026-01-16 18:15:46
+DURATION_SEC: 1.212
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1536240.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:15:46
+END: 2026-01-16 18:15:46
+DURATION_SEC: 0.039
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

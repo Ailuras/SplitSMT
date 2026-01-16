@@ -1,10 +1,10 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/347.smt2
+FILE: benchmarks_UF/RealWorld/awesome/3766.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:55
-END: 2026-01-16 12:56:57
-DURATION_SEC: 2.044
+START: 2026-01-16 18:09:55
+END: 2026-01-16 18:09:57
+DURATION_SEC: 2.768
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35360.smt2
+FILE: benchmarks_UF/RealWorld/awesome/3776.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:57
-END: 2026-01-16 12:56:59
-DURATION_SEC: 2.036
+START: 2026-01-16 18:09:57
+END: 2026-01-16 18:09:59
+DURATION_SEC: 1.592
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,66 +24,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35365.smt2
+FILE: benchmarks_UF/RealWorld/awesome/3783.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:59
-END: 2026-01-16 12:57:09
-DURATION_SEC: 10.119
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35367.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:57:09
-END: 2026-01-16 12:57:19
-DURATION_SEC: 10.106
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35369.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:57:19
-END: 2026-01-16 12:57:29
-DURATION_SEC: 10.130
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35370.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:57:29
-END: 2026-01-16 12:57:39
-DURATION_SEC: 10.087
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35371.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:57:39
-END: 2026-01-16 12:57:49
-DURATION_SEC: 10.119
-STATUS: TIMEOUT
-EXIT_CODE: 1
------------------------------------------------------------
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/353.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:57:49
-END: 2026-01-16 12:57:52
-DURATION_SEC: 2.783
+START: 2026-01-16 18:09:59
+END: 2026-01-16 18:10:01
+DURATION_SEC: 1.810
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -91,11 +36,11 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35411.smt2
+FILE: benchmarks_UF/RealWorld/awesome/37934.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:57:52
-END: 2026-01-16 12:57:54
-DURATION_SEC: 1.398
+START: 2026-01-16 18:10:01
+END: 2026-01-16 18:10:03
+DURATION_SEC: 2.007
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -103,11 +48,70 @@ sat
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_UF/RealWorld/awesome/35414.smt2
+FILE: benchmarks_UF/RealWorld/awesome/37944.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:57:54
-END: 2026-01-16 12:57:55
-DURATION_SEC: 1.150
+START: 2026-01-16 18:10:03
+END: 2026-01-16 18:10:05
+DURATION_SEC: 1.998
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/RealWorld/awesome/37946.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:10:05
+END: 2026-01-16 18:10:07
+DURATION_SEC: 2.675
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/RealWorld/awesome/37.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:10:07
+END: 2026-01-16 18:10:13
+DURATION_SEC: 5.238
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "Internal exception: java.lang.IllegalArgumentException: cannot execute actions List(AddFormula((!str_empty(all_200_1))))")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/RealWorld/awesome/3860.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:10:13
+END: 2026-01-16 18:10:14
+DURATION_SEC: 1.592
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/RealWorld/awesome/40692.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:10:14
+END: 2026-01-16 18:10:15
+DURATION_SEC: 1.114
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_UF/RealWorld/awesome/4197.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:10:15
+END: 2026-01-16 18:10:18
+DURATION_SEC: 2.213
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

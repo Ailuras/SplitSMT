@@ -1,97 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1976359.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:57
-END: 2026-01-16 13:05:57
-DURATION_SEC: 0.071
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1992689.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:57
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.489
-STATUS: ERROR
-EXIT_CODE: 134
------------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle non-chain free constraints with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 530546 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2020484.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.117
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2060500.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.092
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2074607.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.229
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2078107.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.163
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083119.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:58
-DURATION_SEC: 0.071
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
 FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:05:58
-END: 2026-01-16 13:05:59
-DURATION_SEC: 0.325
+START: 2026-01-16 18:11:29
+END: 2026-01-16 18:11:29
+DURATION_SEC: 0.305
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -101,9 +14,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:05:59
-END: 2026-01-16 13:05:59
-DURATION_SEC: 0.261
+START: 2026-01-16 18:11:29
+END: 2026-01-16 18:11:29
+DURATION_SEC: 0.083
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,14 +26,98 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:05:59
-END: 2026-01-16 13:06:00
-DURATION_SEC: 0.427
+START: 2026-01-16 18:11:29
+END: 2026-01-16 18:11:30
+DURATION_SEC: 0.445
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 532351 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3106884 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_229389.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:30
+END: 2026-01-16 18:11:30
+DURATION_SEC: 0.168
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:30
+END: 2026-01-16 18:11:30
+DURATION_SEC: 0.079
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:30
+END: 2026-01-16 18:11:30
+DURATION_SEC: 0.128
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_268334.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:30
+END: 2026-01-16 18:11:30
+DURATION_SEC: 0.212
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_310581.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:30
+END: 2026-01-16 18:11:31
+DURATION_SEC: 0.222
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_313702.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:31
+END: 2026-01-16 18:11:31
+DURATION_SEC: 0.228
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_323390.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:11:31
+END: 2026-01-16 18:11:31
+DURATION_SEC: 0.313
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

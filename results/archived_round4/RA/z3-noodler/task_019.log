@@ -1,0 +1,122 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_180966.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:04
+END: 2026-01-16 17:14:05
+DURATION_SEC: 0.261
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_182100.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:05
+END: 2026-01-16 17:14:05
+DURATION_SEC: 0.136
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1830942.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:05
+END: 2026-01-16 17:14:05
+DURATION_SEC: 0.299
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_183158.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:05
+END: 2026-01-16 17:14:06
+DURATION_SEC: 0.304
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1864431.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:06
+END: 2026-01-16 17:14:06
+DURATION_SEC: 0.291
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1865035.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:06
+END: 2026-01-16 17:14:06
+DURATION_SEC: 0.231
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1873839.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:06
+END: 2026-01-16 17:14:07
+DURATION_SEC: 0.332
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1875305.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:07
+END: 2026-01-16 17:14:07
+DURATION_SEC: 0.322
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1884665.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:07
+END: 2026-01-16 17:14:17
+DURATION_SEC: 10.101
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1885762.smt2
+TIMEOUT: 10s
+START: 2026-01-16 17:14:17
+END: 2026-01-16 17:14:18
+DURATION_SEC: 0.563
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2446930 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+

@@ -1,21 +1,57 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1765086.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1866571.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:54
-END: 2026-01-16 12:52:54
-DURATION_SEC: 0.120
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-16 18:05:52
+END: 2026-01-16 18:05:52
+DURATION_SEC: 0.199
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1765086.smt2:10.14: Symbol `to_int' is shadowing a theory function symbol")
+sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1781893.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_187346.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:54
-END: 2026-01-16 12:52:55
+START: 2026-01-16 18:05:52
+END: 2026-01-16 18:05:52
+DURATION_SEC: 0.057
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_187346.smt2:10.14: Symbol `to_int' is shadowing a theory function symbol")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_189479.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:05:52
+END: 2026-01-16 18:05:53
+DURATION_SEC: 0.253
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1949494.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:05:53
+END: 2026-01-16 18:05:53
+DURATION_SEC: 0.229
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1953944.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:05:53
+END: 2026-01-16 18:05:53
 DURATION_SEC: 0.383
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -24,11 +60,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1783649.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1982352.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:55
-END: 2026-01-16 12:52:57
-DURATION_SEC: 1.696
+START: 2026-01-16 18:05:54
+END: 2026-01-16 18:05:54
+DURATION_SEC: 0.209
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +72,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1786390.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1989028.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:57
-END: 2026-01-16 12:52:57
-DURATION_SEC: 0.157
+START: 2026-01-16 18:05:54
+END: 2026-01-16 18:05:54
+DURATION_SEC: 0.062
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,11 +84,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1792360.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1993341.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:57
-END: 2026-01-16 12:52:57
-DURATION_SEC: 0.257
+START: 2026-01-16 18:05:54
+END: 2026-01-16 18:05:54
+DURATION_SEC: 0.400
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,11 +96,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_1812689.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_2027566.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:57
-END: 2026-01-16 12:52:58
-DURATION_SEC: 0.296
+START: 2026-01-16 18:05:54
+END: 2026-01-16 18:05:54
+DURATION_SEC: 0.168
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,47 +108,11 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1848860.smt2
+FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt5.2_2029990.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:52:58
-END: 2026-01-16 12:52:58
-DURATION_SEC: 0.135
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864105.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:52:58
-END: 2026-01-16 12:52:58
+START: 2026-01-16 18:05:55
+END: 2026-01-16 18:05:55
 DURATION_SEC: 0.318
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:52:58
-END: 2026-01-16 12:52:58
-DURATION_SEC: 0.191
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/OpenAI/scenarios/strategy_str_split_gpt-5.2_1866571.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:52:58
-END: 2026-01-16 12:52:59
-DURATION_SEC: 0.244
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

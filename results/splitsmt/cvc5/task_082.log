@@ -1,113 +1,39 @@
 ===========================================================
 Task Group 82
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-16 13:32:52
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split.smt2
-START: 2026-01-16T05:32:52Z
-END: 2026-01-16T05:32:52Z
-DURATION_SEC: .142112029
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split2.smt2
-START: 2026-01-16T05:32:52Z
-END: 2026-01-16T05:32:52Z
-DURATION_SEC: .166068572
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split3.smt2
-START: 2026-01-16T05:32:52Z
-END: 2026-01-16T05:32:52Z
-DURATION_SEC: .124435454
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split.smt2
-START: 2026-01-16T05:32:52Z
-END: 2026-01-16T05:32:53Z
-DURATION_SEC: .256714451
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/10560.smt2
-START: 2026-01-16T05:32:53Z
-END: 2026-01-16T05:32:53Z
-DURATION_SEC: .486425231
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:32:53] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/10596.smt2
-START: 2026-01-16T05:32:53Z
-END: 2026-01-16T05:32:54Z
-DURATION_SEC: .301907542
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 13:32:54] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/1118.smt2
-START: 2026-01-16T05:32:54Z
-END: 2026-01-16T05:32:54Z
-DURATION_SEC: .298926788
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/11724.smt2
-START: 2026-01-16T05:32:54Z
-END: 2026-01-16T05:32:54Z
-DURATION_SEC: .296868474
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
+Started: 2026-01-16 18:30:20
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/12319.smt2
-START: 2026-01-16T05:32:54Z
-END: 2026-01-16T05:33:05Z
-DURATION_SEC: 10.172353284
+START: 2026-01-16T10:30:20Z
+END: 2026-01-16T10:30:24Z
+DURATION_SEC: 3.758304558
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/12328.smt2
+START: 2026-01-16T10:30:24Z
+END: 2026-01-16T10:30:25Z
+DURATION_SEC: .812593508
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/12336.smt2
+START: 2026-01-16T10:30:25Z
+END: 2026-01-16T10:30:35Z
+DURATION_SEC: 10.099598720
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -116,14 +42,89 @@ unknown
 
 ===========================================================
 Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/12328.smt2
-START: 2026-01-16T05:33:05Z
-END: 2026-01-16T05:33:15Z
-DURATION_SEC: 10.192382086
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/12342.smt2
+START: 2026-01-16T10:30:35Z
+END: 2026-01-16T10:30:45Z
+DURATION_SEC: 10.080994558
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 82 completed at 2026-01-16 13:33:15
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/15456.smt2
+START: 2026-01-16T10:30:45Z
+END: 2026-01-16T10:30:45Z
+DURATION_SEC: .132091688
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 18:30:45] External solver reported errors in output: (error "parse error: /tmp/smt2_buxarg.smt2:54.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/16346.smt2
+START: 2026-01-16T10:30:45Z
+END: 2026-01-16T10:30:55Z
+DURATION_SEC: 10.105410306
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/16405.smt2
+START: 2026-01-16T10:30:55Z
+END: 2026-01-16T10:30:55Z
+DURATION_SEC: .173251488
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/1643.smt2
+START: 2026-01-16T10:30:55Z
+END: 2026-01-16T10:30:55Z
+DURATION_SEC: .106441205
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 18:30:55] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/18189.smt2
+START: 2026-01-16T10:30:55Z
+END: 2026-01-16T10:30:56Z
+DURATION_SEC: .107204210
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-cvc5
+FILE: benchmarks_splitsmt/RealWorld/top20_gh/18195.smt2
+START: 2026-01-16T10:30:56Z
+END: 2026-01-16T10:30:56Z
+DURATION_SEC: .107135167
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 18:30:56] External solver reported errors in output: (error "parse error: /tmp/smt2_gqmkvr.smt2:54.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+Task Group 82 completed at 2026-01-16 18:30:56

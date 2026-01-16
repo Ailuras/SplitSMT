@@ -262,9 +262,9 @@ ExternalSolver::executeExternalSolver(const std::string &tempFile) const {
     }
   }
 
-  ERROR("External solver did not return a valid status. Output: ",
+  INFO("External solver did not return a valid status. Output: ",
         procResult.output);
-  return SatResult::ERROR;
+  return SatResult::UNKNOWN;
 }
 
 std::string ExternalSolver::buildCurrentFormula() const {

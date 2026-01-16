@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/10794.smt2
+FILE: benchmarks_UF/RealWorld/awesome/12063.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:54
-END: 2026-01-16 12:55:54
-DURATION_SEC: 0.085
+START: 2026-01-16 18:08:52
+END: 2026-01-16 18:08:52
+DURATION_SEC: 0.138
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11107.smt2
+FILE: benchmarks_UF/RealWorld/awesome/1227.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:54
-END: 2026-01-16 12:55:54
-DURATION_SEC: 0.111
+START: 2026-01-16 18:08:52
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.158
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11234.smt2
+FILE: benchmarks_UF/RealWorld/awesome/12358.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:54
-END: 2026-01-16 12:55:54
-DURATION_SEC: 0.175
+START: 2026-01-16 18:08:53
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.163
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,22 +36,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11442.smt2
+FILE: benchmarks_UF/RealWorld/awesome/125.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:55:54
-END: 2026-01-16 12:56:04
-DURATION_SEC: 10.017
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11634.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:56:04
-END: 2026-01-16 12:56:06
-DURATION_SEC: 1.049
+START: 2026-01-16 18:08:53
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.127
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -59,11 +48,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11642.smt2
+FILE: benchmarks_UF/RealWorld/awesome/1279.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:06
-END: 2026-01-16 12:56:07
-DURATION_SEC: 0.984
+START: 2026-01-16 18:08:53
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.125
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -71,11 +60,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11661.smt2
+FILE: benchmarks_UF/RealWorld/awesome/1299.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:07
-END: 2026-01-16 12:56:07
-DURATION_SEC: 0.067
+START: 2026-01-16 18:08:53
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.153
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -83,11 +72,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11770.smt2
+FILE: benchmarks_UF/RealWorld/awesome/14165.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:07
-END: 2026-01-16 12:56:11
-DURATION_SEC: 4.436
+START: 2026-01-16 18:08:53
+END: 2026-01-16 18:08:53
+DURATION_SEC: 0.174
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -95,11 +84,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/11864.smt2
+FILE: benchmarks_UF/RealWorld/awesome/15181.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:11
-END: 2026-01-16 12:56:11
-DURATION_SEC: 0.171
+START: 2026-01-16 18:08:54
+END: 2026-01-16 18:08:54
+DURATION_SEC: 0.159
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -107,16 +96,25 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/12029.smt2
+FILE: benchmarks_UF/RealWorld/awesome/1574.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:11
-END: 2026-01-16 12:56:14
-DURATION_SEC: 3.037
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-16 18:08:54
+END: 2026-01-16 18:08:54
+DURATION_SEC: 0.148
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 425617 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/RealWorld/awesome/16116.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:08:54
+END: 2026-01-16 18:08:54
+DURATION_SEC: 0.070
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

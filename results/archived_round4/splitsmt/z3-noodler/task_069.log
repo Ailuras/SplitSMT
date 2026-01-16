@@ -1,0 +1,132 @@
+===========================================================
+Task Group 69
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-16 17:31:36
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/11770.smt2
+START: 2026-01-16T09:31:36Z
+END: 2026-01-16T09:31:39Z
+DURATION_SEC: 3.274616570
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/11864.smt2
+START: 2026-01-16T09:31:39Z
+END: 2026-01-16T09:31:40Z
+DURATION_SEC: .610559548
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/12029.smt2
+START: 2026-01-16T09:31:40Z
+END: 2026-01-16T09:31:42Z
+DURATION_SEC: 1.987445148
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:31:42] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2738959 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/12063.smt2
+START: 2026-01-16T09:31:42Z
+END: 2026-01-16T09:31:42Z
+DURATION_SEC: .383074513
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/1227.smt2
+START: 2026-01-16T09:31:42Z
+END: 2026-01-16T09:31:43Z
+DURATION_SEC: .534991093
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/12358.smt2
+START: 2026-01-16T09:31:43Z
+END: 2026-01-16T09:31:43Z
+DURATION_SEC: .547675274
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/125.smt2
+START: 2026-01-16T09:31:43Z
+END: 2026-01-16T09:31:43Z
+DURATION_SEC: .199737368
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/1279.smt2
+START: 2026-01-16T09:31:44Z
+END: 2026-01-16T09:31:44Z
+DURATION_SEC: .448965052
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/1299.smt2
+START: 2026-01-16T09:31:44Z
+END: 2026-01-16T09:31:45Z
+DURATION_SEC: .785561192
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/RealWorld/awesome/14165.smt2
+START: 2026-01-16T09:31:45Z
+END: 2026-01-16T09:31:45Z
+DURATION_SEC: .121443937
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 69 completed at 2026-01-16 17:31:45

@@ -1,0 +1,108 @@
+===========================================================
+Task Group 46
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-16 17:30:33
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
+START: 2026-01-16T09:30:33Z
+END: 2026-01-16T09:30:33Z
+DURATION_SEC: .344303048
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
+START: 2026-01-16T09:30:33Z
+END: 2026-01-16T09:30:33Z
+DURATION_SEC: .159012265
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
+START: 2026-01-16T09:30:33Z
+END: 2026-01-16T09:30:34Z
+DURATION_SEC: .268554526
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_817400.smt2
+START: 2026-01-16T09:30:34Z
+END: 2026-01-16T09:30:34Z
+DURATION_SEC: .821166308
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:30:34] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2721188 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_863567.smt2
+START: 2026-01-16T09:30:34Z
+END: 2026-01-16T09:30:45Z
+DURATION_SEC: 10.121279000
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_871902.smt2
+START: 2026-01-16T09:30:45Z
+END: 2026-01-16T09:30:45Z
+DURATION_SEC: .760194835
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_882377.smt2
+START: 2026-01-16T09:30:45Z
+END: 2026-01-16T09:30:46Z
+DURATION_SEC: .640605292
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_888010.smt2
+START: 2026-01-16T09:30:46Z
+END: 2026-01-16T09:30:56Z
+DURATION_SEC: 10.168352751
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 46 completed at 2026-01-16 17:30:56

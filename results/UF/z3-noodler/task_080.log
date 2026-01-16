@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/650.smt2
+FILE: benchmarks_UF/RealWorld/awesome/8916.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:18
-END: 2026-01-16 12:56:18
-DURATION_SEC: 0.066
+START: 2026-01-16 18:09:06
+END: 2026-01-16 18:09:07
+DURATION_SEC: 0.206
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/6760.smt2
+FILE: benchmarks_UF/RealWorld/awesome/8948.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:18
-END: 2026-01-16 12:56:18
-DURATION_SEC: 0.173
+START: 2026-01-16 18:09:07
+END: 2026-01-16 18:09:07
+DURATION_SEC: 0.160
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,11 +24,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/6769.smt2
+FILE: benchmarks_UF/RealWorld/awesome/8949.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:18
-END: 2026-01-16 12:56:18
-DURATION_SEC: 0.166
+START: 2026-01-16 18:09:07
+END: 2026-01-16 18:09:07
+DURATION_SEC: 0.155
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,11 +36,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/685.smt2
+FILE: benchmarks_UF/RealWorld/awesome/9192.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:18
-END: 2026-01-16 12:56:19
-DURATION_SEC: 0.167
+START: 2026-01-16 18:09:07
+END: 2026-01-16 18:09:13
+DURATION_SEC: 5.602
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,33 +48,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/6947.smt2
+FILE: benchmarks_UF/RealWorld/awesome/9338.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:19
-END: 2026-01-16 12:56:29
-DURATION_SEC: 10.023
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/6973.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:56:29
-END: 2026-01-16 12:56:39
-DURATION_SEC: 10.025
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/723.smt2
-TIMEOUT: 10s
-START: 2026-01-16 12:56:39
-END: 2026-01-16 12:56:39
-DURATION_SEC: 0.158
+START: 2026-01-16 18:09:13
+END: 2026-01-16 18:09:13
+DURATION_SEC: 0.101
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -82,11 +60,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/768.smt2
+FILE: benchmarks_UF/RealWorld/awesome/9391.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:39
-END: 2026-01-16 12:56:39
-DURATION_SEC: 0.086
+START: 2026-01-16 18:09:13
+END: 2026-01-16 18:09:13
+DURATION_SEC: 0.138
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -94,11 +72,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/788.smt2
+FILE: benchmarks_UF/RealWorld/awesome/9409.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:39
-END: 2026-01-16 12:56:39
-DURATION_SEC: 0.373
+START: 2026-01-16 18:09:13
+END: 2026-01-16 18:09:13
+DURATION_SEC: 0.174
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -106,11 +84,35 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/awesome/860.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_sat_split2.smt2
 TIMEOUT: 10s
-START: 2026-01-16 12:56:39
-END: 2026-01-16 12:56:40
-DURATION_SEC: 0.275
+START: 2026-01-16 18:09:13
+END: 2026-01-16 18:09:13
+DURATION_SEC: 0.148
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_sat_split.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:09:13
+END: 2026-01-16 18:09:14
+DURATION_SEC: 0.170
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split2.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:09:14
+END: 2026-01-16 18:09:14
+DURATION_SEC: 0.179
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

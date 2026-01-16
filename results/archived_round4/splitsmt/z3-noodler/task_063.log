@@ -1,0 +1,156 @@
+===========================================================
+Task Group 63
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-16 17:31:19
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864105.smt2
+START: 2026-01-16T09:31:19Z
+END: 2026-01-16T09:31:29Z
+DURATION_SEC: 9.905845751
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:31:29] External solver did not return a valid status. Output: ASSERTION VIOLATION
+File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
+Line: 560
+solution.length_sensitive_vars.contains(output_var)
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+ASSERTION VIOLATION
+File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
+Line: 560
+solution.length_sensitive_vars.contains(output_var)
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+INVALID COMMAND
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: rks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2
+START: 2026-01-16T09:31:29Z
+END: 2026-01-16T09:31:29Z
+DURATION_SEC: .044368872
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:31:29] Failed to open file: rks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2[0m
+[31m[2026-01-16 17:31:29] Failed to open file: rks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2[0m
+[31m[2026-01-16 17:31:29] Failed to parse file: rks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2[0m
+[31m[2026-01-16 17:31:29] Failed to parse file: rks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2[0m
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1866571.smt2
+START: 2026-01-16T09:31:29Z
+END: 2026-01-16T09:31:29Z
+DURATION_SEC: .229694105
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_187346.smt2
+START: 2026-01-16T09:31:29Z
+END: 2026-01-16T09:31:29Z
+DURATION_SEC: .135629337
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_189479.smt2
+START: 2026-01-16T09:31:29Z
+END: 2026-01-16T09:31:29Z
+DURATION_SEC: .395128767
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1949494.smt2
+START: 2026-01-16T09:31:29Z
+END: 2026-01-16T09:31:30Z
+DURATION_SEC: .573941456
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-16 17:31:30] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2736886 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1953944.smt2
+START: 2026-01-16T09:31:30Z
+END: 2026-01-16T09:31:30Z
+DURATION_SEC: .136581921
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1982352.smt2
+START: 2026-01-16T09:31:30Z
+END: 2026-01-16T09:31:30Z
+DURATION_SEC: .274942362
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1989028.smt2
+START: 2026-01-16T09:31:30Z
+END: 2026-01-16T09:31:32Z
+DURATION_SEC: 1.784479319
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1993341.smt2
+START: 2026-01-16T09:31:32Z
+END: 2026-01-16T09:31:42Z
+DURATION_SEC: 10.103241562
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 63 completed at 2026-01-16 17:31:42

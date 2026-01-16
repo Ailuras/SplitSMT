@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 18
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-16 13:28:30
+Started: 2026-01-16 18:25:33
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1662149.smt2
-START: 2026-01-16T05:28:30Z
-END: 2026-01-16T05:28:30Z
-DURATION_SEC: .309273532
+START: 2026-01-16T10:25:33Z
+END: 2026-01-16T10:25:34Z
+DURATION_SEC: .229543807
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1663321.smt2
-START: 2026-01-16T05:28:30Z
-END: 2026-01-16T05:28:33Z
-DURATION_SEC: 2.309953189
+START: 2026-01-16T10:25:34Z
+END: 2026-01-16T10:25:34Z
+DURATION_SEC: .713394475
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1686230.smt2
-START: 2026-01-16T05:28:33Z
-END: 2026-01-16T05:28:33Z
-DURATION_SEC: .276299608
+START: 2026-01-16T10:25:34Z
+END: 2026-01-16T10:25:35Z
+DURATION_SEC: .225810483
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1696873.smt2
-START: 2026-01-16T05:28:33Z
-END: 2026-01-16T05:28:34Z
-DURATION_SEC: .305128723
+START: 2026-01-16T10:25:35Z
+END: 2026-01-16T10:25:35Z
+DURATION_SEC: .285950046
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,26 +55,21 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1710397.smt2
-START: 2026-01-16T05:28:34Z
-END: 2026-01-16T05:28:34Z
-DURATION_SEC: .772974672
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-16T10:25:35Z
+END: 2026-01-16T10:25:36Z
+DURATION_SEC: .381186347
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-[31m[2026-01-16 13:28:34] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 797079 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1747243.smt2
-START: 2026-01-16T05:28:34Z
-END: 2026-01-16T05:28:35Z
-DURATION_SEC: .383913188
+START: 2026-01-16T10:25:36Z
+END: 2026-01-16T10:25:36Z
+DURATION_SEC: .235660594
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,9 +79,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1748024.smt2
-START: 2026-01-16T05:28:35Z
-END: 2026-01-16T05:28:44Z
-DURATION_SEC: 9.360670804
+START: 2026-01-16T10:25:36Z
+END: 2026-01-16T10:25:40Z
+DURATION_SEC: 4.127150197
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,9 +91,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1749144.smt2
-START: 2026-01-16T05:28:44Z
-END: 2026-01-16T05:28:47Z
-DURATION_SEC: 2.810031190
+START: 2026-01-16T10:25:40Z
+END: 2026-01-16T10:25:41Z
+DURATION_SEC: .742290616
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,25 +103,25 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1752656.smt2
-START: 2026-01-16T05:28:47Z
-END: 2026-01-16T05:28:58Z
-DURATION_SEC: 10.229177230
+START: 2026-01-16T10:25:41Z
+END: 2026-01-16T10:25:44Z
+DURATION_SEC: 2.875099750
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1758931.smt2
-START: 2026-01-16T05:28:58Z
-END: 2026-01-16T05:28:58Z
-DURATION_SEC: .222425753
+START: 2026-01-16T10:25:44Z
+END: 2026-01-16T10:25:44Z
+DURATION_SEC: .315936623
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 18 completed at 2026-01-16 13:28:58
+Task Group 18 completed at 2026-01-16 18:25:44

@@ -1,118 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/seqstr/realworld_sat_split.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.086
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/seqstr/realworld_unsat_split2.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.081
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/seqstr/realworld_unsat_split3.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.069
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/seqstr/realworld_unsat_split.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.069
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/top20_gh/10560.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.088
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
-(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
-(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/top20_gh/10596.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.123
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
-(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
-(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/top20_gh/1118.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:18
-DURATION_SEC: 0.147
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
-(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
-(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/top20_gh/11724.smt2
-TIMEOUT: 10s
-START: 2026-01-16 13:11:18
-END: 2026-01-16 13:11:19
-DURATION_SEC: 0.282
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
-(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
-(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
-sat
-
-===========================================================
-Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/top20_gh/12319.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:11:19
-END: 2026-01-16 13:11:19
-DURATION_SEC: 0.543
+START: 2026-01-16 18:17:09
+END: 2026-01-16 18:17:10
+DURATION_SEC: 0.584
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -125,9 +17,132 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/top20_gh/12328.smt2
 TIMEOUT: 10s
-START: 2026-01-16 13:11:19
-END: 2026-01-16 13:11:19
-DURATION_SEC: 0.120
+START: 2026-01-16 18:17:10
+END: 2026-01-16 18:17:10
+DURATION_SEC: 0.129
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/12336.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:10
+END: 2026-01-16 18:17:10
+DURATION_SEC: 0.163
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/12342.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:10
+END: 2026-01-16 18:17:10
+DURATION_SEC: 0.119
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/15456.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:10
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.206
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/16346.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:11
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.089
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/16405.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:11
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.353
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/1643.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:11
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.095
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/18189.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:11
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.097
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 96 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 97 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 98 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3225483 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/top20_gh/18195.smt2
+TIMEOUT: 10s
+START: 2026-01-16 18:17:11
+END: 2026-01-16 18:17:11
+DURATION_SEC: 0.124
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
