@@ -134,7 +134,7 @@
 (assert (= (str.++ field2 "," field3 "," field4) (split_rest csv_row "," 1)))
 
 ; Final satisfiability check
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

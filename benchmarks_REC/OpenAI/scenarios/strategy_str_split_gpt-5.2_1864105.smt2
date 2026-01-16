@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for str_split
 
 ; Additional uninterpreted parsing helpers (non-primitive)
 (declare-fun parse_int (String) Int)
@@ -262,8 +262,8 @@
 ; Choose one: set sat_case to true for SAT, false for UNSAT.
 ; Leaving it unconstrained lets the solver pick SAT via sat_case = true.
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

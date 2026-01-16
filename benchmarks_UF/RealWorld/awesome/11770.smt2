@@ -108,7 +108,6 @@
  ; Statement: if i1 >= i0 goto return $r8 
 (assert (>= var3363 var71)) ; Cond: i1 >= i0 
  ; Statement: return $r8 
-(check-sat)
 ; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), info/114590825=([java.util.logging.Logger, java.lang.String], void), trim/-847153721=([java.lang.String], java.lang.String), var1750-init=([], java.util.HashSet), <init>/451842749=([java.util.HashSet], void)}
 ; {var1437=r2, var3493=null_type, var1968=r18, var466=java.util.logging.Logger, var3261=edu.stanford.nlp.ie.machinereading.MachineReadingProperties, var223=$r1, var2638=$r0, var683=$r3, var1535=$r4, var118=$r5, var240=$r6, var535=r7, var1750=java.util.HashSet, var407=$r8, var71=i0, var3363=i1}
 ; {r2=var1437, null_type=var3493, r18=var1968, java.util.logging.Logger=var466, edu.stanford.nlp.ie.machinereading.MachineReadingProperties=var3261, $r1=var223, $r0=var2638, $r3=var683, $r4=var1535, $r5=var118, $r6=var240, r7=var535, java.util.HashSet=var1750, $r8=var407, i0=var71, i1=var3363}
@@ -116,4 +115,5 @@
 ;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 2,"<java.lang.StringBuilder: java.lang.String toString()>": 1,"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r2 := @parameter0: java.lang.String;	r18 := @parameter1: java.lang.String[];	$r1 = <edu.stanford.nlp.ie.machinereading.MachineReadingProperties: java.util.logging.Logger logger>;	$r0 = new java.lang.StringBuilder;	specialinvoke $r0.<java.lang.StringBuilder: void <init>()>();	$r3 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Making result printers from ");	$r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r2);	$r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.String toString()>();	virtualinvoke $r1.<java.util.logging.Logger: void info(java.lang.String)>($r5);	$r6 = virtualinvoke r2.<java.lang.String: java.lang.String trim()>();	r7 = virtualinvoke $r6.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*");	$r8 = new java.util.HashSet;	specialinvoke $r8.<java.util.HashSet: void <init>()>();	i0 = lengthof r7;	i1 = 0;	if i1 >= i0 goto return $r8;	return $r8
 ;block_num 3
+(check-sat)
 (exit)

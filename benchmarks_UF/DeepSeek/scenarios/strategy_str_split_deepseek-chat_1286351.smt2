@@ -45,7 +45,7 @@
 (assert (str.in_re csv_line (re.++ (re.range "A" "Z") re.all)))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -153,7 +153,7 @@
 (assert (>= (str.len T4_2) 0))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

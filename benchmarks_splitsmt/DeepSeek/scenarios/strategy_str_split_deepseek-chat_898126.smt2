@@ -63,7 +63,7 @@
 (assert (>= (str.len header_block) 50))
 (assert (<= (str.len header_block) 500))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

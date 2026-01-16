@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted functions for str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted functions for str_split interface
+
 ; Email validation scenario variables
 (declare-const X String)
 (declare-const local String)
@@ -177,8 +177,8 @@
 ; Ensure X is reconstructed from parts (consistency)
 (assert (= X (str.++ local "@" domain)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -20,7 +20,7 @@
 (assert (= (str.split_rest var_0xINPUT_17441 delimiter 2) "third"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

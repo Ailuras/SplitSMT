@@ -125,7 +125,7 @@
 (assert (not (str.contains sink_suffix "/evil")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -65,7 +65,6 @@
 (assert true)
 (define-const var2028 String (trim/-847153721 var1048)) ; Statement: $r4 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>() 
  ; Statement: return $r4 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var3769=r0, var1138=null_type, var1798=$r1, var385=$i0, var1367=$r2, var1048=$r3, var2028=$r4}
 ; {r0=var3769, null_type=var1138, $r1=var1798, $i0=var385, $r2=var1367, $r3=var1048, $r4=var2028}
@@ -73,4 +72,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2,"<java.lang.String: java.lang.String trim()>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\(");	$i0 = lengthof $r1;	if $i0 <= 0 goto return "";	$r2 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\(");	$r3 = $r2[0];	$r4 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>();	return $r4
 ;block_num 2
+(check-sat)
 (exit)

@@ -1,22 +1,4 @@
 (set-logic ALL)
-
-; CSV Processing: comma-separated field validation and empty-field detection
-
-(declare-fun T_1 () Bool)
-(declare-fun T_2 () Bool)
-(declare-fun T_3 () Bool)
-(declare-fun T_4 () Bool)
-
-(declare-const var_0xINPUT_40963 String)
-(declare-const delim String)
-(declare-const f0 String)
-(declare-const f1 String)
-(declare-const f2 String)
-(declare-const rest1 String)
-(declare-const rest2 String)
-(declare-const n Int)
-
-; str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -110,6 +92,24 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; CSV Processing: comma-separated field validation and empty-field detection
+
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+
+(declare-const var_0xINPUT_40963 String)
+(declare-const delim String)
+(declare-const f0 String)
+(declare-const f1 String)
+(declare-const f2 String)
+(declare-const rest1 String)
+(declare-const rest2 String)
+(declare-const n Int)
+
+; str_split interface
+
 (assert (= delim ","))
 
 ; Preserve core structure: input must be non-empty and not equal to a specific token
@@ -147,8 +147,8 @@
 (assert (>= (str.len f0) 1))
 (assert (or (= f2 "") (and (>= (str.len f2) 1) (<= (str.len f2) 5))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -67,8 +67,8 @@
 (assert (= u_has_empty (or (= u0 "") (= u1 "") (= u2 "") (= u3 ""))))
 (assert (not u_has_empty))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

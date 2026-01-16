@@ -155,7 +155,6 @@
  ; Statement: goto [?= return $z0] 
 (assert true) ; Non Conditional
  ; Statement: return $z0 
-(check-sat)
 ; {cast-from-Int-to-Int=([int], int)}
 ; {var2242=org.apache.dubbo.registry.nacos.NacosRegistry, var1157=r2, var3051=r0, var1874=null_type, var2401=$i2, var3031=$r1, var3225=$i0, var2171=$z0}
 ; {org.apache.dubbo.registry.nacos.NacosRegistry=var2242, r2=var1157, r0=var3051, null_type=var1874, $i2=var2401, $r1=var3031, $i0=var3225, $z0=var2171}
@@ -163,4 +162,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r2 := @this: org.apache.dubbo.registry.nacos.NacosRegistry;	r0 := @parameter0: java.lang.String;	$i2 = (int) (- 1);	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", $i2);	$i0 = lengthof $r1;	if $i0 != 4 goto $z0 = 0;	$z0 = 1;	goto [?= return $z0];	return $z0
 ;block_num 3
+(check-sat)
 (exit)

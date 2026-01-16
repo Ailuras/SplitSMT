@@ -146,7 +146,7 @@
 ; Additional constraint to make it SAT: Provide a concrete example email
 (assert (= email "user.name+tag@sub-domain.example.com"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

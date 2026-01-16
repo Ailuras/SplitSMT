@@ -168,8 +168,8 @@
 (assert (>= (num_splits domain_bad ".") 2))
 (assert (>= (str.len tld_bad) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -62,8 +62,8 @@
 (assert (str.contains log_entry "12:34:56 INFO user:login"))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -80,7 +80,6 @@
 ; Provide a concrete satisfying example (anchors the SAT instance)
 (assert (= log_line_sat "2025-01-09T13:05:44 INFO web-01 auth:1234 user=alice action=login result=ok"))
 
-(check-sat)
 
 ; ========= UNSAT instance: contradictory timestamp/level constraints =========
 (declare-const log_line_unsat String)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted functions for string split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted functions for string split interface
+
 ; =====================
 ; Scenario: Log Analysis (SAT instance)
 ; Parsing structured server log entries separated by spaces and colons.
@@ -182,8 +182,8 @@
 ; Pin a plausible bad_log_line (doesn't matter; constraints already inconsistent)
 (assert (= bad_log_line "2025-01-09 12:34:56 ERROR: boom"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

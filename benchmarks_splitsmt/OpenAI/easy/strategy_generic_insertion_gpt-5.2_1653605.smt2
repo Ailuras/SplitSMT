@@ -15,7 +15,7 @@
 (assert (= (str.split_at value2 "=" 0) (str.split_at cc_first "=" 0)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

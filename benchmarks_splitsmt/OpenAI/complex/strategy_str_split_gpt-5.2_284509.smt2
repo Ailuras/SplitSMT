@@ -81,8 +81,8 @@
 (assert (= tld "com"))
 (assert (>= (str.len second_level) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -27,7 +27,7 @@
 (assert (str.contains rest1_42194 "def"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

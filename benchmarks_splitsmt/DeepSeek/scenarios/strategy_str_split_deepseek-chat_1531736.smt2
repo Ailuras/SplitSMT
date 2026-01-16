@@ -48,7 +48,7 @@
 ; Constraint 8: Ensure split_rest consistency for validation
 (assert (= (str.split_rest csv_line delimiter 2) (str.++ (str.split_at csv_line delimiter 2) delimiter (str.split_at csv_line delimiter 3))))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

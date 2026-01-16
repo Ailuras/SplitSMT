@@ -129,8 +129,7 @@
 (assert (str.prefixof "ID" first_field))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_data field_count first_field middle_field last_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

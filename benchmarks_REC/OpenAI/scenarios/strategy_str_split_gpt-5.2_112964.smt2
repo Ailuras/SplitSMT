@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split operations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split operations
 
 ; =====================
 ; Scenario: CSV Processing
@@ -191,8 +191,8 @@
 ; Force combined satisfiability: include both SAT and UNSAT parts together
 ; This makes the whole file UNSAT overall, demonstrating detection.
 ; -------------------------------------------------
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

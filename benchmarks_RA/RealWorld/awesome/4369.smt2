@@ -152,7 +152,6 @@
  ; Statement: if i2 >= i0 goto return r6 
 (assert (>= var3435 var127)) ; Cond: i2 >= i0 
  ; Statement: return r6 
-(check-sat)
 ; {getContentType/125337655=([java.net.URLConnection], java.lang.String)}
 ; {var267=java.net.URLConnection, var1845=r0, var1602=r1, var1652=r2, var341=r6, var127=i0, var3435=i2}
 ; {java.net.URLConnection=var267, r0=var1845, r1=var1602, r2=var1652, r6=var341, i0=var127, i2=var3435}
@@ -160,4 +159,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.net.URLConnection;	r1 = virtualinvoke r0.<java.net.URLConnection: java.lang.String getContentType()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");	r6 = "utf-8";	i0 = lengthof r2;	i2 = 0;	if i2 >= i0 goto return r6;	return r6
 ;block_num 3
+(check-sat)
 (exit)

@@ -111,8 +111,8 @@
 (assert (= (str.len body_unsat) content_length_unsat))
 
 ; ===== Check both together: should be UNSAT due to the second block =====
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

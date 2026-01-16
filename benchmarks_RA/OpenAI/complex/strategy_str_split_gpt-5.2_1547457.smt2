@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string splitting (as provided)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string splitting (as provided)
 
 ; Seed variables preserved
 (declare-fun I0_2 () Int)
@@ -266,8 +266,8 @@
   (and (= content_length 5) (not (= (str.len body) 5)))
   true))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -159,7 +159,6 @@
  ; Statement: if i8 >= i0 goto return $r0 
 (assert (>= var972 var1263)) ; Cond: i8 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var2214-init=([], edu.stanford.nlp.ling.CoreLabel), <init>/598147663=([edu.stanford.nlp.ling.CoreLabel], void)}
 ; {var2036=r1, var1508=null_type, var2214=edu.stanford.nlp.ling.CoreLabel, var3374=$r0, var1362=r2, var1263=i0, var972=i8}
 ; {r1=var2036, null_type=var1508, edu.stanford.nlp.ling.CoreLabel=var2214, $r0=var3374, r2=var1362, i0=var1263, i8=var972}
@@ -167,4 +166,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new edu.stanford.nlp.ling.CoreLabel;	specialinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|\\|\\|");	i0 = lengthof r2;	i8 = 0;	if i8 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

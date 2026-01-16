@@ -19,7 +19,7 @@
 (assert (str.in_re segment1 (str.to_re "PZ2")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

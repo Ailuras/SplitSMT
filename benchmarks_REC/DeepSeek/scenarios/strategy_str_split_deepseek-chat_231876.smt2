@@ -140,7 +140,7 @@
 ; Add a constraint to make it SAT: Ensure field_count is exactly 5 for the sample line
 (assert (= field_count 5))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

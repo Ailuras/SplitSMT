@@ -16,7 +16,7 @@
 (assert (not (= (split_at var_0xINPUT_101935 delimiter 2) "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -20,7 +20,7 @@
 (assert (str.contains segment1 "asp"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

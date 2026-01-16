@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface ops for splitting ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; --- Uninterpreted interface ops for splitting ---
+
 ; --- Seed structure preserved / mutated ---
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -180,8 +180,8 @@
 ; Additional structural constraints: ensure no stray '-' or empty request
 (assert (not (str.contains request "\n\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

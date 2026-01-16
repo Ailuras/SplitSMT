@@ -178,7 +178,6 @@
 (declare-const var2305!1 Int)
 (declare-const var3501!1 Int)
  ; Statement: return $r12 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String), var3512_fromSieveNameToIndex/-130439496=([java.lang.String, java.lang.String[]], int), var498-init=([], edu.stanford.nlp.util.Pair), Int_valueOf/-1371140006=([int], java.lang.Integer), <init>/-1233509352=([edu.stanford.nlp.util.Pair, java.lang.Object, java.lang.Object], void), cast-from-Int-to-var49=([java.lang.Integer], java.lang.Object)}
 ; {var1306=r0, var3320=null_type, var1598=r11, var2133=r1, var3196=$i0, var3862=$r7, var1185=r8, var1206=$r9, var2715=r10, var3512=edu.stanford.nlp.dcoref.SieveCoreferenceSystem, var3375=i1, var526=i2, var498=edu.stanford.nlp.util.Pair, var1215=$r12, var2305=$r14, var3501=$r13, var49=java.lang.Object}
 ; {r0=var1306, null_type=var3320, r11=var1598, r1=var2133, $i0=var3196, $r7=var3862, r8=var1185, $r9=var1206, r10=var2715, edu.stanford.nlp.dcoref.SieveCoreferenceSystem=var3512, i1=var3375, i2=var526, edu.stanford.nlp.util.Pair=var498, $r12=var1215, $r14=var2305, $r13=var3501, java.lang.Object=var49}
@@ -186,4 +185,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: java.lang.String trim()>": 2}
 ;stmts r0 := @parameter0: java.lang.String;	r11 := @parameter1: java.lang.String[];	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("<");	$i0 = lengthof r1;	if $i0 != 2 goto $r2 = new java.lang.IllegalArgumentException;	$r7 = r1[0];	r8 = virtualinvoke $r7.<java.lang.String: java.lang.String trim()>();	$r9 = r1[1];	r10 = virtualinvoke $r9.<java.lang.String: java.lang.String trim()>();	i1 = staticinvoke <edu.stanford.nlp.dcoref.SieveCoreferenceSystem: int fromSieveNameToIndex(java.lang.String,java.lang.String[])>(r8, r11);	i2 = staticinvoke <edu.stanford.nlp.dcoref.SieveCoreferenceSystem: int fromSieveNameToIndex(java.lang.String,java.lang.String[])>(r10, r11);	$r12 = new edu.stanford.nlp.util.Pair;	$r14 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i1);	$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(i2);	specialinvoke $r12.<edu.stanford.nlp.util.Pair: void <init>(java.lang.Object,java.lang.Object)>($r14, $r13);	return $r12
 ;block_num 2
+(check-sat)
 (exit)

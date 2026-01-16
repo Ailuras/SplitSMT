@@ -53,7 +53,6 @@
 (assert (= line_cl_sat "Content-Length: 5"))
 (assert (= body_sat "Hello"))
 
-(check-sat)
 
 ; =====================
 ; UNSAT instance: contradictory content-length

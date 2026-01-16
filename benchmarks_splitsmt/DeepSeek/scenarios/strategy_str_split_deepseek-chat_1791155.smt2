@@ -40,17 +40,14 @@
 ; Constraint 7: Field5 must be exactly "END" or "FINISH"
 (assert (or (= field5 "END") (= field5 "FINISH")))
 
-; Constraint 8: The rest of the CSV line after field5 (if any) must be empty or only contain commas
-(assert (let ((rest (str.split_rest csv_line "," 5))) (or (= rest "") (str.in_re rest (re.* (str.to_re ","))))))
-
-; Constraint 9: Additional regex constraint from seed for diversity (modified to fit CSV context)
+; Constraint 8: Additional regex constraint from seed for diversity (modified to fit CSV context)
 (assert (str.in_re csv_line (re.++ (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.+ (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9") (str.to_re ",") (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (re.* (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "\u{a}"))))
 
-; Constraint 10: Ensure total number of fields is exactly 5 or 6 (SAT/UNSAT mix)
+; Constraint 9: Ensure total number of fields is exactly 5 or 6 (SAT/UNSAT mix)
 (assert (or (= num_fields 5) (= num_fields 6)))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

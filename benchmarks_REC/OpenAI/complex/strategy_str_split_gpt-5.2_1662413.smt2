@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; HTTP header parsing scenario
 (declare-const req String)
 (declare-const request_line String)
@@ -172,8 +172,8 @@
 ; This makes some regex branches impossible while keeping others satisfiable.
 (assert (not (str.contains host_value "\u{a}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

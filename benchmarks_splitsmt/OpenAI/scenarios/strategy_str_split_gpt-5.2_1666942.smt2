@@ -115,8 +115,8 @@
 ; Fix email_bad to a concrete string (still inconsistent with the above constraints)
 (assert (= email_bad "bob@example.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -75,8 +75,8 @@
 ; ...but also require it to be "ERROR:" (contradiction)
 (assert (= lvl_unsat "ERROR:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

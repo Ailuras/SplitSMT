@@ -178,7 +178,7 @@ def main():
         "Maven": base_dir / "RealWorld" / "top20_maven",
         "GitHub": base_dir / "RealWorld" / "top20_gh",
         "Awesome": base_dir / "RealWorld" / "awesome",
-        "SeqStr": base_dir / "RealWorld" / "sequences",
+        "SeqStr": base_dir / "RealWorld" / "seqstr",
     }
     
     llm_dirs = {

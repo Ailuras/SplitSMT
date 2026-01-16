@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_sat_split.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split2.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:41
-END: 2026-01-15 18:59:41
-DURATION_SEC: 0.084
+START: 2026-01-16 12:54:13
+END: 2026-01-16 12:54:14
+DURATION_SEC: 0.160
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split2.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split3.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:41
-END: 2026-01-15 18:59:41
-DURATION_SEC: 0.165
+START: 2026-01-16 12:54:14
+END: 2026-01-16 12:54:14
+DURATION_SEC: 0.113
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,23 +24,11 @@ sat
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split3.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:42
-END: 2026-01-15 18:59:42
-DURATION_SEC: 0.105
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split.smt2
-TIMEOUT: 10s
-START: 2026-01-15 18:59:42
-END: 2026-01-15 18:59:42
-DURATION_SEC: 0.105
+START: 2026-01-16 12:54:14
+END: 2026-01-16 12:54:14
+DURATION_SEC: 0.147
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +38,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/10560.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:42
-END: 2026-01-15 18:59:42
-DURATION_SEC: 0.071
+START: 2026-01-16 12:54:14
+END: 2026-01-16 12:54:14
+DURATION_SEC: 0.111
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,8 +50,8 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/10596.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:42
-END: 2026-01-15 18:59:43
+START: 2026-01-16 12:54:14
+END: 2026-01-16 12:54:15
 DURATION_SEC: 0.140
 STATUS: SUCCESS
 EXIT_CODE: 0
@@ -74,9 +62,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/1118.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:43
-END: 2026-01-15 18:59:43
-DURATION_SEC: 0.064
+START: 2026-01-16 12:54:15
+END: 2026-01-16 12:54:15
+DURATION_SEC: 0.075
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,9 +74,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/11724.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:43
-END: 2026-01-15 18:59:43
-DURATION_SEC: 0.115
+START: 2026-01-16 12:54:15
+END: 2026-01-16 12:54:15
+DURATION_SEC: 0.082
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,9 +86,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/12319.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:43
-END: 2026-01-15 18:59:43
-DURATION_SEC: 0.062
+START: 2026-01-16 12:54:15
+END: 2026-01-16 12:54:15
+DURATION_SEC: 0.100
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,9 +98,21 @@ sat
 Solver: z3
 FILE: benchmarks_UF/RealWorld/top20_gh/12328.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:59:43
-END: 2026-01-15 18:59:43
-DURATION_SEC: 0.101
+START: 2026-01-16 12:54:15
+END: 2026-01-16 12:54:15
+DURATION_SEC: 0.184
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_UF/RealWorld/top20_gh/12336.smt2
+TIMEOUT: 10s
+START: 2026-01-16 12:54:15
+END: 2026-01-16 12:54:15
+DURATION_SEC: 0.122
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

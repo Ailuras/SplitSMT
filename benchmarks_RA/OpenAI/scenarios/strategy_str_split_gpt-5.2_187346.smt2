@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted string-splitting interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted string-splitting interface
 
 ; Common string helpers as uninterpreted for higher-level parsing
 (declare-fun trim (String) String)
@@ -217,8 +217,8 @@
 ; This makes the constraints contradictory
 (assert (= cl_int_unsat (str.len body_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

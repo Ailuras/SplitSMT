@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface (string split via relaxation)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Additional uninterpreted helper operations (non-primitive)
 (declare-fun trim (String) String)
@@ -108,8 +108,8 @@
     "\r\n"
     "WXYZ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -44,8 +44,8 @@
 ; Structural sanity: rest_after1 should contain a comma because it covers fields 1 and 2
 (assert (str.contains rest_after1 ","))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

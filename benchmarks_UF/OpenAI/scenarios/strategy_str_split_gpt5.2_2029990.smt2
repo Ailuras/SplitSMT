@@ -80,8 +80,8 @@
 ; And require the middle field to be empty (consistent with the concrete string, but doesn't fix the count contradiction)
 (assert (= u1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

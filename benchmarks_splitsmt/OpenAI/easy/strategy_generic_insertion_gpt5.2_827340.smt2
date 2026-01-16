@@ -14,7 +14,7 @@
 (assert (= (str.++ suffix0 ".aspx" suffix1) X))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

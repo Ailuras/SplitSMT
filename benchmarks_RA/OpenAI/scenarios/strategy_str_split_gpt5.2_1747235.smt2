@@ -241,8 +241,8 @@
 (assert (= cl_val_unsat " 4"))
 (assert (= cl_int_unsat 5))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

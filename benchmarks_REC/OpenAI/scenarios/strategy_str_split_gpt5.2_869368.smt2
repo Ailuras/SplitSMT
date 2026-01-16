@@ -212,8 +212,8 @@
 ; Also add an independent contradiction for demonstration: Host key must be Host and not Host.
 (assert (=> make_unsat (and (= host_key "Host") (not (= host_key "Host")))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

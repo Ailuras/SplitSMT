@@ -106,7 +106,7 @@
 (assert (= (split_at var_0xINPUT_135600 delimiter 1) "H2acGCa"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

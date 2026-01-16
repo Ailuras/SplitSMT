@@ -128,8 +128,8 @@
 ; This makes the constraints contradictory
 (assert (= cl_int_unsat (str.len body_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

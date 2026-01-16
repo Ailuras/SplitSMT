@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface (space/colon separated parsing)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface (space/colon separated parsing)
+
 ; Seed-style booleans preserved/extended
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -153,8 +153,8 @@
 (assert (=> (= level "ERROR:") T_3))
 (assert (=> (= level "ERROR:") (not (str.contains message "failed"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

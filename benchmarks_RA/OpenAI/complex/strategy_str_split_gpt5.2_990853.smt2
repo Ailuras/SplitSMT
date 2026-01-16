@@ -195,8 +195,8 @@
             (and (= (str.len body) content_length)
                  (not (= (str.len body) content_length)))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

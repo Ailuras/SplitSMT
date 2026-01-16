@@ -71,7 +71,7 @@
 (assert (str.suffixof "\n\n" (str.split_rest header "\n" 4)))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

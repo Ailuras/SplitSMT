@@ -76,8 +76,8 @@
 (assert (not (str.suffixof "," csv_line)))
 
 ; Final check
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -91,8 +91,8 @@
 ; Ensure message is non-empty (irrelevant, but adds diversity)
 (assert (>= (str.len uns_msg) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

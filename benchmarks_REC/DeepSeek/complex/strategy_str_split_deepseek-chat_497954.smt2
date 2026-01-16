@@ -149,8 +149,8 @@
 (assert (not (str.contains (split_at header "\n" 0) ";")))
 
 ; Check satisfiability of the constraints
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

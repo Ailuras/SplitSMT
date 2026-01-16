@@ -83,8 +83,8 @@
                   (and (>= (str.len tld) 2) (<= (str.len tld) 10)))))
 (assert U_5)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

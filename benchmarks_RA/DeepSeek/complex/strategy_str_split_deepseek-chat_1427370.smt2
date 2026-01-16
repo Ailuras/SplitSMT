@@ -137,8 +137,7 @@
 (assert (or (not (str.contains local_part ".")) (and (> (str.len local_part) 2) (not (str.prefixof "." local_part)) (not (str.suffixof "." local_part)))))
 
 ; Check satisfiability
-(check-sat)
-(get-value (email local_part domain domain_name tld))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

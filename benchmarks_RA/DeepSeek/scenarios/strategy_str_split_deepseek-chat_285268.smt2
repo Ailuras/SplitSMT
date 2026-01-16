@@ -126,7 +126,7 @@
 ; Additional constraint: host_value must contain a dot for domain
 (assert (str.contains host_value "."))
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

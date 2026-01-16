@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted string split interface (space and colon separated parsing)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted string split interface (space and colon separated parsing)
+
 ; =========================
 ; SAT instance: well-formed log entry
 ; Format (informal): "YYYY-MM-DD HH:MM:SS LEVEL: component: message"
@@ -166,7 +166,6 @@
 ; Provide one concrete satisfying witness to anchor parsing
 (assert (= log_sat "2025-01-09 13:05:47 INFO: auth: user=jdoe action=login status=ok"))
 
-(check-sat)
 
 ; =========================
 ; UNSAT instance: conflicting timestamp constraints
@@ -216,9 +215,9 @@
 (assert (>= (num_splits level_colon_unsat ":") 2))
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

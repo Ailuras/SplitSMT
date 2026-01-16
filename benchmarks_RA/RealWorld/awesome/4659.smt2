@@ -161,7 +161,6 @@
  ; Statement: goto [?= return $z1] 
 (assert true) ; Non Conditional
  ; Statement: return $z1 
-(check-sat)
 ; {var3904_getValue/381491177=([java.util.Map$Entry], java.lang.Object), cast-from-var2350-to-String=([java.lang.Object], java.lang.String), var57_contains/1636690605=([java.util.Set, java.lang.Object], boolean), cast-from-String-to-var2350=([java.lang.String], java.lang.Object)}
 ; {var57=java.util.Set, var3450=r0, var3904=java.util.Map$Entry, var3003=r1, var2350=java.lang.Object, var1499=$r2, var3940=$r3, var1193=$r4, var1155=$r5, var3859=$z0, var2712=$z1}
 ; {java.util.Set=var57, r0=var3450, java.util.Map$Entry=var3904, r1=var3003, java.lang.Object=var2350, $r2=var1499, $r3=var3940, $r4=var1193, $r5=var1155, $z0=var3859, $z1=var2712}
@@ -169,4 +168,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.util.Set;	r1 := @parameter1: java.util.Map$Entry;	$r2 = interfaceinvoke r1.<java.util.Map$Entry: java.lang.Object getValue()>();	$r3 = (java.lang.String) $r2;	$r4 = virtualinvoke $r3.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	$r5 = $r4[0];	$z0 = interfaceinvoke r0.<java.util.Set: boolean contains(java.lang.Object)>($r5);	if $z0 != 0 goto $z1 = 0;	$z1 = 1;	goto [?= return $z1];	return $z1
 ;block_num 3
+(check-sat)
 (exit)

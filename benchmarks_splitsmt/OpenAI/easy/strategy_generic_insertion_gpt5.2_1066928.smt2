@@ -38,7 +38,7 @@
 (assert (= (str.split_rest T1_5 delim_utmv 1) T3_5))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

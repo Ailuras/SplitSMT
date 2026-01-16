@@ -103,7 +103,7 @@
 (assert (= (split_at var_0xINPUT_27511 delimiter 2) "end"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

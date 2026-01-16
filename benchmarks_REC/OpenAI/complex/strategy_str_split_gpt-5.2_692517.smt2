@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Goal: reason about comma-separated fields, field counts, and empty fields.
-
-; Uninterpreted interface operations (as required)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -97,6 +92,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Goal: reason about comma-separated fields, field counts, and empty fields.
+
+; Uninterpreted interface operations (as required)
+
 ; Core inputs
 (declare-const X String)
 (declare-const csv String)
@@ -156,8 +156,8 @@
 ; Additional shape constraint using split_rest: concatenation from field 2 onward should not be empty
 (assert (not (= (split_rest csv delim 2) "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

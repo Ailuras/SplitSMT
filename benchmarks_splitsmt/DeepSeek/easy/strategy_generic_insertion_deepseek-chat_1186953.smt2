@@ -19,7 +19,7 @@
 (assert (= (str.split_rest L ":" 2) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

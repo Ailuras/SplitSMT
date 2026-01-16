@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; --- Uninterpreted interface operations for str_split ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Booleans preserved from seed core structure ---
 (declare-fun T_1 () Bool)
@@ -59,8 +59,8 @@
 (assert (= T_2 (not T_1)))
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

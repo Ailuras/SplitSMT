@@ -237,10 +237,19 @@ def classify_result(raw_output: str, status: str) -> str:
             continue
             
         # Detect SMT-LIB error
-        if stripped.startswith("(error") or stripped.startswith("(error "):
+        if "(error" in line:
             return "ERROR"
             
-        if "Syntax Error" in line or "Unrecoverable Syntax Error" in line:
+        line_lower = line.lower()
+        if "syntax error" in line_lower or "unrecoverable syntax error" in line_lower:
+            return "ERROR"
+        if "parse error" in line_lower:
+            return "ERROR"
+        if "error" in line_lower and "external solver reported" in line_lower:
+            return "ERROR"
+        if "kind mismatch" in line_lower:
+            return "ERROR"
+        if stripped.lower().startswith("error:"):
             return "ERROR"
             
         # Check for standard results
@@ -249,8 +258,12 @@ def classify_result(raw_output: str, status: str) -> str:
             continue
             
         candidate = parts[0].upper()
+        # Handle cases where output might be "unsat" or "sat" with whitespace or other chars
+        # But usually it is on its own line or first word.
         if candidate in ["SAT", "UNSAT"]:
             found_results.add(candidate)
+        elif candidate == "UNKNOWN":
+             found_results.add("UNKNOWN")
             
     if "SAT" in found_results and "UNSAT" in found_results:
         return "UNKNOWN"

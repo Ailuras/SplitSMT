@@ -44,8 +44,7 @@
 (assert (<= (str.len csv_data) 100))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_data field_count first_field last_field middle_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed structure (mutated/extended) with meaningful variables
 (declare-fun T_1 () Bool)
@@ -76,8 +76,8 @@
 ; This forces email == "file:" but that violates the email structure above (atCount must be 2)
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface (str_split)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; HTTP header parsing scenario
 (declare-const request String)

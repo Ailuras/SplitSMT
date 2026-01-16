@@ -37,8 +37,8 @@
 ; Additional consistency: rest from 0 is the whole line
 (assert (= (str.split_rest csv_line delim 0) csv_line))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

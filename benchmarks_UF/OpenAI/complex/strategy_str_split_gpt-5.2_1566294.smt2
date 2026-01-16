@@ -1,10 +1,10 @@
 ; Scenario: Email Validation using str_split-style operations
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface operations for splitting
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-like booleans preserved/mutated
 (declare-fun T_1 () Bool)
@@ -79,8 +79,8 @@
 (assert (= T_2 (= local_part "a@b")))
 ; Do not assert T_2 to keep the instance SAT
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

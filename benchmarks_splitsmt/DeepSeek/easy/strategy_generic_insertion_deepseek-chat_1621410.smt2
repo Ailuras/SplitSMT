@@ -13,7 +13,7 @@
 (assert (>= (str.len (str.split_rest y delimiter 2)) 5))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

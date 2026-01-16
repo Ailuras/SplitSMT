@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split methodology
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for string split methodology
+
 ; HTTP header parsing scenario
 (declare-const req String)
 (declare-const start_line String)
@@ -153,8 +153,8 @@
 (assert (not (str.contains ua_value "\\n")))
 (assert (not (str.contains host_value " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

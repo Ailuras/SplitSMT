@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string split operations
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; ========== Scenario: HTTP Header Parsing (SAT instance) ==========
 (declare-const request_sat String)
@@ -86,8 +86,8 @@
   "\r\n"
   "abcde")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

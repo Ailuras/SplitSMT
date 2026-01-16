@@ -155,7 +155,6 @@
  ; Statement: if $i0 <= 1 goto return 
 (assert (<= var1828 1)) ; Cond: $i0 <= 1 
  ; Statement: return 
-(check-sat)
 ; {<init>/-118428381=([kong.unirest.core.QueryParams], void)}
 ; {var3886=kong.unirest.core.QueryParams, var326=r0, var3021=r1, var823=null_type, var2772=r2, var1828=$i0}
 ; {kong.unirest.core.QueryParams=var3886, r0=var326, r1=var3021, null_type=var823, r2=var2772, $i0=var1828}
@@ -163,4 +162,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @this: kong.unirest.core.QueryParams;	r1 := @parameter0: java.lang.String;	specialinvoke r0.<kong.unirest.core.QueryParams: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\?");	$i0 = lengthof r2;	if $i0 <= 1 goto return;	return
 ;block_num 2
+(check-sat)
 (exit)

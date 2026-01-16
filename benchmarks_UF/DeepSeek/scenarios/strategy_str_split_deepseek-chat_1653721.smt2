@@ -66,7 +66,7 @@
 (assert (not (= key2 key3)))
 
 ; Final check for satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

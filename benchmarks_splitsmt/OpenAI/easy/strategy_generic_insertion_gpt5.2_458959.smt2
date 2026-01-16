@@ -18,7 +18,7 @@
 (assert (= (str.++ prefix_part ":" rest_part) var_0xINPUT_155219))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

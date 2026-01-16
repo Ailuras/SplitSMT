@@ -229,8 +229,8 @@
 (assert (str.prefixof "GET " request_line))
 (assert (str.contains request_line " HTTP/1.1"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

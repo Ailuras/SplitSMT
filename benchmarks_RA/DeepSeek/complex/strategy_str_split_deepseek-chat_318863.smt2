@@ -135,7 +135,7 @@
 ; Additional constraint to make the problem SAT: enforce a specific path
 (assert (= path "/index.html"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

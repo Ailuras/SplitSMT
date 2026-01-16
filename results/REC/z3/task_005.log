@@ -2,9 +2,9 @@
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1661412.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:08:57
-END: 2026-01-15 19:09:07
-DURATION_SEC: 10.027
+START: 2026-01-16 13:10:44
+END: 2026-01-16 13:10:54
+DURATION_SEC: 10.024
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -13,9 +13,9 @@ EXIT_CODE: 143
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1674076.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:07
-END: 2026-01-15 19:09:17
-DURATION_SEC: 10.019
+START: 2026-01-16 13:10:54
+END: 2026-01-16 13:11:04
+DURATION_SEC: 10.054
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -24,9 +24,9 @@ EXIT_CODE: 143
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_168359.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:17
-END: 2026-01-15 19:09:18
-DURATION_SEC: 1.110
+START: 2026-01-16 13:11:04
+END: 2026-01-16 13:11:05
+DURATION_SEC: 1.096
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,9 +36,9 @@ unknown
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1699343.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:18
-END: 2026-01-15 19:09:23
-DURATION_SEC: 4.983
+START: 2026-01-16 13:11:05
+END: 2026-01-16 13:11:10
+DURATION_SEC: 4.957
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,9 +48,9 @@ unknown
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_173204.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:23
-END: 2026-01-15 19:09:23
-DURATION_SEC: 0.278
+START: 2026-01-16 13:11:10
+END: 2026-01-16 13:11:11
+DURATION_SEC: 0.275
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,9 +60,9 @@ unknown
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1742363.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:23
-END: 2026-01-15 19:09:24
-DURATION_SEC: 0.060
+START: 2026-01-16 13:11:11
+END: 2026-01-16 13:11:11
+DURATION_SEC: 0.053
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,9 +72,9 @@ unsat
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1757039.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:24
-END: 2026-01-15 19:09:24
-DURATION_SEC: 0.046
+START: 2026-01-16 13:11:11
+END: 2026-01-16 13:11:11
+DURATION_SEC: 0.112
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,61 +84,21 @@ sat
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1768325.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:24
-END: 2026-01-15 19:09:24
-DURATION_SEC: 0.062
+START: 2026-01-16 13:11:11
+END: 2026-01-16 13:11:11
+DURATION_SEC: 0.042
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((csv_line "123,John Doe,30,USA")
- (field_count 0)
- (first_field "")
- (last_field "")
- (middle_field "")
- (has_empty_field (exists ((i Int))
-  (let ((a!1 (not (and (<= 0 i) (not (>= i 4)))))
-        (a!2 (ite (= (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                                      (+ 1 i)
-                                      0)
-                     (- 1))
-                  19
-                  (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                                   (+ 1 i)
-                                   0)))
-        (a!3 (+ 1
-                (ite (= i 0)
-                     (- 1)
-                     (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                                      i
-                                      0))))
-        (a!4 (* (- 1)
-                (ite (= i 0)
-                     (- 1)
-                     (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                                      i
-                                      0)))))
-  (let ((a!5 (ite (<= (ite (= i 0)
-                           (- 1)
-                           (nth_match_start "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                                            i
-                                            0))
-                      a!2)
-                  (str.substr "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                              a!3
-                              (+ (- 1) a!2 a!4))
-                  (str.substr "123\u{2ffff}John Doe\u{2ffff}30\u{2ffff}USA"
-                              a!3
-                              (+ 18 a!4)))))
-    (and (>= i 1) (not (<= 3 i)) (or a!1 (= "" a!5))))))))
 
 ===========================================================
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1774137.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:24
-END: 2026-01-15 19:09:34
-DURATION_SEC: 10.025
+START: 2026-01-16 13:11:11
+END: 2026-01-16 13:11:21
+DURATION_SEC: 10.021
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -147,9 +107,9 @@ EXIT_CODE: 143
 Solver: z3
 FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1778412.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:34
-END: 2026-01-15 19:09:43
-DURATION_SEC: 8.827
+START: 2026-01-16 13:11:21
+END: 2026-01-16 13:11:29
+DURATION_SEC: 8.298
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

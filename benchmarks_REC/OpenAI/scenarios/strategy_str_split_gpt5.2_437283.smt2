@@ -197,8 +197,8 @@
 ; Combined check
 ; The file contains both SAT and UNSAT constraints together; overall result is UNSAT.
 ; -----------------------------
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

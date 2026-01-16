@@ -139,8 +139,8 @@
 (assert (>= (str.len middle_field) 3))
 
 ; Final check for satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

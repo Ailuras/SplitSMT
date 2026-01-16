@@ -45,7 +45,7 @@
 ; For SAT instance: comment out the next line; for UNSAT: uncomment
 ; (assert (not (str.contains timestamp "-"))) ; This would conflict with earlier assertion, making UNSAT
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -19,7 +19,7 @@
 (assert (str.contains (str.split_rest X delimiter 2) "smi"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

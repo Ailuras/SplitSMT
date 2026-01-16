@@ -82,8 +82,8 @@
 (assert (not (= request_line host_line)))
 (assert (not (= request_line cl_line)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface
 
 ; Shared symbols
 (declare-const at_delim String)
@@ -186,8 +186,8 @@
 (assert (= tld_bad (split_at domain_bad dot_delim (- (num_splits domain_bad dot_delim) 1))))
 (assert (> (str.len tld_bad) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

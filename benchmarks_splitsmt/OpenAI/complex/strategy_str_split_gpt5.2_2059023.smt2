@@ -60,8 +60,8 @@
 ; If enabled, would contradict atCount=2
 (assert (=> false (not (= atCount 2))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

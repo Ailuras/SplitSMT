@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: HTTP Header Parsing (mutated/extended from seed)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Header/request variables
 (declare-const request String)
@@ -125,8 +125,8 @@
 (assert (>= (num_splits header_block "\r\n") 2))
 (assert (>= (num_splits headers_only "\r\n") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

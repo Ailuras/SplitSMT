@@ -184,8 +184,8 @@
 (assert (> (str.len tld_bad) 1))
 (assert (str.contains domain_bad "."))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

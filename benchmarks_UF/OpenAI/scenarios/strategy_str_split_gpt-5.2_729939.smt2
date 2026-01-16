@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface for header parsing
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =========================
 ; SAT instance: well-formed HTTP header parsing
@@ -66,7 +66,6 @@
 (assert (>= (num_splits host_kv1 ": ") 2))
 (assert (>= (num_splits clen_kv1 ": ") 2))
 
-(check-sat)
 
 ; =========================
 ; UNSAT instance: conflicting Content-Length vs body length
@@ -104,9 +103,9 @@
 ; Contradiction: declared length 4 but body length is 3
 (assert (= content_length2 (str.len body2)))
 
-(check-sat)
 
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

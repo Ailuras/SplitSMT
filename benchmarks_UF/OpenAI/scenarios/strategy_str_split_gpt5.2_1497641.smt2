@@ -194,8 +194,8 @@
                       "Content-Length: 3"))
                  (= body "DATA"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

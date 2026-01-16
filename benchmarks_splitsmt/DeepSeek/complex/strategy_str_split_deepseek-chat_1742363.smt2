@@ -40,7 +40,7 @@
 ; Create a SAT instance by setting a specific log entry
 (assert (= log_entry "12:34:56 INFO Server started successfully"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

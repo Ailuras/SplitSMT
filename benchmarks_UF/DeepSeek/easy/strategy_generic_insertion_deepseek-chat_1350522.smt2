@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const X String)
 (assert (not (str.in_re X (str.to_re "www.trackhits.ccUser-Agent:iz=LOGSupremeResult\u{a}"))))
 
 ; --- START CONSTRAINT ---
 ; Declare interface function signatures for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -22,7 +22,7 @@
 (assert (str.contains segment1 "trackhits"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

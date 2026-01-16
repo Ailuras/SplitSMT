@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; HTTP Header Parsing scenario using regex and str_split interface
 
 ; --- str_split interface (uninterpreted) ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Core variables ---
 (declare-const X String)              ; entire HTTP request header block
@@ -95,8 +95,8 @@
 (assert (= marker "X-Force-Unsat"))
 (assert (=> (str.contains X marker) (and (= cl 5) (= cl 10))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

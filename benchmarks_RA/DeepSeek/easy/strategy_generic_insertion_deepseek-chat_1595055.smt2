@@ -111,7 +111,7 @@
 (assert (not (= segment1 "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

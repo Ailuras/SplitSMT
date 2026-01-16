@@ -17,7 +17,7 @@
 (assert (str.contains (split_rest var_0xINPUT_135296 delimiter 1) "example"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

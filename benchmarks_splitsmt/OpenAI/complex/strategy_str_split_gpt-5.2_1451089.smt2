@@ -78,8 +78,8 @@
 (assert (= level "INFO"))
 (assert (= message (str.++ "request id=" var_0xINPUT_103698)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

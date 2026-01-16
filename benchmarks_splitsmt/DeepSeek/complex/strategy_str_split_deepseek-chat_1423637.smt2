@@ -45,8 +45,8 @@
 (assert (str.contains log_entry "localhost"))
 
 ; Final check
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -139,8 +139,8 @@
 (assert (>= (str.len csv_line) (+ field_count 1)))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
 (declare-fun T_3 () Bool)
@@ -12,9 +15,6 @@
 (assert T_4)
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const delim_0 String)
 (declare-const seg0 String)
 (assert (= delim_0 "|"))
@@ -23,7 +23,7 @@
 (assert (= seg0 var_0xINPUT_53242))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

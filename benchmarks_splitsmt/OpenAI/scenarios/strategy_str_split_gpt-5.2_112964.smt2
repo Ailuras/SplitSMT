@@ -99,8 +99,8 @@
 ; Force combined satisfiability: include both SAT and UNSAT parts together
 ; This makes the whole file UNSAT overall, demonstrating detection.
 ; -------------------------------------------------
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

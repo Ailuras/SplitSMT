@@ -177,8 +177,8 @@
   (and (= content_length 5) (not (= (str.len body) 5)))
   true))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -74,7 +74,6 @@
 ; Provide one concrete satisfying witness to anchor parsing
 (assert (= log_sat "2025-01-09 13:05:47 INFO: auth: user=jdoe action=login status=ok"))
 
-(check-sat)
 
 ; =========================
 ; UNSAT instance: conflicting timestamp constraints
@@ -124,9 +123,9 @@
 (assert (>= (str.num_splits level_colon_unsat ":") 2))
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

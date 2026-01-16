@@ -2,9 +2,9 @@
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/649.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:30
-END: 2026-01-15 19:09:30
-DURATION_SEC: 0.069
+START: 2026-01-16 13:11:16
+END: 2026-01-16 13:11:17
+DURATION_SEC: 0.132
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -17,9 +17,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/650.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:30
-END: 2026-01-15 19:09:31
-DURATION_SEC: 0.922
+START: 2026-01-16 13:11:17
+END: 2026-01-16 13:11:17
+DURATION_SEC: 0.103
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -32,9 +32,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/6760.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:31
-END: 2026-01-15 19:09:31
-DURATION_SEC: 0.448
+START: 2026-01-16 13:11:17
+END: 2026-01-16 13:11:17
+DURATION_SEC: 0.347
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -47,9 +47,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/6769.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:31
-END: 2026-01-15 19:09:31
-DURATION_SEC: 0.085
+START: 2026-01-16 13:11:17
+END: 2026-01-16 13:11:17
+DURATION_SEC: 0.101
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -62,9 +62,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/685.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:31
-END: 2026-01-15 19:09:31
-DURATION_SEC: 0.087
+START: 2026-01-16 13:11:17
+END: 2026-01-16 13:11:17
+DURATION_SEC: 0.104
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -77,9 +77,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/6947.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:31
-END: 2026-01-15 19:09:32
-DURATION_SEC: 0.096
+START: 2026-01-16 13:11:17
+END: 2026-01-16 13:11:18
+DURATION_SEC: 0.100
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -92,9 +92,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/6973.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:32
-END: 2026-01-15 19:09:32
-DURATION_SEC: 0.456
+START: 2026-01-16 13:11:18
+END: 2026-01-16 13:11:18
+DURATION_SEC: 0.443
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -107,9 +107,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/723.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:32
-END: 2026-01-15 19:09:32
-DURATION_SEC: 0.136
+START: 2026-01-16 13:11:18
+END: 2026-01-16 13:11:18
+DURATION_SEC: 0.121
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -122,9 +122,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/768.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:32
-END: 2026-01-15 19:09:32
-DURATION_SEC: 0.091
+START: 2026-01-16 13:11:18
+END: 2026-01-16 13:11:18
+DURATION_SEC: 0.127
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -137,9 +137,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/RealWorld/awesome/788.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:32
-END: 2026-01-15 19:09:33
-DURATION_SEC: 0.409
+START: 2026-01-16 13:11:18
+END: 2026-01-16 13:11:19
+DURATION_SEC: 0.341
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
@@ -149,5 +149,5 @@ EXIT_CODE: 134
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2234168 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 650714 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

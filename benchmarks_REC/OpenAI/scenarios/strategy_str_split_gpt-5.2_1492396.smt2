@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface functions for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface functions for string splitting
+
 ; ========== SAT instance: structured log parsing ========== 
 (declare-const log_line String)
 (declare-const ts_date String)
@@ -142,7 +142,6 @@
 ; Constrain a plausible concrete example to ensure SAT
 (assert (= log_line "2026-01-09 12:34:56 INFO: disk check ok"))
 
-(check-sat)
 
 ; ========== UNSAT instance: contradictory timestamp/level checks ========== 
 (declare-const bad_log String)
@@ -170,8 +169,8 @@
                                        (re.union (str.to_re "WARN")
                                                  (re.union (str.to_re "ERROR") (str.to_re "DEBUG"))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

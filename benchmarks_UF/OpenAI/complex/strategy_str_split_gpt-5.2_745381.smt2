@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-derived core structure
 (declare-fun T_1 () Bool)
@@ -53,8 +53,8 @@
 ; This preserves a visible mutation of the original seed's "-" check but makes the overall instance UNSAT.
 (assert (= csv_line "-"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

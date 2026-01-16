@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed variables (preserve core structure)
 (declare-fun T_1 () Bool)
@@ -87,8 +87,8 @@
 ; Make it satisfiable by providing one concrete example logline
 (assert (= logline "2026-01-09T12:34:56 INFO auth_service: user login ok"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =========
 ; CSV Processing Scenario
@@ -76,8 +76,8 @@
 ; relate k_ok to a concrete access to diversify constraints
 (assert (= (split_at csv_row_ok "," k_ok) (split_at csv_row_ok "," k_ok)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -150,8 +150,8 @@
 (assert (or (str.contains user_agent_val "Mozilla") (str.contains user_agent_val "Chrome") (str.contains user_agent_val "Safari")))
 
 ; Final check for satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

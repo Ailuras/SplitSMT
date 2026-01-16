@@ -133,8 +133,8 @@
 ; Additional constraint for SAT instance: Example email pattern
 (assert (str.contains email "example"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

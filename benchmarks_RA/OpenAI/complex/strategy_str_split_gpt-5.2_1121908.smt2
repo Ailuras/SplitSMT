@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for str_split
+
 ; Core seed booleans preserved
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -126,8 +126,8 @@
 ; Additional consistency: rest from 0 is the whole line
 (assert (= (split_rest csv_line delim 0) csv_line))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

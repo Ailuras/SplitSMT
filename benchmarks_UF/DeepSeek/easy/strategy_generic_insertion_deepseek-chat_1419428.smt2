@@ -26,7 +26,7 @@
 (assert (str.contains segment1 "PORT3"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

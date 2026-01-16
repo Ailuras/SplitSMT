@@ -165,7 +165,6 @@
  ; Statement: if i12 >= $i4 goto return r10 
 (assert (>= var1042 var2678)) ; Cond: i12 >= $i4 
  ; Statement: return r10 
-(check-sat)
 ; {arr-String-init=([], java.lang.String[]), arr-Int-init=([], int[])}
 ; {var717=r0, var3350=null_type, var1022=r1, var2610=i9, var1463=$i0, var1739=r2, var1049=$i1, var1876=r3, var2112=i10, var1217=$i2, var3635=$i3, var1143=r10, var1042=i12, var2678=$i4}
 ; {r0=var717, null_type=var3350, r1=var1022, i9=var2610, $i0=var1463, r2=var1739, $i1=var1049, r3=var1876, i10=var2112, $i2=var1217, $i3=var3635, r10=var1143, i12=var1042, $i4=var2678}
@@ -173,4 +172,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("[,;]");	i9 = 0;	$i0 = lengthof r1;	r2 = newarray (java.lang.String)[$i0];	$i1 = lengthof r1;	r3 = newarray (int)[$i1];	i10 = 0;	$i2 = lengthof r1;	if i10 >= $i2 goto $i3 = i9 + 1;	$i3 = i9 + 1;	r10 = newarray (java.lang.String)[$i3];	i12 = 0;	$i4 = lengthof r1;	if i12 >= $i4 goto return r10;	return r10
 ;block_num 5
+(check-sat)
 (exit)

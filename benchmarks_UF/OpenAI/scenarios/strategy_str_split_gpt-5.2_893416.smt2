@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; --- Uninterpreted interface functions for str_split ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Log analysis variables ---
 (declare-const log_entry String)
@@ -80,8 +80,8 @@
 ; Contradiction: time token must have ':' at index 1 (but in "14:03:09" it's at 2)
 (assert (= (str.at time_part 1) ":"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

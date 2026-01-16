@@ -14,7 +14,7 @@
 (assert (not (= (str.split_rest host_line "Host:" 1) "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

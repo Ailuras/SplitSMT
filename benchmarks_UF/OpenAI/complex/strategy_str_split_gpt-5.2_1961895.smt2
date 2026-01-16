@@ -1,10 +1,10 @@
 ; Email Validation scenario: mutated/extended from seed while preserving core structure
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Core variable (from seed)
 (declare-const X String)
@@ -71,8 +71,8 @@
 ; Ensure X has exactly one '@' and does not contain spaces
 (assert (not (str.contains X " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -198,8 +198,8 @@
 ; Ensure both branches are possible as separate instances by allowing either value.
 ; The solver will decide satisfiable overall by setting choose_sat = true.
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

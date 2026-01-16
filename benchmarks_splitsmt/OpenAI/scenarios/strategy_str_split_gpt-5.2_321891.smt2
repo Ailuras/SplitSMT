@@ -106,8 +106,8 @@
 (assert (>= (str.len first_label_mixed) 1))
 (assert (not (str.contains local_mixed "@")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

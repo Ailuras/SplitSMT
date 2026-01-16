@@ -156,8 +156,7 @@
 ; Uncomment below to make UNSAT:
 ; (assert (str.contains content_length_value "a")) ; Content-length value cannot contain 'a'
 
-(check-sat)
-(get-value (header content_length_value host_value user_agent_value))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface for HTTP header parsing (split-based) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; --- Uninterpreted interface for HTTP header parsing (split-based) ---
 
 ; --- Core variables (preserve seed structure) ---
 (declare-const result String)
@@ -187,8 +187,8 @@
 ; If cl_int is 0 then body length must be > 0 (contradiction when cl_int=0)
 (assert (=> (= cl_int 0) (> (str.len body) 0)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

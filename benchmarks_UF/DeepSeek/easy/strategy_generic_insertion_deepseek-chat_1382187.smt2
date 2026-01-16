@@ -1,13 +1,13 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun in1 () String)
 (declare-fun in0 () String)
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (str.contains in1 ".") 1 0) 0)))) (not (not (= (ite (str.contains in1 "+") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains in1 "@") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) 0 (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0)) ".") 1 0) 0)))) (not (= (ite (= (str.len (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)))) 0) 1 0) 0))) (not (= (ite (str.contains (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+") 1 0) 0))) (not (not (= (ite (= (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1))) "@") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)))) 0) 1 0) 0)))) (not (= (ite (str.contains in0 "@") 1 0) 0))) (not (not (= (ite (= (str.len in0) 0) 1 0) 0)))) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) 0)) (>= (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)))
 
 ; --- START CONSTRAINT ---
 ; Declare interface functions for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split results
 (declare-const local_part String)
 (declare-const domain_part String)
@@ -23,7 +23,7 @@
 (assert (>= (num_splits domain_part ".") 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

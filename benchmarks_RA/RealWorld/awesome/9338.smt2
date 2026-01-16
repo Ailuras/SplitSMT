@@ -172,7 +172,6 @@
 (declare-const var3235!1 var459)
 (declare-const var3501 String)
  ; Statement: throw $r82 
-(check-sat)
 ; {loadTextClassifier/2023711293=([edu.stanford.nlp.ie.crf.CRFClassifier, java.io.BufferedReader], void), cast-from-var3290-to-var1398=([edu.stanford.nlp.ie.crf.CRFClassifierNonlinear], edu.stanford.nlp.ie.crf.CRFClassifier), readLine/150542008=([java.io.BufferedReader], java.lang.String), var459-init=([], java.lang.RuntimeException), <init>/-1084991535=([java.lang.RuntimeException, java.lang.String], void)}
 ; {var3290=edu.stanford.nlp.ie.crf.CRFClassifierNonlinear, var1556=r0, var2910=java.io.BufferedReader, var2102=r1, var1398=edu.stanford.nlp.ie.crf.CRFClassifier, var132=r83, var1879=r84, var2030=$r2, var3491=$z0, var459=java.lang.RuntimeException, var3235=$r82, var3501="format error in nodeFeatureIndicesMap"}
 ; {edu.stanford.nlp.ie.crf.CRFClassifierNonlinear=var3290, r0=var1556, java.io.BufferedReader=var2910, r1=var2102, edu.stanford.nlp.ie.crf.CRFClassifier=var1398, r83=var132, r84=var1879, $r2=var2030, $z0=var3491, java.lang.RuntimeException=var459, $r82=var3235, "format error in nodeFeatureIndicesMap"=var3501}
@@ -180,4 +179,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean equals(java.lang.Object)>": 1}
 ;stmts r0 := @this: edu.stanford.nlp.ie.crf.CRFClassifierNonlinear;	r1 := @parameter0: java.io.BufferedReader;	specialinvoke r0.<edu.stanford.nlp.ie.crf.CRFClassifier: void loadTextClassifier(java.io.BufferedReader)>(r1);	r83 = virtualinvoke r1.<java.io.BufferedReader: java.lang.String readLine()>();	r84 = virtualinvoke r83.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\t");	$r2 = r84[0];	$z0 = virtualinvoke $r2.<java.lang.String: boolean equals(java.lang.Object)>("nodeFeatureIndicesMap.size()=");	if $z0 != 0 goto $r3 = r84[1];	$r82 = new java.lang.RuntimeException;	specialinvoke $r82.<java.lang.RuntimeException: void <init>(java.lang.String)>("format error in nodeFeatureIndicesMap");	throw $r82
 ;block_num 2
+(check-sat)
 (exit)

@@ -1,7 +1,4 @@
 (set-logic ALL)
-
-; Email Validation scenario using str_split-style constraints and regex
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +89,9 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation scenario using str_split-style constraints and regex
+
+
 (declare-const email String)
 (declare-const local String)
 (declare-const domain String)
@@ -131,8 +131,8 @@
 ; SAT instance: provide a concrete email satisfying constraints
 (assert (= email "alice.smith+tag@sub.example.COM"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

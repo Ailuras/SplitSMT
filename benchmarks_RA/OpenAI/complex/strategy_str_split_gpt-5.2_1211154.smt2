@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; HTTP Header Parsing scenario: parse request headers with colon and CRLF, validate Content-Length
-
-; --- str_split interface (uninterpreted) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +88,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; HTTP Header Parsing scenario: parse request headers with colon and CRLF, validate Content-Length
+
+; --- str_split interface (uninterpreted) ---
 
 ; --- Variables ---
 (declare-const X String)               ; full HTTP request headers (possibly including request-line)
@@ -185,8 +185,8 @@
 ; Extra: require Host value includes a dot (e.g., example.com)
 (assert (str.contains host_value "."))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

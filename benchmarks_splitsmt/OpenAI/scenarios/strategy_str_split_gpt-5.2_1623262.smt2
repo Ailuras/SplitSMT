@@ -105,8 +105,8 @@
 ; Anchor a concrete email with two '@' which conflicts with (= (str.num_splits ..) 2)
 (assert (= bad_email "a@@b.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

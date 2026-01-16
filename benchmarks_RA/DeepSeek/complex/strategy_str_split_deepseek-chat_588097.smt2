@@ -129,8 +129,7 @@
 (assert (not (str.suffixof delimiter csv_data)))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_data field_count first_field last_field empty_field_index))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

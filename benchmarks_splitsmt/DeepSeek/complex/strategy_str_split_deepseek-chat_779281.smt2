@@ -54,7 +54,7 @@
 ; Make it SAT by allowing a valid example
 (assert (str.contains csv_line ","))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -19,7 +19,7 @@
 (assert (>= (num_splits X_line " ") 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -22,7 +22,7 @@
 (assert (= (str.split_rest S delimiter 2) U))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

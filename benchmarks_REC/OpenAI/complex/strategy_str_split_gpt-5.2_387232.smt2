@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; Seed variables (preserve core structure)
 (declare-fun T_1 () Bool)
 (declare-fun var_0xINPUT_101935 () String)
@@ -176,8 +176,8 @@
 ; Make it satisfiable by providing one concrete example logline
 (assert (= logline "2026-01-09T12:34:56 INFO auth_service: user login ok"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 82
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-15 19:42:09
+Started: 2026-01-16 13:36:12
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/Sequences/realworld_sat_split.smt2
-START: 2026-01-15T11:42:09Z
-END: 2026-01-15T11:42:11Z
-DURATION_SEC: 1.792430488
+FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split.smt2
+START: 2026-01-16T05:36:12Z
+END: 2026-01-16T05:36:14Z
+DURATION_SEC: 1.732695701
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -18,10 +18,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/Sequences/realworld_unsat_split2.smt2
-START: 2026-01-15T11:42:11Z
-END: 2026-01-15T11:42:20Z
-DURATION_SEC: 9.058407910
+FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split2.smt2
+START: 2026-01-16T05:36:14Z
+END: 2026-01-16T05:36:22Z
+DURATION_SEC: 8.312367224
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -30,10 +30,10 @@ sat
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/Sequences/realworld_unsat_split3.smt2
-START: 2026-01-15T11:42:20Z
-END: 2026-01-15T11:42:22Z
-DURATION_SEC: 2.136137508
+FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split3.smt2
+START: 2026-01-16T05:36:22Z
+END: 2026-01-16T05:36:24Z
+DURATION_SEC: 2.062502659
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,10 +42,10 @@ unsat
 
 ===========================================================
 Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/Sequences/realworld_unsat_split.smt2
-START: 2026-01-15T11:42:22Z
-END: 2026-01-15T11:42:31Z
-DURATION_SEC: 8.913195522
+FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split.smt2
+START: 2026-01-16T05:36:24Z
+END: 2026-01-16T05:36:33Z
+DURATION_SEC: 8.683433271
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,9 +55,9 @@ sat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/10560.smt2
-START: 2026-01-15T11:42:31Z
-END: 2026-01-15T11:42:33Z
-DURATION_SEC: 1.896478037
+START: 2026-01-16T05:36:33Z
+END: 2026-01-16T05:36:35Z
+DURATION_SEC: 2.057822460
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -67,9 +67,9 @@ sat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/10596.smt2
-START: 2026-01-15T11:42:33Z
-END: 2026-01-15T11:42:35Z
-DURATION_SEC: 2.356025109
+START: 2026-01-16T05:36:35Z
+END: 2026-01-16T05:36:37Z
+DURATION_SEC: 2.352679519
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -79,22 +79,22 @@ sat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/1118.smt2
-START: 2026-01-15T11:42:35Z
-END: 2026-01-15T11:42:45Z
-DURATION_SEC: 10.160719128
+START: 2026-01-16T05:36:37Z
+END: 2026-01-16T05:36:47Z
+DURATION_SEC: 10.156841156
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:42:45] External solver did not return a valid status. Output: [0m
+[31m[2026-01-16 13:36:47] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/11724.smt2
-START: 2026-01-15T11:42:45Z
-END: 2026-01-15T11:42:48Z
-DURATION_SEC: 2.870502785
+START: 2026-01-16T05:36:47Z
+END: 2026-01-16T05:36:50Z
+DURATION_SEC: 2.925449857
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -104,27 +104,27 @@ sat
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/12319.smt2
-START: 2026-01-15T11:42:48Z
-END: 2026-01-15T11:42:58Z
-DURATION_SEC: 10.200141881
+START: 2026-01-16T05:36:50Z
+END: 2026-01-16T05:37:01Z
+DURATION_SEC: 10.326596827
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:42:58] External solver did not return a valid status. Output: [0m
+[31m[2026-01-16 13:37:01] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-ostrich
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/12328.smt2
-START: 2026-01-15T11:42:58Z
-END: 2026-01-15T11:43:09Z
-DURATION_SEC: 10.148174589
+START: 2026-01-16T05:37:01Z
+END: 2026-01-16T05:37:11Z
+DURATION_SEC: 10.143146407
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:43:08] External solver did not return a valid status. Output: [0m
+[31m[2026-01-16 13:37:11] External solver did not return a valid status. Output: [0m
 unknown
 ===========================================================
 
-Task Group 82 completed at 2026-01-15 19:43:09
+Task Group 82 completed at 2026-01-16 13:37:11

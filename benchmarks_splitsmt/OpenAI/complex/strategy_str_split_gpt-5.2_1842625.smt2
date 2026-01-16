@@ -64,8 +64,8 @@
 (assert (not (str.contains ua_value "\\n")))
 (assert (not (str.contains host_value " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const X String)
 (assert (str.in_re X (str.to_re "subject:node=LoginNSIS_DOWNLOAD\u{a}")))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const prefix String)
 (declare-const payload String)
@@ -18,7 +18,7 @@
 (assert (str.contains payload "LoginNSIS_DOWNLOAD"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

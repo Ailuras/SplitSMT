@@ -61,8 +61,8 @@
 (assert T_5)
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

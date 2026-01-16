@@ -173,7 +173,6 @@
 (declare-const var2449!1 var1403)
 (declare-const var2318 String)
  ; Statement: throw $r26 
-(check-sat)
 ; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), getPath/39698060=([java.net.URI], java.lang.String), cast-from-Int-to-Int=([int], int), var1403-init=([], java.lang.IllegalArgumentException), <init>/875830710=([java.lang.IllegalArgumentException, java.lang.String], void)}
 ; {var546=java.net.URI, var1012=r1, var1175=r4, var1132=$r25, var520=$r2, var594=$i25, var911=r3, var2564=$r5, var1345=$i27, var2844=r6, var2014=$i0, var1403=java.lang.IllegalArgumentException, var2449=$r26, var2318="Can\'t relativize an empty source URI !"}
 ; {java.net.URI=var546, r1=var1012, r4=var1175, $r25=var1132, $r2=var520, $i25=var594, r3=var911, $r5=var2564, $i27=var1345, r6=var2844, $i0=var2014, java.lang.IllegalArgumentException=var1403, $r26=var2449, "Can\'t relativize an empty source URI !"=var2318}
@@ -181,4 +180,5 @@
 ;cnt {"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 2}
 ;stmts r1 := @parameter0: java.net.URI;	r4 := @parameter1: java.net.URI;	$r25 = new java.lang.StringBuilder;	specialinvoke $r25.<java.lang.StringBuilder: void <init>()>();	$r2 = virtualinvoke r1.<java.net.URI: java.lang.String getPath()>();	$i25 = (int) (- 1);	r3 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("/", $i25);	$r5 = virtualinvoke r4.<java.net.URI: java.lang.String getPath()>();	$i27 = (int) (- 1);	r6 = virtualinvoke $r5.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("/", $i27);	$i0 = lengthof r3;	if $i0 != 0 goto $i1 = lengthof r6;	$r26 = new java.lang.IllegalArgumentException;	specialinvoke $r26.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>("Can\'t relativize an empty source URI !");	throw $r26
 ;block_num 2
+(check-sat)
 (exit)

@@ -1,10 +1,10 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation scenario using str_split-style constraints and regex
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const email String)
 (declare-const local String)
@@ -45,8 +45,8 @@
 ; SAT instance: provide a concrete email satisfying constraints
 (assert (= email "alice.smith+tag@sub.example.COM"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

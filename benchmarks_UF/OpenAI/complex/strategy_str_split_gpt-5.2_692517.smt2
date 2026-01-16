@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: reason about comma-separated fields, field counts, and empty fields.
 
 ; Uninterpreted interface operations (as required)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Core inputs
 (declare-const X String)
@@ -67,8 +67,8 @@
 ; Additional shape constraint using split_rest: concatenation from field 2 onward should not be empty
 (assert (not (= (split_rest csv delim 2) "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

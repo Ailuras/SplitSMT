@@ -35,8 +35,7 @@
 (assert (= csv_line "123,John Doe,30,USA"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_line field_count first_field last_field middle_field has_empty_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

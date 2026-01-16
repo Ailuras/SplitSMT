@@ -135,7 +135,7 @@
 (assert (> (str.len timestamp) 0))
 (assert (> (str.len log_level) 0))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -145,8 +145,8 @@
 
 ; UNSAT-inducing constraint removed: ensure consistency (do not force contradictions)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

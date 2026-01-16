@@ -10,7 +10,7 @@
 (assert (str.contains (str.split_at X delimiter 2) "smiU"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

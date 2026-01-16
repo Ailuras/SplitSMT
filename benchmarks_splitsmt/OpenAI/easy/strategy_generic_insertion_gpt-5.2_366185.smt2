@@ -43,7 +43,7 @@
 (assert (= (str.split_rest s "0" 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

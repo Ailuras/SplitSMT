@@ -210,8 +210,8 @@
 
 (assert (or sat_branch unsat_branch))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

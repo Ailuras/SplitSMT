@@ -73,8 +73,8 @@
 ; If make_unsat then forbid any occurrence of "000" or "1" in a star-language (makes it even tighter)
 (assert (=> make_unsat (not (str.in_re log_line (re.* (re.union (str.to_re "000") (str.to_re "1")))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

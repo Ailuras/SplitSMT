@@ -18,7 +18,7 @@
 (assert (str.contains (str.split_rest x delim 2) "A"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

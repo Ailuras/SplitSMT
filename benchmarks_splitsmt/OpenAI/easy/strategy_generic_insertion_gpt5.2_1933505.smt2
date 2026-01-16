@@ -16,7 +16,7 @@
 (assert (=> (>= (str.num_splits X delim) 2) (= X (str.++ firstSeg delim restAfterFirst))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

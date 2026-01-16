@@ -61,8 +61,8 @@
 (assert (=> (>= nfields 3) (= rest2 "")))
 (assert (>= (str.len field2) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

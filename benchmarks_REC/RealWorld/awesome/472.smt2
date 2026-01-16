@@ -163,7 +163,6 @@
  ; Statement: if $i0 != 0 goto $i1 = lengthof r2 
 (assert (not (not (= var1928 0)))) ; Negate: Cond: $i0 != 0  
  ; Statement: return 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var3493=java.util.Map, var1452=r4, var495=java.util.List, var1256=r3, var1466=r0, var984=null_type, var153=$r1, var189=r2, var1928=$i0}
 ; {java.util.Map=var3493, r4=var1452, java.util.List=var495, r3=var1256, r0=var1466, null_type=var984, $r1=var153, r2=var189, $i0=var1928}
@@ -171,4 +170,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r4 := @parameter0: java.util.Map;	r3 := @parameter1: java.util.List;	r0 := @parameter2: java.lang.String;	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	$i0 = lengthof r2;	if $i0 != 0 goto $i1 = lengthof r2;	return
 ;block_num 2
+(check-sat)
 (exit)

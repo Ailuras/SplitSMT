@@ -86,8 +86,8 @@
 (assert (= T_8 (str.contains var_0xINPUT_35287 delim)))
 (assert T_8)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

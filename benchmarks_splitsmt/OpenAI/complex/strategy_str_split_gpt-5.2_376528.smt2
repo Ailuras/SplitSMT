@@ -64,8 +64,8 @@
 (assert (=> (= level "ERROR:") T_3))
 (assert (=> (= level "ERROR:") (not (str.contains message "failed"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; CSV Processing scenario: comma-separated fields, field count, and empty-field detection
 
 ; str_split interface (uninterpreted)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const X String)
 (declare-const delim String)
@@ -41,8 +41,8 @@
 ; Constructive constraints to force an empty second field, while keeping f1 numeric -> UNSAT
 (assert (= f1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

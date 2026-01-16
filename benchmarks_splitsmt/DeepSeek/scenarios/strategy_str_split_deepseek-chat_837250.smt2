@@ -57,7 +57,7 @@
 ; Final consistency check
 (assert (= log_entry (str.++ log_level " " timestamp ":" message)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

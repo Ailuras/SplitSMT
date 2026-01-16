@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Email Validation via str_split using '@' and '.' delimiters
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +89,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation via str_split using '@' and '.' delimiters
+
+; Uninterpreted split interface
+
 ; Shared helper strings
 (declare-const at_delim String)
 (declare-const dot_delim String)
@@ -175,8 +175,8 @@
 (assert (= tld_bad (split_at (split_rest domain_bad dot_delim 1) dot_delim (- (num_splits (split_rest domain_bad dot_delim 1) dot_delim) 1))))
 (assert (>= (str.len tld_bad) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

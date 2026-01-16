@@ -116,8 +116,8 @@
 (assert (= m2 "ok"))
 (assert (= csv_mixed (str.++ m0 delim m1 delim m2)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

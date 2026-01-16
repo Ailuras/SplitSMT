@@ -38,7 +38,7 @@
 (assert (= (split_rest value2 "," 1) (split_rest value2 "," 1)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

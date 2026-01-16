@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: process comma-separated fields, ensure correct field counts, and detect empty fields.
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; CSV input and derived fields
 (declare-const csv String)
@@ -46,8 +46,8 @@
 ; Consistency with suffix: since f2 is empty, the suffix from index 2 should begin with a comma
 (assert (str.prefixof "," suffix_from_2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

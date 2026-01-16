@@ -136,8 +136,8 @@
 (assert (str.contains csv_line delimiter))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

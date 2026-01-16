@@ -1,10 +1,10 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_sat_split.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split2.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:49
-END: 2026-01-15 19:01:50
-DURATION_SEC: 0.133
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:20
+DURATION_SEC: 0.147
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,11 +12,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split2.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split3.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:50
-END: 2026-01-15 19:01:50
-DURATION_SEC: 0.190
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:20
+DURATION_SEC: 0.120
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -24,23 +24,11 @@ sat
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split3.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:50
-END: 2026-01-15 19:01:50
-DURATION_SEC: 0.170
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split.smt2
-TIMEOUT: 10s
-START: 2026-01-15 19:01:50
-END: 2026-01-15 19:01:50
-DURATION_SEC: 0.182
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:20
+DURATION_SEC: 0.121
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +38,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/10560.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:50
-END: 2026-01-15 19:01:50
-DURATION_SEC: 0.176
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:20
+DURATION_SEC: 0.122
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,9 +50,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/10596.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:50
-END: 2026-01-15 19:01:51
-DURATION_SEC: 0.123
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:20
+DURATION_SEC: 0.081
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -74,9 +62,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/1118.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:51
-END: 2026-01-15 19:01:51
-DURATION_SEC: 0.850
+START: 2026-01-16 12:56:20
+END: 2026-01-16 12:56:21
+DURATION_SEC: 0.805
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,9 +74,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/11724.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:51
-END: 2026-01-15 19:01:52
-DURATION_SEC: 0.119
+START: 2026-01-16 12:56:21
+END: 2026-01-16 12:56:21
+DURATION_SEC: 0.112
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,9 +86,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/12319.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:52
-END: 2026-01-15 19:01:52
-DURATION_SEC: 0.176
+START: 2026-01-16 12:56:21
+END: 2026-01-16 12:56:22
+DURATION_SEC: 0.178
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,9 +98,21 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/RealWorld/top20_gh/12328.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:01:52
-END: 2026-01-15 19:01:52
-DURATION_SEC: 0.144
+START: 2026-01-16 12:56:22
+END: 2026-01-16 12:56:22
+DURATION_SEC: 0.173
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_UF/RealWorld/top20_gh/12336.smt2
+TIMEOUT: 10s
+START: 2026-01-16 12:56:22
+END: 2026-01-16 12:56:23
+DURATION_SEC: 0.814
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

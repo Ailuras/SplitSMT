@@ -136,8 +136,8 @@
 (assert (< (str.len (str.++ timestamp log_level)) 15))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

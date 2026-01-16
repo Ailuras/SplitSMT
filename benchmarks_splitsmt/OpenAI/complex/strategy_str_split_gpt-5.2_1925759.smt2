@@ -73,8 +73,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (not (= (str.len body) content_length))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

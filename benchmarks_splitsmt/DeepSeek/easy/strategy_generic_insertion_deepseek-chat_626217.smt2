@@ -11,7 +11,7 @@
 (assert (str.contains (str.split_rest X delimiter 2) "\u{16}"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

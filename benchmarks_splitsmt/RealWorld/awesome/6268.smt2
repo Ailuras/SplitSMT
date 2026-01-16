@@ -61,7 +61,6 @@
  ; Statement: if $i0 != 0 goto $i1 = lengthof r2 
 (assert (not (not (= var3101 0)))) ; Negate: Cond: $i0 != 0  
  ; Statement: return "" 
-(check-sat)
 ; {}
 ; {var674=r0, var1696=null_type, var2606=r3, var1173=r1, var3727=r2, var3101=$i0}
 ; {r0=var674, null_type=var1696, r3=var2606, r1=var1173, r2=var3727, $i0=var3101}
@@ -69,4 +68,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r3 := @parameter1: java.lang.String;	r1 := @parameter2: java.lang.String;	r2 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(r1);	$i0 = lengthof r2;	if $i0 != 0 goto $i1 = lengthof r2;	return ""
 ;block_num 2
+(check-sat)
 (exit)

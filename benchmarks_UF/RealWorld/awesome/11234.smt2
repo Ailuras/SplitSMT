@@ -73,7 +73,6 @@
  ; Statement: if i2 >= $i0 goto return $r2 
 (assert (>= var1757 var3268)) ; Cond: i2 >= $i0 
  ; Statement: return $r2 
-(check-sat)
 ; {var3226-init=([], edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures), <init>/248943908=([edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures], void)}
 ; {var3226=edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures, var1358=r10, var2264=r0, var775=null_type, var3270=r1, var1890=$r2, var1757=i2, var3268=$i0}
 ; {edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures=var3226, r10=var1358, r0=var2264, null_type=var775, r1=var3270, $r2=var1890, i2=var1757, $i0=var3268}
@@ -81,4 +80,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r10 := @this: edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\-");	$r2 = new edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures;	specialinvoke $r2.<edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification$ArabicMorphoFeatures: void <init>()>();	i2 = 1;	$i0 = lengthof r1;	if i2 >= $i0 goto return $r2;	return $r2
 ;block_num 3
+(check-sat)
 (exit)

@@ -42,7 +42,7 @@
 (assert (> (str.len local_part) 1))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -154,7 +154,6 @@
  ; Statement: if i1 >= $i0 goto return r2 
 (assert (>= var1879 var1421)) ; Cond: i1 >= $i0 
  ; Statement: return r2 
-(check-sat)
 ; {substring/850833817=([java.lang.String, int], java.lang.String)}
 ; {var3490=r0, var1368=null_type, var2440=$r1, var3409=r2, var1879=i1, var1421=$i0}
 ; {r0=var3490, null_type=var1368, $r1=var2440, r2=var3409, i1=var1879, $i0=var1421}
@@ -162,4 +161,5 @@
 ;cnt {"<java.lang.String: java.lang.String substring(int)>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>(2);	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("=");	i1 = 0;	$i0 = lengthof r2;	if i1 >= $i0 goto return r2;	return r2
 ;block_num 3
+(check-sat)
 (exit)

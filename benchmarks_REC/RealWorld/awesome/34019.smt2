@@ -189,7 +189,6 @@
  ; Statement: if i8 >= i0 goto return $r0 
 (assert (>= var2369!1 var1476)) ; Cond: i8 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var372-init=([], edu.stanford.nlp.ling.CoreLabel), <init>/598147663=([edu.stanford.nlp.ling.CoreLabel], void), startsWith/-1785782452=([java.lang.String, java.lang.String], boolean), length/-134980193=([java.lang.String], int), substring/850833817=([java.lang.String, int], java.lang.String), setTag/-302746546=([edu.stanford.nlp.ling.CoreLabel, java.lang.String], void)}
 ; {var3322=r1, var309=null_type, var372=edu.stanford.nlp.ling.CoreLabel, var1552=$r0, var1843=r2, var1476=i0, var2369=i8, var1328=r3, var708=$z0, var38=$z1, var1302=$r11, var3735=$i5, var2455=$r12}
 ; {r1=var3322, null_type=var309, edu.stanford.nlp.ling.CoreLabel=var372, $r0=var1552, r2=var1843, i0=var1476, i8=var2369, r3=var1328, $z0=var708, $z1=var38, $r11=var1302, $i5=var3735, $r12=var2455}
@@ -197,4 +196,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean startsWith(java.lang.String)>": 2,"<java.lang.String: int length()>": 1,"<java.lang.String: java.lang.String substring(int)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new edu.stanford.nlp.ling.CoreLabel;	specialinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|\\|\\|");	i0 = lengthof r2;	i8 = 0;	if i8 >= i0 goto return $r0;	r3 = r2[i8];	$z0 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("word:::");	if $z0 == 0 goto $z1 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("tag:::");	$z1 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("tag:::");	if $z1 == 0 goto $z2 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("lemma:::");	$r11 = "tag:::";	$i5 = virtualinvoke $r11.<java.lang.String: int length()>();	$r12 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i5);	virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setTag(java.lang.String)>($r12);	goto [?= i8 = i8 + 1];	i8 = i8 + 1;	goto [?= (branch)];	if i8 >= i0 goto return $r0;	return $r0
 ;block_num 8
+(check-sat)
 (exit)

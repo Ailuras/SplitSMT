@@ -150,7 +150,7 @@
 ; (assert (and (= log_level "INFO") (= log_level "ERROR")))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

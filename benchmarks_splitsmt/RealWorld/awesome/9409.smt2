@@ -57,7 +57,6 @@
  ; Statement: if $i0 <= 0 goto return "" 
 (assert (<= var151 0)) ; Cond: $i0 <= 0 
  ; Statement: return "" 
-(check-sat)
 ; {}
 ; {var2902=r0, var474=null_type, var3880=$r1, var151=$i0}
 ; {r0=var2902, null_type=var474, $r1=var3880, $i0=var151}
@@ -65,4 +64,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\(");	$i0 = lengthof $r1;	if $i0 <= 0 goto return "";	return ""
 ;block_num 2
+(check-sat)
 (exit)

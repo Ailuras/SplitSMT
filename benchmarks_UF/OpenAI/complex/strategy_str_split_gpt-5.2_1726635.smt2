@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; --- Uninterpreted interface ops for splitting ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Seed structure preserved / mutated ---
 (declare-fun T_1 () Bool)
@@ -94,8 +94,8 @@
 ; Additional structural constraints: ensure no stray '-' or empty request
 (assert (not (str.contains request "\n\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

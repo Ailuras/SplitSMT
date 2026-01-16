@@ -82,7 +82,6 @@
 (assert (not (= (ite var732 1 0) 0))) ; Negate: Cond: $z2 == 0  
 (define-const var120 Float64 (var3031_getCount/958668014 var3592 (cast-from-var290-to-var1894 var795))) ; Statement: $d3 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: double getCount(java.lang.Object)>(r0) 
  ; Statement: return $d3 
-(check-sat)
 ; {getPhrase/-292787131=([edu.stanford.nlp.patterns.CandidatePhrase], java.lang.String), var3031_containsKey/1421819118=([edu.stanford.nlp.stats.Counter, java.lang.Object], boolean), cast-from-var290-to-var1894=([edu.stanford.nlp.patterns.CandidatePhrase], java.lang.Object), var3031_getCount/958668014=([edu.stanford.nlp.stats.Counter, java.lang.Object], double)}
 ; {var2680=edu.stanford.nlp.patterns.PhraseScorer, var886=r3, var3031=edu.stanford.nlp.stats.Counter, var3592=r6, var290=edu.stanford.nlp.patterns.CandidatePhrase, var795=r0, var1760=d2, var3246=$r1, var2202=r2, var3086=$i0, var1894=java.lang.Object, var732=$z2, var120=$d3}
 ; {edu.stanford.nlp.patterns.PhraseScorer=var2680, r3=var886, edu.stanford.nlp.stats.Counter=var3031, r6=var3592, edu.stanford.nlp.patterns.CandidatePhrase=var290, r0=var795, d2=var1760, $r1=var3246, r2=var2202, $i0=var3086, java.lang.Object=var1894, $z2=var732, $d3=var120}
@@ -90,4 +89,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r3 := @this: edu.stanford.nlp.patterns.PhraseScorer;	r6 := @parameter0: edu.stanford.nlp.stats.Counter;	r0 := @parameter1: edu.stanford.nlp.patterns.CandidatePhrase;	d2 := @parameter2: double;	$r1 = virtualinvoke r0.<edu.stanford.nlp.patterns.CandidatePhrase: java.lang.String getPhrase()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	$i0 = lengthof r2;	if $i0 >= 2 goto d4 = 0.0;	$z2 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: boolean containsKey(java.lang.Object)>(r0);	if $z2 == 0 goto return d2;	$d3 = interfaceinvoke r6.<edu.stanford.nlp.stats.Counter: double getCount(java.lang.Object)>(r0);	return $d3
 ;block_num 3
+(check-sat)
 (exit)

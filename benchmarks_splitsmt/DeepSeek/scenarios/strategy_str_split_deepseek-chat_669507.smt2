@@ -38,7 +38,7 @@
 (assert (<= (str.len (str.split_at csv_line delimiter 0)) 10))
 (assert (<= (str.len (str.split_at csv_line delimiter 2)) 15))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

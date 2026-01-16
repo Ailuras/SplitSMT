@@ -89,8 +89,8 @@
 (assert (>= i 0))
 (assert (< i (str.num_splits request "\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

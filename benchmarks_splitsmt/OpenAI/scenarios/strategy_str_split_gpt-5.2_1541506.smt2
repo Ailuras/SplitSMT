@@ -110,8 +110,8 @@
 (assert (=> make_unsat (= cl_len (+ body_len 1))))
 (assert (=> make_unsat (= cl_len body_len)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

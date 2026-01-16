@@ -145,7 +145,7 @@
 ; Additional constraint: Ensure total string length is reasonable
 (assert (<= (str.len csv_data) 100))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

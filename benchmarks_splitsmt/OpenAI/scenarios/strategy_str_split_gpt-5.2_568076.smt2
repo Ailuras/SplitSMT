@@ -44,7 +44,6 @@
 (assert (str.prefixof field2 rest_from2))
 (assert (str.contains rest_from2 field3))
 
-(check-sat)
 
 ; -----------------------------
 ; UNSAT instance: contradicts empty-field detection on a concrete row

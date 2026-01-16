@@ -173,7 +173,6 @@
  ; Statement: if $z1 != 0 goto return r6 
 (assert (not (= (ite var3636 1 0) 0))) ; Cond: $z1 != 0 
  ; Statement: return r6 
-(check-sat)
 ; {var785_compile/2141929305=([java.lang.String], java.util.regex.Pattern), matcher/468719934=([java.util.regex.Pattern, java.lang.CharSequence], java.util.regex.Matcher), cast-from-String-to-String=([java.lang.String], java.lang.CharSequence), find/1809080823=([java.util.regex.Matcher], boolean), trim/-847153721=([java.lang.String], java.lang.String), matches/-643015890=([java.lang.String, java.lang.String], boolean)}
 ; {var229=org.jline.reader.Parser, var1225=r5, var254=r1, var958=null_type, var785=java.util.regex.Pattern, var2540=r0, var2976=java.util.regex.Matcher, var3702=r2, var2154=$z0, var226=$r3, var2476=$r4, var2427=r6, var3636=$z1}
 ; {org.jline.reader.Parser=var229, r5=var1225, r1=var254, null_type=var958, java.util.regex.Pattern=var785, r0=var2540, java.util.regex.Matcher=var2976, r2=var3702, $z0=var2154, $r3=var226, $r4=var2476, r6=var2427, $z1=var3636}
@@ -181,4 +180,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean matches(java.lang.String)>": 1}
 ;stmts r5 := @this: org.jline.reader.Parser;	r1 := @parameter0: java.lang.String;	r0 = staticinvoke <java.util.regex.Pattern: java.util.regex.Pattern compile(java.lang.String)>("^\\s*[a-zA-Z_]+[a-zA-Z0-9_-]*=([:]?[a-zA-Z]+[a-zA-Z0-9_-]*)(\\s+|$)");	r2 = virtualinvoke r0.<java.util.regex.Pattern: java.util.regex.Matcher matcher(java.lang.CharSequence)>(r1);	$z0 = virtualinvoke r2.<java.util.regex.Matcher: boolean find()>();	if $z0 == 0 goto $r3 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();	$r3 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();	$r4 = virtualinvoke $r3.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	r6 = $r4[0];	$z1 = virtualinvoke r6.<java.lang.String: boolean matches(java.lang.String)>("[:]?[a-zA-Z]+[a-zA-Z0-9_-]*");	if $z1 != 0 goto return r6;	return r6
 ;block_num 3
+(check-sat)
 (exit)

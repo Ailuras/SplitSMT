@@ -89,8 +89,8 @@
 ; Make sure the request does not accidentally equal the exact forbidden pattern including newline
 (assert (not (= X "dll?badurl.grandstreetinteractive.com\u{0A}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

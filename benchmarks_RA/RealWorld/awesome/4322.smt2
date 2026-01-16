@@ -158,7 +158,6 @@
  ; Statement: if i3 >= i0 goto return r3 
 (assert (>= var3122 var2014)) ; Cond: i3 >= i0 
  ; Statement: return r3 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var2878=r0, var3949=null_type, var2200=java.util.Properties, var3588=r3, var2220=$r1, var2311=r2, var2014=i0, var3122=i3}
 ; {r0=var2878, null_type=var3949, java.util.Properties=var2200, r3=var3588, $r1=var2220, r2=var2311, i0=var2014, i3=var3122}
@@ -166,4 +165,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r3 := @parameter1: java.util.Properties;	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*");	i0 = lengthof r2;	i3 = 0;	if i3 >= i0 goto return r3;	return r3
 ;block_num 3
+(check-sat)
 (exit)

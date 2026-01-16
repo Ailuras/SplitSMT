@@ -53,7 +53,7 @@
 ; Constraint 10: Make the problem SAT by adding a concrete example that satisfies all constraints
 (assert (or (= email "john.doe@example.com\u{a}") (= email "alice_smith123@test-domain.org\u{a}")))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -23,7 +23,7 @@
 (assert (= (str.split_at seg0 "M" 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

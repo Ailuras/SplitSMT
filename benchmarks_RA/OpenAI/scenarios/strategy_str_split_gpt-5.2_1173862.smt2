@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Email Validation using str_split-like interface
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +89,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation using str_split-like interface
+
+; Uninterpreted split interface
+
 ; -------------------------
 ; SAT instance: a valid-looking email with structural constraints
 ; -------------------------
@@ -162,8 +162,8 @@
 ; Additional constraints (still consistent alone): local must be non-empty
 (assert (> (str.len local_unsat) 0))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

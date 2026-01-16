@@ -2,9 +2,9 @@
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1211842.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:57:51
-END: 2026-01-15 18:57:51
-DURATION_SEC: 0.085
+START: 2026-01-16 12:52:21
+END: 2026-01-16 12:52:22
+DURATION_SEC: 0.058
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -14,9 +14,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1218378.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:57:51
-END: 2026-01-15 18:58:01
-DURATION_SEC: 10.047
+START: 2026-01-16 12:52:22
+END: 2026-01-16 12:52:32
+DURATION_SEC: 10.058
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -25,9 +25,9 @@ EXIT_CODE: 143
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1224707.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:01
-END: 2026-01-15 18:58:01
-DURATION_SEC: 0.295
+START: 2026-01-16 12:52:32
+END: 2026-01-16 12:52:32
+DURATION_SEC: 0.294
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -37,9 +37,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1227396.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:02
-END: 2026-01-15 18:58:03
-DURATION_SEC: 0.781
+START: 2026-01-16 12:52:32
+END: 2026-01-16 12:52:33
+DURATION_SEC: 0.816
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -49,9 +49,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1227949.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:03
-END: 2026-01-15 18:58:03
-DURATION_SEC: 0.433
+START: 2026-01-16 12:52:33
+END: 2026-01-16 12:52:34
+DURATION_SEC: 0.653
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -61,55 +61,45 @@ sat
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1244131.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:03
-END: 2026-01-15 18:58:05
-DURATION_SEC: 1.718
+START: 2026-01-16 12:52:34
+END: 2026-01-16 12:52:35
+DURATION_SEC: 1.454
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((header "\nContent-Length")
- (content_length_val 9)
- (host_str "Host: M:")
- (user_agent_str "User-Agent: NOP:"))
 
 ===========================================================
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_130698.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:05
-END: 2026-01-15 18:58:05
-DURATION_SEC: 0.300
+START: 2026-01-16 12:52:35
+END: 2026-01-16 12:52:36
+DURATION_SEC: 0.404
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
-((csv_data "ACDEFGHIJB")
- (field_count 5)
- (field2 "K")
- (field4 "")
- (has_empty_field true))
 
 ===========================================================
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1316783.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:05
-END: 2026-01-15 18:58:10
-DURATION_SEC: 5.114
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-16 12:52:36
+END: 2026-01-16 12:52:41
+DURATION_SEC: 5.153
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
-(error "line 51 column 50: model is not available")
 
 ===========================================================
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1330069.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:10
-END: 2026-01-15 18:58:11
-DURATION_SEC: 0.160
+START: 2026-01-16 12:52:41
+END: 2026-01-16 12:52:41
+DURATION_SEC: 0.150
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -119,9 +109,9 @@ sat
 Solver: z3
 FILE: benchmarks_UF/DeepSeek/complex/strategy_str_split_deepseek-chat_1357567.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:11
-END: 2026-01-15 18:58:11
-DURATION_SEC: 0.131
+START: 2026-01-16 12:52:41
+END: 2026-01-16 12:52:41
+DURATION_SEC: 0.174
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

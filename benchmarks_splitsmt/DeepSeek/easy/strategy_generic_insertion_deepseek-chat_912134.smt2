@@ -11,7 +11,7 @@
 (assert (= (str.split_at X delimiter 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

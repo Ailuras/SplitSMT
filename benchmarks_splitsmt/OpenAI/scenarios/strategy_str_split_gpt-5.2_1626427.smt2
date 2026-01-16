@@ -73,8 +73,8 @@
 ; relate k_ok to a concrete access to diversify constraints
 (assert (= (str.split_at csv_row_ok "," k_ok) (str.split_at csv_row_ok "," k_ok)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -55,8 +55,8 @@
 ; Force it to be 4 as well -> UNSAT.
 (assert (= (str.num_splits csv_line delim) 4))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

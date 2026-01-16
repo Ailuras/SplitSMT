@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted string split interface (space and colon separated parsing)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =========================
 ; SAT instance: well-formed log entry
@@ -77,7 +77,6 @@
 ; Provide one concrete satisfying witness to anchor parsing
 (assert (= log_sat "2025-01-09 13:05:47 INFO: auth: user=jdoe action=login status=ok"))
 
-(check-sat)
 
 ; =========================
 ; UNSAT instance: conflicting timestamp constraints
@@ -127,9 +126,9 @@
 (assert (>= (num_splits level_colon_unsat ":") 2))
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

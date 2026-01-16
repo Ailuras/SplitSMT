@@ -159,7 +159,7 @@
 (assert (= var_0xINPUT_96349 (str.++ seg0_utmz rest1_utmz)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

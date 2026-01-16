@@ -147,7 +147,7 @@
 (assert (str.suffixof "\n\n" header))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

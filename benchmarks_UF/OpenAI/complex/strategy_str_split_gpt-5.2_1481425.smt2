@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface operations for string splitting
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-style boolean structure retained and extended
 (declare-fun T_1 () Bool)
@@ -79,8 +79,8 @@
 (assert (=> unsat_guard (and (= (num_splits domain_part ".") 1)
                              (>= (num_splits domain_part ".") 2))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

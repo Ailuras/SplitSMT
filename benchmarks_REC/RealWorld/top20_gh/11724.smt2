@@ -160,7 +160,6 @@
  ; Statement: if $i0 != 2 goto return r9 
 (assert (not (= var1461 2))) ; Cond: $i0 != 2 
  ; Statement: return r9 
-(check-sat)
 ; {var1468_getServiceModel/1214805812=([org.apache.dubbo.rpc.Invocation], org.apache.dubbo.rpc.model.ServiceModel), var1468_getTargetServiceUniqueName/-1786712159=([org.apache.dubbo.rpc.Invocation], java.lang.String)}
 ; {var1468=org.apache.dubbo.rpc.Invocation, var255=r0, var2487=org.apache.dubbo.rpc.model.ServiceModel, var1049=$r1, var691=$r4, var3099=null_type, var2035=r9, var1473=$r5, var1461=$i0}
 ; {org.apache.dubbo.rpc.Invocation=var1468, r0=var255, org.apache.dubbo.rpc.model.ServiceModel=var2487, $r1=var1049, $r4=var691, null_type=var3099, r9=var2035, $r5=var1473, $i0=var1461}
@@ -168,4 +167,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: org.apache.dubbo.rpc.Invocation;	$r1 = interfaceinvoke r0.<org.apache.dubbo.rpc.Invocation: org.apache.dubbo.rpc.model.ServiceModel getServiceModel()>();	if $r1 == null goto $r4 = interfaceinvoke r0.<org.apache.dubbo.rpc.Invocation: java.lang.String getTargetServiceUniqueName()>();	$r4 = interfaceinvoke r0.<org.apache.dubbo.rpc.Invocation: java.lang.String getTargetServiceUniqueName()>();	r9 = null;	$r5 = virtualinvoke $r4.<java.lang.String: java.lang.String[] split(java.lang.String)>("/");	$i0 = lengthof $r5;	if $i0 != 2 goto return r9;	return r9
 ;block_num 3
+(check-sat)
 (exit)

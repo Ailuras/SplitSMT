@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: enforce correct field counts and detect empty fields using split_at/num_splits/split_rest
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const csv_line String)
 (declare-const delim String)
@@ -73,8 +73,8 @@
                     (str.to_re "$")
                     (re.range "0" "9")))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

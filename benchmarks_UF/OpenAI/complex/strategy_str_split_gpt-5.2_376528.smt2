@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface (space/colon separated parsing)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-style booleans preserved/extended
 (declare-fun T_1 () Bool)
@@ -67,8 +67,8 @@
 (assert (=> (= level "ERROR:") T_3))
 (assert (=> (= level "ERROR:") (not (str.contains message "failed"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

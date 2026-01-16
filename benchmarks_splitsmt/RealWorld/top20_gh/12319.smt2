@@ -68,7 +68,6 @@
  ; Statement: if $i1 != 1 goto $r2 = $r3[0] 
 (assert (not (not (= var3909 1)))) ; Negate: Cond: $i1 != 1  
  ; Statement: return $r5 
-(check-sat)
 ; {}
 ; {var2896=org.apache.dubbo.tracing.AbstractDefaultDubboObservationConvention, var3307=r4, var2003=r0, var1207=null_type, var3253=r1, var3688=$i0, var1546=$r5, var51=$r3, var3909=$i1}
 ; {org.apache.dubbo.tracing.AbstractDefaultDubboObservationConvention=var2896, r4=var3307, r0=var2003, null_type=var1207, r1=var3253, $i0=var3688, $r5=var1546, $r3=var51, $i1=var3909}
@@ -76,4 +75,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2}
 ;stmts r4 := @this: org.apache.dubbo.tracing.AbstractDefaultDubboObservationConvention;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("/");	$i0 = lengthof r1;	if $i0 != 1 goto $r5 = r1[1];	$r5 = r0;	goto [?= $r3 = virtualinvoke $r5.<java.lang.String: java.lang.String[] split(java.lang.String)>(":")];	$r3 = virtualinvoke $r5.<java.lang.String: java.lang.String[] split(java.lang.String)>(":");	$i1 = lengthof $r3;	if $i1 != 1 goto $r2 = $r3[0];	return $r5
 ;block_num 4
+(check-sat)
 (exit)

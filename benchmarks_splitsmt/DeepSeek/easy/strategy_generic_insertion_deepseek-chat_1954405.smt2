@@ -18,7 +18,7 @@
 (assert (not (= (str.len first_segment) 0)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

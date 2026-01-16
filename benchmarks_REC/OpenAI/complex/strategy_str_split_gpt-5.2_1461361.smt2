@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Purpose: reason about comma-separated fields, enforce field counts, and detect empty fields
-
-; --- Uninterpreted split interface (str_split) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -97,6 +92,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Purpose: reason about comma-separated fields, enforce field counts, and detect empty fields
+
+; --- Uninterpreted split interface (str_split) ---
+
 ; --- CSV inputs and derived fields ---
 (declare-const csv_line String)
 (declare-const delim String)
@@ -150,8 +150,8 @@
       (= (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "A" (str.++ "," (str.++ "B" (str.++ "," "A"))))) _let_0))
          (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "AB" (str.++ "," "AA"))) _let_0))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

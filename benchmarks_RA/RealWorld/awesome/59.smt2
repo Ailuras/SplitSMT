@@ -158,7 +158,6 @@
  ; Statement: if i1 >= i0 goto return "" 
 (assert (>= var361 var1567)) ; Cond: i1 >= i0 
  ; Statement: return "" 
-(check-sat)
 ; {var1445_toString/-646077907=([javax0.jamal.api.Input], java.lang.String)}
 ; {var1045=javax0.jamal.builtins.Use, var652=r5, var1445=javax0.jamal.api.Input, var3239=r0, var1853=javax0.jamal.api.Processor, var250=r6, var1381=$r1, var442=r2, var1567=i0, var361=i1}
 ; {javax0.jamal.builtins.Use=var1045, r5=var652, javax0.jamal.api.Input=var1445, r0=var3239, javax0.jamal.api.Processor=var1853, r6=var250, $r1=var1381, r2=var442, i0=var1567, i1=var361}
@@ -166,4 +165,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r5 := @this: javax0.jamal.builtins.Use;	r0 := @parameter0: javax0.jamal.api.Input;	r6 := @parameter1: javax0.jamal.api.Processor;	$r1 = interfaceinvoke r0.<javax0.jamal.api.Input: java.lang.String toString()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	i0 = lengthof r2;	i1 = 0;	if i1 >= i0 goto return "";	return ""
 ;block_num 3
+(check-sat)
 (exit)

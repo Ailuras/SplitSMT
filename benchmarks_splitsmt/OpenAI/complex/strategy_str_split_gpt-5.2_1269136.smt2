@@ -76,8 +76,8 @@
 ; Ensure level extraction remains meaningful regardless of branch
 (assert (not (= level "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

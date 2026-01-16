@@ -135,7 +135,7 @@
 ; Constraint 10: Additional consistency check - timestamp hour must be valid (00-23)
 (assert (<= (str.to_int (str.substr timestamp 0 2)) 23))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

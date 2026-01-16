@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; HTTP Header Parsing scenario using regex and str_split interface
-
-; --- str_split interface (uninterpreted) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -96,6 +92,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; HTTP Header Parsing scenario using regex and str_split interface
+
+; --- str_split interface (uninterpreted) ---
+
 ; --- Core variables ---
 (declare-const X String)              ; entire HTTP request header block
 (declare-const req_line String)
@@ -184,8 +184,8 @@
 (assert (= marker "X-Force-Unsat"))
 (assert (=> (str.contains X marker) (and (= cl 5) (= cl 10))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

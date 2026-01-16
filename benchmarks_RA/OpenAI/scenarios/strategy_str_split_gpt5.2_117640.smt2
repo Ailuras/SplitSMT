@@ -136,43 +136,6 @@
 ; Index constraints (natural indices)
 (assert (and (>= 0 0) (>= 1 0) (>= 2 0) (>= 3 0)))
 
-(check-sat)
-
-; ----------------------------
-; UNSAT instance: claim 3 fields but force 4 via concrete construction
-; ----------------------------
-(reset)
-(set-logic ALL)
-
-
-(declare-const csv_unsat String)
-(declare-const u0 String)
-(declare-const u1 String)
-(declare-const u2 String)
-(declare-const u3 String)
-
-; Concrete CSV with 4 segments: "a,,b,c" -> segments ["a", "", "b", "c"]
-(assert (= csv_unsat (str.++ "a" "," "" "," "b" "," "c")))
-
-; Contradictory field-count requirement
-(assert (= (num_splits csv_unsat ",") 3))
-
-; Still reference segments to model intended processing
-(assert (= u0 (split_at csv_unsat "," 0)))
-(assert (= u1 (split_at csv_unsat "," 1)))
-(assert (= u2 (split_at csv_unsat "," 2)))
-(assert (= u3 (split_at csv_unsat "," 3)))
-
-(assert (= u0 "a"))
-(assert (= u1 ""))
-(assert (= u2 "b"))
-(assert (= u3 "c"))
-
-; Natural index constraints
-(assert (and (>= 0 0) (>= 1 0) (>= 2 0) (>= 3 0)))
-
-(check-sat)
-
-
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

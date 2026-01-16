@@ -16,7 +16,7 @@
 (assert (not (= key1_namespace key2)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

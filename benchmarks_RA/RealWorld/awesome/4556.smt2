@@ -167,7 +167,6 @@
  ; Statement: if i1 >= $i0 goto return r10 
 (assert (>= var3925 var664)) ; Cond: i1 >= $i0 
  ; Statement: return r10 
-(check-sat)
 ; {isLoggable/-616065502=([java.util.logging.Logger, java.util.logging.Level], boolean)}
 ; {var1154=org.jline.utils.StyleResolver, var2478=r3, var3626=org.jline.utils.AttributedStyle, var3271=r10, var19=r2, var774=null_type, var3277=java.util.logging.Logger, var629=$r1, var782=java.util.logging.Level, var2789=$r0, var3610=$z0, var3110=$r9, var664=$i0, var3925=i1}
 ; {org.jline.utils.StyleResolver=var1154, r3=var2478, org.jline.utils.AttributedStyle=var3626, r10=var3271, r2=var19, null_type=var774, java.util.logging.Logger=var3277, $r1=var629, java.util.logging.Level=var782, $r0=var2789, $z0=var3610, $r9=var3110, $i0=var664, i1=var3925}
@@ -175,4 +174,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r3 := @this: org.jline.utils.StyleResolver;	r10 := @parameter0: org.jline.utils.AttributedStyle;	r2 := @parameter1: java.lang.String;	$r1 = <org.jline.utils.StyleResolver: java.util.logging.Logger log>;	$r0 = <java.util.logging.Level: java.util.logging.Level FINEST>;	$z0 = virtualinvoke $r1.<java.util.logging.Logger: boolean isLoggable(java.util.logging.Level)>($r0);	if $z0 == 0 goto $r9 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$r9 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$i0 = lengthof $r9;	i1 = 0;	if i1 >= $i0 goto return r10;	return r10
 ;block_num 4
+(check-sat)
 (exit)

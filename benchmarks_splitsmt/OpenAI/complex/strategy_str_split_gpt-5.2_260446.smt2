@@ -58,8 +58,8 @@
 ; SAT branch: at least one extra header after Content-Length (not necessarily parsed)
 (assert (>= (str.num_splits header_blob "\u{a}") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -73,8 +73,8 @@
 ; This forces email == "file:" but that violates the email structure above (atCount must be 2)
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

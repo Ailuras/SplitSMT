@@ -68,8 +68,8 @@
 ; Ensure X has exactly one '@' and does not contain spaces
 (assert (not (str.contains X " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

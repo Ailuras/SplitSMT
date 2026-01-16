@@ -35,7 +35,7 @@
 (assert (= (str.num_splits var_0xINPUT_127551 delim_colon) 2))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

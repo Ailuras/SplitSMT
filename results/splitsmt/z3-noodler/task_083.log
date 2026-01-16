@@ -1,22 +1,22 @@
 ===========================================================
 Task Group 83
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-15 19:38:52
+Started: 2026-01-16 13:32:53
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/12336.smt2
-START: 2026-01-15T11:38:52Z
-END: 2026-01-15T11:39:01Z
-DURATION_SEC: 9.544623374
+START: 2026-01-16T05:32:53Z
+END: 2026-01-16T05:33:04Z
+DURATION_SEC: 10.099757983
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:39:01] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-16 13:33:03] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2514473 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 875949 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -24,9 +24,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/12342.smt2
-START: 2026-01-15T11:39:01Z
-END: 2026-01-15T11:39:11Z
-DURATION_SEC: 10.162350287
+START: 2026-01-16T05:33:04Z
+END: 2026-01-16T05:33:14Z
+DURATION_SEC: 10.272937653
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -36,9 +36,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/15456.smt2
-START: 2026-01-15T11:39:11Z
-END: 2026-01-15T11:39:12Z
-DURATION_SEC: .226486217
+START: 2026-01-16T05:33:14Z
+END: 2026-01-16T05:33:14Z
+DURATION_SEC: .175162921
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -48,9 +48,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/16346.smt2
-START: 2026-01-15T11:39:12Z
-END: 2026-01-15T11:39:14Z
-DURATION_SEC: 1.904263840
+START: 2026-01-16T05:33:14Z
+END: 2026-01-16T05:33:16Z
+DURATION_SEC: 2.073234508
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -60,9 +60,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/16405.smt2
-START: 2026-01-15T11:39:14Z
-END: 2026-01-15T11:39:16Z
-DURATION_SEC: 2.505890270
+START: 2026-01-16T05:33:16Z
+END: 2026-01-16T05:33:18Z
+DURATION_SEC: 2.249670368
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -72,9 +72,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/1643.smt2
-START: 2026-01-15T11:39:16Z
-END: 2026-01-15T11:39:16Z
-DURATION_SEC: .255860618
+START: 2026-01-16T05:33:18Z
+END: 2026-01-16T05:33:19Z
+DURATION_SEC: .194902047
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,16 +84,16 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/18189.smt2
-START: 2026-01-15T11:39:16Z
-END: 2026-01-15T11:39:17Z
-DURATION_SEC: .193821339
+START: 2026-01-16T05:33:19Z
+END: 2026-01-16T05:33:19Z
+DURATION_SEC: .205606684
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:39:17] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-16 13:33:19] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  only replace_all with concrete find&replace is supported
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2521415 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 882614 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -101,9 +101,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/18195.smt2
-START: 2026-01-15T11:39:17Z
-END: 2026-01-15T11:39:17Z
-DURATION_SEC: .219826226
+START: 2026-01-16T05:33:19Z
+END: 2026-01-16T05:33:19Z
+DURATION_SEC: .119616852
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,9 +113,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/3855.smt2
-START: 2026-01-15T11:39:17Z
-END: 2026-01-15T11:39:17Z
-DURATION_SEC: .216942098
+START: 2026-01-16T05:33:19Z
+END: 2026-01-16T05:33:20Z
+DURATION_SEC: .546401735
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -125,13 +125,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/top20_gh/4906.smt2
-START: 2026-01-15T11:39:17Z
-END: 2026-01-15T11:39:19Z
-DURATION_SEC: 1.850238654
+START: 2026-01-16T05:33:20Z
+END: 2026-01-16T05:33:21Z
+DURATION_SEC: 1.783439040
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 83 completed at 2026-01-15 19:39:19
+Task Group 83 completed at 2026-01-16 13:33:21

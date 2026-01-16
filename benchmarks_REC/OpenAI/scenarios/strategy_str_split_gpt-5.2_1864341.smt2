@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split
 
 ; -----------------------------
 ; Scenario: CSV Processing
@@ -208,8 +208,8 @@
 (assert (= m2 "ok"))
 (assert (= csv_mixed (str.++ m0 delim m1 delim m2)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

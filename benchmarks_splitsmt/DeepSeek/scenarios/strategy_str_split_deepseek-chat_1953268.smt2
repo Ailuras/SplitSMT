@@ -42,7 +42,7 @@
 (assert (str.contains (str.split_at csv_data delimiter 2) "ID"))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -191,7 +191,6 @@
  ; Statement: if i15 >= $i2 goto return 
 (assert (>= var3343!1 var247!1)) ; Cond: i15 >= $i2 
  ; Statement: return 
-(check-sat)
 ; {commander/-2133873678=([com.beust.jcommander.DefaultUsageFormatter], com.beust.jcommander.JCommander), getColumnSize/-165698927=([com.beust.jcommander.JCommander], int), length/-134980193=([java.lang.String], int), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder)}
 ; {var1528=com.beust.jcommander.DefaultUsageFormatter, var1630=r0, var3618=r5, var1331=i10, var381=i1, var931=r2, var2979=null_type, var1529=com.beust.jcommander.JCommander, var267=$r1, var2422=i0, var229=r3, var1703=i14, var3343=i15, var247=$i2, var1595=r4, var268=$i3, var2211=$i4, var3035=$i13, var814=$i5, var881=$i6}
 ; {com.beust.jcommander.DefaultUsageFormatter=var1528, r0=var1630, r5=var3618, i10=var1331, i1=var381, r2=var931, null_type=var2979, com.beust.jcommander.JCommander=var1529, $r1=var267, i0=var2422, r3=var229, i14=var1703, i15=var3343, $i2=var247, r4=var1595, $i3=var268, $i4=var2211, $i13=var3035, $i5=var814, $i6=var881}
@@ -199,4 +198,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: int length()>": 2,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 1}
 ;stmts r0 := @this: com.beust.jcommander.DefaultUsageFormatter;	r5 := @parameter0: java.lang.StringBuilder;	i10 := @parameter1: int;	i1 := @parameter2: int;	r2 := @parameter3: java.lang.String;	$r1 = r0.<com.beust.jcommander.DefaultUsageFormatter: com.beust.jcommander.JCommander commander>;	i0 = virtualinvoke $r1.<com.beust.jcommander.JCommander: int getColumnSize()>();	r3 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	i14 = i1;	i15 = 0;	$i2 = lengthof r3;	if i15 >= $i2 goto return;	r4 = r3[i15];	$i3 = virtualinvoke r4.<java.lang.String: int length()>();	if $i3 > i0 goto virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);	virtualinvoke r5.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r4);	$i4 = virtualinvoke r4.<java.lang.String: int length()>();	$i13 = i14 + $i4;	i14 = $i13;	$i5 = lengthof r3;	$i6 = $i5 - 1;	if i15 == $i6 goto i15 = i15 + 1;	i15 = i15 + 1;	goto [?= $i2 = lengthof r3];	$i2 = lengthof r3;	if i15 >= $i2 goto return;	return
 ;block_num 7
+(check-sat)
 (exit)

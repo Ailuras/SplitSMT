@@ -121,7 +121,7 @@
 (assert (not (= key2 "Host")))
 (assert (str.prefixof "HTTP/" header_string))
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

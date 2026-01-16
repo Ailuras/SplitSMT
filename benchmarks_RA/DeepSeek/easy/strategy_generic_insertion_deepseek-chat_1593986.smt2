@@ -106,7 +106,7 @@
 (assert (str.contains hostname "."))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

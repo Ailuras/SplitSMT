@@ -33,7 +33,7 @@
 (assert (= seg_rest1 "H2ujcENG"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

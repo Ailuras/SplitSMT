@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface operations for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface operations for str_split
+
 ; -----------------------------
 ; Scenario: CSV Processing
 ; -----------------------------
@@ -161,8 +161,8 @@
 (assert (>= (str.len u1) 1))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

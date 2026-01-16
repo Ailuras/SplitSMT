@@ -1,9 +1,4 @@
 (set-logic ALL)
-(declare-const S String)
-(assert (not (str.in_re S (str.to_re "aaa"))))
-(assert (str.in_re S (re.++ re.allchar (re.++ re.allchar (str.to_re "bbbaaa")))))
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +88,11 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-const S String)
+(assert (not (str.in_re S (str.to_re "aaa"))))
+(assert (str.in_re S (re.++ re.allchar (re.++ re.allchar (str.to_re "bbbaaa")))))
+
+; --- START CONSTRAINT ---
 (declare-const prefix String)
 (declare-const suffix String)
 (assert (>= (num_splits S "aaa") 1))
@@ -102,7 +102,7 @@
 (assert (not (str.contains prefix "aaa")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

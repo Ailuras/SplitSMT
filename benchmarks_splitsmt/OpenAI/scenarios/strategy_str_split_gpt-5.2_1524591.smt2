@@ -76,8 +76,8 @@
                             (not (str.contains domain_bad ".")))))
 (assert bad_is_valid)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

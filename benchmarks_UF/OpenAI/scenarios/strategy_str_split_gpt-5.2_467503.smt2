@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface operations for string splitting
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Inputs / derived fields
 (declare-const email String)
@@ -86,8 +86,8 @@
 (assert (= bad_tld (split_at bad_domain "." (- bad_domain_dot_count 1))))
 (assert (>= (str.len bad_tld) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -64,8 +64,8 @@
 ; SAT instance: require message to contain a request id field, but do not overconstrain it.
 (assert (str.contains message "req_id:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

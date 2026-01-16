@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; HTTP Header Parsing scenario: extract key-value pairs split by newlines and colon-space
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Input request headers blob
 (declare-const X String)
@@ -61,8 +61,8 @@
 ; SAT branch: at least one extra header after Content-Length (not necessarily parsed)
 (assert (>= (num_splits header_blob "\u{a}") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

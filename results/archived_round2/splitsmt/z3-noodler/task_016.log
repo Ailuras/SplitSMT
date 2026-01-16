@@ -1,0 +1,36 @@
+===========================================================
+Task Group 16
+Solver: SplitSMT (using z3-noodler)
+Started: 2026-01-15 19:34:19
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1423072.smt2
+START: 2026-01-15T11:34:19Z
+END: 2026-01-15T11:34:20Z
+DURATION_SEC: .805619386
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-15 19:34:20] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2430722 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: SplitSMT-z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1448732.smt2
+START: 2026-01-15T11:34:20Z
+END: 2026-01-15T11:34:30Z
+DURATION_SEC: 10.231325042
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 16 completed at 2026-01-15 19:34:30

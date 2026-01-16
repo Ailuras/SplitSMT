@@ -127,8 +127,7 @@
 ; Check for SAT/UNSAT mix: add a contradictory constraint for potential UNSAT
 ; (assert (not (str.contains log_entry " "))) ; Uncomment to make UNSAT
 
-(check-sat)
-(get-value (log_entry timestamp log_level ip_address message))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -79,7 +79,6 @@
  ; Statement: if $z2 != 0 goto $r8 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.util.List origItems> 
 (assert (not (not (= (ite var42 1 0) 0)))) ; Negate: Cond: $z2 != 0  
  ; Statement: return 0 
-(check-sat)
 ; {initialized/615252293=([edu.stanford.nlp.time.SUTimeMain$TimebankSent], boolean), docId/615252293=([edu.stanford.nlp.time.SUTimeMain$TimebankSent], java.lang.String), sentId/615252293=([edu.stanford.nlp.time.SUTimeMain$TimebankSent], java.lang.String)}
 ; {var3342=edu.stanford.nlp.time.SUTimeMain$TimebankSent, var1639=r7, var1786=r0, var2098=null_type, var2215=r1, var1417=r2, var1398=r3, var1950=r4, var2986=r5, var1599=r6, var2617=$z0, var2627=$r11, var953=$z1, var3903=$r12, var42=$z2}
 ; {edu.stanford.nlp.time.SUTimeMain$TimebankSent=var3342, r7=var1639, r0=var1786, null_type=var2098, r1=var2215, r2=var1417, r3=var1398, r4=var1950, r5=var2986, r6=var1599, $z0=var2617, $r11=var2627, $z1=var953, $r12=var3903, $z2=var42}
@@ -87,4 +86,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1,"<java.lang.String: boolean equals(java.lang.Object)>": 2}
 ;stmts r7 := @this: edu.stanford.nlp.time.SUTimeMain$TimebankSent;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\s*\\|\\s*", 9);	r2 = r1[0];	r3 = r1[1];	r4 = r1[2];	r5 = r1[3];	r6 = r1[8];	$z0 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: boolean initialized>;	if $z0 == 0 goto r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.lang.String docId> = r2;	$r11 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.lang.String docId>;	$z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>($r11);	if $z1 == 0 goto return 0;	$r12 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.lang.String sentId>;	$z2 = virtualinvoke r5.<java.lang.String: boolean equals(java.lang.Object)>($r12);	if $z2 != 0 goto $r8 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.util.List origItems>;	return 0
 ;block_num 4
+(check-sat)
 (exit)

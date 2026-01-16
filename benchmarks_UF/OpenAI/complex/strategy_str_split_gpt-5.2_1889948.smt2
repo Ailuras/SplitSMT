@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation scenario: validate structure using '@' and '.' as delimiters,
 ; while preserving seed-style negative regex constraints.
@@ -12,9 +15,6 @@
 (declare-const recomposed String)
 
 ; str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Preserve core structure: keep the seed's negative regex constraints (mutated minimally)
 (assert (not (str.in_re X (re.++ (str.to_re "<b>") (re.+ (re.union (str.to_re "<") (str.to_re ">"))) (str.to_re "</b>\u{a}")))))
@@ -75,8 +75,8 @@
 ; Make it concrete enough to be satisfiable: enforce a common domain prefix
 (assert (or (str.contains domain "example") (str.contains domain "mail")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

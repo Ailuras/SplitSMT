@@ -109,7 +109,7 @@
 (assert (= (split_rest var_0xINPUT_283257 "e" 1) "arch"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

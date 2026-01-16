@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: Process comma-separated data fields to ensure correct field counts and detect empty fields.
 
 ; --- str_split interface ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- CSV inputs/derived fields ---
 (declare-const csv String)
@@ -53,8 +53,8 @@
                                (= field1 "")
                                (>= (str.len field1) 1))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

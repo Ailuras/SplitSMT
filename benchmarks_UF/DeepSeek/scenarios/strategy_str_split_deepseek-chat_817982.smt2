@@ -49,8 +49,8 @@
 (assert (= (split_at csv_data delimiter 2) "price"))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

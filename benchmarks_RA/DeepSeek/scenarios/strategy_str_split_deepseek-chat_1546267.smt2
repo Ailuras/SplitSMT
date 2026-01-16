@@ -137,8 +137,8 @@
 
 ; Ensure the line has at least one non-empty field (already covered by first/last constraints)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

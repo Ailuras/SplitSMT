@@ -12,7 +12,7 @@
 (assert (= (str.split_rest (str.++ y x) delimiter 2) "$$"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

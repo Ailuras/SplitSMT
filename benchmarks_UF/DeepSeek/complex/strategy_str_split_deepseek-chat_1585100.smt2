@@ -50,8 +50,8 @@
 (assert (str.contains header "Host:"))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

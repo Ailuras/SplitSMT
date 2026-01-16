@@ -1,9 +1,4 @@
 (set-logic ALL)
-(declare-const x String)
-(assert (str.in_re x (str.to_re "6atPZ2")))
-
-; --- START CONSTRAINT ---
-; Declare interface functions for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +88,11 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-const x String)
+(assert (str.in_re x (str.to_re "6atPZ2")))
+
+; --- START CONSTRAINT ---
+; Declare interface functions for str_split
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -108,7 +108,7 @@
 (assert (str.in_re segment1 (str.to_re "PZ2")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

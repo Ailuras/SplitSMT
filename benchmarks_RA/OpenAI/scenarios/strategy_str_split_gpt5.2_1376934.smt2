@@ -162,8 +162,8 @@
 ; Provide a candidate bad email that still cannot satisfy the '@' constraint combo above.
 (assert (= email_bad "a@b.co"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

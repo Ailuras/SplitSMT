@@ -168,7 +168,6 @@
 (assert (not (= var1058!1 null-__Array__Int__String__)))
 (assert (= (select var1058!1 0) var1152)) ; Statement: $r4[0] = $r5 
  ; Statement: return $r4 
-(check-sat)
 ; {toString/1403215111=([java.net.URI], java.lang.String), var3156-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void), arr-String-init=([], java.lang.String[])}
 ; {var423=org.apache.logging.log4j.core.config.DefaultConfigurationFactory, var119=r18, var2733=java.net.URI, var3365=r0, var2401=$r1, var3281=r2, var3156=java.util.ArrayList, var406=$r3, var1399=$i0, var1058=$r4, var1152=$r5}
 ; {org.apache.logging.log4j.core.config.DefaultConfigurationFactory=var423, r18=var119, java.net.URI=var2733, r0=var3365, $r1=var2401, r2=var3281, java.util.ArrayList=var3156, $r3=var406, $i0=var1399, $r4=var1058, $r5=var1152}
@@ -176,4 +175,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r18 := @this: org.apache.logging.log4j.core.config.DefaultConfigurationFactory;	r0 := @parameter0: java.net.URI;	$r1 = virtualinvoke r0.<java.net.URI: java.lang.String toString()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\?");	$r3 = new java.util.ArrayList;	specialinvoke $r3.<java.util.ArrayList: void <init>()>();	$i0 = lengthof r2;	if $i0 <= 1 goto $r4 = newarray (java.lang.String)[1];	$r4 = newarray (java.lang.String)[1];	$r5 = r2[0];	$r4[0] = $r5;	return $r4
 ;block_num 2
+(check-sat)
 (exit)

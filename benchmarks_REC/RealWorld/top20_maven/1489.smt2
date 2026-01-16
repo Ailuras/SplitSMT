@@ -153,7 +153,6 @@
  ; Statement: if i3 >= $i0 goto return 1 
 (assert (>= var853 var231)) ; Cond: i3 >= $i0 
  ; Statement: return 1 
-(check-sat)
 ; {cast-from-Int-to-Int=([int], int)}
 ; {var1594=r0, var1879=null_type, var3=$i5, var2123=r1, var853=i3, var231=$i0}
 ; {r0=var1594, null_type=var1879, $i5=var3, r1=var2123, i3=var853, $i0=var231}
@@ -161,4 +160,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	$i5 = (int) (- 1);	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\.", $i5);	i3 = 0;	$i0 = lengthof r1;	if i3 >= $i0 goto return 1;	return 1
 ;block_num 3
+(check-sat)
 (exit)

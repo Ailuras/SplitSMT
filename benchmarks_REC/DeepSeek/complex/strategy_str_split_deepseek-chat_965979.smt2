@@ -149,7 +149,7 @@
 ; Add a constraint to make the instance SAT: require a specific path
 (assert (= path "/index.html"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

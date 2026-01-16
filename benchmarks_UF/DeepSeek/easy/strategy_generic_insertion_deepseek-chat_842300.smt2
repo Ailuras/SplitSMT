@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun s () String)
 (assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (= (ite (not (= (str.at s 2) (str.at s 3))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (not (= (str.at s 3) (str.at s 5))) 1 0) 0)))) (not (= (ite (not (= (str.at s 3) (str.at s 4))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 6))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 5) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
 
 ; --- START CONSTRAINT ---
 ; Declare interface functions for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -22,7 +22,7 @@
 (assert (>= (str.len segment1) 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

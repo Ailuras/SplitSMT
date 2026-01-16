@@ -72,7 +72,6 @@
  ; Statement: if i0 == 4 goto r3 = r2[0] 
 (assert (not (= var3914 4))) ; Negate: Cond: i0 == 4  
  ; Statement: return 0 
-(check-sat)
 ; {cast-from-Int-to-Int=([int], int)}
 ; {var1216=java.util.List, var1413=r4, var170=r6, var3700=null_type, var3181=r8, var2986=r10, var3878=r0, var2810=org.apache.dubbo.registry.nacos.NacosRegistry, var564=$r1, var3821=$i2, var654=r2, var3914=i0}
 ; {java.util.List=var1216, r4=var1413, r6=var170, null_type=var3700, r8=var3181, r10=var2986, r0=var3878, org.apache.dubbo.registry.nacos.NacosRegistry=var2810, $r1=var564, $i2=var3821, r2=var654, i0=var3914}
@@ -80,4 +79,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r4 := @parameter0: java.util.List;	r6 := @parameter1: java.lang.String;	r8 := @parameter2: java.lang.String;	r10 := @parameter3: java.lang.String;	r0 := @parameter4: java.lang.String;	$r1 = <org.apache.dubbo.registry.nacos.NacosRegistry: java.lang.String SERVICE_NAME_SEPARATOR>;	$i2 = (int) (- 1);	r2 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>($r1, $i2);	i0 = lengthof r2;	if i0 == 4 goto r3 = r2[0];	return 0
 ;block_num 2
+(check-sat)
 (exit)

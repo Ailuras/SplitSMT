@@ -34,7 +34,7 @@
 (assert (str.in_re year ((_ re.loop 4 4) (re.range "0" "9"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -2,9 +2,9 @@
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1979984.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:44
-END: 2026-01-15 18:58:44
-DURATION_SEC: 0.574
+START: 2026-01-16 12:53:14
+END: 2026-01-16 12:53:14
+DURATION_SEC: 0.467
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -14,9 +14,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2053188.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:44
-END: 2026-01-15 18:58:45
-DURATION_SEC: 0.587
+START: 2026-01-16 12:53:14
+END: 2026-01-16 12:53:15
+DURATION_SEC: 0.468
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -26,9 +26,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2054930.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:45
-END: 2026-01-15 18:58:47
-DURATION_SEC: 1.763
+START: 2026-01-16 12:53:15
+END: 2026-01-16 12:53:17
+DURATION_SEC: 1.898
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,9 +38,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2064470.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:47
-END: 2026-01-15 18:58:47
-DURATION_SEC: 0.613
+START: 2026-01-16 12:53:17
+END: 2026-01-16 12:53:17
+DURATION_SEC: 0.633
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,24 +50,24 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2069093.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:47
-END: 2026-01-15 18:58:48
-DURATION_SEC: 0.416
+START: 2026-01-16 12:53:17
+END: 2026-01-16 12:53:18
+DURATION_SEC: 0.426
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot replace dummy symbol by more than one symbol in transducers yet
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 1977570 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 364848 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2096516.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:48
-END: 2026-01-15 18:58:49
-DURATION_SEC: 0.766
+START: 2026-01-16 12:53:18
+END: 2026-01-16 12:53:19
+DURATION_SEC: 0.741
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -77,9 +77,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_223892.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:49
-END: 2026-01-15 18:58:49
-DURATION_SEC: 0.309
+START: 2026-01-16 12:53:19
+END: 2026-01-16 12:53:19
+DURATION_SEC: 0.405
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -89,9 +89,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_228499.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:49
-END: 2026-01-15 18:58:49
-DURATION_SEC: 0.198
+START: 2026-01-16 12:53:19
+END: 2026-01-16 12:53:19
+DURATION_SEC: 0.184
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -101,9 +101,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_231876.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:49
-END: 2026-01-15 18:58:59
-DURATION_SEC: 10.026
+START: 2026-01-16 12:53:19
+END: 2026-01-16 12:53:29
+DURATION_SEC: 10.060
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -112,9 +112,9 @@ EXIT_CODE: 143
 Solver: z3-noodler
 FILE: benchmarks_UF/DeepSeek/scenarios/strategy_str_split_deepseek-chat_254006.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:59
-END: 2026-01-15 18:59:09
-DURATION_SEC: 10.074
+START: 2026-01-16 12:53:29
+END: 2026-01-16 12:53:39
+DURATION_SEC: 10.020
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------

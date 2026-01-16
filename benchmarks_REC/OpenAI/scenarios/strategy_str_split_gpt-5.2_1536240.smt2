@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface functions for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface functions for string splitting
 
 ; -----------------------------
 ; Scenario: Log Analysis
@@ -188,8 +188,8 @@
 ; This makes the overall file UNSAT (by design) to provide diversity.
 ; -----------------------------
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

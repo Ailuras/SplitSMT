@@ -63,7 +63,7 @@
 (assert (str.contains email "user.name"))
 (assert (str.contains email "example.com"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

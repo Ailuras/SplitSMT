@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface for string split ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; --- Uninterpreted interface for string split ---
+
 ; --- HTTP header parsing scenario ---
 (declare-const X String)                 ; full HTTP request text
 (declare-const request_line String)
@@ -181,8 +181,8 @@
 ; Make sure the request does not accidentally equal the exact forbidden pattern including newline
 (assert (not (= X "dll?badurl.grandstreetinteractive.com\u{0A}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

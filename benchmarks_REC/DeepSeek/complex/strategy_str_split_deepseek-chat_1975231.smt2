@@ -137,8 +137,8 @@
 (assert (or (= has_empty_field true) (= has_empty_field false)))
 
 ; Final checks
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

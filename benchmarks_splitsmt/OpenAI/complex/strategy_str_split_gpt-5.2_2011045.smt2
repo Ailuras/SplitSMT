@@ -54,8 +54,8 @@
 ; Ensure only one '@' by disallowing '@' in domain as well
 (assert (not (str.contains domain_part "@")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

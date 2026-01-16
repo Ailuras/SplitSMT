@@ -12,7 +12,7 @@
 (assert (= (str.split_rest X delimiter 3) (str.substr X 7 4)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

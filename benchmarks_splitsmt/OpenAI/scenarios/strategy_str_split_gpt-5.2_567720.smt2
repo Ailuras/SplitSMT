@@ -47,8 +47,8 @@
 ; Example concrete witness constraint for SAT diversity
 (assert (= csv_line_ok "123,ALICE,alice@example.com,US"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

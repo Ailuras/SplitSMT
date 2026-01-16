@@ -1,8 +1,4 @@
 (set-logic ALL)
-(declare-fun var0 () String)
-(assert (str.in_re var0 (re.++ (re.+ (re.union (str.to_re "00") (str.to_re "11"))) (re.++ (re.* (re.* (str.to_re "2"))) (re.union (re.* (str.to_re "333")) (re.union (str.to_re "444") (str.to_re "5")))))))
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +91,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun var0 () String)
+(assert (str.in_re var0 (re.++ (re.+ (re.union (str.to_re "00") (str.to_re "11"))) (re.++ (re.* (re.* (str.to_re "2"))) (re.union (re.* (str.to_re "333")) (re.union (str.to_re "444") (str.to_re "5")))))))
+
+; --- START CONSTRAINT ---
 (declare-fun seg0 () String)
 (declare-fun seg1 () String)
 (assert (>= (str.len var0) 2))
@@ -105,7 +105,7 @@
 (assert (= (split_rest var0 "2" 1) (str.++ seg1 (split_rest var0 "2" 2))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

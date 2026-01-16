@@ -85,7 +85,7 @@
 (assert (str.contains header "Content-Length:"))
 (assert (str.contains header "Host:"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -140,8 +140,8 @@
 (assert (>= (str.len value2) 1))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

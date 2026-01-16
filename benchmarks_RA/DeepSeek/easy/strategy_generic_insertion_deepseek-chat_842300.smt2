@@ -1,9 +1,4 @@
 (set-logic ALL)
-(declare-fun s () String)
-(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (= (ite (not (= (str.at s 2) (str.at s 3))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (not (= (str.at s 3) (str.at s 5))) 1 0) 0)))) (not (= (ite (not (= (str.at s 3) (str.at s 4))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 6))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 5) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
-
-; --- START CONSTRAINT ---
-; Declare interface functions for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +88,11 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun s () String)
+(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (= (ite (not (= (str.at s 2) (str.at s 3))) 1 0) 0))) (not (= (ite (not (= (str.at s 3) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (not (= (str.at s 3) (str.at s 5))) 1 0) 0)))) (not (= (ite (not (= (str.at s 3) (str.at s 4))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 6))) 1 0) 0))) (not (= (ite (not (= (str.at s 4) (str.at s 5))) 1 0) 0))) (not (= (ite (not (= (str.at s 5) (str.at s 6))) 1 0) 0))) (not (= (ite (<= (str.len s) 7) 1 0) 0))) (not (= (ite (= (str.len s) 7) 1 0) 0))) (not (not (= (ite (<= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (= (str.len s) 6) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (= (str.len s) 5) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (= (str.len s) 4) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (= (str.len s) 3) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (= (str.len s) 1) 1 0) 0)))) (not (not (= (ite (<= (str.len s) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 0) 1 0) 0)))))
+
+; --- START CONSTRAINT ---
+; Declare interface functions for str_split
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -108,7 +108,7 @@
 (assert (>= (str.len segment1) 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

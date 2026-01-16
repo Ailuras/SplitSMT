@@ -52,7 +52,7 @@
 (assert (= empty_seg_1 var_0xINPUT_42055))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

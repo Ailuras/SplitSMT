@@ -155,7 +155,6 @@
  ; Statement: if i3 >= i0 goto return 
 (assert (>= var2399 var3164)) ; Cond: i3 >= i0 
  ; Statement: return 
-(check-sat)
 ; {}
 ; {var348=edu.stanford.nlp.international.french.process.FrenchTokenizer$FrenchTokenizerFactory, var2196=r5, var1391=r0, var3692=null_type, var3376=r1, var3164=i0, var2399=i3}
 ; {edu.stanford.nlp.international.french.process.FrenchTokenizer$FrenchTokenizerFactory=var348, r5=var2196, r0=var1391, null_type=var3692, r1=var3376, i0=var3164, i3=var2399}
@@ -163,4 +162,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r5 := @this: edu.stanford.nlp.international.french.process.FrenchTokenizer$FrenchTokenizerFactory;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	i0 = lengthof r1;	i3 = 0;	if i3 >= i0 goto return;	return
 ;block_num 3
+(check-sat)
 (exit)

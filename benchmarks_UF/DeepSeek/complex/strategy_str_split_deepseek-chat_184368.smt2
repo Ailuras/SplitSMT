@@ -43,8 +43,8 @@
 (assert (= (split_rest csv_line "," 4) "")) ; No remaining segments
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

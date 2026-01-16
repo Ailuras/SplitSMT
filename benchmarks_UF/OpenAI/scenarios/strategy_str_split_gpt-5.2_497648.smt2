@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Uninterpreted helper predicates/functions for readability
 (declare-fun is_nonempty (String) Bool)
@@ -82,8 +82,8 @@
 (assert (= domain_parts_bad (num_splits domain_bad ".")))
 (assert (>= domain_parts_bad 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

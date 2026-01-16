@@ -58,8 +58,8 @@
 (assert (str.contains log_entry (str.++ " " log_level " " message)))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

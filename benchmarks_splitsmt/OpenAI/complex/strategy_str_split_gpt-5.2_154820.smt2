@@ -75,8 +75,8 @@
 (assert (= f3 "OK"))
 (assert (= f4 "END"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

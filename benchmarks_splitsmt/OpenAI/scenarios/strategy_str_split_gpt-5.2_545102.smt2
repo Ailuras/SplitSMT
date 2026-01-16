@@ -95,8 +95,8 @@
 ; Contradiction: body is "HELLO" length 5, but content-length forced to 4
 (assert (= (str.len body_unsat) content_length_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -43,8 +43,8 @@
 ; Consistency with suffix: since f2 is empty, the suffix from index 2 should begin with a comma
 (assert (str.prefixof "," suffix_from_2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

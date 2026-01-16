@@ -150,8 +150,7 @@
 (assert (= (num_splits (str.++ log_level ":" message " [" source "]") ":") 2))
 
 ; Check satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message source))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -11,7 +11,7 @@
 (assert (str.contains (str.split_rest var0 delimiter 1) "111"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

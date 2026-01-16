@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string splitting
 
 ; Scenario: HTTP Header Parsing
 (declare-const request String)
@@ -188,8 +188,8 @@
 ; But also allow SAT by permitting make_unsat = false
 (assert (or make_unsat (not make_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

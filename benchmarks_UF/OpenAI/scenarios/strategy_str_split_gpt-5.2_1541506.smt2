@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Scenario: HTTP Header Parsing ---
 ; We model an HTTP request header block and extract key/value pairs separated by ": " and "\r\n".
@@ -113,8 +113,8 @@
 (assert (=> make_unsat (= cl_len (+ body_len 1))))
 (assert (=> make_unsat (= cl_len body_len)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

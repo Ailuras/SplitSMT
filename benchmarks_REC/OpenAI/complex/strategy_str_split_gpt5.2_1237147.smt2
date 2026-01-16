@@ -173,8 +173,8 @@
 ; If email equals "a@b.c" then require TLD length >= 5, contradicting "c".
 (assert (=> (= email "a@b.c") (>= (str.len tld) 5)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

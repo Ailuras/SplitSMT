@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: process comma-separated data fields to ensure correct field counts and detect empty fields
 
 ; Split interface (uninterpreted)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed remnants (mutated/extended)
 (declare-fun T_1 () Bool)
@@ -59,8 +59,8 @@
 ; Also require the overall input not to be exactly "Search" to avoid degenerate single-token input
 (assert (not T_1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

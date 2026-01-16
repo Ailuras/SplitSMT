@@ -19,7 +19,7 @@
 (assert (str.contains s delimiter))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

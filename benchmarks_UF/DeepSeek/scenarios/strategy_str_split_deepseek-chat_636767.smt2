@@ -60,7 +60,7 @@
 ; Final consistency check
 (assert (distinct host_value content_length_value user_agent_value))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

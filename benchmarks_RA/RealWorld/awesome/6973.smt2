@@ -177,7 +177,6 @@
 (declare-const var2585!1 var405)
 (declare-const var770!1 String)
  ; Statement: throw $r2 
-(check-sat)
 ; {var405-init=([], java.lang.IllegalArgumentException), String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), <init>/875830710=([java.lang.IllegalArgumentException, java.lang.String], void)}
 ; {var7=r0, var2021=null_type, var495=r11, var1693=r1, var2966=$i0, var405=java.lang.IllegalArgumentException, var2585=$r2, var2725=$r3, var2438=$r4, var2839=$r5, var770=$r6}
 ; {r0=var7, null_type=var2021, r11=var495, r1=var1693, $i0=var2966, java.lang.IllegalArgumentException=var405, $r2=var2585, $r3=var2725, $r4=var2438, $r5=var2839, $r6=var770}
@@ -185,4 +184,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 2,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r11 := @parameter1: java.lang.String[];	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("<");	$i0 = lengthof r1;	if $i0 != 2 goto $r2 = new java.lang.IllegalArgumentException;	$r2 = new java.lang.IllegalArgumentException;	$r3 = new java.lang.StringBuilder;	specialinvoke $r3.<java.lang.StringBuilder: void <init>()>();	$r4 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid sieve ordering constraint: ");	$r5 = virtualinvoke $r4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);	$r6 = virtualinvoke $r5.<java.lang.StringBuilder: java.lang.String toString()>();	specialinvoke $r2.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r6);	throw $r2
 ;block_num 2
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; --- Uninterpreted interface for string split ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- HTTP header parsing scenario ---
 (declare-const X String)                 ; full HTTP request text
@@ -92,8 +92,8 @@
 ; Make sure the request does not accidentally equal the exact forbidden pattern including newline
 (assert (not (= X "dll?badurl.grandstreetinteractive.com\u{0A}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -124,8 +124,8 @@
 ; Constraint 6: Make it SAT by allowing a specific valid email pattern
 (assert (str.contains email "example.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

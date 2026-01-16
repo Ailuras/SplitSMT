@@ -62,8 +62,8 @@
 ; Final check: Ensure the entire header string is non-empty
 (assert (> (str.len header) 0))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

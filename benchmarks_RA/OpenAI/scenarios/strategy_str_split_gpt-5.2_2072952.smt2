@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split (as provided)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for string split (as provided)
+
 ; --------- SAT instance: plausible log parsing/validation ---------
 (declare-const log_sat String)
 (declare-const ts_sat String)
@@ -164,8 +164,8 @@
 ; ...but also require it to be "ERROR:" (contradiction)
 (assert (= lvl_unsat "ERROR:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

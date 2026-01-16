@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface functions for string split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface functions for string split
+
 ; ========== Shared delimiter ==========
 (declare-const comma String)
 (assert (= comma ","))
@@ -177,8 +177,8 @@
 ; Impose expected empty field1 due to consecutive commas in the concrete string
 (assert (= uns_field1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

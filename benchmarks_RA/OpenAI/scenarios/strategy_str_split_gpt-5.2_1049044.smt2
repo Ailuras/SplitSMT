@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface
 
 ; Email candidates
 (declare-const email_sat String)
@@ -183,8 +183,8 @@
 (assert (> (str.len domain_unsat) 0))
 (assert (not (str.contains domain_unsat atsym)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

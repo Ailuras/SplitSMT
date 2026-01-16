@@ -13,7 +13,7 @@
 (assert (not (str.contains prefix "aaa")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

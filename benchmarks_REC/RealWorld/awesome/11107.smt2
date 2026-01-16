@@ -167,7 +167,6 @@
 (declare-const var2345!1 var751)
 (declare-const var3520 String)
  ; Statement: throw $r85 
-(check-sat)
 ; {readLine/150542008=([java.io.BufferedReader], java.lang.String), var751-init=([], java.lang.RuntimeException), <init>/-1084991535=([java.lang.RuntimeException, java.lang.String], void)}
 ; {var3242=edu.stanford.nlp.ie.crf.CRFClassifier, var3799=r3, var2858=java.io.BufferedReader, var3484=r0, var1492=r86, var3925=r87, var1133=$r1, var2898=$z0, var751=java.lang.RuntimeException, var2345=$r85, var3520="format error"}
 ; {edu.stanford.nlp.ie.crf.CRFClassifier=var3242, r3=var3799, java.io.BufferedReader=var2858, r0=var3484, r86=var1492, r87=var3925, $r1=var1133, $z0=var2898, java.lang.RuntimeException=var751, $r85=var2345, "format error"=var3520}
@@ -175,4 +174,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean equals(java.lang.Object)>": 1}
 ;stmts r3 := @this: edu.stanford.nlp.ie.crf.CRFClassifier;	r0 := @parameter0: java.io.BufferedReader;	r86 = virtualinvoke r0.<java.io.BufferedReader: java.lang.String readLine()>();	r87 = virtualinvoke r86.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\t");	$r1 = r87[0];	$z0 = virtualinvoke $r1.<java.lang.String: boolean equals(java.lang.Object)>("labelIndices.length=");	if $z0 != 0 goto $r2 = r87[1];	$r85 = new java.lang.RuntimeException;	specialinvoke $r85.<java.lang.RuntimeException: void <init>(java.lang.String)>("format error");	throw $r85
 ;block_num 2
+(check-sat)
 (exit)

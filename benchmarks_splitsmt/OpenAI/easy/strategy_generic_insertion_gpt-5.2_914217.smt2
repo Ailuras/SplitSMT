@@ -19,7 +19,7 @@
 (assert (= rest1 "pe"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

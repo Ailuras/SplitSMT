@@ -46,8 +46,8 @@
 ; Constraint to potentially make UNSAT: conflicting empty field requirements
 ; (assert (and has_empty_field (not has_empty_field))) ; Uncomment for UNSAT version
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -18,7 +18,7 @@
 (assert (not (= rest_directives "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

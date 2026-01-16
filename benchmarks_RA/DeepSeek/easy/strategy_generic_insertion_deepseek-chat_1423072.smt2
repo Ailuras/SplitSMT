@@ -100,7 +100,7 @@
 (assert (= (split_at X delimiter 1) (str.substr X (+ (str.indexof X delimiter 0) 1) (- (str.len X) (+ (str.indexof X delimiter 0) 1)))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

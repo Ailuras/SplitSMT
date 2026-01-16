@@ -169,7 +169,6 @@
 (declare-const var2995!1 var2299)
 (declare-const var2462!1 String)
  ; Statement: return 
-(check-sat)
 ; {startsWith/-1785782452=([java.lang.String, java.lang.String], boolean), info/114590825=([java.util.logging.Logger, java.lang.String], void)}
 ; {var578=r0, var1774=null_type, var2299=java.util.logging.Logger, var2995=r3, var2838=z0, var1509=r1, var2887=i0, var911=i1, var2462=r7, var2394=$z4}
 ; {r0=var578, null_type=var1774, java.util.logging.Logger=var2299, r3=var2995, z0=var2838, r1=var1509, i0=var2887, i1=var911, r7=var2462, $z4=var2394}
@@ -177,4 +176,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean startsWith(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r3 := @parameter1: java.util.logging.Logger;	z0 := @parameter2: boolean;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	if z0 != 0 goto $r2 = new java.lang.StringBuilder;	i0 = lengthof r1;	i1 = 0;	if i1 >= i0 goto (branch);	r7 = r1[i1];	$z4 = virtualinvoke r7.<java.lang.String: boolean startsWith(java.lang.String)>("Identification of Mentions");	if $z4 == 0 goto i1 = i1 + 1;	virtualinvoke r3.<java.util.logging.Logger: void info(java.lang.String)>(r7);	return
 ;block_num 5
+(check-sat)
 (exit)

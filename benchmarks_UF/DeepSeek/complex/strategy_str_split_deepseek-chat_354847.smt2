@@ -48,8 +48,7 @@
 (assert (str.contains (str.substr log_entry (str.len timestamp) (str.len log_entry)) " "))
 
 ; Check satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message hour colon_segments))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

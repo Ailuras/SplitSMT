@@ -1,13 +1,13 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: Log Analysis
 ; Parsing structured server log entries separated by spaces and colons.
 ; Key checks: timestamp format validation and log level extraction.
 
 ; str_split interface (uninterpreted)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Core input line
 (declare-const X String)
@@ -79,8 +79,8 @@
 ; Ensure level extraction remains meaningful regardless of branch
 (assert (not (= level "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

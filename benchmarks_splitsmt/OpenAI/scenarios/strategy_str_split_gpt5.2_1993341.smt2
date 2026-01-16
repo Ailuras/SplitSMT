@@ -100,8 +100,8 @@
 ; Additionally require level to be one of the standard ones (holds for ERROR, but month causes UNSAT)
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

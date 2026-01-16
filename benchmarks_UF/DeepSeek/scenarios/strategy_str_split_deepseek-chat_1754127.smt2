@@ -68,7 +68,7 @@
 (assert (str.suffixof "HTTP/1.1" first_line))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

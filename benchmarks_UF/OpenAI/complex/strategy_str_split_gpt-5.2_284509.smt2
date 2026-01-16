@@ -1,10 +1,10 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation scenario using str_split interface with '@' and '.' delimiters
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const email String)
 (declare-const local String)
@@ -84,8 +84,8 @@
 (assert (= tld "com"))
 (assert (>= (str.len second_level) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

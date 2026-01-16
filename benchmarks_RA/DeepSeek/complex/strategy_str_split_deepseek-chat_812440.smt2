@@ -137,7 +137,7 @@
 ; Comment out the next line for SAT, uncomment for UNSAT
 ; (assert (str.contains log_entry "INVALID"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -2,9 +2,9 @@
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_180966.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:02
-END: 2026-01-15 19:09:02
-DURATION_SEC: 0.126
+START: 2026-01-16 13:10:49
+END: 2026-01-16 13:10:49
+DURATION_SEC: 0.161
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -14,9 +14,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_182100.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:02
-END: 2026-01-15 19:09:02
-DURATION_SEC: 0.087
+START: 2026-01-16 13:10:49
+END: 2026-01-16 13:10:49
+DURATION_SEC: 0.120
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -26,9 +26,9 @@ unsat
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1830942.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:02
-END: 2026-01-15 19:09:03
-DURATION_SEC: 0.176
+START: 2026-01-16 13:10:49
+END: 2026-01-16 13:10:50
+DURATION_SEC: 0.237
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -38,9 +38,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_183158.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:03
-END: 2026-01-15 19:09:03
-DURATION_SEC: 0.213
+START: 2026-01-16 13:10:50
+END: 2026-01-16 13:10:50
+DURATION_SEC: 0.221
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +50,9 @@ unsat
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1864431.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:03
-END: 2026-01-15 19:09:03
-DURATION_SEC: 0.080
+START: 2026-01-16 13:10:50
+END: 2026-01-16 13:10:50
+DURATION_SEC: 0.092
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -62,9 +62,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1865035.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:03
-END: 2026-01-15 19:09:03
-DURATION_SEC: 0.166
+START: 2026-01-16 13:10:50
+END: 2026-01-16 13:10:50
+DURATION_SEC: 0.151
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -74,9 +74,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1873839.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:03
-END: 2026-01-15 19:09:03
-DURATION_SEC: 0.225
+START: 2026-01-16 13:10:50
+END: 2026-01-16 13:10:50
+DURATION_SEC: 0.232
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,9 +86,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1875305.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:03
-END: 2026-01-15 19:09:04
-DURATION_SEC: 0.196
+START: 2026-01-16 13:10:50
+END: 2026-01-16 13:10:51
+DURATION_SEC: 0.198
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,9 +98,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1884665.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:04
-END: 2026-01-15 19:09:04
-DURATION_SEC: 0.462
+START: 2026-01-16 13:10:51
+END: 2026-01-16 13:10:51
+DURATION_SEC: 0.466
 STATUS: ERROR
 EXIT_CODE: 110
 -----------------------------------------------------------
@@ -114,14 +114,14 @@ Line: 437
 Solver: z3-noodler
 FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1885762.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:09:04
-END: 2026-01-15 19:09:04
-DURATION_SEC: 0.401
+START: 2026-01-16 13:10:51
+END: 2026-01-16 13:10:52
+DURATION_SEC: 0.370
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle non-chain free constraints with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2208993 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 625477 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

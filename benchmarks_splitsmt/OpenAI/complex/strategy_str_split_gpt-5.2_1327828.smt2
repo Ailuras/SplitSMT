@@ -70,8 +70,8 @@
                     (str.to_re "$")
                     (re.range "0" "9")))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

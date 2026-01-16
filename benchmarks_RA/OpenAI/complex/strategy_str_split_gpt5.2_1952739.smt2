@@ -159,8 +159,8 @@
 ; UNSAT twist: forbid any CRLFCRLF in the request while it is required above
 (assert (not (str.contains req "\u{0D}\u{0A}\u{0D}\u{0A}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

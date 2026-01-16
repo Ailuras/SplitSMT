@@ -62,7 +62,7 @@
 ; Final consistency check
 (assert (>= (str.num_splits request_headers "\n") 3))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -168,7 +168,6 @@
 (declare-const var3932!1 var3344)
 (declare-const var2747!1 String)
  ; Statement: return r0 
-(check-sat)
 ; {size/-1863229846=([java.util.ArrayList], int), add/1770215592=([java.util.ArrayList, java.lang.Object], boolean), cast-from-String-to-var3888=([java.lang.String], java.lang.Object)}
 ; {var3344=java.util.ArrayList, var3932=r0, var2747=r1, var1020=null_type, var191=$i0, var2078=$i1, var2213=r15, var1813=$i2, var1091=$r8, var3063=$i3, var3888=java.lang.Object}
 ; {java.util.ArrayList=var3344, r0=var3932, r1=var2747, null_type=var1020, $i0=var191, $i1=var2078, r15=var2213, $i2=var1813, $r8=var1091, $i3=var3063, java.lang.Object=var3888}
@@ -176,4 +175,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2}
 ;stmts r0 := @parameter0: java.util.ArrayList;	r1 := @parameter1: java.lang.String;	$i0 = virtualinvoke r0.<java.util.ArrayList: int size()>();	$i1 = $i0 % 2;	if $i1 != 1 goto r15 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(":");	r15 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(":");	$i2 = lengthof r15;	if $i2 <= 0 goto $r8 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("=");	$r8 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("=");	$i3 = lengthof $r8;	if $i3 <= 0 goto virtualinvoke r0.<java.util.ArrayList: boolean add(java.lang.Object)>(r1);	virtualinvoke r0.<java.util.ArrayList: boolean add(java.lang.Object)>(r1);	return r0
 ;block_num 4
+(check-sat)
 (exit)

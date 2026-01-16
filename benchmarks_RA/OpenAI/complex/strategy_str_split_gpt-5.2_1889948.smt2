@@ -1,17 +1,4 @@
 (set-logic ALL)
-
-; Email Validation scenario: validate structure using '@' and '.' as delimiters,
-; while preserving seed-style negative regex constraints.
-
-(declare-const X String)
-(declare-const local String)
-(declare-const domain String)
-(declare-const dom0 String)
-(declare-const dom1 String)
-(declare-const dom2 String)
-(declare-const recomposed String)
-
-; str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -102,6 +89,19 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation scenario: validate structure using '@' and '.' as delimiters,
+; while preserving seed-style negative regex constraints.
+
+(declare-const X String)
+(declare-const local String)
+(declare-const domain String)
+(declare-const dom0 String)
+(declare-const dom1 String)
+(declare-const dom2 String)
+(declare-const recomposed String)
+
+; str_split interface
+
 ; Preserve core structure: keep the seed's negative regex constraints (mutated minimally)
 (assert (not (str.in_re X (re.++ (str.to_re "<b>") (re.+ (re.union (str.to_re "<") (str.to_re ">"))) (str.to_re "</b>\u{a}")))))
 (assert (not (str.in_re X (re.++ (str.to_re "User-Agent:") (re.+ (re.union (str.to_re " ") (str.to_re "\u{9}") (str.to_re "\u{a}") (str.to_re "\u{c}") (str.to_re "\u{d}"))) (str.to_re "community") (re.+ (re.range "0" "9")) (str.to_re "\u{a}")))))
@@ -161,8 +161,8 @@
 ; Make it concrete enough to be satisfiable: enforce a common domain prefix
 (assert (or (str.contains domain "example") (str.contains domain "mail")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

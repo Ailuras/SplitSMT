@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun s2 () String)
 (declare-fun s3 () String)
 (declare-fun s1 () String)
@@ -6,9 +9,6 @@
 
 ; --- START CONSTRAINT ---
 ; Declare interface functions for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split operations
 (declare-fun delimiter () String)
 (declare-fun segment0 () String)
@@ -23,7 +23,7 @@
 (assert (str.contains s2 (split_rest s1 delimiter 2)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -70,7 +70,6 @@
 ; Tie together with a concrete exemplar to ensure SAT
 (assert (= log_line "2026-01-07 12:34:56 INFO:User login"))
 
-(check-sat)
 
 ; -------------------------
 ; UNSAT instance: conflicting constraints for another log line

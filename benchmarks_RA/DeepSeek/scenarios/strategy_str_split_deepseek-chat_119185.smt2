@@ -136,7 +136,7 @@
 (assert (= (str.substr timestamp 0 4) "2023"))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

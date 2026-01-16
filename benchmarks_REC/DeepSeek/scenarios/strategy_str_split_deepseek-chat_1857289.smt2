@@ -166,8 +166,8 @@
 (assert (>= total_fields 1))
 (assert (forall ((i Int)) (=> (and (>= i 0) (< i total_fields)) (>= (str.len (split_at csv_data "," i)) 0))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

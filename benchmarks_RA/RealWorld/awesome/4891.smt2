@@ -165,7 +165,6 @@
  ; Statement: if i1 >= i0 goto return $r0 
 (assert (>= var3392 var1108)) ; Cond: i1 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var3564-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void), var568_stringFromFile/-1519934906=([java.lang.String], java.lang.String), trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var600=r1, var2276=null_type, var3564=java.util.ArrayList, var1969=$r0, var568=edu.stanford.nlp.io.IOUtils, var72=$r2, var425=$r3, var893=r4, var1108=i0, var3392=i1}
 ; {r1=var600, null_type=var2276, java.util.ArrayList=var3564, $r0=var1969, edu.stanford.nlp.io.IOUtils=var568, $r2=var72, $r3=var425, r4=var893, i0=var1108, i1=var3392}
@@ -173,4 +172,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new java.util.ArrayList;	specialinvoke $r0.<java.util.ArrayList: void <init>()>();	$r2 = staticinvoke <edu.stanford.nlp.io.IOUtils: java.lang.String stringFromFile(java.lang.String)>(r1);	$r3 = virtualinvoke $r2.<java.lang.String: java.lang.String trim()>();	r4 = virtualinvoke $r3.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n\n");	i0 = lengthof r4;	i1 = 0;	if i1 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

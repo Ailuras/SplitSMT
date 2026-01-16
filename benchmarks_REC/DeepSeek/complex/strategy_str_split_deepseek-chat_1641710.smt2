@@ -134,7 +134,7 @@
 ; Add a specific example to make it SAT: define a concrete log entry
 (assert (= log_entry "2023-10-05T14:30:00 INFO 192.168.1.1 User login successful"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -99,8 +99,8 @@
 (assert (str.contains bad_domain "."))
 (assert (= (str.num_splits bad_domain ".") 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

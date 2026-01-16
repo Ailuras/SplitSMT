@@ -47,7 +47,6 @@
 ; Provide a concrete satisfying witness while still exercising split constraints
 (assert (= email_ok "john_doe+tag@example.co.uk"))
 
-(check-sat)
 
 ; --------------------
 ; UNSAT instance: forces conflicting structure
@@ -70,8 +69,8 @@
 ; Contradiction: force email_bad to be a string with no '@' and no '.' in domain
 (assert (= email_bad "nodomainseparators"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

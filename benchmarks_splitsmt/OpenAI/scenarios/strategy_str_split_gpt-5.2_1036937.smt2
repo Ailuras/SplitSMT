@@ -102,8 +102,8 @@
 (assert (= (str.len body_unsat) 5))
 (assert (= cl_int_unsat (str.len body_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

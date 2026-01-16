@@ -307,8 +307,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (and (= level "INFO") (= level "ERROR"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

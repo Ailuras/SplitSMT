@@ -187,7 +187,6 @@
 (declare-const var1364!3 var1480)
 (declare-const var3379!1 String)
  ; Statement: return $r3 
-(check-sat)
 ; {replaceAll/1692887130=([java.lang.String, java.lang.String, java.lang.String], java.lang.String), var1480-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void), String_valueOf/1240665136=([int], java.lang.String), var1300_add/-376848345=([java.util.Collection, java.lang.Object], boolean), cast-from-var1480-to-var1300=([java.util.ArrayList], java.util.Collection), cast-from-String-to-var3137=([java.lang.String], java.lang.Object), var1237-init=([], edu.stanford.nlp.ling.BasicDatum), <init>/1828590458=([edu.stanford.nlp.ling.BasicDatum, java.util.Collection, java.lang.Object], void)}
 ; {var1498=r15, var1081=null_type, var2764=edu.stanford.nlp.classify.Dataset, var172=$i0, var2170=$i1, var349=<edu.stanford.nlp.classify.Dataset: int line1>, var2177=r16, var3848=r0, var1480=java.util.ArrayList, var1364=$r1, var3524=i6, var3973=$i2, var3896=$r2, var1300=java.util.Collection, var3137=java.lang.Object, var1237=edu.stanford.nlp.ling.BasicDatum, var1550=$r3, var3379=$r4}
 ; {r15=var1498, null_type=var1081, edu.stanford.nlp.classify.Dataset=var2764, $i0=var172, $i1=var2170, <edu.stanford.nlp.classify.Dataset: int line1>=var349, r16=var2177, r0=var3848, java.util.ArrayList=var1480, $r1=var1364, i6=var3524, $i2=var3973, $r2=var3896, java.util.Collection=var1300, java.lang.Object=var3137, edu.stanford.nlp.ling.BasicDatum=var1237, $r3=var1550, $r4=var3379}
@@ -195,4 +194,5 @@
 ;cnt {"<java.lang.String: java.lang.String replaceAll(java.lang.String,java.lang.String)>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: java.lang.String valueOf(int)>": 1}
 ;stmts r15 := @parameter0: java.lang.String;	$i0 = <edu.stanford.nlp.classify.Dataset: int line1>;	$i1 = $i0 + 1;	<edu.stanford.nlp.classify.Dataset: int line1> = $i1;	r16 = virtualinvoke r15.<java.lang.String: java.lang.String replaceAll(java.lang.String,java.lang.String)>("#.*", "");	r0 = virtualinvoke r16.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	$r1 = new java.util.ArrayList;	specialinvoke $r1.<java.util.ArrayList: void <init>()>();	i6 = 1;	$i2 = lengthof r0;	if i6 >= $i2 goto $r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(2147483647);	$r2 = staticinvoke <java.lang.String: java.lang.String valueOf(int)>(2147483647);	interfaceinvoke $r1.<java.util.Collection: boolean add(java.lang.Object)>($r2);	$r3 = new edu.stanford.nlp.ling.BasicDatum;	$r4 = r0[0];	specialinvoke $r3.<edu.stanford.nlp.ling.BasicDatum: void <init>(java.util.Collection,java.lang.Object)>($r1, $r4);	return $r3
 ;block_num 3
+(check-sat)
 (exit)

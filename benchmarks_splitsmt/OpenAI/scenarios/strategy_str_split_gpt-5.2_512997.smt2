@@ -102,8 +102,8 @@
 (assert (= content_length_bad 4))
 (assert (= (str.len body_bad) content_length_bad))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

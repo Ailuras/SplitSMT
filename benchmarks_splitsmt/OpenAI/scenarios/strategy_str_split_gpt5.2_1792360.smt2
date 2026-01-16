@@ -104,8 +104,8 @@
 ; Mode selects which instance is active
 (assert (ite (= mode 0) sat_ok unsat_bad))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

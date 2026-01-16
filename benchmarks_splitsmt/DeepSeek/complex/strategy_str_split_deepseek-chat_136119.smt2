@@ -31,8 +31,8 @@
 (assert (= csv_line "apple,banana,,cherry,date"))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

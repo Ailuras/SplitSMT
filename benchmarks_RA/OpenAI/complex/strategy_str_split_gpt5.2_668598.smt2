@@ -164,8 +164,8 @@
 ; Remove unrelated utma-regex constraint; replace with CSV-specific constraint
 (assert (not (str.contains csv_line "__utma=")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

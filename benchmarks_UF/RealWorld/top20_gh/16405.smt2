@@ -68,7 +68,6 @@
 (define-const var1573 Bool (ite (= 1 0) true false)) ; Statement: $z0 = 0 
 (assert true) ; Non Conditional
  ; Statement: return $z0 
-(check-sat)
 ; {cast-from-Int-to-Int=([int], int)}
 ; {var1054=org.apache.dubbo.registry.nacos.NacosRegistry, var1680=r2, var2257=r0, var3936=null_type, var2930=$i2, var3100=$r1, var3189=$i0, var1573=$z0}
 ; {org.apache.dubbo.registry.nacos.NacosRegistry=var1054, r2=var1680, r0=var2257, null_type=var3936, $i2=var2930, $r1=var3100, $i0=var3189, $z0=var1573}
@@ -76,4 +75,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r2 := @this: org.apache.dubbo.registry.nacos.NacosRegistry;	r0 := @parameter0: java.lang.String;	$i2 = (int) (- 1);	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", $i2);	$i0 = lengthof $r1;	if $i0 != 4 goto $z0 = 0;	$z0 = 0;	return $z0
 ;block_num 3
+(check-sat)
 (exit)

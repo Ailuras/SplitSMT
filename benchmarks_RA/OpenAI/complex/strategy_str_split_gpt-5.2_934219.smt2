@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; Seed booleans preserved/mutated
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -157,8 +157,8 @@
 (assert (= T_6 (or (>= (num_splits domain ".") 3) (str.contains local "+"))))
 (assert T_6)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

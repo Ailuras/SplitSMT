@@ -136,7 +136,7 @@
 (assert (= user_agent_val "Mozilla"))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

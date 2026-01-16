@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted string-splitting interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Common string helpers as uninterpreted for higher-level parsing
 (declare-fun trim (String) String)
@@ -131,8 +131,8 @@
 ; This makes the constraints contradictory
 (assert (= cl_int_unsat (str.len body_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

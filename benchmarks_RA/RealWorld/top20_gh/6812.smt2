@@ -190,7 +190,6 @@
  ; Statement: if i1 >= $i0 goto return 
 (assert (>= var1566 var2293)) ; Cond: i1 >= $i0 
  ; Statement: return 
-(check-sat)
 ; {var3937-init=([], java.io.ByteArrayOutputStream), <init>/-707998177=([java.io.ByteArrayOutputStream], void), omitComments/-1276310728=([org.springframework.core.SortedProperties], boolean), store/877702891=([java.util.Properties, java.io.OutputStream, java.lang.String], void), cast-from-var2499-to-var48=([org.springframework.core.SortedProperties], java.util.Properties), cast-from-var3937-to-var2039=([java.io.ByteArrayOutputStream], java.io.OutputStream), toString/-372517094=([java.io.ByteArrayOutputStream, java.nio.charset.Charset], java.lang.String)}
 ; {var2499=org.springframework.core.SortedProperties, var2906=r1, var2039=java.io.OutputStream, var1728=r6, var2021=r2, var3431=null_type, var3937=java.io.ByteArrayOutputStream, var1296=$r0, var2977=$z0, var1886=$r13, var48=java.util.Properties, var456=java.nio.charset.Charset, var102=java.nio.charset.StandardCharsets, var1797=$r3, var87=$r11, var125=$r4, var2456=$r12, var2293=$i0, var1566=i1}
 ; {org.springframework.core.SortedProperties=var2499, r1=var2906, java.io.OutputStream=var2039, r6=var1728, r2=var2021, null_type=var3431, java.io.ByteArrayOutputStream=var3937, $r0=var1296, $z0=var2977, $r13=var1886, java.util.Properties=var48, java.nio.charset.Charset=var456, java.nio.charset.StandardCharsets=var102, $r3=var1797, $r11=var87, $r4=var125, $r12=var2456, $i0=var2293, i1=var1566}
@@ -198,4 +197,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @this: org.springframework.core.SortedProperties;	r6 := @parameter0: java.io.OutputStream;	r2 := @parameter1: java.lang.String;	$r0 = new java.io.ByteArrayOutputStream;	specialinvoke $r0.<java.io.ByteArrayOutputStream: void <init>()>();	$z0 = r1.<org.springframework.core.SortedProperties: boolean omitComments>;	if $z0 == 0 goto $r13 = r2;	$r13 = null;	goto [?= specialinvoke r1.<java.util.Properties: void store(java.io.OutputStream,java.lang.String)>($r0, $r13)];	specialinvoke r1.<java.util.Properties: void store(java.io.OutputStream,java.lang.String)>($r0, $r13);	$r3 = <java.nio.charset.StandardCharsets: java.nio.charset.Charset ISO_8859_1>;	$r11 = virtualinvoke $r0.<java.io.ByteArrayOutputStream: java.lang.String toString(java.nio.charset.Charset)>($r3);	$r4 = <org.springframework.core.SortedProperties: java.lang.String EOL>;	$r12 = virtualinvoke $r11.<java.lang.String: java.lang.String[] split(java.lang.String)>($r4);	$i0 = lengthof $r12;	i1 = 0;	if i1 >= $i0 goto return;	return
 ;block_num 5
+(check-sat)
 (exit)

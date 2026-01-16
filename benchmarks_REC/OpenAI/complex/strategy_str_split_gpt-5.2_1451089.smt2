@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; Seed-preserved core
 (declare-fun T_1 () Bool)
 (declare-const var_0xINPUT_103698 String)
@@ -170,8 +170,8 @@
 (assert (= level "INFO"))
 (assert (= message (str.++ "request id=" var_0xINPUT_103698)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

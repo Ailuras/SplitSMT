@@ -95,8 +95,8 @@
 ; If cl_int is 0 then body length must be > 0 (contradiction when cl_int=0)
 (assert (=> (= cl_int 0) (> (str.len body) 0)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

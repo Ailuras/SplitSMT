@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Goal: enforce correct field counts and detect empty fields using split_at/num_splits/split_rest
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +89,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Goal: enforce correct field counts and detect empty fields using split_at/num_splits/split_rest
+
+
 (declare-const csv_line String)
 (declare-const delim String)
 (declare-const field0 String)
@@ -159,8 +159,8 @@
                     (str.to_re "$")
                     (re.range "0" "9")))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

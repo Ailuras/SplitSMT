@@ -52,8 +52,8 @@
 ; Create a SAT instance by providing a concrete example log entry
 (assert (= log_entry "12:34:56 INFO server:8080 User logged in successfully"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

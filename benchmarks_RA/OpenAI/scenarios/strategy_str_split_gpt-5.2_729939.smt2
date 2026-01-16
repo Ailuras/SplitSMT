@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface for header parsing
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface for header parsing
+
 ; =========================
 ; SAT instance: well-formed HTTP header parsing
 ; =========================
@@ -152,7 +152,6 @@
 (assert (>= (num_splits host_kv1 ": ") 2))
 (assert (>= (num_splits clen_kv1 ": ") 2))
 
-(check-sat)
 
 ; =========================
 ; UNSAT instance: conflicting Content-Length vs body length
@@ -190,9 +189,9 @@
 ; Contradiction: declared length 4 but body length is 3
 (assert (= content_length2 (str.len body2)))
 
-(check-sat)
 
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

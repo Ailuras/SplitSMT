@@ -62,7 +62,6 @@
  ; Statement: if i1 >= $i0 goto return 
 (assert (>= var1618 var2607)) ; Cond: i1 >= $i0 
  ; Statement: return 
-(check-sat)
 ; {var1908_getProperty/258823597=([java.lang.String], java.lang.String)}
 ; {var1908=java.lang.System, var2824=r3, var367=null_type, var751=$r1, var2607=$i0, var1618=i1}
 ; {java.lang.System=var1908, r3=var2824, null_type=var367, $r1=var751, $i0=var2607, i1=var1618}
@@ -70,4 +69,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r3 = staticinvoke <java.lang.System: java.lang.String getProperty(java.lang.String)>("org.mockito.inline.preload");	if r3 != null goto $r1 = virtualinvoke r3.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$r1 = virtualinvoke r3.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$i0 = lengthof $r1;	i1 = 0;	if i1 >= $i0 goto return;	return
 ;block_num 4
+(check-sat)
 (exit)

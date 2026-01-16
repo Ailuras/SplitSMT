@@ -43,8 +43,8 @@
 
 ; Final check
 (assert is_valid)
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

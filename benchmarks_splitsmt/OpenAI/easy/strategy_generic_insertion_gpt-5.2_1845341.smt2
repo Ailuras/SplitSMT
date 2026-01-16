@@ -29,7 +29,7 @@
 (assert (> (str.len rest_after_space) 0))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -110,7 +110,7 @@
 (assert (str.contains (split_rest X delimiter 2) "Host"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

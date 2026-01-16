@@ -103,7 +103,6 @@
 (declare-const var2158!1 var2396)
 (assert true) ; Non Conditional
  ; Statement: return 
-(check-sat)
 ; {getLength-Arr-String-1=([java.lang.String[]], int), var2333-init=([], edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification), <init>/720541530=([edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification], void), var1622-init=([], java.io.File), <init>/-1681595970=([java.io.File, java.lang.String], void), var92-init=([], java.io.BufferedReader), var282-init=([], java.io.InputStreamReader), var699-init=([], java.io.FileInputStream), printStackTrace/885456489=([java.lang.Throwable], void), cast-from-var2396-to-var3930=([java.io.IOException], java.lang.Throwable)}
 ; {var582=r0, var2670=$i0, var2333=edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification, var2028=$r27, var2281=$r2, var2786=$r21, var1915=$i1, var3331=i2, var1622=java.io.File, var2978=$r28, var802=$r4, var92=java.io.BufferedReader, var2658=$r31, var282=java.io.InputStreamReader, var2679=$r30, var699=java.io.FileInputStream, var1047=$r29, var2396=java.io.IOException, var2158=$r22, var3930=java.lang.Throwable}
 ; {r0=var582, $i0=var2670, edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification=var2333, $r27=var2028, $r2=var2281, $r21=var2786, $i1=var1915, i2=var3331, java.io.File=var1622, $r28=var2978, $r4=var802, java.io.BufferedReader=var92, $r31=var2658, java.io.InputStreamReader=var282, $r30=var2679, java.io.FileInputStream=var699, $r29=var1047, java.io.IOException=var2396, $r22=var2158, java.lang.Throwable=var3930}
@@ -111,4 +110,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String[];	$i0 = lengthof r0;	if $i0 == 2 goto $r27 = new edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification;	$r27 = new edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification;	specialinvoke $r27.<edu.stanford.nlp.international.arabic.ArabicMorphoFeatureSpecification: void <init>()>();	$r2 = r0[1];	$r21 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$i1 = lengthof $r21;	i2 = 0;	if i2 >= $i1 goto $r28 = new java.io.File;	$r28 = new java.io.File;	$r4 = r0[0];	specialinvoke $r28.<java.io.File: void <init>(java.lang.String)>($r4);	$r31 = new java.io.BufferedReader;	$r30 = new java.io.InputStreamReader;	$r29 = new java.io.FileInputStream;	$r22 := @caughtexception;	virtualinvoke $r22.<java.io.IOException: void printStackTrace()>();	return
 ;block_num 6
+(check-sat)
 (exit)

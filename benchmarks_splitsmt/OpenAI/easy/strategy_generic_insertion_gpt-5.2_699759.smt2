@@ -18,7 +18,7 @@
 (assert (not (str.contains rest1 "1")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -77,8 +77,8 @@
 ; Contradiction: time token must have ':' at index 1 (but in "14:03:09" it's at 2)
 (assert (= (str.at time_part 1) ":"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -140,8 +140,8 @@
 ; Uncomment below to make UNSAT
 ; (assert (= (str.len tld) 5))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

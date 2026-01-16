@@ -169,8 +169,8 @@
 ; If the input were exactly "a@b", force contradictory domain dot requirements.
 (assert (=> (= var_0xINPUT_14483 "a@b") (and (= at_count 2) (>= domain_dot_count 2) (= domain_part "b"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

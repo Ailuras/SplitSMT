@@ -149,8 +149,8 @@
 (assert (= T_9 (not T_8)))
 (assert T_9)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

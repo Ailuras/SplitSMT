@@ -42,8 +42,7 @@
 (assert (distinct key1 key2))
 
 ; Check satisfiability
-(check-sat)
-(get-value (header key1 value1 key2 value2 content_length_val))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -12,7 +12,7 @@
 (assert (= path (str.split_rest var_0xINPUT_102266 ":" 1)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

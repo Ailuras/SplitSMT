@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Goal: ensure correct field counts and detect empty fields
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const T_1 Bool)
 (declare-const T_2 Bool)
@@ -47,8 +47,8 @@
 ; Structural sanity: rest_after1 should contain a comma because it covers fields 1 and 2
 (assert (str.contains rest_after1 ","))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

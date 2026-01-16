@@ -61,7 +61,6 @@
  ; Statement: if $i0 <= 1 goto $r3 = new java.net.URI 
 (assert (not (<= var3316 1))) ; Negate: Cond: $i0 <= 1  
  ; Statement: return r1 
-(check-sat)
 ; {}
 ; {var364=org.apache.logging.log4j.core.config.DefaultConfigurationFactory, var815=r2, var2469=r0, var1563=null_type, var1792=r1, var3316=$i0}
 ; {org.apache.logging.log4j.core.config.DefaultConfigurationFactory=var364, r2=var815, r0=var2469, null_type=var1563, r1=var1792, $i0=var3316}
@@ -69,4 +68,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r2 := @this: org.apache.logging.log4j.core.config.DefaultConfigurationFactory;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$i0 = lengthof r1;	if $i0 <= 1 goto $r3 = new java.net.URI;	return r1
 ;block_num 2
+(check-sat)
 (exit)

@@ -39,8 +39,8 @@
 ; Constraint 7: Make it SAT by allowing a specific valid email example
 (assert (str.contains email "example@domain.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

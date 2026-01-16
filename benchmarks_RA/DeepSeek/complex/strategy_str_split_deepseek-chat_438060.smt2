@@ -132,8 +132,7 @@
 (assert (str.contains (split_rest log_entry " " 2) message))
 
 ; Check for satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message colon_segments space_segments))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

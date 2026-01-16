@@ -90,8 +90,8 @@
 ; Pin a plausible bad_log_line (doesn't matter; constraints already inconsistent)
 (assert (= bad_log_line "2025-01-09 12:34:56 ERROR: boom"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -42,7 +42,7 @@
 (assert (= split_remaining (str.split_rest T_2 split_delim split_index)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

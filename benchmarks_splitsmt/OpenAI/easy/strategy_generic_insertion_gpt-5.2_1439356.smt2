@@ -15,7 +15,7 @@
 (assert (str.contains payload "LoginNSIS_DOWNLOAD"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; Scenario: HTTP Header Parsing
 ; We model an HTTP request as: request_line "\r\n" headers "\r\n\r\n" body
 
@@ -178,8 +178,8 @@
 ; Force SAT mode by default (set make_unsat to false)
 (assert (not make_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

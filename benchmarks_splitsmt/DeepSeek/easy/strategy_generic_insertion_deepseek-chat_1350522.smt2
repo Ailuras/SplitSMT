@@ -19,7 +19,7 @@
 (assert (str.contains segment1 "trackhits"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

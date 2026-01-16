@@ -20,7 +20,7 @@
 (assert (str.contains rest_segments "00"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

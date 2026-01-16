@@ -170,8 +170,8 @@
 ; Contradiction: if level is DEBUG then it must be exactly "INFO".
 (assert (=> (= level "DEBUG") (= level "INFO")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

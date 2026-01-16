@@ -72,8 +72,8 @@
 (assert (= T_12 (not (str.contains var_0xINPUT_239267 ",,"))))
 (assert T_12)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -106,7 +106,7 @@
 (assert (>= (num_splits host_field "\u{13}\u{a}") 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

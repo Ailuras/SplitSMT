@@ -60,8 +60,8 @@
 ; Additional constraint: Ensure delimiter appears exactly 4 times (for 5 fields)
 (assert (= (- (str.len csv_data) (str.len (str.replace_all csv_data delimiter ""))) 4))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

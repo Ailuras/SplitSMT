@@ -103,8 +103,8 @@
 (assert (= level_unsat (str.split_at level_colon_unsat ":" 0)))
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -119,7 +119,7 @@
 (assert (>= (num_splits message " ") 1))
 ; Final check: the entire log entry must be non-empty.
 (assert (not (= (str.len log_entry) 0)))
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

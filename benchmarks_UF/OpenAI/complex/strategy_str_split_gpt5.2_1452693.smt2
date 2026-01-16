@@ -79,8 +79,8 @@
 (assert (< 30 (+ (str.len sigmaStar_751) (str.len sink))))
 (assert (< (str.len sink) 120))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split operations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split operations
 
 ; -------------------------
 ; SAT instance: plausible complex email validation
@@ -185,8 +185,8 @@
 ; Pin to a concrete email containing a dot to strengthen the conflict
 (assert (= email_bad "a@b.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

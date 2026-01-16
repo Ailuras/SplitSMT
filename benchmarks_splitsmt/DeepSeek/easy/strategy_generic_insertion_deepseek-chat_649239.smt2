@@ -10,7 +10,7 @@
 (assert (str.contains (str.split_at var0 delimiter 0) "1"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

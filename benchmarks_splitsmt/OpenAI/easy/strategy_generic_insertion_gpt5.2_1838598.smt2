@@ -26,7 +26,7 @@
 (assert (= (str.split_at S "id" 1) (str.split_at T "id" 1)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

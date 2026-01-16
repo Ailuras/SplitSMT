@@ -33,7 +33,7 @@
 (assert (= field_count (num_splits csv_line ",")))
 ; Constraint 10: First and last fields must be different
 (assert (not (= (split_at csv_line "," 0) (split_at csv_line "," (- (num_splits csv_line ",") 1)))))
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

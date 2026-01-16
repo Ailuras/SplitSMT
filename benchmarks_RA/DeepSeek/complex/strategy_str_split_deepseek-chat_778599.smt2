@@ -149,8 +149,8 @@
 ; Additional constraint to make it SAT: provide a concrete example
 (assert (= email "user.name@example.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

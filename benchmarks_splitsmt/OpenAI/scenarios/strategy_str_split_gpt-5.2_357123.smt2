@@ -61,8 +61,8 @@
 (assert (>= (str.len (str.split_at domain_unsat "." 0)) 1))
 (assert (>= (str.len (str.split_at domain_unsat "." 1)) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

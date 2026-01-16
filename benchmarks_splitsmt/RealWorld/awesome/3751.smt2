@@ -93,7 +93,6 @@
 (declare-const var1791!1 var2214)
 (declare-const var3098!1 String)
  ; Statement: return 
-(check-sat)
 ; {startsWith/-1785782452=([java.lang.String, java.lang.String], boolean), arr-var3543-init=([], java.lang.Object[]), cast-from-String-to-var3543=([java.lang.String], java.lang.Object), var2163_log/2127824580=([java.lang.Object[]], void), info/114590825=([java.util.logging.Logger, java.lang.String], void)}
 ; {var3808=r0, var1395=null_type, var2214=java.util.logging.Logger, var1791=r5, var3185=z0, var2454=r1, var3211=i0, var1496=i1, var3098=r10, var3766=$z4, var3543=java.lang.Object, var951=$r9, var2163=edu.stanford.nlp.util.logging.Redwood}
 ; {r0=var3808, null_type=var1395, java.util.logging.Logger=var2214, r5=var1791, z0=var3185, r1=var2454, i0=var3211, i1=var1496, r10=var3098, $z4=var3766, java.lang.Object=var3543, $r9=var951, edu.stanford.nlp.util.logging.Redwood=var2163}
@@ -101,4 +100,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean startsWith(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r5 := @parameter1: java.util.logging.Logger;	z0 := @parameter2: boolean;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	if z0 != 0 goto $r2 = new java.lang.StringBuilder;	i0 = lengthof r1;	i1 = 0;	if i1 >= i0 goto (branch);	r10 = r1[i1];	$z4 = virtualinvoke r10.<java.lang.String: boolean startsWith(java.lang.String)>("Identification of Mentions");	if $z4 == 0 goto i1 = i1 + 1;	$r9 = newarray (java.lang.Object)[1];	$r9[0] = r10;	staticinvoke <edu.stanford.nlp.util.logging.Redwood: void log(java.lang.Object[])>($r9);	virtualinvoke r5.<java.util.logging.Logger: void info(java.lang.String)>(r10);	return
 ;block_num 5
+(check-sat)
 (exit)

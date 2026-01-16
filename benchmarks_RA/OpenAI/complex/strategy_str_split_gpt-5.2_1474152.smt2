@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; HTTP Header Parsing with split_at/num_splits/split_rest
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; HTTP Header Parsing with split_at/num_splits/split_rest
+
 (declare-const X String)
 (declare-const request_line String)
 (declare-const headers_block String)
@@ -169,8 +169,8 @@
                               (= parsed_len 1)
                               (= (str.len body) 0))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

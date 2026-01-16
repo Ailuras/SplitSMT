@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation via split constraints and string reasoning
 
 ; --- str_split interface (uninterpreted) ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Common constants ---
 (declare-const at_delim String)
@@ -119,8 +119,8 @@
 (assert (= email_unsat "invalid_email"))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun sigmaStar_0 () String)
 (declare-fun literal_1 () String)
 (declare-fun x_2 () String)
@@ -11,9 +14,6 @@
 (assert (str.in_re x_4 (re.++ (re.* re.allchar) (re.++ (str.to_re "\u{5c}\u{3c}\u{53}\u{43}\u{52}\u{49}\u{50}\u{54}") (re.* re.allchar)))))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-fun delimiter_5 () String)
 (assert (= delimiter_5 "\u{3c}"))
 (assert (>= (num_splits x_4 delimiter_5) 3))
@@ -21,7 +21,7 @@
 (assert (str.contains (split_rest x_4 delimiter_5 2) "\u{53}"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface operations for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface operations for str_split
 
 ; Seed-preserved symbols (kept for core structure)
 (declare-fun I0_2 () Int)
@@ -210,8 +210,8 @@
 (assert (not (str.contains localpart ".@")))
 (assert (not (str.contains var_0xINPUT_4157 "\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

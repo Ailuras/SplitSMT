@@ -133,8 +133,8 @@
 (assert (str.contains email "example.com"))
 (assert (str.contains email "@"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

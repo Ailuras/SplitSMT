@@ -36,9 +36,8 @@
 (assert (>= (str.len message) 1))
 
 ; Check satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message))
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

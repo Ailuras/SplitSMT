@@ -69,8 +69,8 @@
 (assert (<= (str.len email) 254))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

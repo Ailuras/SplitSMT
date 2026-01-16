@@ -12,7 +12,7 @@
 (assert (not (str.contains after_b_close "<b>")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

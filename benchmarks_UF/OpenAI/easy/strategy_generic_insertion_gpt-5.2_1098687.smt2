@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun var0 () String)
 (assert (str.in_re var0 (re.++ (re.+ (re.union (str.to_re "00") (str.to_re "11"))) (re.++ (re.* (re.* (str.to_re "2"))) (re.union (re.* (str.to_re "333")) (re.union (str.to_re "444") (str.to_re "5")))))))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-fun seg0 () String)
 (declare-fun seg1 () String)
 (assert (>= (str.len var0) 2))
@@ -16,7 +16,7 @@
 (assert (= (split_rest var0 "2" 1) (str.++ seg1 (split_rest var0 "2" 2))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

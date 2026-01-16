@@ -13,7 +13,7 @@
 (assert (str.in_re (str.split_rest X delimiter 2) (re.++ ((_ re.loop 2 2) (re.range "0" "9")) (str.to_re "\u{a}"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

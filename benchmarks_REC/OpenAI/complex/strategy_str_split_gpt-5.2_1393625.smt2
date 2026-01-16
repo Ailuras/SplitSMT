@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for str_split
+
 ; Log line and extracted fields
 (declare-const x String)
 (declare-const ts String)
@@ -153,8 +153,8 @@
 ; Message should be non-empty if present
 (assert (>= (str.len msg) 0))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

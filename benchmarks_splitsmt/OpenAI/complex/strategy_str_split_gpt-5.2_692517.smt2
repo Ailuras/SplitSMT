@@ -64,8 +64,8 @@
 ; Additional shape constraint using split_rest: concatenation from field 2 onward should not be empty
 (assert (not (= (str.split_rest csv delim 2) "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

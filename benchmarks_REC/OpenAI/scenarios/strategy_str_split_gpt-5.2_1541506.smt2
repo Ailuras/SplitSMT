@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split
 
 ; --- Scenario: HTTP Header Parsing ---
 ; We model an HTTP request header block and extract key/value pairs separated by ": " and "\r\n".
@@ -202,8 +202,8 @@
 (assert (=> make_unsat (= cl_len (+ body_len 1))))
 (assert (=> make_unsat (= cl_len body_len)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

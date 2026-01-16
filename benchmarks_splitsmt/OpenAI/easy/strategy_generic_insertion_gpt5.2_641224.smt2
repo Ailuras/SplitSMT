@@ -26,7 +26,7 @@
 (assert (= X (str.++ year "/" month "/" day)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

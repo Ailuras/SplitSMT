@@ -68,7 +68,7 @@
         (> (str.len (str.split_at request "\n" i)) 0))))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -91,8 +91,8 @@
 ; Additional structural constraints: ensure no stray '-' or empty request
 (assert (not (str.contains request "\n\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

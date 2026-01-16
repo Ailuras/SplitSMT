@@ -112,7 +112,7 @@
 (assert (not (= (split_rest X delimiter 1) "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

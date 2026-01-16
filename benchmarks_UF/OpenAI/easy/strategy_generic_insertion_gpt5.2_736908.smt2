@@ -19,7 +19,7 @@
 (assert (not (str.contains first_line "/filename")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -50,7 +50,7 @@
 (assert (not (= (str.at csv_line (- (str.len csv_line) 1)) ",")))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

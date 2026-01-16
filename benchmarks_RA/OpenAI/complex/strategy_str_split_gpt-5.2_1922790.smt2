@@ -1,8 +1,4 @@
 (set-logic ALL)
-; Scenario: CSV Processing
-; Goal: process comma-separated data fields, ensure correct field counts, detect empty fields.
-
-; Uninterpreted interface functions for split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +88,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+; Scenario: CSV Processing
+; Goal: process comma-separated data fields, ensure correct field counts, detect empty fields.
+
+; Uninterpreted interface functions for split
 
 ; Boolean guards (preserve core seed structure with T_*)
 (declare-fun T_1 () Bool)
@@ -161,8 +161,8 @@
 (assert (= T_12 (not (str.contains var_0xINPUT_239267 ",,"))))
 (assert T_12)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

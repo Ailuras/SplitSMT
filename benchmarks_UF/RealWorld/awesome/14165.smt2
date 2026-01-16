@@ -82,7 +82,6 @@
 (declare-const var3690!1 var3046)
 (declare-const var3546!1 String)
  ; Statement: return $r13 
-(check-sat)
 ; {var2347_debug/594372212=([org.slf4j.Logger, java.lang.String], void), cast-from-Int-to-Int=([int], int), var3046-init=([], java.util.Locale), <init>/-1053635008=([java.util.Locale, java.lang.String], void)}
 ; {var1017=r0, var454=null_type, var2347=org.slf4j.Logger, var3002=org.docx4j.model.fields.FormattingSwitchHelper, var85=$r1, var424=$r2, var1387=$i3, var2160=r3, var1499=$i0, var3046=java.util.Locale, var3690=$r13, var3546=$r12}
 ; {r0=var1017, null_type=var454, org.slf4j.Logger=var2347, org.docx4j.model.fields.FormattingSwitchHelper=var3002, $r1=var85, $r2=var424, $i3=var1387, r3=var2160, $i0=var1499, java.util.Locale=var3046, $r13=var3690, $r12=var3546}
@@ -90,4 +89,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	$r1 = <org.docx4j.model.fields.FormattingSwitchHelper: org.slf4j.Logger log>;	$r2 = dynamicinvoke "makeConcatWithConstants" <java.lang.String (java.lang.String)>(r0) <java.lang.invoke.StringConcatFactory: java.lang.invoke.CallSite makeConcatWithConstants(java.lang.invoke.MethodHandles$Lookup,java.lang.String,java.lang.invoke.MethodType,java.lang.String,java.lang.Object[])>("\u0001 to Locale");	interfaceinvoke $r1.<org.slf4j.Logger: void debug(java.lang.String)>($r2);	$i3 = (int) (- 1);	r3 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("-", $i3);	$i0 = lengthof r3;	if $i0 != 1 goto $i1 = lengthof r3;	$r13 = new java.util.Locale;	$r12 = r3[0];	specialinvoke $r13.<java.util.Locale: void <init>(java.lang.String)>($r12);	return $r13
 ;block_num 2
+(check-sat)
 (exit)

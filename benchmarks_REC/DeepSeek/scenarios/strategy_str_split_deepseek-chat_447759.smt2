@@ -139,7 +139,7 @@
 (assert (= (str.++ (split_at csv_line delimiter 0) (split_at csv_line delimiter 1) (split_at csv_line delimiter 2)) (str.replace csv_line delimiter "")))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

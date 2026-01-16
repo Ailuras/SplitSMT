@@ -186,7 +186,6 @@
 (declare-const var1085!1 var3737)
 (declare-const var1802!1 Int)
  ; Statement: return 
-(check-sat)
 ; {Int_parseInt/1370970945=([java.lang.String], int), mwtTokens/-371264511=([edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence], java.util.List), var3737_add/328494887=([java.util.List, java.lang.Object], boolean), cast-from-String-to-var3726=([java.lang.String], java.lang.Object), mwtMiscs/-371264511=([edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence], java.util.List), mwtLastCoreLabels/-371264511=([edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence], java.util.List), Int_valueOf/-1371140006=([int], java.lang.Integer), cast-from-Int-to-var3726=([java.lang.Integer], java.lang.Object)}
 ; {var3829=edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence, var3225=r7, var1887=r0, var2859=null_type, var2491=r1, var2959=$r2, var3562=r3, var992=r4, var2431=$r5, var3362=i0, var2490=$r6, var2605=i1, var1441=i4, var3737=java.util.List, var1311=$r8, var3726=java.lang.Object, var3121=$r10, var34=$r9, var1085=$r11, var2764=$i2, var1802=$r12}
 ; {edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence=var3829, r7=var3225, r0=var1887, null_type=var2859, r1=var2491, $r2=var2959, r3=var3562, r4=var992, $r5=var2431, i0=var3362, $r6=var2490, i1=var2605, i4=var1441, java.util.List=var3737, $r8=var1311, java.lang.Object=var3726, $r10=var3121, $r9=var34, $r11=var1085, $i2=var2764, $r12=var1802}
@@ -194,4 +193,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2}
 ;stmts r7 := @this: edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\t");	$r2 = r1[0];	r3 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>("-");	r4 = r1[1];	$r5 = r3[0];	i0 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r5);	$r6 = r3[1];	i1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r6);	i4 = i0 - 1;	if i4 >= i1 goto $r8 = r7.<edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence: java.util.List mwtTokens>;	$r8 = r7.<edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence: java.util.List mwtTokens>;	interfaceinvoke $r8.<java.util.List: boolean add(java.lang.Object)>(r4);	$r10 = r7.<edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence: java.util.List mwtMiscs>;	$r9 = r1[9];	interfaceinvoke $r10.<java.util.List: boolean add(java.lang.Object)>($r9);	$r11 = r7.<edu.stanford.nlp.pipeline.CoNLLUReader$CoNLLUSentence: java.util.List mwtLastCoreLabels>;	$i2 = i1 - 1;	$r12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($i2);	interfaceinvoke $r11.<java.util.List: boolean add(java.lang.Object)>($r12);	return
 ;block_num 3
+(check-sat)
 (exit)

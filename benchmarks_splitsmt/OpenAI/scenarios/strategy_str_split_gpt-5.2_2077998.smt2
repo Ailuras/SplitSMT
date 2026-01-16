@@ -109,8 +109,8 @@
 
 ; The two previous assertions imply 4 = 3, hence UNSAT
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

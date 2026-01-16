@@ -19,7 +19,7 @@
 (assert (= (str.split_rest y d (str.num_splits y d)) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

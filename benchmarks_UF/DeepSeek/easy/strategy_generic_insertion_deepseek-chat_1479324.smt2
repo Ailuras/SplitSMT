@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const x String)
 (declare-const y String)
 (assert (str.in_re (str.++ y x) (re.+ (str.to_re "!!$$bbaa"))))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const delimiter String)
 (assert (= delimiter "!!"))
 (assert (>= (num_splits (str.++ y x) delimiter) 3))
@@ -15,7 +15,7 @@
 (assert (= (split_rest (str.++ y x) delimiter 2) "$$"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

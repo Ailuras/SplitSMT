@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface functions for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface functions for string splitting
+
 ; Seed remnants / core structure preserved
 (declare-fun T_1 () Bool)
 (declare-fun var_0xINPUT_18057 () String)
@@ -181,8 +181,8 @@
 (assert (>= i 0))
 (assert (< i (num_splits request "\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

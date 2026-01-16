@@ -72,7 +72,6 @@
  ; Statement: if i3 >= $i0 goto return 
 (assert (>= var2743 var3083)) ; Cond: i3 >= $i0 
  ; Statement: return 
-(check-sat)
 ; {var1615_getCapabilitiesByName/-679790978=([], java.util.Map)}
 ; {var1845=r1, var2587=null_type, var1792=java.util.Set, var814=r8, var2514=java.util.Map, var2979=r12, var1871=r10, var1615=org.jline.utils.InfoCmp, var2223=r0, var1049=r2, var2743=i3, var3083=$i0}
 ; {r1=var1845, null_type=var2587, java.util.Set=var1792, r8=var814, java.util.Map=var2514, r12=var2979, r10=var1871, org.jline.utils.InfoCmp=var1615, r0=var2223, r2=var1049, i3=var2743, $i0=var3083}
@@ -80,4 +79,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	r8 := @parameter1: java.util.Set;	r12 := @parameter2: java.util.Map;	r10 := @parameter3: java.util.Map;	r0 = staticinvoke <org.jline.utils.InfoCmp: java.util.Map getCapabilitiesByName()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	i3 = 1;	$i0 = lengthof r2;	if i3 >= $i0 goto return;	return
 ;block_num 3
+(check-sat)
 (exit)

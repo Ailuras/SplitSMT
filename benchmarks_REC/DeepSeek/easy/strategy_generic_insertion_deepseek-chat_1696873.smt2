@@ -108,7 +108,7 @@
 (assert (str.contains (split_rest var_0xINPUT_237732 "," 2) "array"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

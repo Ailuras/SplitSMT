@@ -130,8 +130,8 @@
 (assert (> (str.len log_entry) 0))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

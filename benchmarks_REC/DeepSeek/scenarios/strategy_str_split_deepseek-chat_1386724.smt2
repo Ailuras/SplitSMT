@@ -161,7 +161,7 @@
 ; UNSAT case: Comment out to make SAT, uncomment to make UNSAT
 ; (assert (str.contains email "..")) ; Double dot makes invalid
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

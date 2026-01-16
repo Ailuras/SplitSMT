@@ -37,7 +37,7 @@
 (assert (str.in_re (str.at domain (- (str.len domain) 1)) (re.union (re.range "a" "z") (re.range "A" "Z") (re.range "0" "9"))))
 ; Constraint 11: Specific example to make it SAT (e.g., valid email 'user@example.com')
 (assert (= email "user@example.com"))
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

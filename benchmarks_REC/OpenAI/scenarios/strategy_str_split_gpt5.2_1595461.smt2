@@ -176,8 +176,8 @@
 ; Anchor to a concrete email that still cannot satisfy the contradictory split constraints
 (assert (= email_bad "a@b.c"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -149,7 +149,7 @@
 ; Additional constraint to make the problem SAT: Provide a concrete example
 (assert (= email "john.doe_123@example.co.uk"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

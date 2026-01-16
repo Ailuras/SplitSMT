@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Additional uninterpreted parsing helpers (non-primitive)
 (declare-fun parse_int (String) Int)
@@ -173,8 +173,8 @@
 ; Choose one: set sat_case to true for SAT, false for UNSAT.
 ; Leaving it unconstrained lets the solver pick SAT via sat_case = true.
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

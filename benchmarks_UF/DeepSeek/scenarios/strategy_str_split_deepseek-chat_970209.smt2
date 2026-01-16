@@ -52,7 +52,7 @@
 (assert valid_email)
 ; Add a specific example constraint to make it SAT (e.g., email ends with ".com")
 (assert (str.suffixof ".com" email))
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

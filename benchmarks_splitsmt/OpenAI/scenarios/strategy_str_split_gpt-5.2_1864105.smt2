@@ -170,8 +170,8 @@
 ; Choose one: set sat_case to true for SAT, false for UNSAT.
 ; Leaving it unconstrained lets the solver pick SAT via sat_case = true.
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -140,8 +140,8 @@
 (assert (<= (str.len message) 100))
 
 ; Final check
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -19,7 +19,7 @@
 (assert (str.prefixof "/USER" first_segment))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

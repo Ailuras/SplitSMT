@@ -75,8 +75,8 @@
 ; (Contradiction: require at least one dot, but also forbid any dot)
 (assert (not (str.contains domain ".")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

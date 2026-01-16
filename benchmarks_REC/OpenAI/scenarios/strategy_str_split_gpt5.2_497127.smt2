@@ -232,8 +232,8 @@
 ; If unsat_mode were true, we'd require an impossible length mismatch.
 (assert (=> unsat_mode (and (= content_length (str.len body)) (not (= content_length (str.len body))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

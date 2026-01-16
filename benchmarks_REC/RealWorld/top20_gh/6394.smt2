@@ -163,7 +163,6 @@
  ; Statement: if i2 >= $i1 goto return $r3 
 (assert (>= var3772 var2393)) ; Cond: i2 >= $i1 
  ; Statement: return $r3 
-(check-sat)
 ; {var1657-init=([], java.util.HashMap), <init>/613807010=([java.util.HashMap, int], void)}
 ; {var3566=r0, var2925=null_type, var3817=r1, var1868=r2, var1657=java.util.HashMap, var1609=$r3, var2618=$i0, var3772=i2, var2393=$i1}
 ; {r0=var3566, null_type=var2925, r1=var3817, r2=var1868, java.util.HashMap=var1657, $r3=var1609, $i0=var2618, i2=var3772, $i1=var2393}
@@ -171,4 +170,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 := @parameter1: java.lang.String;	r2 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(r1);	$r3 = new java.util.HashMap;	$i0 = lengthof r2;	specialinvoke $r3.<java.util.HashMap: void <init>(int)>($i0);	i2 = 0;	$i1 = lengthof r2;	if i2 >= $i1 goto return $r3;	return $r3
 ;block_num 3
+(check-sat)
 (exit)

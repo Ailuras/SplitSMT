@@ -86,8 +86,8 @@
         (not (and (= host_value "") (= host_value (str.++ "x" host_value))))
       ))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

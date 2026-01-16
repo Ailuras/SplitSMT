@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: Log Analysis
 ; Parsing structured server log entries separated by spaces and colons.
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Core input log line
 (declare-const X String)
@@ -67,8 +67,8 @@
 ; SAT instance: require message to contain a request id field, but do not overconstrain it.
 (assert (str.contains message "req_id:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -56,8 +56,8 @@
 ; Also require the overall input not to be exactly "Search" to avoid degenerate single-token input
 (assert (not T_1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

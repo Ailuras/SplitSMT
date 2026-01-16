@@ -148,7 +148,7 @@
 (assert (str.contains split_segment_1 "__utmb"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

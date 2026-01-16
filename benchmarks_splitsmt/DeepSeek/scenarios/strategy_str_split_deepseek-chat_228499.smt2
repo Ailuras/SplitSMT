@@ -46,7 +46,7 @@
 ; Additional constraint to ensure SAT: Provide a concrete example that satisfies all constraints
 (assert (= csv_line "Name,ID_123,Age,City,Country"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -10,7 +10,7 @@
 (assert (str.contains (str.split_rest X delimiter 1) "myway"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -304,8 +304,8 @@
 ; Also ensure there are enough CRLF-separated lines to access indices used
 (assert (>= (num_splits header_block "\r\n") 5))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

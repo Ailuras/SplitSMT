@@ -38,8 +38,8 @@
 ; Constructive constraints to force an empty second field, while keeping f1 numeric -> UNSAT
 (assert (= f1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

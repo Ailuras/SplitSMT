@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const result String)
 (declare-const attack String)
 (declare-const prefix RegLan)
@@ -20,9 +23,6 @@
 (assert (= result (str.++ attack postfixs)))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const delimiter String)
 (assert (= delimiter ";"))
 (assert (>= (num_splits result delimiter) 3))
@@ -30,7 +30,7 @@
 (assert (str.contains (split_rest result delimiter 1) "IEMobile"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

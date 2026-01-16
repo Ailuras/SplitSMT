@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted string-split interface (per provided methodology)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; ========== SAT instance: well-formed HTTP header parsing ==========
 (declare-const hdr_sat String)
@@ -98,8 +98,8 @@
 ; Contradiction: body is "HELLO" length 5, but content-length forced to 4
 (assert (= (str.len body_unsat) content_length_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

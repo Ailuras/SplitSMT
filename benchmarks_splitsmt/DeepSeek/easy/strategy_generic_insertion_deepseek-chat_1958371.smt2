@@ -13,7 +13,7 @@
 (assert (= (str.split_at y delim 0) "b"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

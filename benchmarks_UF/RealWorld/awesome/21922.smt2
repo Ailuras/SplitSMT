@@ -80,7 +80,6 @@
  ; Statement: if i2 >= $i1 goto return 
 (assert (>= var661 var1252)) ; Cond: i2 >= $i1 
  ; Statement: return 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var40=edu.stanford.nlp.util.CollectionValuedMap, var1356=r10, var1202=r0, var322=null_type, var1437=z1, var2212=$r1, var1214=$r33, var2299=r2, var1252=$i1, var661=i2}
 ; {edu.stanford.nlp.util.CollectionValuedMap=var40, r10=var1356, r0=var1202, null_type=var322, z1=var1437, $r1=var2212, $r33=var1214, r2=var2299, $i1=var1252, i2=var661}
@@ -88,4 +87,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r10 := @parameter0: edu.stanford.nlp.util.CollectionValuedMap;	r0 := @parameter1: java.lang.String;	z1 := @parameter2: boolean;	if r0 != null goto $r1 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>();	$r1 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>();	$r33 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s*,\\s*");	r2 = $r33;	$i1 = lengthof $r33;	i2 = 0;	if i2 >= $i1 goto return;	return
 ;block_num 5
+(check-sat)
 (exit)

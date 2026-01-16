@@ -1,10 +1,4 @@
 (set-logic ALL)
-(declare-fun T_1 () Bool)
-(declare-fun var_0xINPUT_109017 () String)
-(assert (= T_1 (= "-" var_0xINPUT_109017)))
-(assert T_1)
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +88,12 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun T_1 () Bool)
+(declare-fun var_0xINPUT_109017 () String)
+(assert (= T_1 (= "-" var_0xINPUT_109017)))
+(assert T_1)
+
+; --- START CONSTRAINT ---
 (declare-const segment_0 String)
 (declare-const segment_1 String)
 (declare-const num_parts Int)
@@ -104,7 +104,7 @@
 (assert (str.contains segment_0 "example"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

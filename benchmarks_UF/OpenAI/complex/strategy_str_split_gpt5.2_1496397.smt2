@@ -72,8 +72,8 @@
 ; SAT/UNSAT diversity: ensure it is a valid email-like structure while forbidding a specific domain
 (assert (not (str.contains domain "aresflashdownloader.com")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

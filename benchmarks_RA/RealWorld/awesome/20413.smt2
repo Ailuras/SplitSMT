@@ -153,7 +153,6 @@
  ; Statement: if $z0 == 0 goto return r6 
 (assert (= (ite var2084 1 0) 0)) ; Cond: $z0 == 0 
  ; Statement: return r6 
-(check-sat)
 ; {toString/-1020053180=([java.lang.Class], java.lang.String), endsWith/985337093=([java.lang.String, java.lang.String], boolean)}
 ; {var1386=r0, var3130=r5, var1499=r1, var2435=$i0, var3026=$i1, var3397=r6, var2084=$z0}
 ; {r0=var1386, r5=var3130, r1=var1499, $i0=var2435, $i1=var3026, r6=var3397, $z0=var2084}
@@ -161,4 +160,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean endsWith(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.Class;	r5 = virtualinvoke r0.<java.lang.Class: java.lang.String toString()>();	r1 = virtualinvoke r5.<java.lang.String: java.lang.String[] split(java.lang.String)>("[.]");	$i0 = lengthof r1;	$i1 = $i0 - 1;	r6 = r1[$i1];	$z0 = virtualinvoke r6.<java.lang.String: boolean endsWith(java.lang.String)>("Transition");	if $z0 == 0 goto return r6;	return r6
 ;block_num 2
+(check-sat)
 (exit)

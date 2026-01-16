@@ -15,7 +15,7 @@
 (assert (= (str.split_rest var_0xINPUT_112727 "-" 2) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

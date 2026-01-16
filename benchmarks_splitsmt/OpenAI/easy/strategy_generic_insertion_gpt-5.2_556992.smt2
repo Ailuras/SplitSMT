@@ -19,7 +19,7 @@
 (assert (or (= seg0 "") (not (str.contains seg0 delim))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

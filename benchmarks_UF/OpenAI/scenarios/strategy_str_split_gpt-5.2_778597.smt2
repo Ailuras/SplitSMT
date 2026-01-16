@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Scenario: HTTP Header Parsing
 ; We model an HTTP request as: request_line "\r\n" headers "\r\n\r\n" body
@@ -92,8 +92,8 @@
 ; Force SAT mode by default (set make_unsat to false)
 (assert (not make_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

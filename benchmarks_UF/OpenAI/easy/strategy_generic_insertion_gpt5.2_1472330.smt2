@@ -19,7 +19,7 @@
 (assert (or (not (str.contains X ":")) (not (str.contains ua_value "community"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

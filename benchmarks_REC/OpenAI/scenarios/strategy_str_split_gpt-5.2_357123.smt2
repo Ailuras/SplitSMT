@@ -1,7 +1,4 @@
 (set-logic ALL)
-
-; Email Validation scenario using str_split interface
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +92,9 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation scenario using str_split interface
+
+
 ; -------------------------
 ; SAT instance: valid-ish email with structured domain
 ; -------------------------
@@ -153,8 +153,8 @@
 (assert (>= (str.len (split_at domain_unsat "." 0)) 1))
 (assert (>= (str.len (split_at domain_unsat "." 1)) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

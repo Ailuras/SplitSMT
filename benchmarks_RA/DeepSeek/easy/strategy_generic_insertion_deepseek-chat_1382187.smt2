@@ -1,10 +1,4 @@
 (set-logic ALL)
-(declare-fun in1 () String)
-(declare-fun in0 () String)
-(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (str.contains in1 ".") 1 0) 0)))) (not (not (= (ite (str.contains in1 "+") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains in1 "@") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) 0 (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0)) ".") 1 0) 0)))) (not (= (ite (= (str.len (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)))) 0) 1 0) 0))) (not (= (ite (str.contains (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+") 1 0) 0))) (not (not (= (ite (= (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1))) "@") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)))) 0) 1 0) 0)))) (not (= (ite (str.contains in0 "@") 1 0) 0))) (not (not (= (ite (= (str.len in0) 0) 1 0) 0)))) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) 0)) (>= (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)))
-
-; --- START CONSTRAINT ---
-; Declare interface functions for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +88,12 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun in1 () String)
+(declare-fun in0 () String)
+(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (str.contains in1 ".") 1 0) 0)))) (not (not (= (ite (str.contains in1 "+") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains in1 "@") 1 0) 0)))) (not (not (= (ite (= (str.len in1) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) 0 (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0)) ".") 1 0) 0)))) (not (= (ite (= (str.len (str.substr (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)))) 0) 1 0) 0))) (not (= (ite (str.contains (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+") 1 0) 0))) (not (not (= (ite (= (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) 0) 1 0) 0)))) (not (not (= (ite (str.contains (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1))) "@") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr in0 (+ (str.indexof in0 "@" 0) 1) (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)))) 0) 1 0) 0)))) (not (= (ite (str.contains in0 "@") 1 0) 0))) (not (not (= (ite (= (str.len in0) 0) 1 0) 0)))) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1) 0)) (>= (- (str.len (str.substr in0 0 (- (str.indexof in0 "@" 0) 0))) (+ (str.indexof (str.substr in0 0 (- (str.indexof in0 "@" 0) 0)) "+" 0) 1)) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof in0 "@" 0) 0) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)) (>= (+ (str.indexof in0 "@" 0) 1) 0)) (>= (- (str.len in0) (+ (str.indexof in0 "@" 0) 1)) 0)))
+
+; --- START CONSTRAINT ---
+; Declare interface functions for str_split
 ; Declare new variables for split results
 (declare-const local_part String)
 (declare-const domain_part String)
@@ -109,7 +109,7 @@
 (assert (>= (num_splits domain_part ".") 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -50,8 +50,8 @@
 ; SAT instance: Add a specific constraint that makes it satisfiable
 (assert (str.contains log_entry "INFO"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

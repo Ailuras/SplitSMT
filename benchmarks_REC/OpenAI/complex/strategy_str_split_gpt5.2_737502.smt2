@@ -176,8 +176,8 @@
 (assert (not (str.contains domain ".")))
 (assert (>= (num_splits domain ".") 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

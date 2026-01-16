@@ -169,7 +169,6 @@
 (define-const var1355!1 String (trim/-847153721 var3615)) ; Statement: r5 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>() 
 (assert true) ; Non Conditional
  ; Statement: return r5 
-(check-sat)
 ; {containsKey/437427949=([com.sun.net.httpserver.Headers, java.lang.Object], boolean), cast-from-String-to-var191=([java.lang.String], java.lang.Object), getFirst/-1258182190=([com.sun.net.httpserver.Headers, java.lang.String], java.lang.String), trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var2980=edu.stanford.nlp.pipeline.StanfordCoreNLPServer, var3557=r4, var2366=com.sun.net.httpserver.Headers, var1866=r0, var1355=r5, var191=java.lang.Object, var3986=$z0, var1448=$r1, var1168=$r2, var3615=$r3}
 ; {edu.stanford.nlp.pipeline.StanfordCoreNLPServer=var2980, r4=var3557, com.sun.net.httpserver.Headers=var2366, r0=var1866, r5=var1355, java.lang.Object=var191, $z0=var3986, $r1=var1448, $r2=var1168, $r3=var3615}
@@ -177,4 +176,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: java.lang.String trim()>": 1}
 ;stmts r4 := @this: edu.stanford.nlp.pipeline.StanfordCoreNLPServer;	r0 := @parameter0: com.sun.net.httpserver.Headers;	r5 = "application/x-www-form-urlencoded";	$z0 = virtualinvoke r0.<com.sun.net.httpserver.Headers: boolean containsKey(java.lang.Object)>("Content-type");	if $z0 == 0 goto return r5;	$r1 = virtualinvoke r0.<com.sun.net.httpserver.Headers: java.lang.String getFirst(java.lang.String)>("Content-type");	$r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");	$r3 = $r2[0];	r5 = virtualinvoke $r3.<java.lang.String: java.lang.String trim()>();	return r5
 ;block_num 3
+(check-sat)
 (exit)

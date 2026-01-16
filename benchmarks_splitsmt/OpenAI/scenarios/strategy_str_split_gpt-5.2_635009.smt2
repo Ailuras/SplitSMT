@@ -82,8 +82,8 @@
 (assert (= tld_bad (str.split_at domain_bad "." (- (str.num_splits domain_bad ".") 1))))
 (assert (>= (str.len tld_bad) 5))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

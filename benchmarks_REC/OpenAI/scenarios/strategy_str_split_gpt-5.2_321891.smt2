@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string splitting
 
 ; =====================
 ; Email validation (SAT instance)
@@ -198,8 +198,8 @@
 (assert (>= (str.len first_label_mixed) 1))
 (assert (not (str.contains local_mixed "@")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

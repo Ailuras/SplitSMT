@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun I0_5 () Int)
 (declare-fun PCTEMP_LHS_1 () Int)
 (declare-fun T0_5 () String)
@@ -27,9 +30,6 @@
 
 ; --- START CONSTRAINT ---
 ; Declare interface functions for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split operations
 (declare-fun delimiter () String)
 (declare-fun segment0 () String)
@@ -45,7 +45,7 @@
 (assert (str.contains segment1 "__utmv=16886264"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

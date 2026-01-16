@@ -15,7 +15,7 @@
 (assert (str.contains (str.split_rest var_0xINPUT_137609 delimiter 2) "ECR"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

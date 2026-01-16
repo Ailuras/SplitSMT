@@ -1,10 +1,4 @@
 (set-logic ALL)
-
-; Scenario: Log Analysis
-; Parsing structured server log entries separated by spaces and colons.
-; Key checks: timestamp format validation and log level extraction.
-
-; str_split interface (uninterpreted)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -98,6 +92,12 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: Log Analysis
+; Parsing structured server log entries separated by spaces and colons.
+; Key checks: timestamp format validation and log level extraction.
+
+; str_split interface (uninterpreted)
+
 ; Core input line
 (declare-const X String)
 
@@ -168,8 +168,8 @@
 ; Ensure level extraction remains meaningful regardless of branch
 (assert (not (= level "")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

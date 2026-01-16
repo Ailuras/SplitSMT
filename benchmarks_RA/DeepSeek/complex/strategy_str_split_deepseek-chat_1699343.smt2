@@ -136,8 +136,8 @@
 (assert (not (str.contains (split_rest header "\n" 3) "\n")))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

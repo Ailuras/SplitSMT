@@ -10,7 +10,7 @@
 (assert (= (str.split_at X delimiter 1) "\u{a}"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

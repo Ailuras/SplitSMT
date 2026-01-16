@@ -146,8 +146,8 @@
 (assert (< content_length_val 10000))
 
 ; Final check for satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

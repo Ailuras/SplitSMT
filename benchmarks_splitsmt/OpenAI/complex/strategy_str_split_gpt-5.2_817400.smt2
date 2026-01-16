@@ -118,8 +118,8 @@
 (assert (not (str.contains localpart ".@")))
 (assert (not (str.contains var_0xINPUT_4157 "\n")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

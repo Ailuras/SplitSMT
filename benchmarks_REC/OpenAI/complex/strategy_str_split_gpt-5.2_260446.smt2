@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; HTTP Header Parsing scenario: extract key-value pairs split by newlines and colon-space
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -96,6 +92,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; HTTP Header Parsing scenario: extract key-value pairs split by newlines and colon-space
+
+; Uninterpreted split interface
+
 ; Input request headers blob
 (declare-const X String)
 
@@ -150,8 +150,8 @@
 ; SAT branch: at least one extra header after Content-Length (not necessarily parsed)
 (assert (>= (num_splits header_blob "\u{a}") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

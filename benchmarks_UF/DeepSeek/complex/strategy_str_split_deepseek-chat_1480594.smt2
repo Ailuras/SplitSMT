@@ -54,8 +54,8 @@
 (assert (or (= content_length_val 0) (= content_length_val 100) (= content_length_val 512)))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

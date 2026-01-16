@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
 (declare-fun var_0xINPUT_58219 () String)
@@ -7,9 +10,6 @@
 (assert T_2)
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const segment0 String)
 (declare-const segment1 String)
 (declare-const total_segments Int)
@@ -20,7 +20,7 @@
 (assert (not (str.contains segment0 "Search")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -66,7 +66,6 @@
  ; Statement: if i4 >= i0 goto return r2 
 (assert (>= var238 var3297)) ; Cond: i4 >= i0 
  ; Statement: return r2 
-(check-sat)
 ; {cast-from-Int-to-Int=([int], int)}
 ; {var2503=org.springframework.javapoet.CodeWriter, var1004=r2, var3301=r0, var528=null_type, var1690=z7, var2043=$i7, var2094=r1, var3297=i0, var238=i4}
 ; {org.springframework.javapoet.CodeWriter=var2503, r2=var1004, r0=var3301, null_type=var528, z7=var1690, $i7=var2043, r1=var2094, i0=var3297, i4=var238}
@@ -74,4 +73,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r2 := @this: org.springframework.javapoet.CodeWriter;	r0 := @parameter0: java.lang.String;	z7 = 1;	$i7 = (int) (- 1);	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\R", $i7);	i0 = lengthof r1;	i4 = 0;	if i4 >= i0 goto return r2;	return r2
 ;block_num 3
+(check-sat)
 (exit)

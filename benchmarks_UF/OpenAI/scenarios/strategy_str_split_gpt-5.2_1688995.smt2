@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation via str_split: '@' separates local-part and domain, '.' separates domain labels.
 
 ; --- Uninterpreted split interface ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Common helper uninterpreted predicates for readability (non-primitive operations) ---
 (declare-fun is_alnum_underscore_plus_hyphen (String) Bool)
@@ -50,7 +50,6 @@
 ; Provide a concrete satisfying witness while still exercising split constraints
 (assert (= email_ok "john_doe+tag@example.co.uk"))
 
-(check-sat)
 
 ; --------------------
 ; UNSAT instance: forces conflicting structure
@@ -73,8 +72,8 @@
 ; Contradiction: force email_bad to be a string with no '@' and no '.' in domain
 (assert (= email_bad "nodomainseparators"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

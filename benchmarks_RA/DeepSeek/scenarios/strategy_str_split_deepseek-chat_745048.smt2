@@ -137,7 +137,7 @@
 (assert (str.in_re (str.at first_field 0) (re.union (re.range "A" "Z") (re.range "a" "z"))))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

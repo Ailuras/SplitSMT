@@ -106,8 +106,8 @@
 ; Tie to a plausible email shape (still contradictory due to dot constraints)
 (assert (= email_unsat "alice@domain"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

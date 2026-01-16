@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface (string split via relaxation)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface (string split via relaxation)
 
 ; Additional uninterpreted helper operations (non-primitive)
 (declare-fun trim (String) String)
@@ -197,8 +197,8 @@
     "\r\n"
     "WXYZ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

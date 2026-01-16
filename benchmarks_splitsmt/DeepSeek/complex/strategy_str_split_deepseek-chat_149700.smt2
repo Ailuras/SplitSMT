@@ -40,9 +40,8 @@
 (assert (not (str.contains domain "..")))
 
 ; Check satisfiability
-(check-sat)
-(get-value (email local_part domain tld))
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

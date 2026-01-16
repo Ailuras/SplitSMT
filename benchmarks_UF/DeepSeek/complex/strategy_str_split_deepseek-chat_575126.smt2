@@ -43,7 +43,7 @@
 ; (assert (< (str.len timestamp) 8))
 ; Uncomment the line above to make it UNSAT
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

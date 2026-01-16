@@ -111,8 +111,8 @@
 (assert (= tld_unsat (str.split_at domain_unsat "." 1)))
 (assert (>= (str.len tld_unsat) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -121,8 +121,8 @@
 ; If level is ERROR then require it to be INFO simultaneously.
 (assert (=> (= level_field "ERROR") (= level_field "INFO")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

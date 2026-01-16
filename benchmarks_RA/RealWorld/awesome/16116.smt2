@@ -152,7 +152,6 @@
 (define-const var3142 Int (get_split_length var995 " " (- 1))) ; Statement: $i0 = lengthof $r5 
 (define-const var3285 Int (- var2069 var3142)) ; Statement: $i2 = $i1 - $i0 
  ; Statement: return $i2 
-(check-sat)
 ; {surfaceForm/46288021=([edu.stanford.nlp.naturalli.Operator], java.lang.String)}
 ; {var1300=edu.stanford.nlp.naturalli.Operator, var319=r3, var3702=r0, var1711=$r1, var2222=$r2, var2069=$i1, var995=$r4, var443=$r5, var3142=$i0, var3285=$i2}
 ; {edu.stanford.nlp.naturalli.Operator=var1300, r3=var319, r0=var3702, $r1=var1711, $r2=var2222, $i1=var2069, $r4=var995, $r5=var443, $i0=var3142, $i2=var3285}
@@ -160,4 +159,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2}
 ;stmts r3 := @parameter0: edu.stanford.nlp.naturalli.Operator;	r0 := @parameter1: edu.stanford.nlp.naturalli.Operator;	$r1 = r0.<edu.stanford.nlp.naturalli.Operator: java.lang.String surfaceForm>;	$r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	$i1 = lengthof $r2;	$r4 = r3.<edu.stanford.nlp.naturalli.Operator: java.lang.String surfaceForm>;	$r5 = virtualinvoke $r4.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	$i0 = lengthof $r5;	$i2 = $i1 - $i0;	return $i2
 ;block_num 1
+(check-sat)
 (exit)

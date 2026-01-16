@@ -114,8 +114,8 @@
 ; SAT branch: keep T_SELECT_1 enabled
 (assert T_SELECT_1)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

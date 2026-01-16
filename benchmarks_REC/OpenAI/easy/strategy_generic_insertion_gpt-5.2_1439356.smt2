@@ -1,8 +1,4 @@
 (set-logic ALL)
-(declare-const X String)
-(assert (str.in_re X (str.to_re "subject:node=LoginNSIS_DOWNLOAD\u{a}")))
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +91,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-const X String)
+(assert (str.in_re X (str.to_re "subject:node=LoginNSIS_DOWNLOAD\u{a}")))
+
+; --- START CONSTRAINT ---
 
 (declare-const prefix String)
 (declare-const payload String)
@@ -107,7 +107,7 @@
 (assert (str.contains payload "LoginNSIS_DOWNLOAD"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

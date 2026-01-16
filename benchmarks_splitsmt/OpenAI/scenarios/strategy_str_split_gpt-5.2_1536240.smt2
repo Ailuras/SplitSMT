@@ -96,8 +96,8 @@
 ; This makes the overall file UNSAT (by design) to provide diversity.
 ; -----------------------------
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

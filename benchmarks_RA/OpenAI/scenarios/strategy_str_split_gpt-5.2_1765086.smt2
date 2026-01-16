@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface: str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface: str_split
 
 ; Additional helper uninterpreted functions (non-primitive operations)
 (declare-fun is_digits (String) Bool)
@@ -186,8 +186,8 @@
     "\r\n"
     "wxyz")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

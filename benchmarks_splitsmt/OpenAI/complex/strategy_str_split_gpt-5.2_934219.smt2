@@ -68,8 +68,8 @@
 (assert (= T_6 (or (>= (str.num_splits domain ".") 3) (str.contains local "+"))))
 (assert T_6)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

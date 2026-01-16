@@ -115,7 +115,7 @@
 (assert (= (str.len part5) 12))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

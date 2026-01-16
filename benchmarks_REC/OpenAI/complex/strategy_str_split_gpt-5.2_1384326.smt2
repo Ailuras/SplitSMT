@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Scenario: HTTP Header Parsing (mutated/extended from seed)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +91,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Scenario: HTTP Header Parsing (mutated/extended from seed)
+
+; Uninterpreted split interface
 
 ; Header/request variables
 (declare-const request String)
@@ -214,8 +214,8 @@
 (assert (>= (num_splits header_block "\r\n") 2))
 (assert (>= (num_splits headers_only "\r\n") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

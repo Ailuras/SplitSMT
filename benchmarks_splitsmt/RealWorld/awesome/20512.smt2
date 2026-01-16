@@ -83,7 +83,6 @@
  ; Statement: if i3 >= i2 goto return 
 (assert (>= var1395 var3485)) ; Cond: i3 >= i2 
  ; Statement: return 
-(check-sat)
 ; {var1099_fillOptions/-926000568=([java.lang.Class, java.util.Properties], void)}
 ; {var3763=java.util.Properties, var2374=r0, var1099=edu.stanford.nlp.util.ArgumentParser, var2182=edu.stanford.nlp.patterns.dep.DepPatternFactory, var3951=class "Ledu/stanford/nlp/patterns/dep/DepPatternFactory;", var3356=edu.stanford.nlp.patterns.PatternFactory, var941=class "Ledu/stanford/nlp/patterns/PatternFactory;", var527=$r1, var1788=r7, var2137=i0, var3780=i1, var2432=$r2, var999=r9, var3485=i2, var1395=i3}
 ; {java.util.Properties=var3763, r0=var2374, edu.stanford.nlp.util.ArgumentParser=var1099, edu.stanford.nlp.patterns.dep.DepPatternFactory=var2182, class "Ledu/stanford/nlp/patterns/dep/DepPatternFactory;"=var3951, edu.stanford.nlp.patterns.PatternFactory=var3356, class "Ledu/stanford/nlp/patterns/PatternFactory;"=var941, $r1=var527, r7=var1788, i0=var2137, i1=var3780, $r2=var2432, r9=var999, i2=var3485, i3=var1395}
@@ -91,4 +90,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2}
 ;stmts r0 := @parameter0: java.util.Properties;	staticinvoke <edu.stanford.nlp.util.ArgumentParser: void fillOptions(java.lang.Class,java.util.Properties)>(class "Ledu/stanford/nlp/patterns/dep/DepPatternFactory;", r0);	staticinvoke <edu.stanford.nlp.util.ArgumentParser: void fillOptions(java.lang.Class,java.util.Properties)>(class "Ledu/stanford/nlp/patterns/PatternFactory;", r0);	$r1 = <edu.stanford.nlp.patterns.dep.DepPatternFactory: java.lang.String ignoreRels>;	r7 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("[,;]");	i0 = lengthof r7;	i1 = 0;	if i1 >= i0 goto $r2 = <edu.stanford.nlp.patterns.dep.DepPatternFactory: java.lang.String allowedTagsForTrigger>;	$r2 = <edu.stanford.nlp.patterns.dep.DepPatternFactory: java.lang.String allowedTagsForTrigger>;	r9 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>("[,;]");	i2 = lengthof r9;	i3 = 0;	if i3 >= i2 goto return;	return
 ;block_num 5
+(check-sat)
 (exit)

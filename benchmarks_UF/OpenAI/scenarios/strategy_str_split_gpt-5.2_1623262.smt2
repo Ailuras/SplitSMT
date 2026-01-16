@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation via str_split interface
 
 ; --- Uninterpreted split interface ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Core variables ---
 (declare-const email String)
@@ -108,8 +108,8 @@
 ; Anchor a concrete email with two '@' which conflicts with (= (num_splits ..) 2)
 (assert (= bad_email "a@@b.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

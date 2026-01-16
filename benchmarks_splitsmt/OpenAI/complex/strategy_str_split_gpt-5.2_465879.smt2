@@ -62,8 +62,8 @@
 ; UNSAT twist: require both that domain contains a dot (already) and that it contains no dot
 (assert (not (str.contains domain ".")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

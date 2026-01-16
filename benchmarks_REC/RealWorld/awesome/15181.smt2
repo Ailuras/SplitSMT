@@ -167,7 +167,6 @@
  ; Statement: if i1 >= $i0 goto return 
 (assert (>= var24 var3064)) ; Cond: i1 >= $i0 
  ; Statement: return 
-(check-sat)
 ; {resultsSlot/506553339=([org.docx4j.model.fields.FieldRef], org.docx4j.wml.R), getContent/2060121830=([org.docx4j.wml.R], java.util.List), var218_clear/2124191932=([java.util.List], void)}
 ; {var1890=org.docx4j.model.fields.FieldRef, var2261=r0, var1401=r3, var3000=null_type, var1690=org.docx4j.wml.R, var806=$r1, var218=java.util.List, var3496=$r2, var3473=r4, var1497=z2, var24=i1, var3064=$i0}
 ; {org.docx4j.model.fields.FieldRef=var1890, r0=var2261, r3=var1401, null_type=var3000, org.docx4j.wml.R=var1690, $r1=var806, java.util.List=var218, $r2=var3496, r4=var3473, z2=var1497, i1=var24, $i0=var3064}
@@ -175,4 +174,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @this: org.docx4j.model.fields.FieldRef;	r3 := @parameter0: java.lang.String;	$r1 = r0.<org.docx4j.model.fields.FieldRef: org.docx4j.wml.R resultsSlot>;	$r2 = virtualinvoke $r1.<org.docx4j.wml.R: java.util.List getContent()>();	interfaceinvoke $r2.<java.util.List: void clear()>();	r4 = virtualinvoke r3.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\R");	z2 = 1;	i1 = 0;	$i0 = lengthof r4;	if i1 >= $i0 goto return;	return
 ;block_num 3
+(check-sat)
 (exit)

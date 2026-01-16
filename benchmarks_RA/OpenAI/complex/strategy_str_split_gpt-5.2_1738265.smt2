@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Goal: process comma-separated fields, ensure correct field counts, and detect empty fields.
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +89,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Goal: process comma-separated fields, ensure correct field counts, and detect empty fields.
+
+; Uninterpreted split interface
+
 ; CSV input and derived fields
 (declare-const csv String)
 (declare-const f0 String)
@@ -132,8 +132,8 @@
 ; Consistency with suffix: since f2 is empty, the suffix from index 2 should begin with a comma
 (assert (str.prefixof "," suffix_from_2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

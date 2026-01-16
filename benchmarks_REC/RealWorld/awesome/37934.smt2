@@ -165,7 +165,6 @@
  ; Statement: if $z1 == 0 goto return 0 
 (assert (= (ite var2771 1 0) 0)) ; Cond: $z1 == 0 
  ; Statement: return 0 
-(check-sat)
 ; {initialized/615252293=([edu.stanford.nlp.time.SUTimeMain$TimebankSent], boolean), docId/615252293=([edu.stanford.nlp.time.SUTimeMain$TimebankSent], java.lang.String)}
 ; {var1627=edu.stanford.nlp.time.SUTimeMain$TimebankSent, var1881=r7, var552=r0, var257=null_type, var1703=r1, var2298=r2, var70=r3, var2047=r4, var3605=r5, var2149=r6, var459=$z0, var601=$r11, var2771=$z1}
 ; {edu.stanford.nlp.time.SUTimeMain$TimebankSent=var1627, r7=var1881, r0=var552, null_type=var257, r1=var1703, r2=var2298, r3=var70, r4=var2047, r5=var3605, r6=var2149, $z0=var459, $r11=var601, $z1=var2771}
@@ -173,4 +172,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1,"<java.lang.String: boolean equals(java.lang.Object)>": 1}
 ;stmts r7 := @this: edu.stanford.nlp.time.SUTimeMain$TimebankSent;	r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\s*\\|\\s*", 9);	r2 = r1[0];	r3 = r1[1];	r4 = r1[2];	r5 = r1[3];	r6 = r1[8];	$z0 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: boolean initialized>;	if $z0 == 0 goto r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.lang.String docId> = r2;	$r11 = r7.<edu.stanford.nlp.time.SUTimeMain$TimebankSent: java.lang.String docId>;	$z1 = virtualinvoke r2.<java.lang.String: boolean equals(java.lang.Object)>($r11);	if $z1 == 0 goto return 0;	return 0
 ;block_num 3
+(check-sat)
 (exit)

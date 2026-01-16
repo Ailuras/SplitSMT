@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for CSV splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for CSV splitting
 
 ; Seed-style declarations (kept core structure)
 (declare-fun I0_2 () Int)
@@ -238,8 +238,8 @@
 (assert (= T_9 (not T_8)))
 (assert T_9)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -162,7 +162,6 @@
  ; Statement: goto [?= return] 
 (assert true) ; Non Conditional
  ; Statement: return 
-(check-sat)
 ; {}
 ; {var693=r0, var1057=null_type, var2919=java.util.logging.Logger, var1307=r3, var2786=z0, var1505=r1, var1306=i0, var2504=i1}
 ; {r0=var693, null_type=var1057, java.util.logging.Logger=var2919, r3=var1307, z0=var2786, r1=var1505, i0=var1306, i1=var2504}
@@ -170,4 +169,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r3 := @parameter1: java.util.logging.Logger;	z0 := @parameter2: boolean;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	if z0 != 0 goto $r2 = new java.lang.StringBuilder;	i0 = lengthof r1;	i1 = 0;	if i1 >= i0 goto (branch);	goto [?= return];	return
 ;block_num 5
+(check-sat)
 (exit)

@@ -75,8 +75,8 @@
 (assert (= T_6 (= var_0xINPUT_161005 "alice.smith@sub.example.com")))
 (assert T_6)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

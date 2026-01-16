@@ -142,7 +142,7 @@
 (assert (not (= first_field field1)))
 (assert (not (= first_field field2)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

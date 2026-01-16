@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface (methodology: Solving String Split Constraints via Relaxation)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; ========= SAT instance: well-formed log analysis =========
 (declare-const log_line_sat String)
@@ -83,7 +83,6 @@
 ; Provide a concrete satisfying example (anchors the SAT instance)
 (assert (= log_line_sat "2025-01-09T13:05:44 INFO web-01 auth:1234 user=alice action=login result=ok"))
 
-(check-sat)
 
 ; ========= UNSAT instance: contradictory timestamp/level constraints =========
 (declare-const log_line_unsat String)

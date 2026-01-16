@@ -150,8 +150,8 @@
 (assert (str.in_re tld (re.* (re.union (re.range "a" "z") (re.range "A" "Z")))))
 
 ; Final check for satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

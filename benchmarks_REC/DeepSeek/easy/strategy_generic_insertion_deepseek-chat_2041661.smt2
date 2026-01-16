@@ -116,7 +116,7 @@
 (assert (>= (num_splits X delimiter2) 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

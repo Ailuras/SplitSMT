@@ -159,7 +159,6 @@
  ; Statement: if i2 >= i0 goto return $r0 
 (assert (>= var818 var1194)) ; Cond: i2 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var3601-init=([], edu.stanford.nlp.stats.ClassicCounter), <init>/927978603=([edu.stanford.nlp.stats.ClassicCounter], void)}
 ; {var3243=r1, var1421=null_type, var3601=edu.stanford.nlp.stats.ClassicCounter, var750=$r0, var1163=r2, var1194=i0, var818=i2}
 ; {r1=var3243, null_type=var1421, edu.stanford.nlp.stats.ClassicCounter=var3601, $r0=var750, r2=var1163, i0=var1194, i2=var818}
@@ -167,4 +166,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new edu.stanford.nlp.stats.ClassicCounter;	specialinvoke $r0.<edu.stanford.nlp.stats.ClassicCounter: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	i0 = lengthof r2;	i2 = 0;	if i2 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

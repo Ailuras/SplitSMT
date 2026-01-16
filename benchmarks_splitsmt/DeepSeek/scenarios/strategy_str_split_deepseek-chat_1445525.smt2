@@ -59,7 +59,7 @@
 ; Constraint 12: Additional validation - headers must start with valid HTTP method
 (assert (str.prefixof "GET " (str.split_at headers "\n" 0)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

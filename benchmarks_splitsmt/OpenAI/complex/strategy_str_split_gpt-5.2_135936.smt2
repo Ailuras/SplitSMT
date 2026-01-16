@@ -69,8 +69,8 @@
                   (> (str.len f3) 0))))
 (assert T_5)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

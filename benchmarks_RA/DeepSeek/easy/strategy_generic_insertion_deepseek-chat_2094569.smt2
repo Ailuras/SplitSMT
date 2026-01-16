@@ -130,7 +130,7 @@
 (assert (str.contains var_0xINPUT_13337 "?d=gg"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

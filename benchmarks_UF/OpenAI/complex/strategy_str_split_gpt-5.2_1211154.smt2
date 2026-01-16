@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; HTTP Header Parsing scenario: parse request headers with colon and CRLF, validate Content-Length
 
 ; --- str_split interface (uninterpreted) ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Variables ---
 (declare-const X String)               ; full HTTP request headers (possibly including request-line)
@@ -99,8 +99,8 @@
 ; Extra: require Host value includes a dot (e.g., example.com)
 (assert (str.contains host_value "."))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted functions for str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted functions for str_split interface
+
 ; Seed-style boolean guards
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -164,8 +164,8 @@
 (assert (= T_6 (= var_0xINPUT_161005 "alice.smith@sub.example.com")))
 (assert T_6)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

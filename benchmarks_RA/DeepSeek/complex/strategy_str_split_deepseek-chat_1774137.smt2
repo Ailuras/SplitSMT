@@ -151,8 +151,8 @@
 (assert (>= (num_splits header "\n") 4))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

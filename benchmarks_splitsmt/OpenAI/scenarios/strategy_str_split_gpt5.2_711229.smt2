@@ -69,8 +69,8 @@
 (assert (= domain_bad "localhost"))
 (assert (= email_bad (str.++ local_bad "@" domain_bad)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -78,7 +78,7 @@
 (assert (= cookie_val0 "Good"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

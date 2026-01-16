@@ -64,7 +64,6 @@
  ; Statement: goto [?= return $i1] 
 (assert true) ; Non Conditional
  ; Statement: return $i1 
-(check-sat)
 ; {var2881_getVersion/530152056=([], java.lang.String), Int_parseInt/1370970945=([java.lang.String], int)}
 ; {var2881=org.jline.nativ.JLineNativeLoader, var3576=$r0, var896=r1, var1391=$i0, var3400=$r2, var2390=$i1}
 ; {org.jline.nativ.JLineNativeLoader=var2881, $r0=var3576, r1=var896, $i0=var1391, $r2=var3400, $i1=var2390}
@@ -72,4 +71,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts $r0 = staticinvoke <org.jline.nativ.JLineNativeLoader: java.lang.String getVersion()>();	r1 = virtualinvoke $r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\.");	$i0 = lengthof r1;	if $i0 <= 0 goto $i1 = 1;	$r2 = r1[0];	$i1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r2);	goto [?= return $i1];	return $i1
 ;block_num 3
+(check-sat)
 (exit)

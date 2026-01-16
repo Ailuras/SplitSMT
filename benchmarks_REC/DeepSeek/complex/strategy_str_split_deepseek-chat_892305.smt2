@@ -138,8 +138,8 @@
 (assert (<= (str.len csv_line) 100))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -176,7 +176,6 @@
  ; Statement: if i1 >= $i0 goto return $r0 
 (assert (>= var386 var3817)) ; Cond: i1 >= $i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var3722-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void), var130_getSieves/-107895238=([java.util.Properties], java.lang.String), var130_getCurrentSieveForTrain/-1427544085=([java.util.Properties], java.lang.String), trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var292=java.util.Properties, var2909=r1, var3722=java.util.ArrayList, var1308=$r0, var130=edu.stanford.nlp.coref.hybrid.HybridCorefProperties, var1452=r2, var1642=r3, var604=null_type, var271=$r4, var966=$r5, var2722=$r6, var1817=$r11, var1073=r7, var3817=$i0, var386=i1}
 ; {java.util.Properties=var292, r1=var2909, java.util.ArrayList=var3722, $r0=var1308, edu.stanford.nlp.coref.hybrid.HybridCorefProperties=var130, r2=var1452, r3=var1642, null_type=var604, $r4=var271, $r5=var966, $r6=var2722, $r11=var1817, r7=var1073, $i0=var3817, i1=var386}
@@ -184,4 +183,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 2,"<java.lang.String: java.lang.String trim()>": 1}
 ;stmts r1 := @parameter0: java.util.Properties;	$r0 = new java.util.ArrayList;	specialinvoke $r0.<java.util.ArrayList: void <init>()>();	r2 = staticinvoke <edu.stanford.nlp.coref.hybrid.HybridCorefProperties: java.lang.String getSieves(java.util.Properties)>(r1);	r3 = staticinvoke <edu.stanford.nlp.coref.hybrid.HybridCorefProperties: java.lang.String getCurrentSieveForTrain(java.util.Properties)>(r1);	if r3 != null goto $r4 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(r3);	$r4 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(r3);	$r5 = $r4[0];	$r6 = virtualinvoke $r5.<java.lang.String: java.lang.String trim()>();	$r11 = virtualinvoke $r6.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*");	r7 = $r11;	$i0 = lengthof $r11;	i1 = 0;	if i1 >= $i0 goto return $r0;	return $r0
 ;block_num 5
+(check-sat)
 (exit)

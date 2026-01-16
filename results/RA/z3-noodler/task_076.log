@@ -2,9 +2,9 @@
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/35414.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:17
-END: 2026-01-15 19:04:17
-DURATION_SEC: 0.292
+START: 2026-01-16 13:06:12
+END: 2026-01-16 13:06:12
+DURATION_SEC: 0.306
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
@@ -14,15 +14,15 @@ EXIT_CODE: 134
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2121454 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 540493 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/3751.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:17
-END: 2026-01-15 19:04:27
-DURATION_SEC: 10.025
+START: 2026-01-16 13:06:12
+END: 2026-01-16 13:06:22
+DURATION_SEC: 10.041
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -34,9 +34,9 @@ EXIT_CODE: 143
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/3766.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:27
-END: 2026-01-15 19:04:27
-DURATION_SEC: 0.165
+START: 2026-01-16 13:06:22
+END: 2026-01-16 13:06:22
+DURATION_SEC: 0.204
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -49,9 +49,9 @@ sat
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/3776.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:27
-END: 2026-01-15 19:04:32
-DURATION_SEC: 5.205
+START: 2026-01-16 13:06:22
+END: 2026-01-16 13:06:27
+DURATION_SEC: 5.145
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
@@ -61,15 +61,15 @@ EXIT_CODE: 134
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2127289 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 545850 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/3783.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:32
-END: 2026-01-15 19:04:37
-DURATION_SEC: 5.114
+START: 2026-01-16 13:06:27
+END: 2026-01-16 13:06:33
+DURATION_SEC: 5.623
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
@@ -79,15 +79,15 @@ EXIT_CODE: 134
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2130091 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 548421 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/37934.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:38
-END: 2026-01-15 19:04:48
-DURATION_SEC: 10.080
+START: 2026-01-16 13:06:33
+END: 2026-01-16 13:06:43
+DURATION_SEC: 10.054
 STATUS: TIMEOUT
 EXIT_CODE: 143
 -----------------------------------------------------------
@@ -99,9 +99,9 @@ EXIT_CODE: 143
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/37944.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:48
-END: 2026-01-15 19:04:48
-DURATION_SEC: 0.154
+START: 2026-01-16 13:06:43
+END: 2026-01-16 13:06:43
+DURATION_SEC: 0.198
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -114,9 +114,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/37946.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:48
-END: 2026-01-15 19:04:49
-DURATION_SEC: 0.758
+START: 2026-01-16 13:06:43
+END: 2026-01-16 13:06:44
+DURATION_SEC: 0.725
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -129,9 +129,9 @@ unknown
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/37.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:49
-END: 2026-01-15 19:04:49
-DURATION_SEC: 0.329
+START: 2026-01-16 13:06:44
+END: 2026-01-16 13:06:44
+DURATION_SEC: 0.331
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
@@ -141,15 +141,15 @@ EXIT_CODE: 134
 terminate called after throwing an instance of 'std::runtime_error'
   what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2139589 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 557276 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 
 ===========================================================
 Solver: z3-noodler
 FILE: benchmarks_RA/RealWorld/awesome/3860.smt2
 TIMEOUT: 10s
-START: 2026-01-15 19:04:49
-END: 2026-01-15 19:04:49
-DURATION_SEC: 0.232
+START: 2026-01-16 13:06:44
+END: 2026-01-16 13:06:45
+DURATION_SEC: 0.316
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------

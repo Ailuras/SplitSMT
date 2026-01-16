@@ -156,8 +156,8 @@
 ; provide an explicit bad-looking candidate to strengthen inconsistency with the segment-count claim
 (assert (= email_bad "a@b.c"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -50,8 +50,8 @@
                                (= field1 "")
                                (>= (str.len field1) 1))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

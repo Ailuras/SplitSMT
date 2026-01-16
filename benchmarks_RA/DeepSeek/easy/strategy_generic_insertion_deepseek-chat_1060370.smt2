@@ -131,7 +131,7 @@
 (assert (str.contains segment1 "__utmv=16886264"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

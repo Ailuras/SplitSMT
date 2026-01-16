@@ -20,7 +20,7 @@
 (assert (>= total_segments 2))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

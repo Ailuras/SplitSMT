@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Email Validation via str_split: mix of SAT + UNSAT branches
-
-; --- str_split interface (uninterpreted, per requirement)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +89,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation via str_split: mix of SAT + UNSAT branches
+
+; --- str_split interface (uninterpreted, per requirement)
+
 ; --- Variables
 (declare-const email String)
 (declare-const local String)
@@ -177,8 +177,8 @@
   )
 )
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

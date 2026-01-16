@@ -132,9 +132,8 @@
 (assert (= log_entry "2023-10-05 14:30:45 INFO: Server started successfully"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message))
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

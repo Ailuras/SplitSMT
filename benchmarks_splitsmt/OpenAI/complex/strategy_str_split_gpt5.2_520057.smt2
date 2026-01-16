@@ -99,8 +99,8 @@
 ; If content_length_str is "0" then enforce body length > 0 (inconsistent with (= (str.len body) content_length) and digit-only parsing)
 (assert (=> (= content_length_str "0") (> (str.len body) 0)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

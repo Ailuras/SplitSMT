@@ -86,8 +86,8 @@
 (assert (= badDomain (str.split_at badEmail "@" 1)))
 (assert (>= (str.num_splits badDomain ".") 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

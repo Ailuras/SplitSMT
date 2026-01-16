@@ -79,8 +79,8 @@
 (assert (= domain_parts_bad (str.num_splits domain_bad ".")))
 (assert (>= domain_parts_bad 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

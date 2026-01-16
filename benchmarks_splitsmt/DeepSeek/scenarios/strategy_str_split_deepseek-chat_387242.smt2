@@ -74,7 +74,7 @@
 (assert (not (str.contains (str.split_at host_header ":" 1) " ")))
 
 ; Final check for satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

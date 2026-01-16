@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 ; Scenario: CSV Processing
 ; Goal: process comma-separated data fields, ensure correct field counts, detect empty fields.
 
 ; Uninterpreted interface functions for split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Boolean guards (preserve core seed structure with T_*)
 (declare-fun T_1 () Bool)
@@ -75,8 +75,8 @@
 (assert (= T_12 (not (str.contains var_0xINPUT_239267 ",,"))))
 (assert T_12)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

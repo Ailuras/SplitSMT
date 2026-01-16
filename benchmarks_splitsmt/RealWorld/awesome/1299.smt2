@@ -94,7 +94,6 @@
 (declare-const var882!1 var2022)
 (declare-const var1317!1 String)
  ; Statement: throw $r9 
-(check-sat)
 ; {Int_parseInt/1370970945=([java.lang.String], int), var2022-init=([], java.lang.IllegalArgumentException), String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), append/672562846=([java.lang.StringBuilder, java.lang.String], java.lang.StringBuilder), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), <init>/875830710=([java.lang.IllegalArgumentException, java.lang.String], void)}
 ; {var1281=r0, var1473=null_type, var3425=r1, var2192=r2, var2092=$i0, var203=$r3, var1736=i1, var934=java.net.UnknownHostException, var3530=$r8, var2022=java.lang.IllegalArgumentException, var882=$r9, var2388=$r10, var2977=$r11, var2779=$r12, var1317=$r13}
 ; {r0=var1281, null_type=var1473, r1=var3425, r2=var2192, $i0=var2092, $r3=var203, i1=var1736, java.net.UnknownHostException=var934, $r8=var3530, java.lang.IllegalArgumentException=var2022, $r9=var882, $r10=var2388, $r11=var2977, $r12=var2779, $r13=var1317}
@@ -102,4 +101,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>": 2,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("/");	r2 = r1[0];	$i0 = lengthof r1;	if $i0 >= 2 goto $r3 = r1[1];	$r3 = r1[1];	i1 = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($r3);	$r8 := @caughtexception;	$r9 = new java.lang.IllegalArgumentException;	$r10 = new java.lang.StringBuilder;	specialinvoke $r10.<java.lang.StringBuilder: void <init>()>();	$r11 = virtualinvoke $r10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("Invalid subnet: ");	$r12 = virtualinvoke $r11.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(r0);	$r13 = virtualinvoke $r12.<java.lang.StringBuilder: java.lang.String toString()>();	specialinvoke $r9.<java.lang.IllegalArgumentException: void <init>(java.lang.String)>($r13);	throw $r9
 ;block_num 3
+(check-sat)
 (exit)

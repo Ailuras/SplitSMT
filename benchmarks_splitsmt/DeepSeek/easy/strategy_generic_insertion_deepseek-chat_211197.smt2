@@ -19,7 +19,7 @@
 (assert (str.contains (str.split_rest s delimiter 0) segment1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

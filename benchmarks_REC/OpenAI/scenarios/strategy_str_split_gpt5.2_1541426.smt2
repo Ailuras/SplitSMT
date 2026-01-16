@@ -207,8 +207,8 @@
 (assert (= req_bad (str.++ "GET / HTTP/1.1\n" "Content-Length: 4\n\n" body_bad)))
 (assert (= body_bad "abc"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

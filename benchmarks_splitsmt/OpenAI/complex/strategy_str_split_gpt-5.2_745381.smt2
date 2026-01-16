@@ -50,8 +50,8 @@
 ; This preserves a visible mutation of the original seed's "-" check but makes the overall instance UNSAT.
 (assert (= csv_line "-"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

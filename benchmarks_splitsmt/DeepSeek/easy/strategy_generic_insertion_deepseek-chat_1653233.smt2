@@ -15,7 +15,7 @@
 (assert (= (str.split_rest A delimiter 2) "path"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

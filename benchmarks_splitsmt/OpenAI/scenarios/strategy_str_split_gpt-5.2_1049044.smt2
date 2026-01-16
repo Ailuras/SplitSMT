@@ -94,8 +94,8 @@
 (assert (> (str.len domain_unsat) 0))
 (assert (not (str.contains domain_unsat atsym)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

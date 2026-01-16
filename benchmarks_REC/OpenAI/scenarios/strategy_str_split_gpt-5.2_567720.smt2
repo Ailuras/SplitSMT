@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted functions for str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted functions for str_split interface
+
 ; -----------------------------
 ; SAT instance: well-formed CSV line with 4 fields, no empty fields
 ; -----------------------------
@@ -139,8 +139,8 @@
 ; Example concrete witness constraint for SAT diversity
 (assert (= csv_line_ok "123,ALICE,alice@example.com,US"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

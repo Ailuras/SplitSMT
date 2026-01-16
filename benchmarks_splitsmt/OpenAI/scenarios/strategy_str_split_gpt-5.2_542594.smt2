@@ -140,8 +140,8 @@
 (assert (= level_b (str.split_at token1_b ":" 0)))
 (assert (= level_b "INFO"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

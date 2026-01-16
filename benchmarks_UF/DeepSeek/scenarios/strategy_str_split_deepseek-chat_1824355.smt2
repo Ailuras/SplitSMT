@@ -47,7 +47,7 @@
 (assert (str.in_re (str.at csv_data (- (str.len csv_data) 1)) (re.range "0" "9")))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

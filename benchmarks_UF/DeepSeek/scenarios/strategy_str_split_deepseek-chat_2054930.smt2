@@ -54,7 +54,7 @@
 (assert (<= (str.len field4) 20))
 
 ; Final check for satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

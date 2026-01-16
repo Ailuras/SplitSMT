@@ -21,7 +21,7 @@
                  (str.in_re hgfc_val (re.+ (re.union (re.range "a" "f") (re.range "0" "9")))))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

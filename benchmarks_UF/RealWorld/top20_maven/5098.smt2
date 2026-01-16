@@ -92,7 +92,6 @@
  ; Statement: if i2 >= i1 goto return 
 (assert (>= var1759!2 var2723)) ; Cond: i2 >= i1 
  ; Statement: return 
-(check-sat)
 ; {toString/-512974245=([java.net.InetAddress], java.lang.String), var3522_isNotBlank/-616714458=([java.lang.String], boolean)}
 ; {var3392=java.net.InetAddress, var3863=r0, var1864=java.util.List, var1235=r4, var3976=$r1, var3167=r2, var1619=$i0, var2723=i1, var1759=i2, var3456=r3, var3522=org.apache.logging.log4j.util.Strings, var87=$z0}
 ; {java.net.InetAddress=var3392, r0=var3863, java.util.List=var1864, r4=var1235, $r1=var3976, r2=var3167, $i0=var1619, i1=var2723, i2=var1759, r3=var3456, org.apache.logging.log4j.util.Strings=var3522, $z0=var87}
@@ -100,4 +99,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.net.InetAddress;	r4 := @parameter1: java.util.List;	$r1 = virtualinvoke r0.<java.net.InetAddress: java.lang.String toString()>();	r2 = virtualinvoke $r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s*/\\s*");	$i0 = lengthof r2;	if $i0 <= 0 goto return;	i1 = lengthof r2;	i2 = 0;	if i2 >= i1 goto return;	r3 = r2[i2];	$z0 = staticinvoke <org.apache.logging.log4j.util.Strings: boolean isNotBlank(java.lang.String)>(r3);	if $z0 == 0 goto i2 = i2 + 1;	i2 = i2 + 1;	goto [?= (branch)];	if i2 >= i1 goto return;	r3 = r2[i2];	$z0 = staticinvoke <org.apache.logging.log4j.util.Strings: boolean isNotBlank(java.lang.String)>(r3);	if $z0 == 0 goto i2 = i2 + 1;	i2 = i2 + 1;	goto [?= (branch)];	if i2 >= i1 goto return;	return
 ;block_num 10
+(check-sat)
 (exit)

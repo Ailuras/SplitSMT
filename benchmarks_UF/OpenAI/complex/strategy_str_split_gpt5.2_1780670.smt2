@@ -59,8 +59,8 @@
 ; Ensure indices are natural (interface constraint reminder)
 (assert (and (>= 0 0) (>= 1 0) (>= 2 0)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

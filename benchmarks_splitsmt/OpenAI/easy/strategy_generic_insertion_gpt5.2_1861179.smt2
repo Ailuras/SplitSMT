@@ -14,7 +14,7 @@
 (assert (not (str.contains seg1 "/")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

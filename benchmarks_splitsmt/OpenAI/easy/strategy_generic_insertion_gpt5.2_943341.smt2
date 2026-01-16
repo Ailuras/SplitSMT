@@ -22,7 +22,7 @@
 (assert (not (= (str.indexof cc_directive1 "=" 0) (- 1))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

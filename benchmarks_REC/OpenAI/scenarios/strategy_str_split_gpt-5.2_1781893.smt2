@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted functions for str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted functions for str_split interface
+
 ; =====================
 ; SAT instance: consistent HTTP header parsing
 ; =====================
@@ -145,7 +145,6 @@
 (assert (= line_cl_sat "Content-Length: 5"))
 (assert (= body_sat "Hello"))
 
-(check-sat)
 
 ; =====================
 ; UNSAT instance: contradictory content-length

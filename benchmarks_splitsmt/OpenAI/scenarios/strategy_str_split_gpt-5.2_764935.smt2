@@ -69,8 +69,8 @@
 ; Make it concrete with two '@'
 (assert (= email_bad "bob@@example.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

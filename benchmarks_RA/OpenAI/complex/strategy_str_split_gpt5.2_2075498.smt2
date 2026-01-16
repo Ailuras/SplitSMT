@@ -161,8 +161,8 @@
 (assert (not (str.contains local "@")))
 (assert (not (str.contains domain "@")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

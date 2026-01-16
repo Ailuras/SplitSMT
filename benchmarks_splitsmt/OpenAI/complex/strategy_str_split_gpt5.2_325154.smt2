@@ -76,8 +76,8 @@
             (and (= field1 "")
                  (>= field_count 3))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

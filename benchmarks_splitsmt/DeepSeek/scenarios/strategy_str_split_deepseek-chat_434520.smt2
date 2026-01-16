@@ -91,7 +91,7 @@
 ; (assert (str.contains email ".."))  ; Double dot in domain
 ; (assert (str.contains local_part "@"))  ; '@' in local part
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

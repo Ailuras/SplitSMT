@@ -51,8 +51,8 @@
 ; Add a constraint to make the problem SAT by allowing flexibility in the header content
 (assert (str.contains header "HTTP/1.1"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

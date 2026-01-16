@@ -26,7 +26,7 @@
 (assert (>= (str.len whole) 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

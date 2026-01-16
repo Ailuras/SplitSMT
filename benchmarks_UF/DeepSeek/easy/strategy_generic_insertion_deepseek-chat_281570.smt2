@@ -12,7 +12,7 @@
 (assert (str.contains (split_at X delimiter 1) "33"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

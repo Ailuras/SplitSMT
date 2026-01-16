@@ -21,7 +21,7 @@
 (assert (not (= (str.split_at var_0xINPUT_464210 delimiter 2) "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

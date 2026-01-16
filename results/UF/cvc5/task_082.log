@@ -1,10 +1,10 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_sat_split.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split2.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:30
-END: 2026-01-15 18:58:30
-DURATION_SEC: 0.142
+START: 2026-01-16 12:53:04
+END: 2026-01-16 12:53:04
+DURATION_SEC: 0.076
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -12,35 +12,23 @@ sat
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split2.smt2
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split3.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:30
-END: 2026-01-15 18:58:30
-DURATION_SEC: 0.120
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split3.smt2
-TIMEOUT: 10s
-START: 2026-01-15 18:58:30
-END: 2026-01-15 18:58:30
-DURATION_SEC: 0.109
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: cvc5
-FILE: benchmarks_UF/RealWorld/Sequences/realworld_unsat_split.smt2
-TIMEOUT: 10s
-START: 2026-01-15 18:58:30
-END: 2026-01-15 18:58:30
+START: 2026-01-16 12:53:04
+END: 2026-01-16 12:53:04
 DURATION_SEC: 0.163
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/seqstr/realworld_unsat_split.smt2
+TIMEOUT: 10s
+START: 2026-01-16 12:53:04
+END: 2026-01-16 12:53:04
+DURATION_SEC: 0.111
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -50,9 +38,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/10560.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:30
-END: 2026-01-15 18:58:31
-DURATION_SEC: 0.121
+START: 2026-01-16 12:53:04
+END: 2026-01-16 12:53:04
+DURATION_SEC: 0.168
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -62,9 +50,9 @@ EXIT_CODE: 1
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/10596.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:31
-END: 2026-01-15 18:58:31
-DURATION_SEC: 0.161
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:05
+DURATION_SEC: 0.140
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
@@ -74,9 +62,9 @@ EXIT_CODE: 1
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/1118.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:31
-END: 2026-01-15 18:58:31
-DURATION_SEC: 0.150
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:05
+DURATION_SEC: 0.105
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -86,9 +74,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/11724.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:31
-END: 2026-01-15 18:58:31
-DURATION_SEC: 0.114
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:05
+DURATION_SEC: 0.121
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -98,9 +86,9 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/12319.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:31
-END: 2026-01-15 18:58:31
-DURATION_SEC: 0.087
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:05
+DURATION_SEC: 0.090
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -110,9 +98,21 @@ sat
 Solver: cvc5
 FILE: benchmarks_UF/RealWorld/top20_gh/12328.smt2
 TIMEOUT: 10s
-START: 2026-01-15 18:58:31
-END: 2026-01-15 18:58:32
-DURATION_SEC: 0.156
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:05
+DURATION_SEC: 0.068
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_UF/RealWorld/top20_gh/12336.smt2
+TIMEOUT: 10s
+START: 2026-01-16 12:53:05
+END: 2026-01-16 12:53:06
+DURATION_SEC: 0.119
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

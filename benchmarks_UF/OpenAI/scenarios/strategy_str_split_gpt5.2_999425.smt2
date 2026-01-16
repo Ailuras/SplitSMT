@@ -73,8 +73,8 @@
 ; Also tie to a concrete email-like string (still contradicts dot constraints)
 (assert (= email_unsat "alice@nodots"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

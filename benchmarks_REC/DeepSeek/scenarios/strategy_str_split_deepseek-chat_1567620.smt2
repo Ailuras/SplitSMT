@@ -131,7 +131,7 @@
 (assert (not (str.prefixof delimiter csv_line)))
 (assert (not (str.suffixof delimiter csv_line)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

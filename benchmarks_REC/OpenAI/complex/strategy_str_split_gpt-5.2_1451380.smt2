@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; CSV Processing scenario: comma-separated fields, field count, and empty-field detection
-
-; str_split interface (uninterpreted)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -96,6 +92,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; CSV Processing scenario: comma-separated fields, field count, and empty-field detection
+
+; str_split interface (uninterpreted)
+
 (declare-const X String)
 (declare-const delim String)
 (declare-const f0 String)
@@ -130,8 +130,8 @@
 ; Constructive constraints to force an empty second field, while keeping f1 numeric -> UNSAT
 (assert (= f1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

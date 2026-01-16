@@ -1,9 +1,4 @@
 (set-logic ALL)
-(declare-const x String)
-(declare-const y String)
-(assert (str.in_re (str.++ y x) (re.+ (str.to_re "!!$$bbaa"))))
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -96,6 +91,11 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-const x String)
+(declare-const y String)
+(assert (str.in_re (str.++ y x) (re.+ (str.to_re "!!$$bbaa"))))
+
+; --- START CONSTRAINT ---
 (declare-const delimiter String)
 (assert (= delimiter "!!"))
 (assert (>= (num_splits (str.++ y x) delimiter) 3))
@@ -104,7 +104,7 @@
 (assert (= (split_rest (str.++ y x) delimiter 2) "$$"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -108,7 +108,7 @@
 (assert (= (split_rest y d (num_splits y d)) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

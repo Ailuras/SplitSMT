@@ -1,10 +1,4 @@
 (set-logic ALL)
-(declare-fun value () String)
-(declare-fun key () String)
-(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "D") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "C") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "B") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "A") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr value (+ (str.indexof value " " 0) 1) (- (str.len value) (+ (str.indexof value " " 0) 1)))) 0) 1 0) 0)))) (not (= (ite (str.contains value " ") 1 0) 0))) (not (not (= (ite (= (str.len value) 0) 1 0) 0)))) (not (= (ite (not (= (str.len value) 0)) 1 0) 0))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{c}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{b}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) " ") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{c}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{b}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len value) 0) 1 0) 0)))) (not (= (ite (= key "www-authenticate") 1 0) 0))) (not (= (ite (= key "www-authenticate") 1 0) 0))) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= (+ (str.indexof value " " 0) 1) 0)) (>= (- (str.len value) (+ (str.indexof value " " 0) 1)) 0)))
-
-; --- START CONSTRAINT ---
-; str_split interface declarations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +88,12 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun value () String)
+(declare-fun key () String)
+(assert (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "D") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "C") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "B") 1 0) 0)))) (not (not (= (ite (str.contains (str.substr value 0 (- (str.indexof value " " 0) 0)) "A") 1 0) 0)))) (not (not (= (ite (= (str.len (str.substr value (+ (str.indexof value " " 0) 1) (- (str.len value) (+ (str.indexof value " " 0) 1)))) 0) 1 0) 0)))) (not (= (ite (str.contains value " ") 1 0) 0))) (not (not (= (ite (= (str.len value) 0) 1 0) 0)))) (not (= (ite (not (= (str.len value) 0)) 1 0) 0))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{c}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{b}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value (- (str.len value) 1)) " ") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{c}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{b}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{d}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{a}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) "\u{9}") 1 0) 0)))) (not (not (= (ite (= (str.at value 0) " ") 1 0) 0)))) (not (not (= (ite (= (str.len value) 0) 1 0) 0)))) (not (= (ite (= key "www-authenticate") 1 0) 0))) (not (= (ite (= key "www-authenticate") 1 0) 0))) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= 0 0)) (>= (- (str.indexof value " " 0) 0) 0)) (>= (+ (str.indexof value " " 0) 1) 0)) (>= (- (str.len value) (+ (str.indexof value " " 0) 1)) 0)))
+
+; --- START CONSTRAINT ---
+; str_split interface declarations
 
 ; new helper variables
 (declare-const scheme String)
@@ -118,7 +118,7 @@
 (assert (> (str.len rest_after_space) 0))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

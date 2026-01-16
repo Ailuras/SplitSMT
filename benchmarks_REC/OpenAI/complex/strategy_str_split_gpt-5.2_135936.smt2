@@ -1,23 +1,4 @@
 (set-logic ALL)
-
-; CSV Processing scenario: ensure correct field counts and detect empty fields
-
-(declare-fun T_1 () Int)
-(declare-fun T_2 () Bool)
-(declare-fun T_3 () Bool)
-(declare-fun T_4 () Bool)
-(declare-fun T_5 () Bool)
-
-(declare-fun var_0xINPUT_399334 () String)
-(declare-fun delim () String)
-(declare-fun f0 () String)
-(declare-fun f1 () String)
-(declare-fun f2 () String)
-(declare-fun f3 () String)
-(declare-fun rest1 () String)
-(declare-fun rest2 () String)
-
-; str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -111,6 +92,25 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; CSV Processing scenario: ensure correct field counts and detect empty fields
+
+(declare-fun T_1 () Int)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+(declare-fun T_5 () Bool)
+
+(declare-fun var_0xINPUT_399334 () String)
+(declare-fun delim () String)
+(declare-fun f0 () String)
+(declare-fun f1 () String)
+(declare-fun f2 () String)
+(declare-fun f3 () String)
+(declare-fun rest1 () String)
+(declare-fun rest2 () String)
+
+; str_split interface
+
 ; Preserve seed core structure: non-empty input
 (assert (= T_1 (str.len var_0xINPUT_399334)))
 (assert (= T_2 (= T_1 0)))
@@ -161,8 +161,8 @@
                   (> (str.len f3) 0))))
 (assert T_5)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

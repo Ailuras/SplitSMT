@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split reasoning
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split reasoning
 
 ; Standard string/int conversion (declare here to be explicit in ALL)
 (declare-fun str.to_int (String) Int)
@@ -214,8 +214,8 @@
     "\r\n"
     "abcde")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

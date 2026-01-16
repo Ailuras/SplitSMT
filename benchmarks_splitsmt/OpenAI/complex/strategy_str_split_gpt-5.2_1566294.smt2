@@ -76,8 +76,8 @@
 (assert (= T_2 (= local_part "a@b")))
 ; Do not assert T_2 to keep the instance SAT
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

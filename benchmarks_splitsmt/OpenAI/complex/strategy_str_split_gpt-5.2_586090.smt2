@@ -56,8 +56,8 @@
 (assert (= T_2 (not T_1)))
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

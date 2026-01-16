@@ -1,7 +1,4 @@
 (set-logic ALL)
-
-; Email Validation scenario using '@' and '.' delimiters via str_split interface
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +89,9 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation scenario using '@' and '.' delimiters via str_split interface
+
+
 (declare-const email String)
 (declare-const local String)
 (declare-const domain String)
@@ -151,8 +151,8 @@
 ; UNSAT twist: require both that domain contains a dot (already) and that it contains no dot
 (assert (not (str.contains domain ".")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

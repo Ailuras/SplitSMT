@@ -1,10 +1,4 @@
 (set-logic ALL)
-(declare-fun s () String)
-(declare-fun t () String)
-(assert (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at s 2) (str.at t (+ 2 (- (str.len t) (str.len s))))) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (- (str.len t) (str.len s)) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.at s 2) (str.at t 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at t 1)) 1 0) 0))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at t 0)) 1 0) 0))) (not (= (ite (> (str.len s) 0) 1 0) 0))) (not (not (= (ite (> (- (str.len t) (str.len s)) 1) 1 0) 0)))) (not (not (= (ite (> (str.len s) (str.len t)) 1 0) 0)))))
-
-; --- START CONSTRAINT ---
-; Declare interface functions for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +88,12 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun s () String)
+(declare-fun t () String)
+(assert (and (and (and (and (and (and (and (and (and (and (and (not (not (not (= (ite (= (str.at s 2) (str.at t (+ 2 (- (str.len t) (str.len s))))) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (not (= (ite (= (- (str.len t) (str.len s)) 0) 1 0) 0)))) (not (not (= (ite (= (str.len s) 2) 1 0) 0)))) (not (not (= (ite (= (str.at s 2) (str.at t 2)) 1 0) 0)))) (not (= (ite (> (str.len s) 2) 1 0) 0))) (not (= (ite (= (str.at s 1) (str.at t 1)) 1 0) 0))) (not (= (ite (> (str.len s) 1) 1 0) 0))) (not (= (ite (= (str.at s 0) (str.at t 0)) 1 0) 0))) (not (= (ite (> (str.len s) 0) 1 0) 0))) (not (not (= (ite (> (- (str.len t) (str.len s)) 1) 1 0) 0)))) (not (not (= (ite (> (str.len s) (str.len t)) 1 0) 0)))))
+
+; --- START CONSTRAINT ---
+; Declare interface functions for str_split
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -108,7 +108,7 @@
 (assert (str.contains s delimiter))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface for string split ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; --- Uninterpreted interface for string split ---
+
 ; --- Seed variable preserved ---
 (declare-fun var0 () String)
 
@@ -179,8 +179,8 @@
             (and (= body "HELLO")
                  (= content_length 4))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

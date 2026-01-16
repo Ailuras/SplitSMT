@@ -73,8 +73,8 @@
 (assert (str.contains host_line ": "))
 (assert (= (str.substr host_line 0 4) "Host"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

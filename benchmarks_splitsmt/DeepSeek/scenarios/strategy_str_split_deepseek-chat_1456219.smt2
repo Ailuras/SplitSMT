@@ -67,7 +67,7 @@
 ; Constraint 14: Message must not contain the delimiter used for splitting (space) at the start
 (assert (not (str.prefixof " " message)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

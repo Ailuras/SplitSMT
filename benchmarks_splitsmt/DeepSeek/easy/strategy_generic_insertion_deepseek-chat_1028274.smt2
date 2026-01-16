@@ -27,7 +27,7 @@
 (assert (str.contains (str.split_rest result delimiter 1) "IEMobile"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

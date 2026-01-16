@@ -161,8 +161,8 @@
 (assert (>= (str.num_splits host_line ":") 2))
 (assert (>= (str.num_splits cl_line ":") 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

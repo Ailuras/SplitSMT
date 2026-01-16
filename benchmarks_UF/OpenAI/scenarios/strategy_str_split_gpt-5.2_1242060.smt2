@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface operations for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Additional helper functions as uninterpreted (non-primitive)
 (declare-fun to_int (String) Int)
@@ -114,8 +114,8 @@
 (assert (= (str.len body_unsat) content_length_unsat))
 
 ; ===== Check both together: should be UNSAT due to the second block =====
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

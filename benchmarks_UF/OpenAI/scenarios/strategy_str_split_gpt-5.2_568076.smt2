@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string splitting
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; -----------------------------
 ; SAT instance: well-formed CSV row with a fixed field count and some content rules
@@ -47,7 +47,6 @@
 (assert (str.prefixof field2 rest_from2))
 (assert (str.contains rest_from2 field3))
 
-(check-sat)
 
 ; -----------------------------
 ; UNSAT instance: contradicts empty-field detection on a concrete row

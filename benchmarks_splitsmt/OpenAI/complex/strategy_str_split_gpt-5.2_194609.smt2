@@ -55,8 +55,8 @@
 (assert (>= (str.len f0) 1))
 (assert (or (= f2 "") (and (>= (str.len f2) 1) (<= (str.len f2) 5))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

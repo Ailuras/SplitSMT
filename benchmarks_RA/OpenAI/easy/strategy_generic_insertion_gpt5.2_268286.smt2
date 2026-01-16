@@ -105,7 +105,7 @@
 (assert (= (split_rest var_0xINPUT_79104 "." 1) "appspot.com."))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

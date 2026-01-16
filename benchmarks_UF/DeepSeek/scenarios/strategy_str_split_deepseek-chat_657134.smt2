@@ -61,7 +61,7 @@
 ; 8. Final assertion requiring overall validity
 (assert overall_valid)
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -47,8 +47,8 @@
 (assert (not (= timestamp "12:00:00")))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

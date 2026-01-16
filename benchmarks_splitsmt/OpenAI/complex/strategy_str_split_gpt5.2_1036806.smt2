@@ -74,8 +74,8 @@
             (and (= (str.num_splits domain ".") 1)
                  (= (str.num_splits domain ".") 3))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

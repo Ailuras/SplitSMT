@@ -96,8 +96,8 @@
 ; Extra: require Host value includes a dot (e.g., example.com)
 (assert (str.contains host_value "."))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

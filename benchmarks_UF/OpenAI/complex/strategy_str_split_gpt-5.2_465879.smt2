@@ -1,10 +1,10 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation scenario using '@' and '.' delimiters via str_split interface
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-const email String)
 (declare-const local String)
@@ -65,8 +65,8 @@
 ; UNSAT twist: require both that domain contains a dot (already) and that it contains no dot
 (assert (not (str.contains domain ".")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

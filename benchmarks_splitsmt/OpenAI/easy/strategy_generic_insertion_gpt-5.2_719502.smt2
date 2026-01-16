@@ -34,7 +34,7 @@
 (assert (<= (str.len x_prefix) (str.len X)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -127,8 +127,7 @@
 (assert (= field_count 5))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_line field_count field_3 has_empty_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

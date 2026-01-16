@@ -145,8 +145,8 @@
 ; Additional sanity: J must be empty to create the empty field at position 1
 (assert (= J ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

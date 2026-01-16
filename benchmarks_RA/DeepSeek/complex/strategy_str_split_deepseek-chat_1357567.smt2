@@ -153,8 +153,8 @@
 (assert (not (str.contains local_part "..")))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

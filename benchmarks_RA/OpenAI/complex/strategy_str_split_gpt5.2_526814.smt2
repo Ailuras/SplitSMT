@@ -157,8 +157,8 @@
     (re.+ (re.union (re.range "A" "Z") (re.range "a" "z")))
   )))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

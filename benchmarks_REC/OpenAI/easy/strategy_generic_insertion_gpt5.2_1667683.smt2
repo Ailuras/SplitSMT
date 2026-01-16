@@ -114,7 +114,7 @@
 (assert (str.in_re version_part (re.++ (str.to_re "version") (str.to_re "\u{a}"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

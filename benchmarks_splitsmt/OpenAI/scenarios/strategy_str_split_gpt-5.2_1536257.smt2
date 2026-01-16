@@ -96,8 +96,8 @@
 ; Pin to a concrete email containing a dot to strengthen the conflict
 (assert (= email_bad "a@b.com"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

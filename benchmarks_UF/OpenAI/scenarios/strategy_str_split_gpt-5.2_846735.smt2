@@ -1,11 +1,11 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation via str_split abstraction
 
 ; --- Uninterpreted str_split interface ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Shared helpers ---
 (declare-const at_delim String)
@@ -98,8 +98,8 @@
 (assert (= tld_bad (split_at domain_bad dot_delim (- (num_splits domain_bad dot_delim) 1))))
 (assert (>= (str.len tld_bad) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

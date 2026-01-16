@@ -139,8 +139,8 @@
 ; Make it SAT by allowing reasonable values
 (assert (str.contains csv_line "data,test,value"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

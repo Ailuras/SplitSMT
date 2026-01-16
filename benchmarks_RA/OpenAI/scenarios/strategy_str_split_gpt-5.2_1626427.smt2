@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for string split
+
 ; =========
 ; CSV Processing Scenario
 ; =========
@@ -162,8 +162,8 @@
 ; relate k_ok to a concrete access to diversify constraints
 (assert (= (split_at csv_row_ok "," k_ok) (split_at csv_row_ok "," k_ok)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -36,7 +36,7 @@
 (assert (str.contains var_0xINPUT_179806 delimiter))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

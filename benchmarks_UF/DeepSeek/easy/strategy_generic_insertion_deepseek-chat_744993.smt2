@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const y String)
 (declare-const y1 String)
 (declare-const y2 String)
@@ -14,17 +17,12 @@
 (assert (str.contains y z))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const delimiter String)
 (assert (= delimiter "u"))
 (assert (>= (num_splits y delimiter) 2))
 (assert (= (split_at y delimiter 0) "CTTGTAAGCAACCTATGAGACTGTATGTCGCTCTCTTCACGTATGTACGGATGATTAGTACAAGTAGTTTACTGTCTAACTCTCCTATAGCCTAACTACTGTGGTCATGCGGTGCACATTTTGGGTAGCAATGACCTGGGCCGGAAGCGCCCACCCGGTCCCTAGCGTGTACAATTAGAGGCGGACATTGCGGTCGTCCG"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
-(get-value (y))
 
 ; [GENERATION STATUS: SUCCESS]
 (check-sat)

@@ -119,7 +119,7 @@
 (assert (str.contains (split_rest attack delimiter 1) "#"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

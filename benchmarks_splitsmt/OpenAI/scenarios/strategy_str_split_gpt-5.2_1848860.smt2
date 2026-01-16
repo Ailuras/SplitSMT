@@ -82,8 +82,8 @@
 ; Contradiction: demand at least one empty field
 (assert (>= empty_count_unsat 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

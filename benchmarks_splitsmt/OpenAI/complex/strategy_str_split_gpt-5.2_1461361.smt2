@@ -58,8 +58,8 @@
       (= (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "A" (str.++ "," (str.++ "B" (str.++ "," "A"))))) _let_0))
          (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "AB" (str.++ "," "AA"))) _let_0))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

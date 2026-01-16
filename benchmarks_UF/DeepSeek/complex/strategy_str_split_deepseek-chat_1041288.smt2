@@ -54,8 +54,8 @@
 ; Additional constraint for SAT/UNSAT diversity: Email must be at least 6 characters
 (assert (>= (str.len email) 6))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -40,8 +40,7 @@
 (assert (str.contains email "example@domain.com"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (email local_part domain domain_name tld))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -156,7 +156,7 @@
             (= utmz_seg1 (str.++ "16886264." utmz_suffix))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

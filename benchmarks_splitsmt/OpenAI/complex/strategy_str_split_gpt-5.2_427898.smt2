@@ -104,8 +104,8 @@
 (assert (str.contains host_value "."))
 (assert (not (str.contains host_value " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

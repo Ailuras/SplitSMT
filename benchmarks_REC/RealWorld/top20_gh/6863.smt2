@@ -189,7 +189,6 @@
  ; Statement: if i1 >= $i0 goto return 
 (assert (>= var1532 var2803)) ; Cond: i1 >= $i0 
  ; Statement: return 
-(check-sat)
 ; {var160-init=([], java.io.StringWriter), <init>/358169345=([java.io.StringWriter], void), omitComments/-1276310728=([org.springframework.core.SortedProperties], boolean), store/-1111572071=([java.util.Properties, java.io.Writer, java.lang.String], void), cast-from-var3902-to-var397=([org.springframework.core.SortedProperties], java.util.Properties), cast-from-var160-to-var989=([java.io.StringWriter], java.io.Writer), toString/138175384=([java.io.StringWriter], java.lang.String)}
 ; {var3902=org.springframework.core.SortedProperties, var2844=r1, var989=java.io.Writer, var3073=r5, var1834=r2, var3284=null_type, var160=java.io.StringWriter, var3816=$r0, var1924=$z0, var2776=$r10, var397=java.util.Properties, var2444=$r8, var3120=$r3, var507=$r9, var2803=$i0, var1532=i1}
 ; {org.springframework.core.SortedProperties=var3902, r1=var2844, java.io.Writer=var989, r5=var3073, r2=var1834, null_type=var3284, java.io.StringWriter=var160, $r0=var3816, $z0=var1924, $r10=var2776, java.util.Properties=var397, $r8=var2444, $r3=var3120, $r9=var507, $i0=var2803, i1=var1532}
@@ -197,4 +196,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @this: org.springframework.core.SortedProperties;	r5 := @parameter0: java.io.Writer;	r2 := @parameter1: java.lang.String;	$r0 = new java.io.StringWriter;	specialinvoke $r0.<java.io.StringWriter: void <init>()>();	$z0 = r1.<org.springframework.core.SortedProperties: boolean omitComments>;	if $z0 == 0 goto $r10 = r2;	$r10 = null;	goto [?= specialinvoke r1.<java.util.Properties: void store(java.io.Writer,java.lang.String)>($r0, $r10)];	specialinvoke r1.<java.util.Properties: void store(java.io.Writer,java.lang.String)>($r0, $r10);	$r8 = virtualinvoke $r0.<java.io.StringWriter: java.lang.String toString()>();	$r3 = <org.springframework.core.SortedProperties: java.lang.String EOL>;	$r9 = virtualinvoke $r8.<java.lang.String: java.lang.String[] split(java.lang.String)>($r3);	$i0 = lengthof $r9;	i1 = 0;	if i1 >= $i0 goto return;	return
 ;block_num 5
+(check-sat)
 (exit)

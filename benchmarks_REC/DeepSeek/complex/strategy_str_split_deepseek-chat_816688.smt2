@@ -136,8 +136,7 @@
 ; Create a SAT instance by adding a specific example constraint
 (assert (str.contains log_entry "2023-01-01 12:00:00"))
 
-(check-sat)
-(get-value (log_entry timestamp log_level message colon_count space_count))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

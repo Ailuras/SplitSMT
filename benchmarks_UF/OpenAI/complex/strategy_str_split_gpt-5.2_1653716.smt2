@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-shaped declarations preserved
 (declare-fun I0_2 () Int)
@@ -180,8 +180,8 @@
 (assert (= unsat_branch false))
 (assert (=> unsat_branch (and (= (num_splits var_0xINPUT_40206 "@") 1) (= (num_splits var_0xINPUT_40206 "@") 2))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

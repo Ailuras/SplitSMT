@@ -69,7 +69,6 @@
  ; Statement: if i4 >= $i1 goto return r3 
 (assert (>= var394 var27)) ; Cond: i4 >= $i1 
  ; Statement: return r3 
-(check-sat)
 ; {var223_slurpFile/458402865=([java.lang.String], java.lang.String), arr-__Array__Int__Float64__-init=([], double[][]), getLength-Arr-Float64-2=([double[][]], int)}
 ; {var3162=r0, var2706=null_type, var223=edu.stanford.nlp.io.IOUtils, var3422=r1, var2510=r2, var791=$i0, var1408=r3, var394=i4, var27=$i1}
 ; {r0=var3162, null_type=var2706, edu.stanford.nlp.io.IOUtils=var223, r1=var3422, r2=var2510, $i0=var791, r3=var1408, i4=var394, $i1=var27}
@@ -77,4 +76,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 = staticinvoke <edu.stanford.nlp.io.IOUtils: java.lang.String slurpFile(java.lang.String)>(r0);	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("[\r\n]+");	$i0 = lengthof r2;	r3 = newarray (double[])[$i0];	i4 = 0;	$i1 = lengthof r3;	if i4 >= $i1 goto return r3;	return r3
 ;block_num 3
+(check-sat)
 (exit)

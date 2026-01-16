@@ -1,7 +1,5 @@
 ; Email Validation scenario: mutated/extended from seed while preserving core structure
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +93,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface
+
 ; Core variable (from seed)
 (declare-const X String)
 
@@ -160,8 +160,8 @@
 ; Ensure X has exactly one '@' and does not contain spaces
 (assert (not (str.contains X " ")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

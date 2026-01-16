@@ -25,7 +25,7 @@
 (assert (str.contains segment1 ".pui"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

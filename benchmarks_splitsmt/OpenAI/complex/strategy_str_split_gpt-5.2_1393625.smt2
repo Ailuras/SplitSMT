@@ -61,8 +61,8 @@
 ; Message should be non-empty if present
 (assert (>= (str.len msg) 0))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

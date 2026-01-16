@@ -176,7 +176,7 @@
 (assert (= segment_after_gast_until_semicolon PCTEMP_LHS_3))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

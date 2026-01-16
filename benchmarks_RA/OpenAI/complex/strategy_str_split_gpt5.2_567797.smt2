@@ -161,8 +161,8 @@
 ; Also require exactly 3 fields for a simple CSV row after header
 (assert (= (num_splits X delim) 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

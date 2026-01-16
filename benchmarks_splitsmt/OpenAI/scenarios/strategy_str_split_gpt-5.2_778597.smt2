@@ -89,8 +89,8 @@
 ; Force SAT mode by default (set make_unsat to false)
 (assert (not make_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

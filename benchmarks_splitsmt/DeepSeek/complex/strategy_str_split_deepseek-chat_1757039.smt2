@@ -37,7 +37,7 @@
 ; Example log entry to make it SAT: "12:30 INFO Server started"
 (assert (= log_entry "12:30 INFO Server started"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

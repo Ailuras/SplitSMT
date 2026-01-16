@@ -1,13 +1,13 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-const x String)
 (declare-const y String)
 (assert (str.in_re x (re.* (re.++ (str.to_re "_") (re.* (str.to_re "^"))))))
 (assert (str.in_re y (re.* (re.++ (str.to_re "_") (re.* (str.to_re "^"))))))
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 (declare-const delimiter String)
 (assert (= delimiter "_"))
 (assert (>= (num_splits x delimiter) 1))
@@ -17,7 +17,7 @@
 (assert (str.contains (split_rest y delimiter 1) "^"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

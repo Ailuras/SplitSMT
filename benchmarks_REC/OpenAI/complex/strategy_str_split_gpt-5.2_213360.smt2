@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: Log Analysis
-; Parsing structured server log entries separated by spaces and colons.
-
-; --- str_split interface (uninterpreted) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -97,6 +92,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: Log Analysis
+; Parsing structured server log entries separated by spaces and colons.
+
+; --- str_split interface (uninterpreted) ---
+
 ; --- Variables ---
 (declare-const log_line String)
 (declare-const ts_date String)
@@ -165,8 +165,8 @@
 ; If make_unsat then forbid any occurrence of "000" or "1" in a star-language (makes it even tighter)
 (assert (=> make_unsat (not (str.in_re log_line (re.* (re.union (str.to_re "000") (str.to_re "1")))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

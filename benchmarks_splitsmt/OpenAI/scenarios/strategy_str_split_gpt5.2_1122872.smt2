@@ -86,8 +86,8 @@
 ; Fix the concrete request so the contradiction is unavoidable
 (assert (= request_unsat "POST /submit HTTP/1.1\r\nContent-Length: 4\r\n\r\nabcde"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

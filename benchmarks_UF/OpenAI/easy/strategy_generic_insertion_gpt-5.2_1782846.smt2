@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
 (declare-fun T_3 () Bool)
@@ -17,9 +20,6 @@
 
 ; --- START CONSTRAINT ---
 ; Interface function signatures
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; New variables
 (declare-fun delim_colon () String)
@@ -38,7 +38,7 @@
 (assert (= (num_splits var_0xINPUT_127551 delim_colon) 2))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -87,7 +87,6 @@
  ; Statement: if i11 >= $i10 goto return $r13 
 (assert (>= var3519 var2908)) ; Cond: i11 >= $i10 
  ; Statement: return $r13 
-(check-sat)
 ; {length/-134980193=([java.lang.String], int), getLength-Arr-Int-1=([int[]], int), var198_max/1360571700=([int, int], int), arr-Int-init=([], int[])}
 ; {var1902=org.jline.builtins.ScreenTerminal, var1372=r7, var921=r8, var2060=null_type, var3653=r0, var2813=r9, var3463=$r10, var853=r11, var834=$i0, var3749=$r12, var2306=$i8, var1685=$i9, var198=java.lang.Math, var2908=$i10, var3451=$r13, var3519=i11}
 ; {org.jline.builtins.ScreenTerminal=var1902, r7=var1372, r8=var921, null_type=var2060, r0=var3653, r9=var2813, $r10=var3463, r11=var853, $i0=var834, $r12=var3749, $i8=var2306, $i9=var1685, java.lang.Math=var198, $i10=var2908, $r13=var3451, i11=var3519}
@@ -95,4 +94,5 @@
 ;cnt {"<java.lang.String: int length()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r7 := @this: org.jline.builtins.ScreenTerminal;	r8 := @parameter0: java.lang.String;	r0 := @parameter1: int[];	r9 = "";	if r8 != null goto $r10 = r8;	$r10 = r8;	r11 = $r10;	$i0 = virtualinvoke $r10.<java.lang.String: int length()>();	if $i0 <= 0 goto $r12 = virtualinvoke r11.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");	$r12 = virtualinvoke r11.<java.lang.String: java.lang.String[] split(java.lang.String)>(";");	$i8 = lengthof $r12;	$i9 = lengthof r0;	$i10 = staticinvoke <java.lang.Math: int max(int,int)>($i8, $i9);	$r13 = newarray (int)[$i10];	i11 = 0;	if i11 >= $i10 goto return $r13;	return $r13
 ;block_num 6
+(check-sat)
 (exit)

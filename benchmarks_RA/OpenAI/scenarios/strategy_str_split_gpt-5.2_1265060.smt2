@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface functions for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface functions for string splitting
 
 ; -----------------------------
 ; SAT instance: well-formed log line
@@ -192,8 +192,8 @@
 (assert (= level_unsat (split_at level_colon_unsat ":" 0)))
 (assert (or (= level_unsat "INFO") (= level_unsat "WARN") (= level_unsat "ERROR") (= level_unsat "DEBUG")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

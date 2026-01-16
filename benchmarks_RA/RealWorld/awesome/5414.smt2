@@ -148,7 +148,6 @@
  ; Statement: if i2 >= i0 goto return 1 
 (assert (>= var2686 var3481)) ; Cond: i2 >= i0 
  ; Statement: return 1 
-(check-sat)
 ; {}
 ; {var1780=r0, var3988=null_type, var261=r1, var3481=i0, var2686=i2}
 ; {r0=var1780, null_type=var3988, r1=var261, i0=var3481, i2=var2686}
@@ -156,4 +155,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	i0 = lengthof r1;	i2 = 0;	if i2 >= i0 goto return 1;	return 1
 ;block_num 3
+(check-sat)
 (exit)

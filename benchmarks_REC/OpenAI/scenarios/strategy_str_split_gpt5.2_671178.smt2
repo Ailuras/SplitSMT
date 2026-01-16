@@ -195,8 +195,8 @@
 (assert (= tld2 (split_at domain "." (- (num_splits domain ".") 1))))
 (assert (= tld2 tld))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

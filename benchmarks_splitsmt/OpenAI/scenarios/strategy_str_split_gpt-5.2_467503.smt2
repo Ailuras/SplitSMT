@@ -83,8 +83,8 @@
 (assert (= bad_tld (str.split_at bad_domain "." (- bad_domain_dot_count 1))))
 (assert (>= (str.len bad_tld) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

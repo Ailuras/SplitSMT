@@ -14,7 +14,7 @@
 (assert (>= (str.num_splits s in0) 3))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

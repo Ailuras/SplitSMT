@@ -13,7 +13,7 @@
 (assert (not (= protocol "file:")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

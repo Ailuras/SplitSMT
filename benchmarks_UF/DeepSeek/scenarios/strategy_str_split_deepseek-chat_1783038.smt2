@@ -62,7 +62,7 @@
     (str.contains (split_rest header_string "\n" 3) "\n")
 ))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

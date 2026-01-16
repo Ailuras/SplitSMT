@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface operations for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface operations for string splitting
+
 ; Inputs / derived fields
 (declare-const email String)
 (declare-const local_part String)
@@ -172,8 +172,8 @@
 (assert (= bad_tld (split_at bad_domain "." (- bad_domain_dot_count 1))))
 (assert (>= (str.len bad_tld) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -146,8 +146,7 @@
 (assert (str.suffixof "\n\n" header))
 
 ; Check satisfiability
-(check-sat)
-(get-value (header method path version host content_length_val))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

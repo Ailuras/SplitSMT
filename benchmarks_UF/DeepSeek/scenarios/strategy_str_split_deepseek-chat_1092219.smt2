@@ -99,8 +99,8 @@
 (assert (= log_entry "2023-12-25 14:30:45 INFO User login successful"))
 (assert overall_valid)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

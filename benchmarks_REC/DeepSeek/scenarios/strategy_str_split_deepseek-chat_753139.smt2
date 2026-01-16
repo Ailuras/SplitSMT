@@ -192,7 +192,7 @@
 (assert (>= last_field_index 0))
 (assert (< last_field_index total_fields))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

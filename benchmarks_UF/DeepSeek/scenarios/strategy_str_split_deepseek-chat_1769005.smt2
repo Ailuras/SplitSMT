@@ -49,8 +49,8 @@
 ; Constraint 10: Additional validation - total characters in CSV line must be at least 20
 (assert (>= (str.len csv_line) 20))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

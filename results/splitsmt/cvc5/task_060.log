@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 60
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-15 19:38:11
+Started: 2026-01-16 13:32:12
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_112964.smt2
-START: 2026-01-15T11:38:11Z
-END: 2026-01-15T11:38:11Z
-DURATION_SEC: .274050184
+START: 2026-01-16T05:32:12Z
+END: 2026-01-16T05:32:12Z
+DURATION_SEC: .184151338
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1134932.smt2
-START: 2026-01-15T11:38:11Z
-END: 2026-01-15T11:38:12Z
-DURATION_SEC: 1.227754808
+START: 2026-01-16T05:32:12Z
+END: 2026-01-16T05:32:13Z
+DURATION_SEC: 1.054116045
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1137404.smt2
-START: 2026-01-15T11:38:13Z
-END: 2026-01-15T11:38:23Z
-DURATION_SEC: 10.313759989
+START: 2026-01-16T05:32:13Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: 10.175409354
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,22 +43,22 @@ unknown
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1173862.smt2
-START: 2026-01-15T11:38:23Z
-END: 2026-01-15T11:38:23Z
-DURATION_SEC: .157395527
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: .119710053
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:38:23] External solver reported errors in output: (error "parse error: /tmp/smt2_fbcby5.smt2:62.62: symbol 'regex' not declared as a type")[0m
+[31m[2026-01-16 13:32:24] External solver reported errors in output: (error "parse error: /tmp/smt2_fiylot.smt2:62.62: symbol 'regex' not declared as a type")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1174592.smt2
-START: 2026-01-15T11:38:23Z
-END: 2026-01-15T11:38:23Z
-DURATION_SEC: .164598682
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: .120912382
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -68,48 +68,48 @@ unsat
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_117640.smt2
-START: 2026-01-15T11:38:23Z
-END: 2026-01-15T11:38:24Z
-DURATION_SEC: .184331022
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: .123554580
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-warning: "reset" command is safely ignored in line 55.
+warning: "reset" command is safely ignored in line 54.
 unsat
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1242060.smt2
-START: 2026-01-15T11:38:24Z
-END: 2026-01-15T11:38:24Z
-DURATION_SEC: .190764402
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: .110071601
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:38:24] External solver reported errors in output: (error "parse error: /tmp/smt2_sd5ouj.smt2:90.14: symbol `to_int' is shadowing a theory function symbol")[0m
+[31m[2026-01-16 13:32:24] External solver reported errors in output: (error "parse error: /tmp/smt2_9axmmc.smt2:90.14: symbol `to_int' is shadowing a theory function symbol")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1250336.smt2
-START: 2026-01-15T11:38:24Z
-END: 2026-01-15T11:38:24Z
-DURATION_SEC: .084203694
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:24Z
+DURATION_SEC: .085356985
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:38:24] External solver reported errors in output: (error "parse error: /tmp/smt2_jnn95g.smt2:107.14: symbol `str.to_int' is shadowing a theory function symbol")[0m
+[31m[2026-01-16 13:32:24] External solver reported errors in output: (error "parse error: /tmp/smt2_vebvkw.smt2:107.14: symbol `str.to_int' is shadowing a theory function symbol")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1265060.smt2
-START: 2026-01-15T11:38:24Z
-END: 2026-01-15T11:38:25Z
-DURATION_SEC: .803332978
+START: 2026-01-16T05:32:24Z
+END: 2026-01-16T05:32:25Z
+DURATION_SEC: .661441600
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -119,14 +119,14 @@ unsat
 ===========================================================
 Solver: SplitSMT-cvc5
 FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1273413.smt2
-START: 2026-01-15T11:38:25Z
-END: 2026-01-15T11:38:25Z
-DURATION_SEC: .194007055
+START: 2026-01-16T05:32:25Z
+END: 2026-01-16T05:32:25Z
+DURATION_SEC: .295953408
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:38:25] External solver reported errors in output: (error "parse error: /tmp/smt2_wgvd5a.smt2:84.14: symbol `to_int' is shadowing a theory function symbol")[0m
+[31m[2026-01-16 13:32:25] External solver reported errors in output: (error "parse error: /tmp/smt2_5jpngq.smt2:84.14: symbol `to_int' is shadowing a theory function symbol")[0m
 unknown
 ===========================================================
 
-Task Group 60 completed at 2026-01-15 19:38:25
+Task Group 60 completed at 2026-01-16 13:32:25

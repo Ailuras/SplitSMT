@@ -75,7 +75,7 @@
 (assert (or (= first_key "-") (not (= var_0xINPUT_107890 "-"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 74
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-15 19:38:37
+Started: 2026-01-16 13:32:41
 ===========================================================
 
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/278.smt2
-START: 2026-01-15T11:38:37Z
-END: 2026-01-15T11:38:38Z
-DURATION_SEC: .238032959
+START: 2026-01-16T05:32:41Z
+END: 2026-01-16T05:32:41Z
+DURATION_SEC: .283010263
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/307.smt2
-START: 2026-01-15T11:38:38Z
-END: 2026-01-15T11:38:40Z
-DURATION_SEC: 2.220931877
+START: 2026-01-16T05:32:41Z
+END: 2026-01-16T05:32:43Z
+DURATION_SEC: 2.434074242
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/3122.smt2
-START: 2026-01-15T11:38:40Z
-END: 2026-01-15T11:38:40Z
-DURATION_SEC: .417542499
+START: 2026-01-16T05:32:43Z
+END: 2026-01-16T05:32:44Z
+DURATION_SEC: .444346759
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +43,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/33306.smt2
-START: 2026-01-15T11:38:40Z
-END: 2026-01-15T11:38:41Z
-DURATION_SEC: .684718047
+START: 2026-01-16T05:32:44Z
+END: 2026-01-16T05:32:45Z
+DURATION_SEC: .680480686
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,16 +55,16 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/33328.smt2
-START: 2026-01-15T11:38:41Z
-END: 2026-01-15T11:38:41Z
-DURATION_SEC: .320052481
+START: 2026-01-16T05:32:45Z
+END: 2026-01-16T05:32:45Z
+DURATION_SEC: .402309292
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-15 19:38:41] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
+[31m[2026-01-16 13:32:45] External solver did not return a valid status. Output: terminate called after throwing an instance of 'std::runtime_error'
   what():  only replace_all with concrete find&replace is supported
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2509802 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 871929 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 [0m
 unknown
 ===========================================================
@@ -72,9 +72,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/33720.smt2
-START: 2026-01-15T11:38:41Z
-END: 2026-01-15T11:38:52Z
-DURATION_SEC: 10.162891383
+START: 2026-01-16T05:32:45Z
+END: 2026-01-16T05:32:55Z
+DURATION_SEC: 10.154230722
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -84,9 +84,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/337.smt2
-START: 2026-01-15T11:38:52Z
-END: 2026-01-15T11:38:55Z
-DURATION_SEC: 3.549183120
+START: 2026-01-16T05:32:55Z
+END: 2026-01-16T05:32:59Z
+DURATION_SEC: 3.597386807
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -96,9 +96,9 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/34010.smt2
-START: 2026-01-15T11:38:55Z
-END: 2026-01-15T11:39:05Z
-DURATION_SEC: 10.177473134
+START: 2026-01-16T05:32:59Z
+END: 2026-01-16T05:33:09Z
+DURATION_SEC: 10.146595551
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -108,9 +108,9 @@ unknown
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/34014.smt2
-START: 2026-01-15T11:39:05Z
-END: 2026-01-15T11:39:06Z
-DURATION_SEC: .333515195
+START: 2026-01-16T05:33:09Z
+END: 2026-01-16T05:33:09Z
+DURATION_SEC: .314143061
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -120,13 +120,13 @@ sat
 ===========================================================
 Solver: SplitSMT-z3-noodler
 FILE: benchmarks_splitsmt/RealWorld/awesome/34019.smt2
-START: 2026-01-15T11:39:06Z
-END: 2026-01-15T11:39:06Z
-DURATION_SEC: .161762140
+START: 2026-01-16T05:33:09Z
+END: 2026-01-16T05:33:10Z
+DURATION_SEC: .147991307
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 74 completed at 2026-01-15 19:39:06
+Task Group 74 completed at 2026-01-16 13:33:10

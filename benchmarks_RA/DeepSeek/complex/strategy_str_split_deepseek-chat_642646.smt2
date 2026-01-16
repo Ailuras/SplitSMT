@@ -136,8 +136,8 @@
 (assert (str.contains log_entry "INFO"))
 
 ; Final checks
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

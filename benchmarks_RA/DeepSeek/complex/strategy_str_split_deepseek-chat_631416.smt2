@@ -128,8 +128,8 @@
 (assert (= (str.len hours_str) 2))
 
 ; Final check for satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

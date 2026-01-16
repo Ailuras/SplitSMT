@@ -47,7 +47,7 @@
 ; This makes the instance SAT; remove or modify to create UNSAT
 (assert (= log_entry "12:34:56 INFO: Server started"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

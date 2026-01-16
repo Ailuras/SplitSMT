@@ -120,7 +120,7 @@
 (assert (= (split_rest var_0xINPUT_114521 "E" 0) var_0xINPUT_114521))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

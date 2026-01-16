@@ -83,8 +83,8 @@
   "\r\n"
   "abcde")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

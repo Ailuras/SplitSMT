@@ -76,8 +76,8 @@
 (assert (=> unsat_guard (and (= (str.num_splits domain_part ".") 1)
                              (>= (str.num_splits domain_part ".") 2))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

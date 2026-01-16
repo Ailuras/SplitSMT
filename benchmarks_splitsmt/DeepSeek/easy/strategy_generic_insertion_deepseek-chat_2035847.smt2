@@ -15,7 +15,7 @@
 (assert (str.contains segment_0 "example"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

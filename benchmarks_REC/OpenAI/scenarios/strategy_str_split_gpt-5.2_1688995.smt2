@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Email Validation via str_split: '@' separates local-part and domain, '.' separates domain labels.
-
-; --- Uninterpreted split interface ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -96,6 +92,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation via str_split: '@' separates local-part and domain, '.' separates domain labels.
+
+; --- Uninterpreted split interface ---
+
 ; --- Common helper uninterpreted predicates for readability (non-primitive operations) ---
 (declare-fun is_alnum_underscore_plus_hyphen (String) Bool)
 (declare-fun is_domain_label (String) Bool)
@@ -139,7 +139,6 @@
 ; Provide a concrete satisfying witness while still exercising split constraints
 (assert (= email_ok "john_doe+tag@example.co.uk"))
 
-(check-sat)
 
 ; --------------------
 ; UNSAT instance: forces conflicting structure
@@ -162,8 +161,8 @@
 ; Contradiction: force email_bad to be a string with no '@' and no '.' in domain
 (assert (= email_bad "nodomainseparators"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -15,7 +15,7 @@
 (assert (= (str.split_rest var_0xINPUT_37713 delimiter 1) "suffix"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -129,8 +129,8 @@
 (assert (str.contains log_entry "INFO"))
 (assert (str.contains log_entry "192.168"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

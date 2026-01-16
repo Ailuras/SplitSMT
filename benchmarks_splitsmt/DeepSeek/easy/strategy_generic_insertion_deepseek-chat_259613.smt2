@@ -14,7 +14,7 @@
 (assert (str.contains extension "avi"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

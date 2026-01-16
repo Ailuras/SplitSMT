@@ -76,7 +76,6 @@
 ; Constrain to a plausible concrete example while still using parsing constraints
 (assert (= log_line_sat "2025-01-07 13:45:59 INFO: auth: login ok"))
 
-(check-sat)
 
 ; ===== UNSAT instance =====
 ; Same structure, but conflicting constraints: timestamp claims hour=25 (invalid) and also fixed string.
@@ -113,8 +112,8 @@
 ; Fix log line to an invalid hour 25 -> should contradict hour range
 (assert (= log_line_unsat "2025-01-07 25:00:00 ERROR: db: connection failed"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

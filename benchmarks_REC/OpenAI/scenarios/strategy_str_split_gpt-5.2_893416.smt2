@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface functions for str_split ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; --- Uninterpreted interface functions for str_split ---
+
 ; --- Log analysis variables ---
 (declare-const log_entry String)
 (declare-const ts_token String)
@@ -169,8 +169,8 @@
 ; Contradiction: time token must have ':' at index 1 (but in "14:03:09" it's at 2)
 (assert (= (str.at time_part 1) ":"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

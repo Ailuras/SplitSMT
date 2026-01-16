@@ -23,7 +23,7 @@
 (assert (not (str.contains x_suffix "`")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

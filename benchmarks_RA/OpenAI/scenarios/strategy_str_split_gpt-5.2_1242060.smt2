@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface operations for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface operations for str_split
 
 ; Additional helper functions as uninterpreted (non-primitive)
 (declare-fun to_int (String) Int)
@@ -200,8 +200,8 @@
 (assert (= (str.len body_unsat) content_length_unsat))
 
 ; ===== Check both together: should be UNSAT due to the second block =====
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

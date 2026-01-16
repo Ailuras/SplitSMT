@@ -95,8 +95,8 @@
             (str.prefixof "POST " header2)
             (str.prefixof "HEAD " header2)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

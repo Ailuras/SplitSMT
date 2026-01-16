@@ -1,23 +1,4 @@
 (set-logic ALL)
-
-; Scenario: Log Analysis
-; Parsing structured server log entries separated by spaces and colons.
-; Key checks: timestamp format validation and log level extraction.
-
-(declare-const X String)
-(declare-const delim_space String)
-(declare-const delim_colon String)
-(declare-const ts_date String)
-(declare-const ts_time String)
-(declare-const ts_full String)
-(declare-const level String)
-(declare-const component String)
-(declare-const msg String)
-(declare-const rest_after_ts String)
-(declare-const rest_after_level String)
-(declare-const rest_after_component String)
-
-; str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -108,6 +89,25 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: Log Analysis
+; Parsing structured server log entries separated by spaces and colons.
+; Key checks: timestamp format validation and log level extraction.
+
+(declare-const X String)
+(declare-const delim_space String)
+(declare-const delim_colon String)
+(declare-const ts_date String)
+(declare-const ts_time String)
+(declare-const ts_full String)
+(declare-const level String)
+(declare-const component String)
+(declare-const msg String)
+(declare-const rest_after_ts String)
+(declare-const rest_after_level String)
+(declare-const rest_after_component String)
+
+; str_split interface
+
 (assert (= delim_space " "))
 (assert (= delim_colon ":"))
 
@@ -176,8 +176,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (and (= level "INFO") (= level "ERROR"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

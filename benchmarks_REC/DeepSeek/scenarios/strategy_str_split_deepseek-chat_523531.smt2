@@ -136,7 +136,7 @@
 ; Constraint 10: Create UNSAT condition by adding contradictory constraint
 ; (assert (= log_level "CRITICAL")) ; Uncomment to make UNSAT
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

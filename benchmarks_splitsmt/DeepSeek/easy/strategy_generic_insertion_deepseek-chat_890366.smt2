@@ -21,7 +21,7 @@
 (assert (str.in_re split_result (re.* (re.range "a" "u"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

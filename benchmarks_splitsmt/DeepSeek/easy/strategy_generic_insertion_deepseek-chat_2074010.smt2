@@ -17,7 +17,7 @@
 (assert (not (str.contains segment0 "Search")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

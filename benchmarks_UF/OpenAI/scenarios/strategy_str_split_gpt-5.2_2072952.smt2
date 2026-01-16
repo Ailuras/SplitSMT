@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string split (as provided)
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --------- SAT instance: plausible log parsing/validation ---------
 (declare-const log_sat String)
@@ -78,8 +78,8 @@
 ; ...but also require it to be "ERROR:" (contradiction)
 (assert (= lvl_unsat "ERROR:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

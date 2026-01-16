@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for str_split
+
 ; Uninterpreted helper predicates/functions for readability
 (declare-fun is_nonempty (String) Bool)
 (declare-fun is_ascii_atom (String) Bool)
@@ -171,8 +171,8 @@
 (assert (= domain_parts_bad (num_splits domain_bad ".")))
 (assert (>= domain_parts_bad 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

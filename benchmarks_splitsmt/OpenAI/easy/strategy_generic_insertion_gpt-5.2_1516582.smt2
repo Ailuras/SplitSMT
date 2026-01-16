@@ -18,7 +18,7 @@
 (assert (not (and (= seg0 "") (= seg1 "") (= seg2 "f"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

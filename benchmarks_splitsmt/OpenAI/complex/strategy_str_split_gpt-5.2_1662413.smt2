@@ -80,8 +80,8 @@
 ; This makes some regex branches impossible while keeping others satisfiable.
 (assert (not (str.contains host_value "\u{a}")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

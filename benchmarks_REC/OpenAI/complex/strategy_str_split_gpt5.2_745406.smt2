@@ -157,8 +157,8 @@
 ; SAT instance constraints (consistent)
 (assert (= parsed_len 42))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

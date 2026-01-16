@@ -40,8 +40,7 @@
 ; Specific example to make it SAT: define a concrete log entry
 (assert (= log_entry "12:34:56 INFO Server started successfully"))
 
-(check-sat)
-(get-value (log_entry timestamp log_level message))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

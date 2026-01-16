@@ -134,8 +134,8 @@
                  (= cl_value_num 0)
                  (= cl_digits "12"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -32,8 +32,7 @@
 (assert (str.contains (str.++ log_entry) "server"))
 ; Constraint 10: Additional check for specific log pattern (makes it SAT)
 (assert (str.contains message "request_id"))
-(check-sat)
-(get-value (log_entry timestamp log_level message))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

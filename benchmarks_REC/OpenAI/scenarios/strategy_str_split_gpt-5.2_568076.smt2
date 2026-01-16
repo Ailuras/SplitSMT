@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for string splitting
+
 ; -----------------------------
 ; SAT instance: well-formed CSV row with a fixed field count and some content rules
 ; -----------------------------
@@ -136,7 +136,6 @@
 (assert (str.prefixof field2 rest_from2))
 (assert (str.contains rest_from2 field3))
 
-(check-sat)
 
 ; -----------------------------
 ; UNSAT instance: contradicts empty-field detection on a concrete row

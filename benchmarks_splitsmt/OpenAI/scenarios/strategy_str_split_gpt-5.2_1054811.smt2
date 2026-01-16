@@ -123,8 +123,8 @@
 (assert (= body_unsat "HELLO"))
 (assert (= cl_int_unsat body_len_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

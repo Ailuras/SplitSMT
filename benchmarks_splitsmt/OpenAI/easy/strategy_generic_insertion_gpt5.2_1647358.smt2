@@ -22,7 +22,7 @@
 (assert (=> (>= (str.num_splits X "\u{a}") 2) (> (str.len rest_after0) 0)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

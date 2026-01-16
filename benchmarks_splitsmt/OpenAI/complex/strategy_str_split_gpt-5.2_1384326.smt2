@@ -122,8 +122,8 @@
 (assert (>= (str.num_splits header_block "\r\n") 2))
 (assert (>= (str.num_splits headers_only "\r\n") 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

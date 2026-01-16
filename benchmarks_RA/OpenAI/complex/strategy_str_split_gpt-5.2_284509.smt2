@@ -1,7 +1,4 @@
 (set-logic ALL)
-
-; Email Validation scenario using str_split interface with '@' and '.' delimiters
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +89,9 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Email Validation scenario using str_split interface with '@' and '.' delimiters
+
+
 (declare-const email String)
 (declare-const local String)
 (declare-const domain String)
@@ -170,8 +170,8 @@
 (assert (= tld "com"))
 (assert (>= (str.len second_level) 1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

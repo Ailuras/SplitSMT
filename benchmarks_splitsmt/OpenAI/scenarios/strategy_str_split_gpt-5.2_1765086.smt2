@@ -97,8 +97,8 @@
     "\r\n"
     "wxyz")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

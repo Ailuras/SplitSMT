@@ -190,8 +190,8 @@
 (assert (=> is_unsat (= log "2025-13-99T99:99:99Z ERROR: host:bad pid:99999 /Referer: http://aa/s/?k=/Hi\u{a}")))
 (assert (=> is_unsat (and (= level "TRACE") (< pid 0))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

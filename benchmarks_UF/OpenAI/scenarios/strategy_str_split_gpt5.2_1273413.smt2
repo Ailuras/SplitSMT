@@ -115,8 +115,8 @@
 (assert (= (str.len u_body) u_content_length))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

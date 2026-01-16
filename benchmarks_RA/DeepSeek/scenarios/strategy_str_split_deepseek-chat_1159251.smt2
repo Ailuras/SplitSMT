@@ -159,7 +159,7 @@
 ; Constraint 13: Make it SAT by ensuring reasonable values
 (assert (str.contains raw_headers "Content-Length: 512\u{a}Host: example.com\u{a}User-Agent: Mozilla\u{a}"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

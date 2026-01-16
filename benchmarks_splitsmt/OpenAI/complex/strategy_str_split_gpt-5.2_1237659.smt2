@@ -92,8 +92,8 @@
 ; (kept conditional to preserve satisfiable overall)
 (assert (=> (str.contains domain "example") (and (= tld "com") (= tld "net"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

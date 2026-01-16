@@ -1,18 +1,4 @@
 (set-logic ALL)
-(declare-fun T_1 () Bool)
-(declare-fun T_2 () Bool)
-(declare-fun T_3 () Bool)
-(declare-fun T_4 () Bool)
-(declare-fun var_0xINPUT_14893 () String)
-(assert (= T_1 (= "-" var_0xINPUT_14893)))
-(assert (= T_2 (not T_1)))
-(assert T_2)
-(assert (= T_3 (= "" var_0xINPUT_14893)))
-(assert (= T_4 (not T_3)))
-(assert T_4)
-
-; --- START CONSTRAINT ---
-; Declare interface function signatures for str_split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -105,6 +91,20 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+(declare-fun var_0xINPUT_14893 () String)
+(assert (= T_1 (= "-" var_0xINPUT_14893)))
+(assert (= T_2 (not T_1)))
+(assert T_2)
+(assert (= T_3 (= "" var_0xINPUT_14893)))
+(assert (= T_4 (not T_3)))
+(assert T_4)
+
+; --- START CONSTRAINT ---
+; Declare interface function signatures for str_split
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -120,7 +120,7 @@
 (assert (not (= segment1 "")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

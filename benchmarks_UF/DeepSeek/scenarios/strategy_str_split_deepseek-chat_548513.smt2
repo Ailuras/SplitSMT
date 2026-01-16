@@ -63,7 +63,7 @@
   (=> (and (>= i 0) (< i num_headers))
       (= (num_splits (split_at request "\n" i) ":") 2))))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

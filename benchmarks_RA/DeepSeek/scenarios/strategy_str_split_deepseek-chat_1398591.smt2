@@ -135,8 +135,7 @@
 (assert (str.contains field_1 "0"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_data field_count field_0 field_1 field_2 field_3 has_empty_field is_valid))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

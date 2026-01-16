@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; --- Uninterpreted interface for str_split ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; --- Uninterpreted interface for str_split ---
 
 ; --- Seed-like variables (preserve core structure) ---
 (declare-fun T_1 () Int)
@@ -187,8 +187,8 @@
             (str.prefixof "POST " header2)
             (str.prefixof "HEAD " header2)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

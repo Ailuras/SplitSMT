@@ -56,8 +56,8 @@
 (assert T_2)
 (assert (= var_0xINPUT_479903 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

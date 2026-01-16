@@ -1,17 +1,4 @@
 (set-logic ALL)
-(declare-fun T_1 () Bool)
-(declare-fun T_2 () Bool)
-(declare-fun T_3 () Bool)
-(declare-fun T_4 () Bool)
-(declare-fun var_0xINPUT_17441 () String)
-(assert (= T_1 (= "-" var_0xINPUT_17441)))
-(assert (= T_2 (not T_1)))
-(assert T_2)
-(assert (= T_3 (= "" var_0xINPUT_17441)))
-(assert (= T_4 (not T_3)))
-(assert T_4)
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -104,6 +91,19 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun T_1 () Bool)
+(declare-fun T_2 () Bool)
+(declare-fun T_3 () Bool)
+(declare-fun T_4 () Bool)
+(declare-fun var_0xINPUT_17441 () String)
+(assert (= T_1 (= "-" var_0xINPUT_17441)))
+(assert (= T_2 (not T_1)))
+(assert T_2)
+(assert (= T_3 (= "" var_0xINPUT_17441)))
+(assert (= T_4 (not T_3)))
+(assert T_4)
+
+; --- START CONSTRAINT ---
 (declare-const delimiter String)
 (assert (= delimiter ","))
 (assert (>= (num_splits var_0xINPUT_17441 delimiter) 3))
@@ -112,7 +112,7 @@
 (assert (= (split_rest var_0xINPUT_17441 delimiter 2) "third"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

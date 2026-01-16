@@ -90,8 +90,8 @@
             (and (= content_length (+ (str.len body) 1))
                  (= (str.len body) content_length))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

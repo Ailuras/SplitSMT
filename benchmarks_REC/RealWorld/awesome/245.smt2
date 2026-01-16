@@ -181,7 +181,6 @@
  ; Statement: if i4 >= $i5 goto return $r22 
 (assert (>= var855 var2262)) ; Cond: i4 >= $i5 
  ; Statement: return $r22 
-(check-sat)
 ; {evalValueList/1368122213=([javax0.jamal.builtins.ForState], javax0.jamal.tools.param.BooleanParameter), is/1027769019=([javax0.jamal.tools.param.BooleanParameter], boolean), separator/1368122213=([javax0.jamal.builtins.ForState], javax0.jamal.tools.param.StringParameter), get/637268509=([javax0.jamal.tools.param.StringParameter], java.lang.String), cast-from-Int-to-Int=([int], int), arr-__Array__Int__String__-init=([], java.lang.String[][])}
 ; {var544=javax0.jamal.builtins.ForState, var2068=r0, var3668=r17, var2706=null_type, var1694=r6, var25=javax0.jamal.api.Position, var2720=r13, var3353=javax0.jamal.tools.param.BooleanParameter, var453=$r1, var784=$z0, var2420=javax0.jamal.tools.param.StringParameter, var3683=$r19, var2112=$r20, var3922=$i8, var1194=$r21, var3479=$i3, var1184=$r22, var855=i4, var2262=$i5}
 ; {javax0.jamal.builtins.ForState=var544, r0=var2068, r17=var3668, null_type=var2706, r6=var1694, javax0.jamal.api.Position=var25, r13=var2720, javax0.jamal.tools.param.BooleanParameter=var3353, $r1=var453, $z0=var784, javax0.jamal.tools.param.StringParameter=var2420, $r19=var3683, $r20=var2112, $i8=var3922, $r21=var1194, $i3=var3479, $r22=var1184, i4=var855, $i5=var2262}
@@ -189,4 +188,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r0 := @this: javax0.jamal.builtins.ForState;	r17 := @parameter0: java.lang.String;	r6 := @parameter1: java.lang.String[];	r13 := @parameter2: javax0.jamal.api.Position;	$r1 = r0.<javax0.jamal.builtins.ForState: javax0.jamal.tools.param.BooleanParameter evalValueList>;	$z0 = virtualinvoke $r1.<javax0.jamal.tools.param.BooleanParameter: boolean is()>();	if $z0 == 0 goto $r19 = r0.<javax0.jamal.builtins.ForState: javax0.jamal.tools.param.StringParameter separator>;	$r19 = r0.<javax0.jamal.builtins.ForState: javax0.jamal.tools.param.StringParameter separator>;	$r20 = virtualinvoke $r19.<javax0.jamal.tools.param.StringParameter: java.lang.String get()>();	$i8 = (int) (- 1);	$r21 = virtualinvoke r17.<java.lang.String: java.lang.String[] split(java.lang.String,int)>($r20, $i8);	$i3 = lengthof $r21;	$r22 = newarray (java.lang.String[])[$i3];	i4 = 0;	$i5 = lengthof $r21;	if i4 >= $i5 goto return $r22;	return $r22
 ;block_num 4
+(check-sat)
 (exit)

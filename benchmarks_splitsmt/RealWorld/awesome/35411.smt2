@@ -71,7 +71,6 @@
  ; Statement: if i8 >= i0 goto return $r0 
 (assert (>= var808 var19)) ; Cond: i8 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var2726-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void)}
 ; {var2121=edu.stanford.nlp.sequences.ColumnDocumentReaderAndWriter$ColumnDocParser, var3924=r4, var1620=r1, var773=null_type, var2726=java.util.ArrayList, var529=$r0, var2196=r2, var19=i0, var808=i8}
 ; {edu.stanford.nlp.sequences.ColumnDocumentReaderAndWriter$ColumnDocParser=var2121, r4=var3924, r1=var1620, null_type=var773, java.util.ArrayList=var2726, $r0=var529, r2=var2196, i0=var19, i8=var808}
@@ -79,4 +78,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r4 := @this: edu.stanford.nlp.sequences.ColumnDocumentReaderAndWriter$ColumnDocParser;	r1 := @parameter0: java.lang.String;	$r0 = new java.util.ArrayList;	specialinvoke $r0.<java.util.ArrayList: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	i0 = lengthof r2;	i8 = 0;	if i8 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

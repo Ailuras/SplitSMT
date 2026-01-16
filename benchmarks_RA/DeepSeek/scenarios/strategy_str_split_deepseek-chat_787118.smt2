@@ -134,7 +134,7 @@
 ; Uncomment the line below to make the instance UNSAT
 ; (assert (str.contains log_entry "INVALID"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

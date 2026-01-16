@@ -17,7 +17,7 @@
 (assert (= segment_count (str.num_splits var_0xINPUT_226630 delimiter)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

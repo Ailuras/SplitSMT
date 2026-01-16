@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun I0_2 () Int)
 (declare-fun I0_4 () Int)
 (declare-fun I0_6 () Int)
@@ -50,9 +53,6 @@
 (assert T_9)
 
 ; --- START CONSTRAINT ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (declare-fun cookie_delim () String)
 (declare-fun first_pair () String)
@@ -78,7 +78,7 @@
 (assert (or (= first_key "-") (not (= var_0xINPUT_107890 "-"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

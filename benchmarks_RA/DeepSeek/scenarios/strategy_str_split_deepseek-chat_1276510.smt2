@@ -133,8 +133,8 @@
 (assert (not (str.suffixof delimiter csv_data)))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

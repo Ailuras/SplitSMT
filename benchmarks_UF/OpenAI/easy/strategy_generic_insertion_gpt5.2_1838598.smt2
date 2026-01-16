@@ -29,7 +29,7 @@
 (assert (= (split_at S "id" 1) (split_at T "id" 1)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -59,8 +59,8 @@
 ; Additional constraint to make it SAT: Provide a concrete example
 (assert (str.contains email "example"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

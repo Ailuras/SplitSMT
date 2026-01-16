@@ -52,8 +52,8 @@
 (assert (< (str.len header) 500))
 
 ; Check satisfiability of the constraints
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

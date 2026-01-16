@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted str_split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted str_split interface
+
 ; Seed-derived core structure
 (declare-fun T_1 () Bool)
 (declare-const var_0xINPUT_113268 String)
@@ -139,8 +139,8 @@
 ; This preserves a visible mutation of the original seed's "-" check but makes the overall instance UNSAT.
 (assert (= csv_line "-"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

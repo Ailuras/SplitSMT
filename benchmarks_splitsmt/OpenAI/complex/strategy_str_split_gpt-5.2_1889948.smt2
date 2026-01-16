@@ -72,8 +72,8 @@
 ; Make it concrete enough to be satisfiable: enforce a common domain prefix
 (assert (or (str.contains domain "example") (str.contains domain "mail")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

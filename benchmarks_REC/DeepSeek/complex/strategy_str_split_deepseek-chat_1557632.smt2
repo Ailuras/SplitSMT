@@ -135,8 +135,7 @@
 (assert (= (str.len timestamp) 5))
 
 ; Check satisfiability
-(check-sat)
-(get-value (log_entry timestamp log_level message colon_segments space_segments))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

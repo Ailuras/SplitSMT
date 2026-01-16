@@ -19,7 +19,7 @@
 (assert (not (str.contains hostValue "ServerToolbar")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

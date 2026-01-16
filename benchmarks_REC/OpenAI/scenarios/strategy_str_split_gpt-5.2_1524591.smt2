@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for split operations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for split operations
+
 ; ========= SAT instance: a well-formed complex email =========
 (declare-const email_ok String)
 (declare-const local_ok String)
@@ -168,8 +168,8 @@
                             (not (str.contains domain_bad ".")))))
 (assert bad_is_valid)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

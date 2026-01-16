@@ -14,7 +14,7 @@
 (assert (str.contains (str.split_rest y delimiter 1) "^"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

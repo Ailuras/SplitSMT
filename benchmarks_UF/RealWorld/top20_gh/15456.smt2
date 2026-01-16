@@ -94,7 +94,6 @@
 (assert (not (= var3544!6 null-var3571)))
 (assert (= (group/-687932879 var3544!6) var2199)) ; Statement: r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String group> = $r6 
  ; Statement: return 
-(check-sat)
 ; {<init>/-279557996=([java.lang.Object], void), cast-from-var3571-to-var3117=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.Object), value/-687932879=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.String), cast-from-Int-to-Int=([int], int), category/-687932879=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.String), serviceInterface/-687932879=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.String), version/-687932879=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.String), group/-687932879=([org.apache.dubbo.registry.nacos.NacosServiceName], java.lang.String)}
 ; {var3571=org.apache.dubbo.registry.nacos.NacosServiceName, var3544=r0, var3120=r1, var3390=null_type, var3117=java.lang.Object, var2857=$i1, var970=r2, var2681=$r3, var1944=$r4, var603=$r5, var2199=$r6}
 ; {org.apache.dubbo.registry.nacos.NacosServiceName=var3571, r0=var3544, r1=var3120, null_type=var3390, java.lang.Object=var3117, $i1=var2857, r2=var970, $r3=var2681, $r4=var1944, $r5=var603, $r6=var2199}
@@ -102,4 +101,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r0 := @this: org.apache.dubbo.registry.nacos.NacosServiceName;	r1 := @parameter0: java.lang.String;	specialinvoke r0.<java.lang.Object: void <init>()>();	r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String value> = r1;	$i1 = (int) (- 1);	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String,int)>(":", $i1);	$r3 = r2[0];	r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String category> = $r3;	$r4 = r2[1];	r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String serviceInterface> = $r4;	$r5 = r2[2];	r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String version> = $r5;	$r6 = r2[3];	r0.<org.apache.dubbo.registry.nacos.NacosServiceName: java.lang.String group> = $r6;	return
 ;block_num 1
+(check-sat)
 (exit)

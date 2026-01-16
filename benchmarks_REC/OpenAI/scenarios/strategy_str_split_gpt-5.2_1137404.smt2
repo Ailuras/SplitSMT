@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string split
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted interface for string split
 
 ; Core HTTP request header string
 (declare-const header_blob String)
@@ -226,8 +226,8 @@
                  (= cl_value_num 0)
                  (= cl_digits "12"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

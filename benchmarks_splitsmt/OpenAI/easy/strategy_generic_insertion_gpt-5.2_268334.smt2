@@ -23,7 +23,7 @@
 (assert (= (str.len seg1) 4))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

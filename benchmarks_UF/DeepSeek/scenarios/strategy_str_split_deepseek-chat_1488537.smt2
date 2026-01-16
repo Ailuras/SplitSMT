@@ -61,7 +61,7 @@
 
 ; 10. Final check
 (assert valid_email)
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

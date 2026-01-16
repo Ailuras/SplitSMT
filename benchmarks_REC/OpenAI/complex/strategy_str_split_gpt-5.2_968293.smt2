@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface for header parsing
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface for header parsing
 
 ; Seed-style declarations preserved
 (declare-fun I0_5 () Int)
@@ -212,8 +212,8 @@
 (assert (not (str.contains host_value "\n")))
 (assert (not (str.contains host_value ":")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

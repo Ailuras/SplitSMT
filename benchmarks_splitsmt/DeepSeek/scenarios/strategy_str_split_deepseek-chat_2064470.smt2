@@ -47,7 +47,7 @@
 ; Final consistency check: total characters in fields plus separators equals line length
 (assert (= (str.len csv_line) (+ (str.len field1) (str.len field2) (str.len field3) (str.len field4) (str.len field5) 4)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

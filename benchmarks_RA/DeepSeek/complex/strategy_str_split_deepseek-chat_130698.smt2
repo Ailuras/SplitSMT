@@ -136,8 +136,7 @@
 (assert (= (split_rest csv_data delimiter 2) (str.++ (split_at csv_data delimiter 2) delimiter (split_rest csv_data delimiter 3))))
 
 ; Final check for satisfiability
-(check-sat)
-(get-value (csv_data field_count field2 field4 has_empty_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

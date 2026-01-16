@@ -178,8 +178,8 @@
 ; Also pin an example domain that does contain a '.' to intensify inconsistency
 (assert (= email_bad "bob@x.y"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: Log Analysis
-; Parsing structured server log entries separated by spaces and colons.
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +89,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: Log Analysis
+; Parsing structured server log entries separated by spaces and colons.
+
+; Uninterpreted split interface
+
 ; Core input log line
 (declare-const X String)
 
@@ -153,8 +153,8 @@
 ; SAT instance: require message to contain a request id field, but do not overconstrain it.
 (assert (str.contains message "req_id:"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

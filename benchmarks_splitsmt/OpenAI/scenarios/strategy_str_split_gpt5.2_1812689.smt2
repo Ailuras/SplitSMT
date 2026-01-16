@@ -106,8 +106,8 @@
             (and (= cl_value "0")
                  (= (str.len body) 1))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

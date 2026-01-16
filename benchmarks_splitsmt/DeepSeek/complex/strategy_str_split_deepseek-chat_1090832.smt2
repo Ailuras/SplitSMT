@@ -45,7 +45,7 @@
 (assert (str.contains (str.split_rest domain "." 1) "."))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

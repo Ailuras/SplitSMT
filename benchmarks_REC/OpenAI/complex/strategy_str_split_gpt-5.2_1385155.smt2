@@ -1,7 +1,5 @@
 ; Log Analysis scenario: structured server log entries separated by spaces and colons
 (set-logic ALL)
-
-; Uninterpreted split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface
 
 ; Keep core seed structure / names
 (declare-fun T_SELECT_1 () Bool)
@@ -206,8 +206,8 @@
 ; SAT branch: keep T_SELECT_1 enabled
 (assert T_SELECT_1)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

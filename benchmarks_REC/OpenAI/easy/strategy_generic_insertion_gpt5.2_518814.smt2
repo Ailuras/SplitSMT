@@ -114,7 +114,7 @@
 (assert (not (= "" seg0_21095)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

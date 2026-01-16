@@ -33,8 +33,8 @@
 (assert (= field_count (str.num_splits csv_line ",")))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

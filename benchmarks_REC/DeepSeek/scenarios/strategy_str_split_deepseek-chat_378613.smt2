@@ -137,7 +137,7 @@
 (assert (= (str.len csv_data) (+ (str.len field0) (str.len field1) (str.len field2) (str.len field3) 3)))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -161,7 +161,7 @@
 (assert (>= (str.len J) 1))
 (assert (distinct L F))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

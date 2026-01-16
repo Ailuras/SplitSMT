@@ -192,7 +192,7 @@
 ; This makes the problem satisfiable
 (assert (str.contains email "example@domain.com"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

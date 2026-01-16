@@ -22,8 +22,7 @@
 (assert (= (str.split_at y delimiter 2) "AGCAACCT"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
-(get-value (y))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

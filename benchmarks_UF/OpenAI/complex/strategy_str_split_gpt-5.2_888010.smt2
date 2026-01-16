@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: Log Analysis
 ; Parsing structured server log entries separated by spaces and colons.
@@ -18,9 +21,6 @@
 (declare-const rest_after_component String)
 
 ; str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (assert (= delim_space " "))
 (assert (= delim_colon ":"))
@@ -90,8 +90,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (and (= level "INFO") (= level "ERROR"))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

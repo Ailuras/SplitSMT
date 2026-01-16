@@ -42,7 +42,7 @@
 (assert (>= (str.len csv_line) 10))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

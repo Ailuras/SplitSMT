@@ -110,7 +110,7 @@
 (assert (>= (str.len rest2) 0))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,4 @@
 (set-logic ALL)
-(declare-fun var0 () String)
-(assert (str.in_re var0 (re.++ (re.* (re.* (re.union (re.* (re.* (re.+ (re.+ (str.to_re "00"))))) (re.+ (re.+ (re.union (re.+ (str.to_re "111")) (re.union (str.to_re "22") (str.to_re "33")))))))) (re.union (re.* (re.union (re.union (re.union (re.+ (re.union (str.to_re "444") (str.to_re "55"))) (re.* (re.+ (str.to_re "666")))) (re.+ (re.* (re.union (str.to_re "777") (str.to_re "88"))))) (re.union (re.+ (re.+ (re.+ (str.to_re "9")))) (re.* (re.+ (re.union (str.to_re "aaa") (str.to_re "b"))))))) (re.union (re.+ (re.union (re.+ (re.+ (re.+ (str.to_re "cc")))) (re.* (re.* (re.+ (str.to_re "dd")))))) (re.union (re.+ (re.union (re.union (re.* (str.to_re "eee")) (re.+ (str.to_re "fff"))) (re.union (re.union (str.to_re "gg") (str.to_re "hhh")) (re.union (str.to_re "ii") (str.to_re "j"))))) (re.* (re.union (re.+ (re.* (str.to_re "k"))) (re.+ (re.* (str.to_re "l")))))))))))
-(assert (<= 15 (str.len var0)))
-
-; --- START CONSTRAINT ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +88,11 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun var0 () String)
+(assert (str.in_re var0 (re.++ (re.* (re.* (re.union (re.* (re.* (re.+ (re.+ (str.to_re "00"))))) (re.+ (re.+ (re.union (re.+ (str.to_re "111")) (re.union (str.to_re "22") (str.to_re "33")))))))) (re.union (re.* (re.union (re.union (re.union (re.+ (re.union (str.to_re "444") (str.to_re "55"))) (re.* (re.+ (str.to_re "666")))) (re.+ (re.* (re.union (str.to_re "777") (str.to_re "88"))))) (re.union (re.+ (re.+ (re.+ (str.to_re "9")))) (re.* (re.+ (re.union (str.to_re "aaa") (str.to_re "b"))))))) (re.union (re.+ (re.union (re.+ (re.+ (re.+ (str.to_re "cc")))) (re.* (re.* (re.+ (str.to_re "dd")))))) (re.union (re.+ (re.union (re.union (re.* (str.to_re "eee")) (re.+ (str.to_re "fff"))) (re.union (re.union (str.to_re "gg") (str.to_re "hhh")) (re.union (str.to_re "ii") (str.to_re "j"))))) (re.* (re.union (re.+ (re.* (str.to_re "k"))) (re.+ (re.* (str.to_re "l")))))))))))
+(assert (<= 15 (str.len var0)))
+
+; --- START CONSTRAINT ---
 (declare-const delimiter String)
 (assert (= delimiter "00"))
 (assert (>= (num_splits var0 delimiter) 3))
@@ -100,7 +100,7 @@
 (assert (str.contains (split_rest var0 delimiter 1) "111"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

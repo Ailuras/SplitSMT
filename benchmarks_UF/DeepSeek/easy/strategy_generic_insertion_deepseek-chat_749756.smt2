@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun var_4 () String)
 (declare-fun var_5 () String)
 (assert (str.in_re (str.++ var_4 "z" var_5 ) (re.* (re.union (str.to_re "b") (re.++ (str.to_re "a") (re.++ (re.* (str.to_re "z")) (str.to_re "b")))))))
@@ -11,9 +14,6 @@
 
 ; --- START CONSTRAINT ---
 ; Declare interface functions for str_split
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 ; Declare new variables for split operations
 (declare-const delimiter String)
 (declare-const segment0 String)
@@ -28,7 +28,7 @@
 (assert (str.contains (split_rest var_5 delimiter 0) "b"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

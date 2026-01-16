@@ -149,7 +149,7 @@
 (assert (<= (str.len host_value) 100))
 (assert (<= (str.len user_agent_value) 200))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

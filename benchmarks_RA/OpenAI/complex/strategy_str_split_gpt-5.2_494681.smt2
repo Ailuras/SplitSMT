@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Goal: ensure correct field counts and detect empty fields
-
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +89,10 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Goal: ensure correct field counts and detect empty fields
+
+
 (declare-const T_1 Bool)
 (declare-const T_2 Bool)
 (declare-const var_0xINPUT_78913 String)
@@ -133,8 +133,8 @@
 ; Structural sanity: rest_after1 should contain a comma because it covers fields 1 and 2
 (assert (str.contains rest_after1 ","))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

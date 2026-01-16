@@ -114,8 +114,8 @@
 (assert (str.in_re local (re.++ (re.+ (re.union (re.range "a" "z") (re.union (re.range "0" "9") (str.to_re "_")))) (re.* (re.union (re.range "a" "z") (re.union (re.range "0" "9") (re.union (str.to_re "_") (str.to_re "."))))))))
 (assert (str.in_re host (re.++ (re.+ (re.union (re.range "a" "z") (re.range "0" "9"))) (re.* (re.union (re.union (re.range "a" "z") (re.range "0" "9")) (str.to_re "-"))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -30,17 +30,20 @@ def normalize_content(content: List[str]) -> Tuple[List[str], dict]:
     """
     Normalize SMT-LIB content:
     1. Truncate file at the first (pop) command (inclusive).
-    2. Remove (push) and (get-model) commands from the retained content.
-    3. Ensure (check-sat) is present (if missing, add it before exit).
+    2. Remove (push), (get-model), and (check-sat) commands from the retained content.
+    3. Ensure a single (check-sat) is present at the end.
     4. Ensure (exit) is present at the end.
     
     Returns: (normalized_lines, statistics)
     """
     stats = {
         "get_model_removed": 0,
+        "get_value_removed": 0,
         "push_removed": 0,
         "pop_truncated": False,
+        "check_sat_removed": 0,
         "check_sat_added": 0,
+        "exit_removed": 0,
         "exit_added": 0
     }
     
@@ -51,13 +54,14 @@ def normalize_content(content: List[str]) -> Tuple[List[str], dict]:
     truncated_content = []
     found_pop = False
     for line in content:
+        # Check for (pop) - simple check to avoid complexity
         if "(pop" in line:
             found_pop = True
             stats["pop_truncated"] = True
             break
         truncated_content.append(line)
         
-    # 2. Filter push and get-model
+    # 2. Filter push, get-model, check-sat, and exit
     filtered_lines = []
     for line in truncated_content:
         # Check for (get-model)
@@ -68,34 +72,33 @@ def normalize_content(content: List[str]) -> Tuple[List[str], dict]:
         if "(push" in line:
             stats["push_removed"] += 1
             continue
+        # Check for (get-value)
+        if "(get-value" in line:
+            stats["get_value_removed"] += 1
+            continue
+        # Check for (check-sat) - we remove all and add one at the end
+        if "(check-sat)" in line:
+            stats["check_sat_removed"] += 1
+            continue
+        # Check for (exit) - we remove all and add one at the end
+        if "(exit)" in line:
+            stats["exit_removed"] += 1
+            continue
             
         filtered_lines.append(line)
     
     # 3 & 4. Ensure check-sat and exit
     final_lines = list(filtered_lines)
     
-    # Check if we already have them
-    has_check_sat = any("(check-sat)" in line for line in final_lines)
-    has_exit = any("(exit)" in line for line in final_lines)
-    
-    if not has_check_sat:
-        if has_exit:
-            # Insert before the first exit
-            for i, line in enumerate(final_lines):
-                if "(exit)" in line:
-                    final_lines.insert(i, "(check-sat)")
-                    stats["check_sat_added"] += 1
-                    break
-        else:
-            final_lines.append("(check-sat)")
-            stats["check_sat_added"] += 1
+    # Always add (check-sat)
+    final_lines.append("(check-sat)")
+    stats["check_sat_added"] += 1
             
-    if not has_exit:
-        final_lines.append("(exit)")
-        stats["exit_added"] += 1
+    # Always ensure (exit) is last
+    final_lines.append("(exit)")
+    stats["exit_added"] += 1
     
     return final_lines, stats
-
 def process_file(src_path: Path, dst_path: Path) -> Tuple[bool, dict, str]:
     """Process a single SMT2 file."""
     try:
@@ -182,9 +185,12 @@ def main():
         if success:
             print(colored(f"[SUCCESS] File normalized successfully!", Colors.GREEN))
             print(f"  (get-model) removed: {stats['get_model_removed']}")
+            print(f"  (get-value) removed: {stats['get_value_removed']}")
             print(f"  (push) removed:      {stats['push_removed']}")
             print(f"  Truncated at (pop):  {'Yes' if stats['pop_truncated'] else 'No'}")
+            print(f"  (check-sat) removed: {stats['check_sat_removed']}")
             print(f"  (check-sat) added:   {stats['check_sat_added']}")
+            print(f"  (exit) removed:      {stats['exit_removed']}")
             print(f"  (exit) added:        {stats['exit_added']}")
         else:
             print(colored(f"[ERROR] Failed to process file: {error}", Colors.RED))
@@ -218,9 +224,12 @@ def main():
             "success": 0,
             "failed": 0,
             "get_model_removed": 0,
+            "get_value_removed": 0,
             "push_removed": 0,
             "pop_truncated": 0,
+            "check_sat_removed": 0,
             "check_sat_added": 0,
+            "exit_removed": 0,
             "exit_added": 0
         }
         
@@ -233,10 +242,13 @@ def main():
             if success:
                 total_stats["success"] += 1
                 total_stats["get_model_removed"] += stats["get_model_removed"]
+                total_stats["get_value_removed"] += stats["get_value_removed"]
                 total_stats["push_removed"] += stats["push_removed"]
                 if stats["pop_truncated"]:
                     total_stats["pop_truncated"] += 1
+                total_stats["check_sat_removed"] += stats["check_sat_removed"]
                 total_stats["check_sat_added"] += stats["check_sat_added"]
+                total_stats["exit_removed"] += stats["exit_removed"]
                 total_stats["exit_added"] += stats["exit_added"]
                 print(colored(f"  ✓ {rel_path}", Colors.GREEN))
             else:
@@ -253,9 +265,12 @@ def main():
         if total_stats['failed'] > 0:
             print(f"Failed:                {colored(str(total_stats['failed']), Colors.RED)}")
         print(f"Total (get-model) removed: {colored(str(total_stats['get_model_removed']), Colors.CYAN)}")
+        print(f"Total (get-value) removed: {colored(str(total_stats['get_value_removed']), Colors.CYAN)}")
         print(f"Total (push) removed:      {colored(str(total_stats['push_removed']), Colors.CYAN)}")
         print(f"Total files truncated:     {colored(str(total_stats['pop_truncated']), Colors.CYAN)}")
+        print(f"Total (check-sat) removed: {colored(str(total_stats['check_sat_removed']), Colors.CYAN)}")
         print(f"Total (check-sat) added:   {colored(str(total_stats['check_sat_added']), Colors.CYAN)}")
+        print(f"Total (exit) removed:      {colored(str(total_stats['exit_removed']), Colors.CYAN)}")
         print(f"Total (exit) added:        {colored(str(total_stats['exit_added']), Colors.CYAN)}")
         print()
         

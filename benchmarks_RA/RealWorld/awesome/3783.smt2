@@ -189,7 +189,6 @@
 (declare-const var2815!1 String)
 (assert true) ; Non Conditional
  ; Statement: return 
-(check-sat)
 ; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), arr-var2963-init=([], java.lang.Object[]), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), cast-from-String-to-var2963=([java.lang.String], java.lang.Object), var1648_log/2127824580=([java.lang.Object[]], void), info/114590825=([java.util.logging.Logger, java.lang.String], void)}
 ; {var2604=r0, var637=null_type, var1219=java.util.logging.Logger, var1643=r5, var1599=z0, var14=r1, var1525=$r2, var0=i2, var292=i3, var2963=java.lang.Object, var3816=$r3, var269=$r4, var1648=edu.stanford.nlp.util.logging.Redwood, var2815=$r6}
 ; {r0=var2604, null_type=var637, java.util.logging.Logger=var1219, r5=var1643, z0=var1599, r1=var14, $r2=var1525, i2=var0, i3=var292, java.lang.Object=var2963, $r3=var3816, $r4=var269, edu.stanford.nlp.util.logging.Redwood=var1648, $r6=var2815}
@@ -197,4 +196,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.String toString()>": 2}
 ;stmts r0 := @parameter0: java.lang.String;	r5 := @parameter1: java.util.logging.Logger;	z0 := @parameter2: boolean;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	if z0 != 0 goto $r2 = new java.lang.StringBuilder;	$r2 = new java.lang.StringBuilder;	specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();	i2 = lengthof r1;	i3 = 0;	if i3 >= i2 goto $r3 = newarray (java.lang.Object)[1];	$r3 = newarray (java.lang.Object)[1];	$r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();	$r3[0] = $r4;	staticinvoke <edu.stanford.nlp.util.logging.Redwood: void log(java.lang.Object[])>($r3);	$r6 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();	virtualinvoke r5.<java.util.logging.Logger: void info(java.lang.String)>($r6);	return
 ;block_num 5
+(check-sat)
 (exit)

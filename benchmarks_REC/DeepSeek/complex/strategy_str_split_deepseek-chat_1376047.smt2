@@ -130,8 +130,8 @@
 (assert (= csv_line "A123,empty,value,test,456"))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -60,7 +60,7 @@
   (=> (and (>= i 0) (< i num_headers))
       (= (str.num_splits (str.split_at request "\n" i) ":") 2))))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

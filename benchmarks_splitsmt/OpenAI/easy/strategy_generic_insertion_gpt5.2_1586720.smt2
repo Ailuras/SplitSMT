@@ -18,7 +18,7 @@
 (assert (= (str.split_at img_body "/>\n" 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

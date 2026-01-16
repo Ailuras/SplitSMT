@@ -24,7 +24,7 @@
             (= ua_prefix (str.substr X 0 (str.indexof X "User-Agent:" 0)))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted functions for string split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =====================
 ; Scenario: Log Analysis (SAT instance)
@@ -93,8 +93,8 @@
 ; Pin a plausible bad_log_line (doesn't matter; constraints already inconsistent)
 (assert (= bad_log_line "2025-01-09 12:34:56 ERROR: boom"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

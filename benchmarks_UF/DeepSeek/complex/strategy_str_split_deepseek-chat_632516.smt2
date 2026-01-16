@@ -53,8 +53,7 @@
 (assert (str.contains header "\n"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (header first_line content_length_val key1 value1 key2 value2))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

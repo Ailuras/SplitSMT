@@ -84,8 +84,8 @@
 ; Make it satisfiable by providing one concrete example logline
 (assert (= logline "2026-01-09T12:34:56 INFO auth_service: user login ok"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

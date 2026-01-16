@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted string-split interface (per provided methodology)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -90,6 +88,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted string-split interface (per provided methodology)
 
 ; ========== SAT instance: well-formed HTTP header parsing ==========
 (declare-const hdr_sat String)
@@ -184,8 +184,8 @@
 ; Contradiction: body is "HELLO" length 5, but content-length forced to 4
 (assert (= (str.len body_unsat) content_length_unsat))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

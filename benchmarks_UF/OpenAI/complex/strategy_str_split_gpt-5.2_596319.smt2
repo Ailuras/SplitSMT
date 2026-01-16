@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; --- Uninterpreted interface for HTTP header parsing (split-based) ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- Core variables (preserve seed structure) ---
 (declare-const result String)
@@ -98,8 +98,8 @@
 ; If cl_int is 0 then body length must be > 0 (contradiction when cl_int=0)
 (assert (=> (= cl_int 0) (> (str.len body) 0)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

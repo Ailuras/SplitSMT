@@ -1,12 +1,12 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Scenario: CSV Processing
 ; Purpose: reason about comma-separated fields, enforce field counts, and detect empty fields
 
 ; --- Uninterpreted split interface (str_split) ---
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; --- CSV inputs and derived fields ---
 (declare-const csv_line String)
@@ -61,8 +61,8 @@
       (= (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "A" (str.++ "," (str.++ "B" (str.++ "," "A"))))) _let_0))
          (str.in_re csv_line (re.++ _let_0 (str.to_re (str.++ "AB" (str.++ "," "AA"))) _let_0))))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

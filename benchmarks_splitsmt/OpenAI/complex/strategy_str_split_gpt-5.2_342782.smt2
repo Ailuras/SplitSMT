@@ -92,8 +92,8 @@
 (assert (= marker "X-Force-Unsat"))
 (assert (=> (str.contains X marker) (and (= cl 5) (= cl 10))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

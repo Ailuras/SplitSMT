@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; CSV Processing scenario: ensure correct field counts and detect empty fields
 
@@ -18,9 +21,6 @@
 (declare-fun rest2 () String)
 
 ; str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Preserve seed core structure: non-empty input
 (assert (= T_1 (str.len var_0xINPUT_399334)))
@@ -72,8 +72,8 @@
                   (> (str.len f3) 0))))
 (assert T_5)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

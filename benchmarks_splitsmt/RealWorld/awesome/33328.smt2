@@ -75,7 +75,6 @@
 (assert (not (= var283!1 null-__Array__Int__String__)))
 (assert (= (select var283!1 0) var3713)) ; Statement: $r5[0] = r0 
  ; Statement: return $r5 
-(check-sat)
 ; {trim/-847153721=([java.lang.String], java.lang.String), splitRegex/-1299977600=([edu.stanford.nlp.process.DocumentPreprocessor$PlainTextIterator$1], java.lang.String), arr-String-init=([], java.lang.String[])}
 ; {var3522=edu.stanford.nlp.process.DocumentPreprocessor$PlainTextIterator$1, var3495=r1, var3713=r0, var1673=null_type, var2630=$r3, var1867=$r2, var2653=r4, var3995=$i0, var283=$r5}
 ; {edu.stanford.nlp.process.DocumentPreprocessor$PlainTextIterator$1=var3522, r1=var3495, r0=var3713, null_type=var1673, $r3=var2630, $r2=var1867, r4=var2653, $i0=var3995, $r5=var283}
@@ -83,4 +82,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @this: edu.stanford.nlp.process.DocumentPreprocessor$PlainTextIterator$1;	r0 := @parameter0: java.lang.String;	$r3 = virtualinvoke r0.<java.lang.String: java.lang.String trim()>();	$r2 = r1.<edu.stanford.nlp.process.DocumentPreprocessor$PlainTextIterator$1: java.lang.String splitRegex>;	r4 = virtualinvoke $r3.<java.lang.String: java.lang.String[] split(java.lang.String)>($r2);	$i0 = lengthof r4;	if $i0 != 2 goto $r5 = newarray (java.lang.String)[1];	$r5 = newarray (java.lang.String)[1];	$r5[0] = r0;	return $r5
 ;block_num 2
+(check-sat)
 (exit)

@@ -80,8 +80,8 @@
                               (= parsed_len 1)
                               (= (str.len body) 0))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

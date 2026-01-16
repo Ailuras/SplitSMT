@@ -17,7 +17,7 @@
 (assert (<= (str.len X_head) (str.len X)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

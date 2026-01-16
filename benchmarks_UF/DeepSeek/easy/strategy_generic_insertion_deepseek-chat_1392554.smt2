@@ -17,7 +17,7 @@
 (assert (>= (num_splits var_0xINPUT_230341 ":") 2))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

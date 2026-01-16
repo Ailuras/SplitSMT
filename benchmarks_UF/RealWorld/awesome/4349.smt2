@@ -76,7 +76,6 @@
  ; Statement: if i3 >= i0 goto return $r0 
 (assert (>= var349 var3853)) ; Cond: i3 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var1295-init=([], java.util.LinkedHashMap), <init>/-1461814690=([java.util.LinkedHashMap], void), trim/-847153721=([java.lang.String], java.lang.String)}
 ; {var3160=r1, var3182=null_type, var1295=java.util.LinkedHashMap, var3736=$r0, var718=$r2, var1196=r3, var3853=i0, var349=i3}
 ; {r1=var3160, null_type=var3182, java.util.LinkedHashMap=var1295, $r0=var3736, $r2=var718, r3=var1196, i0=var3853, i3=var349}
@@ -84,4 +83,5 @@
 ;cnt {"<java.lang.String: java.lang.String trim()>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new java.util.LinkedHashMap;	specialinvoke $r0.<java.util.LinkedHashMap: void <init>()>();	$r2 = virtualinvoke r1.<java.lang.String: java.lang.String trim()>();	r3 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(",\\s*");	i0 = lengthof r3;	i3 = 0;	if i3 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

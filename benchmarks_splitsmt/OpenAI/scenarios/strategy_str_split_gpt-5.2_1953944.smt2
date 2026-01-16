@@ -85,8 +85,8 @@
 ; Impose expected empty field1 due to consecutive commas in the concrete string
 (assert (= uns_field1 ""))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

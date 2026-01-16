@@ -112,7 +112,7 @@
 (assert (= input_suffix "pe"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

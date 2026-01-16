@@ -1,9 +1,4 @@
 (set-logic ALL)
-
-; Scenario: CSV Processing
-; Goal: process comma-separated data fields to ensure correct field counts and detect empty fields
-
-; Split interface (uninterpreted)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -97,6 +92,11 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Scenario: CSV Processing
+; Goal: process comma-separated data fields to ensure correct field counts and detect empty fields
+
+; Split interface (uninterpreted)
+
 ; Seed remnants (mutated/extended)
 (declare-fun T_1 () Bool)
 (declare-const var_0xINPUT_283257 String)
@@ -148,8 +148,8 @@
 ; Also require the overall input not to be exactly "Search" to avoid degenerate single-token input
 (assert (not T_1))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

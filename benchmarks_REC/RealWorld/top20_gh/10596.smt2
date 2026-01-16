@@ -172,7 +172,6 @@
  ; Statement: if i7 >= $i3 goto return r7 
 (assert (>= var1861 var2880)) ; Cond: i7 >= $i3 
  ; Statement: return r7 
-(check-sat)
 ; {length/-134980193=([java.lang.String], int), substring/850833817=([java.lang.String, int], java.lang.String), cast-from-Int-to-Int=([int], int)}
 ; {var2425=r0, var3951=null_type, var2347=i6, var2113=$i0, var1250=$r6, var1684=r1, var1997=org.springframework.javapoet.ClassName, var432=r7, var280=$r2, var1356=$i9, var3749=$r4, var2880=$i3, var1861=i7}
 ; {r0=var2425, null_type=var3951, i6=var2347, $i0=var2113, $r6=var1250, r1=var1684, org.springframework.javapoet.ClassName=var1997, r7=var432, $r2=var280, $i9=var1356, $r4=var3749, $i3=var2880, i7=var1861}
@@ -180,4 +179,5 @@
 ;cnt {"<java.lang.String: int length()>": 1,"<java.lang.String: java.lang.String substring(int)>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String,int)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	i6 = 0;	$i0 = virtualinvoke r0.<java.lang.String: int length()>();	if i6 >= $i0 goto (branch);	if i6 != 0 goto $i1 = i6 - 1;	$r6 = "";	goto [?= r1 = $r6];	r1 = $r6;	r7 = null;	$r2 = virtualinvoke r0.<java.lang.String: java.lang.String substring(int)>(i6);	$i9 = (int) (- 1);	$r4 = virtualinvoke $r2.<java.lang.String: java.lang.String[] split(java.lang.String,int)>("\\.", $i9);	$i3 = lengthof $r4;	i7 = 0;	if i7 >= $i3 goto return r7;	return r7
 ;block_num 7
+(check-sat)
 (exit)

@@ -56,8 +56,8 @@
 ; Make it SAT by providing a concrete example
 (assert (= email "user.name+tag@sub.example.co.uk"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -42,8 +42,8 @@
 ; SAT instance: provide a concrete email satisfying constraints
 (assert (= email "alice.smith+tag@sub.example.COM"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

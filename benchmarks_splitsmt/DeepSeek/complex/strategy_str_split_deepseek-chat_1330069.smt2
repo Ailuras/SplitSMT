@@ -34,7 +34,7 @@
 ; Create a UNSAT instance by adding contradictory constraint
 (assert (not (str.contains log_entry " ")))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -51,7 +51,7 @@
 ; Constraint 8: Additional validation: header_line must be a substring of request ending before newline
 (assert (str.prefixof header_line (split_at request "\u{a}" 0)))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for string splitting
+
 ; Boolean structure preserved from seed
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -143,8 +143,8 @@
 ; Ensure only one '@' by disallowing '@' in domain as well
 (assert (not (str.contains domain_part "@")))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

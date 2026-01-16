@@ -22,7 +22,7 @@
 (assert (str.in_re segment1 (re.++ ((_ re.loop 12 15) (re.range "0" "9")) (str.to_re "\u{a}"))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

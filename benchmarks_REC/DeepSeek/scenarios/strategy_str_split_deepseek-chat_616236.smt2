@@ -135,7 +135,7 @@
 ; Additional regex constraint: CSV data must match a pattern with alphanumeric fields separated by commas
 (assert (str.in_re csv_data (re.++ (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9"))) (re.* (re.++ (str.to_re ",") (re.+ (re.union (re.range "A" "Z") (re.range "a" "z") (re.range "0" "9"))))) )))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

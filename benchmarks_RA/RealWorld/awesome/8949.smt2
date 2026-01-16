@@ -174,7 +174,6 @@
 (declare-const var2924!1 String)
 (assert true) ; Non Conditional
  ; Statement: return 
-(check-sat)
 ; {String-init=([], java.lang.StringBuilder), <init>/1968657023=([java.lang.StringBuilder], void), toString/-2075883882=([java.lang.StringBuilder], java.lang.String), info/114590825=([java.util.logging.Logger, java.lang.String], void)}
 ; {var3315=r0, var2774=null_type, var2567=java.util.logging.Logger, var2575=r3, var2644=z0, var1864=r1, var3378=$r2, var1979=i2, var73=i3, var2924=$r4}
 ; {r0=var3315, null_type=var2774, java.util.logging.Logger=var2567, r3=var2575, z0=var2644, r1=var1864, $r2=var3378, i2=var1979, i3=var73, $r4=var2924}
@@ -182,4 +181,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.StringBuilder: void <init>()>": 1,"<java.lang.StringBuilder: java.lang.String toString()>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r3 := @parameter1: java.util.logging.Logger;	z0 := @parameter2: boolean;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>("\n");	if z0 != 0 goto $r2 = new java.lang.StringBuilder;	$r2 = new java.lang.StringBuilder;	specialinvoke $r2.<java.lang.StringBuilder: void <init>()>();	i2 = lengthof r1;	i3 = 0;	if i3 >= i2 goto $r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();	$r4 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>();	virtualinvoke r3.<java.util.logging.Logger: void info(java.lang.String)>($r4);	return
 ;block_num 5
+(check-sat)
 (exit)

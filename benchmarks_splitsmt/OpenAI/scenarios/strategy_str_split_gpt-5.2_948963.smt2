@@ -116,8 +116,8 @@
 (assert (= email_unsat "invalid_email"))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

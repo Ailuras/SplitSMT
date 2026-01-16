@@ -49,7 +49,7 @@
 ; Constraint 7: Make the problem SAT by allowing a specific example
 (assert (str.contains email "example@domain.com"))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

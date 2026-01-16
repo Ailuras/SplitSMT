@@ -41,8 +41,8 @@
 ; Create a SAT instance by adding a specific example constraint
 (assert (str.contains log_entry "Request processed"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

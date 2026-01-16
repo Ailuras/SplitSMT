@@ -39,7 +39,7 @@
 ; Constraint 7: Ensure no empty fields except possibly middle ones (handled by split_rest)
 (assert (forall ((i Int)) (=> (and (>= i 0) (< i field_count)) (=> (or (= i 0) (= i (- field_count 1))) (> (str.len (str.split_at csv_line delimiter i)) 0)))))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

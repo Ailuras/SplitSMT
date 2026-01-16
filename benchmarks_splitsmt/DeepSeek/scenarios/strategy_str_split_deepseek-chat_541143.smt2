@@ -45,7 +45,7 @@
 ; Constraint 9: Total characters in all fields must be at least 10
 (assert (>= (+ (str.len field0) (str.len field1) (str.len field2) (str.len field3)) 10))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

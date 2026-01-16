@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 (declare-fun s () String)
 (assert (not ( = ( str.len ( str.substr s ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  ) ( - ( str.len s  ) ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  )  )  )  ) 1  )))
 (assert ( <= ( ite ( str.prefixof "-" ( str.substr s ( + 1 ( + 1 1  )  ) ( - ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  ) ( + 1 ( + 1 1  )  )  )  )  ) ( - ( str.to_int ( str.substr ( str.substr s ( + 1 ( + 1 1  )  ) ( - ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  ) ( + 1 ( + 1 1  )  )  )  ) 1 ( - ( str.len ( str.substr s ( + 1 ( + 1 1  )  ) ( - ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  ) ( + 1 ( + 1 1  )  )  )  )  ) 1  )  )  )  ) ( str.to_int ( str.substr s ( + 1 ( + 1 1  )  ) ( - ( + ( + 1 ( + 1 1  )  ) ( + 1 1  )  ) ( + 1 ( + 1 1  )  )  )  )  )  ) 255  ))
@@ -31,9 +34,6 @@
 
 ; --- START CONSTRAINT ---
 ; str_split interface signatures
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; new helper variables
 (declare-fun chunk0 () String)
@@ -46,7 +46,7 @@
 (assert (= (split_rest s "0" 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

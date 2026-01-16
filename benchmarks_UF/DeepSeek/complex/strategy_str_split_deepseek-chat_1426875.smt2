@@ -39,8 +39,7 @@
 (assert (str.contains field2 "data"))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_line field_count field1 field2 field3 field4 empty_field_detected))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

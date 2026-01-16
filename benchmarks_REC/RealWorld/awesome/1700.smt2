@@ -166,7 +166,6 @@
  ; Statement: if $z1 == 0 goto i4 = i4 + 1 
 (assert (not (= (ite var1317 1 0) 0))) ; Negate: Cond: $z1 == 0  
  ; Statement: return r7 
-(check-sat)
 ; {arr-String-init=([], java.lang.String[]), getLength-Arr-String-1=([java.lang.String[]], int)}
 ; {var2552=r0, var1003=null_type, var1437=r1, var1109=$i0, var2982=r2, var3675=i2, var1680=$i1, var1308=i3, var3788=i4, var3051=r7, var2523=$r4, var1317=$z1}
 ; {r0=var2552, null_type=var1003, r1=var1437, $i0=var1109, r2=var2982, i2=var3675, $i1=var1680, i3=var1308, i4=var3788, r7=var3051, $r4=var2523, $z1=var1317}
@@ -174,4 +173,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean equals(java.lang.Object)>": 1}
 ;stmts r0 := @parameter0: java.lang.String;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(",");	$i0 = lengthof r1;	r2 = newarray (java.lang.String)[$i0];	i2 = 0;	$i1 = lengthof r1;	if i2 >= $i1 goto i3 = lengthof r2;	i3 = lengthof r2;	i4 = 0;	if i4 >= i3 goto i5 = lengthof r2;	r7 = r2[i4];	$r4 = "auth";	$z1 = virtualinvoke $r4.<java.lang.String: boolean equals(java.lang.Object)>(r7);	if $z1 == 0 goto i4 = i4 + 1;	return r7
 ;block_num 6
+(check-sat)
 (exit)

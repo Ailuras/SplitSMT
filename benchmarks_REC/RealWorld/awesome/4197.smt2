@@ -178,7 +178,6 @@
 (declare-const var1061!2 var1345)
 (declare-const var824!1 String)
  ; Statement: return $r2 
-(check-sat)
 ; {replaceFirst/750800361=([java.lang.String, java.lang.String, java.lang.String], java.lang.String), var1345-init=([], edu.stanford.nlp.stats.ClassicCounter), <init>/927978603=([edu.stanford.nlp.stats.ClassicCounter], void), var2633-init=([], edu.stanford.nlp.ling.RVFDatum), <init>/871497512=([edu.stanford.nlp.ling.RVFDatum, edu.stanford.nlp.stats.Counter, java.lang.Object], void), cast-from-var1345-to-var2897=([edu.stanford.nlp.stats.ClassicCounter], edu.stanford.nlp.stats.Counter), cast-from-String-to-var2411=([java.lang.String], java.lang.Object)}
 ; {var2265=r13, var2682=null_type, var3629=r14, var297=r0, var1345=edu.stanford.nlp.stats.ClassicCounter, var1061=$r1, var2273=i2, var280=$i0, var2633=edu.stanford.nlp.ling.RVFDatum, var3292=$r2, var824=$r3, var2897=edu.stanford.nlp.stats.Counter, var2411=java.lang.Object}
 ; {r13=var2265, null_type=var2682, r14=var3629, r0=var297, edu.stanford.nlp.stats.ClassicCounter=var1345, $r1=var1061, i2=var2273, $i0=var280, edu.stanford.nlp.ling.RVFDatum=var2633, $r2=var3292, $r3=var824, edu.stanford.nlp.stats.Counter=var2897, java.lang.Object=var2411}
@@ -186,4 +185,5 @@
 ;cnt {"<java.lang.String: java.lang.String replaceFirst(java.lang.String,java.lang.String)>": 1,"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r13 := @parameter0: java.lang.String;	r14 = virtualinvoke r13.<java.lang.String: java.lang.String replaceFirst(java.lang.String,java.lang.String)>("#.*$", "");	r0 = virtualinvoke r14.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\s+");	$r1 = new edu.stanford.nlp.stats.ClassicCounter;	specialinvoke $r1.<edu.stanford.nlp.stats.ClassicCounter: void <init>()>();	i2 = 1;	$i0 = lengthof r0;	if i2 >= $i0 goto $r2 = new edu.stanford.nlp.ling.RVFDatum;	$r2 = new edu.stanford.nlp.ling.RVFDatum;	$r3 = r0[0];	specialinvoke $r2.<edu.stanford.nlp.ling.RVFDatum: void <init>(edu.stanford.nlp.stats.Counter,java.lang.Object)>($r1, $r3);	return $r2
 ;block_num 3
+(check-sat)
 (exit)

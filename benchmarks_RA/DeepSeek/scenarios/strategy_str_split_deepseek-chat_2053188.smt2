@@ -162,7 +162,7 @@
 ; 11. SAT/UNSAT variation: uncomment to make UNSAT
 ; (assert (str.contains email ".."))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

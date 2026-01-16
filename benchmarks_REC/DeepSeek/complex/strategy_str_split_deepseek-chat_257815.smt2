@@ -132,8 +132,7 @@
 (assert (str.suffixof "0" csv_line))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_line field_count field1 field2 field3 field4 empty_field_detected))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

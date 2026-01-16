@@ -77,7 +77,6 @@
  ; Statement: if i15 >= $i2 goto return 
 (assert (>= var518 var1696)) ; Cond: i15 >= $i2 
  ; Statement: return 
-(check-sat)
 ; {commander/-2133873678=([com.beust.jcommander.DefaultUsageFormatter], com.beust.jcommander.JCommander), getColumnSize/-165698927=([com.beust.jcommander.JCommander], int)}
 ; {var2917=com.beust.jcommander.DefaultUsageFormatter, var651=r0, var1047=r5, var3917=i10, var2654=i1, var3755=r2, var1350=null_type, var1752=com.beust.jcommander.JCommander, var1888=$r1, var570=i0, var2014=r3, var839=i14, var518=i15, var1696=$i2}
 ; {com.beust.jcommander.DefaultUsageFormatter=var2917, r0=var651, r5=var1047, i10=var3917, i1=var2654, r2=var3755, null_type=var1350, com.beust.jcommander.JCommander=var1752, $r1=var1888, i0=var570, r3=var2014, i14=var839, i15=var518, $i2=var1696}
@@ -85,4 +84,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r0 := @this: com.beust.jcommander.DefaultUsageFormatter;	r5 := @parameter0: java.lang.StringBuilder;	i10 := @parameter1: int;	i1 := @parameter2: int;	r2 := @parameter3: java.lang.String;	$r1 = r0.<com.beust.jcommander.DefaultUsageFormatter: com.beust.jcommander.JCommander commander>;	i0 = virtualinvoke $r1.<com.beust.jcommander.JCommander: int getColumnSize()>();	r3 = virtualinvoke r2.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	i14 = i1;	i15 = 0;	$i2 = lengthof r3;	if i15 >= $i2 goto return;	return
 ;block_num 3
+(check-sat)
 (exit)

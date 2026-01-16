@@ -105,7 +105,7 @@
 (assert (= (split_rest x delimiter 1) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

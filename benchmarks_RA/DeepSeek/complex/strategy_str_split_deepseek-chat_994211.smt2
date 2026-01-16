@@ -127,8 +127,8 @@
 (assert (not (and (= timestamp "12:00:00") (< (str.len timestamp) 8))))
 
 ; Final checks
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -64,8 +64,8 @@
 (assert (= T_2 (and (= at_count 2) (= dot_count 2))))
 (assert T_2)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

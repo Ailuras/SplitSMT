@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted functions for str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =====================
 ; SAT instance: consistent HTTP header parsing
@@ -56,7 +56,6 @@
 (assert (= line_cl_sat "Content-Length: 5"))
 (assert (= body_sat "Hello"))
 
-(check-sat)
 
 ; =====================
 ; UNSAT instance: contradictory content-length

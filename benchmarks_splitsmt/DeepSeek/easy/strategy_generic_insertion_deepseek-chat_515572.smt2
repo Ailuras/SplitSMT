@@ -18,7 +18,7 @@
 (assert (str.contains split_segment1 "B"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -13,7 +13,7 @@
 (assert (= (str.split_rest var0 "2" 1) (str.++ seg1 (str.split_rest var0 "2" 2))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

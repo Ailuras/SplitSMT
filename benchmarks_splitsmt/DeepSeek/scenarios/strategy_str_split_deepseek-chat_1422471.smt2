@@ -37,7 +37,7 @@
 (assert (< 3 (str.num_splits csv_line delimiter)))
 ; Add a constraint to make the problem SAT: CSV line starts with "id,"
 (assert (str.prefixof "id," csv_line))
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

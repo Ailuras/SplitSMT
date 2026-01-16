@@ -42,8 +42,8 @@
 (assert (str.contains header "HTTP/1.1"))
 
 ; Check satisfiability of the constraints
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -112,7 +112,7 @@
 (assert (str.contains (split_rest X delimiter2 0) "Logs"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

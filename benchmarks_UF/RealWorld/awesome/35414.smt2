@@ -77,7 +77,6 @@
  ; Statement: if i4 >= i1 goto return $r2 
 (assert (>= var3500 var2576)) ; Cond: i4 >= i1 
  ; Statement: return $r2 
-(check-sat)
 ; {var3475-init=([], java.util.ArrayList), <init>/1228603609=([java.util.ArrayList, int], void)}
 ; {var901=edu.stanford.nlp.sequences.TrueCasingForNISTDocumentReaderAndWriter$LineToTrueCasesParser, var375=r13, var1341=r0, var390=null_type, var452=i3, var3105=r1, var3475=java.util.ArrayList, var3772=$r2, var1163=$i0, var2576=i1, var3500=i4}
 ; {edu.stanford.nlp.sequences.TrueCasingForNISTDocumentReaderAndWriter$LineToTrueCasesParser=var901, r13=var375, r0=var1341, null_type=var390, i3=var452, r1=var3105, java.util.ArrayList=var3475, $r2=var3772, $i0=var1163, i1=var2576, i4=var3500}
@@ -85,4 +84,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r13 := @this: edu.stanford.nlp.sequences.TrueCasingForNISTDocumentReaderAndWriter$LineToTrueCasesParser;	r0 := @parameter0: java.lang.String;	i3 = 0;	r1 = virtualinvoke r0.<java.lang.String: java.lang.String[] split(java.lang.String)>(" ");	$r2 = new java.util.ArrayList;	$i0 = lengthof r1;	specialinvoke $r2.<java.util.ArrayList: void <init>(int)>($i0);	i1 = lengthof r1;	i4 = 0;	if i4 >= i1 goto return $r2;	return $r2
 ;block_num 3
+(check-sat)
 (exit)

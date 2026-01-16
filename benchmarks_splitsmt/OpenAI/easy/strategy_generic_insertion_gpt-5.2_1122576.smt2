@@ -16,7 +16,7 @@
 (assert (not (str.contains seg0 "Attached")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

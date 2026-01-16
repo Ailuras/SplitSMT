@@ -123,8 +123,7 @@
 (assert (=> (= total_fields 3) (> (str.len field0) 0)))
 
 ; Check satisfiability
-(check-sat)
-(get-value (csv_line field0 field1 field2 total_fields has_empty_field))
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

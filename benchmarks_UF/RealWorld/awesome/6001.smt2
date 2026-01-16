@@ -70,7 +70,6 @@
  ; Statement: if i2 >= i0 goto return $r0 
 (assert (>= var694 var2365)) ; Cond: i2 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var832-init=([], java.util.ArrayList), <init>/-325640736=([java.util.ArrayList], void)}
 ; {var3325=r1, var593=null_type, var832=java.util.ArrayList, var3553=$r0, var2920=r2, var2365=i0, var694=i2}
 ; {r1=var3325, null_type=var593, java.util.ArrayList=var832, $r0=var3553, r2=var2920, i0=var2365, i2=var694}
@@ -78,4 +77,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new java.util.ArrayList;	specialinvoke $r0.<java.util.ArrayList: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("[,;]");	i0 = lengthof r2;	i2 = 0;	if i2 >= i0 goto return $r0;	return $r0
 ;block_num 3
+(check-sat)
 (exit)

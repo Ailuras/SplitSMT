@@ -73,8 +73,8 @@
 ; Additional constraints (still consistent alone): local must be non-empty
 (assert (> (str.len local_unsat) 0))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

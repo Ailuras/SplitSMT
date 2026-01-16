@@ -1,8 +1,4 @@
 (set-logic ALL)
-
-; Email Validation via split constraints and string reasoning
-
-; --- str_split interface (uninterpreted) ---
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -92,6 +88,10 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Email Validation via split constraints and string reasoning
+
+; --- str_split interface (uninterpreted) ---
 
 ; --- Common constants ---
 (declare-const at_delim String)
@@ -205,8 +205,8 @@
 (assert (= email_unsat "invalid_email"))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

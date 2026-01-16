@@ -1,12 +1,4 @@
 (set-logic ALL)
-(declare-fun L () String)
-(declare-fun F () String)
-(declare-fun E () String)
-(declare-fun J () String)
-(assert (= (str.++  "ieafbhdibeaghgcga" E "af" J "bebgfb" L "egdfbf" J "ffaahbdeeg" J "iifbi" J "id" J "fafg")  (str.++  "iea" F "bi" J "idcfafg") ))
-
-; --- START CONSTRAINT ---
-; Declare interface function signatures for str_split operations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -99,6 +91,14 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+(declare-fun L () String)
+(declare-fun F () String)
+(declare-fun E () String)
+(declare-fun J () String)
+(assert (= (str.++  "ieafbhdibeaghgcga" E "af" J "bebgfb" L "egdfbf" J "ffaahbdeeg" J "iifbi" J "id" J "fafg")  (str.++  "iea" F "bi" J "idcfafg") ))
+
+; --- START CONSTRAINT ---
+; Declare interface function signatures for str_split operations
 ; Declare new variables for split results
 (declare-const split_result_0 String)
 (declare-const split_result_1 String)
@@ -111,7 +111,7 @@
 (assert (= (split_rest L ":" 2) ""))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -52,8 +52,8 @@
 ; Additional constraint to create a SAT instance: ensure log entry matches a specific pattern
 (assert (str.contains log_entry "2024-01-01 12:00:00 INFO:Server started successfully"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

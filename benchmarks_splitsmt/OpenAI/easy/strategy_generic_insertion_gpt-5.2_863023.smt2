@@ -26,7 +26,7 @@
             (not (= rest_from_1 ""))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

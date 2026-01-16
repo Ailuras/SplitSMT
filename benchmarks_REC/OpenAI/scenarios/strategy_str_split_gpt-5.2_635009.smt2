@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted string-split interface
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted string-split interface
+
 ; -----------------------
 ; SAT instance: complex-but-valid email
 ; -----------------------
@@ -174,8 +174,8 @@
 (assert (= tld_bad (split_at domain_bad "." (- (num_splits domain_bad ".") 1))))
 (assert (>= (str.len tld_bad) 5))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted functions for str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; -----------------------------
 ; SAT instance: well-formed CSV line with 4 fields, no empty fields
@@ -50,8 +50,8 @@
 ; Example concrete witness constraint for SAT diversity
 (assert (= csv_line_ok "123,ALICE,alice@example.com,US"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

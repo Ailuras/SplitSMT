@@ -177,8 +177,8 @@
 (assert (= unsat_branch false))
 (assert (=> unsat_branch (and (= (str.num_splits var_0xINPUT_40206 "@") 1) (= (str.num_splits var_0xINPUT_40206 "@") 2))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -35,7 +35,7 @@
 ; Uncomment the following line to make it UNSAT:
 ; (assert (not (str.contains log_entry " "))) ; Contradicts the split requirement
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

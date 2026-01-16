@@ -1,10 +1,10 @@
 ; Log Analysis scenario: structured server log entries separated by spaces and colons
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Keep core seed structure / names
 (declare-fun T_SELECT_1 () Bool)
@@ -117,8 +117,8 @@
 ; SAT branch: keep T_SELECT_1 enabled
 (assert T_SELECT_1)
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -109,7 +109,7 @@
            (str.++ seg1_49578 (split_rest var_0xINPUT_49578 delim_49578 2))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

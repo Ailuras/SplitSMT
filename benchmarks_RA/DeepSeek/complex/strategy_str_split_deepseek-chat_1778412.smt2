@@ -132,8 +132,8 @@
 (assert (str.suffixof "]" log_entry))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

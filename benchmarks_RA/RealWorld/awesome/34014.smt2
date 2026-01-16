@@ -193,7 +193,6 @@
  ; Statement: if i8 >= i0 goto return $r0 
 (assert (>= var1106!1 var3374)) ; Cond: i8 >= i0 
  ; Statement: return $r0 
-(check-sat)
 ; {var292-init=([], edu.stanford.nlp.ling.CoreLabel), <init>/598147663=([edu.stanford.nlp.ling.CoreLabel], void), startsWith/-1785782452=([java.lang.String, java.lang.String], boolean), length/-134980193=([java.lang.String], int), substring/850833817=([java.lang.String, int], java.lang.String), setWord/-781399982=([edu.stanford.nlp.ling.CoreLabel, java.lang.String], void), setValue/611793815=([edu.stanford.nlp.ling.CoreLabel, java.lang.String], void)}
 ; {var2942=r1, var163=null_type, var292=edu.stanford.nlp.ling.CoreLabel, var2656=$r0, var890=r2, var3374=i0, var1106=i8, var2287=r3, var2604=$z0, var2311=$r13, var2776=$i6, var805=$r14, var2568=$r15, var1006=$i7, var1781=$r16}
 ; {r1=var2942, null_type=var163, edu.stanford.nlp.ling.CoreLabel=var292, $r0=var2656, r2=var890, i0=var3374, i8=var1106, r3=var2287, $z0=var2604, $r13=var2311, $i6=var2776, $r14=var805, $r15=var2568, $i7=var1006, $r16=var1781}
@@ -201,4 +200,5 @@
 ;cnt {"<java.lang.String: java.lang.String[] split(java.lang.String)>": 1,"<java.lang.String: boolean startsWith(java.lang.String)>": 1,"<java.lang.String: int length()>": 2,"<java.lang.String: java.lang.String substring(int)>": 2}
 ;stmts r1 := @parameter0: java.lang.String;	$r0 = new edu.stanford.nlp.ling.CoreLabel;	specialinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void <init>()>();	r2 = virtualinvoke r1.<java.lang.String: java.lang.String[] split(java.lang.String)>("\\|\\|\\|");	i0 = lengthof r2;	i8 = 0;	if i8 >= i0 goto return $r0;	r3 = r2[i8];	$z0 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("word:::");	if $z0 == 0 goto $z1 = virtualinvoke r3.<java.lang.String: boolean startsWith(java.lang.String)>("tag:::");	$r13 = "word:::";	$i6 = virtualinvoke $r13.<java.lang.String: int length()>();	$r14 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i6);	virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setWord(java.lang.String)>($r14);	$r15 = "word:::";	$i7 = virtualinvoke $r15.<java.lang.String: int length()>();	$r16 = virtualinvoke r3.<java.lang.String: java.lang.String substring(int)>($i7);	virtualinvoke $r0.<edu.stanford.nlp.ling.CoreLabel: void setValue(java.lang.String)>($r16);	goto [?= i8 = i8 + 1];	i8 = i8 + 1;	goto [?= (branch)];	if i8 >= i0 goto return $r0;	return $r0
 ;block_num 7
+(check-sat)
 (exit)

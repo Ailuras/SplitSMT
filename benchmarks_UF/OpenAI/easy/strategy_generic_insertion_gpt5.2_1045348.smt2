@@ -19,7 +19,7 @@
 (assert (str.contains (split_rest X "EFError" 1) "Host:"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for string split operations
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; =====================
 ; Scenario: CSV Processing
@@ -102,8 +102,8 @@
 ; Force combined satisfiability: include both SAT and UNSAT parts together
 ; This makes the whole file UNSAT overall, demonstrating detection.
 ; -------------------------------------------------
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

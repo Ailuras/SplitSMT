@@ -1,10 +1,10 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Email Validation scenario using str_split interface
 
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; -------------------------
 ; SAT instance: valid-ish email with structured domain
@@ -64,8 +64,8 @@
 (assert (>= (str.len (split_at domain_unsat "." 0)) 1))
 (assert (>= (str.len (split_at domain_unsat "." 1)) 2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

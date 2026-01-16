@@ -74,7 +74,7 @@
 (assert (= PCTEMP_LHS_3 (str.split_rest var_0xINPUT_15364 split_delimiter 1)))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

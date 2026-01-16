@@ -29,7 +29,7 @@
 (assert (>= (str.len PathAndMore) 0))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

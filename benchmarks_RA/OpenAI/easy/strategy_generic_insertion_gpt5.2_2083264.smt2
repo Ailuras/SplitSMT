@@ -164,7 +164,7 @@
 (assert (>= (str.len (split_at var_0xINPUT_102691 "=" 0)) 1))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -45,8 +45,8 @@
 (assert (str.contains log_entry "INFO"))
 (assert (str.contains log_entry "server:8080"))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

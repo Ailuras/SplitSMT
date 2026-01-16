@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface for string splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -93,6 +91,8 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
+
+; Uninterpreted split interface for string splitting
 
 ; Additional helper: parse an integer from a string (uninterpreted)
 (declare-fun parse_int (String) Int)
@@ -201,8 +201,8 @@
 
 ; The two previous assertions imply 4 = 3, hence UNSAT
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

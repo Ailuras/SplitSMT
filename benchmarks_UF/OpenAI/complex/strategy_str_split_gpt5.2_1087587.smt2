@@ -85,8 +85,8 @@
               (not (str.prefixof "." domain))
               (not (str.contains domain "..")))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

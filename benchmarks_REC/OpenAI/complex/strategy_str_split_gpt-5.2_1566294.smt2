@@ -1,7 +1,5 @@
 ; Scenario: Email Validation using str_split-style operations
 (set-logic ALL)
-
-; Uninterpreted interface operations for splitting
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -95,6 +93,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface operations for splitting
+
 ; Seed-like booleans preserved/mutated
 (declare-fun T_1 () Bool)
 (declare-fun T_2 () Bool)
@@ -168,8 +168,8 @@
 (assert (= T_2 (= local_part "a@b")))
 ; Do not assert T_2 to keep the instance SAT
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

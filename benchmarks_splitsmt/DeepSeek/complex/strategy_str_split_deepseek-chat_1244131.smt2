@@ -58,9 +58,8 @@
 (assert (>= (str.num_splits header "\n") 4))
 
 ; Check satisfiability
-(check-sat)
-(get-value (header content_length_val host_str user_agent_str))
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

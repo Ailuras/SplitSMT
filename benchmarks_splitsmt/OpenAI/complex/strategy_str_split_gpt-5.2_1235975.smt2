@@ -88,8 +88,8 @@
 ; Ensure X is reconstructed from parts (consistency)
 (assert (= X (str.++ local "@" domain)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

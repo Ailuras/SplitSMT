@@ -1,9 +1,9 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; Uninterpreted interface for split operations
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 ; Seed-related symbols (preserve core structure: T_1 guards a negated equality on the raw input)
 (declare-fun T_1 () Bool)
@@ -76,8 +76,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (not (= (str.len body) content_length))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -29,7 +29,7 @@
 (assert (= cc_v0 (str.++ (str.split_at cc_directive0 "=" 1) (str.split_rest cc_directive0 "=" 2))))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

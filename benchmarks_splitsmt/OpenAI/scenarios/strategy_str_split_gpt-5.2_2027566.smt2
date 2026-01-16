@@ -90,8 +90,8 @@
 ; Contradiction: body is "AB" (len 2) but enforce it to be 3
 (assert (= content_length_unsat 3))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

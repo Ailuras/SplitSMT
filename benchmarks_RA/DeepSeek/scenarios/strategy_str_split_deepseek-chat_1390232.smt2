@@ -167,7 +167,7 @@
     )
 ))
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

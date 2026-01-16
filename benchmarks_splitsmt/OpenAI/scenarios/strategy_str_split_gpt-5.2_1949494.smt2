@@ -72,8 +72,8 @@
 (assert (>= (str.len u1) 1))
 
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

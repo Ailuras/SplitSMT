@@ -60,7 +60,7 @@
 (assert (not (str.contains domain_part "..")))
 
 ; Check satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

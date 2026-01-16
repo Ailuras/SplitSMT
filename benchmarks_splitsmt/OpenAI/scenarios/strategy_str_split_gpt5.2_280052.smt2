@@ -53,5 +53,5 @@
   ; Ensure rest2 is non-empty if there are >=3 fields
   (assert (=> (>= n 3) (not (= rest2 ""))))
 
-  (check-sat)
+(check-sat)
 (exit)

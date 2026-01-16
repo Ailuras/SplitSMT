@@ -72,8 +72,8 @@
 (assert (= T_2 (= "-" email)))
 (assert (not T_2))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

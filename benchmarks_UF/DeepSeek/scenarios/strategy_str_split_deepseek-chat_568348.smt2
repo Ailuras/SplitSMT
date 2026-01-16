@@ -38,7 +38,7 @@
 ; Constraint to make the problem SAT: require a specific pattern in local part (e.g., contains 'user')
 (assert (str.contains local_part "user"))
 ; Final check for satisfiability
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

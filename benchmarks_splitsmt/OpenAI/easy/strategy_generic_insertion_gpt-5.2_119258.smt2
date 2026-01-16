@@ -15,7 +15,7 @@
 (assert (not (= (str.at (str.split_rest X "/.mp4" 1) 0) "/")))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

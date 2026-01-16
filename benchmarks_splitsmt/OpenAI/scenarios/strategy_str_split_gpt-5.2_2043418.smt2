@@ -99,8 +99,8 @@
 ; But also allow SAT by permitting make_unsat = false
 (assert (or make_unsat (not make_unsat)))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

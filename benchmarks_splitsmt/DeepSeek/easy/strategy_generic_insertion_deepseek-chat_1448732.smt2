@@ -18,7 +18,7 @@
 (assert (str.contains (str.split_rest x_4 delimiter_5 2) "\u{53}"))
 ; --- END CONSTRAINT ---
 
-(check-sat)
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

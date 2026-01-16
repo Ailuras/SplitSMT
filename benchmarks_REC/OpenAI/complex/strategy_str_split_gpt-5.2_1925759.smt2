@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted interface for split operations
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -94,6 +92,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted interface for split operations
+
 ; Seed-related symbols (preserve core structure: T_1 guards a negated equality on the raw input)
 (declare-fun T_1 () Bool)
 (declare-const var_0xINPUT_127821 String)
@@ -165,8 +165,8 @@
 (assert (= force_unsat false))
 (assert (=> force_unsat (not (= (str.len body) content_length))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

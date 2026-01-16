@@ -1,4 +1,7 @@
 (set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
 
 ; CSV Processing: comma-separated field validation and empty-field detection
 
@@ -17,9 +20,6 @@
 (declare-const n Int)
 
 ; str_split interface
-(declare-fun split_at (String String Int) String)
-(declare-fun num_splits (String String) Int)
-(declare-fun split_rest (String String Int) String)
 
 (assert (= delim ","))
 
@@ -58,8 +58,8 @@
 (assert (>= (str.len f0) 1))
 (assert (or (= f2 "") (and (>= (str.len f2) 1) (<= (str.len f2) 5))))
 
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)

@@ -1,6 +1,4 @@
 (set-logic ALL)
-
-; Uninterpreted split interface (methodology: Solving String Split Constraints via Relaxation)
 (define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
@@ -91,6 +89,8 @@
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
 
+; Uninterpreted split interface (methodology: Solving String Split Constraints via Relaxation)
+
 ; ========= SAT instance: well-formed log analysis =========
 (declare-const log_line_sat String)
 (declare-const ts_sat String)
@@ -169,7 +169,6 @@
 ; Provide a concrete satisfying example (anchors the SAT instance)
 (assert (= log_line_sat "2025-01-09T13:05:44 INFO web-01 auth:1234 user=alice action=login result=ok"))
 
-(check-sat)
 
 ; ========= UNSAT instance: contradictory timestamp/level constraints =========
 (declare-const log_line_unsat String)

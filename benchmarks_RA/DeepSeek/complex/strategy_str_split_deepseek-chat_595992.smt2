@@ -130,8 +130,8 @@
 (assert (str.contains source "."))
 
 ; Check satisfiability
-(check-sat)
 
 
 ; [GENERATION STATUS: SUCCESS]
+(check-sat)
 (exit)
