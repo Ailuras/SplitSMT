@@ -1,0 +1,82 @@
+\begin{table*}[t]
+  \centering
+  \caption{Real-world benchmarks (default backend: Z3-Noodler): results for our encoding and baselines. \textbf{SAT} counts correspond to validated \sat{} models (Section~\ref{sec:rq1}).}
+  \label{tab:realworld-ours-vs-baselines}
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{c|c|ccc|ccc|ccc|ccc}
+      \toprule
+      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                                                                                                         \\
+      \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}
+                        &                   & \textbf{SAT}                       & \textbf{UNSAT}                      & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                                                                                              \\
+      \midrule
+      Maven             & 10      & 9                       & 0                        & 124.98                         & 0                          & 0 & 0.51 & 0 & 0 & 0.37 & 4 & 0 & 123.75 \\
+      GitHub            & 24      & 19                       & 0                        & 0.52                         & 0                          & 0 & 2.06 & 0 & 0 & 0.15 & 5 & 0 & 101.45 \\
+      Awesome           & 129      & 111                       & 1                        & 28.72                         & 0                          & 0 & 29.41 & 0 & 0 & 9.87 & 40 & 0 & 75.36 \\
+      SeqStr            & 5      & 2                       & 3                        & 0.20                         & 2                          & 3 & 0.12 & 2 & 3 & 0.08 & 2 & 0 & 0.11 \\
+      \midrule
+      \rowcolor{gray!20}
+      Total             & 168      & 141                       & 4                        & 29.57                         & 2                          & 3 & 22.91 & 2 & 3 & 7.62 & 51 & 0 & 79.73 \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table*}
+
+
+\begin{table*}[t]
+  \centering
+  \caption{Synthetic benchmarks (default backend: Z3-Noodler): results for our encoding and baselines. \textbf{SAT} counts correspond to validated \sat{} models (Section~\ref{sec:rq1}).
+    \EXPtodo{Replace placeholder numbers with updated results; put any per-backend breakdown in the artifact or appendix if needed.}}
+  \label{tab:synthetic-ours-vs-baselines}
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{c|c|ccc|ccc|ccc|ccc}
+      \toprule
+      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                                                                                                         \\
+      \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}
+                        &                   & \textbf{SAT}                       & \textbf{UNSAT}                      & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                                                                                              \\
+      \midrule
+      Simple            & 197      & 59                       & 100                        & 49.53                         & 51                          & 36 & 11.50 & 40 & 36 & 0.19 & 55 & 0 & 6.59 \\
+      Complex           & 101      & 47                       & 31                        & 89.97                         & 15                          & 18 & 0.30 & 13 & 18 & 0.30 & 4 & 0 & 212.19 \\
+      Scenarios         & 114      & 11                       & 75                        & 162.58                         & 13                          & 69 & 11.56 & 13 & 69 & 11.52 & 3 & 0 & 473.52 \\
+      \midrule
+      \rowcolor{gray!20}
+      Total             & 412      & 117                       & 206                        & 90.73                         & 79                          & 123 & 8.77 & 66 & 123 & 3.35 & 62 & 0 & 186.19 \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table*}
+
+\begin{table*}[t]
+  \centering
+  \caption{Per-solver results for our encoding across benchmark categories.
+    \EXPtodo{Fill this table from the new runs; keep it even if the main comparison table uses only the default backend.}}
+  \label{tab:type-merged}
+  \setlength{\tabcolsep}{4pt}
+  \resizebox{1\textwidth}{!}{%
+    \begin{tabular}{c|c|ccc|ccc|ccc|ccc}
+      \toprule
+      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Z3}} & \multicolumn{3}{c|}{\textbf{CVC5}} & \multicolumn{3}{c|}{\textbf{Ostrich}} & \multicolumn{3}{c}{\textbf{Z3-Noodler}}                                                                                                                         \\
+      \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}
+                        &                   & \textbf{SAT}                     & \textbf{UNSAT}                     & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                   & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                   & \textbf{t(s)}
+                        & \textbf{SAT}      & \textbf{UNSAT}                   & \textbf{t(s)}                                                                                                                                                                                                                                \\
+      \midrule
+      Simple            & 197      & 2                     & 73                       & 13.31                          & 33                            & 97 & 406.07 & 52 & 85 & 341.46 & 59 & 100 & 49.53 \\
+      Complex           & 101      & 6                     & 26                       & 41.26                          & 4                            & 36 & 562.11 & 18 & 33 & 438.01 & 47 & 31 & 89.97 \\
+      Scenarios         & 114      & 4                     & 76                       & 111.09                          & 0                            & 58 & 138.27 & 3 & 50 & 230.53 & 11 & 75 & 162.58 \\
+      RealWorld         & 168      & 80                     & 4                       & 0.16                          & 70                            & 4 & 55.73 & 121 & 4 & 94.84 & 141 & 4 & 29.57 \\
+      \midrule
+      \rowcolor{gray!20}
+      Total             & 580      & 92                     & 179                       & 33.59                          & 107                            & 195 & 279.13 & 194 & 172 & 265.04 & 258 & 210 & 73.01 \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table*}

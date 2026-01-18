@@ -1,0 +1,144 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/9409.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:57
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.355
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2550495 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_sat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.074
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_sat_split.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.152
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_unsat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.139
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_unsat_split3.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.111
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_unsat_split.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:30:58
+DURATION_SEC: 0.103
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/top20_gh/10560.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:30:58
+END: 2026-01-17 15:31:05
+DURATION_SEC: 6.819
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2550728 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/top20_gh/10596.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:31:05
+END: 2026-01-17 15:31:06
+DURATION_SEC: 0.150
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/top20_gh/1118.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:31:06
+END: 2026-01-17 15:31:06
+DURATION_SEC: 0.446
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 2551419 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/top20_gh/11724.smt2
+TIMEOUT: 1200s
+START: 2026-01-17 15:31:06
+END: 2026-01-17 15:31:06
+DURATION_SEC: 0.187
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "line 93 column 51: invalid declaration, named expression already defined with this name split_at_re")
+(error "line 94 column 53: invalid declaration, named expression already defined with this name split_rest_re")
+(error "line 95 column 46: invalid declaration, named expression already defined with this name num_splits_re")
+sat
+

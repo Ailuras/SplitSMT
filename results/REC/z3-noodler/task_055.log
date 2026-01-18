@@ -1,120 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_339752.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:56
-END: 2026-01-16 18:16:56
-DURATION_SEC: 0.114
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_REC/RealWorld/awesome/33328.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:00:00
+END: 2026-01-18 19:00:00
+DURATION_SEC: 0.153
+STATUS: ERROR
+EXIT_CODE: 134
 -----------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_352720.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:56
-END: 2026-01-16 18:16:56
-DURATION_SEC: 0.074
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_366185.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:56
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.334
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_411495.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.206
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_414114.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.167
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_416645.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.089
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_458959.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.089
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_476984.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:57
-DURATION_SEC: 0.172
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_484871.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:57
-END: 2026-01-16 18:16:58
-DURATION_SEC: 0.075
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_518814.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:16:58
-END: 2026-01-16 18:16:58
-DURATION_SEC: 0.645
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3007661 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

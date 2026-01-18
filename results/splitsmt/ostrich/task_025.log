@@ -1,127 +1,20 @@
 ===========================================================
 Task Group 25
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-16 18:27:14
+Started: 2026-01-18 19:06:26
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_656566.smt2
-START: 2026-01-16T10:27:14Z
-END: 2026-01-16T10:27:24Z
-DURATION_SEC: 10.264723383
-STATUS: SUCCESS
-EXIT_CODE: 0
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/1778.smt2
+START: 2026-01-18T11:06:26Z
+END: 2026-01-18T11:06:31Z
+DURATION_SEC: 5.694340266
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
+[31m[2026-01-18 19:06:31] External solver reported errors in output: (error "internal exception: java.lang.illegalargumentexception: cannot execute actions list(addformula((!str_empty(all_442_1))))")[0m
 unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_656876.smt2
-START: 2026-01-16T10:27:24Z
-END: 2026-01-16T10:27:35Z
-DURATION_SEC: 10.378926547
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_660767.smt2
-START: 2026-01-16T10:27:35Z
-END: 2026-01-16T10:27:38Z
-DURATION_SEC: 3.291686022
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_672983.smt2
-START: 2026-01-16T10:27:38Z
-END: 2026-01-16T10:27:43Z
-DURATION_SEC: 5.157105790
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_676255.smt2
-START: 2026-01-16T10:27:43Z
-END: 2026-01-16T10:27:49Z
-DURATION_SEC: 5.427117719
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_715045.smt2
-START: 2026-01-16T10:27:49Z
-END: 2026-01-16T10:27:51Z
-DURATION_SEC: 2.044142186
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_737486.smt2
-START: 2026-01-16T10:27:51Z
-END: 2026-01-16T10:27:58Z
-DURATION_SEC: 6.900986391
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_744993.smt2
-START: 2026-01-16T10:27:58Z
-END: 2026-01-16T10:28:01Z
-DURATION_SEC: 3.743724695
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_749756.smt2
-START: 2026-01-16T10:28:01Z
-END: 2026-01-16T10:28:12Z
-DURATION_SEC: 10.300140598
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_773120.smt2
-START: 2026-01-16T10:28:12Z
-END: 2026-01-16T10:28:22Z
-DURATION_SEC: 10.379356747
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 25 completed at 2026-01-16 18:28:22
+Task Group 25 completed at 2026-01-18 19:06:31

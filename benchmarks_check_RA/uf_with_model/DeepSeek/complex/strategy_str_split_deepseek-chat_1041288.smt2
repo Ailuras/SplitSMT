@@ -1,0 +1,62 @@
+; Email Validation Scenario: Complex email address format validation using str_split operations
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+
+; Declare string variables for email and its components
+(declare-const email String)
+(declare-const local_part String)
+(declare-const domain String)
+(declare-const domain_name String)
+(declare-const tld String)
+
+; Declare uninterpreted functions for str_split interface
+
+; Constraint 1: Email must contain exactly one '@' character
+(assert (= (num_splits email "@") 2))
+
+; Constraint 2: Extract local part (before '@')
+(assert (= local_part (split_at email "@" 0)))
+
+; Constraint 3: Extract domain (after '@')
+(assert (= domain (split_at email "@" 1)))
+
+; Constraint 4: Domain must contain at least one '.'
+(assert (>= (num_splits domain ".") 2))
+
+; Constraint 5: Extract domain name (before last '.')
+(assert (= domain_name (split_at domain "." 0)))
+
+; Constraint 6: Extract top-level domain (after last '.')
+(assert (= tld (split_rest domain "." 1)))
+
+; Constraint 7: Local part must be non-empty
+(assert (> (str.len local_part) 0))
+
+; Constraint 8: Domain name must be non-empty
+(assert (> (str.len domain_name) 0))
+
+; Constraint 9: TLD must be 2-4 characters long
+(assert (>= (str.len tld) 2))
+(assert (<= (str.len tld) 4))
+
+; Constraint 10: TLD must contain only letters
+(assert (str.in_re tld (re.* (re.union (re.range "a" "z") (re.range "A" "Z")))))
+
+; Constraint 11: Domain must not start or end with '.'
+(assert (not (str.prefixof "." domain)))
+(assert (not (str.suffixof "." domain)))
+
+; Constraint 12: Local part cannot contain '@' (redundant but explicit)
+(assert (not (str.contains local_part "@")))
+
+; Additional constraint for SAT/UNSAT diversity: Email must be at least 6 characters
+(assert (>= (str.len email) 6))
+
+
+
+; [GENERATION STATUS: SUCCESS]
+(check-sat)
+(get-model)
+(exit)

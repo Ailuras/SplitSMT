@@ -1,0 +1,15 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/6268.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:05:11
+END: 2026-01-18 19:05:11
+DURATION_SEC: 0.119
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3071917 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+

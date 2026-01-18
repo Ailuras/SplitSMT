@@ -1,0 +1,38 @@
+(
+; cardinality of var3294 is 2
+; rep: (as @var3294_0 var3294)
+; rep: (as @var3294_1 var3294)
+; cardinality of var3234 is 1
+; rep: (as @var3234_0 var3234)
+; cardinality of var86 is 1
+; rep: (as @var86_0 var86)
+; cardinality of var2952 is 1
+; rep: (as @var2952_0 var2952)
+; cardinality of void is 1
+; rep: (as @void_0 void)
+; cardinality of Iterator is 1
+; rep: (as @Iterator_0 Iterator)
+; cardinality of ClassObject is 1
+; rep: (as @ClassObject_0 ClassObject)
+(define-fun split_at ((_arg_1 String) (_arg_2 String) (_arg_3 Int)) String "")
+(define-fun split_rest ((_arg_1 String) (_arg_2 String) (_arg_3 Int)) String "")
+(define-fun num_splits ((_arg_1 String) (_arg_2 String)) Int 2)
+(define-fun split_at_re ((_arg_1 String) (_arg_2 RegLan) (_arg_3 Int)) String "")
+(define-fun split_rest_re ((_arg_1 String) (_arg_2 RegLan) (_arg_3 Int)) String "")
+(define-fun num_splits_re ((_arg_1 String) (_arg_2 RegLan)) Int 0)
+(define-fun <init>/-279557996 ((_arg_1 var86)) void (as @void_0 void))
+(define-fun cast-from-var3294-to-var86 ((_arg_1 var3294)) var86 (as @var86_0 var86))
+(define-fun var2952-init () var2952 (as @var2952_0 var2952))
+(define-fun String-init () String "")
+(define-fun <init>/875830710 ((_arg_1 var2952) (_arg_2 String)) void (as @void_0 void))
+(define-fun null-var3294 () var3294 (as @var3294_0 var3294))
+(define-fun null-String () String "[")
+(define-fun var3134 () var3294 (as @var3294_1 var3294))
+(define-fun var3854 () String "")
+(define-fun var3134!1 () var3294 (as @var3294_0 var3294))
+(define-fun var1670!1 () String "")
+(define-fun var1670!2 () String "Unknown argument ")
+(define-fun var2517!1 () String "Unknown argument ")
+(define-fun var3583!1 () var2952 (as @var2952_0 var2952))
+(define-fun var2569!1 () String "")
+)

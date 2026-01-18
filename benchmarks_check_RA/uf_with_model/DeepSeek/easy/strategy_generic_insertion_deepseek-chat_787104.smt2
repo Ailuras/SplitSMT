@@ -1,0 +1,20 @@
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-fun var0 () String)
+(assert (str.in_re var0 (re.++ (re.* (re.union (str.to_re "00") (str.to_re "111"))) (re.++ (re.+ (re.union (str.to_re "2") (str.to_re "333"))) (re.++ (re.+ (re.* (str.to_re "4"))) (re.++ (re.+ (re.+ (str.to_re "555"))) (re.++ (re.* (re.union (str.to_re "6") (str.to_re "7"))) (re.++ (re.union (re.* (str.to_re "888")) (re.+ (str.to_re "999"))) (re.++ (re.+ (re.+ (str.to_re "a"))) (re.++ (re.+ (re.union (str.to_re "b") (str.to_re "cc"))) (re.++ (re.+ (re.+ (str.to_re "d"))) (re.++ (re.* (re.union (str.to_re "eee") (str.to_re "ff"))) (re.* (re.+ (str.to_re "ggg")))))))))))))))
+
+; --- START CONSTRAINT ---
+(declare-const delimiter String)
+(assert (= delimiter "00"))
+(assert (>= (num_splits var0 delimiter) 3))
+(assert (= (split_at var0 delimiter 0) "prefix"))
+(assert (str.contains (split_rest var0 delimiter 1) "111"))
+; --- END CONSTRAINT ---
+
+
+; [GENERATION STATUS: SUCCESS]
+(check-sat)
+(get-model)
+(exit)

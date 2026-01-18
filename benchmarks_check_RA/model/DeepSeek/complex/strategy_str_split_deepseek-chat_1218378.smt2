@@ -1,0 +1,10 @@
+(model
+  (define-fun ip_address () String ".\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}")
+  (define-fun message () String "\u{0}")
+  (define-fun log_level () String "DEBUG")
+  (define-fun timestamp () String ":T\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}")
+  (define-fun log_entry () String " :")
+  (define-fun num_splits ((x!0 String) (x!1 String)) Int (ite (and (= x!0 "") (= x!1 ":")) 2 (ite (and (= x!0 " :") (= x!1 " ")) 3 0)))
+  (define-fun split_rest ((x!0 String) (x!1 String) (x!2 Int)) String (ite (and (and (= x!0 "") (= x!1 ":")) (= x!2 1)) "\u{0}" ""))
+  (define-fun split_at ((x!0 String) (x!1 String) (x!2 Int)) String (ite (and (and (= x!0 "") (= x!1 ":")) (= x!2 0)) ".\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}" (ite (and (and (= x!0 " :") (= x!1 " ")) (= x!2 0)) ":T\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}\u{0}" (ite (and (and (= x!0 " :") (= x!1 " ")) (= x!2 1)) "DEBUG" (ite (and (and (= x!0 " :") (= x!1 " ")) (= x!2 2)) "" "")))))
+)

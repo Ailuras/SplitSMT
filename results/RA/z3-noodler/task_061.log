@@ -1,120 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1536257.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:31
-END: 2026-01-16 18:11:31
-DURATION_SEC: 0.119
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_RA/RealWorld/awesome/340.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:04:38
+END: 2026-01-18 19:04:50
+DURATION_SEC: 11.573
+STATUS: ERROR
+EXIT_CODE: 134
 -----------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1541426.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:31
-END: 2026-01-16 18:11:32
-DURATION_SEC: 0.181
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1541506.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:32
-END: 2026-01-16 18:11:33
-DURATION_SEC: 1.166
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1560732.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:33
-END: 2026-01-16 18:11:33
-DURATION_SEC: 0.178
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1595461.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:33
-END: 2026-01-16 18:11:33
-DURATION_SEC: 0.086
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1615843.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:33
-END: 2026-01-16 18:11:34
-DURATION_SEC: 1.270
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1623262.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:34
-END: 2026-01-16 18:11:34
-DURATION_SEC: 0.093
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1626427.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:34
-END: 2026-01-16 18:11:35
-DURATION_SEC: 0.493
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_1666942.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:35
-END: 2026-01-16 18:11:35
-DURATION_SEC: 0.120
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_1676599.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:35
-END: 2026-01-16 18:11:35
-DURATION_SEC: 0.133
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3062398 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

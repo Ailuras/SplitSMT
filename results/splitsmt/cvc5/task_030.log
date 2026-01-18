@@ -1,133 +1,19 @@
 ===========================================================
 Task Group 30
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-16 18:27:21
+Started: 2026-01-18 19:06:15
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1456219.smt2
-START: 2026-01-16T10:27:21Z
-END: 2026-01-16T10:27:22Z
-DURATION_SEC: .220210939
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:22] External solver reported errors in output: (error "parse error: /tmp/smt2_ofx0lb.smt2:50.31: symbol 'a' not declared as a variable")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1488537.smt2
-START: 2026-01-16T10:27:22Z
-END: 2026-01-16T10:27:22Z
-DURATION_SEC: .255048879
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:22] External solver reported errors in output: (error "parse error: /tmp/smt2_aldns9.smt2:58.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1518541.smt2
-START: 2026-01-16T10:27:22Z
-END: 2026-01-16T10:27:32Z
-DURATION_SEC: 10.215935813
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/19256.smt2
+START: 2026-01-18T11:06:15Z
+END: 2026-01-18T11:06:15Z
+DURATION_SEC: .152990552
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1531736.smt2
-START: 2026-01-16T10:27:32Z
-END: 2026-01-16T10:27:33Z
-DURATION_SEC: .263110230
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:33] External solver reported errors in output: (error "parse error: /tmp/smt2_stx53u.smt2:57.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1543371.smt2
-START: 2026-01-16T10:27:33Z
-END: 2026-01-16T10:27:33Z
-DURATION_SEC: .310741395
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1546267.smt2
-START: 2026-01-16T10:27:33Z
-END: 2026-01-16T10:27:34Z
-DURATION_SEC: .272692137
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:33] External solver reported errors in output: (error "parse error: /tmp/smt2_8w1f3h.smt2:57.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1567620.smt2
-START: 2026-01-16T10:27:34Z
-END: 2026-01-16T10:27:34Z
-DURATION_SEC: .261665506
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:34] External solver reported errors in output: (error "parse error: /tmp/smt2_z52rsu.smt2:57.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1580435.smt2
-START: 2026-01-16T10:27:34Z
-END: 2026-01-16T10:27:44Z
-DURATION_SEC: 10.204396505
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_163150.smt2
-START: 2026-01-16T10:27:44Z
-END: 2026-01-16T10:27:45Z
-DURATION_SEC: .310021101
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:27:44] External solver reported errors in output: (error "parse error: /tmp/smt2_scj82f.smt2:56.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1642848.smt2
-START: 2026-01-16T10:27:45Z
-END: 2026-01-16T10:27:55Z
-DURATION_SEC: 10.311333728
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 30 completed at 2026-01-16 18:27:55
+Task Group 30 completed at 2026-01-18 19:06:15

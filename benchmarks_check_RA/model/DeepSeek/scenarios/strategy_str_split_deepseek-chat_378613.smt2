@@ -1,0 +1,96 @@
+(
+  (define-fun field3 () String
+    "A")
+  (define-fun all_nonempty () Bool
+    true)
+  (define-fun field2 () String
+    "0123456789")
+  (define-fun field0 () String
+    "CHEFG")
+  (define-fun has_empty () Bool
+    false)
+  (define-fun csv_data () String
+    "John,Doe,30,New York")
+  (define-fun field1 () String
+    "B")
+  (define-fun field_count () Int
+    4)
+  (define-fun split_at ((x!0 String) (x!1 String) (x!2 Int)) String
+    (ite (and (= x!0
+                 (str.++ (seq.unit (_ Char 74))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 104))
+                         (seq.unit (_ Char 110))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 68))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 51))
+                         (seq.unit (_ Char 48))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 78))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 119))
+                         (seq.unit (_ Char 32))
+                         (seq.unit (_ Char 89))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 114))
+                         (seq.unit (_ Char 107))))
+              (= x!1 (seq.unit (_ Char 44)))
+              (= x!2 2))
+      "0123456789"
+    (ite (and (= x!0
+                 (str.++ (seq.unit (_ Char 74))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 104))
+                         (seq.unit (_ Char 110))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 68))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 51))
+                         (seq.unit (_ Char 48))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 78))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 119))
+                         (seq.unit (_ Char 32))
+                         (seq.unit (_ Char 89))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 114))
+                         (seq.unit (_ Char 107))))
+              (= x!1 (seq.unit (_ Char 44)))
+              (= x!2 1))
+      "B"
+    (ite (and (= x!0
+                 (str.++ (seq.unit (_ Char 74))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 104))
+                         (seq.unit (_ Char 110))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 68))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 51))
+                         (seq.unit (_ Char 48))
+                         (seq.unit (_ Char 44))
+                         (seq.unit (_ Char 78))
+                         (seq.unit (_ Char 101))
+                         (seq.unit (_ Char 119))
+                         (seq.unit (_ Char 32))
+                         (seq.unit (_ Char 89))
+                         (seq.unit (_ Char 111))
+                         (seq.unit (_ Char 114))
+                         (seq.unit (_ Char 107))))
+              (= x!1 (seq.unit (_ Char 44)))
+              (= x!2 3))
+      "A"
+      "CHEFG"))))
+  (define-fun num_splits ((x!0 String) (x!1 String)) Int
+    4)
+  (define-fun split_rest ((x!0 String) (x!1 String) (x!2 Int)) String
+    "")
+)

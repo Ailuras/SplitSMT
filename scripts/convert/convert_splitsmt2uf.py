@@ -4,6 +4,7 @@
 """
 Convert SMT-LIB files to UF (Uninterpreted Functions) format.
 This script transforms string functions like str.split_at to UF declarations.
+Only adds RE-related declarations if the file uses RE functions.
 """
 
 import argparse
@@ -27,19 +28,40 @@ def colored(text: str, color: str) -> str:
         return f"{color}{text}{Colors.RESET}"
     return text
 
-# UF function declarations - hardcoded, no external dependencies
-UF_DECLARATIONS = [
+# UF function declarations - base (non-RE)
+UF_DECLARATIONS_BASE = [
     "(declare-fun split_at (String String Int) String)",
     "(declare-fun split_rest (String String Int) String)",
     "(declare-fun num_splits (String String) Int)"
 ]
 
+# UF function declarations - RE variants
+UF_DECLARATIONS_RE = [
+    "(declare-fun split_at_re (String RegLan Int) String)",
+    "(declare-fun split_rest_re (String RegLan Int) String)",
+    "(declare-fun num_splits_re (String RegLan) Int)"
+]
+
+def uses_re_functions(content: List[str]) -> bool:
+    """Check if the content uses any RE-related split functions."""
+    content_str = '\n'.join(content)
+    # Check for str.split_at_re, str.split_rest_re, str.num_splits_re
+    re_patterns = [
+        r'\bstr\.split_at_re\b',
+        r'\bstr\.split_rest_re\b',
+        r'\bstr\.num_splits_re\b',
+    ]
+    for pattern in re_patterns:
+        if re.search(pattern, content_str):
+            return True
+    return False
+
 def transform_to_uf(content: List[str]) -> Tuple[List[str], dict]:
     """
     Transform SMT-LIB content to UF format:
     1. Set logic to ALL
-    2. Insert UF declarations after set-logic
-    3. Replace str.split_at -> split_at, str.split_rest -> split_rest, str.num_splits -> num_splits
+    2. Insert UF declarations after set-logic (only RE declarations if RE functions are used)
+    3. Replace str.split_at -> split_at, str.split_rest -> split_rest, str.num_splits -> num_splits (and _re variants)
     4. Remove (exit) statements
     
     Returns: (transformed_lines, statistics)
@@ -68,6 +90,12 @@ def transform_to_uf(content: List[str]) -> Tuple[List[str], dict]:
         
         out_lines.append(line)
     
+    # Determine which declarations to insert
+    has_re = uses_re_functions(content)
+    declarations = UF_DECLARATIONS_BASE[:]
+    if has_re:
+        declarations.extend(UF_DECLARATIONS_RE)
+    
     # Find set-logic position
     insert_pos = next((i for i, line in enumerate(out_lines) if "set-logic" in line), -1)
     
@@ -79,18 +107,19 @@ def transform_to_uf(content: List[str]) -> Tuple[List[str], dict]:
         # Replace set-logic with ALL
         result_lines.append("(set-logic ALL)")
         # Insert UF declarations
-        result_lines.extend(UF_DECLARATIONS)
-        stats["lines_inserted"] = len(UF_DECLARATIONS)
+        result_lines.extend(declarations)
+        stats["lines_inserted"] = len(declarations)
         # Add remaining content
         remaining = out_lines[insert_pos + 1:]
     else:
         # No set-logic found, add it at the beginning
         result_lines.append("(set-logic ALL)")
-        result_lines.extend(UF_DECLARATIONS)
-        stats["lines_inserted"] = len(UF_DECLARATIONS)
+        result_lines.extend(declarations)
+        stats["lines_inserted"] = len(declarations)
         remaining = out_lines
     
     # Replace str.split_at -> split_at, str.split_rest -> split_rest, str.num_splits -> num_splits
+    # Also handle _re variants
     # Only replace when inside S-expression (after '(')
     pat_split_at = re.compile(r"\(\s*str\.split_at")
     pat_split_rest = re.compile(r"\(\s*str\.split_rest")
@@ -98,6 +127,10 @@ def transform_to_uf(content: List[str]) -> Tuple[List[str], dict]:
     
     for line in remaining:
         new_line = line
+        
+        # Replace (str.split_at -> (split_at for both straight and _re variants
+        # because str.split_at matches str.split_at_re too if we are careful?
+        # Actually str.split_at_re starts with str.split_at so replacing str. prefix handles both if we just strip str.
         
         # Replace (str.split_at -> (split_at
         new_line, c1 = pat_split_at.subn(
@@ -174,9 +207,12 @@ def main():
         print(colored(f"[ERROR] Input path does not exist: {input_path}", Colors.RED))
         return 1
     
-    # Show UF declarations that will be inserted
-    print(colored(f"[INFO] UF declarations to insert:", Colors.CYAN))
-    for decl in UF_DECLARATIONS:
+    # Show UF declarations info
+    print(colored(f"[INFO] Base UF declarations:", Colors.CYAN))
+    for decl in UF_DECLARATIONS_BASE:
+        print(f"  {decl}")
+    print(colored(f"[INFO] RE UF declarations (added only if RE functions are used):", Colors.CYAN))
+    for decl in UF_DECLARATIONS_RE:
         print(f"  {decl}")
     
     # Determine input/output mode

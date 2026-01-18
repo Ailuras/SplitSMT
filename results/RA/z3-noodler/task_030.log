@@ -1,120 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1456219.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:15
-DURATION_SEC: 0.338
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_RA/RealWorld/awesome/19256.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:04:29
+END: 2026-01-18 19:04:30
+DURATION_SEC: 0.361
+STATUS: ERROR
+EXIT_CODE: 134
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1488537.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:15
-DURATION_SEC: 0.216
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1518541.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:16
-DURATION_SEC: 0.277
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1531736.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:16
-END: 2026-01-16 18:11:16
-DURATION_SEC: 0.374
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1543371.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:16
-END: 2026-01-16 18:11:16
-DURATION_SEC: 0.135
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1546267.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:16
-END: 2026-01-16 18:11:17
-DURATION_SEC: 0.182
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1567620.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:17
-END: 2026-01-16 18:11:17
-DURATION_SEC: 0.257
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1580435.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:17
-END: 2026-01-16 18:11:17
-DURATION_SEC: 0.491
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_163150.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:17
-END: 2026-01-16 18:11:18
-DURATION_SEC: 0.102
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1642848.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:18
-END: 2026-01-16 18:11:18
-DURATION_SEC: 0.404
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3053946 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

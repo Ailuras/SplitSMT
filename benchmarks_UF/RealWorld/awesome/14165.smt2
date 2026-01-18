@@ -4,10 +4,6 @@
 (declare-fun split_at (String String Int) String)
 (declare-fun split_rest (String String Int) String)
 (declare-fun num_splits (String String) Int)
-(declare-fun split_at_re (String RegLan Int) String)
-(declare-fun split_rest_re (String RegLan Int) String)
-(declare-fun num_splits_re (String RegLan) Int)
-
 (define-fun get_split_length ((x String) (d String) (limit Int)) Int
   (ite
     (> limit 0)
@@ -25,26 +21,6 @@
          (>= (num_splits x d) limit))
     (split_rest x d (- limit 1))
     (split_at x d i)
-  )
-)
-
-(define-fun get_split_length_re ((x String) (d RegLan) (limit Int)) Int
-  (ite
-    (> limit 0)
-    (ite (< (num_splits_re x d) limit)
-         (num_splits_re x d)
-         limit)
-    (num_splits_re x d)
-  )
-)
-
-(define-fun get_split_element_re ((x String) (d RegLan) (limit Int) (i Int)) String
-  (ite
-    (and (> limit 0)
-         (= i (- limit 1))
-         (>= (num_splits_re x d) limit))
-    (split_rest_re x d (- limit 1))
-    (split_at_re x d i)
   )
 )
 

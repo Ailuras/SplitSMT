@@ -1,129 +1,20 @@
 ===========================================================
 Task Group 37
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-16 18:28:03
+Started: 2026-01-18 19:06:17
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_898126.smt2
-START: 2026-01-16T10:28:03Z
-END: 2026-01-16T10:28:13Z
-DURATION_SEC: 10.188457140
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-16T10:28:13Z
-END: 2026-01-16T10:28:23Z
-DURATION_SEC: 10.234653338
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_970209.smt2
-START: 2026-01-16T10:28:23Z
-END: 2026-01-16T10:28:34Z
-DURATION_SEC: 10.213224241
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_999797.smt2
-START: 2026-01-16T10:28:34Z
-END: 2026-01-16T10:28:34Z
-DURATION_SEC: .120108085
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/20413.smt2
+START: 2026-01-18T11:06:17Z
+END: 2026-01-18T11:06:17Z
+DURATION_SEC: .151050544
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-[31m[2026-01-16 18:28:34] External solver reported errors in output: (error "parse error: /tmp/smt2_2xra0p.smt2:57.62: symbol 'regex' not declared as a type")[0m
+[31m[2026-01-18 19:06:17] External solver reported errors in output: (error "parse error: /tmp/smt2_35nxu5.smt2:54.62: symbol 'regex' not declared as a type")[0m
 unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1036806.smt2
-START: 2026-01-16T10:28:34Z
-END: 2026-01-16T10:28:44Z
-DURATION_SEC: 10.125339494
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
-START: 2026-01-16T10:28:44Z
-END: 2026-01-16T10:28:44Z
-DURATION_SEC: .374960398
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
-START: 2026-01-16T10:28:44Z
-END: 2026-01-16T10:28:45Z
-DURATION_SEC: .258700490
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:45] External solver reported errors in output: (error "parse error: /tmp/smt2_bjkmrk.smt2:58.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
-START: 2026-01-16T10:28:45Z
-END: 2026-01-16T10:28:45Z
-DURATION_SEC: .222097072
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1211154.smt2
-START: 2026-01-16T10:28:45Z
-END: 2026-01-16T10:28:55Z
-DURATION_SEC: 10.156176846
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1219617.smt2
-START: 2026-01-16T10:28:55Z
-END: 2026-01-16T10:29:06Z
-DURATION_SEC: 10.239954489
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 37 completed at 2026-01-16 18:29:06
+Task Group 37 completed at 2026-01-18 19:06:17

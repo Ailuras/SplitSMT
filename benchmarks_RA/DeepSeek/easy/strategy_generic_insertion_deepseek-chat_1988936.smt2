@@ -50,44 +50,6 @@
 (define-fun num_splits ((s String) (sep String)) Int
   (let ((tmp (convert_for_split s sep)))
     (+ 1 (count_matches tmp))))
-
-(define-fun convert_for_split_re ((s String) (r (RegEx String))) String
-  (str.replace_re_all s r delta))
-
-(define-fun-rec replace_iter_re ((s String) (r (RegEx String)) (i Int)) String
-  (ite (<= i 0) s
-    (replace_iter_re (str.replace_re s r delta) r (- i 1))))
-
-(define-fun split_at_re ((s String) (r (RegEx String)) (k Int)) String
-  (ite (< k 0) ""
-    (let ((tmp (convert_for_split_re s r)))
-      (let ((num (+ 1 (count_matches tmp))))
-        (ite (>= k num) ""
-          (let ((start_match_k (nth_match_start tmp k 0)))
-            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
-              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
-                (let ((end_k (ite (= start_match_next (- 1))
-                                  (str.len tmp)
-                                  start_match_next)))
-                  (ite (< end_k start_k)
-                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
-                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
-
-(define-fun split_rest_re ((s String) (r (RegEx String)) (k Int)) String
-  (ite (< k 0) ""
-    (let ((tmp (convert_for_split_re s r)))
-      (let ((num (count_matches tmp)))
-        (ite (< num k) ""
-          (let ((s_iter (replace_iter_re s r k)))
-            (let ((start_match_k (nth_match_start s_iter k 0)))
-              (let ((lens (str.len s_iter)))
-                (ite (< start_match_k 0) s
-                  (str.substr s_iter (+ start_match_k 1)
-                              (- lens start_match_k 1)))))))))))
-
-(define-fun num_splits_re ((s String) (r (RegEx String))) Int
-  (let ((tmp (convert_for_split_re s r)))
-    (+ 1 (count_matches tmp))))
 (declare-const X String)
 (assert (str.in_re X (re.++ (re.union (re.++ (re.union (str.to_re "0") (str.to_re "7")) (re.range "1" "7")) (re.++ (str.to_re "1") (re.range "0" "6")) (re.++ (str.to_re "2") (re.range "0" "7")) (re.++ (re.union (str.to_re "3") (str.to_re "5")) (re.range "0" "9")) (re.++ (re.union (str.to_re "4") (str.to_re "6") (str.to_re "8")) (re.range "0" "8")) (re.++ (str.to_re "9") (re.union (re.range "0" "5") (str.to_re "8") (str.to_re "9")))) (re.opt (str.to_re "-")) ((_ re.loop 7 7) (re.range "0" "9")) (str.to_re "\u{a}"))))
 (assert (not (str.in_re X (re.++ (str.to_re "\u{a}on") (re.union (str.to_re "blur") (re.++ (str.to_re "c") (re.union (str.to_re "hange") (str.to_re "lick"))) (str.to_re "dblclick") (str.to_re "focus") (str.to_re "keypress") (re.++ (re.union (str.to_re "key") (str.to_re "mouse")) (re.union (str.to_re "down") (str.to_re "up"))) (re.++ (re.opt (str.to_re "un")) (str.to_re "load")) (re.++ (str.to_re "mouse") (re.union (str.to_re "move") (re.++ (str.to_re "o") (re.union (str.to_re "ut") (str.to_re "ver"))))) (str.to_re "reset") (re.++ (str.to_re "s") (re.union (str.to_re "elect") (str.to_re "ubmit"))))))))

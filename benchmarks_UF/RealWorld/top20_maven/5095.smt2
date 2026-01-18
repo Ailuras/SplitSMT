@@ -7,7 +7,6 @@
 (declare-fun split_at_re (String RegLan Int) String)
 (declare-fun split_rest_re (String RegLan Int) String)
 (declare-fun num_splits_re (String RegLan) Int)
-
 (define-fun get_split_length ((x String) (d String) (limit Int)) Int
   (ite
     (> limit 0)

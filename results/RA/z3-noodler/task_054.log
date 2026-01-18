@@ -1,123 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.305
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.083
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.445
+FILE: benchmarks_RA/RealWorld/awesome/33306.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:04:36
+END: 2026-01-18 19:04:37
+DURATION_SEC: 0.424
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle non-chain free constraints with transducers
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3106884 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_229389.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.168
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.079
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.128
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_268334.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.212
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_310581.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:31
-DURATION_SEC: 0.222
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_313702.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:31
-END: 2026-01-16 18:11:31
-DURATION_SEC: 0.228
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_323390.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:31
-END: 2026-01-16 18:11:31
-DURATION_SEC: 0.313
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3061170 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

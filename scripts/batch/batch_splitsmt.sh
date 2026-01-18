@@ -190,7 +190,7 @@ process_task_group() {
             [[ -z "$file" ]] && break
             
             echo "==========================================================="
-            echo "Solver: SplitSMT-$SOLVER"
+            echo "Solver: $SOLVER"
             echo "FILE: $file"
             echo "START: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
             
@@ -198,7 +198,7 @@ process_task_group() {
             
             # Run SplitSMT with specified solver and timeout
             set +e
-            OUTPUT=$("$SPLITSMT_BINARY" "$file" -s "$SOLVER" -t "$TIMEOUT" 2>&1)
+            OUTPUT=$("$SPLITSMT_BINARY" "$file" -s "$SOLVER" -t "$TIMEOUT" < /dev/null 2>&1)
             EXIT_CODE=$?
             set -e
             

@@ -1,120 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1735406.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:28
-END: 2026-01-16 18:11:28
-DURATION_SEC: 0.184
-STATUS: SUCCESS
-EXIT_CODE: 0
+FILE: benchmarks_RA/RealWorld/awesome/307.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:04:36
+END: 2026-01-18 19:04:36
+DURATION_SEC: 0.315
+STATUS: ERROR
+EXIT_CODE: 134
 -----------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1748528.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:28
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.422
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_178203.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.081
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1782846.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.141
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1819654.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:29
-DURATION_SEC: 0.159
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1838598.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:29
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.397
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1845341.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.242
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1854932.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.183
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1861179.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.143
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1920182.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:30
-END: 2026-01-16 18:11:30
-DURATION_SEC: 0.075
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3061154 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

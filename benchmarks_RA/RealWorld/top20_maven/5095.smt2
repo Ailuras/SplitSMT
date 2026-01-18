@@ -52,7 +52,6 @@
 (define-fun num_splits ((s String) (sep String)) Int
   (let ((tmp (convert_for_split s sep)))
     (+ 1 (count_matches tmp))))
-
 (define-fun convert_for_split_re ((s String) (r (RegEx String))) String
   (str.replace_re_all s r delta))
 
@@ -90,10 +89,6 @@
 (define-fun num_splits_re ((s String) (r (RegEx String))) Int
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))
-(declare-fun split_at_re (String RegLan Int) String)
-(declare-fun split_rest_re (String RegLan Int) String)
-(declare-fun num_splits_re (String RegLan) Int)
-
 (define-fun get_split_length ((x String) (d String) (limit Int)) Int
   (ite
     (> limit 0)

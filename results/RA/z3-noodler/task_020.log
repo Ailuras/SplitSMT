@@ -1,123 +1,15 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1914282.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:00
-END: 2026-01-16 18:11:00
-DURATION_SEC: 0.261
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1918375.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:01
-END: 2026-01-16 18:11:01
-DURATION_SEC: 0.203
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1954405.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:01
-END: 2026-01-16 18:11:02
-DURATION_SEC: 0.858
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1958371.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:02
-END: 2026-01-16 18:11:04
-DURATION_SEC: 2.390
+FILE: benchmarks_RA/RealWorld/awesome/15181.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 19:04:28
+END: 2026-01-18 19:04:34
+DURATION_SEC: 5.393
 STATUS: ERROR
-EXIT_CODE: 110
+EXIT_CODE: 134
 -----------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/decision_procedure.cpp
-Line: 560
-solution.length_sensitive_vars.contains(output_var)
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1969999.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:04
-END: 2026-01-16 18:11:04
-DURATION_SEC: 0.213
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1988936.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:04
-END: 2026-01-16 18:11:05
-DURATION_SEC: 0.176
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1998880.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:05
-END: 2026-01-16 18:11:15
-DURATION_SEC: 10.194
-STATUS: TIMEOUT
-EXIT_CODE: 143
------------------------------------------------------------
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2013719.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:15
-DURATION_SEC: 0.089
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2033189.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:15
-DURATION_SEC: 0.348
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-
-===========================================================
-Solver: z3-noodler
-FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2035847.smt2
-TIMEOUT: 10s
-START: 2026-01-16 18:11:15
-END: 2026-01-16 18:11:15
-DURATION_SEC: 0.092
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3051742 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
 

@@ -50,44 +50,6 @@
 (define-fun num_splits ((s String) (sep String)) Int
   (let ((tmp (convert_for_split s sep)))
     (+ 1 (count_matches tmp))))
-
-(define-fun convert_for_split_re ((s String) (r (RegEx String))) String
-  (str.replace_re_all s r delta))
-
-(define-fun-rec replace_iter_re ((s String) (r (RegEx String)) (i Int)) String
-  (ite (<= i 0) s
-    (replace_iter_re (str.replace_re s r delta) r (- i 1))))
-
-(define-fun split_at_re ((s String) (r (RegEx String)) (k Int)) String
-  (ite (< k 0) ""
-    (let ((tmp (convert_for_split_re s r)))
-      (let ((num (+ 1 (count_matches tmp))))
-        (ite (>= k num) ""
-          (let ((start_match_k (nth_match_start tmp k 0)))
-            (let ((start_k (ite (= k 0) (- 1) start_match_k)))
-              (let ((start_match_next (nth_match_start tmp (+ k 1) 0)))
-                (let ((end_k (ite (= start_match_next (- 1))
-                                  (str.len tmp)
-                                  start_match_next)))
-                  (ite (< end_k start_k)
-                    (str.substr tmp (+ start_k 1) (- (str.len tmp) start_k 1))
-                    (str.substr tmp (+ start_k 1) (- end_k start_k 1))))))))))))
-
-(define-fun split_rest_re ((s String) (r (RegEx String)) (k Int)) String
-  (ite (< k 0) ""
-    (let ((tmp (convert_for_split_re s r)))
-      (let ((num (count_matches tmp)))
-        (ite (< num k) ""
-          (let ((s_iter (replace_iter_re s r k)))
-            (let ((start_match_k (nth_match_start s_iter k 0)))
-              (let ((lens (str.len s_iter)))
-                (ite (< start_match_k 0) s
-                  (str.substr s_iter (+ start_match_k 1)
-                              (- lens start_match_k 1)))))))))))
-
-(define-fun num_splits_re ((s String) (r (RegEx String))) Int
-  (let ((tmp (convert_for_split_re s r)))
-    (+ 1 (count_matches tmp))))
 (declare-fun var0 () String)
 (assert (str.in_re var0 (re.++ (re.* (re.* (re.union (re.* (re.* (re.+ (re.+ (str.to_re "00"))))) (re.+ (re.+ (re.union (re.+ (str.to_re "111")) (re.union (str.to_re "22") (str.to_re "33")))))))) (re.union (re.* (re.union (re.union (re.union (re.+ (re.union (str.to_re "444") (str.to_re "55"))) (re.* (re.+ (str.to_re "666")))) (re.+ (re.* (re.union (str.to_re "777") (str.to_re "88"))))) (re.union (re.+ (re.+ (re.+ (str.to_re "9")))) (re.* (re.+ (re.union (str.to_re "aaa") (str.to_re "b"))))))) (re.union (re.+ (re.union (re.+ (re.+ (re.+ (str.to_re "cc")))) (re.* (re.* (re.+ (str.to_re "dd")))))) (re.union (re.+ (re.union (re.union (re.* (str.to_re "eee")) (re.+ (str.to_re "fff"))) (re.union (re.union (str.to_re "gg") (str.to_re "hhh")) (re.union (str.to_re "ii") (str.to_re "j"))))) (re.* (re.union (re.+ (re.* (str.to_re "k"))) (re.+ (re.* (str.to_re "l")))))))))))
 (assert (<= 15 (str.len var0)))

@@ -1,0 +1,12 @@
+(model
+  (define-fun k () Int 0)
+  (define-fun msg_tail () String "exception")
+  (define-fun message () String "exception")
+  (define-fun component () String ":")
+  (define-fun level () String "WARN")
+  (define-fun ts () String "2000-10-30 20:00:00")
+  (define-fun log_line () String "")
+  (define-fun num_splits ((x!0 String) (x!1 String)) Int (ite (and (= x!0 "") (= x!1 " ")) 4 (ite (and (= x!0 ":") (= x!1 ":")) 2 0)))
+  (define-fun split_rest ((x!0 String) (x!1 String) (x!2 Int)) String (ite (and (and (= x!0 "") (= x!1 " ")) (= x!2 3)) "exception" ""))
+  (define-fun split_at ((x!0 String) (x!1 String) (x!2 Int)) String (ite (and (and (= x!0 "") (= x!1 " ")) (= x!2 0)) "2000-10-30 20:00:00" (ite (and (and (= x!0 "") (= x!1 " ")) (= x!2 1)) "WARN" (ite (and (and (= x!0 "") (= x!1 " ")) (= x!2 2)) ":" (ite (and (and (= x!0 ":") (= x!1 ":")) (= x!2 1)) "" "")))))
+)

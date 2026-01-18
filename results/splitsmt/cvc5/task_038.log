@@ -1,132 +1,19 @@
 ===========================================================
 Task Group 38
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-16 18:28:04
+Started: 2026-01-18 19:06:17
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1235975.smt2
-START: 2026-01-16T10:28:04Z
-END: 2026-01-16T10:28:05Z
-DURATION_SEC: .405713703
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/20494.smt2
+START: 2026-01-18T11:06:17Z
+END: 2026-01-18T11:06:17Z
+DURATION_SEC: .136093714
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1237147.smt2
-START: 2026-01-16T10:28:05Z
-END: 2026-01-16T10:28:05Z
-DURATION_SEC: .212169049
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:05] External solver reported errors in output: (error "parse error: /tmp/smt2_lzayrg.smt2:58.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1237659.smt2
-START: 2026-01-16T10:28:05Z
-END: 2026-01-16T10:28:15Z
-DURATION_SEC: 10.192207314
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_1262573.smt2
-START: 2026-01-16T10:28:15Z
-END: 2026-01-16T10:28:16Z
-DURATION_SEC: .250643573
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:16] External solver reported errors in output: (error "parse error: /tmp/smt2_ktseen.smt2:60.39: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1269136.smt2
-START: 2026-01-16T10:28:16Z
-END: 2026-01-16T10:28:17Z
-DURATION_SEC: .697978087
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:16] External solver reported errors in output: (error "parse error: /tmp/smt2_3le1of.smt2:33.14: symbol `sec' is shadowing a theory function symbol")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1274675.smt2
-START: 2026-01-16T10:28:17Z
-END: 2026-01-16T10:28:17Z
-DURATION_SEC: .339248595
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:17] External solver reported errors in output: (error "parse error: /tmp/smt2_60h8ze.smt2:71.35: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1315657.smt2
-START: 2026-01-16T10:28:17Z
-END: 2026-01-16T10:28:27Z
-DURATION_SEC: 10.246962244
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1327828.smt2
-START: 2026-01-16T10:28:27Z
-END: 2026-01-16T10:28:28Z
-DURATION_SEC: .146390423
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-16 18:28:27] External solver reported errors in output: (error "parse error: /tmp/smt2_jrkria.smt2:59.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
-START: 2026-01-16T10:28:28Z
-END: 2026-01-16T10:28:28Z
-DURATION_SEC: .231125748
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1384326.smt2
-START: 2026-01-16T10:28:28Z
-END: 2026-01-16T10:28:38Z
-DURATION_SEC: 10.142755014
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 38 completed at 2026-01-16 18:28:38
+Task Group 38 completed at 2026-01-18 19:06:17

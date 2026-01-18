@@ -1,0 +1,26 @@
+(set-logic ALL)
+(declare-fun split_at (String String Int) String)
+(declare-fun split_rest (String String Int) String)
+(declare-fun num_splits (String String) Int)
+(declare-fun T_1 () Bool)
+(declare-fun var_0xINPUT_89849 () String)
+(assert (= T_1 (= "-" var_0xINPUT_89849)))
+(assert T_1)
+
+; --- START CONSTRAINT ---
+(declare-const segment_0 String)
+(declare-const segment_1 String)
+(declare-const total_segments Int)
+(assert (= segment_0 (split_at var_0xINPUT_89849 "-" 0)))
+(assert (= segment_1 (split_at var_0xINPUT_89849 "-" 1)))
+(assert (= total_segments (num_splits var_0xINPUT_89849 "-")))
+(assert (>= total_segments 2))
+(assert (not (= segment_0 "")))
+(assert (not (= segment_1 "")))
+; --- END CONSTRAINT ---
+
+
+; [GENERATION STATUS: SUCCESS]
+(check-sat)
+(get-model)
+(exit)

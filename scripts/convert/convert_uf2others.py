@@ -8,7 +8,7 @@ This script generates multiple versions from a UF file:
 2. ra: Replaces UF with RA definitions + sanitizes negative numbers.
 3. rec: Replaces UF with REC definitions + sanitizes negative numbers.
 
-It is standalone and contains all necessary definitions.
+Only adds RE-related definitions if the file uses RE functions.
 """
 
 import argparse
@@ -19,7 +19,8 @@ from typing import List, Tuple, Dict
 
 # --- Embedded Definitions ---
 
-RA_DEFINITIONS_STR = r"""(define-const delta String "\u{2FFFF}")
+# Base RA definitions (non-RE)
+RA_DEFINITIONS_BASE = r"""(define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
   (str.replace_all s sep delta))
@@ -69,8 +70,10 @@ RA_DEFINITIONS_STR = r"""(define-const delta String "\u{2FFFF}")
 
 (define-fun num_splits ((s String) (sep String)) Int
   (let ((tmp (convert_for_split s sep)))
-    (+ 1 (count_matches tmp))))
+    (+ 1 (count_matches tmp))))"""
 
+# RE RA definitions (only added if RE functions are used)
+RA_DEFINITIONS_RE = r"""
 (define-fun convert_for_split_re ((s String) (r (RegEx String))) String
   (str.replace_re_all s r delta))
 
@@ -109,7 +112,8 @@ RA_DEFINITIONS_STR = r"""(define-const delta String "\u{2FFFF}")
   (let ((tmp (convert_for_split_re s r)))
     (+ 1 (count_matches tmp))))"""
 
-REC_DEFINITIONS_STR = r"""(define-const delta String "\u{2FFFF}")
+# Base REC definitions (non-RE)
+REC_DEFINITIONS_BASE = r"""(define-const delta String "\u{2FFFF}")
 
 (define-fun convert_for_split ((s String) (sep String)) String
   (str.replace_all s sep delta))
@@ -162,8 +166,10 @@ REC_DEFINITIONS_STR = r"""(define-const delta String "\u{2FFFF}")
 
 (define-fun num_splits ((s String) (sep String)) Int
   (let ((tmp (convert_for_split s sep)))
-    (+ 1 (count_matches tmp))))
+    (+ 1 (count_matches tmp))))"""
 
+# RE REC definitions (only added if RE functions are used)
+REC_DEFINITIONS_RE = r"""
 (define-fun convert_for_split_re ((s String) (r (RegEx String))) String
   (str.replace_re_all s r delta))
 
@@ -221,11 +227,31 @@ def colored(text: str, color: str) -> str:
     return text
 
 # UF function declarations patterns to identify and remove
-UF_DECLARATION_PATTERNS = [
+UF_DECLARATION_PATTERNS_BASE = [
     r'^\s*\(declare-fun split_at \(String String Int\) String\)\s*$',
     r'^\s*\(declare-fun split_rest \(String String Int\) String\)\s*$',
-    r'^\s*\(declare-fun num_splits \(String String\) Int\)\s*$'
+    r'^\s*\(declare-fun num_splits \(String String\) Int\)\s*$',
 ]
+
+UF_DECLARATION_PATTERNS_RE = [
+    r'^\s*\(declare-fun split_at_re \(String RegLan Int\) String\)\s*$',
+    r'^\s*\(declare-fun split_rest_re \(String RegLan Int\) String\)\s*$',
+    r'^\s*\(declare-fun num_splits_re \(String RegLan\) Int\)\s*$'
+]
+
+def uses_re_functions(content: List[str]) -> bool:
+    """Check if the content uses any RE-related split functions."""
+    content_str = '\n'.join(content)
+    # Check for split_at_re, split_rest_re, num_splits_re (with or without str. prefix)
+    re_patterns = [
+        r'\bsplit_at_re\b',
+        r'\bsplit_rest_re\b',
+        r'\bnum_splits_re\b',
+    ]
+    for pattern in re_patterns:
+        if re.search(pattern, content_str):
+            return True
+    return False
 
 def sanitize_negative_one(content: List[str]) -> Tuple[List[str], int]:
     """
@@ -235,14 +261,9 @@ def sanitize_negative_one(content: List[str]) -> Tuple[List[str], int]:
     new_content = []
     count = 0
     
-    # Pattern: 
-    # Group 1: Preceding char (space, (, [, start of line)
-    # Group 2: -1
-    # Group 3: Following char (space, ), ], end of line)
     pattern = re.compile(r'(^|[\s\(\[])(-1)(?=[\s\)\]]|$)')
     
     for line in content:
-        # Check if line has -1
         if "-1" not in line:
             new_content.append(line)
             continue
@@ -260,7 +281,8 @@ def transform_to_splitsmt(content: List[str]) -> Tuple[List[str], Dict]:
     2. Add str. prefix back (split_at -> str.split_at)
     """
     stats = {"uf_declarations_removed": 0, "prefixes_added": 0}
-    uf_patterns = [re.compile(pattern) for pattern in UF_DECLARATION_PATTERNS]
+    all_patterns = UF_DECLARATION_PATTERNS_BASE + UF_DECLARATION_PATTERNS_RE
+    uf_patterns = [re.compile(pattern) for pattern in all_patterns]
     result_lines = []
     
     for line in content:
@@ -277,8 +299,17 @@ def transform_to_splitsmt(content: List[str]) -> Tuple[List[str], Dict]:
         new_line, c1 = pat_split_at.subn(lambda m: m.group(0).replace("split_at", "str.split_at"), new_line)
         new_line, c2 = pat_split_rest.subn(lambda m: m.group(0).replace("split_rest", "str.split_rest"), new_line)
         new_line, c3 = pat_num_splits.subn(lambda m: m.group(0).replace("num_splits", "str.num_splits"), new_line)
+
+        # Add str. prefix for _re variants
+        pat_split_at_re = re.compile(r'\(\s*split_at_re\b')
+        pat_split_rest_re = re.compile(r'\(\s*split_rest_re\b')
+        pat_num_splits_re = re.compile(r'\(\s*num_splits_re\b')
+
+        new_line, c4 = pat_split_at_re.subn(lambda m: m.group(0).replace("split_at_re", "str.split_at_re"), new_line)
+        new_line, c5 = pat_split_rest_re.subn(lambda m: m.group(0).replace("split_rest_re", "str.split_rest_re"), new_line)
+        new_line, c6 = pat_num_splits_re.subn(lambda m: m.group(0).replace("num_splits_re", "str.num_splits_re"), new_line)
         
-        stats["prefixes_added"] += (c1 + c2 + c3)
+        stats["prefixes_added"] += (c1 + c2 + c3 + c4 + c5 + c6)
         result_lines.append(new_line)
     
     return result_lines, stats
@@ -286,6 +317,7 @@ def transform_to_splitsmt(content: List[str]) -> Tuple[List[str], Dict]:
 def transform_to_ra(content: List[str]) -> Tuple[List[str], Dict]:
     """
     RA: Remove UF Declarations, inject RA definitions, sanitize -1.
+    Only injects RE definitions if RE functions are used.
     """
     stats = {"uf_declarations_removed": 0, "definitions_injected": 0, "negative_ones_sanitized": 0}
     
@@ -293,12 +325,18 @@ def transform_to_ra(content: List[str]) -> Tuple[List[str], Dict]:
     sanitized_content, n_count = sanitize_negative_one(content)
     stats["negative_ones_sanitized"] = n_count
     
-    # 2. Split definitions
-    ra_defs = RA_DEFINITIONS_STR.strip().split('\n')
+    # 2. Determine if RE functions are used
+    has_re = uses_re_functions(content)
+    
+    # 3. Split definitions
+    ra_defs = RA_DEFINITIONS_BASE.strip().split('\n')
+    if has_re:
+        ra_defs.extend(RA_DEFINITIONS_RE.strip().split('\n'))
 
-    # 3. Remove UF and Inject
+    # 4. Remove UF and Inject
     result_lines = []
-    uf_patterns = [re.compile(pattern) for pattern in UF_DECLARATION_PATTERNS]
+    all_patterns = UF_DECLARATION_PATTERNS_BASE + UF_DECLARATION_PATTERNS_RE
+    uf_patterns = [re.compile(pattern) for pattern in all_patterns]
     
     insertion_done = False
     
@@ -334,6 +372,7 @@ def transform_to_ra(content: List[str]) -> Tuple[List[str], Dict]:
 def transform_to_rec(content: List[str]) -> Tuple[List[str], Dict]:
     """
     REC: Remove UF Declarations, inject REC definitions, sanitize -1.
+    Only injects RE definitions if RE functions are used.
     """
     stats = {"uf_declarations_removed": 0, "definitions_injected": 0, "negative_ones_sanitized": 0}
     
@@ -341,12 +380,18 @@ def transform_to_rec(content: List[str]) -> Tuple[List[str], Dict]:
     sanitized_content, n_count = sanitize_negative_one(content)
     stats["negative_ones_sanitized"] = n_count
 
-    # 2. Split definitions
-    rec_defs = REC_DEFINITIONS_STR.strip().split('\n')
+    # 2. Determine if RE functions are used
+    has_re = uses_re_functions(content)
+
+    # 3. Split definitions
+    rec_defs = REC_DEFINITIONS_BASE.strip().split('\n')
+    if has_re:
+        rec_defs.extend(REC_DEFINITIONS_RE.strip().split('\n'))
     
-    # 3. Remove UF and Inject
+    # 4. Remove UF and Inject
     result_lines = []
-    uf_patterns = [re.compile(pattern) for pattern in UF_DECLARATION_PATTERNS]
+    all_patterns = UF_DECLARATION_PATTERNS_BASE + UF_DECLARATION_PATTERNS_RE
+    uf_patterns = [re.compile(pattern) for pattern in all_patterns]
     
     insertion_done = False
     
@@ -460,6 +505,7 @@ def main():
         return 1
         
     print(colored(f"[INFO] converting formats (splitsmt, ra, rec)...", Colors.CYAN))
+    print(colored(f"[INFO] RE definitions are only injected for files using RE functions.", Colors.CYAN))
     
     # Set output dir
     if args.output:
