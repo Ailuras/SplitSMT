@@ -80,3 +80,31 @@
     \end{tabular}%
   }
 \end{table*}
+
+\begin{table}[h]
+  \centering
+  \caption{Number of instances uniquely solved by each method compared to others. \EXPtodo{Temporary table for script population.}}
+  \label{tab:unique-solved-counts}
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{l|cc|cc|cc|cc}
+      \toprule
+      \multirow{2}{*}{\textbf{Category}} & \multicolumn{2}{c|}{\textbf{Ours}} & \multicolumn{2}{c|}{\textbf{RALen}} & \multicolumn{2}{c|}{\textbf{RecLen}} & \multicolumn{2}{c}{\textbf{UF-split}}                                  \\
+      \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+                                         & \textbf{SAT}                       & \textbf{UNSAT}                       & \textbf{SAT}                          & \textbf{UNSAT} & \textbf{SAT} & \textbf{UNSAT} & \textbf{SAT} & \textbf{UNSAT} \\
+      \midrule
+      \multicolumn{9}{l}{\textit{Real-World}}                                                                                                                                                                                                   \\
+      Maven                              & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      GitHub                             & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      Awesome                            & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      SeqStr                             & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      \midrule
+      \multicolumn{9}{l}{\textit{Synthetic}}                                                                                                                                                                                                    \\
+      Simple                             & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      Complex                            & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      Scenarios                          & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      \midrule
+      \textbf{Total}                     & \EXPtodo{--}                       & \EXPtodo{--}                         & \EXPtodo{--}                          & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   & \EXPtodo{--} & \EXPtodo{--}   \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table}

@@ -145,6 +145,58 @@ def totals_from_solver_stats(stats, categories):
     return total
 
 
+
+def build_unique_stats(rows, category_picker):
+    stats = {}
+    model_fields = {
+        "Ours": "splitsmt",
+        "RALen": "RA",
+        "RecLen": "REC",
+        "UF-split": "UF",
+    }
+    for row in rows:
+        category = category_picker(row)
+        if not category:
+            continue
+        if category not in stats:
+            stats[category] = {
+                "count": 0,
+                "models": {m: {"sat": 0, "unsat": 0} for m in model_fields},
+            }
+        entry = stats[category]
+        entry["count"] += 1
+
+        solved_by = []
+        for label, prefix in model_fields.items():
+            result = normalize_result(row.get(f"{prefix}_result"))
+            if result in ("SAT", "UNSAT"):
+                solved_by.append((label, result))
+
+        if len(solved_by) == 1:
+            winner_name, result = solved_by[0]
+            if result == "SAT":
+                entry["models"][winner_name]["sat"] += 1
+            elif result == "UNSAT":
+                entry["models"][winner_name]["unsat"] += 1
+    return stats
+
+
+def totals_from_unique_stats(stats, categories):
+    total = {
+        "count": 0,
+        "models": {m: {"sat": 0, "unsat": 0} for m in ["Ours", "RALen", "RecLen", "UF-split"]},
+    }
+    for category in categories:
+        entry = stats.get(category)
+        if not entry:
+            continue
+        total["count"] += entry["count"]
+        for model, model_stat in entry["models"].items():
+            total["models"][model]["sat"] += model_stat["sat"]
+            total["models"][model]["unsat"] += model_stat["unsat"]
+    return total
+
+
 def fill_row_placeholders(line: str, values: List[str]) -> str:
     output = line
     for value in values:
@@ -210,6 +262,23 @@ def main() -> int:
     }
     solver_totals = {name: totals_from_solver_stats(stats, solver_categories) for name, stats in solver_stats.items()}
 
+    realworld_unique_stats = build_unique_stats(rows_default, pick_realworld)
+    synthetic_unique_stats = build_unique_stats(rows_default, pick_synthetic)
+    realworld_unique_total = totals_from_unique_stats(realworld_unique_stats, realworld_categories)
+    synthetic_unique_total = totals_from_unique_stats(synthetic_unique_stats, synthetic_categories)
+    
+    # Grand total for unique stats (RealWorld + Synthetic)
+    total_unique_total = {
+        "count": realworld_unique_total["count"] + synthetic_unique_total["count"],
+        "models": {
+            m: {
+                "sat": realworld_unique_total["models"][m]["sat"] + synthetic_unique_total["models"][m]["sat"],
+                "unsat": realworld_unique_total["models"][m]["unsat"] + synthetic_unique_total["models"][m]["unsat"],
+            }
+            for m in ["Ours", "RALen", "RecLen", "UF-split"]
+        }
+    }
+
     content = args.table.read_text(encoding="utf-8")
     lines = content.splitlines()
     out_lines = []
@@ -221,7 +290,9 @@ def main() -> int:
             table_mode = "synthetic"
         elif "tab:type-merged" in line:
             table_mode = "per-solver"
-        elif "\\end{table*}" in line:
+        elif "tab:unique-solved-counts" in line:
+            table_mode = "unique"
+        elif "\\end{table" in line: # table or table*
             table_mode = ""
 
         if table_mode == "realworld":
@@ -314,6 +385,37 @@ def main() -> int:
                             fmt_time(avg_time(entry["time_sum"], entry["time_count"])),
                         ]
                     )
+                line = fill_row_placeholders(line, values)
+                line = fill_row_placeholders(line, values)
+
+        if table_mode == "unique":
+            # Real-World Section
+            for category in realworld_categories:
+                if line.strip().startswith(category):
+                    entry = realworld_unique_stats.get(category, {"count": 0, "models": {}})
+                    values = []
+                    for model in ["Ours", "RALen", "RecLen", "UF-split"]:
+                        model_stat = entry["models"].get(model, {"sat": 0, "unsat": 0})
+                        values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
+                    line = fill_row_placeholders(line, values)
+            
+            # Synthetic Section
+            for category in synthetic_categories:
+                if line.strip().startswith(category):
+                    entry = synthetic_unique_stats.get(category, {"count": 0, "models": {}})
+                    values = []
+                    for model in ["Ours", "RALen", "RecLen", "UF-split"]:
+                        model_stat = entry["models"].get(model, {"sat": 0, "unsat": 0})
+                        values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
+                    line = fill_row_placeholders(line, values)
+
+            # Total Row
+            if "\\textbf{Total}" in line:
+                entry = total_unique_total
+                values = []
+                for model in ["Ours", "RALen", "RecLen", "UF-split"]:
+                    model_stat = entry["models"][model]
+                    values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
                 line = fill_row_placeholders(line, values)
 
         out_lines.append(line)

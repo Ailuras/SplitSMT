@@ -80,3 +80,31 @@
     \end{tabular}%
   }
 \end{table*}
+
+\begin{table}[h]
+  \centering
+  \caption{Number of instances uniquely solved by each method compared to others. \EXPtodo{Temporary table for script population.}}
+  \label{tab:unique-solved-counts}
+  \resizebox{\linewidth}{!}{%
+    \begin{tabular}{l|cc|cc|cc|cc}
+      \toprule
+      \multirow{2}{*}{\textbf{Category}} & \multicolumn{2}{c|}{\textbf{Ours}} & \multicolumn{2}{c|}{\textbf{RALen}} & \multicolumn{2}{c|}{\textbf{RecLen}} & \multicolumn{2}{c}{\textbf{UF-split}}                                  \\
+      \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7} \cmidrule(lr){8-9}
+                                         & \textbf{SAT}                       & \textbf{UNSAT}                       & \textbf{SAT}                          & \textbf{UNSAT} & \textbf{SAT} & \textbf{UNSAT} & \textbf{SAT} & \textbf{UNSAT} \\
+      \midrule
+      \multicolumn{9}{l}{\textit{Real-World}}                                                                                                                                                                                                   \\
+      Maven                              & 1                       & 1                         & 0                          & 0   & 0 & 0   & 0 & 0   \\
+      GitHub                             & 1                       & 5                         & 1                          & 0   & 0 & 0   & 1 & 0   \\
+      Awesome                            & 8                       & 12                         & 0                          & 0   & 0 & 0   & 7 & 0   \\
+      SeqStr                             & 0                       & 0                         & 0                          & 0   & 0 & 0   & 0 & 0   \\
+      \midrule
+      \multicolumn{9}{l}{\textit{Synthetic}}                                                                                                                                                                                                    \\
+      Simple                             & 39                       & 30                         & 0                          & 0   & 0 & 0   & 14 & 0   \\
+      Complex                            & 36                       & 6                         & 0                          & 0   & 0 & 0   & 2 & 0   \\
+      Scenarios                          & 9                       & 3                         & 0                          & 0   & 0 & 0   & 3 & 0   \\
+      \midrule
+      \textbf{Total}                     & 94                       & 57                         & 1                          & 0   & 0 & 0   & 27 & 0   \\
+      \bottomrule
+    \end{tabular}%
+  }
+\end{table}
