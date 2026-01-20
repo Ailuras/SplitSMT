@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 88
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-20 15:15:06
+Started: 2026-01-20 18:54:21
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/1759.smt2
-START: 2026-01-20T07:15:06Z
-END: 2026-01-20T07:15:08Z
-DURATION_SEC: 1.925173552
+START: 2026-01-20T10:54:21Z
+END: 2026-01-20T10:54:23Z
+DURATION_SEC: 1.971452969
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,21 +19,22 @@ unsat
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/1778.smt2
-START: 2026-01-20T07:15:08Z
-END: 2026-01-20T07:15:11Z
-DURATION_SEC: 2.127569406
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-20T10:54:23Z
+END: 2026-01-20T10:54:28Z
+DURATION_SEC: 5.234758969
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
+[31m[2026-01-20 18:54:28] External solver reported errors in output: (error "internal exception: java.lang.illegalargumentexception: cannot execute actions list(addformula((! (str_empty(all_535_4) & str_empty(all_450_4)))))")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/1798.smt2
-START: 2026-01-20T07:15:11Z
-END: 2026-01-20T07:15:12Z
-DURATION_SEC: 1.792197751
+START: 2026-01-20T10:54:28Z
+END: 2026-01-20T10:54:30Z
+DURATION_SEC: 1.638915464
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,9 +44,9 @@ unsat
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/18293.smt2
-START: 2026-01-20T07:15:12Z
-END: 2026-01-20T07:15:14Z
-DURATION_SEC: 1.418065195
+START: 2026-01-20T10:54:30Z
+END: 2026-01-20T10:54:31Z
+DURATION_SEC: 1.229752986
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -55,13 +56,13 @@ unknown
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/19222.smt2
-START: 2026-01-20T07:15:14Z
-END: 2026-01-20T07:15:16Z
-DURATION_SEC: 1.814345628
+START: 2026-01-20T10:54:31Z
+END: 2026-01-20T10:54:33Z
+DURATION_SEC: 1.646186576
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 88 completed at 2026-01-20 15:15:16
+Task Group 88 completed at 2026-01-20 18:54:33

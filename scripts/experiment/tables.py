@@ -82,7 +82,7 @@ def build_model_stats(rows, category_picker):
             elif result == "UNSAT":
                 entry["models"][label]["unsat"] += 1
             time_val = row.get(f"{prefix}_time")
-            if is_number(time_val):
+            if is_number(time_val) and result in ("SAT", "UNSAT"):
                 entry["models"][label]["time_sum"] += float(time_val)
                 entry["models"][label]["time_count"] += 1
     return stats
@@ -106,7 +106,7 @@ def build_solver_stats(rows, category_picker):
         else:
             entry["unk"] += 1
         time_val = row.get("splitsmt_time")
-        if is_number(time_val):
+        if is_number(time_val) and result in ("SAT", "UNSAT"):
             entry["time_sum"] += float(time_val)
             entry["time_count"] += 1
     return stats

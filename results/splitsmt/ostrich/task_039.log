@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 39
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-20 15:14:23
+Started: 2026-01-20 16:43:19
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_254006.smt2
-START: 2026-01-20T07:14:23Z
-END: 2026-01-20T07:14:25Z
-DURATION_SEC: 1.823211765
+START: 2026-01-20T08:43:19Z
+END: 2026-01-20T08:43:23Z
+DURATION_SEC: 4.227833951
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,49 +19,50 @@ unknown
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_378613.smt2
-START: 2026-01-20T07:14:25Z
-END: 2026-01-20T07:14:27Z
-DURATION_SEC: 2.226861121
+START: 2026-01-20T08:43:23Z
+END: 2026-01-20T08:43:35Z
+DURATION_SEC: 11.663152287
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+unsat
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_396493.smt2
-START: 2026-01-20T07:14:27Z
-END: 2026-01-20T07:14:29Z
-DURATION_SEC: 2.217793647
-STATUS: SUCCESS
-EXIT_CODE: 0
+START: 2026-01-20T08:43:35Z
+END: 2026-01-20T08:58:24Z
+DURATION_SEC: 888.477174816
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
+[31m[2026-01-20 16:58:23] External solver reported errors in output: (error "out of memory or stack overflow")[0m
 unknown
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_636767.smt2
-START: 2026-01-20T07:14:29Z
-END: 2026-01-20T07:14:31Z
-DURATION_SEC: 2.251669711
+START: 2026-01-20T08:58:24Z
+END: 2026-01-20T09:06:11Z
+DURATION_SEC: 467.554925124
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unknown
+sat
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_669507.smt2
-START: 2026-01-20T07:14:31Z
-END: 2026-01-20T07:14:33Z
-DURATION_SEC: 1.742330065
+START: 2026-01-20T09:06:11Z
+END: 2026-01-20T09:06:15Z
+DURATION_SEC: 3.468032455
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 39 completed at 2026-01-20 15:14:33
+Task Group 39 completed at 2026-01-20 17:06:15

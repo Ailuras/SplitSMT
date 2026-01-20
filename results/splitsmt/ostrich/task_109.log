@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 109
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-20 15:15:24
+Started: 2026-01-20 19:00:52
 ===========================================================
 
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/awesome/9409.smt2
-START: 2026-01-20T07:15:24Z
-END: 2026-01-20T07:15:26Z
-DURATION_SEC: 1.760899321
+START: 2026-01-20T11:00:52Z
+END: 2026-01-20T11:00:54Z
+DURATION_SEC: 1.688522984
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -19,9 +19,9 @@ unsat
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split2.smt2
-START: 2026-01-20T07:15:26Z
-END: 2026-01-20T07:15:28Z
-DURATION_SEC: 1.717828714
+START: 2026-01-20T11:00:54Z
+END: 2026-01-20T11:00:56Z
+DURATION_SEC: 2.081049123
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -31,9 +31,9 @@ sat
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split.smt2
-START: 2026-01-20T07:15:28Z
-END: 2026-01-20T07:15:29Z
-DURATION_SEC: 1.733702166
+START: 2026-01-20T11:00:56Z
+END: 2026-01-20T11:00:58Z
+DURATION_SEC: 1.488850705
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -43,25 +43,25 @@ sat
 ===========================================================
 Solver: ostrich
 FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split2.smt2
-START: 2026-01-20T07:15:29Z
-END: 2026-01-20T07:15:32Z
-DURATION_SEC: 2.181717070
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split3.smt2
-START: 2026-01-20T07:15:32Z
-END: 2026-01-20T07:15:33Z
-DURATION_SEC: 1.796719737
+START: 2026-01-20T11:00:58Z
+END: 2026-01-20T11:01:00Z
+DURATION_SEC: 2.068578868
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-Task Group 109 completed at 2026-01-20 15:15:33
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split3.smt2
+START: 2026-01-20T11:01:00Z
+END: 2026-01-20T11:01:02Z
+DURATION_SEC: 2.101652600
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 109 completed at 2026-01-20 19:01:02
