@@ -1,0 +1,68 @@
+===========================================================
+Task Group 84
+Solver: SplitSMT (using cvc5)
+Started: 2026-01-20 15:14:38
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11234.smt2
+START: 2026-01-20T07:14:38Z
+END: 2026-01-20T07:14:39Z
+DURATION_SEC: .175139160
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11442.smt2
+START: 2026-01-20T07:14:39Z
+END: 2026-01-20T07:14:39Z
+DURATION_SEC: .165638989
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-20 15:14:39] External solver reported errors in output: (error "parse error: /tmp/smt2_nuybar.smt2:54.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11634.smt2
+START: 2026-01-20T07:14:39Z
+END: 2026-01-20T07:14:41Z
+DURATION_SEC: 2.087536019
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11642.smt2
+START: 2026-01-20T07:14:41Z
+END: 2026-01-20T07:14:43Z
+DURATION_SEC: 2.089230653
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/RealWorld/awesome/11661.smt2
+START: 2026-01-20T07:14:43Z
+END: 2026-01-20T07:14:43Z
+DURATION_SEC: .142028684
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 84 completed at 2026-01-20 15:14:43

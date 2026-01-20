@@ -1,19 +1,68 @@
 ===========================================================
 Task Group 46
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 19:06:19
+Started: 2026-01-20 15:14:23
 ===========================================================
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_splitsmt/RealWorld/awesome/2344.smt2
-START: 2026-01-18T11:06:19Z
-END: 2026-01-18T11:06:20Z
-DURATION_SEC: .705956164
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_252402.smt2
+START: 2026-01-20T07:14:23Z
+END: 2026-01-20T07:14:23Z
+DURATION_SEC: .182960776
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-20 15:14:23] External solver reported errors in output: (error "parse error: /tmp/smt2_pd8kxn.smt2:58.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_284509.smt2
+START: 2026-01-20T07:14:23Z
+END: 2026-01-20T07:14:25Z
+DURATION_SEC: 2.338658177
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 ===========================================================
 
-Task Group 46 completed at 2026-01-18 19:06:20
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_325154.smt2
+START: 2026-01-20T07:14:25Z
+END: 2026-01-20T07:14:28Z
+DURATION_SEC: 2.090161054
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_376528.smt2
+START: 2026-01-20T07:14:28Z
+END: 2026-01-20T07:14:30Z
+DURATION_SEC: 2.107328417
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_392406.smt2
+START: 2026-01-20T07:14:30Z
+END: 2026-01-20T07:14:30Z
+DURATION_SEC: .267288778
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 46 completed at 2026-01-20 15:14:30

@@ -16,7 +16,7 @@
 (declare-fun seg1 () String)
 (assert (= (str.num_splits var_0xINPUT_84736 "-") 1))
 (assert (= seg0 (str.split_at var_0xINPUT_84736 "-" 0)))
-(assert (= seg1 (str.split_rest var_0xINPUT_84736 "-" 1)))
+(assert (= seg1 (str.split_rest var_0xINPUT_84736 "-" 0)))
 (assert (= seg0 var_0xINPUT_84736))
 (assert (= seg1 ""))
 ; --- END CONSTRAINT ---

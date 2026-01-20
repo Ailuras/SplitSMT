@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/6277.smt2
+FILE: benchmarks_REC/RealWorld/awesome/9409.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:03
-END: 2026-01-18 19:00:04
-DURATION_SEC: 0.179
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.117
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3011559 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/seqstr/realworld_sat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/seqstr/realworld_sat_split.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.088
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/seqstr/realworld_unsat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.085
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/seqstr/realworld_unsat_split3.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.106
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

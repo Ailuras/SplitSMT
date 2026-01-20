@@ -1,10 +1,61 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/6116.smt2
+FILE: benchmarks_REC/RealWorld/awesome/768.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:03
-END: 2026-01-18 19:00:03
-DURATION_SEC: 0.225
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:43
+DURATION_SEC: 0.104
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/788.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.378
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3088913 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/860.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.709
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/8775.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:44
+END: 2026-01-19 06:07:45
+DURATION_SEC: 1.216
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/8916.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:46
+END: 2026-01-19 06:08:00
+DURATION_SEC: 14.095
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

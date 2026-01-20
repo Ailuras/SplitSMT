@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_RA/RealWorld/awesome/21489.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1738265.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:28
-END: 2026-01-18 19:04:28
-DURATION_SEC: 0.077
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-18 23:30:11
+END: 2026-01-18 23:50:11
+DURATION_SEC: 1200.070
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_RA/RealWorld/awesome/21489.smt2:56.62: Symbol 'RegEx' not declared as a type")
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1842625.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 23:50:11
+END: 2026-01-19 00:10:11
+DURATION_SEC: 1200.030
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1856544.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:10:11
+END: 2026-01-19 00:11:22
+DURATION_SEC: 71.197
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1874023.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:11:22
+END: 2026-01-19 00:11:22
+DURATION_SEC: 0.071
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1922790.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:11:22
+END: 2026-01-19 00:11:40
+DURATION_SEC: 17.494
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

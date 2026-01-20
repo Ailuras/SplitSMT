@@ -1,127 +1,67 @@
 ===========================================================
 Task Group 19
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 00:23:50
+Started: 2026-01-19 15:08:18
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1791155.smt2
-START: 2026-01-17T16:23:50Z
-END: 2026-01-17T16:23:58Z
-DURATION_SEC: 8.375057052
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1621410.smt2
+START: 2026-01-19T07:08:22Z
+END: 2026-01-19T07:08:29Z
+DURATION_SEC: 7.169161779
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1632154.smt2
+START: 2026-01-19T07:08:29Z
+END: 2026-01-19T07:08:52Z
+DURATION_SEC: 22.457228267
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1653233.smt2
+START: 2026-01-19T07:08:52Z
+END: 2026-01-19T07:09:06Z
+DURATION_SEC: 14.269026782
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1662149.smt2
+START: 2026-01-19T07:09:06Z
+END: 2026-01-19T07:09:26Z
+DURATION_SEC: 19.966010777
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1663321.smt2
+START: 2026-01-19T07:09:26Z
+END: 2026-01-19T07:09:27Z
+DURATION_SEC: .630700924
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1857289.smt2
-START: 2026-01-17T16:23:58Z
-END: 2026-01-17T16:23:58Z
-DURATION_SEC: .161419984
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1874067.smt2
-START: 2026-01-17T16:23:58Z
-END: 2026-01-17T16:23:59Z
-DURATION_SEC: .998431314
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1889497.smt2
-START: 2026-01-17T16:23:59Z
-END: 2026-01-17T16:24:00Z
-DURATION_SEC: .907131154
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1898048.smt2
-START: 2026-01-17T16:24:00Z
-END: 2026-01-17T16:24:01Z
-DURATION_SEC: .230939490
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1955773.smt2
-START: 2026-01-17T16:24:01Z
-END: 2026-01-17T16:24:01Z
-DURATION_SEC: .142594728
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1979984.smt2
-START: 2026-01-17T16:24:01Z
-END: 2026-01-17T16:24:01Z
-DURATION_SEC: .462911637
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_2064470.smt2
-START: 2026-01-17T16:24:01Z
-END: 2026-01-17T16:24:02Z
-DURATION_SEC: .701280285
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_228499.smt2
-START: 2026-01-17T16:24:02Z
-END: 2026-01-17T16:24:02Z
-DURATION_SEC: .141761013
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_231876.smt2
-START: 2026-01-17T16:24:02Z
-END: 2026-01-17T16:24:02Z
-DURATION_SEC: .263834344
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 19 completed at 2026-01-18 00:24:02
+Task Group 19 completed at 2026-01-19 15:09:27

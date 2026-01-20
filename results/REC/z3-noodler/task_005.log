@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/11442.smt2
+FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_173204.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:58
-END: 2026-01-18 18:59:58
-DURATION_SEC: 0.160
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-19 06:07:15
+END: 2026-01-19 06:07:15
+DURATION_SEC: 0.137
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3004347 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1742363.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:15
+END: 2026-01-19 06:07:16
+DURATION_SEC: 0.102
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1757039.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:16
+END: 2026-01-19 06:07:16
+DURATION_SEC: 0.106
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1768325.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:16
+END: 2026-01-19 06:07:16
+DURATION_SEC: 0.172
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/complex/strategy_str_split_deepseek-chat_1778412.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:16
+END: 2026-01-19 06:07:16
+DURATION_SEC: 0.318
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

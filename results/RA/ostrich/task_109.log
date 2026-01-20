@@ -1,11 +1,60 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_RA/RealWorld/awesome/6277.smt2
+FILE: benchmarks_RA/RealWorld/awesome/9409.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:44
-END: 2026-01-18 19:04:45
-DURATION_SEC: 1.267
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 05:06:32
+END: 2026-01-19 05:06:34
+DURATION_SEC: 2.304
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_sat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:06:34
+END: 2026-01-19 05:06:36
+DURATION_SEC: 2.094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_sat_split.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:06:36
+END: 2026-01-19 05:06:39
+DURATION_SEC: 2.044
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_unsat_split2.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:06:39
+END: 2026-01-19 05:06:41
+DURATION_SEC: 2.569
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/seqstr/realworld_unsat_split3.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:06:41
+END: 2026-01-19 05:06:43
+DURATION_SEC: 2.052
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/15181.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1686230.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:28
-END: 2026-01-18 19:04:34
-DURATION_SEC: 5.393
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-18 22:02:59
+END: 2026-01-18 22:02:59
+DURATION_SEC: 0.146
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3051742 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1696873.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:59
+END: 2026-01-18 22:02:59
+DURATION_SEC: 0.101
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1747243.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:59
+END: 2026-01-18 22:02:59
+DURATION_SEC: 0.150
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1748024.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:59
+END: 2026-01-18 22:03:00
+DURATION_SEC: 0.152
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1749144.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:00
+END: 2026-01-18 22:03:00
+DURATION_SEC: 0.221
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

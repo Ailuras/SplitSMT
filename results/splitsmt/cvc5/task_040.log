@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 40
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 19:06:18
+Started: 2026-01-20 15:14:19
 ===========================================================
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_splitsmt/RealWorld/awesome/20512.smt2
-START: 2026-01-18T11:06:18Z
-END: 2026-01-18T11:06:18Z
-DURATION_SEC: .211847630
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_741439.smt2
+START: 2026-01-20T07:14:19Z
+END: 2026-01-20T07:14:19Z
+DURATION_SEC: .138625184
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
-Task Group 40 completed at 2026-01-18 19:06:18
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_750238.smt2
+START: 2026-01-20T07:14:19Z
+END: 2026-01-20T07:14:21Z
+DURATION_SEC: 2.143180406
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_787118.smt2
+START: 2026-01-20T07:14:21Z
+END: 2026-01-20T07:14:23Z
+DURATION_SEC: 2.102491650
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
+START: 2026-01-20T07:14:23Z
+END: 2026-01-20T07:14:25Z
+DURATION_SEC: 2.178539899
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+START: 2026-01-20T07:14:25Z
+END: 2026-01-20T07:14:26Z
+DURATION_SEC: .292916160
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 40 completed at 2026-01-20 15:14:26

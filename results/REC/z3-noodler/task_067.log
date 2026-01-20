@@ -1,12 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/35370.smt2
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_988918.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:00
-END: 2026-01-18 19:00:00
-DURATION_SEC: 0.222
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:07:31
+DURATION_SEC: 0.420
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1036937.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:09:04
+DURATION_SEC: 93.117
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1049044.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:09:04
+END: 2026-01-19 06:09:05
+DURATION_SEC: 0.092
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1054811.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:09:05
+END: 2026-01-19 06:09:05
+DURATION_SEC: 0.102
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1076105.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:09:05
+END: 2026-01-19 06:09:05
+DURATION_SEC: 0.108
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

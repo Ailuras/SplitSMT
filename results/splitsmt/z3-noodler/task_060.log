@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 60
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 19:06:59
+Started: 2026-01-20 15:15:07
 ===========================================================
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/34019.smt2
-START: 2026-01-18T11:06:59Z
-END: 2026-01-18T11:06:59Z
-DURATION_SEC: .133215017
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
+START: 2026-01-20T07:15:07Z
+END: 2026-01-20T07:15:08Z
+DURATION_SEC: .835888649
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
+START: 2026-01-20T07:15:08Z
+END: 2026-01-20T07:15:08Z
+DURATION_SEC: .119201542
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 60 completed at 2026-01-18 19:06:59
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
+START: 2026-01-20T07:15:08Z
+END: 2026-01-20T07:15:09Z
+DURATION_SEC: .254069836
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
+START: 2026-01-20T07:15:09Z
+END: 2026-01-20T07:15:09Z
+DURATION_SEC: .166636859
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
+START: 2026-01-20T07:15:09Z
+END: 2026-01-20T07:15:09Z
+DURATION_SEC: .130130522
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 60 completed at 2026-01-20 15:15:09

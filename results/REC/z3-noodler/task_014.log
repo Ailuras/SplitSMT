@@ -1,10 +1,62 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/12358.smt2
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1192875.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:58
-END: 2026-01-18 18:59:59
-DURATION_SEC: 0.119
+START: 2026-01-19 06:07:17
+END: 2026-01-19 06:07:17
+DURATION_SEC: 0.155
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1193768.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:17
+END: 2026-01-19 06:07:17
+DURATION_SEC: 0.243
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1211062.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:17
+END: 2026-01-19 06:07:17
+DURATION_SEC: 0.161
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1215264.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:17
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.653
+STATUS: ERROR
+EXIT_CODE: 110
+-----------------------------------------------------------
+ASSERTION VIOLATION
+File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
+Line: 437
+!var_name.contains(util::get_variable_basic_term(n))
+(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1233037.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:18
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.176
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

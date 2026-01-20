@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/35367.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_759537.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:43
-END: 2026-01-18 19:05:32
-DURATION_SEC: 48.745
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-18 22:03:28
+END: 2026-01-18 22:03:28
+DURATION_SEC: 0.289
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3064683 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_768997.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:28
+END: 2026-01-18 22:03:28
+DURATION_SEC: 0.090
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_791905.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:28
+END: 2026-01-18 22:03:28
+DURATION_SEC: 0.153
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_863023.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:28
+END: 2026-01-18 22:03:29
+DURATION_SEC: 0.141
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_872904.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:29
+END: 2026-01-18 22:03:29
+DURATION_SEC: 0.219
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

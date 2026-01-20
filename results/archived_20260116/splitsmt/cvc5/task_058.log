@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 58
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 04:33:21
+Started: 2026-01-19 18:27:57
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/1489.smt2
-START: 2026-01-17T20:33:21Z
-END: 2026-01-17T20:33:21Z
-DURATION_SEC: .099997579
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1933505.smt2
+START: 2026-01-19T10:27:57Z
+END: 2026-01-19T10:27:57Z
+DURATION_SEC: .273266431
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -17,24 +17,11 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/1853.smt2
-START: 2026-01-17T20:33:21Z
-END: 2026-01-17T20:33:21Z
-DURATION_SEC: .088341603
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:33:21] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/1927.smt2
-START: 2026-01-17T20:33:21Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: 348.014651265
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1944435.smt2
+START: 2026-01-19T10:27:57Z
+END: 2026-01-19T10:33:54Z
+DURATION_SEC: 357.574822700
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -42,92 +29,39 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/325.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: .095637376
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1949386.smt2
+START: 2026-01-19T10:33:54Z
+END: 2026-01-19T10:53:54Z
+DURATION_SEC: 1200.070245997
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5089.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: .081436740
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:39:09] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
 unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5095.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: .090999391
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:39:09] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5096.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: .091530561
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:39:09] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5097.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:09Z
-DURATION_SEC: .087381510
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:39:09] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5098.smt2
-START: 2026-01-17T20:39:09Z
-END: 2026-01-17T20:39:10Z
-DURATION_SEC: .090148232
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:39:10] External solver reported errors in output: (error "regular expression terms are not supported in theory combination")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/RealWorld/top20_maven/5516.smt2
-START: 2026-01-17T20:39:10Z
-END: 2026-01-17T20:39:10Z
-DURATION_SEC: .097931502
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1976359.smt2
+START: 2026-01-19T10:53:54Z
+END: 2026-01-19T10:53:55Z
+DURATION_SEC: .092970917
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
-Task Group 58 completed at 2026-01-18 04:39:10
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1992689.smt2
+START: 2026-01-19T10:53:55Z
+END: 2026-01-19T10:53:55Z
+DURATION_SEC: .270427810
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 58 completed at 2026-01-19 18:53:55

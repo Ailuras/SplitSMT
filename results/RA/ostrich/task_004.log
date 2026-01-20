@@ -1,11 +1,57 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_RA/RealWorld/awesome/11234.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_149700.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:27
-END: 2026-01-18 19:04:29
-DURATION_SEC: 1.606
-STATUS: ERROR
+START: 2026-01-18 22:02:56
+END: 2026-01-18 22:22:57
+DURATION_SEC: 1200.850
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1538237.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:22:57
+END: 2026-01-18 22:42:57
+DURATION_SEC: 1200.170
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1641710.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:42:58
+END: 2026-01-18 22:43:03
+DURATION_SEC: 5.302
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1647018.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:43:03
+END: 2026-01-18 23:03:03
+DURATION_SEC: 1200.140
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1661412.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 23:03:03
+END: 2026-01-18 23:06:56
+DURATION_SEC: 233.232
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

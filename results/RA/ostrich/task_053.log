@@ -1,11 +1,58 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_RA/RealWorld/awesome/3122.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_133020.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:36
-END: 2026-01-18 19:04:37
-DURATION_SEC: 1.429
-STATUS: ERROR
+START: 2026-01-19 02:24:05
+END: 2026-01-19 02:24:08
+DURATION_SEC: 2.793
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1349051.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:24:08
+END: 2026-01-19 02:24:10
+DURATION_SEC: 2.331
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_140584.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:24:10
+END: 2026-01-19 02:44:10
+DURATION_SEC: 1200.150
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1439356.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:44:10
+END: 2026-01-19 02:44:23
+DURATION_SEC: 13.246
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1457081.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:44:23
+END: 2026-01-19 03:04:24
+DURATION_SEC: 1200.150
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
 

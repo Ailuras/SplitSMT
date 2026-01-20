@@ -13,7 +13,7 @@
 (assert (= delim_81724 ""))
 (assert (>= (str.num_splits var_0xINPUT_81724 delim_81724) 1))
 (assert (= (str.split_at var_0xINPUT_81724 delim_81724 0) var_0xINPUT_81724))
-(assert (= (str.split_rest var_0xINPUT_81724 delim_81724 0) var_0xINPUT_81724))
+(assert (= (str.split_rest var_0xINPUT_81724 delim_81724 2) var_0xINPUT_81724))
 ; --- END CONSTRAINT ---
 
 

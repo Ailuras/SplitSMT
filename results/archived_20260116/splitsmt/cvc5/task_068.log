@@ -1,0 +1,68 @@
+===========================================================
+Task Group 68
+Solver: SplitSMT (using cvc5)
+Started: 2026-01-19 18:48:03
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1085926.smt2
+START: 2026-01-19T10:48:03Z
+END: 2026-01-19T10:48:03Z
+DURATION_SEC: .189839174
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1122872.smt2
+START: 2026-01-19T10:48:03Z
+END: 2026-01-19T10:48:03Z
+DURATION_SEC: .083711698
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-19 18:48:03] External solver reported errors in output: (error "parse error: /tmp/smt2_zdpb9o.smt2:79.14: symbol `to_int' is shadowing a theory function symbol")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_112289.smt2
+START: 2026-01-19T10:48:03Z
+END: 2026-01-19T10:48:04Z
+DURATION_SEC: .862655511
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_112964.smt2
+START: 2026-01-19T10:48:04Z
+END: 2026-01-19T10:48:04Z
+DURATION_SEC: .087334247
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1134932.smt2
+START: 2026-01-19T10:48:04Z
+END: 2026-01-19T10:48:04Z
+DURATION_SEC: .102076637
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 68 completed at 2026-01-19 18:48:04

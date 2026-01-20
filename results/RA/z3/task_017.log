@@ -1,12 +1,58 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/RealWorld/awesome/1299.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1451984.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:27
-END: 2026-01-18 19:04:28
-DURATION_SEC: 0.095
+START: 2026-01-18 22:23:09
+END: 2026-01-18 22:23:09
+DURATION_SEC: 0.141
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1479324.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:23:09
+END: 2026-01-18 22:26:49
+DURATION_SEC: 219.385
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1491468.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:26:49
+END: 2026-01-18 22:26:49
+DURATION_SEC: 0.059
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1510711.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:26:49
+END: 2026-01-18 22:46:49
+DURATION_SEC: 1200.090
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_155596.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:46:49
+END: 2026-01-18 23:06:49
+DURATION_SEC: 1200.130
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
 

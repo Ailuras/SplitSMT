@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 47
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 19:06:28
+Started: 2026-01-20 15:14:53
 ===========================================================
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/2371.smt2
-START: 2026-01-18T11:06:28Z
-END: 2026-01-18T11:06:29Z
-DURATION_SEC: .629852569
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_494681.smt2
+START: 2026-01-20T07:14:53Z
+END: 2026-01-20T07:14:53Z
+DURATION_SEC: .767023121
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 47 completed at 2026-01-18 19:06:29
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_550204.smt2
+START: 2026-01-20T07:14:53Z
+END: 2026-01-20T07:14:54Z
+DURATION_SEC: .177593264
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_555302.smt2
+START: 2026-01-20T07:14:54Z
+END: 2026-01-20T07:14:56Z
+DURATION_SEC: 2.080415497
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_567797.smt2
+START: 2026-01-20T07:14:56Z
+END: 2026-01-20T07:14:56Z
+DURATION_SEC: .525115095
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_586090.smt2
+START: 2026-01-20T07:14:56Z
+END: 2026-01-20T07:14:56Z
+DURATION_SEC: .121627213
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 47 completed at 2026-01-20 15:14:56

@@ -45,7 +45,7 @@
 (assert (= field0 (str.split_at logline " " 0)))
 (assert (= field1 (str.split_at logline " " 1)))
 (assert (= field2 (str.split_at logline " " 2)))
-(assert (= field3plus (str.split_rest logline " " 3)))
+; (assert (= field3plus (str.split_rest logline " " 2)))
 
 ; At least: timestamp, level, component, message
 (assert (>= (str.num_splits logline " ") 4))
@@ -59,7 +59,7 @@
 (assert (= ts_hh (str.split_at ts_full ":" 0)))
 (assert (= ts_mm (str.split_at ts_full ":" 1)))
 (assert (= ts_ss (str.split_at ts_full ":" 2)))
-(assert (= ts_tail (str.split_rest ts_full ":" 3)))
+; (assert (= ts_tail (str.split_rest ts_full ":" 1)))
 
 ; Must have exactly 3 ':'-separated parts (no tail)
 (assert (= (str.num_splits ts_full ":") 3))

@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_RA/RealWorld/awesome/1227.smt2
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1129596.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:28
-END: 2026-01-18 19:04:28
-DURATION_SEC: 0.093
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-18 22:24:45
+END: 2026-01-18 22:44:46
+DURATION_SEC: 1200.130
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_RA/RealWorld/awesome/1227.smt2:56.62: Symbol 'RegEx' not declared as a type")
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1164555.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:44:46
+END: 2026-01-18 22:44:46
+DURATION_SEC: 0.041
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1170233.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:44:46
+END: 2026-01-18 22:44:48
+DURATION_SEC: 2.342
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1181325.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:44:48
+END: 2026-01-18 22:44:48
+DURATION_SEC: 0.501
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1186953.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:44:49
+END: 2026-01-18 22:44:49
+DURATION_SEC: 0.782
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

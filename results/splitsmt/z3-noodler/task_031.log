@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 31
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 19:06:20
+Started: 2026-01-20 15:14:34
 ===========================================================
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/19258.smt2
-START: 2026-01-18T11:06:20Z
-END: 2026-01-18T11:06:21Z
-DURATION_SEC: .923562879
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_737486.smt2
+START: 2026-01-20T07:14:34Z
+END: 2026-01-20T07:14:35Z
+DURATION_SEC: .497732667
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 31 completed at 2026-01-18 19:06:21
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_744993.smt2
+START: 2026-01-20T07:14:35Z
+END: 2026-01-20T07:14:36Z
+DURATION_SEC: 1.079805794
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_749756.smt2
+START: 2026-01-20T07:14:36Z
+END: 2026-01-20T07:14:38Z
+DURATION_SEC: 1.891505805
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_787104.smt2
+START: 2026-01-20T07:14:38Z
+END: 2026-01-20T07:14:39Z
+DURATION_SEC: .808486412
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_823124.smt2
+START: 2026-01-20T07:14:39Z
+END: 2026-01-20T07:14:39Z
+DURATION_SEC: .139923989
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 31 completed at 2026-01-20 15:14:39

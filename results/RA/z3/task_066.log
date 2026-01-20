@@ -1,10 +1,56 @@
 ===========================================================
 Solver: z3
-FILE: benchmarks_RA/RealWorld/awesome/35369.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_914217.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:29
-END: 2026-01-18 19:04:29
-DURATION_SEC: 0.148
+START: 2026-01-18 23:35:04
+END: 2026-01-18 23:35:04
+DURATION_SEC: 0.049
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_943341.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 23:35:04
+END: 2026-01-18 23:35:06
+DURATION_SEC: 1.749
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_949623.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 23:35:06
+END: 2026-01-18 23:55:06
+DURATION_SEC: 1200.080
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_951860.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 23:55:06
+END: 2026-01-19 00:15:06
+DURATION_SEC: 1200.070
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+
+===========================================================
+Solver: z3
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_965933.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:15:06
+END: 2026-01-19 00:15:08
+DURATION_SEC: 1.335
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

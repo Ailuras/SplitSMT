@@ -62,8 +62,8 @@
 (assert (= delim_utmz "__utmz=16886264."))
 (assert (>= (str.num_splits var_0xINPUT_96349 delim_utmz) 1))
 (assert (= seg0_utmz (str.split_at var_0xINPUT_96349 delim_utmz 0)))
-(assert (= seg1_utmz (str.split_at var_0xINPUT_96349 delim_utmz 1)))
-(assert (= rest1_utmz (str.split_rest var_0xINPUT_96349 delim_utmz 1)))
+; (assert (= seg1_utmz (str.split_at var_0xINPUT_96349 delim_utmz 1)))
+; (assert (= rest1_utmz (str.split_rest var_0xINPUT_96349 delim_utmz 1)))
 (assert (= var_0xINPUT_96349 (str.++ seg0_utmz rest1_utmz)))
 ; --- END CONSTRAINT ---
 

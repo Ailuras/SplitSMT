@@ -1,11 +1,58 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_RA/RealWorld/awesome/20413.smt2
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1791155.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:33
-END: 2026-01-18 19:04:34
-DURATION_SEC: 1.483
-STATUS: ERROR
+START: 2026-01-19 01:17:00
+END: 2026-01-19 01:37:00
+DURATION_SEC: 1200.140
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1857289.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 01:37:00
+END: 2026-01-19 01:38:15
+DURATION_SEC: 74.781
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1874067.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 01:38:15
+END: 2026-01-19 01:58:15
+DURATION_SEC: 1200.160
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1889497.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 01:58:15
+END: 2026-01-19 01:58:16
+DURATION_SEC: 1.274
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "Ambiguous trigger for relational function: split_at(request, 3, _0)")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1898048.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 01:58:16
+END: 2026-01-19 01:58:19
+DURATION_SEC: 2.997
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

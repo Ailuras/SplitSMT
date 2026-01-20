@@ -1,75 +1,15 @@
 ===========================================================
 Task Group 25
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-18 02:22:00
+Started: 2026-01-19 15:28:14
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
-START: 2026-01-17T18:22:00Z
-END: 2026-01-17T18:22:01Z
-DURATION_SEC: 1.201903066
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
-START: 2026-01-17T18:22:01Z
-END: 2026-01-17T18:22:03Z
-DURATION_SEC: 1.573358677
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
-START: 2026-01-17T18:22:03Z
-END: 2026-01-17T18:22:05Z
-DURATION_SEC: 1.718134715
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_945036.smt2
-START: 2026-01-17T18:22:05Z
-END: 2026-01-17T18:42:05Z
-DURATION_SEC: 1200.206119695
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_968293.smt2
-START: 2026-01-17T18:42:05Z
-END: 2026-01-17T18:42:08Z
-DURATION_SEC: 3.161592388
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1062119.smt2
-START: 2026-01-17T18:42:08Z
-END: 2026-01-17T18:42:10Z
-DURATION_SEC: 2.265020563
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_2074010.smt2
+START: 2026-01-19T07:28:14Z
+END: 2026-01-19T07:28:25Z
+DURATION_SEC: 11.109225509
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -77,35 +17,11 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1066928.smt2
-START: 2026-01-17T18:42:10Z
-END: 2026-01-17T18:42:12Z
-DURATION_SEC: 1.703594868
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1098687.smt2
-START: 2026-01-17T18:42:12Z
-END: 2026-01-17T18:42:14Z
-DURATION_SEC: 1.982825204
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1122576.smt2
-START: 2026-01-17T18:42:14Z
-END: 2026-01-17T18:47:28Z
-DURATION_SEC: 313.559652110
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_211197.smt2
+START: 2026-01-19T07:28:25Z
+END: 2026-01-19T07:48:25Z
+DURATION_SEC: 1200.183937240
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,15 +29,39 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1161584.smt2
-START: 2026-01-17T18:47:28Z
-END: 2026-01-17T18:47:29Z
-DURATION_SEC: 1.374814142
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_234550.smt2
+START: 2026-01-19T07:48:25Z
+END: 2026-01-19T07:48:43Z
+DURATION_SEC: 18.501881317
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+sat
 ===========================================================
 
-Task Group 25 completed at 2026-01-18 02:47:29
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_256370.smt2
+START: 2026-01-19T07:48:43Z
+END: 2026-01-19T07:48:47Z
+DURATION_SEC: 3.246048636
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_259613.smt2
+START: 2026-01-19T07:48:47Z
+END: 2026-01-19T08:08:47Z
+DURATION_SEC: 1200.208485862
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 25 completed at 2026-01-19 16:08:47

@@ -1,11 +1,57 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_REC/RealWorld/awesome/4322.smt2
+FILE: benchmarks_REC/RealWorld/awesome/11770.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:10
-END: 2026-01-18 19:00:11
-DURATION_SEC: 1.274
+START: 2026-01-19 12:19:19
+END: 2026-01-19 12:19:20
+DURATION_SEC: 0.963
 STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/11864.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:19:20
+END: 2026-01-19 12:30:27
+DURATION_SEC: 667.053
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/12029.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:30:27
+END: 2026-01-19 12:30:28
+DURATION_SEC: 1.284
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/12063.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:30:28
+END: 2026-01-19 12:42:27
+DURATION_SEC: 718.781
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/1227.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:42:27
+END: 2026-01-19 13:02:27
+DURATION_SEC: 1200.160
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
 

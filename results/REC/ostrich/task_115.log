@@ -1,10 +1,57 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_REC/RealWorld/awesome/685.smt2
+FILE: benchmarks_REC/RealWorld/top20_maven/1489.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:14
-END: 2026-01-18 19:00:15
-DURATION_SEC: 1.224
+START: 2026-01-19 13:37:45
+END: 2026-01-19 13:48:51
+DURATION_SEC: 666.553
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/top20_maven/1853.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 13:48:51
+END: 2026-01-19 13:48:53
+DURATION_SEC: 1.152
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/top20_maven/1927.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 13:48:53
+END: 2026-01-19 14:07:53
+DURATION_SEC: 1140.360
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/top20_maven/325.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 14:07:53
+END: 2026-01-19 14:17:39
+DURATION_SEC: 585.598
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/top20_maven/5089.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 14:17:39
+END: 2026-01-19 14:17:40
+DURATION_SEC: 0.963
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------

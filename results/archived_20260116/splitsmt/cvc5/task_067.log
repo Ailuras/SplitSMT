@@ -1,0 +1,69 @@
+===========================================================
+Task Group 67
+Solver: SplitSMT (using cvc5)
+Started: 2026-01-19 18:47:10
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_988918.smt2
+START: 2026-01-19T10:47:10Z
+END: 2026-01-19T11:07:10Z
+DURATION_SEC: 1200.087748735
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1036937.smt2
+START: 2026-01-19T11:07:10Z
+END: 2026-01-19T11:07:10Z
+DURATION_SEC: .073449499
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-19 19:07:10] External solver reported errors in output: (error "parse error: /tmp/smt2_hsjwys.smt2:82.14: symbol `to_int' is shadowing a theory function symbol")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1049044.smt2
+START: 2026-01-19T11:07:10Z
+END: 2026-01-19T11:07:10Z
+DURATION_SEC: .078138509
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-19 19:07:10] External solver reported errors in output: (error "parse error: /tmp/smt2_vmokru.smt2:58.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1054811.smt2
+START: 2026-01-19T11:07:10Z
+END: 2026-01-19T11:07:10Z
+DURATION_SEC: .355749404
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1076105.smt2
+START: 2026-01-19T11:07:10Z
+END: 2026-01-19T11:07:10Z
+DURATION_SEC: .088328185
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 67 completed at 2026-01-19 19:07:10

@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 3
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 19:06:11
+Started: 2026-01-20 15:14:00
 ===========================================================
 
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/11107.smt2
-START: 2026-01-18T11:06:11Z
-END: 2026-01-18T11:06:11Z
-DURATION_SEC: .206847084
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_136119.smt2
+START: 2026-01-20T07:14:00Z
+END: 2026-01-20T07:14:00Z
+DURATION_SEC: .255505069
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1369241.smt2
+START: 2026-01-20T07:14:00Z
+END: 2026-01-20T07:14:01Z
+DURATION_SEC: 1.128881459
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 3 completed at 2026-01-18 19:06:11
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1376047.smt2
+START: 2026-01-20T07:14:01Z
+END: 2026-01-20T07:14:02Z
+DURATION_SEC: .191586371
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1427370.smt2
+START: 2026-01-20T07:14:02Z
+END: 2026-01-20T07:14:04Z
+DURATION_SEC: 2.093402928
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1448234.smt2
+START: 2026-01-20T07:14:04Z
+END: 2026-01-20T07:14:06Z
+DURATION_SEC: 2.111913641
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 3 completed at 2026-01-20 15:14:06

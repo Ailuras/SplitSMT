@@ -1,27 +1,15 @@
 ===========================================================
 Task Group 55
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-18 04:09:02
+Started: 2026-01-19 16:28:35
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/awesome/9409.smt2
-START: 2026-01-17T20:09:02Z
-END: 2026-01-17T20:09:04Z
-DURATION_SEC: 1.754410606
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split2.smt2
-START: 2026-01-17T20:09:04Z
-END: 2026-01-17T20:09:06Z
-DURATION_SEC: 1.677135343
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1561580.smt2
+START: 2026-01-19T08:28:35Z
+END: 2026-01-19T08:28:37Z
+DURATION_SEC: 1.885578602
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -29,83 +17,11 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_sat_split.smt2
-START: 2026-01-17T20:09:06Z
-END: 2026-01-17T20:09:07Z
-DURATION_SEC: 1.416736539
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split2.smt2
-START: 2026-01-17T20:09:07Z
-END: 2026-01-17T20:09:10Z
-DURATION_SEC: 2.626959360
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split3.smt2
-START: 2026-01-17T20:09:10Z
-END: 2026-01-17T20:09:11Z
-DURATION_SEC: 1.606212872
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/seqstr/realworld_unsat_split.smt2
-START: 2026-01-17T20:09:11Z
-END: 2026-01-17T20:09:14Z
-DURATION_SEC: 2.701809787
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/10560.smt2
-START: 2026-01-17T20:09:14Z
-END: 2026-01-17T20:09:16Z
-DURATION_SEC: 1.602094164
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/10596.smt2
-START: 2026-01-17T20:09:16Z
-END: 2026-01-17T20:09:17Z
-DURATION_SEC: 1.655972576
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/1118.smt2
-START: 2026-01-17T20:09:17Z
-END: 2026-01-17T20:29:17Z
-DURATION_SEC: 1200.150353234
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1570241.smt2
+START: 2026-01-19T08:28:37Z
+END: 2026-01-19T08:48:37Z
+DURATION_SEC: 1200.208437637
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,15 +29,39 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/RealWorld/top20_gh/11724.smt2
-START: 2026-01-17T20:29:17Z
-END: 2026-01-17T20:29:19Z
-DURATION_SEC: 1.741958297
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1586720.smt2
+START: 2026-01-19T08:48:37Z
+END: 2026-01-19T09:08:37Z
+DURATION_SEC: 1200.154845486
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 ===========================================================
 
-Task Group 55 completed at 2026-01-18 04:29:19
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_162392.smt2
+START: 2026-01-19T09:08:37Z
+END: 2026-01-19T09:08:39Z
+DURATION_SEC: 2.006858690
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1630647.smt2
+START: 2026-01-19T09:08:39Z
+END: 2026-01-19T09:09:46Z
+DURATION_SEC: 66.786174477
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 55 completed at 2026-01-19 17:09:46

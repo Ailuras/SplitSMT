@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_REC/RealWorld/awesome/21157.smt2
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:59
-END: 2026-01-18 18:59:59
-DURATION_SEC: 0.084
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 07:10:23
+END: 2026-01-19 07:10:36
+DURATION_SEC: 12.883
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_REC/RealWorld/awesome/21157.smt2:59.62: Symbol 'RegEx' not declared as a type")
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:10:36
+END: 2026-01-19 07:10:36
+DURATION_SEC: 0.044
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_1235975.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:10:36
+END: 2026-01-19 07:30:36
+DURATION_SEC: 1200.030
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_1274675.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:30:37
+END: 2026-01-19 07:50:37
+DURATION_SEC: 1200.030
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:50:37
+END: 2026-01-19 08:10:37
+DURATION_SEC: 1200.080
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
 

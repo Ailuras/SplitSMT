@@ -9,7 +9,7 @@
 (assert (>= (str.num_splits var_0xINPUT_89849 "-") 2))
 (assert (= (str.split_at var_0xINPUT_89849 "-" 0) ""))
 (assert (= (str.split_at var_0xINPUT_89849 "-" 1) ""))
-(assert (= (str.split_rest var_0xINPUT_89849 "-" 2) ""))
+(assert (= (str.split_rest var_0xINPUT_89849 "-" 1) ""))
 ; --- END CONSTRAINT ---
 
 

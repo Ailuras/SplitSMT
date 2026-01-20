@@ -1,77 +1,27 @@
 ===========================================================
 Task Group 35
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 04:13:22
+Started: 2026-01-19 17:07:53
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1137404.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: 120.425393558
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1330490.smt2
+START: 2026-01-19T09:07:53Z
+END: 2026-01-19T09:27:54Z
+DURATION_SEC: 1200.082075366
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1174592.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: .081951583
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_117640.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: .075709837
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1242060.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: .076490281
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:15:23] External solver reported errors in output: (error "parse error: /tmp/smt2_ar61je.smt2:90.14: symbol `to_int' is shadowing a theory function symbol")[0m
 unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1250336.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: .083838256
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:15:23] External solver reported errors in output: (error "parse error: /tmp/smt2_yml7gp.smt2:107.14: symbol `str.to_int' is shadowing a theory function symbol")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1265060.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:23Z
-DURATION_SEC: .275387485
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1351550.smt2
+START: 2026-01-19T09:27:54Z
+END: 2026-01-19T09:27:55Z
+DURATION_SEC: 1.302265436
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -79,37 +29,11 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1273413.smt2
-START: 2026-01-17T20:15:23Z
-END: 2026-01-17T20:15:24Z
-DURATION_SEC: .084695641
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:15:24] External solver reported errors in output: (error "parse error: /tmp/smt2_6ct2qh.smt2:84.14: symbol `to_int' is shadowing a theory function symbol")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1376934.smt2
-START: 2026-01-17T20:15:24Z
-END: 2026-01-17T20:15:24Z
-DURATION_SEC: .081580360
-STATUS: ERROR
-EXIT_CODE: 1
------------------------------------------------------------
-[31m[2026-01-18 04:15:24] External solver reported errors in output: (error "parse error: /tmp/smt2_bzc86x.smt2:64.62: symbol 'regex' not declared as a type")[0m
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_144948.smt2
-START: 2026-01-17T20:15:24Z
-END: 2026-01-17T20:15:24Z
-DURATION_SEC: .152051879
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1357476.smt2
+START: 2026-01-19T09:27:55Z
+END: 2026-01-19T09:27:55Z
+DURATION_SEC: .154989196
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -117,15 +41,27 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1492396.smt2
-START: 2026-01-17T20:15:24Z
-END: 2026-01-17T20:15:24Z
-DURATION_SEC: .530212036
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1390232.smt2
+START: 2026-01-19T09:27:55Z
+END: 2026-01-19T09:47:55Z
+DURATION_SEC: 1200.076030376
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
-Task Group 35 completed at 2026-01-18 04:15:24
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1398591.smt2
+START: 2026-01-19T09:47:55Z
+END: 2026-01-19T10:07:55Z
+DURATION_SEC: 1200.130638069
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 35 completed at 2026-01-19 18:07:55

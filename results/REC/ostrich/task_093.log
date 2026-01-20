@@ -1,10 +1,57 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_REC/RealWorld/awesome/4684.smt2
+FILE: benchmarks_REC/RealWorld/awesome/2402.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:11
-END: 2026-01-18 19:00:12
-DURATION_SEC: 1.147
+START: 2026-01-19 12:45:23
+END: 2026-01-19 12:45:25
+DURATION_SEC: 1.577
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/245.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:45:25
+END: 2026-01-19 12:58:42
+DURATION_SEC: 797.488
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/278.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:58:42
+END: 2026-01-19 12:58:46
+DURATION_SEC: 3.553
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "Internal exception: java.lang.Exception: ill-formed certificate, incorrect order: BranchInferences(ReusedProofMarker, GroundInst((ALL ALL ALL (! (count_matches_rec(_1, _0, _2) & ! EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(_5, 1, _4, _3) & str_len(_5, _0) & str_len(1, _1) & ! (! (_2 + -1*_6 + 1 = 0 & _3 >= 0 & count_matches_rec(_5, _3 + 1, _6 + -1)) & ! (_3 + 1 = 0 & _6 = 0)))))) [50, 146, all_26_0 + -4] [count_matches_rec(146, 50, all_26_0 + -4)] -> EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(146, 1, 50, _3) & str_len(146, _0) & str_len(1, _1) & ! (! (_2 + -1*all_26_0 + 5 = 0 & _3 >= 0 & count_matches_rec(146, _3 + 1, all_26_0 + -5)) & ! (_3 + 1 = 0 & all_26_0 + -4 = 0)))), Quantifier((EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(146, 1, 50, _3) & str_len(146, _0) & str_len(1, _1) & ! (! (_2 + -1*all_26_0 + 5 = 0 & _3 >= 0 & count_matches_rec(146, _3 + 1, all_26_0 + -5)) & ! (_3 + 1 = 0 & all_26_0 + -4 = 0)))) [all_97_0, all_97_1, all_97_2, all_97_3] -> (all_97_0 + -1*all_97_1 + -1*all_97_3 >= 0 & all_97_0 >= 0 & all_97_1 >= 0 & all_97_3 + 1 >= 0 & str_indexof(146, 1, 50, all_97_3) & str_len(146, all_97_0) & str_len(1, all_97_1) & ! (! (all_97_2 + -1*all_26_0 + 5 = 0 & all_97_3 >= 0 & count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)) & ! (all_97_3 + 1 = 0 & all_26_0 + -4 = 0)))), Alpha((all_97_0 + -1*all_97_1 + -1*all_97_3 >= 0 & all_97_0 >= 0 & all_97_1 >= 0 & all_97_3 + 1 >= 0 & str_indexof(146, 1, 50, all_97_3) & str_len(146, all_97_0) & str_len(1, all_97_1) & ! (! (all_97_2 + -1*all_26_0 + 5 = 0 & all_97_3 >= 0 & count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)) & ! (all_97_3 + 1 = 0 & all_26_0 + -4 = 0))) -> str_indexof(146, 1, 50, all_97_3), (all_97_0 >= 0), (all_97_0 + -1*all_97_1 + -1*all_97_3 >= 0), (all_97_3 + 1 >= 0), str_len(1, all_97_1), (! (! (all_97_2 + -1*all_26_0 + 5 = 0 & all_97_3 >= 0 & count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)) & ! (all_97_3 + 1 = 0 & all_26_0 + -4 = 0))), (all_97_1 >= 0), str_len(146, all_97_0)), Beta((! (! (all_97_2 + -1*all_26_0 + 5 = 0 & all_97_3 >= 0 & count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)) & ! (all_97_3 + 1 = 0 & all_26_0 + -4 = 0))), BranchInferences(Alpha((all_97_2 + -1*all_26_0 + 5 = 0 & all_97_3 >= 0 & count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)) -> (all_97_2 + -1*all_26_0 + 5 = 0), (all_97_3 >= 0), count_matches_rec(146, all_97_3 + 1, all_26_0 + -5)), ReducePred(count_matches_rec(146, all_97_3 + 1, all_26_0 + -5) + (, -1 * ((all_97_3 + -63 = 0)), ) -> count_matches_rec(146, 64, all_26_0 + -5)), GroundInst((ALL ALL ALL (! (count_matches_rec(_1, _0, _2) & ! EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(_5, 1, _4, _3) & str_len(_5, _0) & str_len(1, _1) & ! (! (_2 + -1*_6 + 1 = 0 & _3 >= 0 & count_matches_rec(_5, _3 + 1, _6 + -1)) & ! (_3 + 1 = 0 & _6 = 0)))))) [64, 146, all_26_0 + -5] [count_matches_rec(146, 64, all_26_0 + -5)] -> EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(146, 1, 64, _3) & str_len(146, _0) & str_len(1, _1) & ! (! (_2 + -1*all_26_0 + 6 = 0 & _3 >= 0 & count_matches_rec(146, _3 + 1, all_26_0 + -6)) & ! (_3 + 1 = 0 & all_26_0 + -5 = 0)))), Quantifier((EX EX EX EX (_0 + -1*_1 + -1*_3 >= 0 & _0 >= 0 & _1 >= 0 & _3 + 1 >= 0 & str_indexof(146, 1, 64, _3) & str_len(146, _0) & str_len(1, _1) & ! (! (_2 + -1*all_26_0 + 6 = 0 & _3 >= 0 & count_matches_rec(146, _3 + 1, all_26_0 + -6)) & ! (_3 + 1 = 0 & all_26_0 + -5 = 0)))) [all_111_0, all_111_1, all_111_2, all_111_3] -> (all_111_0 + -1*all_111_1 + -1*all_111_3 >= 0 & all_111_0 >= 0 & all_111_1 >= 0 & all_111_3 + 1 >= 0 & str_indexof(146, 1, 64, all_111_3) & str_len(146, all_111_0) & str_len(1, all_111_1) & ! (! (all_111_2 + -1*all_26_0 + 6 = 0 & all_111_3 >= 0 & count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)) & ! (all_111_3 + 1 = 0 & all_26_0 + -5 = 0)))), Alpha((all_111_0 + -1*all_111_1 + -1*all_111_3 >= 0 & all_111_0 >= 0 & all_111_1 >= 0 & all_111_3 + 1 >= 0 & str_indexof(146, 1, 64, all_111_3) & str_len(146, all_111_0) & str_len(1, all_111_1) & ! (! (all_111_2 + -1*all_26_0 + 6 = 0 & all_111_3 >= 0 & count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)) & ! (all_111_3 + 1 = 0 & all_26_0 + -5 = 0))) -> (all_111_1 >= 0), (all_111_0 >= 0), (! (! (all_111_2 + -1*all_26_0 + 6 = 0 & all_111_3 >= 0 & count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)) & ! (all_111_3 + 1 = 0 & all_26_0 + -5 = 0))), str_indexof(146, 1, 64, all_111_3), str_len(1, all_111_1), str_len(146, all_111_0), (all_111_3 + 1 >= 0), (all_111_0 + -1*all_111_1 + -1*all_111_3 >= 0)), Beta((! (! (all_111_2 + -1*all_26_0 + 6 = 0 & all_111_3 >= 0 & count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)) & ! (all_111_3 + 1 = 0 & all_26_0 + -5 = 0))), BranchInferences(Alpha((all_111_2 + -1*all_26_0 + 6 = 0 & all_111_3 >= 0 & count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)) -> (all_111_2 + -1*all_26_0 + 6 = 0), (all_111_3 >= 0), count_matches_rec(146, all_111_3 + 1, all_26_0 + -6)), Reduce((all_111_3 >= 0) + -1 * ((all_111_3 + 1 = 0)) -> (-1 >= 0)), Close((-1 >= 0))), BranchInferences(Alpha((all_111_3 + 1 = 0 & all_26_0 + -5 = 0) -> (all_111_3 + 1 = 0), (all_26_0 + -5 = 0)), Reduce((-1*all_26_0 + -1 >= 0) + 1 * ((all_26_0 + -5 = 0)) -> (-6 >= 0)), Close((-6 >= 0))))), BranchInferences(Alpha((all_97_3 + 1 = 0 & all_26_0 + -4 = 0) -> (all_97_3 + 1 = 0), (all_26_0 + -4 = 0)), CombineEquations(1 * ((all_97_3 + -63 = 0)) + -1 * ((all_97_3 + 1 = 0)) -> (-64 = 0)), Close((-64 = 0)))))")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/307.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:58:46
+END: 2026-01-19 13:10:22
+DURATION_SEC: 696.544
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/RealWorld/awesome/3122.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 13:10:22
+END: 2026-01-19 13:10:24
+DURATION_SEC: 1.636
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------

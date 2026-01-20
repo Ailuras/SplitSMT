@@ -1,87 +1,15 @@
 ===========================================================
 Task Group 28
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 00:41:03
+Started: 2026-01-19 15:09:36
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1561580.smt2
-START: 2026-01-17T16:41:03Z
-END: 2026-01-17T16:41:03Z
-DURATION_SEC: .125605349
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1570241.smt2
-START: 2026-01-17T16:41:03Z
-END: 2026-01-17T17:01:04Z
-DURATION_SEC: 1200.559236455
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1586720.smt2
-START: 2026-01-17T17:01:04Z
-END: 2026-01-17T17:01:10Z
-DURATION_SEC: 6.231751508
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_162392.smt2
-START: 2026-01-17T17:01:10Z
-END: 2026-01-17T17:01:11Z
-DURATION_SEC: .237785488
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1630647.smt2
-START: 2026-01-17T17:01:11Z
-END: 2026-01-17T17:01:11Z
-DURATION_SEC: .119045353
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1633477.smt2
-START: 2026-01-17T17:01:11Z
-END: 2026-01-17T17:01:11Z
-DURATION_SEC: .151609265
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1647358.smt2
-START: 2026-01-17T17:01:11Z
-END: 2026-01-17T17:01:31Z
-DURATION_SEC: 20.412411556
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_394469.smt2
+START: 2026-01-19T07:09:36Z
+END: 2026-01-19T07:09:39Z
+DURATION_SEC: 2.685205053
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -89,39 +17,51 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1667683.smt2
-START: 2026-01-17T17:01:31Z
-END: 2026-01-17T17:01:32Z
-DURATION_SEC: .365279860
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_421307.smt2
+START: 2026-01-19T07:09:39Z
+END: 2026-01-19T07:29:39Z
+DURATION_SEC: 1200.286971365
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_497442.smt2
+START: 2026-01-19T07:29:39Z
+END: 2026-01-19T07:29:41Z
+DURATION_SEC: 2.224017295
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_513041.smt2
+START: 2026-01-19T07:29:41Z
+END: 2026-01-19T07:29:45Z
+DURATION_SEC: 3.535332733
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_515572.smt2
+START: 2026-01-19T07:29:45Z
+END: 2026-01-19T07:29:47Z
+DURATION_SEC: 2.126226581
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_168606.smt2
-START: 2026-01-17T17:01:32Z
-END: 2026-01-17T17:01:32Z
-DURATION_SEC: .314075626
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1713026.smt2
-START: 2026-01-17T17:01:32Z
-END: 2026-01-17T17:01:32Z
-DURATION_SEC: .311059637
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 28 completed at 2026-01-18 01:01:32
+Task Group 28 completed at 2026-01-19 15:29:47

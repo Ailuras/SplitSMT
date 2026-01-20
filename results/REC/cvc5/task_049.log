@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_REC/RealWorld/awesome/2402.smt2
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:59
-END: 2026-01-18 18:59:59
-DURATION_SEC: 0.075
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 07:39:54
+END: 2026-01-19 07:39:59
+DURATION_SEC: 5.795
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_REC/RealWorld/awesome/2402.smt2:59.62: Symbol 'RegEx' not declared as a type")
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:39:59
+END: 2026-01-19 07:40:00
+DURATION_SEC: 0.625
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:40:00
+END: 2026-01-19 07:41:04
+DURATION_SEC: 63.760
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_945036.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:41:04
+END: 2026-01-19 08:01:04
+DURATION_SEC: 1200.030
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/complex/strategy_str_split_gpt-5.2_968293.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 08:01:04
+END: 2026-01-19 08:21:04
+DURATION_SEC: 1200.040
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
 

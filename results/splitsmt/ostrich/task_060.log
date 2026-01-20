@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 60
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-18 19:07:38
+Started: 2026-01-20 15:14:45
 ===========================================================
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_splitsmt/RealWorld/awesome/34019.smt2
-START: 2026-01-18T11:07:38Z
-END: 2026-01-18T11:07:39Z
-DURATION_SEC: 1.132740378
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
+START: 2026-01-20T07:14:45Z
+END: 2026-01-20T07:14:48Z
+DURATION_SEC: 2.598873389
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 60 completed at 2026-01-18 19:07:39
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
+START: 2026-01-20T07:14:48Z
+END: 2026-01-20T07:14:50Z
+DURATION_SEC: 1.960638874
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
+START: 2026-01-20T07:14:50Z
+END: 2026-01-20T07:14:52Z
+DURATION_SEC: 2.214543615
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
+START: 2026-01-20T07:14:52Z
+END: 2026-01-20T07:14:54Z
+DURATION_SEC: 2.120600631
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
+START: 2026-01-20T07:14:54Z
+END: 2026-01-20T07:14:56Z
+DURATION_SEC: 1.897835094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+Task Group 60 completed at 2026-01-20 15:14:56

@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 49
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-18 19:07:06
+Started: 2026-01-20 15:14:34
 ===========================================================
 
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_splitsmt/RealWorld/awesome/2402.smt2
-START: 2026-01-18T11:07:06Z
-END: 2026-01-18T11:07:08Z
-DURATION_SEC: 2.237324649
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_743231.smt2
+START: 2026-01-20T07:14:34Z
+END: 2026-01-20T07:14:36Z
+DURATION_SEC: 1.775011194
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 ===========================================================
 
-Task Group 49 completed at 2026-01-18 19:07:08
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_745381.smt2
+START: 2026-01-20T07:14:36Z
+END: 2026-01-20T07:14:38Z
+DURATION_SEC: 2.086006046
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt5.2_745406.smt2
+START: 2026-01-20T07:14:38Z
+END: 2026-01-20T07:14:41Z
+DURATION_SEC: 2.208830564
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_945036.smt2
+START: 2026-01-20T07:14:41Z
+END: 2026-01-20T07:14:43Z
+DURATION_SEC: 2.141703506
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_968293.smt2
+START: 2026-01-20T07:14:43Z
+END: 2026-01-20T07:14:45Z
+DURATION_SEC: 2.145214660
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 49 completed at 2026-01-20 15:14:45

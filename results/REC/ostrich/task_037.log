@@ -1,11 +1,59 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_REC/RealWorld/awesome/20413.smt2
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1791155.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:03
-END: 2026-01-18 19:00:04
-DURATION_SEC: 1.211
-STATUS: ERROR
+START: 2026-01-19 09:06:33
+END: 2026-01-19 09:15:19
+DURATION_SEC: 526.105
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1857289.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 09:15:19
+END: 2026-01-19 09:18:14
+DURATION_SEC: 175.051
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1874067.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 09:18:14
+END: 2026-01-19 09:26:47
+DURATION_SEC: 512.575
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1889497.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 09:26:47
+END: 2026-01-19 09:46:47
+DURATION_SEC: 1200.190
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1898048.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 09:46:47
+END: 2026-01-19 09:46:54
+DURATION_SEC: 6.504
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

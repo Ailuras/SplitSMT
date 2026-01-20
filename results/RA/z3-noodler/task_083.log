@@ -1,0 +1,63 @@
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_948963.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:37
+DURATION_SEC: 0.107
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_999425.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:38
+DURATION_SEC: 0.097
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/10778.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:38
+END: 2026-01-18 22:03:39
+DURATION_SEC: 1.105
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 36866 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/10794.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:39
+END: 2026-01-18 22:03:39
+DURATION_SEC: 0.232
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/11107.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:39
+END: 2026-01-18 22:03:40
+DURATION_SEC: 1.233
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+

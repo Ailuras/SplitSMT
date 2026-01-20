@@ -12,7 +12,7 @@
 (assert (= segment_1 (str.split_at var_0xINPUT_112727 "-" 1)))
 (assert (= total_segments (str.num_splits var_0xINPUT_112727 "-")))
 (assert (>= total_segments 2))
-(assert (= (str.split_rest var_0xINPUT_112727 "-" 2) ""))
+(assert (= (str.split_rest var_0xINPUT_112727 "-" 1) ""))
 ; --- END CONSTRAINT ---
 
 

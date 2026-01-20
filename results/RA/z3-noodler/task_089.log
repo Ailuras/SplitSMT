@@ -1,10 +1,64 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/4457.smt2
+FILE: benchmarks_RA/RealWorld/awesome/19251.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:05:05
-END: 2026-01-18 19:05:05
-DURATION_SEC: 0.258
+START: 2026-01-18 22:03:48
+END: 2026-01-18 22:03:48
+DURATION_SEC: 0.368
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/19256.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:48
+END: 2026-01-18 22:03:49
+DURATION_SEC: 0.289
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 38390 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/19258.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:49
+END: 2026-01-18 22:03:49
+DURATION_SEC: 0.426
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 38425 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/19912.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:49
+END: 2026-01-18 22:03:50
+DURATION_SEC: 0.313
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/20049.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:50
+END: 2026-01-18 22:03:50
+DURATION_SEC: 0.170
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

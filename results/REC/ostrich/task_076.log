@@ -1,11 +1,59 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_REC/RealWorld/awesome/37934.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1989028.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:08
-END: 2026-01-18 19:00:10
-DURATION_SEC: 1.235
-STATUS: ERROR
+START: 2026-01-19 11:56:05
+END: 2026-01-19 12:01:33
+DURATION_SEC: 327.573
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+(error "out of memory or stack overflow")
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1993341.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:01:33
+END: 2026-01-19 12:21:33
+DURATION_SEC: 1200.130
+STATUS: TIMEOUT
 EXIT_CODE: 1
 -----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_2027566.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:21:33
+END: 2026-01-19 12:23:24
+DURATION_SEC: 110.886
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_2029990.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:23:24
+END: 2026-01-19 12:23:28
+DURATION_SEC: 4.344
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_2072952.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 12:23:28
+END: 2026-01-19 12:23:49
+DURATION_SEC: 20.835
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

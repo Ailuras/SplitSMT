@@ -1,16 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/4197.smt2
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt5.2_820585.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:58
-END: 2026-01-18 19:04:58
-DURATION_SEC: 0.434
-STATUS: ERROR
-EXIT_CODE: 110
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:37
+DURATION_SEC: 0.094
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-ASSERTION VIOLATION
-File: /home/hanrui/z3-noodler/src/smt/theory_str_noodler/theory_str_noodler.cpp
-Line: 437
-!var_name.contains(util::get_variable_basic_term(n))
-(C)ontinue, (A)bort, (S)top, (T)hrow exception, Invoke (G)DB
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_846735.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:37
+DURATION_SEC: 0.089
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_893416.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:37
+DURATION_SEC: 0.094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_925395.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:37
+END: 2026-01-18 22:03:38
+DURATION_SEC: 0.439
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/scenarios/strategy_str_split_gpt-5.2_944051.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:38
+END: 2026-01-18 22:03:38
+DURATION_SEC: 0.120
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

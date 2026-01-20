@@ -710,6 +710,16 @@ void SplitSolver::addEquivalenceConstraints(Context &ctx,
     DEBUG("[addEquivalenceConstraints] Adding constraint: ", equiv);
     ctx.getParser().addAssertion(equiv);
   }
+
+  // Add constraint: b_maxIndex must be true
+  // This ensures all x_i variables up to maxIndex are properly constrained
+  auto allIndices = varDiv->getSplitNumsAppeared();
+  if (!allIndices.empty()) {
+    int maxIndex = *std::max_element(allIndices.begin(), allIndices.end());
+    std::string bMax = hashStr + "_b_" + std::to_string(maxIndex);
+    DEBUG("[addEquivalenceConstraints] Adding b_max constraint: ", bMax);
+    ctx.getParser().addAssertion(bMax);
+  }
 }
 
 void SplitSolver::addNumSplitsConstraints(Context &ctx,
@@ -723,10 +733,10 @@ void SplitSolver::addNumSplitsConstraints(Context &ctx,
   std::string variable_split = variable + "_" + hashStr;
   std::string num_splits = hashStr + "_num";
 
-  std::string constraint = "(= " + num_splits + " (- (str.len " +
+  std::string constraint = "(= " + num_splits + " (+ 1 (- (str.len " +
                            variable_split + ") (str.len (str.replace_all " +
                            variable_split + " " +
-                           std::string(INTERNAL_DELIMITER) + " \"\"))))";
+                           std::string(INTERNAL_DELIMITER) + " \"\")))))";
   DEBUG("[addNumSplitsConstraints] Adding constraint: ", constraint);
   ctx.getParser().addAssertion(constraint);
 }
@@ -869,21 +879,31 @@ void SplitSolver::addAuxiliaryLemmas(Context &ctx) {
 
       for (int i : allIndices) {
         std::string bi = hashStr + "_b_" + std::to_string(i);
-        std::string xi = hashStr + "_x_" + std::to_string(i);
         std::string last = hashStr + "_last";
 
         for (int j : splitRestIndices) {
           if (j <= i) {
             std::string rj = hashStr + "_r_" + std::to_string(j);
 
+            // Build the left-hand side: x_j ++ delta ++ x_{j+1} ++ ... ++ x_i
+            // ++ last
+            std::string lhs = "(str.++";
+            for (int k = j; k <= i; ++k) {
+              if (k > j) {
+                lhs += " " + std::string(INTERNAL_DELIMITER);
+              }
+              lhs += " " + hashStr + "_x_" + std::to_string(k);
+            }
+            lhs += " " + last + ")";
+
             std::string lemma;
             if (isStringType) {
-              lemma = "(=> " + bi + " (= (str.++ " + xi + " " + last +
-                      ") (str.replace_all " + rj + " " + delimiter + " " +
-                      std::string(INTERNAL_DELIMITER) + ")))";
+              lemma = "(=> " + bi + " (= " + lhs + " (str.replace_all " + rj +
+                      " " + delimiter + " " + std::string(INTERNAL_DELIMITER) +
+                      ")))";
             } else {
-              lemma = "(=> " + bi + " (= (str.++ " + xi + " " + last +
-                      ") (str.replace_re_all " + rj + " " + delimiter + " " +
+              lemma = "(=> " + bi + " (= " + lhs + " (str.replace_re_all " +
+                      rj + " " + delimiter + " " +
                       std::string(INTERNAL_DELIMITER) + ")))";
             }
             std::string normalizedLemma = Parser::postProcessSMTLIB(lemma);

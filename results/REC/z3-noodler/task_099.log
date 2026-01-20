@@ -1,10 +1,64 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/5218.smt2
+FILE: benchmarks_REC/RealWorld/awesome/37.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:03
-END: 2026-01-18 19:00:03
-DURATION_SEC: 0.120
+START: 2026-01-19 06:07:39
+END: 2026-01-19 06:07:40
+DURATION_SEC: 0.382
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3087647 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/3860.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:40
+END: 2026-01-19 06:07:40
+DURATION_SEC: 0.287
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/40692.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:40
+END: 2026-01-19 06:07:40
+DURATION_SEC: 0.159
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/4197.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:40
+END: 2026-01-19 06:07:41
+DURATION_SEC: 0.342
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle dummy symbols in tocode conversions with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3087893 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/42066.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:41
+END: 2026-01-19 06:07:41
+DURATION_SEC: 0.155
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------

@@ -14,7 +14,7 @@
 (assert (= seg1 (str.split_at var_0xINPUT_107312 "-" 1)))
 (assert (= "" seg0))
 (assert (= "" seg1))
-(assert (= "" (str.split_rest var_0xINPUT_107312 "-" 2)))
+(assert (= "" (str.split_rest var_0xINPUT_107312 "-" 1)))
 ; --- END CONSTRAINT ---
 
 

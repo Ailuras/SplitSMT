@@ -1,0 +1,68 @@
+===========================================================
+Task Group 94
+Solver: SplitSMT (using ostrich)
+Started: 2026-01-19 17:13:02
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/33306.smt2
+START: 2026-01-19T09:13:02Z
+END: 2026-01-19T09:13:08Z
+DURATION_SEC: 5.963391422
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-19 17:13:08] External solver reported errors in output: (error "internal exception: java.lang.illegalargumentexception: cannot execute actions list(addformula((! (str_empty(all_657_4) & str_empty(all_541_4)))))")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/33328.smt2
+START: 2026-01-19T09:13:08Z
+END: 2026-01-19T09:13:11Z
+DURATION_SEC: 3.159788460
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/33720.smt2
+START: 2026-01-19T09:13:11Z
+END: 2026-01-19T09:13:15Z
+DURATION_SEC: 4.375282481
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/337.smt2
+START: 2026-01-19T09:13:15Z
+END: 2026-01-19T09:13:17Z
+DURATION_SEC: 2.176019092
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/RealWorld/awesome/34010.smt2
+START: 2026-01-19T09:13:17Z
+END: 2026-01-19T09:13:19Z
+DURATION_SEC: 2.117026344
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 94 completed at 2026-01-19 17:13:19

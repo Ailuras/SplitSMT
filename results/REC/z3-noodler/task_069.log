@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/353.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1137404.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:00
-END: 2026-01-18 19:00:02
-DURATION_SEC: 1.596
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:07:31
+DURATION_SEC: 0.177
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3008255 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1174592.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:07:32
+DURATION_SEC: 0.249
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_117640.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:32
+END: 2026-01-19 06:07:32
+DURATION_SEC: 0.161
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1242060.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:32
+END: 2026-01-19 06:07:32
+DURATION_SEC: 0.428
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1250336.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:32
+END: 2026-01-19 06:07:33
+DURATION_SEC: 0.224
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

@@ -1,15 +1,39 @@
 ===========================================================
 Task Group 50
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 01:03:15
+Started: 2026-01-19 15:44:39
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/37.smt2
-START: 2026-01-17T17:03:15Z
-END: 2026-01-17T17:03:15Z
-DURATION_SEC: .429186530
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1062119.smt2
+START: 2026-01-19T07:44:39Z
+END: 2026-01-19T07:44:39Z
+DURATION_SEC: .542966604
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1066928.smt2
+START: 2026-01-19T07:44:39Z
+END: 2026-01-19T07:44:42Z
+DURATION_SEC: 2.218028732
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1098687.smt2
+START: 2026-01-19T07:44:42Z
+END: 2026-01-19T07:44:42Z
+DURATION_SEC: .381060526
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -17,11 +41,11 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/3860.smt2
-START: 2026-01-17T17:03:15Z
-END: 2026-01-17T17:03:15Z
-DURATION_SEC: .410648699
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1122576.smt2
+START: 2026-01-19T07:44:42Z
+END: 2026-01-19T07:44:45Z
+DURATION_SEC: 2.388813227
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -29,99 +53,15 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/40692.smt2
-START: 2026-01-17T17:03:15Z
-END: 2026-01-17T17:03:16Z
-DURATION_SEC: .700342319
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1161584.smt2
+START: 2026-01-19T07:44:45Z
+END: 2026-01-19T07:44:45Z
+DURATION_SEC: .141325520
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unsat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/4197.smt2
-START: 2026-01-17T17:03:16Z
-END: 2026-01-17T17:03:17Z
-DURATION_SEC: .345423487
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/42066.smt2
-START: 2026-01-17T17:03:17Z
-END: 2026-01-17T17:23:17Z
-DURATION_SEC: 1200.418287801
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/4296.smt2
-START: 2026-01-17T17:23:17Z
-END: 2026-01-17T17:23:17Z
-DURATION_SEC: .210416829
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/4322.smt2
-START: 2026-01-17T17:23:17Z
-END: 2026-01-17T17:23:18Z
-DURATION_SEC: .378004130
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/4349.smt2
-START: 2026-01-17T17:23:18Z
-END: 2026-01-17T17:23:18Z
-DURATION_SEC: .383690050
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/4369.smt2
-START: 2026-01-17T17:23:18Z
-END: 2026-01-17T17:23:18Z
-DURATION_SEC: .387212134
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/RealWorld/awesome/437.smt2
-START: 2026-01-17T17:23:18Z
-END: 2026-01-17T17:23:19Z
-DURATION_SEC: .121220626
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-Task Group 50 completed at 2026-01-18 01:23:19
+Task Group 50 completed at 2026-01-19 15:44:45

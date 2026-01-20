@@ -1,39 +1,15 @@
 ===========================================================
 Task Group 30
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 03:53:20
+Started: 2026-01-19 16:48:00
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2020484.smt2
-START: 2026-01-17T19:53:20Z
-END: 2026-01-17T19:53:21Z
-DURATION_SEC: .145766358
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2060500.smt2
-START: 2026-01-17T19:53:21Z
-END: 2026-01-17T19:53:21Z
-DURATION_SEC: .119859717
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2074607.smt2
-START: 2026-01-17T19:53:21Z
-END: 2026-01-17T20:13:21Z
-DURATION_SEC: 1200.098530508
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_649239.smt2
+START: 2026-01-19T08:48:00Z
+END: 2026-01-19T09:08:00Z
+DURATION_SEC: 1200.148997358
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -41,11 +17,23 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2078107.smt2
-START: 2026-01-17T20:13:21Z
-END: 2026-01-17T20:13:21Z
-DURATION_SEC: .583189494
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_660767.smt2
+START: 2026-01-19T09:08:00Z
+END: 2026-01-19T09:08:00Z
+DURATION_SEC: .121218825
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_672983.smt2
+START: 2026-01-19T09:08:00Z
+END: 2026-01-19T09:08:01Z
+DURATION_SEC: .660167865
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -53,11 +41,11 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083119.smt2
-START: 2026-01-17T20:13:21Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .082417195
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_676255.smt2
+START: 2026-01-19T09:08:01Z
+END: 2026-01-19T09:08:01Z
+DURATION_SEC: .201829237
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -65,63 +53,16 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .203287474
-STATUS: SUCCESS
-EXIT_CODE: 0
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_715045.smt2
+START: 2026-01-19T09:08:01Z
+END: 2026-01-19T09:08:01Z
+DURATION_SEC: .088975243
+STATUS: ERROR
+EXIT_CODE: 1
 -----------------------------------------------------------
-unsat
+[31m[2026-01-19 17:08:01] External solver reported errors in output: (error "parse error: /tmp/smt2_blpiep.smt2:54.62: symbol 'regex' not declared as a type")[0m
+unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .080404302
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .318656042
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .103237770
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-cvc5
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
-START: 2026-01-17T20:13:22Z
-END: 2026-01-17T20:13:22Z
-DURATION_SEC: .076509277
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-Task Group 30 completed at 2026-01-18 04:13:22
+Task Group 30 completed at 2026-01-19 17:08:01

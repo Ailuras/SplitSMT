@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 20
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 19:06:13
+Started: 2026-01-20 15:14:08
 ===========================================================
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_splitsmt/RealWorld/awesome/15181.smt2
-START: 2026-01-18T11:06:13Z
-END: 2026-01-18T11:06:13Z
-DURATION_SEC: .142544756
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1686230.smt2
+START: 2026-01-20T07:14:08Z
+END: 2026-01-20T07:14:09Z
+DURATION_SEC: .121431190
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1696873.smt2
+START: 2026-01-20T07:14:09Z
+END: 2026-01-20T07:14:09Z
+DURATION_SEC: .137154755
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1747243.smt2
+START: 2026-01-20T07:14:09Z
+END: 2026-01-20T07:14:09Z
+DURATION_SEC: .092953581
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1748024.smt2
+START: 2026-01-20T07:14:09Z
+END: 2026-01-20T07:14:11Z
+DURATION_SEC: 1.653973035
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 20 completed at 2026-01-18 19:06:13
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1749144.smt2
+START: 2026-01-20T07:14:11Z
+END: 2026-01-20T07:14:13Z
+DURATION_SEC: 2.243094903
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 20 completed at 2026-01-20 15:14:13

@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 50
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 19:06:23
+Started: 2026-01-20 15:14:23
 ===========================================================
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_splitsmt/RealWorld/awesome/245.smt2
-START: 2026-01-18T11:06:23Z
-END: 2026-01-18T11:06:23Z
-DURATION_SEC: .131787069
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1062119.smt2
+START: 2026-01-20T07:14:23Z
+END: 2026-01-20T07:14:23Z
+DURATION_SEC: .418849945
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
 ===========================================================
 
-Task Group 50 completed at 2026-01-18 19:06:23
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1066928.smt2
+START: 2026-01-20T07:14:23Z
+END: 2026-01-20T07:14:24Z
+DURATION_SEC: .180768834
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1098687.smt2
+START: 2026-01-20T07:14:24Z
+END: 2026-01-20T07:14:24Z
+DURATION_SEC: .266688059
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1122576.smt2
+START: 2026-01-20T07:14:24Z
+END: 2026-01-20T07:14:25Z
+DURATION_SEC: 1.496741277
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1161584.smt2
+START: 2026-01-20T07:14:25Z
+END: 2026-01-20T07:14:26Z
+DURATION_SEC: .183299469
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 50 completed at 2026-01-20 15:14:26

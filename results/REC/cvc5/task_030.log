@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_REC/RealWorld/awesome/19256.smt2
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_649239.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:59
-END: 2026-01-18 18:59:59
-DURATION_SEC: 0.050
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 06:48:10
+END: 2026-01-19 07:08:10
+DURATION_SEC: 1200.220
+STATUS: TIMEOUT
+EXIT_CODE: 143
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_REC/RealWorld/awesome/19256.smt2:59.62: Symbol 'RegEx' not declared as a type")
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_660767.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:08:10
+END: 2026-01-19 07:08:10
+DURATION_SEC: 0.041
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_672983.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:08:10
+END: 2026-01-19 07:08:11
+DURATION_SEC: 0.244
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_676255.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:08:11
+END: 2026-01-19 07:08:13
+DURATION_SEC: 1.874
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_715045.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 07:08:13
+END: 2026-01-19 07:08:13
+DURATION_SEC: 0.095
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

@@ -1,12 +1,63 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/34019.smt2
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_2083264.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:00
-END: 2026-01-18 19:00:09
-DURATION_SEC: 9.360
+START: 2026-01-19 06:07:29
+END: 2026-01-19 06:07:30
+DURATION_SEC: 0.610
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_2090863.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:30
+END: 2026-01-19 06:07:30
+DURATION_SEC: 0.131
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_214519.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:30
+END: 2026-01-19 06:07:31
+DURATION_SEC: 0.404
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  We cannot handle non-chain free constraints with transducers
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3083803 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt-5.2_267684.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:07:31
+DURATION_SEC: 0.262
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/OpenAI/easy/strategy_generic_insertion_gpt5.2_268286.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:31
+END: 2026-01-19 06:07:31
+DURATION_SEC: 0.166
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

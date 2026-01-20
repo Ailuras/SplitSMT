@@ -1,27 +1,15 @@
 ===========================================================
 Task Group 20
 Solver: SplitSMT (using z3)
-Started: 2026-01-18 00:22:25
+Started: 2026-01-19 14:47:08
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_254006.smt2
-START: 2026-01-17T16:22:25Z
-END: 2026-01-17T16:22:26Z
-DURATION_SEC: .236639057
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_378613.smt2
-START: 2026-01-17T16:22:26Z
-END: 2026-01-17T16:22:26Z
-DURATION_SEC: .110003275
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1686230.smt2
+START: 2026-01-19T06:47:08Z
+END: 2026-01-19T06:47:09Z
+DURATION_SEC: .381830343
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -29,47 +17,11 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_396493.smt2
-START: 2026-01-17T16:22:26Z
-END: 2026-01-17T16:22:29Z
-DURATION_SEC: 3.032467299
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_636767.smt2
-START: 2026-01-17T16:22:29Z
-END: 2026-01-17T16:42:29Z
-DURATION_SEC: 1200.145986698
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_669507.smt2
-START: 2026-01-17T16:42:29Z
-END: 2026-01-17T16:42:38Z
-DURATION_SEC: 8.889939907
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_741439.smt2
-START: 2026-01-17T16:42:38Z
-END: 2026-01-17T16:42:38Z
-DURATION_SEC: .121182437
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1696873.smt2
+START: 2026-01-19T06:47:09Z
+END: 2026-01-19T06:47:09Z
+DURATION_SEC: .285786678
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -77,11 +29,23 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_750238.smt2
-START: 2026-01-17T16:42:38Z
-END: 2026-01-17T16:42:38Z
-DURATION_SEC: .242466513
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1747243.smt2
+START: 2026-01-19T06:47:09Z
+END: 2026-01-19T06:47:10Z
+DURATION_SEC: .285889355
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1748024.smt2
+START: 2026-01-19T06:47:10Z
+END: 2026-01-19T06:47:10Z
+DURATION_SEC: .379487119
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -89,39 +53,15 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_787118.smt2
-START: 2026-01-17T16:42:38Z
-END: 2026-01-17T16:42:40Z
-DURATION_SEC: 1.923318681
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1749144.smt2
+START: 2026-01-19T06:47:10Z
+END: 2026-01-19T06:47:10Z
+DURATION_SEC: .352948434
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
-START: 2026-01-17T16:42:40Z
-END: 2026-01-17T16:42:40Z
-DURATION_SEC: .199123833
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
-START: 2026-01-17T16:42:40Z
-END: 2026-01-17T16:42:41Z
-DURATION_SEC: .607146131
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-Task Group 20 completed at 2026-01-18 00:42:41
+Task Group 20 completed at 2026-01-19 14:47:10

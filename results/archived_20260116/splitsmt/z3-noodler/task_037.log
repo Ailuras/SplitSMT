@@ -1,15 +1,39 @@
 ===========================================================
 Task Group 37
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 00:54:43
+Started: 2026-01-19 15:22:40
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1745778.smt2
-START: 2026-01-17T16:54:43Z
-END: 2026-01-17T17:14:43Z
-DURATION_SEC: 1200.103435247
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1791155.smt2
+START: 2026-01-19T07:22:40Z
+END: 2026-01-19T07:22:50Z
+DURATION_SEC: 9.716330250
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1857289.smt2
+START: 2026-01-19T07:22:50Z
+END: 2026-01-19T07:22:50Z
+DURATION_SEC: .210772094
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1874067.smt2
+START: 2026-01-19T07:22:50Z
+END: 2026-01-19T07:22:51Z
+DURATION_SEC: 1.089723180
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -17,11 +41,11 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1747235.smt2
-START: 2026-01-17T17:14:43Z
-END: 2026-01-17T17:34:43Z
-DURATION_SEC: 1200.086003604
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1889497.smt2
+START: 2026-01-19T07:22:51Z
+END: 2026-01-19T07:22:52Z
+DURATION_SEC: .885135144
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -29,99 +53,15 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1765086.smt2
-START: 2026-01-17T17:34:43Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .144904247
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_1898048.smt2
+START: 2026-01-19T07:22:52Z
+END: 2026-01-19T07:22:52Z
+DURATION_SEC: .150854165
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unsat
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1781893.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .135106332
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1783649.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .201589098
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1792360.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .116024905
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1812689.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .148227601
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1848860.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:44Z
-DURATION_SEC: .121142948
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864105.smt2
-START: 2026-01-17T17:34:44Z
-END: 2026-01-17T17:34:52Z
-DURATION_SEC: 7.646456168
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2
-START: 2026-01-17T17:34:52Z
-END: 2026-01-17T17:34:52Z
-DURATION_SEC: .148177649
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-Task Group 37 completed at 2026-01-18 01:34:52
+Task Group 37 completed at 2026-01-19 15:22:52

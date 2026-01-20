@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 3
 Solver: SplitSMT (using z3)
-Started: 2026-01-18 19:06:11
+Started: 2026-01-20 15:14:00
 ===========================================================
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_splitsmt/RealWorld/awesome/11107.smt2
-START: 2026-01-18T11:06:11Z
-END: 2026-01-18T11:06:11Z
-DURATION_SEC: .116422789
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_136119.smt2
+START: 2026-01-20T07:14:00Z
+END: 2026-01-20T07:14:00Z
+DURATION_SEC: .481081479
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1369241.smt2
+START: 2026-01-20T07:14:00Z
+END: 2026-01-20T07:14:01Z
+DURATION_SEC: .225574628
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 3 completed at 2026-01-18 19:06:11
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1376047.smt2
+START: 2026-01-20T07:14:01Z
+END: 2026-01-20T07:14:01Z
+DURATION_SEC: .099524076
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1427370.smt2
+START: 2026-01-20T07:14:01Z
+END: 2026-01-20T07:14:01Z
+DURATION_SEC: .179529492
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_1448234.smt2
+START: 2026-01-20T07:14:01Z
+END: 2026-01-20T07:14:01Z
+DURATION_SEC: .291230407
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 3 completed at 2026-01-20 15:14:01

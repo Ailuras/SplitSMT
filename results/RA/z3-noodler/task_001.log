@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/10778.smt2
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1041288.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:27
-END: 2026-01-18 19:04:29
-DURATION_SEC: 1.323
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-18 22:02:56
+END: 2026-01-18 22:02:57
+DURATION_SEC: 0.250
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3049867 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1121291.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:57
+END: 2026-01-18 22:02:57
+DURATION_SEC: 0.135
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1124159.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:57
+END: 2026-01-18 22:02:57
+DURATION_SEC: 0.228
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1162156.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:57
+END: 2026-01-18 22:02:57
+DURATION_SEC: 0.143
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/DeepSeek/complex/strategy_str_split_deepseek-chat_1165585.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:02:57
+END: 2026-01-18 22:02:57
+DURATION_SEC: 0.105
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

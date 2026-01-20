@@ -1,0 +1,68 @@
+===========================================================
+Task Group 74
+Solver: SplitSMT (using cvc5)
+Started: 2026-01-19 18:48:19
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1792360.smt2
+START: 2026-01-19T10:48:19Z
+END: 2026-01-19T10:48:19Z
+DURATION_SEC: .147577563
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_1812689.smt2
+START: 2026-01-19T10:48:19Z
+END: 2026-01-19T10:48:19Z
+DURATION_SEC: .122875923
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1848860.smt2
+START: 2026-01-19T10:48:19Z
+END: 2026-01-19T10:48:19Z
+DURATION_SEC: .143663464
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864105.smt2
+START: 2026-01-19T10:48:19Z
+END: 2026-01-19T10:48:21Z
+DURATION_SEC: 2.283272037
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_1864341.smt2
+START: 2026-01-19T10:48:21Z
+END: 2026-01-19T10:48:22Z
+DURATION_SEC: .072835828
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-19 18:48:22] External solver reported errors in output: (error "parse error: /tmp/smt2_hjqtkk.smt2:41.37: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+Task Group 74 completed at 2026-01-19 18:48:22

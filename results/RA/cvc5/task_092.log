@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_RA/RealWorld/awesome/4659.smt2
+FILE: benchmarks_RA/RealWorld/awesome/21489.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:30
-END: 2026-01-18 19:04:30
-DURATION_SEC: 0.156
+START: 2026-01-19 01:43:27
+END: 2026-01-19 02:03:27
+DURATION_SEC: 1200.050
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/RealWorld/awesome/21922.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:03:27
+END: 2026-01-19 02:03:27
+DURATION_SEC: 0.027
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_RA/RealWorld/awesome/4659.smt2:56.62: Symbol 'RegEx' not declared as a type")
+(error "Parse Error: benchmarks_RA/RealWorld/awesome/21922.smt2:55.62: Symbol 'RegEx' not declared as a type")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/RealWorld/awesome/2344.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:03:27
+END: 2026-01-19 02:03:27
+DURATION_SEC: 0.056
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/RealWorld/awesome/2371.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:03:27
+END: 2026-01-19 02:03:27
+DURATION_SEC: 0.033
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_RA/RealWorld/awesome/2371.smt2:55.62: Symbol 'RegEx' not declared as a type")
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/RealWorld/awesome/2376.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 02:03:27
+END: 2026-01-19 02:03:27
+DURATION_SEC: 0.032
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+(error "Parse Error: benchmarks_RA/RealWorld/awesome/2376.smt2:55.62: Symbol 'RegEx' not declared as a type")
 

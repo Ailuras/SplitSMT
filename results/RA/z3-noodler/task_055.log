@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/33328.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1561580.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:37
-END: 2026-01-18 19:04:37
-DURATION_SEC: 0.195
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-18 22:03:25
+END: 2026-01-18 22:03:25
+DURATION_SEC: 0.182
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  only replace_all with concrete find&replace is supported
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3061328 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1570241.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:25
+END: 2026-01-18 22:03:25
+DURATION_SEC: 0.186
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1586720.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:25
+END: 2026-01-18 22:03:25
+DURATION_SEC: 0.288
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_162392.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:25
+END: 2026-01-18 22:03:25
+DURATION_SEC: 0.153
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1630647.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:25
+END: 2026-01-18 22:03:26
+DURATION_SEC: 0.107
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

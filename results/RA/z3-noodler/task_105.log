@@ -1,15 +1,63 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/6001.smt2
+FILE: benchmarks_RA/RealWorld/awesome/6277.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:05:09
-END: 2026-01-18 19:05:14
-DURATION_SEC: 4.873
+START: 2026-01-18 22:07:08
+END: 2026-01-18 22:07:08
+DURATION_SEC: 0.261
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
+  what():  only replace_all with concrete find&replace is supported
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3071618 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 57640 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/633.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:07:08
+END: 2026-01-18 22:10:17
+DURATION_SEC: 189.066
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/649.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:10:17
+END: 2026-01-18 22:10:17
+DURATION_SEC: 0.090
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/650.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:10:17
+END: 2026-01-18 22:10:17
+DURATION_SEC: 0.104
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/RealWorld/awesome/6760.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:10:17
+END: 2026-01-18 22:10:18
+DURATION_SEC: 0.402
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

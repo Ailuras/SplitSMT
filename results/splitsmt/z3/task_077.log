@@ -1,19 +1,67 @@
 ===========================================================
 Task Group 77
 Solver: SplitSMT (using z3)
-Started: 2026-01-18 19:06:19
+Started: 2026-01-20 15:14:29
 ===========================================================
 
 ===========================================================
 Solver: z3
-FILE: benchmarks_splitsmt/RealWorld/awesome/37944.smt2
-START: 2026-01-18T11:06:19Z
-END: 2026-01-18T11:06:19Z
-DURATION_SEC: .201142229
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_2077998.smt2
+START: 2026-01-20T07:14:29Z
+END: 2026-01-20T07:14:29Z
+DURATION_SEC: .461119219
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 77 completed at 2026-01-18 19:06:19
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_240289.smt2
+START: 2026-01-20T07:14:29Z
+END: 2026-01-20T07:14:30Z
+DURATION_SEC: .228927806
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_253287.smt2
+START: 2026-01-20T07:14:30Z
+END: 2026-01-20T07:14:30Z
+DURATION_SEC: .127745306
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_277574.smt2
+START: 2026-01-20T07:14:30Z
+END: 2026-01-20T07:14:31Z
+DURATION_SEC: 1.591014785
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+===========================================================
+
+===========================================================
+Solver: z3
+FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_280052.smt2
+START: 2026-01-20T07:14:31Z
+END: 2026-01-20T07:14:32Z
+DURATION_SEC: .228531346
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 77 completed at 2026-01-20 15:14:32

@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_RA/RealWorld/awesome/33328.smt2
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1561580.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:29
-END: 2026-01-18 19:04:29
-DURATION_SEC: 0.059
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 00:11:40
+END: 2026-01-19 00:11:40
+DURATION_SEC: 0.258
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_RA/RealWorld/awesome/33328.smt2:56.62: Symbol 'RegEx' not declared as a type")
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1570241.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:11:40
+END: 2026-01-19 00:11:40
+DURATION_SEC: 0.075
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_1586720.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:11:40
+END: 2026-01-19 00:31:40
+DURATION_SEC: 1200.070
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt5.2_162392.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:31:40
+END: 2026-01-19 00:31:41
+DURATION_SEC: 0.248
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_RA/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1630647.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 00:31:41
+END: 2026-01-19 00:31:41
+DURATION_SEC: 0.184
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

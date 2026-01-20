@@ -1,10 +1,56 @@
 ===========================================================
 Solver: ostrich
-FILE: benchmarks_RA/RealWorld/awesome/6058.smt2
+FILE: benchmarks_RA/RealWorld/awesome/6769.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:43
-END: 2026-01-18 19:04:45
-DURATION_SEC: 1.391
+START: 2026-01-19 05:03:29
+END: 2026-01-19 05:03:31
+DURATION_SEC: 1.882
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/awesome/685.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:03:31
+END: 2026-01-19 05:03:32
+DURATION_SEC: 1.158
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/awesome/6947.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:03:32
+END: 2026-01-19 05:23:32
+DURATION_SEC: 1200.130
+STATUS: TIMEOUT
+EXIT_CODE: 1
+-----------------------------------------------------------
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/awesome/6973.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:23:32
+END: 2026-01-19 05:23:35
+DURATION_SEC: 2.541
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_RA/RealWorld/awesome/723.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 05:23:35
+END: 2026-01-19 05:23:36
+DURATION_SEC: 1.025
 STATUS: ERROR
 EXIT_CODE: 1
 -----------------------------------------------------------

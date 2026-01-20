@@ -1,12 +1,60 @@
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_REC/RealWorld/awesome/37934.smt2
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_1989028.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:00
-END: 2026-01-18 19:00:00
-DURATION_SEC: 0.045
-STATUS: ERROR
-EXIT_CODE: 1
+START: 2026-01-19 08:27:35
+END: 2026-01-19 08:27:39
+DURATION_SEC: 3.420
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-(error "Parse Error: benchmarks_REC/RealWorld/awesome/37934.smt2:59.62: Symbol 'RegEx' not declared as a type")
+unknown
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_1993341.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 08:27:39
+END: 2026-01-19 08:30:18
+DURATION_SEC: 159.586
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_2027566.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 08:30:18
+END: 2026-01-19 08:50:18
+DURATION_SEC: 1200.040
+STATUS: TIMEOUT
+EXIT_CODE: 143
+-----------------------------------------------------------
+cvc5 interrupted by SIGTERM.
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt5.2_2029990.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 08:50:18
+END: 2026-01-19 08:50:25
+DURATION_SEC: 6.141
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_REC/OpenAI/scenarios/strategy_str_split_gpt-5.2_2072952.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 08:50:25
+END: 2026-01-19 08:50:25
+DURATION_SEC: 0.327
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
 

@@ -1,15 +1,15 @@
 ===========================================================
 Task Group 40
 Solver: SplitSMT (using z3)
-Started: 2026-01-18 00:42:32
+Started: 2026-01-19 14:51:01
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_467503.smt2
-START: 2026-01-17T16:42:32Z
-END: 2026-01-17T16:42:32Z
-DURATION_SEC: .142122303
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_741439.smt2
+START: 2026-01-19T06:51:01Z
+END: 2026-01-19T06:51:01Z
+DURATION_SEC: .181609621
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -17,47 +17,11 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_497648.smt2
-START: 2026-01-17T16:42:32Z
-END: 2026-01-17T16:42:33Z
-DURATION_SEC: .091327716
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_512997.smt2
-START: 2026-01-17T16:42:33Z
-END: 2026-01-17T16:42:33Z
-DURATION_SEC: .114964980
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_542594.smt2
-START: 2026-01-17T16:42:33Z
-END: 2026-01-17T16:42:44Z
-DURATION_SEC: 11.310261493
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_545102.smt2
-START: 2026-01-17T16:42:44Z
-END: 2026-01-17T17:02:44Z
-DURATION_SEC: 1200.242546227
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_750238.smt2
+START: 2026-01-19T06:51:01Z
+END: 2026-01-19T06:51:02Z
+DURATION_SEC: .343596555
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -65,63 +29,39 @@ unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_567720.smt2
-START: 2026-01-17T17:02:44Z
-END: 2026-01-17T17:02:44Z
-DURATION_SEC: .150229974
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_787118.smt2
+START: 2026-01-19T06:51:02Z
+END: 2026-01-19T06:51:03Z
+DURATION_SEC: 1.746841064
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_568076.smt2
-START: 2026-01-17T17:02:44Z
-END: 2026-01-17T17:02:45Z
-DURATION_SEC: .097353812
+Solver: z3
+FILE: benchmarks_splitsmt/DeepSeek/scenarios/strategy_str_split_deepseek-chat_934728.smt2
+START: 2026-01-19T06:51:03Z
+END: 2026-01-19T06:51:04Z
+DURATION_SEC: .192015247
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt5.2_582928.smt2
-START: 2026-01-17T17:02:45Z
-END: 2026-01-17T17:02:45Z
-DURATION_SEC: .109710272
+Solver: z3
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1071454.smt2
+START: 2026-01-19T06:51:04Z
+END: 2026-01-19T06:51:04Z
+DURATION_SEC: .695423989
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_635009.smt2
-START: 2026-01-17T17:02:45Z
-END: 2026-01-17T17:02:45Z
-DURATION_SEC: .114607928
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3
-FILE: benchmarks_splitsmt/OpenAI/scenarios/strategy_str_split_gpt-5.2_654361.smt2
-START: 2026-01-17T17:02:45Z
-END: 2026-01-17T17:02:45Z
-DURATION_SEC: .110734035
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-Task Group 40 completed at 2026-01-18 01:02:45
+Task Group 40 completed at 2026-01-19 14:51:04

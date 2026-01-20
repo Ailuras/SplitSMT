@@ -1,12 +1,63 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/6001.smt2
+FILE: benchmarks_REC/RealWorld/awesome/6277.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:00:03
-END: 2026-01-18 19:00:03
-DURATION_SEC: 0.155
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:43
+DURATION_SEC: 0.211
+STATUS: ERROR
+EXIT_CODE: 134
+-----------------------------------------------------------
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  only replace_all with concrete find&replace is supported
+timeout: the monitored command dumped core
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3088667 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/633.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:43
+DURATION_SEC: 0.137
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/649.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:43
+DURATION_SEC: 0.080
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/650.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:43
+DURATION_SEC: 0.110
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/RealWorld/awesome/6760.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:43
+END: 2026-01-19 06:07:44
+DURATION_SEC: 0.504
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
 

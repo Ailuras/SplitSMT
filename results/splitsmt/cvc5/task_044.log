@@ -1,19 +1,68 @@
 ===========================================================
 Task Group 44
 Solver: SplitSMT (using cvc5)
-Started: 2026-01-18 19:06:19
+Started: 2026-01-20 15:14:22
 ===========================================================
 
 ===========================================================
 Solver: cvc5
-FILE: benchmarks_splitsmt/RealWorld/awesome/21489.smt2
-START: 2026-01-18T11:06:19Z
-END: 2026-01-18T11:06:19Z
-DURATION_SEC: .207245340
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1738265.smt2
+START: 2026-01-20T07:14:22Z
+END: 2026-01-20T07:14:25Z
+DURATION_SEC: 2.095829895
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-sat
+unknown
 ===========================================================
 
-Task Group 44 completed at 2026-01-18 19:06:19
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1842625.smt2
+START: 2026-01-20T07:14:25Z
+END: 2026-01-20T07:14:27Z
+DURATION_SEC: 2.120068420
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1856544.smt2
+START: 2026-01-20T07:14:27Z
+END: 2026-01-20T07:14:29Z
+DURATION_SEC: 2.142893087
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1874023.smt2
+START: 2026-01-20T07:14:29Z
+END: 2026-01-20T07:14:29Z
+DURATION_SEC: .139142473
+STATUS: ERROR
+EXIT_CODE: 1
+-----------------------------------------------------------
+[31m[2026-01-20 15:14:29] External solver reported errors in output: (error "parse error: /tmp/smt2_ogyt4l.smt2:58.62: symbol 'regex' not declared as a type")[0m
+unknown
+===========================================================
+
+===========================================================
+Solver: cvc5
+FILE: benchmarks_splitsmt/OpenAI/complex/strategy_str_split_gpt-5.2_1922790.smt2
+START: 2026-01-20T07:14:29Z
+END: 2026-01-20T07:14:31Z
+DURATION_SEC: 2.100722755
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 44 completed at 2026-01-20 15:14:31

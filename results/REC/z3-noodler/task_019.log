@@ -1,15 +1,63 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_REC/RealWorld/awesome/1491.smt2
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1621410.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 18:59:59
-END: 2026-01-18 18:59:59
-DURATION_SEC: 0.284
+START: 2026-01-19 06:07:17
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.395
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1632154.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:18
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.218
 STATUS: ERROR
 EXIT_CODE: 134
 -----------------------------------------------------------
 terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
+  what():  only replace_all with concrete find&replace is supported
 timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3005327 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3078164 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1653233.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:18
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.148
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1662149.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:18
+END: 2026-01-19 06:07:18
+DURATION_SEC: 0.121
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_REC/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1663321.smt2
+TIMEOUT: 1200s
+START: 2026-01-19 06:07:18
+END: 2026-01-19 06:07:19
+DURATION_SEC: 0.233
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

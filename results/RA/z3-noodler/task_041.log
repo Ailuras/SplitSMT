@@ -1,15 +1,60 @@
 ===========================================================
 Solver: z3-noodler
-FILE: benchmarks_RA/RealWorld/awesome/21157.smt2
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt5.2_1087587.smt2
 TIMEOUT: 1200s
-START: 2026-01-18 19:04:33
-END: 2026-01-18 19:04:38
-DURATION_SEC: 5.474
-STATUS: ERROR
-EXIT_CODE: 134
+START: 2026-01-18 22:03:17
+END: 2026-01-18 22:03:17
+DURATION_SEC: 0.324
+STATUS: SUCCESS
+EXIT_CODE: 0
 -----------------------------------------------------------
-terminate called after throwing an instance of 'std::runtime_error'
-  what():  We cannot handle dummy symbols in tocode conversions with transducers
-timeout: the monitored command dumped core
-/home/hanrui/SplitSMT/solvers/z3-noodler.sh: line 71: 3058340 Aborted                 "$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+sat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1121908.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:17
+END: 2026-01-18 22:03:17
+DURATION_SEC: 0.312
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unsat
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1235975.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:18
+END: 2026-01-18 22:03:19
+DURATION_SEC: 0.882
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_1274675.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:19
+END: 2026-01-18 22:03:20
+DURATION_SEC: 1.334
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_RA/OpenAI/complex/strategy_str_split_gpt-5.2_135936.smt2
+TIMEOUT: 1200s
+START: 2026-01-18 22:03:20
+END: 2026-01-18 22:03:21
+DURATION_SEC: 0.509
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
 

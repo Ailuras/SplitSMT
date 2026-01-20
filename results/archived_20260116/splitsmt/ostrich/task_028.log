@@ -1,111 +1,15 @@
 ===========================================================
 Task Group 28
 Solver: SplitSMT (using ostrich)
-Started: 2026-01-18 02:42:00
+Started: 2026-01-19 15:28:51
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1561580.smt2
-START: 2026-01-17T18:42:00Z
-END: 2026-01-17T18:42:02Z
-DURATION_SEC: 1.694146788
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1570241.smt2
-START: 2026-01-17T18:42:02Z
-END: 2026-01-17T19:02:02Z
-DURATION_SEC: 1200.187837648
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1586720.smt2
-START: 2026-01-17T19:02:02Z
-END: 2026-01-17T19:22:02Z
-DURATION_SEC: 1200.212479303
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_162392.smt2
-START: 2026-01-17T19:22:02Z
-END: 2026-01-17T19:22:04Z
-DURATION_SEC: 1.686738125
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1630647.smt2
-START: 2026-01-17T19:22:04Z
-END: 2026-01-17T19:23:06Z
-DURATION_SEC: 62.073179080
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1633477.smt2
-START: 2026-01-17T19:23:06Z
-END: 2026-01-17T19:23:08Z
-DURATION_SEC: 1.328827852
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1647358.smt2
-START: 2026-01-17T19:23:08Z
-END: 2026-01-17T19:43:08Z
-DURATION_SEC: 1200.158316607
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_1667683.smt2
-START: 2026-01-17T19:43:08Z
-END: 2026-01-17T20:03:08Z
-DURATION_SEC: 1200.194359941
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unknown
-===========================================================
-
-===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt5.2_168606.smt2
-START: 2026-01-17T20:03:08Z
-END: 2026-01-17T20:03:11Z
-DURATION_SEC: 2.589977252
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_394469.smt2
+START: 2026-01-19T07:28:51Z
+END: 2026-01-19T07:29:09Z
+DURATION_SEC: 18.162965777
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -113,15 +17,51 @@ sat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-ostrich
-FILE: benchmarks_splitsmt/OpenAI/easy/strategy_generic_insertion_gpt-5.2_1713026.smt2
-START: 2026-01-17T20:03:11Z
-END: 2026-01-17T20:03:13Z
-DURATION_SEC: 1.963995138
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_421307.smt2
+START: 2026-01-19T07:29:09Z
+END: 2026-01-19T07:49:09Z
+DURATION_SEC: 1200.224083078
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
-unsat
+unknown
 ===========================================================
 
-Task Group 28 completed at 2026-01-18 04:03:13
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_497442.smt2
+START: 2026-01-19T07:49:09Z
+END: 2026-01-19T07:49:14Z
+DURATION_SEC: 4.697361222
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_513041.smt2
+START: 2026-01-19T07:49:14Z
+END: 2026-01-19T08:09:14Z
+DURATION_SEC: 1200.182132090
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+===========================================================
+Solver: ostrich
+FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_515572.smt2
+START: 2026-01-19T08:09:14Z
+END: 2026-01-19T08:29:14Z
+DURATION_SEC: 1200.190580333
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+unknown
+===========================================================
+
+Task Group 28 completed at 2026-01-19 16:29:14

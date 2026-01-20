@@ -1,15 +1,27 @@
 ===========================================================
 Task Group 8
 Solver: SplitSMT (using z3-noodler)
-Started: 2026-01-18 00:20:03
+Started: 2026-01-19 14:47:38
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1234406.smt2
-START: 2026-01-17T16:20:03Z
-END: 2026-01-17T16:20:04Z
-DURATION_SEC: 1.094596060
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_257815.smt2
+START: 2026-01-19T06:47:38Z
+END: 2026-01-19T06:47:42Z
+DURATION_SEC: 3.679604006
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_262610.smt2
+START: 2026-01-19T06:47:42Z
+END: 2026-01-19T06:47:43Z
+DURATION_SEC: .287796485
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
@@ -17,111 +29,39 @@ unsat
 ===========================================================
 
 ===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1237665.smt2
-START: 2026-01-17T16:20:04Z
-END: 2026-01-17T16:20:04Z
-DURATION_SEC: .588552114
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1271322.smt2
-START: 2026-01-17T16:20:04Z
-END: 2026-01-17T16:20:08Z
-DURATION_SEC: 3.134630057
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1273872.smt2
-START: 2026-01-17T16:20:08Z
-END: 2026-01-17T16:20:08Z
-DURATION_SEC: .288582558
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1277075.smt2
-START: 2026-01-17T16:20:08Z
-END: 2026-01-17T16:20:18Z
-DURATION_SEC: 9.831458512
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1311643.smt2
-START: 2026-01-17T16:20:18Z
-END: 2026-01-17T16:20:23Z
-DURATION_SEC: 4.814180486
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1392554.smt2
-START: 2026-01-17T16:20:23Z
-END: 2026-01-17T16:20:24Z
-DURATION_SEC: .770336827
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1394892.smt2
-START: 2026-01-17T16:20:24Z
-END: 2026-01-17T16:20:25Z
-DURATION_SEC: 1.384986361
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-sat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1419428.smt2
-START: 2026-01-17T16:20:25Z
-END: 2026-01-17T16:20:29Z
-DURATION_SEC: 3.885326352
-STATUS: SUCCESS
-EXIT_CODE: 0
------------------------------------------------------------
-unsat
-===========================================================
-
-===========================================================
-Solver: SplitSMT-z3-noodler
-FILE: benchmarks_splitsmt/DeepSeek/easy/strategy_generic_insertion_deepseek-chat_1448732.smt2
-START: 2026-01-17T16:20:29Z
-END: 2026-01-17T16:20:30Z
-DURATION_SEC: .512045848
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_318863.smt2
+START: 2026-01-19T06:47:43Z
+END: 2026-01-19T06:47:44Z
+DURATION_SEC: 1.600386260
 STATUS: SUCCESS
 EXIT_CODE: 0
 -----------------------------------------------------------
 unknown
 ===========================================================
 
-Task Group 8 completed at 2026-01-18 00:20:30
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_354847.smt2
+START: 2026-01-19T06:47:44Z
+END: 2026-01-19T06:47:58Z
+DURATION_SEC: 13.985081866
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+===========================================================
+Solver: z3-noodler
+FILE: benchmarks_splitsmt/DeepSeek/complex/strategy_str_split_deepseek-chat_370020.smt2
+START: 2026-01-19T06:47:58Z
+END: 2026-01-19T06:48:00Z
+DURATION_SEC: 1.257844499
+STATUS: SUCCESS
+EXIT_CODE: 0
+-----------------------------------------------------------
+sat
+===========================================================
+
+Task Group 8 completed at 2026-01-19 14:48:00
