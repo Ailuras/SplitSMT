@@ -146,6 +146,41 @@ def totals_from_solver_stats(stats, categories):
 
 
 
+def calculate_method_stats(rows: List[Dict], prefix: str) -> Dict[str, float]:
+    rw_count = 0
+    syn_count = 0
+    times = []
+    
+    for row in rows:
+        suite = str(row.get("suite", "")).strip()
+        result = normalize_result(row.get(f"{prefix}_result"))
+        time_val = row.get(f"{prefix}_time")
+        
+        is_solved = result in ("SAT", "UNSAT")
+        
+        if is_solved:
+            if suite == "RealWorld":
+                rw_count += 1
+            else:
+                syn_count += 1
+            
+            if is_number(time_val):
+                times.append(float(time_val))
+            else:
+                 # Should not happen for solved, but fallback
+                times.append(1200.0 * 2) 
+        else:
+             # Timeout or Error -> 2 * cutoff
+            times.append(1200.0 * 2)
+
+    par2 = sum(times) / len(times) if times else 0.0
+    
+    return {
+        "rw": rw_count,
+        "syn": syn_count,
+        "par2": par2
+    }
+
 def build_unique_stats(rows, category_picker):
     stats = {}
     model_fields = {
@@ -197,11 +232,12 @@ def totals_from_unique_stats(stats, categories):
     return total
 
 
-def fill_row_placeholders(line: str, values: List[str]) -> str:
+def fill_row_placeholders(line: str, values: List[str]) -> (str, List[str]):
     output = line
-    for value in values:
-        output = output.replace("\\EXPtodo{--}", value, 1)
-    return output
+    remaining_values = list(values)
+    while "\\EXPtodo{--}" in output and remaining_values:
+        output = output.replace("\\EXPtodo{--}", remaining_values.pop(0), 1)
+    return output, remaining_values
 
 
 def main() -> int:
@@ -262,6 +298,28 @@ def main() -> int:
     }
     solver_totals = {name: totals_from_solver_stats(stats, solver_categories) for name, stats in solver_stats.items()}
 
+    method_prefixes = {
+        "Ours": "splitsmt",
+        "RALen": "RA",
+        "RecLen": "REC",
+        "UF-split": "UF",
+    }
+    
+    # Pre-calculate cross-solver stats for the 3rd table
+    # Structure: cross_stats[MethodName][SolverName] = {rw, syn, par2}
+    cross_stats = {}
+    solvers_data = {
+        "Z3": rows_z3,
+        "CVC5": rows_cvc5,
+        "Ostrich": rows_ostrich,
+        "Z3-Noodler": rows_z3n
+    }
+    
+    for method_name, prefix in method_prefixes.items():
+        cross_stats[method_name] = {}
+        for solver_name, rows in solvers_data.items():
+            cross_stats[method_name][solver_name] = calculate_method_stats(rows, prefix)
+
     realworld_unique_stats = build_unique_stats(rows_default, pick_realworld)
     synthetic_unique_stats = build_unique_stats(rows_default, pick_synthetic)
     realworld_unique_total = totals_from_unique_stats(realworld_unique_stats, realworld_categories)
@@ -288,8 +346,9 @@ def main() -> int:
             table_mode = "realworld"
         elif "Synthetic benchmarks" in line or "tab:synthetic-ours-vs-baselines" in line:
             table_mode = "synthetic"
-        elif "tab:type-merged" in line:
-            table_mode = "per-solver"
+        elif "tab:method-solver-rw-syn-par2" in line:
+            table_mode = "cross-rob"
+            current_values_cross = []
         elif "tab:unique-solved-counts" in line:
             table_mode = "unique"
         elif "\\end{table" in line: # table or table*
@@ -309,7 +368,8 @@ def main() -> int:
                                 fmt_time(avg_time(model_stat["time_sum"], model_stat["time_count"])),
                             ]
                         )
-                    line = fill_row_placeholders(line, values)
+
+                    line, _ = fill_row_placeholders(line, values)
             if "Total" in line:
                 entry = realworld_total
                 values = [fmt_int(entry["count"])]
@@ -322,7 +382,8 @@ def main() -> int:
                             fmt_time(avg_time(model_stat["time_sum"], model_stat["time_count"])),
                         ]
                     )
-                line = fill_row_placeholders(line, values)
+
+                line, _ = fill_row_placeholders(line, values)
 
         if table_mode == "synthetic":
             for category in synthetic_categories:
@@ -338,7 +399,8 @@ def main() -> int:
                                 fmt_time(avg_time(model_stat["time_sum"], model_stat["time_count"])),
                             ]
                         )
-                    line = fill_row_placeholders(line, values)
+
+                    line, _ = fill_row_placeholders(line, values)
             if "Total" in line:
                 entry = synthetic_total
                 values = [fmt_int(entry["count"])]
@@ -351,42 +413,34 @@ def main() -> int:
                             fmt_time(avg_time(model_stat["time_sum"], model_stat["time_count"])),
                         ]
                     )
-                line = fill_row_placeholders(line, values)
 
-        if table_mode == "per-solver":
-            for category in solver_categories:
-                if line.strip().startswith(category):
-                    values = []
-                    sample = solver_stats["Z3"].get(category, {"count": 0})
-                    values.append(fmt_int(sample.get("count", 0)))
-                    for solver_name in ["Z3", "CVC5", "Ostrich", "Z3-Noodler"]:
-                        entry = solver_stats[solver_name].get(
-                            category,
-                            {"sat": 0, "unsat": 0, "unk": 0, "time_sum": 0.0, "time_count": 0},
-                        )
-                        values.extend(
-                            [
-                                fmt_int(entry["sat"]),
-                                fmt_int(entry["unsat"]),
-                                fmt_time(avg_time(entry["time_sum"], entry["time_count"])),
-                            ]
-                        )
-                    line = fill_row_placeholders(line, values)
-            if "Total" in line:
+                line, _ = fill_row_placeholders(line, values)
+
+
+        
+        if table_mode == "cross-rob":
+            current_method = None
+            if "\\textbf{Ours}" in line: current_method = "Ours"
+            elif "\\textbf{RALen}" in line: current_method = "RALen"
+            elif "\\textbf{RecLen}" in line: current_method = "RecLen"
+            elif "\\textbf{UF-split}" in line: current_method = "UF-split"
+            
+            if current_method:
+                # Start of a method row, replenish values
                 values = []
-                sample = solver_totals["Z3"]
-                values.append(fmt_int(sample.get("count", 0)))
-                for solver_name in ["Z3", "CVC5", "Ostrich", "Z3-Noodler"]:
-                    entry = solver_totals[solver_name]
-                    values.extend(
-                        [
-                            fmt_int(entry["sat"]),
-                            fmt_int(entry["unsat"]),
-                            fmt_time(avg_time(entry["time_sum"], entry["time_count"])),
-                        ]
-                    )
-                line = fill_row_placeholders(line, values)
-                line = fill_row_placeholders(line, values)
+                for solver in ["Z3", "CVC5", "Ostrich", "Z3-Noodler"]:
+                    st = cross_stats[current_method][solver]
+                    values.extend([
+                        fmt_int(st["rw"]),
+                        fmt_int(st["syn"]),
+                        fmt_time(st["par2"])
+                    ])
+                current_values_cross = values
+                # fill current line
+                line, current_values_cross = fill_row_placeholders(line, current_values_cross)
+            elif "\\EXPtodo{--}" in line:
+                 # Continue filling if we have values
+                 line, current_values_cross = fill_row_placeholders(line, current_values_cross)
 
         if table_mode == "unique":
             # Real-World Section
@@ -397,7 +451,7 @@ def main() -> int:
                     for model in ["Ours", "RALen", "RecLen", "UF-split"]:
                         model_stat = entry["models"].get(model, {"sat": 0, "unsat": 0})
                         values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
-                    line = fill_row_placeholders(line, values)
+                    line, _ = fill_row_placeholders(line, values)
             
             # Synthetic Section
             for category in synthetic_categories:
@@ -407,7 +461,7 @@ def main() -> int:
                     for model in ["Ours", "RALen", "RecLen", "UF-split"]:
                         model_stat = entry["models"].get(model, {"sat": 0, "unsat": 0})
                         values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
-                    line = fill_row_placeholders(line, values)
+                    line, _ = fill_row_placeholders(line, values)
 
             # Total Row
             if "\\textbf{Total}" in line:
@@ -416,7 +470,7 @@ def main() -> int:
                 for model in ["Ours", "RALen", "RecLen", "UF-split"]:
                     model_stat = entry["models"][model]
                     values.extend([fmt_int(model_stat["sat"]), fmt_int(model_stat["unsat"])])
-                line = fill_row_placeholders(line, values)
+                line, _ = fill_row_placeholders(line, values)
 
         out_lines.append(line)
 
