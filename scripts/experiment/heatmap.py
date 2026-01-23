@@ -173,12 +173,12 @@ def main() -> int:
     # Category counts: ConstIdx (not-var) = 145, VarIdx (var) = 23
     
     # Z3
-    data[0, 5] = 30 / 145  # Z3 ConstIdx
+    data[0, 5] = 30 / 145  # Z3 ConstIdx 
     data[0, 6] = 2 / 23    # Z3 VarIdx
     
     # Z3-Noodler
-    data[3, 5] = 83 / 145  # Z3-Noodler ConstIdx
-    data[3, 6] = 11 / 23   # Z3-Noodler VarIdx
+    data[3, 5] = 117 / 145  # Z3-Noodler ConstIdx
+    data[3, 6] = 18 / 23   # Z3-Noodler VarIdx
     
     # Create figure
     fig, ax = plt.subplots(figsize=(12, 4))

@@ -137,7 +137,7 @@ def generate_plot(data, output_path: Path, y_max=None):
     
     # Add text "Virtual Best Method" near the line
     ax.text(0.1, solved_by_any_count + (1 if y_max is None or solved_by_any_count < y_max * 0.9 else -5), 
-            "Virtual Best Method", 
+            f"Virtual Best Method ({solved_by_any_count})", 
             color='gray', fontsize=11, va='bottom' if (y_max is None or solved_by_any_count < y_max * 0.9) else 'top', ha='left')
     
     # Set X-axis to symlog to handle small times (0-10s) and large timeouts (1200s) better
@@ -184,7 +184,7 @@ def main():
     realworld_data = load_data(args.summary, is_realworld)
     if realworld_data:
         print(f"Found {len(realworld_data)} RealWorld instances.")
-        generate_plot(realworld_data, args.output, y_max=120)
+        generate_plot(realworld_data, args.output, y_max=160)
     else:
         print("No RealWorld data found.")
 
