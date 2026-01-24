@@ -125,9 +125,9 @@ def parse_solver_timeouts(raw: Iterable[str], default_timeout: int) -> Dict[str,
             raise ValueError(f"Unknown solver: {name}. Choices: {', '.join(AVAILABLE_SOLVERS)}")
         try:
             timeout_value = int(value)
-        except ValueError:
-            raise ValueError(f"Invalid timeout: {value}") from None
-        if timeout_value <= 0:
+            except ValueError:
+                raise ValueError(f"Invalid timeout: {value}") from None
+            if timeout_value <= 0:
             raise ValueError(f"Timeout must be positive: {value}")
         overrides[name] = timeout_value
     if default_timeout <= 0:

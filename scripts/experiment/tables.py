@@ -240,6 +240,54 @@ def fill_row_placeholders(line: str, values: List[str]) -> (str, List[str]):
     return output, remaining_values
 
 
+def get_vbs_stats(prefix: str, solvers_rows_list: List[List[Dict]]) -> Dict[str, float]:
+    rw_count = 0
+    syn_count = 0
+    times = []
+
+    if not solvers_rows_list:
+        return {"rw": 0, "syn": 0, "par2": 0.0}
+
+    num_rows = len(solvers_rows_list[0])
+
+    for i in range(num_rows):
+        # Suite info from first solver
+        base_suite = str(solvers_rows_list[0][i].get("suite", "")).strip()
+
+        best_time = float("inf")
+        solved = False
+
+        for rows in solvers_rows_list:
+            if i >= len(rows):
+                break
+            row = rows[i]
+            res = normalize_result(row.get(f"{prefix}_result"))
+            t_val = row.get(f"{prefix}_time")
+
+            if res in ("SAT", "UNSAT"):
+                solved = True
+                if is_number(t_val):
+                    val = float(t_val)
+                    if val < best_time:
+                        best_time = val
+
+        if solved:
+            if base_suite == "RealWorld":
+                rw_count += 1
+            else:
+                syn_count += 1
+
+            if best_time == float("inf"):
+                times.append(1200.0 * 2)
+            else:
+                times.append(best_time)
+        else:
+            times.append(1200.0 * 2)
+
+    par2 = sum(times) / len(times) if times else 0.0
+    return {"rw": rw_count, "syn": syn_count, "par2": par2}
+
+
 def main() -> int:
     args = parse_args()
     rows_default = read_solver_sheet(args.summary, "z3-noodler")
@@ -312,13 +360,17 @@ def main() -> int:
         "Z3": rows_z3,
         "CVC5": rows_cvc5,
         "Ostrich": rows_ostrich,
-        "Z3-Noodler": rows_z3n
+        "Z3-Noodler": rows_z3n,
     }
-    
+    all_solvers_list = [rows_z3, rows_cvc5, rows_ostrich, rows_z3n]
+
     for method_name, prefix in method_prefixes.items():
         cross_stats[method_name] = {}
         for solver_name, rows in solvers_data.items():
             cross_stats[method_name][solver_name] = calculate_method_stats(rows, prefix)
+        
+        # Calculate VBS
+        cross_stats[method_name]["VBS"] = get_vbs_stats(prefix, all_solvers_list)
 
     realworld_unique_stats = build_unique_stats(rows_default, pick_realworld)
     synthetic_unique_stats = build_unique_stats(rows_default, pick_synthetic)
@@ -419,28 +471,37 @@ def main() -> int:
 
         
         if table_mode == "cross-rob":
-            current_method = None
-            if "\\textbf{Ours}" in line: current_method = "Ours"
-            elif "\\textbf{RALen}" in line: current_method = "RALen"
-            elif "\\textbf{RecLen}" in line: current_method = "RecLen"
-            elif "\\textbf{UF-split}" in line: current_method = "UF-split"
-            
-            if current_method:
-                # Start of a method row, replenish values
+            solver_key = None
+            # Check for current solver row
+            # Note: "Z3" is in "Z3-Noodler", so check Noodler first or be specific
+            if "\\textbf{Z3-Noodler}" in line:
+                solver_key = "Z3-Noodler"
+            elif "\\textbf{Z3}" in line:
+                solver_key = "Z3"
+            elif "\\textbf{CVC5}" in line:
+                solver_key = "CVC5"
+            elif "\\textbf{Ostrich}" in line:
+                solver_key = "Ostrich"
+            elif "\\textbf{VBS (oracle)}" in line:
+                solver_key = "VBS"
+
+            if solver_key:
+                # Prepare values for this solver across all methods
+                # Order: Ours, RALen, RecLen, UF-split
                 values = []
-                for solver in ["Z3", "CVC5", "Ostrich", "Z3-Noodler"]:
-                    st = cross_stats[current_method][solver]
-                    values.extend([
-                        fmt_int(st["rw"]),
-                        fmt_int(st["syn"]),
-                        fmt_time(st["par2"])
-                    ])
+                for m in ["Ours", "RALen", "RecLen", "UF-split"]:
+                    st = cross_stats[m].get(solver_key, {"rw": 0, "syn": 0, "par2": 0.0})
+                    values.extend(
+                        [
+                            fmt_int(st["rw"]),
+                            fmt_int(st["syn"]),
+                            fmt_time(st["par2"]),
+                        ]
+                    )
                 current_values_cross = values
-                # fill current line
+
+            if "\\EXPtodo{--}" in line and current_values_cross:
                 line, current_values_cross = fill_row_placeholders(line, current_values_cross)
-            elif "\\EXPtodo{--}" in line:
-                 # Continue filling if we have values
-                 line, current_values_cross = fill_row_placeholders(line, current_values_cross)
 
         if table_mode == "unique":
             # Real-World Section

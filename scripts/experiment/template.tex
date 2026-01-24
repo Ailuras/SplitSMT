@@ -55,45 +55,52 @@
 
 \begin{table*}[t]
   \centering
-  \caption{Cross-solver robustness of all encodings.
+  \caption{Cross-solver robustness of all encodings, including the virtual best solver (VBS) upper bound.
     \textbf{RW} and \textbf{Syn} report the numbers of solved instances (SAT+UNSAT; validated SAT only) on the real-world and synthetic suites, respectively.
-    \textbf{PAR-2} is computed per solver over the union of RW and Syn instances (timeouts counted as 2\,\texttimes{} cutoff; timeout = 1200s; lower is better).}
+    \textbf{PAR-2} is computed for each \emph{(method, solver)} pair over the union of RW and Syn instances (timeouts counted as 2\,\texttimes{} cutoff; timeout = 1200s; lower is better).
+    \textbf{VBS} denotes the \emph{virtual best solver} (oracle) that, for each instance, selects the best outcome among \{Z3, CVC5, Ostrich, Z3-Noodler\}.}
   \label{tab:method-solver-rw-syn-par2}
   \setlength{\tabcolsep}{4pt}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{c|ccc|ccc|ccc|ccc}
       \toprule
-      \multirow{2}{*}{\textbf{Method}}
-       & \multicolumn{3}{c|}{\textbf{Z3}}
-       & \multicolumn{3}{c|}{\textbf{CVC5}}
-       & \multicolumn{3}{c|}{\textbf{Ostrich}}
-       & \multicolumn{3}{c}{\textbf{Z3-Noodler}}                                 \\
+      \multirow{2}{*}{\textbf{Solver}}
+       & \multicolumn{3}{c|}{\textbf{Ours}}
+       & \multicolumn{3}{c|}{\textbf{RALen}}
+       & \multicolumn{3}{c|}{\textbf{RecLen}}
+       & \multicolumn{3}{c}{\textbf{UF-split}}                                 \\
       \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2} \\
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2} \\
       \midrule
-      \textbf{Ours}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}   \\
-      \textbf{RALen}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}   \\
-      \textbf{RecLen}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}   \\
-      \textbf{UF-split}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}
-       & \EXPtodo{--}                            & \EXPtodo{--} & \EXPtodo{--}   \\
+      \textbf{Z3}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}   \\
+      \textbf{CVC5}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}   \\
+      \textbf{Ostrich}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}   \\
+      \textbf{Z3-Noodler}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}   \\
+      \midrule
+      \textbf{VBS (oracle)}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}
+       & \EXPtodo{--}                          & \EXPtodo{--} & \EXPtodo{--}   \\
       \bottomrule
     \end{tabular}%
   }

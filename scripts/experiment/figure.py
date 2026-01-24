@@ -184,7 +184,7 @@ def main():
     realworld_data = load_data(args.summary, is_realworld)
     if realworld_data:
         print(f"Found {len(realworld_data)} RealWorld instances.")
-        generate_plot(realworld_data, args.output, y_max=160)
+        generate_plot(realworld_data, args.output, y_max=120)
     else:
         print("No RealWorld data found.")
 

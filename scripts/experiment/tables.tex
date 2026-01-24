@@ -6,20 +6,20 @@
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{c|c|ccc|ccc|ccc|ccc}
       \toprule
-      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                            \\
+      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                                                                                                         \\
       \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}
                         &                   & \textbf{SAT}                       & \textbf{UNSAT}                      & \textbf{t(s)}
                         & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
                         & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
-                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                 \\
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                                                                                              \\
       \midrule
-      Maven             & 10                & 9                                  & 0                                   & 0.94                                 & 5                                     & 0 & 0.60 & 4  & 0 & 0.91 & 4  & 0 & 0.13 \\
-      GitHub            & 24                & 19                                 & 0                                   & 1.51                                 & 6                                     & 0 & 0.66 & 3  & 0 & 0.43 & 5  & 0 & 0.23 \\
-      Awesome           & 129               & 100                                & 2                                   & 2.26                                 & 48                                    & 2 & 5.49 & 43 & 2 & 1.43 & 40 & 0 & 0.68 \\
-      SeqStr            & 5                 & 2                                  & 3                                   & 0.17                                 & 2                                     & 3 & 0.08 & 2  & 3 & 0.10 & 2  & 0 & 0.11 \\
+      Maven             & 10      & 5                       & 1                        & 0.49                         & 5                          & 0 & 0.60 & 4 & 0 & 0.91 & 4 & 0 & 0.13 \\
+      GitHub            & 24      & 7                       & 5                        & 3.23                         & 6                          & 0 & 0.66 & 3 & 0 & 0.43 & 5 & 0 & 0.23 \\
+      Awesome           & 129      & 57                       & 14                        & 12.87                         & 48                          & 2 & 5.49 & 43 & 2 & 1.43 & 40 & 0 & 0.68 \\
+      SeqStr            & 5      & 2                       & 3                        & 0.38                         & 2                          & 3 & 0.08 & 2 & 3 & 0.10 & 2 & 0 & 0.11 \\
       \midrule
       \rowcolor{gray!20}
-      Total             & 168               & 130                                & 5                                   & 1.99                                 & 61                                    & 5 & 4.27 & 52 & 5 & 1.22 & 51 & 0 & 0.57 \\
+      Total             & 168      & 71                       & 23                        & 10.19                         & 61                          & 5 & 4.27 & 52 & 5 & 1.22 & 51 & 0 & 0.57 \\
       \bottomrule
     \end{tabular}%
   }
@@ -35,19 +35,19 @@
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{c|c|ccc|ccc|ccc|ccc}
       \toprule
-      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                                \\
+      \textbf{Category} & \textbf{\# Cases} & \multicolumn{3}{c|}{\textbf{Ours}} & \multicolumn{3}{c|}{\textbf{RALen}} & \multicolumn{3}{c|}{\textbf{RecLen}} & \multicolumn{3}{c}{\textbf{UF-split}}                                                                                                                         \\
       \cmidrule(lr){3-5} \cmidrule(lr){6-8} \cmidrule(lr){9-11} \cmidrule(lr){12-14}
                         &                   & \textbf{SAT}                       & \textbf{UNSAT}                      & \textbf{t(s)}
                         & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
                         & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}
-                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                     \\
+                        & \textbf{SAT}      & \textbf{UNSAT}                     & \textbf{t(s)}                                                                                                                                                                                                                              \\
       \midrule
-      Simple            & 197               & 91                                 & 68                                  & 4.25                                 & 51                                    & 36  & 8.71 & 40 & 36  & 0.28 & 55 & 0 & 0.51 \\
-      Complex           & 101               & 53                                 & 25                                  & 6.92                                 & 15                                    & 18  & 0.23 & 13 & 18  & 0.20 & 4  & 0 & 6.48 \\
-      Scenarios         & 114               & 17                                 & 68                                  & 5.64                                 & 13                                    & 69  & 1.77 & 13 & 69  & 1.49 & 3  & 0 & 4.81 \\
+      Simple            & 197      & 90                       & 65                        & 3.90                         & 51                          & 36 & 8.71 & 40 & 36 & 0.28 & 55 & 0 & 0.51 \\
+      Complex           & 101      & 50                       & 21                        & 8.66                         & 15                          & 18 & 0.23 & 13 & 18 & 0.20 & 4 & 0 & 6.48 \\
+      Scenarios         & 114      & 16                       & 48                        & 20.46                         & 13                          & 69 & 1.77 & 13 & 69 & 1.49 & 3 & 0 & 4.81 \\
       \midrule
       \rowcolor{gray!20}
-      Total             & 412               & 161                                & 161                                 & 5.26                                 & 79                                    & 123 & 4.51 & 66 & 123 & 0.79 & 62 & 0 & 1.11 \\
+      Total             & 412      & 156                       & 134                        & 8.72                         & 79                          & 123 & 4.51 & 66 & 123 & 0.79 & 62 & 0 & 1.11 \\
       \bottomrule
     \end{tabular}%
   }
@@ -55,45 +55,52 @@
 
 \begin{table*}[t]
   \centering
-  \caption{Cross-solver robustness of all encodings.
+  \caption{Cross-solver robustness of all encodings, including the virtual best solver (VBS) upper bound.
     \textbf{RW} and \textbf{Syn} report the numbers of solved instances (SAT+UNSAT; validated SAT only) on the real-world and synthetic suites, respectively.
-    \textbf{PAR-2} is computed per solver over the union of RW and Syn instances (timeouts counted as 2\,\texttimes{} cutoff; timeout = 1200s; lower is better).}
+    \textbf{PAR-2} is computed for each \emph{(method, solver)} pair over the union of RW and Syn instances (timeouts counted as 2\,\texttimes{} cutoff; timeout = 1200s; lower is better).
+    \textbf{VBS} denotes the \emph{virtual best solver} (oracle) that, for each instance, selects the best outcome among \{Z3, CVC5, Ostrich, Z3-Noodler\}.}
   \label{tab:method-solver-rw-syn-par2}
   \setlength{\tabcolsep}{4pt}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{c|ccc|ccc|ccc|ccc}
       \toprule
-      \multirow{2}{*}{\textbf{Method}}
-       & \multicolumn{3}{c|}{\textbf{Z3}}
-       & \multicolumn{3}{c|}{\textbf{CVC5}}
-       & \multicolumn{3}{c|}{\textbf{Ostrich}}
-       & \multicolumn{3}{c}{\textbf{Z3-Noodler}}                                 \\
+      \multirow{2}{*}{\textbf{Solver}}
+       & \multicolumn{3}{c|}{\textbf{Ours}}
+       & \multicolumn{3}{c|}{\textbf{RALen}}
+       & \multicolumn{3}{c|}{\textbf{RecLen}}
+       & \multicolumn{3}{c}{\textbf{UF-split}}                                 \\
       \cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2}
-       & \textbf{RW}                             & \textbf{Syn} & \textbf{PAR-2} \\
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2}
+       & \textbf{RW}                           & \textbf{Syn} & \textbf{PAR-2} \\
       \midrule
-      \textbf{Ours}
-       & 32                                      & 187          & 1496.09
-       & 112                                     & 229          & 999.36
-       & 106                                     & 241          & 973.47
-       & 135                                     & 322          & 512.35         \\
-      \textbf{RALen}
-       & 17                                      & 187          & 1555.91
-       & 4                                       & 134          & 1835.67
-       & 67                                      & 209          & 1272.16
-       & 66                                      & 202          & 1293.09        \\
-      \textbf{RecLen}
-       & 17                                      & 188          & 1552.43
-       & 4                                       & 131          & 1845.59
-       & 18                                      & 191          & 1546.32
-       & 57                                      & 189          & 1382.45        \\
-      \textbf{UF-split}
-       & 52                                      & 63           & 1924.23
-       & 32                                      & 63           & 2006.92
-       & 43                                      & 62           & 1966.07
-       & 51                                      & 62           & 1932.58        \\
+      \textbf{Z3}
+       & 32                          & 140 & 1690.75
+       & 17                          & 187 & 1555.91
+       & 17                          & 188 & 1552.43
+       & 52                          & 63 & 1924.23   \\
+      \textbf{CVC5}
+       & 52                          & 247 & 1168.87
+       & 4                          & 134 & 1835.67
+       & 4                          & 131 & 1845.59
+       & 32                          & 63 & 2006.92   \\
+      \textbf{Ostrich}
+       & 112                          & 214 & 1063.14
+       & 67                          & 208 & 1276.27
+       & 18                          & 190 & 1550.44
+       & 43                          & 62 & 1966.07   \\
+      \textbf{Z3-Noodler}
+       & 94                          & 290 & 817.04
+       & 66                          & 202 & 1293.09
+       & 57                          & 189 & 1382.45
+       & 51                          & 62 & 1932.58   \\
+      \midrule
+      \textbf{VBS (oracle)}
+       & 157                          & 371 & 221.82
+       & 105                          & 239 & 979.45
+       & 59                          & 225 & 1227.50
+       & 54                          & 64 & 1911.74   \\
       \bottomrule
     \end{tabular}%
   }
@@ -112,17 +119,17 @@
                                          & \textbf{SAT}                       & \textbf{UNSAT}                      & \textbf{SAT}                         & \textbf{UNSAT}                        & \textbf{SAT} & \textbf{UNSAT} & \textbf{SAT} & \textbf{UNSAT} \\
       \midrule
       \multicolumn{9}{l}{\textit{Real-World}}                                                                                                                                                                                                                      \\
-      Maven                              & 5                                  & 0                                   & 0                                    & 0                                     & 0            & 0              & 0            & 0              \\
-      GitHub                             & 12                                 & 0                                   & 0                                    & 0                                     & 0            & 0              & 1            & 0              \\
-      Awesome                            & 49                                 & 0                                   & 0                                    & 0                                     & 0            & 0              & 5            & 0              \\
-      SeqStr                             & 0                                  & 0                                   & 0                                    & 0                                     & 0            & 0              & 0            & 0              \\
+      Maven                              & 1                       & 1                        & 0                         & 0                          & 0 & 0   & 0 & 0   \\
+      GitHub                             & 1                       & 5                        & 1                         & 0                          & 0 & 0   & 1 & 0   \\
+      Awesome                            & 8                       & 12                        & 0                         & 0                          & 0 & 0   & 7 & 0   \\
+      SeqStr                             & 0                       & 0                        & 0                         & 0                          & 0 & 0   & 0 & 0   \\
       \midrule
       \multicolumn{9}{l}{\textit{Synthetic}}                                                                                                                                                                                                                       \\
-      Simple                             & 37                                 & 33                                  & 0                                    & 0                                     & 0            & 0              & 13           & 0              \\
-      Complex                            & 38                                 & 9                                   & 0                                    & 0                                     & 0            & 0              & 2            & 0              \\
-      Scenarios                          & 8                                  & 10                                  & 0                                    & 0                                     & 0            & 0              & 3            & 0              \\
+      Simple                             & 39                       & 30                        & 0                         & 0                          & 0 & 0   & 14 & 0   \\
+      Complex                            & 36                       & 6                        & 0                         & 0                          & 0 & 0   & 2 & 0   \\
+      Scenarios                          & 9                       & 3                        & 0                         & 0                          & 0 & 0   & 3 & 0   \\
       \midrule
-      \textbf{Total}                     & 149                                & 52                                  & 0                                    & 0                                     & 0            & 0              & 24           & 0              \\
+      \textbf{Total}                     & 94                       & 57                        & 1                         & 0                          & 0 & 0   & 27 & 0   \\
       \bottomrule
     \end{tabular}%
   }
