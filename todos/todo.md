@@ -1,7 +1,0 @@
-strategy_generic_insertion_deepseek-chat_1451984.smt2
-strategy_generic_insertion_gpt-5.2_1920182.smt2
-strategy_generic_insertion_gpt5.2_120902.smt2
-strategy_generic_insertion_gpt5.2_154425.smt2
-strategy_generic_insertion_gpt5.2_2060500.smt2
-strategy_generic_insertion_gpt5.2_768997.smt2
-strategy_str_split_gpt5.2_582928.smt2

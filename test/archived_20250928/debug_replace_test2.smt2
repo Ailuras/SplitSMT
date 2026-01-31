@@ -1,6 +1,0 @@
-(set-logic ALL)
-(declare-fun x () String)
-(declare-fun y () String)
-(assert (= x "hello"))
-(assert (= y (str.replace_re_all "test" (re.* re.allchar) "world")))
-(check-sat)

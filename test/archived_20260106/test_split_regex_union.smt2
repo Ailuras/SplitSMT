@@ -1,6 +1,0 @@
-(set-logic ALL)
-(assert (= (str.split_at_re "one--two++three==four" (re.union (str.to_re "--") (str.to_re "++") (str.to_re "==")) 2) "three"))
-(assert (= (str.split_rest_re "one--two++three==four" (re.union (str.to_re "--") (str.to_re "++") (str.to_re "==")) 2) "three==four"))
-(assert (= (str.num_splits_re "one--two++three==four" (re.union (str.to_re "--") (str.to_re "++") (str.to_re "=="))) 4))
-(check-sat)
-(get-model)
