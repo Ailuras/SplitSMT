@@ -138,72 +138,25 @@ Total: 168 real-world + 412 synthetic = 580 test cases
 
 ## Scripts
 
-The `scripts/` directory contains utility tools for batch processing, validation, and format conversion:
+The `scripts/` directory provides utilities for batch processing, validation, and format conversion:
 
-### `scripts/batch/`
+- **`batch/`**: Parallel batch execution for running experiments across multiple SMT files
+  - `batch.sh`: External solver wrappers
+  - `batch_splitsmt.sh`: SplitSMT with configurable backends
 
-Batch execution scripts for running experiments:
+- **`check/`**: Consistency validation tools
+  - `check.py`: Cross-solver consistency validation
+  - `check_splitsmt.py`: SplitSMT internal consistency checks
+  - `check_model.py`: Model validation for UF-to-RA transformations
 
-- **`batch.sh`**: Execute multiple SMT files with external solver wrappers
-- Supports parallel processing with automatic CPU detection
-- Generates individual log files for each task group
-- Platform-aware (auto-detects macOS/Linux solver paths)
-  
-- **`batch_splitsmt.sh`**: Execute multiple SMT files through SplitSMT
-  - Similar to `batch.sh` but uses SplitSMT binary internally
-  - Configurable backend solver selection
+- **`convert/`**: Format conversion pipeline
+  - `normalize.py`: SMT-LIB preprocessing
+  - `convert_splitsmt2uf.py`: Original to UF format
+  - `convert_uf2others.py`: UF to solver-specific formats (SplitSMT/RA/REC)
 
-### `scripts/check/`
+- **`report/`**: Result aggregation (`aggregate.py`)
 
-Consistency validation scripts:
-
-- **`check.py`**: Cross-solver consistency checker using external solver wrappers
-  - Compares results across multiple solvers
-  - Detects conflicts (e.g., SAT vs UNSAT)
-  
-- **`check_splitsmt.py`**: SplitSMT internal consistency checker
-  - Tests SplitSMT with different backend solvers
-  - Validates solver integration stability
-  
-- **`check_model.py`**: UF-to-RA model validator
-  - Extracts models from UF solutions
-  - Verifies models satisfy RA constraints
-
-### `scripts/convert/`
-
-Format conversion utilities:
-
-- **`normalize.py`**: Preprocessor for SMT files
-  - Removes `get-model` commands
-  - Handles `push`/`pop` operations
-  
-- **`convert_splitsmt2uf.py`**: Convert original SMT-LIB to UF format
-  - Inserts uninterpreted function declarations
-  - Changes logic to `ALL`
-  
-- **`convert_uf2others.py`**: Convert UF format to solver-specific formats
-  - Generates three variants: `splitsmt/`, `ra/`, `rec/`
-  - Handles solver-specific requirements (e.g., Ostrich needs special `-1` constant)
-
-### `scripts/report/`
-
-Result aggregation:
-
-- **`aggregate.py`**: Aggregate experimental results
-  - Processes batch execution logs
-  - Generates summary reports
-
-### `scripts/shell/`
-
-Shell convenience scripts:
-
-- **`All.sh`**: Run all benchmarks with all solvers
-- **`Split_All.sh`**: Run SplitSMT benchmarks
-- **`RA_All.sh`**: Run RA baseline benchmarks  
-- **`REC_All.sh`**: Run REC baseline benchmarks
-- **`UF_All.sh`**: Run UF baseline benchmarks
-- **`convert.sh`**: Complete conversion pipeline (normalize → UF → all formats)
-- **`test.sh`**: Quick test runner for development
+- **`shell/`**: Convenience scripts for running benchmarks (`All.sh`, `Split_All.sh`, `UF_All.sh`, etc.)
 
 ## Experimental Results
 
