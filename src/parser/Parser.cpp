@@ -742,7 +742,7 @@ Parser::getAllVariables(Decomposition &decomposition) {
   decomposition.variablesNeedDeclare.clear();
   for (const auto &varName : variableAppeared) {
     if (hasDefinedNames.find(varName) == hasDefinedNames.end()) {
-      // 找到对应的变量类型
+      // Find the corresponding variable type
       for (const auto &var : allVars) {
         if (var.first == varName) {
           decomposition.variablesNeedDeclare.push_back(var);

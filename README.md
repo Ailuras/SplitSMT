@@ -163,7 +163,6 @@ Shell convenience scripts:
 Result summaries are provided in the `results/` directory:
 
 - **`summary.xlsx`**: Complete experimental results (580 benchmarks × 4 solvers)
-- **`factors.xlsx`**: Ablation study and factor analysis
 
 These correspond to the tables and figures in our ISSTA 2026 paper.
 
