@@ -18,25 +18,12 @@ The tool provides:
 
 ### Build Steps
 
-1. Install dependencies:
-
 ```bash
-# macOS
-brew install gmp mpfr cmake
-
-# Ubuntu/Debian
 sudo apt-get install libgmp-dev libmpfr-dev cmake build-essential
-```
-
-1. Build the project:
-
-```bash
 mkdir build && cd build
 cmake ..
 make
 ```
-
-1. The executable will be at `build/bin/SplitSMT`
 
 ## Usage
 
@@ -75,49 +62,15 @@ make
 
 SplitSMT supports multiple SMT solvers. To use them, you need to:
 
-1. Download or build the solver binaries
-2. Configure the path in the corresponding wrapper script in `solvers/`
+1. Download or build the solver binaries from the GitHub repositories
+2. Configure the path in the corresponding wrapper script in `solvers/`, e.g., `SOLVER_PATH="/usr/local/bin/z3"`
 
-### Supported Solvers
+### GitHub repositories
 
 - **Z3**: [https://github.com/Z3Prover/z3](https://github.com/Z3Prover/z3)
 - **CVC5**: [https://github.com/cvc5/cvc5](https://github.com/cvc5/cvc5)
 - **Ostrich**: [https://github.com/uuverifiers/ostrich](https://github.com/uuverifiers/ostrich)
 - **Z3-Noodler**: [https://github.com/VeriFIT/z3-noodler](https://github.com/VeriFIT/z3-noodler)
-
-### Installation Instructions
-
-1. **Download pre-built binaries** (recommended for Z3 and CVC5):
-   - Visit the solver's GitHub repository releases page
-   - Download the appropriate binary for your operating system
-   - Extract and note the path to the executable
-
-2. **Configure solver paths**:
-
-   ```bash
-   # Edit the corresponding solver script
-   vim solvers/z3.sh          # For Z3
-   vim solvers/cvc5.sh        # For CVC5
-   vim solvers/ostrich.sh     # For Ostrich
-   vim solvers/z3-noodler.sh  # For Z3-Noodler
-   
-   # Change the SOLVER_PATH variable to your solver location
-   # Example:
-   SOLVER_PATH="/usr/local/bin/z3"
-   ```
-
-3. **Verify installation**:
-
-   ```bash
-   # Test the solver wrapper directly
-   ./solvers/z3.sh 30 testcases/test_basic.smt2
-   ```
-
-**Note**: On macOS, you need GNU coreutils for the `timeout` command:
-
-```bash
-brew install coreutils
-```
 
 ## Benchmarks
 
