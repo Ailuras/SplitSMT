@@ -1,11 +1,5 @@
 # SplitSMT
 
-SplitSMT is a tool for encoding string split constraints into standard SMT-LIB format, enabling off-the-shelf SMT solvers to handle split operations.
-
-## Overview
-
-This implementation corresponds to the ISSTA 2026 paper: **"Solving String Split Constraints via Structural Relaxation"**.
-
 The tool provides:
 
 - **SMT-LIB encoding** for string split operations (`split_at`, `split_rest`, `num_splits`)
@@ -164,51 +158,4 @@ Result summaries are provided in the `results/` directory:
 
 - **`summary.xlsx`**: Complete experimental results (580 benchmarks × 4 solvers)
 
-These correspond to the tables and figures in our ISSTA 2026 paper.
-
-## Repository Structure
-
-```
-SplitSMT/
-├── src/                    # C++ source code
-│   ├── Main.cpp            # Entry point
-│   ├── core/               # Core solver logic (Split.cpp, Context.cpp, etc.)
-│   ├── parser/             # SMT-LIB parser
-│   ├── utils/              # Helper utilities
-│   └── SMTParser/          # External SMT parser library
-├── solvers/                # Solver wrapper scripts
-│   ├── z3.sh               # Z3 wrapper
-│   ├── cvc5.sh             # CVC5 wrapper
-│   ├── ostrich.sh          # Ostrich wrapper
-│   └── z3-noodler.sh       # Z3-Noodler wrapper
-├── benchmarks_splitsmt/    # SplitSMT encoded benchmarks
-├── benchmarks_RA/          # RA baseline benchmarks
-├── benchmarks_REC/         # REC baseline benchmarks
-├── benchmarks_UF/          # UF baseline benchmarks
-├── scripts/                # Utility scripts
-│   ├── batch/              # Batch execution scripts
-│   ├── check/              # Consistency validation
-│   ├── convert/            # Format conversion
-│   ├── report/             # Result aggregation
-│   └── shell/              # Shell convenience scripts
-├── testcases/              # Test cases for validation
-├── results/                # Experimental result summaries
-└── CMakeLists.txt          # Build configuration
-```
-
-## Citation
-
-If you use SplitSMT in your research, please cite our ISSTA 2026 paper:
-
-```bibtex
-@inproceedings{splitsmt2026,
-  title={Solving String Split Constraints via Structural Relaxation},
-  author={Anonymous},
-  booktitle={ACM International Symposium on Software Testing and Analysis (ISSTA)},
-  year={2026}
-}
-```
-
-## License
-
-[To be added]
+These correspond to the results in paper.
