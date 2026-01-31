@@ -77,11 +77,58 @@ make
 ./build/bin/SplitSMT input.smt2 -s z3-noodler --check
 ```
 
+## SMT Solvers Setup
+
+SplitSMT supports multiple SMT solvers. To use them, you need to:
+
+1. Download or build the solver binaries
+2. Configure the path in the corresponding wrapper script in `solvers/`
+
+### Supported Solvers
+
+- **Z3**: [https://github.com/Z3Prover/z3](https://github.com/Z3Prover/z3)
+- **CVC5**: [https://github.com/cvc5/cvc5](https://github.com/cvc5/cvc5)
+- **Ostrich**: [https://github.com/uuverifiers/ostrich](https://github.com/uuverifiers/ostrich)
+- **Z3-Noodler**: [https://github.com/VeriFIT/z3-noodler](https://github.com/VeriFIT/z3-noodler)
+
+### Installation Instructions
+
+1. **Download pre-built binaries** (recommended for Z3 and CVC5):
+   - Visit the solver's GitHub repository releases page
+   - Download the appropriate binary for your operating system
+   - Extract and note the path to the executable
+
+2. **Configure solver paths**:
+
+   ```bash
+   # Edit the corresponding solver script
+   vim solvers/z3.sh          # For Z3
+   vim solvers/cvc5.sh        # For CVC5
+   vim solvers/ostrich.sh     # For Ostrich
+   vim solvers/z3-noodler.sh  # For Z3-Noodler
+   
+   # Change the SOLVER_PATH variable to your solver location
+   # Example:
+   SOLVER_PATH="/usr/local/bin/z3"
+   ```
+
+3. **Verify installation**:
+
+   ```bash
+   # Test the solver wrapper directly
+   ./solvers/z3.sh 30 testcases/test_basic.smt2
+   ```
+
+**Note**: On macOS, you need GNU coreutils for the `timeout` command:
+
+```bash
+brew install coreutils
+```
+
 ## Benchmarks
 
 The repository includes benchmarks in four different encodings:
 
-- **`benchmarks/`**: Original Java-extracted constraints (178 real-world files)
 - **`benchmarks_splitsmt/`**: SplitSMT encoding (580 files)
 - **`benchmarks_RA/`**: RA baseline encoding (580 files)
 - **`benchmarks_REC/`**: REC baseline encoding (580 files)
@@ -170,17 +217,30 @@ These correspond to the tables and figures in our ISSTA 2026 paper.
 
 ```
 SplitSMT/
-├── src/               # C++ source code
-│   ├── Main.cpp       # Entry point
-│   ├── core/          # Core solver logic (Split.cpp, Context.cpp, etc.)
-│   ├── parser/        # SMT-LIB parser
-│   └── utils/         # Helper utilities
-├── benchmarks/        # Original benchmarks
-├── benchmarks_*/      # Encoded benchmarks (4 variants)
-├── scripts/           # Utility scripts (see above)
-├── results/           # Experimental result summaries
-├── test/              # Test cases
-└── CMakeLists.txt     # Build configuration
+├── src/                    # C++ source code
+│   ├── Main.cpp            # Entry point
+│   ├── core/               # Core solver logic (Split.cpp, Context.cpp, etc.)
+│   ├── parser/             # SMT-LIB parser
+│   ├── utils/              # Helper utilities
+│   └── SMTParser/          # External SMT parser library
+├── solvers/                # Solver wrapper scripts
+│   ├── z3.sh               # Z3 wrapper
+│   ├── cvc5.sh             # CVC5 wrapper
+│   ├── ostrich.sh          # Ostrich wrapper
+│   └── z3-noodler.sh       # Z3-Noodler wrapper
+├── benchmarks_splitsmt/    # SplitSMT encoded benchmarks
+├── benchmarks_RA/          # RA baseline benchmarks
+├── benchmarks_REC/         # REC baseline benchmarks
+├── benchmarks_UF/          # UF baseline benchmarks
+├── scripts/                # Utility scripts
+│   ├── batch/              # Batch execution scripts
+│   ├── check/              # Consistency validation
+│   ├── convert/            # Format conversion
+│   ├── report/             # Result aggregation
+│   └── shell/              # Shell convenience scripts
+├── testcases/              # Test cases for validation
+├── results/                # Experimental result summaries
+└── CMakeLists.txt          # Build configuration
 ```
 
 ## Citation
