@@ -1,7 +1,0 @@
-(set-logic QF_SLIA)
-(declare-fun url () String)
-(define-fun path_and_query () String (str.split_rest url "/" 1))
-(define-fun query () String (str.split_at path_and_query "?" 1))
-(assert (= query "user=alice"))
-(check-sat)
-(exit)

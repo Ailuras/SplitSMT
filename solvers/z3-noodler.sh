@@ -1,38 +1,14 @@
 #!/bin/bash
 
-# Get the directory where the script is located
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-# Detect OS and set paths/commands
-OS="$(uname -s)"
-if [ "$OS" = "Darwin" ]; then
-    # Fallback/Default path if Z3_NOODLER_BIN not set
-    DEFAULT_SOLVER_PATH=~/WorkSpace/z3-noodler/build/z3
-    if command -v gtimeout >/dev/null 2>&1; then
-        TIMEOUT_CMD="gtimeout"
-    elif command -v timeout >/dev/null 2>&1; then
-        TIMEOUT_CMD="timeout"
-    else
-        echo "Error: Neither 'gtimeout' nor 'timeout' command found. Please install GNU coreutils:" >&2
-        echo "  brew install coreutils" >&2
-        exit 1
-    fi
-elif [ "$OS" = "Linux" ]; then
-    DEFAULT_SOLVER_PATH=/home/hanrui/z3-noodler/build/z3
-    TIMEOUT_CMD="timeout"
-else
-    echo "Error: Unsupported OS '$OS'"
-    exit 1
-fi
-
-# Use env var if set, else default
-if [ -z "$Z3_NOODLER_BIN" ]; then
-    Z3_NOODLER_BIN="$DEFAULT_SOLVER_PATH"
-fi
+# Configuration: Set the path to the Z3-Noodler solver binary
+# Modify this path to point to your Z3-Noodler installation
+# You can also set the Z3_NOODLER_BIN environment variable to override this
+SOLVER_PATH="${Z3_NOODLER_BIN:-/path/to/z3-noodler}"
 
 # Ensure solver binary exists and is executable
-if [ ! -x "$Z3_NOODLER_BIN" ]; then
-    echo "Error: z3-noodler binary not found or not executable at '$Z3_NOODLER_BIN'"
+if [ ! -x "$SOLVER_PATH" ]; then
+    echo "Error: Z3-Noodler binary '$SOLVER_PATH' not found or not executable"
+    echo "Please set SOLVER_PATH in this script or set Z3_NOODLER_BIN environment variable"
     exit 1
 fi
 
@@ -67,5 +43,6 @@ if [ ! -f "$SMT_FILE" ]; then
     exit 1
 fi
 
-# Run z3-noodler with the specified timeout
-"$TIMEOUT_CMD" --preserve-status --kill-after=1 "$TIMEOUT" "$Z3_NOODLER_BIN" -T:"$TIMEOUT" model=true "$SMT_FILE"
+# Run Z3-Noodler with the specified timeout
+# Note: timeout command is standard on Linux; on macOS, install via: brew install coreutils
+timeout --preserve-status --kill-after=1 "$TIMEOUT" "$SOLVER_PATH" -T:"$TIMEOUT" model=true "$SMT_FILE"
