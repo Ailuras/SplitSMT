@@ -1,5 +1,7 @@
 # SplitSMT
 
+SplitSMT is a tool for solving string split constraints via structural relaxation, accompanying the ISSTA 2026 paper.
+
 The tool provides:
 
 - **SMT-LIB encoding** for string split operations (`split_at`, `split_rest`, `num_splits`)
@@ -111,4 +113,20 @@ Result summaries are provided in the `results/` directory:
 
 - **`summary.xlsx`**: Complete experimental results (580 benchmarks × 4 solvers)
 
-These correspond to the results in paper.
+These correspond to the results reported in the paper (see [Paper and Citation](#paper-and-citation)).
+
+## Paper and Citation
+
+This repository accompanies the paper:
+
+Solving String Split Constraints via Structural Relaxation
+
+DOI: [https://doi.org/10.1145/3832221](https://doi.org/10.1145/3832221)
+
+Cite:
+
+```text
+Rui Han, Ziheng Wang, Baoquan Cui, Yuhang Dong, Fuqi Jia, Feifei Ma, Jian Zhang.
+Solving String Split Constraints via Structural Relaxation.
+Proceedings of the ACM on Software Engineering (ISSTA), 2026.
+```
